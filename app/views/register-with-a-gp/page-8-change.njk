@@ -1,0 +1,56 @@
+{% extends 'layout-transactional.njk' %}
+
+{% block pageTitle %}
+  Register with a GP - Telephone number
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+    <form action="/register-with-a-gp/check-your-answers">
+
+      {% call fieldset({
+        legend: {
+          text: "What is your telephone number?",
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      {{ input({
+        label: {
+          html: 'Landline'
+        },
+        id: "landline",
+        name: "landline",
+        type: "tel",
+        classes: "nhsuk-input--width-10"
+      }) }}
+
+      {{ input({
+        label: {
+          html: 'Mobile'
+        },
+        id: "mobile",
+        name: "mobile",
+        type: "tel",
+        classes: "nhsuk-input--width-10"
+      }) }}
+
+      {% endcall %}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+    </form>
+
+    {{ backLink({
+      "href": "/register-with-a-gp/check-your-answers",
+      "text": "Back to my answers"
+    }) }}
+
+    </div>
+  </div>
+{% endblock %}

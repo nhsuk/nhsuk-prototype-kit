@@ -1,0 +1,51 @@
+{% extends 'layout-transactional.njk' %}
+
+{% block pageTitle %}
+  Register with a GP - Enter your NHS number
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+    <form action="/register-with-a-gp/check-your-answers">
+
+      {% call fieldset({
+        legend: {
+          text: "Enter your NHS number",
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      {{ hint({
+        "text": "This is a 10 digit number, like 485 777 3456."
+      }) }}
+
+      {{ input({
+        "label": {
+          "text": "NHS number",
+          "classes": "nhsuk-u-visually-hidden"
+        },
+        "id": "nhs-number",
+        "name": "nhs-number",
+        "classes": "nhsuk-input--width-10",
+        "type": "number"
+      }) }}
+
+      {% endcall %}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+    </form>
+
+    {{ backLink({
+      "href": "/register-with-a-gp/check-your-answers",
+      "text": "Back to my answers"
+    }) }}
+
+    </div>
+  </div>
+{% endblock %}

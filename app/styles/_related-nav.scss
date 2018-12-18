@@ -1,0 +1,28 @@
+.nhsuk-related-nav {
+  border-top: 1px solid $nhsuk-border-color;
+
+  @include mq($until: desktop) {
+    margin-top: nhsuk-spacing(7);
+  }
+}
+
+.nhsuk-related-nav__heading {
+  @include nhsuk-typography-responsive(19, $override-line-height: 1.2);
+
+  margin-bottom: 12px;
+  padding-top: nhsuk-spacing(3);
+}
+
+.nhsuk-related-nav__list {
+  @include nhsuk-typography-responsive(16);
+
+  list-style: none;
+  padding-left: 0;
+}
+
+.nhsuk-related-nav__list {
+  @include nhsuk-typography-responsive(16);
+
+  list-style: none;
+  padding-left: 0;
+}

@@ -1,0 +1,55 @@
+{% extends 'layout-transactional.njk' %}
+
+{% block pageTitle %}
+  Register with a GP - What is your date of birth?
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+    <form action="/register-with-a-gp/check-your-answers">
+
+      {{ dateInput({
+        "id": "dob",
+        "namePrefix": "dob",
+        "fieldset": {
+          "legend": {
+            "text": "What is your date of birth?",
+            "classes": "nhsuk-fieldset__legend--l"
+          }
+        },
+        "hint": {
+          "text": "For example, 15 3 1984"
+        },
+        "items": [
+          {
+            "name": "day",
+            "classes": "nhsuk-input--width-2"
+          },
+          {
+            "name": "month",
+            "classes": "nhsuk-input--width-2"
+          },
+          {
+            "name": "year-error",
+            "label": "Year",
+            "classes": "nhsuk-input--width-4"
+          }
+        ]
+      }) }}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+    </form>
+
+    {{ backLink({
+      "href": "/register-with-a-gp/check-your-answers",
+      "text": "Back to my answers"
+    }) }}
+
+    </div>
+  </div>
+{% endblock %}

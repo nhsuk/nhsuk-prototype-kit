@@ -1,0 +1,45 @@
+{% extends 'layout-transactional.njk' %}
+
+{% block pageTitle %}
+  Register with a GP - Confirm your address
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+    <form action="/register-with-a-gp/check-your-answers">
+
+      {% call fieldset({
+        legend: {
+          text: "Is this your current address?",
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      <p>
+        <span data-name="address-line-1"></span><br>
+        <span data-name="address-line-2"></span><br>
+        <span data-name="address-town"></span><br>
+        <span data-name="address-county"></span><br>
+        <span data-name="address-postcode"></span>
+      </p>
+
+
+      {% endcall %}
+
+      {{ button({
+        "text": "This is my address"
+      }) }}
+
+    </form>
+
+    {{ backLink({
+      "href": "/register-with-a-gp/check-your-answers",
+      "text": "Back to my answers"
+    }) }}
+
+    </div>
+  </div>
+{% endblock %}

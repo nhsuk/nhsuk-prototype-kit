@@ -1,0 +1,46 @@
+{% extends 'layout-transactional.njk' %}
+
+{% block pageTitle %}
+  Register with a GP - Do you have any allergies?
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+    <form action="/register-with-a-gp/check-your-answers">
+
+      {% call fieldset({
+        legend: {
+          text: "Do you have any allergies?",
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      {{ textarea({
+        "name": "allergies",
+        "id": "allergies",
+        "rows": "8",
+        "label": {
+          "text": "Allergies",
+          "classes": "nhsuk-u-visually-hidden"
+        }
+      }) }}
+
+      {% endcall %}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+    </form>
+
+    {{ backLink({
+      "href": "/register-with-a-gp/check-your-answers",
+      "text": "Back to my answers"
+    }) }}
+
+    </div>
+  </div>
+{% endblock %}
