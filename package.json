@@ -5,9 +5,10 @@
   "main": "app.js",
   "scripts": {
     "start": "node app",
+    "build": "gulp styles",
     "test": "",
     "prewatch": "gulp styles",
-    "watch": "concurrently \"gulp\" \"nodemon -e js,njk,scss --watch app\""
+    "watch": "concurrently \"gulp\" \"nodemon -e js,html,scss --watch app\""
   },
   "author": "https://github.com/nhsuk/",
   "license": "MIT",

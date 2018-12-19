@@ -1,13 +1,14 @@
 const app = require('express')();
 const express = require('express');
-const routing = require('./middleware/routing.js');
 const nunjucks = require('nunjucks');
 const path = require('path');
+const routing = require('./middleware/routing.js');
+const routes = require('./app/routes.js')
 
-app.set('view engine', 'njk');
+app.set('view engine', 'html');
 app.set('port', process.env.PORT || 3000);
-app.use(express.static(path.join(__dirname, 'app/assets')));
-app.use('/nhsuk-frontend', express.static(path.join(__dirname, '/node_modules/nhsuk-frontend/packages')));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/nhsuk-frontend', express.static(path.join(__dirname, 'node_modules/nhsuk-frontend/packages')));
 
 var appViews = [
   path.join(__dirname, '/app/views/'),
@@ -21,16 +22,11 @@ nunjucks.configure(appViews, {
   watch: true
 })
 
+app.use('/', routes)
+
 app.get(/^([^.]+)$/, function (req, res, next) {
   routing.matchRoutes(req, res, next)
 })
-
-if (app.get('env') === 'production') {
-  app.use(function(err, req, res, next) {
-    console.error(err.stack);
-    res.sendStatus(err.status || 500);
-  });
-}
 
 app.listen(app.get('port'), function() {
   console.log('App running at http://localhost:' + app.get('port'));

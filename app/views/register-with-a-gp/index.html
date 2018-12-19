@@ -1,0 +1,63 @@
+{% extends 'layout-nhsuk.html' %}
+
+{% block pageTitle %}
+  NHS.UK - Register at the Rose Medical Practice
+{% endblock %}
+
+{% block beforeContent %}
+{{ breadcrumb({
+  items: [
+    {
+      href: "/home-page",
+      text: "Home"
+    },
+    {
+      href: "/hubs/hub-level-1b",
+      text: "NHS services"
+    },
+        {
+      href: "/hubs/hub-level-2b",
+      text: "GP services"
+    }
+  ],
+  href: "/hubs/find-gp-1",
+  text: "Find a GP"
+}) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+      <h1>Register at the Rose Medical Practice</h1>
+    </div>
+  </div>  
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-8">
+      <p>To register we will ask you for information about yourself including:</p>
+      <ul>
+        <li>your NHS number - if you know it</li>
+      </ul>
+      <p>This is to help Rose Medical Practice find your medical records.</p>
+      <a href="/register-with-a-gp/page-2" class="nhsuk-button btn nhsuk-u-margin-bottom-8">Start now</a>
+      <h2 class="nhsuk-heading-m">How we handle your personal information</h2>
+      <p>Only Rose Medical Practice sees the personal information you put in this application. We send it to them securely so they can add it to your medical record.</p>
+      <p>We do not store it for any other reason.</p>
+    </div>
+
+
+        <div class="nhsuk-grid-column-one-quarter">
+        <hr class="nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-3">
+        <h3>Related links</h3>
+
+          <ul style="padding-left: 0px;">
+              <li style="list-style-type: none;"><a href="#" class="nhsuk-u-font-size-16">Find a GP practice</a></li>
+
+              <li style="list-style-type: none;"><a href="#" class="nhsuk-u-font-size-16">What to ask your doctor</a></li>
+              <li style="list-style-type: none;"><a href="#" class="nhsuk-u-font-size-16">Make a complaint</a></li>
+              <li style="list-style-type: none;"><a href="#" class="nhsuk-u-font-size-16">What choices you have</a></li>
+          </ul>
+
+
+  </div>
+{% endblock %}
