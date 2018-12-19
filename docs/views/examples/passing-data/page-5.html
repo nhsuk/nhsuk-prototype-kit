@@ -1,4 +1,4 @@
-{% extends 'layout-transactional.html' %}
+{% extends 'layout-transactional.njk' %}
 
 {% block pageTitle %}
   Register with a GP - What is your date of birth?
@@ -8,7 +8,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
 
-    <form action="/register-with-a-gp/check-your-answers">
+    <form action="/register-with-a-gp/page-5-1">
 
       {{ dateInput({
         "id": "dob",
@@ -32,8 +32,7 @@
             "classes": "nhsuk-input--width-2"
           },
           {
-            "name": "year-error",
-            "label": "Year",
+            "name": "year",
             "classes": "nhsuk-input--width-4"
           }
         ]
@@ -46,8 +45,8 @@
     </form>
 
     {{ backLink({
-      "href": "/register-with-a-gp/check-your-answers",
-      "text": "Back to my answers"
+      "href": "/register-with-a-gp/page-4",
+      "text": "Change my previous answer"
     }) }}
 
     </div>

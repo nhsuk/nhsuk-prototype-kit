@@ -1,36 +1,31 @@
-{% extends 'layout-transactional.html' %}
+{% extends 'layout-transactional.njk' %}
 
 {% block pageTitle %}
-  Register with a GP - Enter your NHS number
+  Register with a GP - Do you have any allergies?
 {% endblock %}
 
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
 
-    <form action="/register-with-a-gp/page-4">
+    <form action="/register-with-a-gp/page-10">
 
       {% call fieldset({
         legend: {
-          text: "Enter your NHS number",
+          text: "Do you have any allergies?",
           classes: "nhsuk-fieldset__legend--l",
           isPageHeading: true
         }
       }) %}
 
-      {{ hint({
-        "text": "This is a 10 digit number, like 485 777 3456."
-      }) }}
-
-      {{ input({
+      {{ textarea({
+        "name": "allergies",
+        "id": "allergies",
+        "rows": "8",
         "label": {
-          "text": "NHS number",
+          "text": "Allergies",
           "classes": "nhsuk-u-visually-hidden"
-        },
-        "id": "nhs-number",
-        "name": "nhs-number",
-        "classes": "nhsuk-input--width-10",
-        "type": "number"
+        }
       }) }}
 
       {% endcall %}
@@ -42,7 +37,7 @@
     </form>
 
     {{ backLink({
-      "href": "/register-with-a-gp/page-2",
+      "href": "/register-with-a-gp/page-8",
       "text": "Change my previous answer"
     }) }}
 

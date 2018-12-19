@@ -1,4 +1,4 @@
-{% extends 'layout-transactional.html' %}
+{% extends 'layout-transactional.njk' %}
 
 {% block pageTitle %}
   Register with a GP - Confirm your address
@@ -8,7 +8,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
 
-    <form action="/register-with-a-gp/check-your-answers">
+    <form action="/register-with-a-gp/page-8">
 
       {% call fieldset({
         legend: {
@@ -36,8 +36,8 @@
     </form>
 
     {{ backLink({
-      "href": "/register-with-a-gp/check-your-answers",
-      "text": "Back to my answers"
+      "href": "/register-with-a-gp/page-6",
+      "text": "Change my previous answer"
     }) }}
 
     </div>

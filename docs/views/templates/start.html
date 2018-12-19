@@ -1,7 +1,7 @@
-{% extends 'layout-nhsuk.html' %}
+{% extends 'layout-nhsuk.njk' %}
 
 {% block pageTitle %}
-  NHS.UK prototype kit - Start page template
+  NHS.UK Prototype kit - Start page template
 {% endblock %}
 
 {% block beforeContent %}
@@ -39,17 +39,16 @@
         <li>do something else</li>
       </ul>
 
+      <h2>To use this service you'll need:</h2>
+
+      <ul>
+        <li>to be a over a certain age</li>
+        <li>have something else, like an NHS login</li>
+      </ul>
+
       <p>Registering takes around 5 minutes.</p>
 
-      <a href="/register-with-a-gp/page-2" class="nhsuk-button nhsuk-u-margin-bottom-8">Start now</a>
-
-      <h2 class="nhsuk-heading-m">Before you start</h2>
-
-      <p>You can also <a href="#">register by post</a>.</p>
-
-      <p>The online service is also available in <a href="#">Welsh (Cymraeg)</a>.</p>
-
-      <p>You can’t register for this service if you’re in the UK illegally.</p>
+      <a href="/templates/question" class="nhsuk-button nhsuk-u-margin-bottom-8">Start now</a>
 
     </div>
 

@@ -1,0 +1,45 @@
+{% extends 'layout.njk' %}
+
+{% block pageTitle %}
+  NHS.UK Prototype Kit - Tutorials and examples
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    href: "/",
+    text: "Home"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+
+      <h1>Tutorials and examples</h1>
+    
+    </div>
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h2>Page templates</h2>
+      <p>You can find them in your prototype folder, in [directorty TBD]</p>
+      <p>Copy and paste the pages you need to your [directorty TBD] folder to make your prototypes.</p>
+      <ul>
+        <li><a href="/templates/content">Blank</a></li>
+        <li><a href="/templates/content">Content page</a></li>
+        <li><a href="/templates/hub-mini/page-1">Hub mini</a></li>
+      </ul>
+      <h3>Transactional</h3>
+      <ul>
+        <li><a href="/templates/start">Start page</a></li>
+        <li><a href="/templates/question">Question page</a></li>
+        <li><a href="/templates/check-your-answers">Check your answers</a></li>
+        <li><a href="/templates/confirmation">Confirmation</a></li>
+      </ul>
+    </div>
+
+    </div>
+
+  </div>
+{% endblock %}
