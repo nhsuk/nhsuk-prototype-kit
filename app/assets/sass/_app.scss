@@ -1,0 +1,68 @@
+@import 'check-your-answers';
+@import 'related-nav';
+
+// Overrides auto reload div background colour
+#hc_extension_bkgnd {
+  background-color: $color_nhsuk-grey-4 !important;
+}
+
+// Body background white
+.nhsuk-body-white {
+  background-color: $color_nhsuk-white;
+}
+
+// Body background grey
+.nhsuk-body-grey {
+  background-color: $color_nhsuk-grey-5;
+}
+
+// Button adjustment
+.nhsuk-button {
+  margin-top: 8px;
+
+  @include mq($from: desktop) {
+    padding: 12px 24px;
+  }
+}
+
+// Footer adjustments
+@include mq($from: desktop) {
+  .nhsuk-footer__list--three-columns{
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    -webkit-column-gap: nhsuk-spacing(4);
+    -moz-column-gap: nhsuk-spacing(4);
+    column-gap: nhsuk-spacing(4);
+  }
+}
+
+// Panel - confirmation
+
+.nhsuk-panel--confirmation {
+  background-color: shade($color_nhsuk-aqua-green, 19%);
+  color: $color_nhsuk-white;
+  margin-top: 0;
+
+  @include mq($from: desktop) {
+    padding-bottom: nhsuk-spacing(8);
+    padding-top: nhsuk-spacing(8);
+  }
+}
+
+
+.nhsuk-panel__title {
+  @include nhsuk-responsive-margin(4, "bottom");
+
+  text-align: center;
+}
+
+.nhsuk-panel__body {
+  @include nhsuk-font(24);
+
+  text-align: center;
+
+  strong {
+    @include nhsuk-font(32, bold);
+  }
+}
