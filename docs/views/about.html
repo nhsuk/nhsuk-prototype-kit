@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK Prototype Kit - About
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    href: "/",
+    text: "Home"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-full">
+
+      <h1>About</h1>
+
+    </div>
+
+  </div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'layout-nhsuk.html' %}
+
+{% block pageTitle %}
+  Hub mini template - Page three
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/",
+        text: "Home"
+      }
+    ],
+    href: "/templates/hub-mini/page-1",
+    text: "Page one"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <h1>
+        Page three heading
+        <span class="nhsuk-caption-xl nhsuk-caption--bottom ">
+          Section title
+        </span>
+      </h1>
+
+      {{ contentsList({
+        items: [
+          {
+            href: "/templates/hub-mini/page-1",
+            text: "Page one"
+          },
+          {
+            href: "/templates/hub-mini/page-2",
+            text: "Page two"
+          },
+          {
+            href: "/templates/hub-mini/page-3",
+            text: "Page three",
+            current: "true"
+          }
+        ]
+      }) }}
+
+      <p>[Page content goes here]</p>
+      <p>[Visit the <a href="https://beta.nhs.uk/service-manual/">NHS digital service manual</a> for guidance and examples.]</p>
+
+      {{ pagination({
+        "previousUrl": "/templates/hub-mini/page-2",
+        "previousPage": "Page two"
+      }) }}
+
+    </div>  
+  </div>
+{% endblock %}

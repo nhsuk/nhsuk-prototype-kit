@@ -3,13 +3,13 @@
 {% set mainClasses = 'nhsuk-main-wrapper--s' %}
 
 {% block pageTitle %}
-  NHS.UK prototype kit - Transactional page layout
+  NHS.UK Prototype kit - Transactional page layout
 {% endblock %}
 
 {% block header %}
 {{ header({
   "transactionalService": {
-      "name": "Service name goes here",
+      "name": "Service name",
       "href": "/"
     },
     "showNav": "false",
@@ -23,14 +23,13 @@
 
 {% block footer %}
   {{ footer({
-    "showLogo": "false",
-    "primaryLinks": [
+    "links": [
       {
-      "URL": "https://www.nhs.uk/about-us/sitemap/",
+      "URL": "/",
       "label": "Sitemap"
     },
     {
-      "URL": "https://www.nhs.uk/our-policies/",
+      "URL": "/",
       "label": "Our policies"
     }
     ]
