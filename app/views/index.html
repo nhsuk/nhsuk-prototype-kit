@@ -1,12 +1,12 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  NHS.UK prototype kit
+  NHS.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
   {{ hero({
-    "heading": "NHS.UK prototype kit",
+    "heading": "NHS.UK Prototype kit",
     "text": "Rapidly create HTML prototypes."
   }) }}
 {% endblock %}
@@ -14,27 +14,40 @@
 {% block content %}
   <div class="nhsuk-grid-row">
 
-    <div class="nhsuk-grid-column-one-third">
-      <h2 class="nhsuk-heading-m">Templates</h2>
-      <ul>
-        <li><a href="/templates/blank-unbranded">Blank template</a></li>
-        <li><a href="/templates/check-your-answers">Check your answers</a></li>
-        <li><a href="/templates/confirmation">Confirmation</a></li>
-        <li><a href="/templates/content">Content</a></li>
-        <li><a href="/templates/hub-level-1">Hub level 1</a></li>
-        <li><a href="/templates/hub-level-2">Hub level 2</a></li>
-        <li><a href="/templates/hub-mini">Hub mini</a></li>
-        <li><a href="/templates/question">Question</a></li>
-        <li><a href="/templates/start">Start</a></li>
-      </ul>
-    </div>
+    <div class="nhsuk-grid-column-full">
 
-    <div class="nhsuk-grid-column-two-thirds">
-      <h2 class="nhsuk-heading-m">Examples</h2>
-      <ul>
-        <li><a href="/examples/chickenpox">NHS.UK content page - Chickenpox</a></li>
-        <li><a href="/examples/register-with-a-gp">NHS.UK transactional journey - Register with a GP</a></li>
-      </ul>
+      <div class="nhsuk-grid-row nhsuk-promo-group">
+        <div class="nhsuk-grid-column-one-third nhsuk-promo-group__item">
+          {{ promo({
+            "href": "/install",
+            "heading": "Install",
+            "description": "Download and installation instructions."
+          }) }}
+        </div>
+        <div class="nhsuk-grid-column-one-third nhsuk-promo-group__item">
+          {{ promo({
+            "href": "/tutorials-and-examples",
+            "heading": "Tutorials and examples",
+            "description": "Tutorials, examples and templates.."
+          }) }}
+        </div>
+        <div class="nhsuk-grid-column-one-third nhsuk-promo-group__item">
+          {{ promo({
+            "href": "/about",
+            "heading": "About",
+            "description": "Getting support and contributing."
+          }) }}
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="nhsuk-u-reading-width">
+
+        <p class="nhsuk-u-margin-bottom-0">Visit the <a href="https://beta.nhs.uk/service-manual/">NHS digital service manual</a> for guidance and examples.</p>
+
+      </div>
+
     </div>
 
   </div>
