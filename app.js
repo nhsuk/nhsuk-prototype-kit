@@ -12,6 +12,7 @@ app.use('/nhsuk-frontend', express.static(path.join(__dirname, 'node_modules/nhs
 
 var appViews = [
   path.join(__dirname, '/app/views/'),
+  path.join(__dirname, '/docs/views/'),
   path.join(__dirname, 'node_modules/nhsuk-frontend/packages/components')
 ]
 
