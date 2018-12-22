@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK Prototype Kit - Install
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    href: "/",
+    text: "Home"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>Installing the kit</h1>
+
+      {{ contentsList({
+        items: [
+          {
+            href: "/install",
+            text: "Installing the kit",
+            current: "true"
+          },
+          {
+            href: "/install/requirements",
+            text: "Requirements"
+          },
+          {
+            href: "/install/download",
+            text: "Download the kit"
+          },
+          {
+            href: "/install/run",
+            text: "Run the kit"
+          }
+        ]
+      }) }}
+
+    </div>
+
+  </div>
+{% endblock %}

@@ -38,6 +38,28 @@
   NHS.UK prototype kit
 {% endblock %}
 
+{% block header %}
+  {{ header({
+    "service": {
+      "name": "Prototype kit"
+    },
+    "showNav": "false",
+    "showSearch": "false"
+    })
+  }}
+{% endblock %}
+
+{% block footer %}
+  {{ footer({
+    "links": [
+      {
+      "URL": "#",
+      "label": "Privacy policy"
+      }
+    ]
+  })}}
+{% endblock %}
+
 {% block bodyEnd %}
   {% block scripts %}
     {% include "includes/scripts.html" %}

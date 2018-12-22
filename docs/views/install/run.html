@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK Prototype Kit - Install
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/",
+        text: "Home"
+      }
+    ],
+    href: "/install",
+    text: "Installing the kit"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>Run the kit</h1>
+
+      <p>[Instructions on how to run the kit go here]</p>
+
+      <h2>Start making pages</h2>
+
+      {{ pagination({
+        "previousUrl": "/install/download",
+        "previousPage": "Download and install the kit"
+      }) }}
+
+    </div>
+
+  </div>
+{% endblock %}
