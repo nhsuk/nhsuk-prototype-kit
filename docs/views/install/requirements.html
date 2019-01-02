@@ -13,7 +13,7 @@
       }
     ],
     href: "/install",
-    text: "Installing the kit"
+    text: "Install"
   }) }}
 {% endblock %}
 
@@ -22,61 +22,29 @@
 
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1>Requirements</h1>
+      <h1>
+        Requirements
+      </h1>
 
-      <p>You'll usually need admin access to your machine to install the software.</p>
-      <p>If you do not have admin access, ask your IT team to install the software for you.</p>
+      <p>The kit runs on Mac and Windows.</p>
 
-      <h2>Software you will need</h2>
-
-      <p>To use the kit you will need:</p>
+      <p>Software you'll need includes:</p>
 
       <ul>
-        <li>a text editor</li>
-        <li>a terminal</li>
-        <li>Node.js 8.x.x</li>
+        <li>a <a href="/install/text-editor-terminal">text editor</a></li>
+        <li>a <a href="/install/text-editor-terminal">terminal</a></li>
+        <li><a href="/install/node">Node.js 8.x.x</a></li>
       </ul>
 
-      <h2>Text editor and terminal</h2>
-
-      <p>You need a text editor and terminal to edit and make changes to your prototype.</p>
-      <p>We recommend using <a href="https://code.visualstudio.com/">Visual Studio Code</a>. It's a free text editor with an integrated terminal.</p>
-
-      <h3>Terminal</h3>
-
-      <p>The terminal lets you type in commands and run programs on your computer.</p>
-
-      <p>To access it, open Visual Studio Code and select <code>View > Integrated Terminal</code>.</p>
-
-      <img src="/images/docs/terminal.gif" />
-
-      <h2>Node.js version 8 LTS</h2>
-
-      <p>The kit is designed to work with Node.js version 8 LTS. The kit works with any 8.x.x version.</p>
-
-      <h3>Check if you have Node.js</h3>
-
-      <p>In the terminal, enter:</p>
-
-      <pre><code>node --version</code></pre>
-
-      <p>If it says <code>command not found</code> or <code>Error 0x2 starting node.exe --version</code> you don’t have node and will need to download and install it.</p>
-
-      <p>If the version number starts with 8 you have the correct version installed.</p>
-
-      <p>If it says another number such as <code>0.12</code> or <code>5.x.x</code>, you need to download and install version 8.</p>
-
-      <h3>Download and install Node.js</h3>
-
-      <p>Download version 8 from <a href="https://nodejs.org/en/">nodejs.org</a>.</p>
-
-      <p>Run the installer with all default options.</p>
+      <div class="nhsuk-inset-text">
+        <p>You'll usually need admin access to your machine to install the software. If you do not have admin access, ask your IT team to install the software for you.</p>
+      </div>
 
       {{ pagination({
-        "previousUrl": "/install",
+        "previousUrl": "/install/introduction",
         "previousPage": "Kit installation overview",
-        "nextUrl": "/install/download",
-        "nextPage": "Download and install the kit"
+        "nextUrl": "/install/text-editor-terminal",
+        "nextPage": "Text editor and terminal"
       }) }}
 
     </div>

@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK Prototype Kit - Advanced install
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/",
+        text: "Home"
+      }
+    ],
+    href: "/install",
+    text: "Install"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>Advanced install guide</h1>
+
+      <p>It's built on the <a href="http://expressjs.com/" target="_blank">Express<span class="nhsuk-u-visually-hidden">opens in new window</span></a></a> framework, and uses <a href="https://github.com/nhsuk/nhsuk-frontend" target="_blank">NHS.UK Frontend<span class="nhsuk-u-visually-hidden">opens in new window</span></a>.</p>
+
+      <h2>Requirements</h2>
+
+      <p>node.js - version 8.x.x</p>
+
+      <h2>Install dependencies</h2>
+
+      <pre><code>npm install</code></pre>
+
+      <h2 class="nhsuk-u-padding-top-4">Run the kit</h2>
+
+      <pre><code>npm start</code></pre>
+
+      <p>Go to <a href="http://localhost:3000">localhost:3000</a> in your browser.</p>
+
+    </div>
+
+  </div>
+{% endblock %}
