@@ -102,3 +102,21 @@ p code {
 
   width: 100%;
 }
+
+// Contextual adjustments for headings
+
+.nhspk-img-guide  + %nhsuk-heading-l,
+pre  + %nhsuk-heading-l {
+  @include nhsuk-responsive-padding(4, 'top');
+}
+
+.nhspk-img-guide + %nhsuk-heading-m,
+pre + %nhsuk-heading-m,
+.nhspk-img-guide + %nhsuk-heading-s,
+pre + %nhsuk-heading-s {
+  padding-top: nhsuk-spacing(1);
+
+  @include mq($from: tablet) {
+    padding-top: nhsuk-spacing(2);
+  }
+}
