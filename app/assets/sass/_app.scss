@@ -93,3 +93,12 @@ p code {
   background: $color_nhsuk-grey-5;
   border: 1px solid $color_nhsuk-grey-4;
 }
+
+// Installation guide images
+
+.nhspk-img-guide {
+  @include nhsuk-responsive-margin(4, "bottom");
+  @include nhsuk-responsive-margin(2, "top");
+
+  width: 100%;
+}
