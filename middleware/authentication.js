@@ -20,15 +20,20 @@ module.exports = function (req, res, next) {
   const config = require('../app/config');
 
   // Set configuration variables
-  const ENV = (process.env.NODE_ENV || 'development').toLowerCase()
-  const USERNAME = config.username || 'hello';
-  const PASSWORD = config.password || 'goodbye';
+  const ENV = (process.env.NODE_ENV || 'development').toLowerCase();
+  const USERNAME = process.env.USERNAME;
+  const PASSWORD = process.env.PASSWORD;
 
   if (ENV === 'production') {
+    if (!username || !password) {
+      console.error('Username or password is not set.');
+      return res.send('<h1>Error:</h1><p>Username or password not set.');
+    }
+
     const user = basicAuth(req)
 
     if (!user || user.name !== USERNAME || user.pass !== PASSWORD) {
-      res.set('WWW-Authenticate', 'Basic realm=Authorization Required')
+      res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
       return res.sendStatus(401)
     }
   }
