@@ -38,6 +38,7 @@ nunjucks.configure(appViews, {
 // Middleware to serve static assets
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/nhsuk-frontend', express.static(path.join(__dirname, 'node_modules/nhsuk-frontend/packages')));
+app.use('/nhsuk-frontend', express.static(path.join(__dirname, 'node_modules/nhsuk-frontend/dist')));
 
 // Application routes
 app.use('/', routes)
