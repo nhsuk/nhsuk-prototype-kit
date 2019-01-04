@@ -8,6 +8,6 @@ module.exports = {
   // username: '',
   // password: ''
 
-  // Port to run the application on locally. default: 3000
-  // port: ''
+  // Port to run the application on locally.
+  port: '3000'
 }
