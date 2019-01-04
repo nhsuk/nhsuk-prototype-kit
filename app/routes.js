@@ -5,8 +5,8 @@ const router = express.Router()
 // Local dependencies
 const config = require('./config');
 
-router.get('/', function(req, res) {
-  res.render('index');
-});
+//router.get('/example', function(req, res) {
+// res.render('example');
+//});
 
 module.exports = router
