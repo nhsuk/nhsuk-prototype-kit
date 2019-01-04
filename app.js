@@ -13,8 +13,8 @@ const config = require('./app/config');
 const automaticRouting = require('./middleware/auto-routing');
 
 // Set configuration variables
-const PORT = process.env.PORT || config.port;
-const ENV = (process.env.NODE_ENV || 'development').toLowerCase()
+const port = process.env.PORT || config.port;
+const env = (process.env.NODE_ENV || 'development').toLowerCase()
 
 // Initialise applications
 const app = express()
@@ -50,12 +50,12 @@ app.get(/^([^.]+)$/, function (req, res, next) {
 app.use('/', routes)
 
 // Run the application
-app.listen(PORT, () => {
-  console.log(chalk.green(`App is running at http://localhost:${PORT}`));
+app.listen(port, () => {
+  console.log(chalk.green(`App is running at http://localhost:${port}`));
 })
 .on( 'error', function (e) { 
-  if (ENV == 'development' && e.code == 'EADDRINUSE') { // If selected port is in use elsewhere
-    console.log(chalk.yellow(`Port ${PORT} is currently in use, kill the process running on port ${PORT} or change the port number in app/config.js`));
+  if (env == 'development' && e.code == 'EADDRINUSE') { // If selected port is in use elsewhere
+    console.log(chalk.yellow(`Port ${port} is currently in use, kill the process running on port ${port} or change the port number in app/config.js`));
   }
 });
 
