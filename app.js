@@ -19,22 +19,19 @@ const app = express()
 // Authentication middleware
 app.use(authentication);
 
+// View engine
+app.set('view engine', 'html');
+
 // Nunjucks configuration
 var appViews = [
   path.join(__dirname, 'app/views/'),
   path.join(__dirname, 'node_modules/nhsuk-frontend/packages/components')
 ]
 
-var nunjucksConfig = {
+nunjucks.configure(appViews, {
   autoescape: true,
-  noCache: true,
-  watch: false 
-}
-
-nunjucks.configure(appViews, nunjucksConfig);
-
-// View engine
-app.set('view engine', 'html');
+  express: app
+});
 
 // Middleware to serve static assets
 app.use(express.static(path.join(__dirname, 'public')));
