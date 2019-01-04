@@ -7,4 +7,7 @@ module.exports = {
   // Prototype username and password. default: hello/goodbye
   // username: '',
   // password: ''
+
+  // Port to run the application on locally. default: 3000
+  // port: ''
 }

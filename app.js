@@ -7,10 +7,11 @@ const nunjucks = require('nunjucks');
 
 // Local dependencies
 const authentication = require('./middleware/authentication');
-const routes = require('./app/routes.js')
+const routes = require('./app/routes');
+const config = require('./app/config');
 
 // Set configuration variables
-const PORT = process.env.PORT || 3000;
+const PORT = config.port || process.env.PORT || 3000;
 
 // Initialise applications
 const app = express()
