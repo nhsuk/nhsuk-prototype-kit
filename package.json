@@ -16,18 +16,16 @@
     "basic-auth": "^2.0.1",
     "chalk": "^2.4.1",
     "express": "^4.16.4",
+    "gulp": "^4.0.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
     "nhsuk-frontend": "^0.6.0",
-    "node-sass": "^4.11.0",
     "nunjucks": "^3.1.6",
     "path": "^0.12.7"
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
-    "dotenv": "^6.2.0",
-    "gulp": "^4.0.0",
-    "gulp-clean-css": "^3.10.0",
-    "gulp-rename": "^1.4.0",
-    "gulp-sass": "^4.0.2",
     "nodemon": "^1.18.9"
   }
 }
