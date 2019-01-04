@@ -1,44 +1,49 @@
-// Required dependencies
+// Core dependencies
+const path = require('path')
+
+// External dependencies
 const express = require('express');
-const app = require('express')();
 const nunjucks = require('nunjucks');
-const path = require('path');
 
-// Custom middleware
-const autoRouting = require('./middleware/auto-routing');
+// Local dependencies
+const authentication = require('./middleware/authentication');
+const routes = require('./app/routes.js')
 
-// Environment variables
+// Set configuration variables
 const PORT = process.env.PORT || 3000;
-const ENV = process.env.NODE_ENV || 'development';
-const USERNAME = process.env.USERNAME || 'hello';
-const PASSWORD = process.env.PASSWORD || 'goodbye';
 
-// Shared configuration
-app.set('view engine', 'html');
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/nhsuk-frontend', express.static(path.join(__dirname, 'node_modules/nhsuk-frontend/packages')));
+// Initialise applications
+const app = express()
+
+// Authentication middleware
+app.use(authentication);
 
 // Nunjucks configuration
 var appViews = [
-  path.join(__dirname, '/app/views/'),
-  path.join(__dirname, '/docs/views/'),
+  path.join(__dirname, 'app/views/'),
   path.join(__dirname, 'node_modules/nhsuk-frontend/packages/components')
 ]
 
-nunjucks.configure(appViews, {
+var nunjucksConfig = {
   autoescape: true,
-  express: app,
   noCache: true,
-  watch: true
-})
+  watch: false 
+}
 
-// Automatic page routing
-app.get(/^([^.]+)$/, function (req, res, next) {
-  autoRouting.matchRoutes(req, res, next)
-})
+nunjucks.configure(appViews, nunjucksConfig);
+
+// View engine
+app.set('view engine', 'html');
+
+// Middleware to serve static assets
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/nhsuk-frontend', express.static(path.join(__dirname, 'node_modules/nhsuk-frontend/packages')));
+
+// Application routes
+app.use('/', routes)
 
 app.listen(PORT, () => {
-  console.log(`App is running in ${ENV} mode at http://localhost:${PORT}`);
+  console.log(`App is running at http://localhost:${PORT}`);
 });
 
 module.exports = app;
