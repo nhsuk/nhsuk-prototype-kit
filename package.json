@@ -8,7 +8,7 @@
     "build": "gulp styles",
     "test": "",
     "prewatch": "gulp styles",
-    "watch": "concurrently \"gulp\" \"nodemon -e js,html,scss --watch app\""
+    "watch": "concurrently \"gulp\" \"nodemon -q -e js,html,scss --watch app\""
   },
   "author": "https://github.com/nhsuk/",
   "license": "MIT",
@@ -21,6 +21,7 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
+    "chalk": "^2.4.1",
     "concurrently": "^4.1.0",
     "dotenv": "^6.2.0",
     "gulp": "^4.0.0",
