@@ -71,6 +71,11 @@ if (useDocumentation) {
   documentationApp.get('/', function(req , res){ 
     res.render('index');
   });
+  
+  // Automatically route docs pages
+  documentationApp.get(/^([^.]+)$/, function (req, res, next) {
+    automaticRouting.matchRoutes(req, res, next)
+  })
 }
 
 // Run the application
