@@ -40,11 +40,7 @@
 
 {% block header %}
   {{ header({
-    "service": {
-      "name": "Prototype kit"
-    },
-    "showNav": "false",
-    "showSearch": "false"
+    "showNav": "false"
     })
   }}
 {% endblock %}
@@ -53,9 +49,13 @@
   {{ footer({
     "links": [
       {
-      "URL": "#",
-      "label": "Privacy policy"
-      }
+      "URL": "https://www.nhs.uk/about-us/sitemap/",
+      "label": "Sitemap"
+    },
+    {
+      "URL": "https://www.nhs.uk/our-policies/",
+      "label": "Our policies"
+    }
     ]
   })}}
 {% endblock %}
