@@ -4,17 +4,16 @@
   "description": "NHS.UK prototype kit",
   "main": "app.js",
   "scripts": {
-    "start": "gulp styles && node app",
-    "build": "gulp styles",
+    "start": "npm run build && node app",
+    "build": "gulp build",
     "test": "",
-    "prewatch": "gulp styles",
-    "watch": "concurrently \"gulp\" \"nodemon -q -e js,html,scss --watch app\""
+    "prewatch": "gulp build",
+    "watch": "gulp"
   },
   "author": "https://github.com/nhsuk/",
   "license": "MIT",
   "dependencies": {
     "basic-auth": "^2.0.1",
-    "chalk": "^2.4.1",
     "express": "^4.16.4",
     "gulp": "^4.0.0",
     "gulp-clean-css": "^4.0.0",
@@ -25,7 +24,8 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
+    "browser-sync": "^2.26.3",
     "concurrently": "^4.1.0",
-    "nodemon": "^1.18.9"
+    "gulp-nodemon": "^2.4.2"
   }
 }
