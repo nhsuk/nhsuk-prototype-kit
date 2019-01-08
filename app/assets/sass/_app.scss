@@ -84,7 +84,8 @@ li code,
 p code {
   background: $color_nhsuk-white;
   border: 1px solid $nhsuk-border-color;
-  padding: 0 nhsuk-spacing(3);
+  padding: nhsuk-spacing(1) nhsuk-spacing(3);
+  font-size: 0.8em;
 }
 
 .nhsuk-expander pre,
