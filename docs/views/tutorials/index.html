@@ -6,7 +6,7 @@
 
 {% block beforeContent %}
   {{ breadcrumb({
-    href: "/",
+    href: "/docs",
     text: "Home"
   }) }}
 {% endblock %}
@@ -16,7 +16,7 @@
 
     <div class="nhsuk-grid-column-full">
 
-      <h1>Tutorials and examples</h1>
+      <h1>Tutorials, templates and examples</h1>
     
     </div>
 
@@ -26,7 +26,7 @@
       <ul>
         <li><a href="/docs/tutorials/making-pages">Making pages</a></li>
         <li><a href="/docs/tutorials/writing-css">Writing CSS</a></li>
-        <li><a href="/docs/tutorials/nunjucks">Using macros</a></li>
+        <li><a href="/docs/tutorials/nunjucks">Using Nunjucks macros</a></li>
         <li><a href="/docs/tutorials/passing-data">Passing data into a page</a></li>
         <li><a href="/docs/tutorials/branching">Branching</a></li>
         <li><a href="/docs/tutorials/git">Setting up Git and GitHub</a></li>
@@ -35,27 +35,24 @@
 
       <hr>
 
-      <h2>Examples</h2>
-      <ul>
-        <li><a href="/docs/examples/transactional-journey/start-page">Transactional journey</a></li>
-      </ul>
-
-      <hr>
-
-      <h2>Page templates</h2>
-      <p>You can find them in your prototype folder, in <code>docs > views > templates</code></p>
-      <p>Copy and paste the pages you need to your <code>app > views</code> folder to make your prototypes.</p>
+      <h2>Templates</h2>
+      <p>You can find them in your prototype folder, in <code>docs/views/templates</code></p>
+      <p>Copy and paste the pages you need to your <code>app/views</code> folder to make your prototypes.</p>
       <ul>
         <li><a href="/docs/templates/blank-nhsuk">Blank</a></li>
         <li><a href="/docs/templates/content">Content page</a></li>
         <li><a href="/docs/templates/mini-hub/page-1">Hub mini</a></li>
-      </ul>
-      <h3>Transactional</h3>
-      <ul>
         <li><a href="/docs/templates/start">Start page</a></li>
         <li><a href="/docs/templates/question">Question page</a></li>
         <li><a href="/docs/templates/check-your-answers">Check your answers</a></li>
         <li><a href="/docs/templates/confirmation">Confirmation</a></li>
+      </ul>
+
+      <hr>
+
+      <h2>Examples</h2>
+      <ul>
+        <li><a href="/docs/examples/transactional-journey/start-page">Transactional journey</a></li>
       </ul>
 
     </div>
