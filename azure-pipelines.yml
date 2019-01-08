@@ -19,3 +19,15 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
+
+- task: ArchiveFiles@2
+  displayName: 'Archive files'
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+
+    includeRootFolder: false
+
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish artifacts: drop'
+
