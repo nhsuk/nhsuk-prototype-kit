@@ -6,11 +6,14 @@ steps:
 - task: Npm@1
   displayName: 'npm install'
   inputs:
-     command: 'custom'
-     verbose: yes
-     customCommand: run build
     verbose: true
-
+    
+- task: Npm@1
+  displayName: 'npm run build'
+  inputs:
+    command: 'custom'
+    customCommand: run build
+    verbose: true
 
 - task: ArchiveFiles@2
   displayName: 'Archive files'
