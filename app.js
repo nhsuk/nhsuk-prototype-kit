@@ -4,13 +4,13 @@ const path = require('path')
 // External dependencies
 const express = require('express');
 const nunjucks = require('nunjucks');
-const chalk = require('chalk');
 
 // Local dependencies
 const authentication = require('./middleware/authentication');
+const automaticRouting = require('./middleware/auto-routing');
+const locals = require('./middleware/locals');
 const routes = require('./app/routes');
 const config = require('./app/config');
-const automaticRouting = require('./middleware/auto-routing');
 
 // Set configuration variables
 const port = process.env.PORT || config.port;
@@ -22,6 +22,9 @@ const documentationApp = express()
 
 // Authentication middleware
 app.use(authentication);
+
+// Local variables
+app.use(locals(config));
 
 // View engine
 app.set('view engine', 'html');
