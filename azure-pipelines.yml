@@ -6,6 +6,9 @@ steps:
 - task: Npm@1
   displayName: 'npm install'
   inputs:
+     command: 'custom'
+     verbose: yes
+     customCommand: run build
     verbose: true
 
 
