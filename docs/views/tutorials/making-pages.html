@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK Prototype Kit - Making pages
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/",
+        text: "Home"
+      }
+    ],
+    href: "/docs/tutorials",
+    text: "Tutorials"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        Making pages
+      </h1>
+
+      <p>Create all your HTML pages in the <code>app/views</code> folder.</p>
+
+      <p>All pages should have the <code>.html</code> extension.</p>
+
+      <p>All pages will be automatically served. For example if you add a template called <code>help.html</code> and then go to <code>localhost:3000/help</code> in your browser, you will see that page.</p>
+
+      <img class="nhspk-img-guide" alt="Screenshot of creating a new page" src="/images/docs/make-pages.gif" />
+
+      <h2>Folders for pages</h2>
+
+      <p>You can organise your pages into folders.</p>
+      
+      <p>For example you can make the page <code>views/account/profile.html</code>, and then view the page by going to <code>localhost:3000/account/profile</code>.</p>
+
+      <img class="nhspk-img-guide" alt="Screenshot of creating a folder for new pages" src="/images/docs/pages-folder.gif" />
+
+    </div>
+
+  </div>
+{% endblock %}

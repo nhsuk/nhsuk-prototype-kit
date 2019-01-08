@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK Prototype Kit - Install
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    href: "/",
+    text: "Home"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+          Installing the kit
+      </h1>
+
+      <p class="nhsuk-body-l">Get up and running with the kit in 30 minutes.</p>
+
+      <h2 class="nhsuk-heading-m">1. Download the kit</h2>
+
+      <p><a href="https://github.com/nhsuk/nhsuk-prototype-kit/archive/master.zip" data-link="download">Download (zip)</a></p>
+
+      <h2 class="nhsuk-heading-m">2. Install the kit</h2>
+
+      <p>Choose from:</p>
+
+      <ul>
+        <li><a href="/docs/install/simple">simple install guide</a><br>for users new to Node.js, Git or the terminal</li>
+        <li><a href="/docs/install/advanced">advanced install guide</a><br>for users familiar with Node.js, Git and the terminal</li>
+      </ul>
+
+    </div>
+
+  </div>
+{% endblock %}

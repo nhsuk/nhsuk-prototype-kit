@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK Prototype Kit - Introduction
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/",
+        text: "Home"
+      }
+    ],
+    href: "/install",
+    text: "Install"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        Simple install guide 
+      </h1>
+
+      <p>These instructions explain how to install and begin to use the kit, without requiring any technical knowledge. If you have any problems, ask the developer on your team (if you have one), <a href="mailto:service-manual@nhs.net">email us</a> or get in touch on the <a href="https://nhsuk.slack.com/messages/prototype-kit" rel="nofollow">NHS.UK #prototype-kit Slack channel</a>.</p>
+      <p>It takes around 30 minutes to install the kit.</p>
+      <div class="nhsuk-inset-text">
+        <p>If you are familiar with using git and the terminal then you might prefer the <a href="/install/advanced">developer friendly guide</a>.</p>
+      </div>
+
+
+      {{ pagination({
+        "previousUrl": "/docs/install",
+        "previousPage": "Installation overview",
+        "nextUrl": "/docs/install/requirements",
+        "nextPage": "Requirements"
+      }) }}
+
+    </div>
+
+  </div>
+{% endblock %}

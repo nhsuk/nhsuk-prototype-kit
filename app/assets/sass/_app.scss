@@ -66,3 +66,57 @@
     @include nhsuk-font(32, bold);
   }
 }
+
+// Code styling
+
+pre {
+  @include nhsuk-responsive-margin(4, "bottom");
+
+  background: $color_nhsuk-white;
+  border: 1px solid $nhsuk-border-color;
+  overflow: hidden;
+  margin-top: 0;
+  padding: nhsuk-spacing(3);
+  position: relative;
+}
+
+li code,
+p code {
+  background: $color_nhsuk-white;
+  border: 1px solid $nhsuk-border-color;
+  padding: 0 nhsuk-spacing(3);
+}
+
+.nhsuk-expander pre,
+.nhsuk-expander p code,
+.nhsuk-expander li code {
+  background: $color_nhsuk-grey-5;
+  border: 1px solid $color_nhsuk-grey-4;
+}
+
+// Installation guide images
+
+.nhspk-img-guide {
+  @include nhsuk-responsive-margin(4, "bottom");
+  @include nhsuk-responsive-margin(2, "top");
+
+  width: 100%;
+}
+
+// Contextual adjustments for headings
+
+.nhspk-img-guide  + %nhsuk-heading-l,
+pre  + %nhsuk-heading-l {
+  @include nhsuk-responsive-padding(4, 'top');
+}
+
+.nhspk-img-guide + %nhsuk-heading-m,
+pre + %nhsuk-heading-m,
+.nhspk-img-guide + %nhsuk-heading-s,
+pre + %nhsuk-heading-s {
+  padding-top: nhsuk-spacing(1);
+
+  @include mq($from: tablet) {
+    padding-top: nhsuk-spacing(2);
+  }
+}

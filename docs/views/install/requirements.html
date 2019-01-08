@@ -1,0 +1,112 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK Prototype Kit - Install
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/",
+        text: "Home"
+      }
+    ],
+    href: "/install",
+    text: "Install"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        Requirements
+      </h1>
+
+      <p>The kit runs on Mac and Windows.</p>
+
+      <h2>Software you need</h2>
+
+      <p>You'll need:</p>
+
+      <ul>
+        <li>Visual Studio Code (text editor and terminal)</li>
+        <li>Node.js 8.x.x</li>
+      </ul>
+
+      <div class="nhsuk-inset-text">
+        <p>You'll usually need admin access to your machine to install the software. If you do not have admin access, ask your IT team to install the software for you.</p>
+      </div>
+
+      <h2>Visual Studio Code (text editor and terminal)</h2>
+
+      <p>You need a text editor and terminal to edit and make changes to your prototype.</p>
+
+      <p>For a text editor we recommend using <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code<span class="nhsuk-u-visually-hidden"> opens in new window</span></a> - it's free and has an integrated terminal.</p>
+
+      <h3>Using the terminal</h3>
+
+      <p>The terminal lets you type in commands and run programs on your computer.</p>
+
+      <p>To open Visual Studio Code's integrated terminal, go to <code>View > Integrated Terminal</code>.</p>
+
+      <img class="nhspk-img-guide" alt="Screenshot of integrated terminal" src="/images/docs/terminal.gif" />
+
+      <p>You enter commands in to the terminal like this:</p>
+
+      <pre><code>command to be typed in to terminal</code></pre>
+
+      <p>Once you’ve typed the command, press enter to send it.</p>
+
+      <h2>Node.js version 8 LTS</h2>
+
+      <p>The kit is designed to work with Node.js version 8 LTS. The kit works with any 8.x.x version.</p>
+
+      {{ details({
+        "classes": "nhsuk-expander nhsuk-u-margin-top-6",
+        "text": "Check if you have Node.js installed",
+        "HTML": "
+        <p>In the terminal, enter:</p>
+
+      <pre><code>node --version</code></pre>
+
+      <p>If it says <code>command not found</code> or <code>Error 0x2 starting node.exe --version</code> you don’t have node and will need to download and install it.</p>
+
+      <p>If the version number starts with <code>8</code> you have the correct version installed.</p>
+
+      <p>If it says another number such as <code>0.12</code> or <code>5.x.x</code>, you need to <a href='https://nodejs.org/en/'>download <span class='nhsuk-u-visually-hidden'>node.js</span> and install version 8</a>.</p>"
+      }) }}
+
+      <h3 class="nhsuk-u-padding-top-3">Download and install Node.js</h3>
+
+      <p>Download version 8 from <a href="https://nodejs.org/en/" target="_blank">nodejs.org <span class="nhsuk-u-visually-hidden">opens in new window</span></a>.</p>
+
+      <p>Run the installer with all default options.</p>
+
+      <h3>Once Node is installed</h3>
+
+      <p>You’ll need to quit and restart the terminal to be able to use Node for the first time.</p>
+
+      <p>To check it is installed correctly you can again run:</p>
+
+      <pre><code>node --version</code></pre>
+
+      <img class="nhspk-img-guide" alt="Screenshot of checking node version" src="/images/docs/node-check.gif" />
+
+      <p>If it’s installed correctly it should show a number starting with 8.</p>
+
+
+      {{ pagination({
+        "previousUrl": "/docs/install/simple",
+        "previousPage": "Simple install overview",
+        "nextUrl": "/docs/install/download",
+        "nextPage": "Install the kit"
+      }) }}
+
+    </div>
+
+  </div>
+{% endblock %}

@@ -1,10 +1,32 @@
 {% extends 'layout.html' %}
 
+{% block pageTitle %}
+  NHS.UK Prototype Kit
+{% endblock %}
+
 {% block content %}
   <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-full">
-      <h1>Example page</h1>
-      <!-- Components -->
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>NHS.UK prototype kit</h1>
+
+      <p>This kit lets you rapidly create HTML prototypes of NHS services.</p>
+
+      <h2 class="nhsuk-heading-m">About this page</h2>
+
+      <p>We recommend you add links to your prototype to this page, rather than delete it. You'll find this page in the kit at '/app/views/index.html'.</p>
+
+      <h2 class="nhsuk-heading-m">Examples and documentation</h2>
+
+      <ul>
+        <li><a href="/docs">Example pages and documentation</a></li>
+        <li>
+          <a href="https://beta.nhs.uk/service-manual">
+            NHS.UK digital service manual
+          </a>
+        </li>
+      </ul>
+
     </div>
   </div>
 {% endblock %}

@@ -43,13 +43,13 @@ nunjucks.configure(appViews, {
   express: app
 });
 
+// Custom application routes
+app.use('/', routes);
+
 // Automatically route pages
 app.get(/^([^.]+)$/, function (req, res, next) {
   automaticRouting.matchRoutes(req, res, next)
 })
-
-// Custom application routes
-app.use('/', routes);
 
 if (useDocumentation) {
   // Documentation routes

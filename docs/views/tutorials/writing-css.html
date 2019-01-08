@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK Prototype Kit - Writing CSS
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/",
+        text: "Home"
+      }
+    ],
+    href: "/docs/tutorials",
+    text: "Tutorials"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        Writing CSS
+      </h1>
+
+      <p>CSS used in the Prototype Kit is written in the SCSS syntax of <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#syntax">Sass</a>.</p>
+
+    </div>
+
+  </div>
+{% endblock %}

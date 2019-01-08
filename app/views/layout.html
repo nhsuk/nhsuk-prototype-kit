@@ -38,6 +38,28 @@
   NHS.UK prototype kit
 {% endblock %}
 
+{% block header %}
+  {{ header({
+    "showNav": "false"
+    })
+  }}
+{% endblock %}
+
+{% block footer %}
+  {{ footer({
+    "links": [
+      {
+      "URL": "https://www.nhs.uk/about-us/sitemap/",
+      "label": "Sitemap"
+    },
+    {
+      "URL": "https://www.nhs.uk/our-policies/",
+      "label": "Our policies"
+    }
+    ]
+  })}}
+{% endblock %}
+
 {% block bodyEnd %}
   {% block scripts %}
     {% include "includes/scripts.html" %}
