@@ -20,6 +20,7 @@ function compileStyles() {
       console.log(err)
       process.exit(1)
     })
+    .pipe(browserSync.reload({ stream:true }));
 }
 
 function startNodemon(done) {
@@ -52,11 +53,13 @@ function startNodemon(done) {
 function startBrowserSync(done){
   browserSync.init({
     proxy: 'localhost:' + port,
-    port: 4000,
+    port: port + 1000,
     ui: false,
+    files: ['app/views/**/*.*'],
     ghostmode: false,
     open: false,
     notify: true,
+    watch: true,
   }, done);
 }
 
@@ -67,6 +70,5 @@ function watch() {
 exports.watch = watch;
 exports.compileStyles = compileStyles;
 
-gulp.task('default', watch);
 gulp.task('build', compileStyles);
-gulp.task('server', gulp.series(startNodemon, startBrowserSync, watch));
+gulp.task('default', gulp.series(startNodemon, startBrowserSync, watch));
