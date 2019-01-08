@@ -9,8 +9,8 @@ const config = require('./config');
 // res.render('example');
 //});
 
-router.get('/test', function (req, res) {
-  res.render('test', {'message' : 'Test message'});
+router.get('/example', function (req, res) {
+  res.render('example', {'message' : 'Hello world'});
 });
 
 module.exports = router

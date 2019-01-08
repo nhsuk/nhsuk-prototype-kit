@@ -12,7 +12,7 @@
         text: "Home"
       }
     ],
-    href: "/tutorials",
+    href: "/docs/tutorials",
     text: "Tutorials"
   }) }}
 {% endblock %}
@@ -25,6 +25,14 @@
       <h1>
         Making pages
       </h1>
+
+      <p>Save all HTML pages (called templates below) to the <code>app/views</code> folder otherwise they won't be recognised by the application.</p>
+
+      <p>All template files should have the <code>.html</code> extension.</p>
+
+      <p>Any template will be automatically served. For example if you add a template called <code>help.html</code> and then go to <code>localhost:3000/help</code> in your browser, you will see that page.</p>
+
+      <p>Folders also work, so you can make the template <code>views/account/profile.html</code>, and then view the page by going to <code>localhost:3000/account/profile</code>.</p>
 
     </div>
 
