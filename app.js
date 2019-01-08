@@ -14,7 +14,6 @@ const automaticRouting = require('./middleware/auto-routing');
 
 // Set configuration variables
 const port = process.env.PORT || config.port;
-const env = (process.env.NODE_ENV || 'development').toLowerCase();
 const useDocumentation = process.env.SHOW_DOCS || config.useDocumentation;
 
 // Initialise applications
@@ -79,13 +78,6 @@ if (useDocumentation) {
 }
 
 // Run the application
-app.listen(port, () => {
-  console.log(chalk.green(`App is running at http://localhost:${port}`));
-})
-.on( 'error', function (e) { 
-  if (env == 'development' && e.code == 'EADDRINUSE') { // If selected port is in use elsewhere
-    console.log(chalk.yellow(`Port ${port} is currently in use, kill the process running on port ${port} or change the port number in app/config.js`));
-  }
-});
+app.listen(port);
 
 module.exports = app;
