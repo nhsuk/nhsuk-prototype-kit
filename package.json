@@ -5,9 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "npm run build && node app",
-    "build": "gulp styles",
+    "build": "gulp build",
     "test": "",
-    "prewatch": "gulp styles",
+    "prewatch": "gulp build",
     "watch": "gulp"
   },
   "author": "https://github.com/nhsuk/",

@@ -8,7 +8,7 @@ const nodemon = require('gulp-nodemon');
 const config = require('./app/config');
 const port = process.env.PORT || config.port;
 
-function styles() {
+function compileStyles() {
   return gulp.src('app/assets/sass/**/*.scss')
     .pipe(sass())
     .pipe(cleanCSS())
@@ -61,11 +61,12 @@ function startBrowserSync(done){
 }
 
 function watch() {
-  gulp.watch('app/assets/sass/**/*.scss', styles);
+  gulp.watch('app/assets/sass/**/*.scss', compileStyles);
 }
 
 exports.watch = watch;
-exports.styles = styles;
+exports.compileStyles = compileStyles;
 
 gulp.task('default', watch);
+gulp.task('build', compileStyles);
 gulp.task('server', gulp.series(startNodemon, startBrowserSync, watch));
