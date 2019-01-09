@@ -16,18 +16,15 @@ module.exports = function (req, res, next) {
   // External dependencies
   const basicAuth = require('basic-auth')
 
-  // Local dependencies
-  const config = require('../app/config');
-
   // Set configuration variables
   const env = (process.env.NODE_ENV || 'development').toLowerCase();
-  const username = process.env.USERNAME;
-  const password = process.env.PASSWORD;
+  const username = process.env.PROTOTYPE_USERNAME;
+  const password = process.env.PROTOTYPE_PASSWORD;
 
-  if (env === 'production') {
+  if (env === 'production' || env === 'staging') {
     if (!username || !password) {
-      console.error('Username or password is not set.');
-      return res.send('<h1>Error:</h1><p>Username or password not set.');
+      console.error('Username or password is not set in environment variables.');
+      return res.send('<p>Username or password not set in environment variables.</p>');
     }
 
     const user = basicAuth(req)

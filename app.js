@@ -24,7 +24,6 @@ const documentationApp = express();
 
 // Authentication middleware
 app.use(authentication);
-
 // Local variables
 app.use(locals(config));
 
