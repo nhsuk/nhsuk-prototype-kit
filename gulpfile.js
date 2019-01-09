@@ -81,7 +81,7 @@ function startBrowserSync(done){
     proxy: 'localhost:' + port,
     port: port + 1000,
     ui: false,
-    files: ['app/views/**/*.*'],
+    files: ['app/views/**/*.*', 'docs/views/**/*.*'],
     ghostmode: false,
     open: false,
     notify: true,

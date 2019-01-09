@@ -1,19 +1,14 @@
 {% extends 'layout.html' %}
 
-{% block pageTitle %}
-  NHS.UK prototype kit
-{% endblock %}
-
 {% block beforeContent %}
   {{ hero({
-    "heading": project,
+    "heading": "NHS.UK prototype kit",
     "text": "Rapidly create HTML prototypes."
   }) }}
 {% endblock %}
 
 {% block content %}
   <div class="nhsuk-grid-row">
-
     <div class="nhsuk-grid-column-full">
 
       <div class="nhsuk-grid-row nhsuk-promo-group">
@@ -43,12 +38,9 @@
       <hr>
 
       <div class="nhsuk-u-reading-width">
-
         <p class="nhsuk-u-margin-bottom-0">Visit the <a href="https://beta.nhs.uk/service-manual/">NHS digital service manual</a> for guidance and examples.</p>
-
       </div>
 
     </div>
-
   </div>
 {% endblock %}
