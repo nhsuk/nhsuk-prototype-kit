@@ -4,7 +4,7 @@
   "description": "NHS.UK prototype kit",
   "main": "app.js",
   "scripts": {
-    "start": "npm run build && NODE_ENV=production node app",
+    "start": "node app",
     "build": "gulp build",
     "test": "",
     "prewatch": "gulp build",
