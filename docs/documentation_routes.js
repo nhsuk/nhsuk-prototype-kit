@@ -12,7 +12,7 @@ router.get('/examples/passing-data', function (req, res) {
   res.render('examples/passing-data/index', {'message' : 'Hello world'});
 });
 
-// Branching
+// Branching example
 router.post('/examples/branching/answer', function (req, res) {
   let nhsNumber = req.body.nhsNumber;
 

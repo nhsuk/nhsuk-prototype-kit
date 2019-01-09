@@ -1,28 +1,40 @@
 {% extends "layout.html" %}
 
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/docs",
+        text: "Home"
+      }
+    ],
+    href: "/docs/tutorials",
+    text: "Tutorials"
+  }) }}
+{% endblock %}
+
 {% block content %}
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
+
+      <h1>Branching</h1>
+
+      <p>You can show a user different pages, depending on how they've answered a question.
+
+      <p>The code for this example is in your prototype folder:</p>
+
+      <pre><code>/docs/documentation_routes.js<br>/docs/views/examples/branching</code></pre>
 
       <form action="/docs/examples/branching/answer" method="post">
 
         {% call fieldset({
           legend: {
             text: "Do you know your NHS number?",
-            classes: "nhsuk-fieldset__legend--l",
+            classes: "nhsuk-fieldset__legend--m",
             isPageHeading: true
           }
         }) %}
-
-        {{ hint({
-          "text": "This is a 10 digit number, like 485 777 3456."
-        }) }}
-
-        {{ hint({
-          "text": "You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.",
-          "classes": "nhsuk-u-margin-bottom-5"
-        }) }}
 
         {{ radios({
           "idPrefix": "know-nhs-number",
