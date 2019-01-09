@@ -7,33 +7,39 @@
 
       <form action="/docs/examples/branching/answer" method="post">
 
-        {{ fieldset({
+        {% call fieldset({
           legend: {
-            text: "We need to know your NHS number",
+            text: "Do you know your NHS number?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
+        }) %}
+
+        {{ hint({
+          "text": "This is a 10 digit number, like 485 777 3456."
+        }) }}
+
+        {{ hint({
+          "text": "You can find it on any letter the NHS has sent you, on a prescription, or by logging in to a GP practice online service.",
+          "classes": "nhsuk-u-margin-bottom-5"
         }) }}
 
         {{ radios({
-          "idPrefix": "nhsNumber",
-          "name": "nhsNumber",
-          "fieldset": {
-            "legend": {
-              "text": "Do you know your NHS number?"
-            }
-          },
+          "idPrefix": "know-nhs-number",
+          "name": "know-nhs-number",
           "items": [
             {
-              "value": "yes",
+              "value": "Yes",
               "text": "Yes"
             },
             {
-              "value": "no",
+              "value": "No",
               "text": "No"
             }
           ]
         }) }}
+
+        {% endcall %}
 
         {{ button({
           "text": "Continue"
