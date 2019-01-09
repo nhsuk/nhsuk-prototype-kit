@@ -24,6 +24,7 @@
     "gulp-clean-css": "^4.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
+    "gulp-util": "^3.0.8",
     "nhsuk-frontend": "^0.6.0",
     "nunjucks": "^3.1.6",
     "path": "^0.12.7"
