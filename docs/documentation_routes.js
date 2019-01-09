@@ -13,14 +13,14 @@ router.get('/examples/passing-data', function (req, res) {
 });
 
 // Branching
-router.post('/examples/branching/over-18-answer', function (req, res) {
-  let over18 = req.session.data['over-18']
+router.post('/examples/branching/answer', function (req, res) {
+  let nhsNumber = req.body.nhsNumber;
 
-  if (over18 === 'false') {
-    res.redirect('/docs/examples/branching/under-18')
+  if (nhsNumber === 'yes') {
+    res.redirect('/docs/examples/branching/answer-yes')
   } else {
-    res.redirect('/docs/examples/branching/over-18')
+    res.redirect('/docs/examples/branching/answer-no')
   }
-})
+});
 
 module.exports = router;

@@ -2,6 +2,7 @@
 const path = require('path')
 
 // External dependencies
+const bodyParser = require('body-parser')
 const express = require('express');
 const nunjucks = require('nunjucks');
 
@@ -54,6 +55,12 @@ app.use('/', routes);
 app.get(/^([^.]+)$/, function (req, res, next) {
   automaticRouting.matchRoutes(req, res, next)
 })
+
+// Support for parsing data in POSTs
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 
 if (useDocumentation) {
   // Documentation routes
