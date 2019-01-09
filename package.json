@@ -4,7 +4,7 @@
   "description": "NHS.UK prototype kit",
   "main": "app.js",
   "scripts": {
-    "start": "node app",
+    "start": "npm run build && NODE_ENV=production node app",
     "build": "gulp build",
     "test": "",
     "prewatch": "gulp build",
@@ -24,6 +24,7 @@
     "gulp-clean-css": "^4.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
+    "gulp-util": "^3.0.8",
     "nhsuk-frontend": "^0.6.0",
     "nunjucks": "^3.1.6",
     "path": "^0.12.7"

@@ -2,17 +2,19 @@
 const gulp = require('gulp');
 
 // External dependencies
-const babel = require("gulp-babel");
+const babel = require('gulp-babel');
 const browserSync = require('browser-sync');
 const clean = require('gulp-clean');
 const sass = require('gulp-sass');
 const nodemon = require('gulp-nodemon');
+const util = require('gulp-util');
 
 // Local dependencies
 const config = require('./app/config');
 
 // Set configuration variables
 const port = process.env.PORT || config.port;
+const isProduction = util.env.production;
 
 // Delete all the files in /public build directory
 function cleanPublic() {
@@ -29,29 +31,29 @@ function compileStyles() {
       console.log(err)
       process.exit(1)
     })
-    .pipe(browserSync.reload({ stream:true })); // Reloads the browser
+    .pipe(!isProduction ? browserSync.reload({ stream:true }) : util.noop()); // Reloads the browser after compiling
 }
 
 // Compile JavaScript (with ES6 support)
 function compileScripts() {
-  return gulp.src("app/assets/javascript/**/*.js")
+  return gulp.src('app/assets/javascript/**/*.js')
   .pipe(babel())
-  .pipe(gulp.dest("public/js"))
-  .pipe(browserSync.reload({ stream:true })); // Reloads the browser
+  .pipe(gulp.dest('public/js'))
+  .pipe(!isProduction ? browserSync.reload({ stream:true }) : util.noop()); // Reloads the browser after compiling
 }
 
 // Compile Images
 function compileImages() {
-  return gulp.src("app/assets/images/**/*.*")
-  .pipe(gulp.dest("public/images"))
-  .pipe(browserSync.reload({ stream:true })); // Reloads the browser
+  return gulp.src('app/assets/images/**/*.*')
+  .pipe(gulp.dest('public/images'))
+  .pipe(!isProduction ? browserSync.reload({ stream:true }) : util.noop()); // Reloads the browser after compiling
 }
 
 // Start nodemon
 function startNodemon(done) {
   const server = nodemon({
     script: 'app.js',
-    stdout: false, // without this line the stdout event won't fire
+    stdout: false,
     ext: 'scss js html',
     quiet: true,
   });
@@ -68,7 +70,7 @@ function startNodemon(done) {
   });
 
   server.on('stdout', (stdout) => {
-    process.stdout.write(stdout); // pass the stdout through
+    process.stdout.write(stdout);
     if (starting) {
       onReady();
     }

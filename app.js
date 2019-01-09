@@ -24,7 +24,6 @@ const documentationApp = express();
 
 // Authentication middleware
 app.use(authentication);
-
 // Local variables
 app.use(locals(config));
 
@@ -48,6 +47,12 @@ nunjucks.configure(appViews, {
   express: app
 });
 
+// Support for parsing data in POSTs
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
+
 // Custom application routes
 app.use('/', routes);
 
@@ -55,12 +60,6 @@ app.use('/', routes);
 app.get(/^([^.]+)$/, function (req, res, next) {
   automaticRouting.matchRoutes(req, res, next)
 })
-
-// Support for parsing data in POSTs
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}))
 
 if (useDocumentation) {
   // Documentation routes
@@ -76,7 +75,13 @@ if (useDocumentation) {
     autoescape: true,
     express: documentationApp
   });
-  
+
+  // Support for parsing data in POSTs
+  documentationApp.use(bodyParser.json());
+  documentationApp.use(bodyParser.urlencoded({
+    extended: true
+  }))
+
   // Custom documentation routes
   documentationApp.use('/', documentationRoutes);
 
@@ -85,7 +90,6 @@ if (useDocumentation) {
     automaticRouting.matchRoutes(req, res, next)
   })
 
-  
 }
 
 // Run the application
