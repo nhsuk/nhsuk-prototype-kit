@@ -1,16 +1,8 @@
 // External dependencies
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 
-// Local dependencies
-const config = require('./config');
-
-//router.get('/example', function(req, res) {
-// res.render('example');
-//});
-
-router.get('/example', function (req, res) {
-  res.render('example', {'message' : 'Hello world'});
-});
-
-module.exports = router
+// Add your routes here - above the module.exports line
+// See docs/routes.js for advanced routing examples
+ 
+module.exports = router;

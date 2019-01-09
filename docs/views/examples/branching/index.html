@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <form action="/docs/examples/branching/answer" method="post">
+
+        {{ fieldset({
+          legend: {
+            text: "We need to know your NHS number",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) }}
+
+        {{ radios({
+          "idPrefix": "nhsNumber",
+          "name": "nhsNumber",
+          "fieldset": {
+            "legend": {
+              "text": "Do you know your NHS number?"
+            }
+          },
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes"
+            },
+            {
+              "value": "no",
+              "text": "No"
+            }
+          ]
+        }) }}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
