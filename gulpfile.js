@@ -1,28 +1,53 @@
+// Core dependencies
 const gulp = require('gulp');
-const sass = require('gulp-sass');
-const rename = require("gulp-rename");
-const cleanCSS = require('gulp-clean-css');
+
+// External dependencies
+const babel = require("gulp-babel");
 const browserSync = require('browser-sync');
+const clean = require('gulp-clean');
+const sass = require('gulp-sass');
 const nodemon = require('gulp-nodemon');
 
+// Local dependencies
 const config = require('./app/config');
+
+// Set configuration variables
 const port = process.env.PORT || config.port;
 
+// Delete all the files in /public build directory
+function cleanPublic() {
+  return gulp.src('public', { allowEmpty: true})
+  .pipe(clean());
+}
+
+// Compile SASS to CSS
 function compileStyles() {
   return gulp.src('app/assets/sass/**/*.scss')
     .pipe(sass())
-    .pipe(cleanCSS())
-    .pipe(rename({
-      suffix: '.min'
-    }))
     .pipe(gulp.dest('public/css'))
     .on('error', (err) => {
       console.log(err)
       process.exit(1)
     })
-    .pipe(browserSync.reload({ stream:true }));
+    .pipe(browserSync.reload({ stream:true })); // Reloads the browser
 }
 
+// Compile JavaScript (with ES6 support)
+function compileScripts() {
+  return gulp.src("app/assets/javascript/**/*.js")
+  .pipe(babel())
+  .pipe(gulp.dest("public/js"))
+  .pipe(browserSync.reload({ stream:true })); // Reloads the browser
+}
+
+// Compile Images
+function compileImages() {
+  return gulp.src("app/assets/images/**/*.*")
+  .pipe(gulp.dest("public/images"))
+  .pipe(browserSync.reload({ stream:true })); // Reloads the browser
+}
+
+// Start nodemon
 function startNodemon(done) {
   const server = nodemon({
     script: 'app.js',
@@ -50,6 +75,7 @@ function startNodemon(done) {
   });
 }
 
+// Start browsersync
 function startBrowserSync(done){
   browserSync.init({
     proxy: 'localhost:' + port,
@@ -63,12 +89,17 @@ function startBrowserSync(done){
   }, done);
 }
 
+// Watch for changes within assets/
 function watch() {
   gulp.watch('app/assets/sass/**/*.scss', compileStyles);
+  gulp.watch('app/assets/javascript/**/*.js', compileScripts);
+  gulp.watch('app/assets/images/**/*.*', compileImages);
 }
 
 exports.watch = watch;
 exports.compileStyles = compileStyles;
+exports.compileScripts = compileScripts;
+exports.cleanPublic = cleanPublic;
 
-gulp.task('build', compileStyles);
+gulp.task('build', gulp.series(cleanPublic, compileStyles, compileScripts, compileImages));
 gulp.task('default', gulp.series(startNodemon, startBrowserSync, watch));
