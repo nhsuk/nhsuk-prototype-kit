@@ -17,13 +17,18 @@ const documentationRoutes = require('./docs/documentation_routes');
 // Set configuration variables
 const port = process.env.PORT || config.port;
 const useDocumentation = process.env.SHOW_DOCS || config.useDocumentation;
+const onlyDocumentation = process.env.DOCS_ONLY;
 
 // Initialise applications
 const app = express();
 const documentationApp = express();
 
-// Authentication middleware
-app.use(authentication);
+// Check if the app is documentation only
+if(onlyDocumentation !== 'true') {
+  // Require authentication if not
+  app.use(authentication);
+}
+
 // Local variables
 app.use(locals(config));
 
@@ -53,15 +58,24 @@ app.use(bodyParser.urlencoded({
   extended: true
 }))
 
-// Custom application routes
-app.use('/', routes);
+// Check if the app is documentation only
+if(onlyDocumentation == 'true') {
+  app.get('/', function(req, res) {
+    // Redirect to the documentation pages if it is
+    res.redirect('/docs');
+  });
+} else {
+  // Else use custom application routes
+  app.use('/', routes);
+}
 
 // Automatically route pages
 app.get(/^([^.]+)$/, function (req, res, next) {
   automaticRouting.matchRoutes(req, res, next)
 })
 
-if (useDocumentation) {
+// Check if the app is using documentation
+if (useDocumentation || onlyDocumentation == 'true') {
   // Documentation routes
   app.use('/docs', documentationApp);
 
