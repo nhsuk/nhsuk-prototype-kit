@@ -4,8 +4,9 @@
   "description": "NHS.UK prototype kit",
   "main": "app.js",
   "scripts": {
-    "start": "npm run build && node app",
     "build": "gulp build",
+    "prestart": "npm run build",
+    "start": "node app.js",
     "test": "",
     "prewatch": "gulp build",
     "watch": "gulp"
@@ -17,21 +18,20 @@
     "@babel/preset-env": "^7.2.3",
     "basic-auth": "^2.0.1",
     "body-parser": "^1.18.3",
+    "browser-sync": "^2.26.3",
     "express": "^4.16.4",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0-beta.2",
     "gulp-clean": "^0.4.0",
     "gulp-clean-css": "^4.0.0",
+    "gulp-nodemon": "^2.4.2",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
-    "gulp-util": "^3.0.8",
     "nhsuk-frontend": "^0.6.0",
     "nunjucks": "^3.1.6",
     "path": "^0.12.7"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.3",
-    "concurrently": "^4.1.0",
-    "gulp-nodemon": "^2.4.2"
+    "concurrently": "^4.1.0"
   }
 }
