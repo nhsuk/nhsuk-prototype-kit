@@ -7,14 +7,12 @@ const browserSync = require('browser-sync');
 const clean = require('gulp-clean');
 const sass = require('gulp-sass');
 const nodemon = require('gulp-nodemon');
-const util = require('gulp-util');
 
 // Local dependencies
 const config = require('./app/config');
 
 // Set configuration variables
 const port = process.env.PORT || config.port;
-const isProduction = util.env.production;
 
 // Delete all the files in /public build directory
 function cleanPublic() {
@@ -30,23 +28,20 @@ function compileStyles() {
     .on('error', (err) => {
       console.log(err)
       process.exit(1)
-    })
-    .pipe(!isProduction ? browserSync.reload({ stream:true }) : util.noop()); // Reloads the browser after compiling
+    });
 }
 
 // Compile JavaScript (with ES6 support)
 function compileScripts() {
   return gulp.src('app/assets/javascript/**/*.js')
   .pipe(babel())
-  .pipe(gulp.dest('public/js'))
-  .pipe(!isProduction ? browserSync.reload({ stream:true }) : util.noop()); // Reloads the browser after compiling
+  .pipe(gulp.dest('public/js'));
 }
 
 // Compile Images
 function compileImages() {
   return gulp.src('app/assets/images/**/*.*')
-  .pipe(gulp.dest('public/images'))
-  .pipe(!isProduction ? browserSync.reload({ stream:true }) : util.noop()); // Reloads the browser after compiling
+  .pipe(gulp.dest('public/images'));
 }
 
 // Start nodemon
@@ -77,6 +72,10 @@ function startNodemon(done) {
   });
 }
 
+function reload() {
+  browserSync.reload();
+}
+
 // Start browsersync
 function startBrowserSync(done){
   browserSync.init({
@@ -89,6 +88,7 @@ function startBrowserSync(done){
     notify: true,
     watch: true,
   }, done);
+  gulp.watch("public/**/*.*").on("change", reload);
 }
 
 // Watch for changes within assets/
