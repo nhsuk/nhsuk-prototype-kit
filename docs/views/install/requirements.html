@@ -33,7 +33,7 @@
       <p>You'll need:</p>
 
       <ul>
-        <li>Visual Studio Code (text editor and terminal)</li>
+        <li>a text editor and terminal (Visual Studio Code)</li>
         <li>Node.js 8.x.x</li>
       </ul>
 
@@ -41,7 +41,7 @@
         <p>You'll usually need admin access to your machine to install the software. If you do not have admin access, ask your IT team to install the software for you.</p>
       </div>
 
-      <h2>Visual Studio Code (text editor and terminal)</h2>
+      <h2>Text editor and terminal (Visual Studio Code)</h2>
 
       <p>You need a text editor and terminal to edit and make changes to your prototype.</p>
 
@@ -63,30 +63,32 @@
 
       <h2>Node.js version 8 LTS</h2>
 
-      <p>The kit is designed to work with Node.js version 8 LTS. The kit works with any 8.x.x version.</p>
+      <p>The kit is designed to work with Node.js version 8 LTS. The kit works with any <code>8.x.x</code> version.</p>
 
-      {{ details({
-        "classes": "nhsuk-expander nhsuk-u-margin-top-6",
-        "text": "Check if you have Node.js installed",
-        "HTML": "
-        <p>In the terminal, enter:</p>
+      <h3>1. Check if you have Node.js installed</h3>
+
+      <p>In the terminal, enter:</p>
 
       <pre><code>node --version</code></pre>
 
-      <p>If it says <code>command not found</code> or <code>Error 0x2 starting node.exe --version</code> you don’t have node and will need to download and install it.</p>
+      <p>If it says:</p>
+      <ul>
+        <li><code>command not found</code> or</li>
+        <li><code>Error 0x2 starting node.exe --version</code> or</li>
+        <li>the version number starts another number such as <code>0.12</code> or <code>5.x.x</code></li>
+      </ul>
+      
+      <p>...then you need to <a href='https://nodejs.org/en/'>download and install Node.js</a>.</p>
 
-      <p>If the version number starts with <code>8</code> you have the correct version installed.</p>
+      <p>If it says the version number starts with <code>8</code> you have the correct version installed and can start <a href="/docs/install/download">installing the kit</a>.</p>
 
-      <p>If it says another number such as <code>0.12</code> or <code>5.x.x</code>, you need to <a href='https://nodejs.org/en/'>download <span class='nhsuk-u-visually-hidden'>node.js</span> and install version 8</a>.</p>"
-      }) }}
-
-      <h3 class="nhsuk-u-padding-top-3">Download and install Node.js</h3>
+      <h3>2. Install Node.js</h3>
 
       <p>Download version 8 from <a href="https://nodejs.org/en/" target="_blank">nodejs.org <span class="nhsuk-u-visually-hidden">opens in new window</span></a>.</p>
 
       <p>Run the installer with all default options.</p>
 
-      <h3>Once Node is installed</h3>
+      <h3>3. Once Node is installed</h3>
 
       <p>You’ll need to quit and restart the terminal to be able to use Node for the first time.</p>
 
