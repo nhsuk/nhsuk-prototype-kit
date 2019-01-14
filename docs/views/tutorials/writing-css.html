@@ -5,16 +5,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-  {{ breadcrumb({
-    items: [
-      {
-        href: "/docs",
-        text: "Home"
-      }
-    ],
-    href: "/docs/tutorials",
-    text: "Tutorials"
-  }) }}
+  {% include "tutorials/includes/breadcrumb.html" %}
 {% endblock %}
 
 {% block content %}
@@ -38,13 +29,15 @@
 
       <p>You write your Sass in <code>app/assets/sass</code> and it gets compiled into the CSS used in your page (found in <code>/public/css</code>).</p>
 
-      <p>There is already a CSS file included called <code>main.scss</code> which compiles into <code>main.min.css</code>.</p>
+      <p>There is already a CSS file included called <code>main.scss</code> which compiles into <code>main.css</code>.</p>
       
       <div class="nhsuk-inset-text">
         <p>Note that Sass files are identified by the <code>.scss</code> extension.</p>
       </div>
 
-      <p>Each time you make a change in <code>main.scss</code> it will create a new version of <code>main.min.css</code>. Make sure to write your css in <code>main.scss</code> as anything you put in <code>main.min.css</code> will get overridden.</p>
+      <p>Each time you make a change in <code>main.scss</code> it will create a new version of <code>main.css</code>. Make sure to write your css in <code>main.scss</code> as anything you put in <code>main.css</code> will get overridden.</p>
+
+      {% include "tutorials/includes/back-button.html" %}
 
     </div>
 

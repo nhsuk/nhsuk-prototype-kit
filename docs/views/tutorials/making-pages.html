@@ -5,16 +5,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-  {{ breadcrumb({
-    items: [
-      {
-        href: "/docs",
-        text: "Home"
-      }
-    ],
-    href: "/docs/tutorials",
-    text: "Tutorials"
-  }) }}
+  {% include "tutorials/includes/breadcrumb.html" %}
 {% endblock %}
 
 {% block content %}
@@ -39,6 +30,8 @@
       <p>For example, you can make the page <code>views/account/profile.html</code>, and then view the page by going to <code>localhost:3000/account/profile</code>.</p>
 
       <img class="nhspk-img-guide" alt="Screenshot of creating a folder for new pages" src="/images/docs/pages-folder.gif" />
+
+      {% include "tutorials/includes/back-button.html" %}
 
     </div>
 
