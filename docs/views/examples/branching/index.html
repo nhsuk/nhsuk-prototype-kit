@@ -1,39 +1,57 @@
 {% extends "layout.html" %}
 
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/docs",
+        text: "Home"
+      }
+    ],
+    href: "/docs/tutorials",
+    text: "Tutorials"
+  }) }}
+{% endblock %}
+
 {% block content %}
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
 
+      <h1>Branching</h1>
+
+      <p>You can show a user different pages, depending on how they've answered a question.
+
+      <p>The code for this example is in your prototype folder:</p>
+
+      <pre><code>/docs/documentation_routes.js<br>/docs/views/examples/branching</code></pre>
+
       <form action="/docs/examples/branching/answer" method="post">
 
-        {{ fieldset({
+        {% call fieldset({
           legend: {
-            text: "We need to know your NHS number",
-            classes: "nhsuk-fieldset__legend--l",
+            text: "Do you know your NHS number?",
+            classes: "nhsuk-fieldset__legend--m",
             isPageHeading: true
           }
-        }) }}
+        }) %}
 
         {{ radios({
           "idPrefix": "nhsNumber",
           "name": "nhsNumber",
-          "fieldset": {
-            "legend": {
-              "text": "Do you know your NHS number?"
-            }
-          },
           "items": [
             {
-              "value": "yes",
+              "value": "Yes",
               "text": "Yes"
             },
             {
-              "value": "no",
+              "value": "No",
               "text": "No"
             }
           ]
         }) }}
+
+        {% endcall %}
 
         {{ button({
           "text": "Continue"

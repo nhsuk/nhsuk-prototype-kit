@@ -40,7 +40,12 @@
 
 {% block header %}
   {{ header({
-    "showNav": "false"
+    "transactionalService": {
+        "name": "Prototype kit",
+        "href": "/docs"
+      },
+      "showNav": "false",
+      "showSearch": "false"
     })
   }}
 {% endblock %}

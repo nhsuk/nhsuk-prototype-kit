@@ -8,7 +8,7 @@
   {{ breadcrumb({
     items: [
       {
-        href: "/",
+        href: "/docs",
         text: "Home"
       }
     ],
@@ -26,7 +26,25 @@
         Writing CSS
       </h1>
 
-      <p>CSS used in the NHS.UK prototype kit is written in the SCSS syntax of <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#syntax">Sass</a>.</p>
+      <p>The prototype kit uses SCSS syntax of <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#syntax">Sass</a> to write CSS.</p>
+
+      <h2>Sass</h2>
+
+      <p>Sass is an extension of CSS that gives a load of extra features useful in producing CSS for the mass of different devices and browsers.</p>
+
+      <p>You can paste CSS into it without breaking it which is useful for prototyping.</p>
+
+      <h2>Writing code</h2>
+
+      <p>You write your Sass in <code>app/assets/sass</code> and it gets compiled into the CSS used in your page (found in <code>/public/css</code>).</p>
+
+      <p>There is already a CSS file included called <code>main.scss</code> which compiles into <code>main.min.css</code>.</p>
+      
+      <div class="nhsuk-inset-text">
+        <p>Note that Sass files are identified by the <code>.scss</code> extension.</p>
+      </div>
+
+      <p>Each time you make a change in <code>main.scss</code> it will create a new version of <code>main.min.css</code>. Make sure to write your css in <code>main.scss</code> as anything you put in <code>main.min.css</code> will get overridden.</p>
 
     </div>
 
