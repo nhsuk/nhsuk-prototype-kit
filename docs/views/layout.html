@@ -35,6 +35,10 @@
 {% from 'select/macro.njk' import select %}
 {% from 'textarea/macro.njk' import textarea %}
 
+{% block headCSS %}
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/docs.css">
+{% endblock %}
 
 {% block pageTitle %}
   NHS.UK prototype kit

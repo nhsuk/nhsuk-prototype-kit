@@ -1,5 +1,5 @@
-@import 'check-your-answers';
-@import 'related-nav';
+// NHS.UK frontend library
+@import 'node_modules/nhsuk-frontend/packages/nhsuk';
 
 // Overrides auto reload div background colour
 #hc_extension_bkgnd {
@@ -18,10 +18,10 @@
 
 // Button adjustment
 .nhsuk-button {
-  margin-top: 8px;
+  margin-top: nhsuk-spacing(2);
 
   @include mq($from: desktop) {
-    padding: 12px 24px;
+    padding: nhsuk-spacing(2) nhsuk-spacing(3);
   }
 }
 
@@ -50,7 +50,6 @@
   }
 }
 
-
 .nhsuk-panel__title {
   @include nhsuk-responsive-margin(4, "bottom");
 
@@ -68,8 +67,7 @@
 }
 
 // Code styling
-
-pre {
+.app-pre {
   @include nhsuk-responsive-margin(4, "bottom");
 
   background: $color_nhsuk-white;
@@ -80,40 +78,40 @@ pre {
   position: relative;
 }
 
-li code,
-p code {
+li .app-code,
+p .app-code {
   background: $color_nhsuk-white;
   border: 1px solid $nhsuk-border-color;
   padding: nhsuk-spacing(1) nhsuk-spacing(3);
   font-size: 0.8em;
 }
 
-.nhsuk-expander pre,
-.nhsuk-expander p code,
-.nhsuk-expander li code {
+.nhsuk-expander .app-pre,
+.nhsuk-expander p .app-code,
+.nhsuk-expander li .app-code {
   background: $color_nhsuk-grey-5;
   border: 1px solid $color_nhsuk-grey-4;
 }
 
 // Installation guide images
 
-.nhspk-img-guide {
+.app-img-guide {
   @include nhsuk-responsive-margin(4, "bottom");
   @include nhsuk-responsive-margin(2, "top");
 
   width: 100%;
 }
 
-// Contextual adjustments for headings
+// Contextual adjustments for guide images
 
-.nhspk-img-guide  + %nhsuk-heading-l,
+.app-img-guide  + %nhsuk-heading-l,
 pre  + %nhsuk-heading-l {
   @include nhsuk-responsive-padding(4, 'top');
 }
 
-.nhspk-img-guide + %nhsuk-heading-m,
+.app-img-guide + %nhsuk-heading-m,
 pre + %nhsuk-heading-m,
-.nhspk-img-guide + %nhsuk-heading-s,
+.app-img-guide + %nhsuk-heading-s,
 pre + %nhsuk-heading-s {
   padding-top: nhsuk-spacing(1);
 
@@ -121,3 +119,4 @@ pre + %nhsuk-heading-s {
     padding-top: nhsuk-spacing(2);
   }
 }
+
