@@ -1,5 +1,10 @@
-// NHS.UK frontend library
+// Import NHS.UK frontend library
 @import 'node_modules/nhsuk-frontend/packages/nhsuk';
 
-// NHS.UK prototype kit styles
-@import 'app';
+// Patterns that are not in the NHS.UK frontend library
+@import 'patterns/check-your-answers';
+
+// Components that are not in the NHS.UK frontend library
+@import 'components/related-nav';
+
+// Add your extra styles here...

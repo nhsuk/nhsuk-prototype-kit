@@ -1,5 +1,5 @@
-@import 'check-your-answers';
-@import 'related-nav';
+// NHS.UK frontend library
+@import 'node_modules/nhsuk-frontend/packages/nhsuk';
 
 // Overrides auto reload div background colour
 #hc_extension_bkgnd {
@@ -50,7 +50,6 @@
   }
 }
 
-
 .nhsuk-panel__title {
   @include nhsuk-responsive-margin(4, "bottom");
 
@@ -68,7 +67,6 @@
 }
 
 // Code styling
-
 .app-pre {
   @include nhsuk-responsive-margin(4, "bottom");
 
@@ -121,3 +119,4 @@ pre + %nhsuk-heading-s {
     padding-top: nhsuk-spacing(2);
   }
 }
+
