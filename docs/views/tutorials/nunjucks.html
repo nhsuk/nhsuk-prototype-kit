@@ -5,16 +5,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-  {{ breadcrumb({
-    items: [
-      {
-        href: "/docs",
-        text: "Home"
-      }
-    ],
-    href: "/docs/tutorials",
-    text: "Tutorials"
-  }) }}
+  {% include "tutorials/includes/breadcrumb.html" %}
 {% endblock %}
 
 {% block content %}
@@ -26,7 +17,7 @@
         Using Nunjucks macros
       </h1>
 
-      <p>A Nunjucks macro is a simple template that generates more complex HTML.</p>
+      <p>A <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> macro is a simple template that generates more complex HTML.</p>
 
       <p>Each component has a Nunjucks macro. The code for each Nunjucks macro can be found on the <a href="https://beta.nhs.uk/service-manual">NHS digital service manual</a>.</p>
 
@@ -39,6 +30,8 @@
       <p>and the outputted HTML is:</p>
 
       <pre><code>[Promo HTML code goes here]</code></pre>
+
+      {% include "tutorials/includes/back-button.html" %}
 
     </div>
 

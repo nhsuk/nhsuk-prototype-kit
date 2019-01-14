@@ -5,16 +5,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-  {{ breadcrumb({
-    items: [
-      {
-        href: "/docs",
-        text: "Home"
-      }
-    ],
-    href: "/docs/tutorials",
-    text: "Tutorials"
-  }) }}
+  {% include "tutorials/includes/breadcrumb.html" %}
 {% endblock %}
 
 {% block content %}
@@ -29,6 +20,8 @@
       <p>The example route defined in /docs/documentation_routes.js is passing the string 'Foo' to this page, via the variable called 'name'.</p>
 
       <p>Have a look at the source for this page in your text editor to see how it works: /docs/views/examples/template-data.html</p>
+
+      {% include "tutorials/includes/back-button.html" %}
 
     </div>
 

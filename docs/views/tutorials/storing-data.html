@@ -5,16 +5,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-  {{ breadcrumb({
-    items: [
-      {
-        href: "/docs",
-        text: "Home"
-      }
-    ],
-    href: "/docs/tutorials",
-    text: "Tutorials"
-  }) }}
+  {% include "tutorials/includes/breadcrumb.html" %}
 {% endblock %}
 
 {% block content %}
@@ -25,6 +16,8 @@
       <h1>
         Passing data page to page
       </h1>
+
+      {% include "tutorials/includes/back-button.html" %}
 
     </div>
 
