@@ -17,10 +17,12 @@
         Setting up Git
       </h1>
 
-            <p>Git helps track changes in code and lets you undo mistakes or identify bugs. It’s also used to collaborate with other people - so you can share your code with other designers and developers on your team (or with other teams!). Git is a type of version control software.</p>
+      <p>Git is a type of version control software that tracks changes in code. For example, when you edit a file, git can help you determine exactly what changed, who changed it, and why.</p>
+
+      <p>It’s a useful tool for collaborating with other people and lets you undo mistakes or identify bugs.</p>
 
       <div class="nhsuk-inset-text">
-        <p>Git is not the same as GitHub. Git stores versions of your work, and lets you collaborate more easily with others. GitHub puts it all online with a nice web interface.</p>
+        <p>Git is not the same as GitHub. Git stores versions of your work, and lets you collaborate more easily with others. GitHub puts it all online with a friendly web interface.</p>
       </div>
 
       <h2>1. Install Git</h2>
@@ -41,7 +43,7 @@
 
       <h2>3. Initialise a Git repo</h2>
 
-      <p>The first time you want to use Git on your prototype, you need to initialise it.</p>
+      <p>The first time you use Git on your prototype, you need to initialise it. </p>
 
       <p>In your prototype folder, enter in the terminal:</p>
 
@@ -49,21 +51,25 @@
 
       <img class="app-img-guide" alt="Screenshot of git init" src="/images/git-init.png" />
       
-      <p>This sets up git to track the files in your prototype folder.</p>
+      <p>Initialising the repo creates a hidden <code class="app-code">.git</code> folder in your project and is where it stores the internal tracking data .</p>
 
       <h2>4. Check Git status</h2>
 
-      <p>It’s a good idea to run <code class="app-code">git status</code></pre> frequently. This tells you the current status - for example, if you made changes to files that haven’t been committed.</p>
-
-      <p>In your prototype folder:</p>
+      <p>You can view the current status of your project with the command:</p>
 
       <pre class="app-pre"><code class="app-code">git status</code></pre>
-      
-      <p>As this is a new git repo, all files in the kit will be listed as having changes.</p>
+
+      <p>This will show you some basic information, such as which files have recently been modified.</p>
 
       <img class="app-img-guide" alt="Screenshot of git status" src="/images/git-status.png" />
 
-      <h2>5. Your first commit</h2>
+      <p>As this is a new git repo, all files in the kit will be listed as having changes.</p>
+
+      <div class="nhsuk-inset-text">
+        <p>It's a good idea to run <code class="app-code">git status</code> anytime you’re confused. Git will give you additional information depending on what’s currently going on to help you out.</p>
+      </div>
+
+      <h2>5. Doing your first commit</h2>
 
       <img class="app-img-guide" alt="Screenshot of git commit" src="/images/git-commit.png" />
 
