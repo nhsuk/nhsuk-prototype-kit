@@ -25,11 +25,11 @@
         <p>Git is not the same as GitHub. Git stores versions of your work, and lets you collaborate more easily with others. GitHub puts it all online with a friendly web interface.</p>
       </div>
 
-      <h2>1. Install Git</h2>
+      <h2 id="install-git">1. Install Git</h2>
 
       <p>The first thing you need to do is <a href="https://git-scm.com/downloads">install Git</a>.</p>
 
-      <h2>2. Set a username and password</h2>
+      <h2 id="git-user-password">2. Set a username and password</h2>
 
       <p>Once Git is installed, you should set your user name and email address.</p>
 
@@ -41,7 +41,7 @@
         <p>If you have a <a href="https://github.com/">GitHub</a> account, use the same email address for both.</p>
       </div>
 
-      <h2>3. Initialise a Git repo</h2>
+      <h2 id="instialise-git">3. Initialise a Git repo</h2>
 
       <p>The first time you use Git on your prototype, you need to initialise it. </p>
 
@@ -53,7 +53,7 @@
       
       <p>Initialising the repo creates a hidden <code class="app-code">.git</code> folder in your project and is where it stores the internal tracking data .</p>
 
-      <h2>4. Check Git status</h2>
+      <h2 id="check-git-status">4. Check Git status</h2>
 
       <p>You can view the current status of your project with the command:</p>
 
@@ -63,17 +63,17 @@
 
       <img class="app-img-guide" alt="Screenshot of git status" src="/images/git-status.png" />
 
-      <p>As this is a new git repo, all files in the kit will be listed as having changes.</p>
+      <p>As this is a new git repo, all files in the kit will be listed as having changed.</p>
 
       <div class="nhsuk-inset-text">
         <p>It's a good idea to run <code class="app-code">git status</code> anytime you’re confused. Git will give you additional information depending on what’s currently going on to help you out.</p>
       </div>
 
-      <h2>5. Doing your first commit</h2>
+      <h2 id="first-git-commit">5. Doing your first commit</h2>
 
-      <p>There are two stages to committing your changes. The first is to select the specific files with changes you want to commit, called <strong>‘staging’</strong>. The second is to commit all the changes in ‘staging’.</p>
+      <p>There are two stages of committing your changes. The first is to select the specific files with changes you want to commit, called <strong>‘staging’</strong>. The second is to commit all the changes in ‘staging’.</p>
 
-      <p>Enter in the terminal:</p>
+      <p>Add all files that have changes by running:</p>
 
       <pre class="app-pre"><code class="app-code">git add .</code></pre>
 
@@ -89,17 +89,24 @@
 
       <pre class="app-pre"><code class="app-code">git commit -m "First commit"</code></pre>
 
-      <img class="app-img-guide" alt="Screenshot of git commit" src="/images/git-commit.png" />
-
       <p>The message you put in the speech marks should be descriptive of the changes you are committing. This will help in the future if you or someone else needs to look back at your changes and know why you made them.</p>
 
-      <p>More information on <a href="https://github.com/erlang/otp/wiki/writing-good-commit-messages">writing good commit messages</a> is on GitHub.</p>
+      <p>Github has more information on <a href="https://github.com/erlang/otp/wiki/writing-good-commit-messages">writing good commit messages</a>.</p>
 
-      <h2>6. Check Git status again</h2>
+      <h2 id="check-git-status-again">6. Check Git status again</h2>
+
+      <p>Run <code class="app-code">git status</code> again, and it should say <code class="app-code">Nothing to commit</code> - all the changes you selected have been saved.</p>
 
       <img class="app-img-guide" alt="Screenshot of git status after committing files" src="/images/git-status-clean.png" />
 
-      <h2>7. Learning Git</h2>
+      <h2 id="learning-git">7. Learning Git</h2>
+
+      <p>You can learn more about Git at:</p>
+
+      <ul>
+        <li><a href="https://try.github.io/levels/1/challenges/1">GitHub tutorial on git</a></li>
+        <li><a href="http://think-like-a-git.net/">Advanced git tutorial</a></li>
+      </ul>
 
       {% include "tutorials/includes/back-button.html" %}
 
