@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  NHS.UK prototype kit - Nunjucks
+  Using Nunjucks macros - NHS.UK prototype kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,7 +19,7 @@
 
       <p>A <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> macro is a simple template that generates more complex HTML.</p>
 
-      <p>Each component has a Nunjucks macro. The code for each Nunjucks macro can be found on the <a href="https://beta.nhs.uk/service-manual">NHS digital service manual</a>.</p>
+      <p>Each component has a Nunjucks macro. You can find the code for each Nunjucks macro on the <a href="https://beta.nhs.uk/service-manual">NHS digital service manual</a>.</p>
 
       <p>Once you have the code, paste it on your page.</p>
 
@@ -27,9 +27,13 @@
 
       <pre class="app-pre"><code class="app-code">[Promo Nunjucks macro code goes here]</code></pre>
 
-      <p>and the outputted HTML is:</p>
+      <p>The outputted HTML is:</p>
 
       <pre class="app-pre"><code class="app-code">[Promo HTML code goes here]</code></pre>
+
+      <div class="nhsuk-inset-text">
+        <p>You don't need to include the first line that starts with <code class="app-code">{ % from ....</code> from the code example. The prototype kit already imports all the macros in the <code class="app-code">app/views/layout.html</code> file.</p>
+      </div>
 
       {% include "tutorials/includes/back-button.html" %}
 
