@@ -17,7 +17,7 @@
         Setting up Git
       </h1>
 
-      <p>Git is a type of version control software that tracks changes in code. For example, when you edit a file, git can help you determine exactly what changed, who changed it, and why.</p>
+      <p>Git is a type of version control software that tracks changes in your code. For example, when you edit a file, git can help you determine exactly what changed, who changed it, and why.</p>
 
       <p>It’s a useful tool for collaborating with other people and lets you undo mistakes or identify bugs.</p>
 
@@ -71,7 +71,29 @@
 
       <h2>5. Doing your first commit</h2>
 
+      <p>There are two stages to committing your changes. The first is to select the specific files with changes you want to commit, called <strong>‘staging’</strong>. The second is to commit all the changes in ‘staging’.</p>
+
+      <p>Enter in the terminal:</p>
+
+      <pre class="app-pre"><code class="app-code">git add .</code></pre>
+
+      <h3>Check Git status</h3>
+
+      <p>Run <code class="app-code">git status</code> to check the files you’ve got in the stage. You will see a list of all the files just added under the heading <code class="app-code">Changes to be committed</code>.</p>
+
+      <img class="app-img-guide" alt="Screenshot of git status with added files" src="/images/git-status-added.png" />
+
+      <h3>Commit the files in ‘staging’</h3>
+
+      <p>Enter in the terminal:</p>
+
+      <pre class="app-pre"><code class="app-code">git commit -m "First commit"</code></pre>
+
       <img class="app-img-guide" alt="Screenshot of git commit" src="/images/git-commit.png" />
+
+      <p>The message you put in the speech marks should be descriptive of the changes you are committing. This will help in the future if you or someone else needs to look back at your changes and know why you made them.</p>
+
+      <p>More information on <a href="https://github.com/erlang/otp/wiki/writing-good-commit-messages">writing good commit messages</a> is on GitHub.</p>
 
       <h2>6. Check Git status again</h2>
 
