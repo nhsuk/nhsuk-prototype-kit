@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  Publishing to the web (Heroku)
+  Publishing on the web (Heroku)
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,14 +14,16 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1>
-        Publishing to the web (Heroku)
+        Publishing on the web (Heroku)
       </h1>
 
-      <p><a href="">Heroku</a> allows you to get your prototype online quickly. Enabling you to share your prototype with others and view it on different devices.</p>
+      <p><a href="https://www.heroku.com">Heroku</a> allows you to get your prototype online quickly. You can then share your prototype with others and test it with users and on different devices.</p>
 
       <div class="nhsuk-inset-text">
-        <p>DO NOT enter real user data into prototypes hosted on Heroku. If your prototype stores or collects user data, talk to a security professional about appropriate security steps you must take.</p>
+        <p><strong>DO NOT</strong> enter real user data into prototypes hosted on Heroku. If your prototype stores or collects user data, talk to a security professional about appropriate security steps you must take.</p>
       </div>
+
+      <p>A prototype deployed on Heroku is called an app.</p>
 
       <h2>1. Setup Git</h2>
 
@@ -55,7 +57,7 @@
 
       <h2>6. Create your app</h2>
 
-      <p>To create you app, enter in the terminal:</p>
+      <p>To create your app, enter in the terminal:</p>
 
       <pre class="app-pre"><code class="app-code">heroku apps:create [name of your app] --region eu</code></pre>
 

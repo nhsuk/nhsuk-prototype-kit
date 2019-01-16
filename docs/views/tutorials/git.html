@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  NHS.UK prototype kit - Git
+  Setting up Git
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,17 +17,59 @@
         Setting up Git
       </h1>
 
+            <p>Git helps track changes in code and lets you undo mistakes or identify bugs. It’s also used to collaborate with other people - so you can share your code with other designers and developers on your team (or with other teams!). Git is a type of version control software.</p>
+
+      <div class="nhsuk-inset-text">
+        <p>Git is not the same as GitHub. Git stores versions of your work, and lets you collaborate more easily with others. GitHub puts it all online with a nice web interface.</p>
+      </div>
+
       <h2>1. Install Git</h2>
+
+      <p>The first thing you need to do is <a href="https://git-scm.com/downloads">install Git</a>.</p>
 
       <h2>2. Set a username and password</h2>
 
-      <h2>3. Set initialise repo</h2>
+      <p>Once Git is installed, you should set your user name and email address.</p>
+
+      <pre class="app-pre"><code class="app-code">git config --global user.name "YOUR NAME"<br>git config --global user.email "YOUR EMAIL ADDRESS"</code></pre>
+
+      <p>For example, <code class="app-code">git config --global user.name "Kevin Francis"</code></p>
+
+      <div class="nhsuk-inset-text">
+        <p>If you have a <a href="https://github.com/">GitHub</a> account, use the same email address for both.</p>
+      </div>
+
+      <h2>3. Initialise a Git repo</h2>
+
+      <p>The first time you want to use Git on your prototype, you need to initialise it.</p>
+
+      <p>In your prototype folder, enter in the terminal:</p>
+
+      <pre class="app-pre"><code class="app-code">git init</code></pre>
+
+      <img class="app-img-guide" alt="Screenshot of git init" src="/images/git-init.png" />
+      
+      <p>This sets up git to track the files in your prototype folder.</p>
 
       <h2>4. Check Git status</h2>
 
+      <p>It’s a good idea to run <code class="app-code">git status</code></pre> frequently. This tells you the current status - for example, if you made changes to files that haven’t been committed.</p>
+
+      <p>In your prototype folder:</p>
+
+      <pre class="app-pre"><code class="app-code">git status</code></pre>
+      
+      <p>As this is a new git repo, all files in the kit will be listed as having changes.</p>
+
+      <img class="app-img-guide" alt="Screenshot of git status" src="/images/git-status.png" />
+
       <h2>5. Your first commit</h2>
 
+      <img class="app-img-guide" alt="Screenshot of git commit" src="/images/git-commit.png" />
+
       <h2>6. Check Git status again</h2>
+
+      <img class="app-img-guide" alt="Screenshot of git status after committing files" src="/images/git-status-clean.png" />
 
       <h2>7. Learning Git</h2>
 
