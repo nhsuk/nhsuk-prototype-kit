@@ -1,11 +1,11 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  Using Nunjucks macros - NHS.UK prototype kit
+  How to use Nunjucks macros - NHS.UK prototype kit
 {% endblock %}
 
 {% block beforeContent %}
-  {% include "tutorials/includes/breadcrumb.html" %}
+  {% include "how-tos/includes/breadcrumb.html" %}
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1>
-        Using Nunjucks macros
+        How to use Nunjucks macros
       </h1>
 
       <p>A <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> macro is a simple template that generates more complex HTML.</p>
@@ -35,7 +35,7 @@
         <p>You don't need to include the first line that starts with <code class="app-code">{ % from ....</code> from the code example. The prototype kit already imports all the macros in the <code class="app-code">app/views/layout.html</code> file.</p>
       </div>
 
-      {% include "tutorials/includes/back-button.html" %}
+      {% include "how-tos/includes/back-button.html" %}
 
     </div>
 
