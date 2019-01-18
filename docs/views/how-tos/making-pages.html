@@ -1,11 +1,11 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  Making pages - NHS.UK prototype kit
+  How to make pages - NHS.UK prototype kit
 {% endblock %}
 
 {% block beforeContent %}
-  {% include "tutorials/includes/breadcrumb.html" %}
+  {% include "how-tos/includes/breadcrumb.html" %}
 {% endblock %}
 
 {% block content %}
@@ -14,7 +14,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1>
-        Making pages
+        How to make pages
       </h1>
 
       <p>Create all your HTML pages in the <code class="app-code">app/views</code> folder.</p>
@@ -25,13 +25,19 @@
 
       <img class="app-img-guide" alt="Screenshot of creating a new page" src="/images/page-example.png" />
 
-      <p>Adding your pages into folders also works.</p>
+      <h3>Using folders</h3>
+
+      <p>The kit allows you add pages into folders.</p>
       
       <p>For example, you can make the page <code class="app-code">views/medicines/ibuprofen.html</code>, and then view the page by going to <code class="app-code">localhost:3000/medicines/ibuprofen</code>.</p>
 
       <img class="app-img-guide" alt="Screenshot of creating a folder for new pages" src="/images/folder-example.png" />
 
-      {% include "tutorials/includes/back-button.html" %}
+      <h2>Page templates</h2>
+
+      <p>Copy and paste <a href="/docs/templates">ready made page templates</a> into your project.</p>
+
+      {% include "how-tos/includes/back-button.html" %}
 
     </div>
 

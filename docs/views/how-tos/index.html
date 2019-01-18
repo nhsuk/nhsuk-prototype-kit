@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  How to guides - NHS.UK prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    href: "/docs",
+    text: "Home"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>How to guides</h1>
+
+      <p class="nhsuk-body-l">These guides will show you how to use the prototype kit, from creating a simple page to building complex user journeys.</p>
+
+      <h2>Learn the basics</h2>
+
+      <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2"><a href="/docs/how-tos/making-pages">How to make pages</a></h3>
+
+      <p>Learn where to create pages in your prototype.</p>
+
+      <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2"><a href="/docs/how-tos/nunjucks">How to use Nunjucks macros</a></h3>
+
+      <p>Use simple component templates that generate more complex HTML.</p>
+
+      <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2"><a href="/docs/how-tos/writing-css">How to add custom CSS</a></h3>
+
+      <p>Learn where to add CSS, if you have the need to do so.</p>
+
+      <h2>Create journeys with data</h2>
+
+      <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2"><a href="/docs/how-tos/passing-data-page">How to pass data page to page</a></h3>
+
+      <p>Display data a user has entered over a few screens.</p>
+
+      <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2"><a href="/docs/examples/branching">How to do branching</a></h3>
+
+      <p>Show a different page based on user input.</p>
+
+      <h2>Share your prototype</h2>
+
+      <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2"><a href="/docs/how-tos/git">How to setup Git</a></h3>
+
+      <p>Track changes in your code and be able to undo mistakes and identify bugs.</p>
+
+      <h3 class="nhsuk-heading-s nhsuk-u-margin-bottom-2"><a href="/docs/how-tos/heroku">How to publish to Heroku</a></h3>
+
+      <p>Quickly host your prototype online with Heroku.</p>
+
+      {{ backLink({
+        "href": "/docs",
+        "text": "Back to Home",
+        "classes": "nhsuk-u-margin-top-7"
+      }) }}
+
+    </div>
+
+  </div>
+{% endblock %}

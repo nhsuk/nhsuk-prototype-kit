@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Page templates - NHS.UK prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    href: "/docs",
+    text: "Home"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>Page templates</h1>
+
+      <p class="nhsuk-u-reading-width">You can find them in your prototype folder, in <code class="app-code">docs/views/templates</code></p>
+
+      <p class="nhsuk-u-reading-width">Copy and paste the pages you need to your <code class="app-code">app/views</code> folder to make your prototypes.</p>
+
+      <h3>Content pages</h3>
+
+      <ul>
+        <li><a href="/docs/templates/blank-nhsuk">Blank</a></li>
+        <li><a href="/docs/templates/content">Content page</a></li>
+        <li><a href="/docs/templates/mini-hub">Mini hub</a></li>
+      </ul>
+
+      <h3>Transactional journeys</h3>
+
+      <ul>
+        <li><a href="/docs/templates/start">Start page</a></li>
+        <li><a href="/docs/templates/question">Question page</a></li>
+        <li><a href="/docs/templates/check-your-answers">Check your answers</a></li>
+        <li><a href="/docs/templates/confirmation">Confirmation</a></li>
+      </ul>
+
+      {{ backLink({
+        "href": "/docs",
+        "text": "Back to Home",
+        "classes": "nhsuk-u-margin-top-7"
+      }) }}
+
+    </div>
+
+  </div>
+{% endblock %}
