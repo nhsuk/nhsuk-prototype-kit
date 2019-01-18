@@ -1,7 +1,7 @@
 {% extends 'layout-nhsuk.html' %}
 
 {% block pageTitle %}
-  Hub mini template - Page two
+  Mini hub - Page two
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,7 +12,7 @@
         text: "Home"
       }
     ],
-    href: "docs/templates/hub-mini/page-1",
+    href: "docs/templates/mini-hub",
     text: "Page one"
   }) }}
 {% endblock %}
@@ -31,16 +31,16 @@
       {{ contentsList({
         items: [
           {
-            href: "/docs/templates/hub-mini/page-1",
+            href: "/docs/templates/mini-hub",
             text: "Page one"
           },
           {
-            href: "/docs/templates/hub-mini/page-2",
+            href: "/docs/templates/mini-hub/page-2",
             text: "Page two",
             current: "true"
           },
           {
-            href: "/docs/templates/hub-mini/page-3",
+            href: "/docs/templates/mini-hub/page-3",
             text: "Page three"
           }
         ]
@@ -50,9 +50,9 @@
       <p>[Visit the <a href="https://beta.nhs.uk/service-manual/">NHS digital service manual</a> for guidance and examples.]</p>
 
       {{ pagination({
-        "previousUrl": "/docs/templates/hub-mini/page-1",
+        "previousUrl": "/docs/templates/mini-hub",
         "previousPage": "Page one",
-        "nextUrl": "/docs/templates/hub-mini/page-3",
+        "nextUrl": "/docs/templates/mini-hub/page-3",
         "nextPage": "Page two"
       }) }}
 
