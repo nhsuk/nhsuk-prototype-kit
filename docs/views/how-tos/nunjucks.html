@@ -17,47 +17,32 @@
         How to use Nunjucks macros
       </h1>
 
-      <p class="nhsuk-body-l">A <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> macro allows you to define a chunk of re-usable code, that generates more complex HTML.</p>
+      <p class="nhsuk-body-l">A Nunjucks macro is a simple template that generates more complex HTML.</p>
 
-      <h2>Macro templates</h2>
+      <p>Nunjucks macros save you time by managing repetitive or error-prone tasks, like linking form labels to their controls.</p>
 
-      <p>Each component has a macro template. We import each template from the NHS.UK frontend into the <code class="app-code">app/views/layout.html</code> file. Making them available for all pages.</p>
+      <h2>Adding a macro to a page</h2>
 
-      <h3>Template example</h3>
+      <p>You add a macro to a page by pasting the Nunjucks macro code snippet onto it.</p>
       
-      <p>The action link component template looks like:</p>
-
-      <pre class="app-pre"><code class="app-code">[Template example goes here]</code></pre>
-
-      <h2 class="nhsuk-u-margin-top-5">Adding a macro to a page</h2>
-
-      <p>To add a macro, you need to paste in the components Nunjucks code snippet.</p>
-      
-      <p>For the action link component, you would paste in:</p>
+      <p>For example, to add the action link macro to a page, you would paste:</p>
 
       <pre class="app-pre"><code class="app-code">[Code snippet example goes here]</code></pre>
 
-      <p>You can find all the Nunjucks code snippets on the <a href="https://beta.nhs.uk/service-manual">NHS digital service manual</a>. The <a href="https://github.com/nhsuk/nhsuk-frontend/tree/master/packages/components">NHS.UK frontend GitHub repo</a> also has them in each components <code class="app-code">README.md</code> file.</p>
+      <p>The Nunjucks macro code snippet for each component is on the <a href="https://beta.nhs.uk/service-manual">NHS digital service manual</a>.</p>
+      
+      <p>You can also find them on the <a href="https://github.com/nhsuk/nhsuk-frontend/tree/master/packages/components">NHS.UK frontend GitHub repo</a>, in each components <code class="app-code">README.md</code> file.</p>
 
       <div class="nhsuk-inset-text">
-        <p>When using Nunjucks macros in the prototype kit leave out the first line that starts with <code class="app-code">{ % from ....</code> because they are already in the <code class="app-code">app/views/layout.html</code> file.</p>
+        <p>When using Nunjucks macros in the prototype kit, leave out the first line that starts with <code class="app-code">{ % from ....</code> because it is already in the <code class="app-code">app/views/layout.html</code> file.</p>
       </div>
-
-      <h3>Generated HTML</h3>
-
-      <p>When you run the kit, the macro gets generated into the HTML:</p>
-
-      <pre class="app-pre"><code class="app-code">[HTML code goes here]</code></pre>
-
-      <h2 class="nhsuk-u-margin-top-6">The benefits of using macros</h2>
-
-      <p>The whole idea of a macro is to have separate data and markup. If we need to make a change to the HTML, we can change it in the macro, and it gets changed everywhere that uses that macro.</p>
 
       <h2>Further reading</h2>
 
       <ul>
         <li><a href="https://www.smashingmagazine.com/2018/03/static-site-with-nunjucks/">Building A Static Site With Components Using Nunjucks</a></li>
         <li><a href="https://css-tricks.com/killer-features-of-nunjucks/">Four Killer Features of Nunjucks</a></li>
+        <li><a href="https://mozilla.github.io/nunjucks/templating.html#macro">Mozilla Nunjucks macro documentation</a></li>
       </ul>
 
       {% include "how-tos/includes/back-button.html" %}
