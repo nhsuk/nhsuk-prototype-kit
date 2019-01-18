@@ -17,23 +17,46 @@
         How to use Nunjucks macros
       </h1>
 
-      <p>A <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> macro is a simple template that generates more complex HTML.</p>
+      <p class="nhsuk-body-l">A <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> macro is a simple template that generates more complex HTML.</p>
 
-      <p>Each component has a Nunjucks macro. You can find the code for each Nunjucks macro on the <a href="https://beta.nhs.uk/service-manual">NHS digital service manual</a>.</p>
+      <h2>Nunjucks macro example</h2>
 
-      <p>Once you have the code, paste it on your page.</p>
+      <h3>Macro templates</h3>
 
-      <p>For example, the promo component macro looks like:</p>
+      <p>All our macro templates live in the NHS.UK frontend. The kit imports all the templates into the <code class="app-code">app/views/layout.html</code> file so you don't have to.</p>
+      
+      <p>For example, the action link component macro template looks like:</p>
 
-      <pre class="app-pre"><code class="app-code">[Promo Nunjucks macro code goes here]</code></pre>
+      <pre class="app-pre"><code class="app-code">[Macro mark-up goes here]</code></pre>
 
-      <p>The outputted HTML is:</p>
+      <h3 class="nhsuk-u-margin-top-5">Adding a macro to a page</h3>
 
-      <pre class="app-pre"><code class="app-code">[Promo HTML code goes here]</code></pre>
+      <p>To add a macro, you need to call it to the page like so:</p>
+
+      <pre class="app-pre"><code class="app-code">[Macro call goes here]</code></pre>
+
+      <p></p>
+
+      <p>This code can be found on the <a href="https://beta.nhs.uk/service-manual">NHS digital service manual</a>. Copy and paste the code onto your page and add in your data.</p>
 
       <div class="nhsuk-inset-text">
-        <p>You don't need to include the first line that starts with <code class="app-code">{ % from ....</code> from the code example. The prototype kit already imports all the macros in the <code class="app-code">app/views/layout.html</code> file.</p>
+        <p>When copying the code snippet; you don't need to include the first line that starts with <code class="app-code">{ % from ....</code>. These are already included in the <code class="app-code">app/views/layout.html</code> file.</p>
       </div>
+
+      <p>When you run the kit, the macro gets outputs into HTML:</p>
+
+      <pre class="app-pre"><code class="app-code">[HTML code goes here]</code></pre>
+
+      <h2 class="nhsuk-u-margin-top-6">The benefits of using macros</h2>
+
+      <p>The whole idea of a macro is to have separate data and markup. If we need to make a change to the HTML, we can change it in the macro and it gets changed everywhere that uses that macro.</p>
+
+      <h2>Further reading</h2>
+
+      <ul>
+        <li><a href="https://www.smashingmagazine.com/2018/03/static-site-with-nunjucks/">Building A Static Site With Components Using Nunjucks</a></li>
+        <li><a href="https://css-tricks.com/killer-features-of-nunjucks/">Four Killer Features of Nunjucks</a></li>
+      </ul>
 
       {% include "how-tos/includes/back-button.html" %}
 
