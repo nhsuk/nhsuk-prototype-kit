@@ -1,10 +1,9 @@
 // NHS.UK frontend library
 @import 'node_modules/nhsuk-frontend/packages/nhsuk';
 
-// Overrides auto reload div background colour
-#hc_extension_bkgnd {
-  background-color: $color_nhsuk-grey-4 !important;
-}
+// ==========================================================================
+// FRONTEND STYLE ADJUSTMENTS
+// ==========================================================================
 
 // Body background white
 .nhsuk-body-white {
@@ -16,7 +15,25 @@
   background-color: $color_nhsuk-grey-5;
 }
 
-// Button adjustment
+// Header adjustment
+//
+// Fix for service header with a short name
+.nhsuk-header__link--service-short-name {
+  -ms-flex-align: center;
+  align-items: center;
+  display: flex;
+  margin-bottom: 0;
+}
+
+.nhsuk-header__service-name {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 0;
+}
+
+// Button
+//
+// Tweaked button spacing
 .nhsuk-button {
   margin-top: nhsuk-spacing(2);
 
@@ -25,7 +42,9 @@
   }
 }
 
-// Footer adjustments
+// Footer
+//
+// A modifier to have the footer links in 3 columns
 @include mq($from: desktop) {
   .nhsuk-footer__list--three-columns{
     -webkit-column-count: 3;
@@ -38,7 +57,6 @@
 }
 
 // Panel - confirmation
-
 .nhsuk-panel--confirmation {
   background-color: shade($color_nhsuk-aqua-green, 19%);
   color: $color_nhsuk-white;
@@ -66,7 +84,16 @@
   }
 }
 
-// Code styling
+// ==========================================================================
+// PROTOTYPE SPECIFIC STYLES
+// ==========================================================================
+
+// Overrides auto reload div background colour
+#hc_extension_bkgnd {
+  background-color: $color_nhsuk-grey-4 !important;
+}
+
+// <pre> and <code> tag styles
 .app-pre {
   @include nhsuk-responsive-margin(4, "bottom");
 
@@ -93,8 +120,7 @@ p .app-code {
   border: 1px solid $color_nhsuk-grey-4;
 }
 
-// Installation guide images
-
+// Installation guide screenshots
 .app-img-guide {
   width: 100%;
 }
