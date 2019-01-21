@@ -16,7 +16,7 @@ router.get('/examples/passing-data', function (req, res) {
 router.post('/examples/branching/answer', function (req, res) {
   let nhsNumber = req.body.nhsNumber;
 
-  if (nhsNumber === 'yes') {
+  if (nhsNumber === 'Yes') {
     res.redirect('/docs/examples/branching/answer-yes')
   } else {
     res.redirect('/docs/examples/branching/answer-no')
