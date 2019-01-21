@@ -1,7 +1,7 @@
-{% extends 'layout-transactional.html' %}
+{% extends 'layout.html' %}
 
 {% block pageTitle %}
-  Register with a GP - Check your answers
+  Example - Passing data page to page - Check your answers
 {% endblock %}
 
 {% block content %}
@@ -12,124 +12,18 @@
         Check your answers before sending your application
       </h1>
 
-      <!-- only add a heading for a list if there is more than one list -->
-      <h2>
-        Personal details
-      </h2>
-
-      <!-- use additional modifier class to change column widths for multiple groups of questions and answers: -->
-      <!--   * `app-check-your-answers--short` for short questions -->
-      <!--   * `app-check-your-answers__questions-long` for long questions -->
-      <!--   * none for single group of q&a -->
       <dl class="app-check-your-answers app-check-your-answers--short">
-
-        <div class="app-check-your-answers__contents">
-          <dt class="app-check-your-answers__question">
-            NHS number
-          </dt>
-          <dd class="app-check-your-answers__answer">
-            <span data-name="nhs-number"></span>
-          </dd>
-          <dd class="app-check-your-answers__change">
-            <a href="/docs/examples/passing-data-page-to-page/page-3">
-              Change<span class="nhsuk-u-visually-hidden"> NHS number</span>
-            </a>
-          </dd>
-        </div>
 
         <div class="app-check-your-answers__contents">
           <dt class="app-check-your-answers__question">
             Name
           </dt>
           <dd class="app-check-your-answers__answer">
-            <span data-name="first-name"></span> <span data-name="middle-name"></span> <span data-name="last-name"></span>
+            <span data-name="first-name"></span> <span data-name="last-name"></span>
           </dd>
           <dd class="app-check-your-answers__change">
-            <a href="/docs/examples/passing-data-page-to-page/page-4">
+            <a href="/docs/examples/passing-data-page-to-page/name">
               Change<span class="nhsuk-u-visually-hidden"> name</span>
-            </a>
-          </dd>
-        </div>
-
-        <div class="app-check-your-answers__contents">
-          <dt class="app-check-your-answers__question">
-            Date of birth
-          </dt>
-          <dd class="app-check-your-answers__answer">
-            <span data-name="dob-day"></span>/<span data-name="dob-month"></span>/<span data-name="dob-year-error"></span>
-          </dd>
-          <dd class="app-check-your-answers__change">
-            <a href="/docs/examples/passing-data-page-to-page/page-5">
-              Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
-            </a>
-          </dd>
-        </div>
-
-        <div class="app-check-your-answers__contents">
-          <dt class="app-check-your-answers__question">
-            Home address
-          </dt>
-          <dd class="app-check-your-answers__answer">
-            <span data-name="address-line-1"></span><br>
-            <span data-name="address-line-2"></span><br>
-            <span data-name="address-town"></span><br>
-            <span data-name="address-county"></span><br>
-            <span data-name="address-postcode"></span>
-          </dd>
-          <dd class="app-check-your-answers__change">
-            <a href="/docs/examples/passing-data-page-to-page/page-6">
-              Change<span class="nhsuk-u-visually-hidden"> home address</span>
-            </a>
-          </dd>
-        </div>
-
-        <div class="app-check-your-answers__contents">
-          <dt class="app-check-your-answers__question">
-            Landline
-          </dt>
-          <dd class="app-check-your-answers__answer">
-            <span data-name="landline"></span
-          </dd>
-          <dd class="app-check-your-answers__change">
-            <a href="/docs/examples/passing-data-page-to-page/page-8">
-              Change<span class="nhsuk-u-visually-hidden"> landline number</span>
-            </a>
-          </dd>
-        </div>
-
-        <div class="app-check-your-answers__contents">
-          <dt class="app-check-your-answers__question">
-            Mobile
-          </dt>
-          <dd class="app-check-your-answers__answer">
-            <span data-name="mobile"></span>
-          </dd>
-          <dd class="app-check-your-answers__change">
-            <a href="/docs/examples/passing-data-page-to-page/page-8">
-              Change<span class="nhsuk-u-visually-hidden"> mobile number</span>
-            </a>
-          </dd>
-        </div>
-
-      </dl>
-
-      <h2>
-        Medical details
-      </h2>
-
-      <dl class="app-check-your-answers app-check-your-answers--short">
-
-        <div class="app-check-your-answers__contents">
-          <dt class="app-check-your-answers__question">
-            Allergies
-          </dt>
-          <dd class="app-check-your-answers__answer">
-            <span data-name="allergies"></span>
-            <span data-name="allergies" data-show-if=":empty">No allergies</span>
-          </dd>
-          <dd class="app-check-your-answers__change">
-            <a href="/docs/examples/passing-data-page-to-page/page-9">
-              Change<span class="nhsuk-u-visually-hidden"> allergies</span>
             </a>
           </dd>
         </div>
@@ -140,19 +34,10 @@
           </dt>
           <dd class="app-check-your-answers__answer">
             <span data-name="Asthma" data-show-if="1">Asthma <br></span>
-            <span data-name="Cancer" data-show-if="1">Cancer <br></span>
-            <span data-name="Lung disease (like emphysema or bronchitis)" data-show-if="1">Lung disease (like emphysema or bronchitis) <br></span>
             <span data-name="Diabetes" data-show-if="1">Diabetes <br></span>
-            <span data-name="Disabilities, including physical and learning disabilities" data-show-if="1">Disabilities, including physical and learning disabilities <br></span>
-            <span data-name="Epilepsy" data-show-if="1">Epilepsy <br></span>
-            <span data-name="Heart Disease" data-show-if="1">Heart Disease <br></span>
-            <span data-name="High blood pressure" data-show-if="1">High blood pressure <br></span>
-            <span data-name="Mental health issues, such as depression" data-show-if="1">Mental health issues, such as depression <br></span>
-            <span data-name="Stroke or mini stroke" data-show-if="1">Stroke or mini stroke <br></span>
-            <span data-name="Thyroid problems" data-show-if="1">Thyroid problems <br></span>
           </dd>
           <dd class="app-check-your-answers__change">
-            <a href="/docs/examples/passing-data-page-to-page/page-10">
+            <a href="/docs/examples/passing-data-page-to-page/conditions">
               Change<span class="nhsuk-u-visually-hidden"> conditions</span>
             </a>
           </dd>
@@ -161,10 +46,12 @@
       </dl>
 
       <h2>Now send you application</h2>
+
       <p>By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
       <p>Your details with be sent to Rose Medical Practice to begin your registration.</p>
 
-      <a href="/docs/examples/passing-data-page-to-page/confirmation" class="nhsuk-button">Accept and send registration</a>
+      <a href="#" class="nhsuk-button">Accept and send registration</a>
 
     </div>
   </div>

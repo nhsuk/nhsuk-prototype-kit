@@ -1,5 +1,11 @@
 {% extends "layout.html" %}
 
+{% set mainClasses = 'nhsuk-main-wrapper--s' %}
+
+{% block pageTitle %}
+  Example - Branching
+{% endblock %}
+
 {% block beforeContent %}
   {{ breadcrumb({
     items: [
@@ -9,7 +15,7 @@
       }
     ],
     href: "/docs/how-tos",
-    text: "how-tos"
+    text: "How to guides"
   }) }}
 {% endblock %}
 
@@ -18,20 +24,12 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
 
-      <h1>How to do branching</h1>
-
-      <p>You can show a user different pages, depending on how they've answered a question.
-
-      <p>The code for this example is in your prototype folder:</p>
-
-      <pre class="app-pre"><code class="app-code">/docs/documentation_routes.js<br>/docs/views/examples/branching</code></pre>
-
       <form action="/docs/examples/branching/answer" method="post">
 
         {% call fieldset({
           legend: {
             text: "Do you know your NHS number?",
-            classes: "nhsuk-fieldset__legend--m",
+            classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
@@ -61,8 +59,7 @@
 
       {{ backLink({
         "href": "/docs/how-tos",
-        "text": "Back to How to guides",
-        "classes": "nhsuk-u-margin-top-7"
+        "text": "Back to How to guides"
       }) }}
 
     </div>
