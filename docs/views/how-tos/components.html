@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  How to use components - NHS.UK prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "how-tos/includes/breadcrumb.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        How to use components
+      </h1>
+
+      <p class="nhsuk-body-l">Components are reusable parts of the user interface, like buttons, text inputs and checkboxes.</p>
+      
+      <p>The prototype kit has 2 ways to use components. You can either use HTML or a Nunjucks macro.</p>
+
+      <p>You can copy the HTML or Nunjucks code from each of the components page on the <a href="beta.nhs.uk/service-manual">NHS.UK digital service manual</a>.</p>
+
+      <h2>Using Nunjucks macros</h2>
+
+      <p>A Nunjucks macro is a simple template that generates more complex HTML.</p>
+
+      <p>Nunjucks macros save you time by managing repetitive or error-prone tasks, like linking form labels to their controls.</p>
+
+      <p>When using Nunjucks macros in the prototype kit, leave out the first line that starts with <code class="app-code">{ % from ....</code> because it is already in the <code class="app-code">app/views/layout.html</code> file.</p>
+
+      <h3>Further reading about Nunjucks</h3>
+
+      <ul>
+        <li><a href="https://www.smashingmagazine.com/2018/03/static-site-with-nunjucks/">Building A Static Site With Components Using Nunjucks</a></li>
+        <li><a href="https://css-tricks.com/killer-features-of-nunjucks/">Four Killer Features of Nunjucks</a></li>
+        <li><a href="https://mozilla.github.io/nunjucks/templating.html#macro">Mozilla Nunjucks macro documentation</a></li>
+      </ul>
+
+      {% include "how-tos/includes/back-button.html" %}
+
+    </div>
+
+  </div>
+{% endblock %}

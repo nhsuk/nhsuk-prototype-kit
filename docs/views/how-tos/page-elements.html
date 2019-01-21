@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  How to add custom CSS - NHS.UK prototype kit
+  How to style page elements - NHS.UK prototype kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,18 +14,24 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1>
-        How to add custom CSS
+        How to style page elements
       </h1>
 
-      <p>The prototype kit uses SCSS syntax of <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#syntax">Sass</a> to write CSS.</p>
+      <p class="nhsuk-body-l">The prototype kit provides lots of CSS classes for styling page elements, so you should not need to write as much of your own Sass or CSS.</p>
+
+      <p>You can change things like the font size or the spacing between elements using the utility classes.</p>
+      
+      <p>Explore the <a href="https://beta.nhs.uk/service-manual/look-and-feel/">styles, components and patterns</a> section of the NHS.UK digital service manual to see what classes are available and how to apply them.</p>
 
       <h2>Sass</h2>
+
+      <p>The prototype kit uses SCSS syntax of <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#syntax">Sass</a> to write CSS.</p>
 
       <p>Sass is an extension of CSS that gives a load of extra features useful in producing CSS for the mass of different devices and browsers.</p>
 
       <p>You can paste CSS into it without breaking it which is useful for prototyping.</p>
 
-      <h2>Writing code</h2>
+      <h2>Adding your own Sass or CSS</h2>
 
       <p>You write your Sass in <code class="app-code">app/assets/sass</code>, and it gets compiled into the CSS used in your page (found in <code class="app-code">/public/css</code>).</p>
 
