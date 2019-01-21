@@ -17,6 +17,30 @@
         How to pass data page to page
       </h1>
 
+      <p class="nhsuk-body-l">You may want to use or display data a user has entered over a few screens.</p>
+
+      <p>The prototype kit includes a simple way of saving data entered in forms, as well as displaying the saved data.</p>
+      
+      <p>Data is stored locally on the computer running the prototype and disappears at the end of the session, when the browser window is closed.</p>
+
+      <p><a href="/docs/examples/passing-data-page-to-page/name">You can see an example here</a></p>
+
+      <p>The code for the example can be found in:</p>
+
+      <pre class="app-pre"><code class="app-code">/docs/views/examples/passing-data-page-to-page</code></pre>
+
+      <h2>How to use</h2>
+
+      <p>The kit stores data from inputs using the name attribute of the input.</p>
+
+      <p>For example, if you have this input:</p>
+
+      <pre class="language-markup app-pre"><code class="language-markup app-code"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>first-name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
+
+      <p>You can show what the user entered later on like this:</p>
+
+      <pre class="language-markup app-pre"><code class="language-markup app-code"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">data-name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>first-name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span></code></pre>
+
       {% include "how-tos/includes/back-button.html" %}
 
     </div>
