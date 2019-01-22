@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Example - passing data from page to page
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <form action="/docs/examples/pass-data/register-gp-step2" method="post" class="form">
+
+          <h1 class="nhsuk-fieldset__heading">
+            <label class="nhsuk-label" for="nhs-number">
+              Enter your NHS number
+            </label>
+          </h1>
+          <input class="nhsuk-input" id="nhs-number" name="nhs-number" value="{{ data['nhs-number'] }}" type="text">
+
+          <button class="nhsuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
