@@ -1,9 +1,9 @@
 <!-- This main layout -->
 
 <!-- Extends the layout from /docs/views/template.html -->
-{% extends "includes/template.html" %}
+{% extends "template.html" %}
 
-<!-- This is where we import the Nunjucks macros to the page -->
+<!-- This is how we import the Nunjucks macros to the page -->
 {% from 'action-link/macro.njk' import actionLink %}
 {% from 'nav-a-z/macro.njk' import azNav %}
 {% from 'breadcrumb/macro.njk' import breadcrumb %}
@@ -24,7 +24,6 @@
 {% from 'skip-link/macro.njk' import skipLink %}
 {% from 'tables/macro.njk' import table %}
 {% from 'warning-callout/macro.njk' import warningCallout %}
-
 {% from 'back-link/macro.njk' import backLink %}
 {% from 'button/macro.njk' import button %}
 {% from 'checkboxes/macro.njk' import checkboxes %}
