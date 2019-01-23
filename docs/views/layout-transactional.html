@@ -1,47 +1,47 @@
+<!-- This layout is setup for transactional pages -->
+
+<!-- Extends the layout from /app/views/layout.html -->
 {% extends "layout.html" %}
 
+<!-- Adds a custom class to the <main> wrapper -->
+<!-- nhsuk-main-wrapper--s reduces top and bottom padding of the page -->
 {% set mainClasses = 'nhsuk-main-wrapper--s' %}
 
+<!-- Set the page title inside this block -->
 {% block pageTitle %}
-  NHS.UK prototype kit - Transactional page layout
+  Transactional page layout
 {% endblock %}
 
+<!-- Header goes inside this block -->
+<!-- See the NHS digital service manual for code examples -->
 {% block header %}
-{{ header({
-  "transactionalService": {
-      "name": "Service name",
-      "href": "/"
-    },
-    "showNav": "false",
-    "showSearch": "false"
-  })
-}}
+  {{ header({
+    "transactionalService": {
+        "name": "Service name goes here",
+        "href": "/"
+      },
+      "showNav": "false",
+      "showSearch": "false"
+    })
+  }}
 {% endblock %}
 
+<!-- Breadcrumb goes inside this block -->
+<!-- See the NHS digital service manual for code examples -->
 {% block beforeContent %}
 {% endblock %}
 
+<!-- Footer goes inside this block -->
+<!-- See the NHS digital service manual for code examples -->
 {% block footer %}
   {{ footer({
     "links": [
       {
-        "URL": "https://www.nhs.uk/Pages/nhs-sites.aspx",
-        "label": "NHS sites"
-      },
-      {
-        "URL": "https://www.nhs.uk/about-us",
-        "label": "About us"
-      },
-      {
-        "URL": "https://www.nhs.uk/contact-us/",
+        "URL": "#",
         "label": "Contact us"
       },
       {
-        "URL": "https://www.nhs.uk/about-us/sitemap/",
-        "label": "Sitemap"
-      },
-      {
-        "URL": "https://www.nhs.uk/our-policies/",
+        "URL": "#",
         "label": "Our policies"
       }
     ]
