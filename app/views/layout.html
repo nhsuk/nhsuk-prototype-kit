@@ -1,5 +1,9 @@
+<!-- This main layout -->
+
+<!-- Extends the layout from /docs/views/template.html -->
 {% extends "includes/template.html" %}
 
+<!-- This is how we import the Nunjucks macros to the page -->
 {% from 'action-link/macro.njk' import actionLink %}
 {% from 'nav-a-z/macro.njk' import azNav %}
 {% from 'breadcrumb/macro.njk' import breadcrumb %}
@@ -34,16 +38,21 @@
 {% from 'select/macro.njk' import select %}
 {% from 'textarea/macro.njk' import textarea %}
 
+<!-- Set the page title inside this block -->
 {% block pageTitle %}
-  {{ serviceName }}
+  Prototype kit
 {% endblock %}
 
+<!-- Header goes inside this block -->
+<!-- See the NHS digital service manual for code examples -->
 {% block header %}
   {{ header({
     })
   }}
 {% endblock %}
 
+<!-- Footer goes inside this block -->
+<!-- See the NHS digital service manual for code examples -->
 {% block footer %}
   {{ footer({
   })}}
@@ -51,6 +60,7 @@
 
 {% block bodyEnd %}
   {% block scripts %}
+    <!-- Custom JavaScript files can be added to this file -->
     {% include "includes/scripts.html" %}
     {% block pageScripts %}{% endblock %}
   {% endblock %}

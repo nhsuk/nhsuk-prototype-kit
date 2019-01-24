@@ -1,14 +1,32 @@
+<!-- We recommend you keep this page and add your links to it -->
+
+<!-- Extends the layout from /app/views/layout.html -->
 {% extends 'layout.html' %}
 
+<!-- Set the page title inside this block -->
 {% block pageTitle %}
-  {{ serviceName }}
+  Prototype kit
+{% endblock %}
+
+<!-- Breadcrumb goes inside this block -->
+<!-- See the NHS digital service manual for code examples -->
+{% block beforeContent %}
 {% endblock %}
 
 {% block content %}
+  <!-- See the NHS digital service manual for examples of the grid -->
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1>{{ serviceName }}</h1>
+      
+      <h1>
+        <!-- Your page title goes here -->
+        NHS.UK prototype kit
+      </h1>
+
+      <!-- See the NHS digital service manual for examples styles, components and patterns -->
+
+      <!-- Content goes here -->
 
       <p>This kit lets you rapidly create HTML prototypes of NHS services.</p>
 
@@ -23,6 +41,8 @@
         <li><a href="https://nhsuk-service-manual.azurewebsites.net/styles-components-patterns"> NHS digital service manual</a>
         </li>
       </ul>
+
+      <!-- End of content -->
 
     </div>
   </div>
