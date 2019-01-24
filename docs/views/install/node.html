@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK prototype kit - Node
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/docs",
+        text: "Home"
+      }
+    ],
+    href: "/docs/install",
+    text: "Install"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        <span class="nhsuk-caption-l">Step 3 of 9</span>
+        Node.js version 8 LTS
+      </h1>
+      
+      <p class="nhsuk-body-l">Node.js is nothing scary, it's just some software needed to run the kit. Node.js is very easy to install.</p>
+      <p>The kit is designed to work with Node.js version 8 LTS. The kit works with any <code class="app-code">8.x.x</code> version or over.</p>
+
+      <h2>Check if you have Node</h2>
+
+      <p>In terminal (git bash in Windows):</p>
+
+      <pre class="app-pre"><code class="app-code">node --version</code></pre>
+
+      <p>If it says <code class="app-code">command not found</code> or <code class="app-code">Error 0x2 starting node.exe --version</code> you don’t have node and will need to download and install it.</p>
+
+      <p>If the version number starts with 8 you have the correct version installed.</p>
+
+      <p>If it says another number such as <code class="app-code">0.12</code> or <code class="app-code">5.x.x</code>, you need to download and install version 8.</p>
+
+      <h2>Download and install Node.js</h2>
+
+      <p><a href="https://nodejs.org/en/" target="_blank">Download and install Node.js version 8 (opens in new window)</a>.</p>
+
+      <p>Run the installer with all default options.</p>
+
+      <h2>Once Node is installed</h2>
+
+      <p>You’ll need to quit and restart the terminal to be able to use Node for the first time.</p>
+
+      <p>To check it is installed correctly you can again run:</p>
+
+      <pre class="app-pre"><code class="app-code">node --version</code></pre>
+
+      <p>If it’s installed correctly it should show a number starting with 8.</p>
+
+
+      {{ pagination({
+        "previousUrl": "/docs/install/terminal",
+        "previousPage": "Terminal",
+        "nextUrl": "/docs/install/text-editor",
+        "nextPage": "Text editor"
+      }) }}
+
+    </div>
+
+  </div>
+{% endblock %}

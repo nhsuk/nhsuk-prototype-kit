@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK prototype kit - Install
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/docs",
+        text: "Home"
+      }
+    ],
+    href: "/docs/install",
+    text: "Install"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        <span class="nhsuk-caption-l">Step 8 of 9</span>
+        Install kit
+      </h1>
+ 
+      <p class="nhsuk-body-l">Before you can run the kit, you need to download some extra code.</p>
+      
+      <p>You can get this by running:</p>
+
+      <pre class="app-pre"><code class="app-code">npm install</code></pre>
+      
+      <p>The install may take up to a minute. While installing it may <code class="app-code">WARN</code> about some items - this is ok. As long as there are no <code class="app-code">ERRORs</code> you can continue.</p>
+
+      {{ pagination({
+        "previousUrl": "/docs/install/open",
+        "previousPage": "Open your prototype",
+        "nextUrl": "/docs/install/run",
+        "nextPage": "Run the kit"
+      }) }}
+
+    </div>
+
+  </div>
+{% endblock %}

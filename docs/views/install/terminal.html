@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK prototype kit - Text editor
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/docs",
+        text: "Home"
+      }
+    ],
+    href: "/docs/install",
+    text: "Install"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        <span class="nhsuk-caption-l">Step 2 of 9</span>
+        Terminal
+      </h1>
+
+      <p class="nhsuk-body-l">You'll need a terminal application to install, start and stop the kit. Using a terminal is sometimes called ‘using the command line’.</p>
+
+      <h2>Terminal</h2>
+
+      <h3>Mac users</h3>
+
+      <p>Macs come with <code class="app-code">Terminal.app</code>. It’s located in the <code class="app-code">Utilities</code> folder in the <code class="app-code">Applications</code> folder. You can also find it using spotlight (magnifying glass icon in the top right) and typing 'terminal'.</p>
+
+      <h3>Windows users</h3>
+
+      <p>This guide will use <code class="app-code">Git Bash</code> as a terminal instead of the existing <code class="app-code">CMD</code> application. Git Bash is more fully featured and uses the same commands as Mac and Linux, so instructions in this guide work for all.</p>
+
+      <p>Installing <code class="app-code">git bash</code> installs two things for you: a terminal (for entering commands), and git (used later to share your work with others).</p>
+
+      <h4>Installing Git Bash</h4>
+
+      <p><a href="https://git-scm.com/download/win" target="_blank">Download Git bash (opens in new window)</a></p>
+
+      <p>Install with all default options.</p>
+
+      <h3>Entering the commands in the terminal</h3>
+
+      <p>Commands to be entered in to the terminal will be inset like this:</p>
+
+      <pre class="app-pre"><code class="app-code">command to be typed in to terminal</code></pre>
+
+      <p>Once you’ve typed the command, press enter to send it.</p>
+
+
+      {{ pagination({
+        "previousUrl": "/docs/install/requirements",
+        "previousPage": "Requirements",
+        "nextUrl": "/docs/install/node",
+        "nextPage": "Install Node.js"
+      }) }}
+
+    </div>
+
+  </div>
+{% endblock %}

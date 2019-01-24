@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK prototype kit - Install
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/docs",
+        text: "Home"
+      }
+    ],
+    href: "/docs/install",
+    text: "Install"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        <span class="nhsuk-caption-l">Step 7 of 9</span>
+        Navigate to your prototype
+      </h1>
+
+      <p>You need to navigate to your prototype in the terminal. Most commands for the kit need to be run in the prototype folder.</p>
+
+
+      {{ pagination({
+        "previousUrl": "/docs/install/where-to-keep",
+        "previousPage": "Where to keep your prototypes",
+        "nextUrl": "/docs/install/npm",
+        "nextPage": "Install kit"
+      }) }}
+
+    </div>
+
+  </div>
+{% endblock %}
