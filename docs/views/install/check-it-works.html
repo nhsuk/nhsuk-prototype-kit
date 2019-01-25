@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  NHS.UK prototype kit - Check it works
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/docs",
+        text: "Home"
+      }
+    ],
+    href: "/docs/install",
+    text: "Install"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        <span class="nhsuk-caption-l">Step 11 of 10</span>
+        Check it works
+      </h1>
+      
+      <h2>Check it works</h2>
+      
+      <p>In your web browser, visit <a href="http://localhost:3000" target="_blank">http://localhost:3000 <span class="nhsuk-u-visually-hidden">opens in a new tab</span></a></p>
+
+      <p>You should see the prototype welcome page.</p>
+
+      <img class="app-img-guide nhsuk-u-margin-bottom-0" alt="Screenshot of the prototype kit welcome page" src="/images/prototype-kit-landing-page.png" />
+
+      <h2>Quitting the kit</h2>
+      
+      <p>It’s fine to leave the kit running for days or while your computer is asleep.</p>
+
+      <h3>To quit the kit</h3>
+
+      <p>In the terminal press the <code class="app-code">ctrl</code> and <code class="app-code">c</code> keys together.</p>
+
+      <h2>Installation complete</h2>
+
+      <p>The kit is now installed. Congratulations!</p>
+
+      <div class="nhsuk-panel">
+
+        <h2>Get started</h2>
+
+        <p><a href="/docs/how-tos/making-pages">Start making pages</a></p>
+
+      </div>
+
+      {% block pagination %}
+      {% endblock %}
+
+    </div>
+
+  </div>
+{% endblock %}

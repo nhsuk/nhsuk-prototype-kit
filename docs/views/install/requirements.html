@@ -31,24 +31,16 @@
 
       <ul>
         <li>Node.js (LTS version, 8 or higher)</li>
-        <li>Atom (text editor)</li>
+        <li>HTML text editor (such as Atom, VS Code etc)</li>
         {% block branchingContent %}
         {% endblock %}
       </ul>
 
       <p>This guide will show you how to install this software.</p>
 
-      <div class="nhsuk-inset-text">
-        <p>You'll usually need admin access to your machine to install the software. If you do not have admin access, ask your IT team to install the software for you.</p>
-      </div>
+      <p>You'll usually need admin access to your machine to install the software. If you do not have admin access, ask your IT team to install the software for you.</p>
 
       {% block pagination %}
-      {{ pagination({
-        "previousUrl": "/docs/install/simple",
-        "previousPage": "Simple install overview",
-        "nextUrl": "/docs/install/terminal",
-        "nextPage": "Terminal"
-      }) }}
       {% endblock %}
 
     </div>

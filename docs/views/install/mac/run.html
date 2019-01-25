@@ -1,22 +1,20 @@
 {% extends "install/run.html" %}
 
 {% block branchingContent %}
-  <p>Macs come with <code class="app-code">Terminal.app</code>. It’s located in the <code class="app-code">Utilities</code> folder in the <code class="app-code">Applications</code> folder.
 
-  <p>You can also find it using spotlight (magnifying glass icon in the top right) and typing 'terminal'.</p>
+  <p class="nhsuk-body-l">You’ll use the terminal to start and stop the kit.</p>
 
-  <h2>Entering the commands in the terminal</h2>
+  <p>Start your local server by entering in the terminal:</p>
 
-  <p>Commands to be entered in to the terminal will be inset like this:</p>
-
-  <pre class="app-pre"><code class="app-code">command to be typed in to terminal</code></pre>
-
-  <p>Once you’ve typed the command, press enter to send it.</p>
 {% endblock %}
 
 {% block pagination %}
-{{ pagination({
-  "previousUrl": "/docs/install/mac/npm",
-  "previousPage": "Install kit"
-}) }}
+
+  {{ pagination({
+    "previousUrl": "/docs/install/mac/npm",
+    "previousPage": "Install kit",
+    "nextUrl": "/docs/install/mac/check-it-works",
+    "nextPage": "Check it works"
+  }) }}
+
 {% endblock %}

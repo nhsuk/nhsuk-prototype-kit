@@ -24,7 +24,7 @@
 
       <h1>
         <span class="nhsuk-caption-l">Step 2 of 10</span>
-        Terminal
+        {% block branchingHeader %}Terminal{% endblock %}
       </h1>
 
       <p class="nhsuk-body-l">You'll need a terminal application to install, start and stop the kit. Using a terminal is sometimes called ‘using the command line’.</p>
@@ -33,10 +33,6 @@
       {% endblock %}
 
       {% block pagination %}
-      {{ pagination({
-        "previousUrl": "/docs/install/requirements",
-        "previousPage": "Requirements"
-      }) }}
       {% endblock %}
 
     </div>

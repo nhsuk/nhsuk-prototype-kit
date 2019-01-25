@@ -29,19 +29,16 @@
  
       <p class="nhsuk-body-l">Before you can run the kit, you need to download some extra code.</p>
       
-      <p>You can get this by running:</p>
+      {% block branchingContent %}
+      {% endblock %}
 
       <pre class="app-pre"><code class="app-code">npm install</code></pre>
       
-      <p>The install may take up to a minute. While installing it may <code class="app-code">WARN</code> about some items - this is ok. As long as there are no <code class="app-code">ERRORs</code> you can continue.</p>
+      <p>The install may take up to a minute.</p>
+      
+      <p>While installing it may <code class="app-code">WARN</code> about some items - this is ok. As long as there are no <code class="app-code">ERRORs</code> you can continue.</p>
 
       {% block pagination %}
-      {{ pagination({
-        "previousUrl": "/docs/install/open",
-        "previousPage": "Open your prototype",
-        "nextUrl": "/docs/install/run",
-        "nextPage": "Run the kit"
-      }) }}
       {% endblock %}
 
     </div>

@@ -24,27 +24,31 @@
 
       <h1>
         <span class="nhsuk-caption-l">Step 4 of 10</span>
-        Node.js version 8 LTS
+        Node.js
       </h1>
       
-      <p class="nhsuk-body-l">Node.js is nothing scary, it's just some software needed to run the kit. Node.js is very easy to install.</p>
-      <p>The kit is designed to work with Node.js version 8 LTS. The kit works with any <code class="app-code">8.x.x</code> version or over.</p>
+      <p class="nhsuk-body-l">Node.js is nothing scary, it's just some software needed that runs in the background. Node.js is very easy to install.</p>
+      <p>The kit is designed to work with Node.js version LTS (Long Term Support) 8 or higher .</p>
 
       <h2>Check if you have Node</h2>
 
-      <p>In terminal (git bash in Windows):</p>
+      {% block branchingContent %}
+      {% endblock %}
 
       <pre class="app-pre"><code class="app-code">node --version</code></pre>
 
+      {% block branchingImage %}
+      {% endblock %}
+
       <p>If it says <code class="app-code">command not found</code> or <code class="app-code">Error 0x2 starting node.exe --version</code> you don’t have node and will need to download and install it.</p>
 
-      <p>If the version number starts with 8 you have the correct version installed.</p>
+      <p>If the version number starts with an 8 or higher, you have the correct version installed.</p>
 
-      <p>If it says another number such as <code class="app-code">0.12</code> or <code class="app-code">5.x.x</code>, you need to download and install version 8.</p>
+      <p>If it says another number such as <code class="app-code">0.12</code> or <code class="app-code">5.x.x</code>, you need to download and install version 8 or higher.</p>
 
       <h2>Download and install Node.js</h2>
 
-      <p><a href="https://nodejs.org/en/" target="_blank">Download and install Node.js version 8 (opens in new window)</a>.</p>
+      <p><a href="https://nodejs.org/en/" target="_blank">Download and install Node.js (opens in new window)</a>.</p>
 
       <p>Run the installer with all default options.</p>
 
@@ -56,15 +60,12 @@
 
       <pre class="app-pre"><code class="app-code">node --version</code></pre>
 
-      <p>If it’s installed correctly it should show a number starting with 8.</p>
+      {% block branchingImageTwo %}
+      {% endblock %}
+
+      <p>If it’s installed correctly it should show a number starting with an 8 or higher.</p>
 
       {% block pagination %}
-      {{ pagination({
-        "previousUrl": "/docs/install/terminal",
-        "previousPage": "Terminal",
-        "nextUrl": "/docs/install/text-editor",
-        "nextPage": "Text editor"
-      }) }}
       {% endblock %}
 
     </div>

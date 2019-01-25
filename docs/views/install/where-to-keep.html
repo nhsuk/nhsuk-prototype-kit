@@ -23,7 +23,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1>
-        <span class="nhsuk-caption-l">Step 6 of 10</span>
+        <span class="nhsuk-caption-l">Step 7 of 10</span>
         Decide where to keep your prototypes
       </h1>
 
@@ -32,13 +32,15 @@
       {% block branchingContent %}
       {% endblock %}
 
+      <h2>Unzip the kit and move it</h2>
+
+      <p>Unzip the kit you downloaded - you should end up with a folder called <code class="app-code">nhsuk-prototype-kit-master</code>.</p>
+
+      <p>Rename the folder to something descriptive for your prototype. For this guide, we’ll use <code class="app-code">find-a-pharmacy</code>.</p>
+
+      <p>Move the folder into your projects folder.</p>
+
       {% block pagination %}
-        {{ pagination({
-          "previousUrl": "/docs/install/download",
-          "previousPage": "Download the kit",
-          "nextUrl": "/docs/install/open",
-          "nextPage": "Open your prototype"
-        }) }}
       {% endblock %}
 
     </div>

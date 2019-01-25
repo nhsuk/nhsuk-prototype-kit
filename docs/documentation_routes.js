@@ -24,7 +24,7 @@ router.post('/examples/branching/answer', function (req, res) {
 });
 
 // Mac or Windows install
-router.post('/docs/install/mac', function (req, res) {
+router.post('/install/mac', function (req, res) {
   let machine = req.body.machine;
 
   if (machine === 'Mac') {

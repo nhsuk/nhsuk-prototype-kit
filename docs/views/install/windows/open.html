@@ -1,0 +1,37 @@
+{% extends "install/open.html" %}
+
+{% block branchingContent %}
+
+  <h2>Git bash basics</h2>
+
+  <p>Git bash lets you type in commands and run programs on your computer.</p>
+  
+  <p>You can also use it to browse your file system - to open folders, etc.</p>
+
+  <p>Learning a few basic git bash commands can make using the kit much easier.</p>
+
+  <ul>
+    <li><a href="http://mac.appstorm.net/how-to/utilities-how-to/how-to-use-terminal-the-basics/">Tutorial on using terminal (mac)</a></li>
+    <li><a href="https://openhatch.org/missions/windows-setup/open-git-bash-prompt">Tutorial on using git bash (windows)</a></li>
+  </ul>
+
+  <h2>Go to your prototype</h2>
+
+  <p>You need to navigate to your prototype in the git bash. Most commands for the kit need to be run in the prototype folder.</p>
+
+  <pre class="app-pre"><code class="app-code">cd ~/Documents/projects/juggling-licence-prototype</code></pre>
+
+  <p><strong>Please note:</strong> Make sure your project has the same name and is in the same folder as in <a href="/docs/install/windows/where-to-keep">step 7</a>.</p>
+
+{% endblock %}
+
+{% block pagination %}
+
+  {{ pagination({
+    "previousUrl": "/docs/install/mac/where-to-keep",
+    "previousPage": "Where to keep your prototypes",
+    "nextUrl": "/docs/install/mac/npm",
+    "nextPage": "Install kit"
+  }) }}
+  
+{% endblock %}

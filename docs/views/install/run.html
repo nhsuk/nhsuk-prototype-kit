@@ -27,59 +27,16 @@
         Run the kit
       </h1>
 
-      <p class="nhsuk-body-l">You’ll use the terminal to start and stop the kit.</p>
-
-      <h2>Running the kit</h2>
-      
-      <p>Start your local server by entering in the terminal:</p>
+      {% block branchingContent %}
+      {% endblock %}
 
       <pre class="app-pre"><code class="app-code">npm run watch</code></pre>
 
       <p>After the kit has started, you should see a message telling you that the kit is running:</p>
 
-      <pre class="app-pre"><code class="app-code">App running at http://localhost:3000</code></pre>
-      
-      <h2>Check it works</h2>
-      
-      <p>In your web browser, visit <a href="http://localhost:3000" target="_blank">http://localhost:3000 <span class="nhsuk-u-visually-hidden">opens in a new tab</span></a></p>
-
-      <p>You should see the prototype welcome page.</p>
-
-      <img class="app-img-guide nhsuk-u-margin-bottom-0" alt="Screenshot of the prototype kit welcome page" src="/images/prototype-kit-landing-page.png" />
-
-      <h2>Quitting the kit</h2>
-      
-      <p>It’s fine to leave the kit running for days or while your computer is asleep.</p>
-
-      <h3>To quit the kit</h3>
-
-      <p>In the terminal press the <code class="app-code">ctrl</code> and <code class="app-code">c</code> keys together.</p>
-
-      <h2>Installation complete</h2>
-
-      <p>The kit is now installed. Congratulations!</p>
-
-      <div class="nhsuk-panel">
-
-        <h2>How to guides</h2>
-
-        <p>These guides will show you how to use the prototype kit, from creating a simple page to building complex user journeys.</p>
-
-        <ul>
-          <li><a href="/docs/how-tos/making-pages">How to make pages</a></li>
-          <li><a href="/docs/how-tos/page-elements">How to style page elements</a></li>
-          <li><a href="/docs/how-tos/components">How to use components</a></li>
-        </ul>
-
-        <p><a href="/docs/how-tos">See all how to guides</a></p>
-
-      </div>
+      <pre class="app-pre"><code class="app-code">-----------------------------------<br>Local: http://localhost:3000<br>External: http://172.17.241.10:3000<br>-----------------------------------<br>[Browsersync] Watching files...<br>[15:45:12] Finished 'startBrowserSync' after 167 ms</code></pre>
 
       {% block pagination %}
-      {{ pagination({
-        "previousUrl": "/docs/install/npm",
-        "previousPage": "Install kit"
-      }) }}
       {% endblock %}
 
     </div>
