@@ -26,7 +26,7 @@
 
         {% call fieldset({
           legend: {
-            text: "Are you installing on Mac or Windows?",
+            text: "Are you installing on a Mac or a Windows machine?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
@@ -54,6 +54,11 @@
         }) }}
 
       </form>
+
+      {{ backLink({
+        "href": "/docs/install",
+        "text": "Back to Install guide"
+      }) }}
 
     </div>
 
