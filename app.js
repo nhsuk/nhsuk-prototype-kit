@@ -200,10 +200,19 @@ if (useDocumentation || onlyDocumentation == 'true') {
     path.join(__dirname, 'node_modules/nhsuk-frontend/packages/components')
   ]
 
-  nunjucks.configure(docViews, {
+  var nunjucksAppEnv = nunjucks.configure(docViews, {
     autoescape: true,
     express: documentationApp
   });
+
+  // Add Nunjucks filters
+  utils.addNunjucksFilters(nunjucksAppEnv)
+
+  // Automatically store all data users enter
+  if (useAutoStoreData === 'true') {
+    documentationApp.use(utils.autoStoreData)
+    utils.addCheckedFunction(nunjucksAppEnv)
+  }
 
   // Support for parsing data in POSTs
   documentationApp.use(bodyParser.json());
@@ -220,6 +229,25 @@ if (useDocumentation || onlyDocumentation == 'true') {
   })
 
 }
+
+// Redirect all POSTs to GETs - this allows users to use POST for autoStoreData
+app.post(/^\/([^.]+)$/, function (req, res) {
+  res.redirect('/' + req.params[0])
+})
+
+// Catch 404 and forward to error handler
+app.use(function (req, res, next) {
+  var err = new Error(`Page not found: ${req.path}`)
+  err.status = 404
+  next(err)
+})
+
+// Display error
+app.use(function (err, req, res, next) {
+  console.error(err.message)
+  res.status(err.status || 500)
+  res.send(err.message)
+})
 
 // Run the application
 app.listen(port);
