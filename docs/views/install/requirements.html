@@ -23,31 +23,33 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1>
-        <span class="nhsuk-caption-l">Step 1 of 9</span>
+        <span class="nhsuk-caption-l">Step 1 of 10</span>
         Requirements
       </h1>
 
       <h2>Software you need</h2>
 
       <ul>
-        <li>Node.js 8.x.x</li>
+        <li>Node.js (LTS version, 8 or higher)</li>
         <li>Atom (text editor)</li>
-        <li>Command line tools (Mac)</lI>
-        <li>Git bash (Windows)</li>
+        {% block branchingContent %}
+        {% endblock %}
       </ul>
 
-      <p>You'll usually need admin access to your machine to install the software. If you do not have admin access, ask your IT team to install the software for you.</p>
+      <p>This guide will show you how to install this software.</p>
 
       <div class="nhsuk-inset-text">
-        <p>If you already have the software installed, then you might prefer the <a href="/docs/install/advanced">advanced install guide</a>.</p>
+        <p>You'll usually need admin access to your machine to install the software. If you do not have admin access, ask your IT team to install the software for you.</p>
       </div>
 
+      {% block pagination %}
       {{ pagination({
         "previousUrl": "/docs/install/simple",
         "previousPage": "Simple install overview",
         "nextUrl": "/docs/install/terminal",
         "nextPage": "Terminal"
       }) }}
+      {% endblock %}
 
     </div>
 

@@ -23,7 +23,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1>
-        <span class="nhsuk-caption-l">Step 3 of 9</span>
+        <span class="nhsuk-caption-l">Step 4 of 10</span>
         Node.js version 8 LTS
       </h1>
       
@@ -58,13 +58,14 @@
 
       <p>If it’s installed correctly it should show a number starting with 8.</p>
 
-
+      {% block pagination %}
       {{ pagination({
         "previousUrl": "/docs/install/terminal",
         "previousPage": "Terminal",
         "nextUrl": "/docs/install/text-editor",
         "nextPage": "Text editor"
       }) }}
+      {% endblock %}
 
     </div>
 

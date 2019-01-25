@@ -23,7 +23,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1>
-        <span class="nhsuk-caption-l">Step 8 of 9</span>
+        <span class="nhsuk-caption-l">Step 9 of 10</span>
         Install kit
       </h1>
  
@@ -35,12 +35,14 @@
       
       <p>The install may take up to a minute. While installing it may <code class="app-code">WARN</code> about some items - this is ok. As long as there are no <code class="app-code">ERRORs</code> you can continue.</p>
 
+      {% block pagination %}
       {{ pagination({
         "previousUrl": "/docs/install/open",
         "previousPage": "Open your prototype",
         "nextUrl": "/docs/install/run",
         "nextPage": "Run the kit"
       }) }}
+      {% endblock %}
 
     </div>
 

@@ -23,7 +23,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1>
-        <span class="nhsuk-caption-l">Step 9 of 9</span>
+        <span class="nhsuk-caption-l">Step 10 of 10</span>
         Run the kit
       </h1>
 
@@ -75,10 +75,12 @@
 
       </div>
 
+      {% block pagination %}
       {{ pagination({
         "previousUrl": "/docs/install/npm",
         "previousPage": "Install kit"
       }) }}
+      {% endblock %}
 
     </div>
 

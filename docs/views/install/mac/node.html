@@ -1,0 +1,10 @@
+{% extends "install/node.html" %}
+
+{% block pagination %}
+{{ pagination({
+  "previousUrl": "/docs/install/mac/terminal",
+  "previousPage": "Terminal",
+  "nextUrl": "/docs/install/mac/text-editor",
+  "nextPage": "Text editor"
+}) }}
+{% endblock %}

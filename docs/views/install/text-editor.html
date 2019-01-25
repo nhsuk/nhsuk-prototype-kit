@@ -23,7 +23,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1>
-        <span class="nhsuk-caption-l">Step 4 of 9</span>
+        <span class="nhsuk-caption-l">Step 5 of 10</span>
         Atom (Text editor)
       </h1>
 
@@ -33,13 +33,14 @@
 
       <p><a href="https://atom.io/" target="_blank">Download Atom (opens in new window)</a></p>
 
-
+      {% block pagination %}
       {{ pagination({
         "previousUrl": "/docs/install/node",
         "previousPage": "Install Node.js",
         "nextUrl": "/docs/install/download",
         "nextPage": "Download the kit"
       }) }}
+      {% endblock %}
 
     </div>
 

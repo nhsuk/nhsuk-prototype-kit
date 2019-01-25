@@ -1,0 +1,26 @@
+{% extends "install/where-to-keep.html" %}
+
+{% block branchingContent %}
+
+  <p>Create a folder called projects in your Documents folder.</p>
+
+  <h2>Unzip the kit and move it</h2>
+
+  <p>Unzip the kit you downloaded - you should end up with a folder called <code class="app-code">nhsuk-prototype-kit-master</code>.</p>
+
+  <p>Rename the folder to something descriptive for your prototype. For this guide, we’ll use <code class="app-code">find-a-pharmacy</code>.</p>
+
+  <p>Move the folder into your projects folder.</p>
+
+{% endblock %}
+
+{% block pagination %}
+
+  {{ pagination({
+    "previousUrl": "/docs/install/windows/download",
+    "previousPage": "Download the kit",
+    "nextUrl": "/docs/install/windows/open",
+    "nextPage": "Open your prototype"
+  }) }}
+
+{% endblock %}

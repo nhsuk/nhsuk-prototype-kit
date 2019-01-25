@@ -23,7 +23,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1>
-        <span class="nhsuk-caption-l">Step 5 of 9</span>
+        <span class="nhsuk-caption-l">Step 6 of 10</span>
         Download the kit
       </h1>
 
@@ -31,12 +31,14 @@
     
       <p>You'll use a new copy of the kit for each new prototype you make. That way your prototypes don’t interfere with each other.</p>
 
+      {% block pagination %}
       {{ pagination({
         "previousUrl": "/docs/install/text-editor",
         "previousPage": "Text editor",
         "nextUrl": "/docs/install/where-to-keep",
         "nextPage": "Where to keep your prototypes"
       }) }}
+      {% endblock %}
 
     </div>
 

@@ -1,0 +1,10 @@
+{% extends "install/npm.html" %}
+
+{% block pagination %}
+{{ pagination({
+  "previousUrl": "/docs/install/mac/open",
+  "previousPage": "Open your prototype",
+  "nextUrl": "/docs/install/mac/run",
+  "nextPage": "Run the kit"
+}) }}
+{% endblock %}

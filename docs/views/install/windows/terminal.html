@@ -1,0 +1,35 @@
+{% extends "install/terminal.html" %}
+
+{% block branchingTitle %}
+{% endblock %}
+
+{% block branchingContent %}
+  <p>This guide will use <code class="app-code">Git Bash</code> as a terminal instead of the existing <code class="app-code">CMD</code> application.</p>
+        
+  <p>Git Bash is more fully featured and uses the same commands as Mac and Linux, so instructions in this guide work for all.</p>
+
+  <p>Installing <code class="app-code">git bash</code> installs two things for you: a terminal (for entering commands), and git (used later to share your work with others).</p>
+
+  <h3>Installing Git Bash</h3>
+
+  <p><a href="https://git-scm.com/download/win" target="_blank">Download Git bash (opens in new window)</a></p>
+
+  <p>Install with all default options.</p>
+
+  <h2>Entering the commands in the terminal</h2>
+
+  <p>Commands to be entered in to the terminal will be inset like this:</p>
+
+  <pre class="app-pre"><code class="app-code">command to be typed in to terminal</code></pre>
+
+  <p>Once you’ve typed the command, press enter to send it.</p>
+{% endblock %}
+
+{% block pagination %}
+  {{ pagination({
+    "previousUrl": "/docs/install/windows/requirements",
+    "previousPage": "Requirements",
+    "nextUrl": "/docs/install/windows/node",
+    "nextPage": "Install Node.js"
+  }) }}
+{% endblock %}
