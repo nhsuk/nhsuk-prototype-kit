@@ -1,14 +1,12 @@
 {% extends "install/check-it-works.html" %}
 
 {% block branchingContent %}
-  <p>In the terminal press the <code class="app-code">ctrl</code> and <code class="app-code">c</code> keys together.</p>
+  <p>In git bash press the <code class="app-code">ctrl</code> and <code class="app-code">c</code> keys together.</p>
 {% endblock %}
 
 {% block pagination %}
-
   {{ pagination({
-    "previousUrl": "/docs/install/mac/run",
+    "previousUrl": "/docs/install/windows/run",
     "previousPage": "Run the kit"
   }) }}
-
 {% endblock %}

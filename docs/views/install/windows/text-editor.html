@@ -1,1 +1,10 @@
+{% extends "install/text-editor.html" %}
 
+{% block pagination %}
+  {{ pagination({
+    "previousUrl": "/docs/install/windows/node",
+    "previousPage": "Install Node.js",
+    "nextUrl": "/docs/install/windows/download",
+    "nextPage": "Download the kit"
+  }) }}
+{% endblock %}

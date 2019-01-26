@@ -1,7 +1,6 @@
 {% extends "install/open.html" %}
 
 {% block branchingContent %}
-
   <h2>Terminal basics</h2>
 
   <p>The terminal lets you type in commands and run programs on your computer.</p>
@@ -23,16 +22,13 @@
   <pre class="app-pre"><code class="app-code">cd ~/projects/find-a-pharmacy</code></pre>
 
   <img class="app-img-guide nhsuk-u-margin-bottom-0" alt="Screenshot of navigating to project in terminal" src="/images/mac/terminal-cd.png" />
-
 {% endblock %}
 
 {% block pagination %}
-
   {{ pagination({
     "previousUrl": "/docs/install/mac/where-to-keep",
     "previousPage": "Where to keep your prototypes",
     "nextUrl": "/docs/install/mac/npm",
     "nextPage": "Install kit"
   }) }}
-
 {% endblock %}
