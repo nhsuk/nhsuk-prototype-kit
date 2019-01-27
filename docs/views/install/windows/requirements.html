@@ -1,0 +1,14 @@
+{% extends "install/requirements.html" %}
+
+{% block branchingContent %}
+  <li>Git bash</li>
+{% endblock %}
+
+{% block pagination %}
+  {{ pagination({
+    "previousUrl": "/docs/install/mac-or-windows",
+    "previousPage": "Mac or Windows",
+    "nextUrl": "/docs/install/windows/git-bash",
+    "nextPage": "Git bash"
+  }) }}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "install/where-to-keep.html" %}
+
+{% block branchingContent %}
+  <h2>Create a folder</h2>
+
+  <p>Create a folder called projects in your home folder.</p>
+
+  <p>You can open your home folder by opening a new finder window and selecting <code class="app-code">Go > Home</code> from the top menu.</p>
+
+  <img class="app-img-guide nhsuk-u-margin-bottom-0" alt="Screenshot of projects folder" src="/images/mac/projects-folder.png" />
+{% endblock %}
+
+{% block pagination %}
+  {{ pagination({
+    "previousUrl": "/docs/install/mac/download",
+    "previousPage": "Download the kit",
+    "nextUrl": "/docs/install/mac/open",
+    "nextPage": "Navigate to your prototype"
+  }) }}
+{% endblock %}

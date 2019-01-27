@@ -23,18 +23,20 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1>
-        <span class="nhsuk-caption-l">Step 10 of 11</span>
-        Run the kit
+        <span class="nhsuk-caption-l">Step 9 of 11</span>
+        Install kit
       </h1>
-
+ 
+      <p class="nhsuk-body-l">Before you can run the kit, you need to download some extra code.</p>
+      
       {% block branchingContent %}
       {% endblock %}
 
-      <pre class="app-pre"><code class="app-code">npm run watch</code></pre>
-
-      <p>After the kit has started, you should see a message telling you that the kit is running:</p>
-
-      <pre class="app-pre"><code class="app-code">-----------------------------------<br>Local: http://localhost:3000<br>External: http://172.17.241.10:3000<br>-----------------------------------<br>[Browsersync] Watching files...<br>[15:45:12] Finished 'startBrowserSync' after 167 ms</code></pre>
+      <pre class="app-pre"><code class="app-code">npm install</code></pre>
+      
+      <p>The install may take up to a minute.</p>
+      
+      <p>While installing it may <code class="app-code">WARN</code> about some items - this is ok. As long as there are no <code class="app-code">ERRORs</code> you can continue.</p>
 
       {% block branchingImage %}
       {% endblock %}

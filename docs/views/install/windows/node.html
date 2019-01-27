@@ -1,0 +1,24 @@
+{% extends "install/node.html" %}
+
+{% block branchingContent %}
+  <p>In git bash enter:</p>
+{% endblock %}
+
+{% block branchingTerminal %}
+  git bash
+{% endblock %}
+
+{% block branchingImage %}
+{% endblock %}
+
+{% block branchingImageTwo %}
+{% endblock %}
+
+{% block pagination %}
+  {{ pagination({
+    "previousUrl": "/docs/install/windows/git-bash",
+    "previousPage": "Git bash",
+    "nextUrl": "/docs/install/windows/text-editor",
+    "nextPage": "Text editor"
+  }) }}
+{% endblock %}

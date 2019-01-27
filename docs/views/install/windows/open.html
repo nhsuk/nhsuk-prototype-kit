@@ -1,0 +1,33 @@
+{% extends "install/open.html" %}
+
+{% block branchingContent %}
+  <h2>Git bash basics</h2>
+
+  <p>Git bash lets you type in commands and run programs on your computer.</p>
+  
+  <p>You can also use it to browse your file system - to open folders, etc.</p>
+
+  <h3>Learn git bash basics</h3>
+
+  <p>You do not need to do this now, but learning a few basic git bash commands can make using the kit much easier.</p>
+
+  <ul>
+    <li><a href="https://openhatch.org/missions/windows-setup/open-git-bash-prompt" target="_blank">Tutorial on using git bash (opens in new window)</a></li>
+  </ul>
+
+  <h2>Go to your prototype</h2>
+
+  <p>You need to navigate to your prototype in the git bash. Most commands for the kit need to be run in the prototype folder.</p>
+
+  <pre class="app-pre"><code class="app-code">cd ~/Documents/projects/find-a-pharmacy</code></pre>
+{% endblock %}
+
+{% block pagination %}
+  {{ pagination({
+    "previousUrl": "/docs/install/windows/where-to-keep",
+    "previousPage": "Where to keep your prototypes",
+    "nextUrl": "/docs/install/windows/npm",
+    "nextPage": "Install kit"
+  }) }}
+  
+{% endblock %}

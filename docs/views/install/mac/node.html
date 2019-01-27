@@ -1,0 +1,26 @@
+{% extends "install/node.html" %}
+
+{% block branchingContent %}
+  <p>In terminal enter:</p>
+{% endblock %}
+
+{% block branchingTerminal %}
+  the terminal
+{% endblock %}
+
+{% block branchingImage %}
+  <img class="app-img-guide nhsuk-u-margin-bottom-0" alt="Screenshot of checking Node version" src="/images/mac/terminal-node.png" />
+{% endblock %}
+
+{% block branchingImageTwo %}
+  <img class="app-img-guide nhsuk-u-margin-bottom-0" alt="Screenshot of displaying Node version 8" src="/images/mac/terminal-node-version.png" />
+{% endblock %}
+
+{% block pagination %}
+  {{ pagination({
+    "previousUrl": "/docs/install/mac/terminal",
+    "previousPage": "Terminal",
+    "nextUrl": "/docs/install/mac/text-editor",
+    "nextPage": "Text editor"
+  }) }}
+{% endblock %}

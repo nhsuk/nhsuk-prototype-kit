@@ -1,0 +1,34 @@
+{% extends "install/open.html" %}
+
+{% block branchingContent %}
+  <h2>Terminal basics</h2>
+
+  <p>The terminal lets you type in commands and run programs on your computer.</p>
+  
+  <p>You can also use it to browse your file system - to open folders, etc.</p>
+
+  <h3>Learn the terminal basics</h3>
+
+  <p>You do not need to do this now, but learning a few basic terminal commands can make using the kit much easier.</p>
+
+  <ul>
+    <li><a href="http://mac.appstorm.net/how-to/utilities-how-to/how-to-use-terminal-the-basics/" target="_blank">Tutorial on using terminal (opens in new window)</a></li>
+  </ul>
+
+  <h2>Go to your prototype</h2>
+
+  <p>You need to navigate to your prototype in the terminal. Most commands for the kit need to be run in the prototype folder.</p>
+
+  <pre class="app-pre"><code class="app-code">cd ~/projects/find-a-pharmacy</code></pre>
+
+  <img class="app-img-guide nhsuk-u-margin-bottom-0" alt="Screenshot of navigating to project in terminal" src="/images/mac/terminal-cd.png" />
+{% endblock %}
+
+{% block pagination %}
+  {{ pagination({
+    "previousUrl": "/docs/install/mac/where-to-keep",
+    "previousPage": "Where to keep your prototypes",
+    "nextUrl": "/docs/install/mac/npm",
+    "nextPage": "Install kit"
+  }) }}
+{% endblock %}

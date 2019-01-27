@@ -23,71 +23,25 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1>
+        <span class="nhsuk-caption-l">Step 1 of 11</span>
         Requirements
       </h1>
-
-      <p>To use the kit you’ll need node.js, a text editor, terminal and a web browser.</p>
 
       <h2>Software you need</h2>
 
       <ul>
-        <li>Text editor (we recommend Visual Studio Code)</li>
-        <li>Node.js 8.x.x</li>
+        <li>Node.js (LTS version, 8 or higher)</li>
+        <li>HTML text editor (such as Atom, VS Code etc)</li>
+        {% block branchingContent %}
+        {% endblock %}
       </ul>
 
-      <div class="nhsuk-inset-text">
-        <p>You'll usually need admin access to your machine to install the software. If you do not have admin access, ask your IT team to install the software for you.</p>
-      </div>
+      <p>This guide will show you how to install this software.</p>
 
-      <h2>Visual Studio Code (text editor and terminal)</h2>
+      <p><strong>Please note:</strong> You'll usually need admin access to your machine to install the software. If you do not have admin access, ask your IT team to install the software for you.</p>
 
-      <p>You need a text editor and terminal to edit and make changes to your prototype.</p>
-
-      <p>For a text editor we recommend using <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code<span class="nhsuk-u-visually-hidden"> opens in new window</span></a> - it's free and includes an integrated terminal.</p>
-
-      <div class="nhsuk-inset-text">
-        <p>You can use any text editor of choice, alongside a terminal application (<a href="https://macpaw.com/how-to/use-terminal-on-mac">Mac terminal</a> or <a href="https://git-scm.com/downloads">Git Bash</a> for Windows).</p>
-      </div>
-
-      <h3>Using the integrated terminal</h3>
-
-      <p>The terminal lets you type in commands and run programs on your computer.</p>
-
-      <p>To open Visual Studio Code's integrated terminal, go to <code class="app-code">View > Integrated Terminal</code>.</p>
-
-      <p>Once you type command in the terminal, press enter to send it.</p>
-
-      <h2>Node.js version 8 LTS</h2>
-
-      <p>The kit is designed to work with Node.js version 8 LTS. The kit works with any <code class="app-code">8.x.x</code> version.</p>
-
-      <h3>1. Install Node.js</h3>
-
-      <p><a href='https://nodejs.org/en/'>Download and install Node.js version 8</a>.</p>
-
-      <p>Run the installer with all default options.</p>
-
-      <h3>2. Once Node is installed</h3>
-
-      <p>You’ll need to quit and restart the terminal to be able to use Node for the first time.</p>
-
-      <p>To check it is installed correctly, you can enter in the terminal:</p>
-
-      <pre class="app-pre"><code class="app-code">node --version</code></pre>
-
-      <img class="app-img-guide" alt="Screenshot of checking node version" src="/images/check-node-version.png" />
-
-      <p>If it’s installed correctly, it should show a number starting with <code class="app-code">8</code>.</p>
-
-      <p>If it says another number such as <code class="app-code">0.12</code> or <code class="app-code">5.x.x</code>, you need to download and install version 8.</p>
-
-
-      {{ pagination({
-        "previousUrl": "/docs/install/simple",
-        "previousPage": "Simple install overview",
-        "nextUrl": "/docs/install/download",
-        "nextPage": "Install the kit"
-      }) }}
+      {% block pagination %}
+      {% endblock %}
 
     </div>
 

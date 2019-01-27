@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  NHS.UK prototype kit - Install
+  NHS.UK prototype kit - Terminal
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,13 +23,14 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1>
-        <span class="nhsuk-caption-l">Step 6 of 11</span>
-        Download the kit
+        <span class="nhsuk-caption-l">Step 2 of 11</span>
+        {% block branchingHeader %}Terminal{% endblock %}
       </h1>
 
-      <p class="nhsuk-body-l">The simplest way to get the kit is to <a href="https://github.com/nhsuk/nhsuk-prototype-kit/archive/master.zip" data-link="download">download it as a zip</a>.</p>
-    
-      <p>You'll use a new copy of the kit for each new prototype you make. That way your prototypes don’t interfere with each other.</p>
+      <p class="nhsuk-body-l">You'll need a terminal application to install, start and stop the kit. Using a terminal is sometimes called ‘using the command line’.</p>
+
+      {% block branchingContent %}
+      {% endblock %}
 
       {% block pagination %}
       {% endblock %}

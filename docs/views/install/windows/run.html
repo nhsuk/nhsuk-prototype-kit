@@ -1,0 +1,19 @@
+{% extends "install/run.html" %}
+
+{% block branchingContent %}
+  <p class="nhsuk-body-l">You’ll use git bash to start and stop the kit.</p>
+
+  <p>Start your local server by entering in git bash:</p>
+{% endblock %}
+
+{% block branchingImage %}
+{% endblock %}
+
+{% block pagination %}
+  {{ pagination({
+    "previousUrl": "/docs/install/windows/npm",
+    "previousPage": "Install kit",
+    "nextUrl": "/docs/install/windows/check-it-works",
+    "nextPage": "Check it works"
+  }) }}
+{% endblock %}
