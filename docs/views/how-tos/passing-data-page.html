@@ -13,21 +13,19 @@
 
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1>
-        How to pass data page to page
-      </h1>
+      <h1>How to pass data page to page</h1>
 
       <p class="nhsuk-body-l">You may want to use or display data a user has entered over a few screens.</p>
 
       <p>The prototype kit includes a simple way of saving data entered in forms, as well as displaying the saved data.</p>
-      
+
       <p>Data is stored locally on the computer running the prototype and disappears at the end of the session, when the browser window is closed.</p>
 
-      <p><a href="/docs/examples/passing-data-page-to-page/name">You can see an example here</a></p>
+      <p><a href="/docs/examples/passing-data/register-gp-step1">You can see an example here</a></p>
 
       <p>The code for the example can be found in:</p>
 
-      <pre class="app-pre"><code class="app-code">/docs/views/examples/passing-data-page-to-page</code></pre>
+      <p><pre class="app-pre"><code>/docs/views/examples/passing-data</code></pre></p>
 
       <h2>How to use</h2>
 
@@ -35,11 +33,25 @@
 
       <p>For example, if you have this input:</p>
 
-      <pre class="language-markup app-pre"><code class="language-markup app-code"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>first-name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
+      <p><pre class="app-pre"><code class="language-markup">&lt;input name="first-name"&gt;</code></pre></p>
 
       <p>You can show what the user entered later on like this:</p>
 
-      <pre class="language-markup app-pre"><code class="language-markup app-code"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">data-name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>first-name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span></code></pre>
+      <p><pre class="app-pre"><code class="language-markup">&lt;p&gt;&#123;&#123; data&#91;'first-name'&#93; &#125;&#125;&lt;/p&gt;</code></pre></p>
+
+      <h3>Showing answers in inputs</h3>
+      <p>If a user goes back to a page where they entered data, they would expect to see the answer they gave.</p>
+
+      <p>For a text input:</p>
+
+      <p><pre class="app-pre"><code class="language-markup">&lt;input name="first-name" value="&#123;&#123; data&#91;'first-name'&#93; &#125;&#125;"&gt;</code></pre></p>
+
+      <p>For a radio or checkbox input you need to use the 'checked' function:</p>
+
+      <p><pre class="app-pre"><code class="language-markup">&lt;input name="know-nhs-number" type="radio" value="Yes" &#123;&#123; checked("know-nhs-number", "Yes") &#125;&#125;&gt;</code></pre></p>
+
+      <h3>Clearing data</h3>
+      <p>To clear the data (for example at the end of a user research session) click the "Clear data" link in the footer.</p>
 
       {% include "how-tos/includes/back-button.html" %}
 
