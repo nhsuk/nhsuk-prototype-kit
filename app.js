@@ -47,20 +47,11 @@ app.locals.serviceName = config.serviceName
 var appViews = [
   path.join(__dirname, 'app/views/'),
   path.join(__dirname, 'node_modules/nhsuk-frontend/packages/components'),
-  path.join(__dirname, 'lib/')
+  path.join(__dirname, 'docs/views/')
 ]
-
-/*
-nunjucks.configure(appViews, {
-  autoescape: true,
-  express: app
-})
-*/
 
 var nunjucksConfig = {
   autoescape: true
-  //noCache: true
-  //express: app
 }
 
 nunjucksConfig.express = app
@@ -69,9 +60,6 @@ var nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig)
 
 // Add Nunjucks filters
 utils.addNunjucksFilters(nunjucksAppEnv)
-
-
-
 
 
 // Session uses service name to avoid clashes with other prototypes
@@ -104,13 +92,6 @@ if (useAutoStoreData === 'true') {
   app.use(utils.autoStoreData)
   utils.addCheckedFunction(nunjucksAppEnv)
 }
-
-
-// Clear all data in session if you open /prototype-admin/clear-data
-app.post('/prototype-admin/clear-data', function (req, res) {
-  req.session.data = {}
-  res.render('prototype-admin/clear-data-success')
-})
 
 
 // initial checks
@@ -229,6 +210,12 @@ if (useDocumentation || onlyDocumentation == 'true') {
   })
 
 }
+
+// Clear all data in session if you open /docs/examples/passing-data/clear-data
+app.post('/docs/examples/passing-data/clear-data', function (req, res) {
+  req.session.data = {}
+  res.render('examples/passing-data/clear-data-success')
+})
 
 // Redirect all POSTs to GETs - this allows users to use POST for autoStoreData
 app.post(/^\/([^.]+)$/, function (req, res) {

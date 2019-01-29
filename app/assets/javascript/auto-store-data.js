@@ -24,7 +24,4 @@ $('body').on('submit', 'form', function (e) {
 
   $(this).prepend($inputs)
 
-  console.log($inputs);
-
-
 })
