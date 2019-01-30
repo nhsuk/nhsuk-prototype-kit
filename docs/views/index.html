@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends 'layouts/layout.html' %}
 
 {% block beforeContent %}
   {{ hero({
@@ -28,9 +28,9 @@
         </div>
         <div class="nhsuk-grid-column-one-third nhsuk-promo-group__item">
           {{ promo({
-            "href": "/docs/templates",
+            "href": "templates",
             "heading": "Page templates",
-            "description": "Copy and paste ready made page templates into your project."
+            "description": "Copy and paste page templates into your project."
           }) }}
         </div>
       </div>

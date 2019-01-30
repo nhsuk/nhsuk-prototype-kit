@@ -1,0 +1,77 @@
+{% extends 'layouts/layout.html' %}
+
+{% block pageTitle %}
+  Example - passing data from page to page
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/docs",
+        text: "Home"
+      }
+    ],
+    href: "/docs/how-tos",
+    text: "How to guides"
+  }) }}
+{% endblock %}
+
+{% block main %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper nhsuk-main-wrapper--s" id="main-content" role="main">
+
+    {% block content %}
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+
+          <div class="nhsuk-panel nhsuk-panel--confirmation nhsuk-u-margin-top-0">
+            <h1 class="nhsuk-panel__title">
+                Application complete
+              </h1>
+              <div class="nhsuk-panel__body">
+                Your reference number
+                <br><strong>HDJ2123F</strong>
+              </div>
+          </div>
+
+          <div class="nhsuk-u-reading-width">
+            <h2>What happens next</h2>
+            <p>To complete registration, go to your medical practice with:</p>
+            <ol>
+              <li><strong>Photo ID</strong><br> Like a passport or driver's licence</li>
+              <li><strong>Proof of address</strong><br> A bill less than three months old (gas, electric or council tax)</li>
+              <li><strong>Your NHS number</strong><br> Find it on prescriptions or doctors / hospital letters</li>
+            </ol>
+          </div>
+
+        </div>
+      </div>
+    {% endblock %}
+
+  </main>
+</div>
+{% endblock %}
+
+{% block footer %}
+  {{ footer({
+    "links": [
+      {
+        "URL": "/docs",
+        "label": "Home"
+      },
+      {
+        "URL": "/docs/examples/passing-data/clear-data",
+        "label": "Clear data"
+      },
+      {
+        "URL": "/docs/about",
+        "label": "About and support"
+      },
+      {
+        "URL": "https://github.com/nhsuk/nhsuk-prototype-kit",
+        "label": "NHS.UK prototype kit - GitHub"
+      }
+    ]
+  })}}
+{% endblock %}

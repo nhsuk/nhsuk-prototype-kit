@@ -1,0 +1,99 @@
+<!-- This main layout -->
+
+<!-- Extends the layout from /docs/views/template.html -->
+{% extends "layouts/template.html" %}
+
+<!-- This is how we import the Nunjucks macros to the page -->
+{% from 'action-link/macro.njk' import actionLink %}
+{% from 'nav-a-z/macro.njk' import azNav %}
+{% from 'breadcrumb/macro.njk' import breadcrumb %}
+{% from 'care-card/macro.njk' import careCard %}
+{% from 'contents-list/macro.njk' import contentsList %}
+{% from 'details/macro.njk' import details %}
+{% from 'header/macro.njk' import header %}
+{% from 'hero/macro.njk' import hero %}
+{% from 'footer/macro.njk' import footer %}
+{% from 'do-dont-list/macro.njk' import list %}
+{% from 'images/macro.njk' import image %}
+{% from 'inset-text/macro.njk' import insetText %}
+{% from 'list-panel/macro.njk' import listPanel %}
+{% from 'pagination/macro.njk' import pagination %}
+{% from 'panel/macro.njk' import panel %}
+{% from 'promo/macro.njk' import promo %}
+{% from 'review-date/macro.njk' import reviewDate %}
+{% from 'skip-link/macro.njk' import skipLink %}
+{% from 'tables/macro.njk' import table %}
+{% from 'warning-callout/macro.njk' import warningCallout %}
+{% from 'back-link/macro.njk' import backLink %}
+{% from 'button/macro.njk' import button %}
+{% from 'checkboxes/macro.njk' import checkboxes %}
+{% from 'date-input/macro.njk' import dateInput %}
+{% from 'error-message/macro.njk' import errorMessage %}
+{% from 'error-summary/macro.njk' import errorSummary %}
+{% from 'fieldset/macro.njk' import fieldset %}
+{% from 'hint/macro.njk' import hint %}
+{% from 'input/macro.njk' import input %}
+{% from 'label/macro.njk' import label %}
+{% from 'radios/macro.njk' import radios %}
+{% from 'select/macro.njk' import select %}
+{% from 'textarea/macro.njk' import textarea %}
+
+<!-- Custom CSS is added for the documentation -->
+{% block headCSS %}
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/prism.css">
+  <link rel="stylesheet" href="/css/docs.css">
+{% endblock %}
+
+<!-- Set the page title inside this block -->
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+<!-- Header goes inside this block -->
+{% block header %}
+  <header class="nhsuk-header" role="banner">
+    <div class="nhsuk-width-container nhsuk-header__container">
+      <div class="nhsuk-header__logo">
+        <a class="nhsuk-header__link nhsuk-header__link--service nhsuk-header__link--service-short-name" href="/docs" aria-label="NHS.UK prototype kit home">
+          <svg class="nhsuk-logo nhsuk-logo--white" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false" viewBox="0 0 40 16">
+            <path fill="#fff" d="M0 0h40v16H0z"></path>
+            <path fill="#005eb8" d="M3.9 1.5h4.4l2.6 9h.1l1.8-9h3.3l-2.8 13H9l-2.7-9h-.1l-1.8 9H1.1M17.3 1.5h3.6l-1 4.9h4L25 1.5h3.5l-2.7 13h-3.5l1.1-5.6h-4.1l-1.2 5.6h-3.4M37.7 4.4c-.7-.3-1.6-.6-2.9-.6-1.4 0-2.5.2-2.5 1.3 0 1.8 5.1 1.2 5.1 5.1 0 3.6-3.3 4.5-6.4 4.5-1.3 0-2.9-.3-4-.7l.8-2.7c.7.4 2.1.7 3.2.7s2.8-.2 2.8-1.5c0-2.1-5.1-1.3-5.1-5 0-3.4 2.9-4.4 5.8-4.4 1.6 0 3.1.2 4 .6"></path>
+            <image src="https://assets.nhs.uk/images/nhs-logo.png" xlink:href=""></image>
+          </svg>
+          <span class="nhsuk-header__service-name">
+          Prototype kit
+          </span>
+        </a>
+      </div>
+    </div>
+  </header>
+{% endblock %}
+
+<!-- Footer goes inside this block -->
+{% block footer %}
+  {{ footer({
+    "links": [
+      {
+        "URL": "/docs",
+        "label": "Home"
+      },
+      {
+        "URL": "/docs/about",
+        "label": "About and support"
+      },
+      {
+        "URL": "https://github.com/nhsuk/nhsuk-prototype-kit",
+        "label": "NHS.UK prototype kit - GitHub"
+      }
+    ]
+  })}}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    <!-- Custom JavaScript files can be added to this file -->
+    {% include "includes/scripts.html" %}
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}

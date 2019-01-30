@@ -1,0 +1,37 @@
+{% extends 'layouts/layout.html' %}
+
+{% block pageTitle %}
+  Example - Clear data
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/docs",
+        text: "Home"
+      }
+    ],
+    href: "/docs/how-tos",
+    text: "How to guides"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>Clear data</h1>
+      <form method="post">
+      {{ panel({
+          "HTML": "<p>This will clear all of the data entered in this session</p>"
+      }) }}
+
+      {{ button({
+        "text": "Clear the data"
+      }) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

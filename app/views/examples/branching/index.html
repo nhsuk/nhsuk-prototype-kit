@@ -1,0 +1,65 @@
+{% extends "layouts/layout-transactional.html" %}
+
+{% block pageTitle %}
+  Example - Branching
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/docs",
+        text: "Home"
+      }
+    ],
+    href: "/docs/how-tos",
+    text: "How to guides"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <form action="/examples/branching/answer" method="post">
+
+        {% call fieldset({
+          legend: {
+            text: "Do you know your NHS number?",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        {{ radios({
+          "idPrefix": "nhsNumber",
+          "name": "nhsNumber",
+          "items": [
+            {
+              "value": "Yes",
+              "text": "Yes"
+            },
+            {
+              "value": "No",
+              "text": "No"
+            }
+          ]
+        }) }}
+
+        {% endcall %}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
+      {{ backLink({
+        "href": "/docs/how-tos",
+        "text": "Back to How to guides"
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
