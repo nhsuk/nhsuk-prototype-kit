@@ -1,0 +1,142 @@
+{% extends 'layouts/layout.html' %}
+
+{% block pageTitle %}
+  Example - passing data from page to page - step 3
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/docs",
+        text: "Home"
+      }
+    ],
+    href: "/docs/how-tos",
+    text: "How to guides"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+          <h1>
+            Check your answers before sending your application
+          </h1>
+
+          <h2>
+            Personal details
+          </h2>
+
+          <dl class="app-check-your-answers app-check-your-answers--short">
+
+            <div class="app-check-your-answers__contents">
+              <dt class="app-check-your-answers__question">
+                Has an NHS number
+              </dt>
+              <dd class="app-check-your-answers__answer">
+                {{ data['know-nhs-number'] }}
+              </dd>
+              <dd class="app-check-your-answers__change">
+                <a href="/examples/passing-data/register-gp-step1">
+                  Change<span class="nhsuk-u-visually-hidden"> has an NHS number</span>
+                </a>
+              </dd>
+            </div>
+
+            <div class="app-check-your-answers__contents">
+              <dt class="app-check-your-answers__question">
+                NHS number
+              </dt>
+              <dd class="app-check-your-answers__answer">
+                {{ data['nhs-number'] }}
+              </dd>
+              <dd class="app-check-your-answers__change">
+                <a href="/examples/passing-data/register-gp-step2">
+                  Change<span class="nhsuk-u-visually-hidden"> NHS number</span>
+                </a>
+              </dd>
+            </div>
+
+            <div class="app-check-your-answers__contents">
+              <dt class="app-check-your-answers__question">
+                Name
+              </dt>
+              <dd class="app-check-your-answers__answer">
+                {{ data['first-name'] }} {{ data['middle-name'] }} {{ data['last-name'] }}
+              </dd>
+              <dd class="app-check-your-answers__change">
+                <a href="/examples/passing-data/register-gp-step3">
+                  Change<span class="nhsuk-u-visually-hidden"> name</span>
+                </a>
+              </dd>
+            </div>
+
+          </dl>
+
+          <h2>
+            Medical details
+          </h2>
+
+          <dl class="app-check-your-answers app-check-your-answers--short">
+
+            <div class="app-check-your-answers__contents">
+              <dt class="app-check-your-answers__question">
+                Conditions
+              </dt>
+              <dd class="app-check-your-answers__answer">
+                <ul class="nhsuk-list">
+                {% if data['Asthma'] %}<li>Asthma</li>{% endif %}
+                {% if data['Cancer'] %}<li>Cancer</li>{% endif %}
+                {% if data['Lung disease (like emphysema or bronchitis)'] %}<li>Lung disease (like emphysema or bronchitis)</li>{% endif %}
+                {% if data['Diabetes'] %}<li>Diabetes</li>{% endif %}
+                {% if data['Disabilities, including physical and learning disabilities'] %}<li>Disabilities, including physical and learning disabilities</li>{% endif %}
+                {% if data['Epilepsy'] %}<li>Epilepsy</li>{% endif %}
+                {% if data['Heart disease'] %}<li>Heart disease</li>{% endif %}
+                {% if data['High blood pressure'] %}<li>High blood pressure</li>{% endif %}
+                {% if data['Mental health issues, such as depression'] %}<li>Mental health issues, such as depression</li>{% endif %}
+                {% if data['Stroke or mini stroke'] %}<li>Stroke or mini stroke</li>{% endif %}
+                {% if data['Thyroid problems'] %}<li>Thyroid problems</li>{% endif %}
+                </ul>
+              </dd>
+              <dd class="app-check-your-answers__change">
+                <a href="/examples/passing-data/register-gp-step4">
+                  Change<span class="nhsuk-u-visually-hidden"> conditions</span>
+                </a>
+              </dd>
+            </div>
+
+          </dl>
+
+          <h2>Now send your application</h2>
+          <p>By submitting this notification you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
+          <p><a href="/examples/passing-data/confirmation" class="nhsuk-button">Accept and send registration</a></p>
+
+        </div>
+  </div>
+{% endblock %}
+
+{% block footer %}
+  {{ footer({
+    "links": [
+      {
+        "URL": "/docs",
+        "label": "Home"
+      },
+      {
+        "URL": "/docs/examples/passing-data/clear-data",
+        "label": "Clear data"
+      },
+      {
+        "URL": "/docs/about",
+        "label": "About and support"
+      },
+      {
+        "URL": "https://github.com/nhsuk/nhsuk-prototype-kit",
+        "label": "NHS.UK prototype kit - GitHub"
+      }
+    ]
+  })}}
+{% endblock %}

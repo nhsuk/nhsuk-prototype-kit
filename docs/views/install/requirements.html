@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends 'layouts/layout.html' %}
 
 {% block pageTitle %}
   NHS.UK prototype kit - Install
@@ -30,10 +30,9 @@
       <h2>Software you need</h2>
 
       <ul>
+        {% block branchingContent %}{% endblock %}
         <li>Node.js (LTS version, 8 or higher)</li>
         <li>HTML text editor (such as Atom, VS Code etc)</li>
-        {% block branchingContent %}
-        {% endblock %}
       </ul>
 
       <p>This guide will show you how to install this software.</p>
