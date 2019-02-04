@@ -1,6 +1,6 @@
 # NHS.UK prototype kit
 
-Go to the <a href="http://nhsuk-prototype-kit.azurewebsites.net/docs">NHS.UK Prototype Kit site</a> to download the latest version and read the documentation.
+Visit the <a href="http://nhsuk-prototype-kit.azurewebsites.net/docs">NHS.UK prototype kit site</a> to download the latest version and read the documentation.
 
 ## About the NHS.UK prototype kit
 
