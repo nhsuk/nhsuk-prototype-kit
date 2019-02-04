@@ -87,6 +87,13 @@ if (useCookieSessionStore === 'true') {
 }
 
 
+// Support for parsing data in POSTs
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
+
+
 // Automatically store all data users enter
 if (useAutoStoreData === 'true') {
   app.use(utils.autoStoreData)
@@ -148,12 +155,6 @@ app.use('/nhsuk-frontend', express.static(path.join(__dirname, 'node_modules/nhs
 app.use('/nhsuk-frontend', express.static(path.join(__dirname, 'node_modules/nhsuk-frontend/dist')));
 
 
-// Support for parsing data in POSTs
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}))
-
 // Check if the app is documentation only
 if(onlyDocumentation == 'true') {
   app.get('/', function(req, res) {
@@ -211,8 +212,8 @@ if (useDocumentation || onlyDocumentation == 'true') {
 
 }
 
-// Clear all data in session if you open /docs/examples/passing-data/clear-data
-app.post('/docs/examples/passing-data/clear-data', function (req, res) {
+// Clear all data in session if you open /examples/passing-data/clear-data
+app.post('/examples/passing-data/clear-data', function (req, res) {
   req.session.data = {}
   res.render('examples/passing-data/clear-data-success')
 })
