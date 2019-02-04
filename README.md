@@ -1,13 +1,22 @@
 # NHS.UK prototype kit
 
-The prototype kit is still in development and is not ready to use.
+Go to the <a href="http://nhsuk-prototype-kit.azurewebsites.net/docs">NHS.UK Prototype Kit site</a> to download the latest version and read the documentation.
 
-## Prerequisite
+## About the NHS.UK prototype kit
 
-Install the long-term support (LTS) version of <a href="https://nodejs.org/en/">Node.js</a>, which includes NPM.
+The NHS.UK prototype kit enables you to make interactive prototypes that will look like pages on NHS.UK. The prototypes you make are a great way to show ideas to others and for conducting user research.
 
-## Running the application
+## Security
 
-Clone the repo: `git clone https://github.com/nhsuk/nhsuk-prototype-kit nhsuk-prototype-kit` and whilst in the project directory `cd nhsuk-prototype-kit`, install the required npm packages with: `npm install`
+If you publish your prototypes online, they must be protected by a <a href="http://nhsuk-prototype-kit.azurewebsites.net/docs/how-tos/heroku">username and password</a>. This is to prevent members of the public finding prototypes and thinking they are real services.
 
-Run the project in development mode `npm run watch` and visit <a href="http://localhost:3000">http://localhost:3000</a>.
+You must protect user privacy at all times, even when using prototypes. Prototypes made with the kit look like NHS.UK, but do not have the same security provisions. Always make sure you are handling user data appropriately.
+
+## Installation instructions
+
+- <a href="http://nhsuk-prototype-kit.azurewebsites.net/docs/install/simple">Install guide (non technical)</a>
+- <a href="http://nhsuk-prototype-kit.azurewebsites.net/docs/install/advanced">Developer friendly install guide (technical)</a>
+
+## Support
+
+NHS.UK frontend is maintained by NHS Digital. [Email us](mailto:service-manual@nhs.net), open a [Github issue](https://github.com/nhsuk/nhsuk-prototype-kit/issues/new) or get in touch on the [NHS digital service manual Slack workspace](https://nhs-service-manual.slack.com/join/shared_invite/enQtNTIyOTEyNjU3NDkyLWUwOWM5MWY5MGRhYTYxZmY4ZWI0NDA1N2NhNTRiMGY3MTQxNjk5YTc3ZTAzMTA4YmE3ZDAxYmQ3MTQxNDgzOTQ).
