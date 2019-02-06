@@ -1,7 +1,7 @@
 {% extends 'layouts/layout.html' %}
 
 {% block pageTitle %}
-  Example - passing data from page to page - step 3
+  Example - passing data from page to page - step 5
 {% endblock %}
 
 {% block beforeContent %}
@@ -87,17 +87,11 @@
               </dt>
               <dd class="app-check-your-answers__answer">
                 <ul class="nhsuk-list">
-                {% if data['Asthma'] %}<li>Asthma</li>{% endif %}
-                {% if data['Cancer'] %}<li>Cancer</li>{% endif %}
-                {% if data['Lung disease (like emphysema or bronchitis)'] %}<li>Lung disease (like emphysema or bronchitis)</li>{% endif %}
-                {% if data['Diabetes'] %}<li>Diabetes</li>{% endif %}
-                {% if data['Disabilities, including physical and learning disabilities'] %}<li>Disabilities, including physical and learning disabilities</li>{% endif %}
-                {% if data['Epilepsy'] %}<li>Epilepsy</li>{% endif %}
-                {% if data['Heart disease'] %}<li>Heart disease</li>{% endif %}
-                {% if data['High blood pressure'] %}<li>High blood pressure</li>{% endif %}
-                {% if data['Mental health issues, such as depression'] %}<li>Mental health issues, such as depression</li>{% endif %}
-                {% if data['Stroke or mini stroke'] %}<li>Stroke or mini stroke</li>{% endif %}
-                {% if data['Thyroid problems'] %}<li>Thyroid problems</li>{% endif %}
+                  {% for item in data['condition'] %}
+                    <li>{{ item }}</li>
+                  {% else %}
+                    <li>No conditions selected</li>
+                  {% endfor %}
                 </ul>
               </dd>
               <dd class="app-check-your-answers__change">
