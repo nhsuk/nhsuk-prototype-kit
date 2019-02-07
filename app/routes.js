@@ -6,7 +6,7 @@ const router = express.Router();
 
 // Passing data example
 router.get('/examples/passing-data', function (req, res) {
-  res.render('examples/passing-data/index', {'message' : 'Hello world'});
+  res.render('examples/passing-data/index')
 });
 
 // Branching example
