@@ -14,32 +14,52 @@
 {% block content %}
   <div class="nhsuk-grid-row">
 
-    <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-grid-column-three-quarters">
 
-      <h1>
-          Installing the kit
-      </h1>
+      <form action="/docs/install" method="post">
 
-      <h2>Install guide</h2>
+        {% call fieldset({
+          legend: {
+            text: "Installing the kit",
+            classes: "nhsuk-fieldset__legend--xl",
+            isPageHeading: true
+          }
+        }) %}
 
-      <p>Install the kit in 10 steps.</p> 
-      
-      <p>You don’t need any technical knowledge to follow along.</p>
+        {{ hint({
+          "text": "Please select one."
+        }) }}
 
-      <p>Installation takes up to 20 minutes depending on how much you need to install.</p>
+        {{ radios({
+          "idPrefix": "install",
+          "name": "install",
+          "items": [
+            {
+              "value": "Simple",
+              "text": "Install the kit"
+            },
+            {
+              "value": "Developer",
+              "text": "Install the kit using the developer friendly guide"
+            },
+            {
+              "value": "Download",
+              "text": "I already have the kit installed and want to download a new copy"
+            }
+          ]
+        }) }}
 
-      <p><a href="/docs/install/simple">Install guide</a></p>
+        {% endcall %}
 
-      <h2>Developer friendly install guide</h2>
+        {{ button({
+          "text": "Continue"
+        }) }}
 
-      <p>For users familiar with Node.js, Git and the terminal.</p>
-
-      <p><a href="/docs/install/advanced">Developer friendly install guide</a></p>
+      </form>
 
       {{ backLink({
         "href": "/docs",
-        "text": "Back to Home",
-        "classes": "nhsuk-u-margin-top-7"
+        "text": "Back to Home"
       }) }}
 
     </div>
