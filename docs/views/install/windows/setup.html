@@ -1,4 +1,4 @@
-{% extends "install/npm.html" %}
+{% extends "install/setup.html" %}
 
 {% block branchingContent %}
   <p>Enter in git bash:</p>
@@ -7,8 +7,8 @@
 {% block pagination %}
   {{ pagination({
     "previousUrl": "/docs/install/windows/open",
-    "previousPage": "Open your prototype",
+    "previousPage": "Step 5: Got to your prototype",
     "nextUrl": "/docs/install/windows/run",
-    "nextPage": "Run the kit"
+    "nextPage": "Step 7: Run the kit"
   }) }}
 {% endblock %}

@@ -16,7 +16,7 @@ router.post('/install', function (req, res) {
   } if (install === 'Developer') {
     res.redirect('/docs/install/advanced')
   } else {
-    res.redirect('https://github.com/nhsuk/nhsuk-prototype-kit/archive/master.zip')
+    res.redirect('/docs/install/download-zip')
   }
 });
 

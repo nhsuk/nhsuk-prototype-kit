@@ -14,42 +14,40 @@
 {% block content %}
   <div class="nhsuk-grid-row">
 
-    <div class="nhsuk-grid-column-three-quarters">
+    <div class="nhsuk-grid-column-two-thirds">
 
       <form action="/docs/install" method="post">
 
-        {% call fieldset({
-          legend: {
-            text: "Installing the kit",
-            classes: "nhsuk-fieldset__legend--xl",
-            isPageHeading: true
-          }
-        }) %}
-
-        {{ hint({
-          "text": "Please choose one"
-        }) }}
-
-        {{ radios({
-          "idPrefix": "install",
-          "name": "install",
-          "items": [
-            {
-              "value": "Simple",
-              "text": "Install guide"
-            },
-            {
-              "value": "Developer",
-              "text": "Developer friendly install guide"
-            },
-            {
-              "value": "Download",
-              "text": "I already have the kit installed and want to download a new copy"
-            }
-          ]
-        }) }}
-
-        {% endcall %}
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+            <h1 class="nhsuk-fieldset__heading">
+              How do you want to install the kit?
+            </h1>
+          </legend>
+          <div class="nhsuk-form-group">
+            <div class="nhsuk-radios">
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="install-1" name="install" type="radio" value="Simple">
+                <label class="nhsuk-label nhsuk-radios__label" for="install-1">
+                  Install guide (non-technical)
+                </label>
+              </div>
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="install-2" name="install" type="radio" value="Developer">
+                <label class="nhsuk-label nhsuk-radios__label" for="install-2">
+                  Developer friendly install guide (technical)
+                </label>
+              </div>
+              <div class="nhsuk-radios__divider">or</div>
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="install-3" name="install" type="radio" value="Download">
+                <label class="nhsuk-label nhsuk-radios__label" for="install-3">
+                  I already have the kit installed and want to download a new copy
+                </label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
 
         {{ button({
           "text": "Continue"

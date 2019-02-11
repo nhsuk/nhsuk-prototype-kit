@@ -1,31 +1,25 @@
 {% extends "install/terminal.html" %}
 
-{% block pageTitle %}
-  NHS.UK prototype kit - Git bash
-{% endblock %}
-
-{% block branchingHeader %}
-  Terminal (Git Bash)
+{% block branchingTitle %}
 {% endblock %}
 
 {% block branchingContent %}
-  <p>This guide will use <strong>Git Bash</strong> as a terminal instead of the existing <strong>CMD</strong> application.</p>
+  <p class="nhsuk-body-l">The first thing you need to do is open the <strong>Terminal.app</strong> on your Windows machine.</p>
 
-  <p>Installing <strong>git bash</strong> installs two things for you: a terminal (for entering commands), and git (used later to share your work with others).</p>
+  <p>You'll use the terminal application to install, start and stop the kit.</p>
 
-  <h3>Installing Git Bash</h3>
+  <p>It’s located in the <strong>Utilities</strong> folder in the <strong>Applications</strong> folder.</p>
 
-  <p>Install with all default options.</p>
+  <img class="app-img-guide nhsuk-u-margin-bottom-0" alt="Screenshot of the location of the terminal application" src="/images/mac/terminal-folder.png" />
 
-  <p><a href="https://git-scm.com/download/win" target="_blank">Download Git bash (opens in new window)</a></p>
+  <p>It will look similar to this:</p>
 
-  <p>Once you have git bash installed, return to this guide.</p>
-
+  <img class="app-img-guide nhsuk-u-margin-bottom-0" alt="Screenshot of the terminal" src="/images/mac/terminal.png" />
 {% endblock %}
 
 {% block pagination %}
   {{ pagination({
-    "previousUrl": "/docs/install/windows/mac-or-windows",
+    "previousUrl": "/docs/install/mac-or-windows",
     "previousPage": "Mac or Windows",
     "nextUrl": "/docs/install/windows/node",
     "nextPage": "Step 2: Install Node.js"
