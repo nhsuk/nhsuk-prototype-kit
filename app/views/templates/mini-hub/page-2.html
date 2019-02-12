@@ -12,7 +12,7 @@
         text: "Home"
       }
     ],
-    href: "docs/templates/mini-hub",
+    href: "/templates/mini-hub",
     text: "Main page"
   }) }}
 {% endblock %}
@@ -31,16 +31,16 @@
       {{ contentsList({
         items: [
           {
-            href: "/docs/templates/mini-hub",
+            href: "/templates/mini-hub",
             text: "Main page"
           },
           {
-            href: "/docs/templates/mini-hub/page-2",
+            href: "/templates/mini-hub/page-2",
             text: "Page two",
             current: "true"
           },
           {
-            href: "/docs/templates/mini-hub/page-3",
+            href: "/templates/mini-hub/page-3",
             text: "Page three"
           }
         ]
@@ -50,12 +50,12 @@
       <p>[Visit the <a href="https://beta.nhs.uk/service-manual/">NHS digital service manual</a> for guidance and examples.]</p>
 
       {{ pagination({
-        "previousUrl": "/docs/templates/mini-hub",
+        "previousUrl": "/templates/mini-hub",
         "previousPage": "Main page",
-        "nextUrl": "/docs/templates/mini-hub/page-3",
+        "nextUrl": "/templates/mini-hub/page-3",
         "nextPage": "Page two"
       }) }}
 
-    </div>  
+    </div>
   </div>
 {% endblock %}
