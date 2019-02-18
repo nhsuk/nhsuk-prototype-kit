@@ -1,7 +1,7 @@
 {% extends 'layouts/layout.html' %}
 
 {% block pageTitle %}
-  NHS.UK prototype kit - Install
+  NHS.UK prototype kit - How do you want to install the kit?
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,32 +14,51 @@
 {% block content %}
   <div class="nhsuk-grid-row">
 
-    <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-grid-column-three-quarters">
 
-      <h1>
-          Installing the kit
-      </h1>
+      <form action="/docs/install" method="post">
 
-      <h2>Install guide</h2>
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+            <h1 class="nhsuk-fieldset__heading">
+              Install the kit
+            </h1>
+          </legend>
+          <span class="nhsuk-hint">Using the:</span>
+          <div class="nhsuk-form-group">
+            <div class="nhsuk-radios">
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="install-1" name="install" type="radio" value="Simple">
+                <label class="nhsuk-label nhsuk-radios__label" for="install-1">
+                  Install guide (non-technical)
+                </label>
+              </div>
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="install-2" name="install" type="radio" value="Developer">
+                <label class="nhsuk-label nhsuk-radios__label" for="install-2">
+                  Developer friendly install guide (technical)
+                </label>
+              </div>
+              <div class="nhsuk-radios__divider">or</div>
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="install-3" name="install" type="radio" value="Download">
+                <label class="nhsuk-label nhsuk-radios__label" for="install-3">
+                  I already have the kit installed and want to download a new copy
+                </label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
 
-      <p>Install the kit in 10 steps.</p> 
-      
-      <p>You don’t need any technical knowledge to follow along.</p>
+        {{ button({
+          "text": "Continue"
+        }) }}
 
-      <p>Installation takes up to 20 minutes depending on how much you need to install.</p>
-
-      <p><a href="/docs/install/simple">Install guide</a></p>
-
-      <h2>Developer friendly install guide</h2>
-
-      <p>For users familiar with Node.js, Git and the terminal.</p>
-
-      <p><a href="/docs/install/advanced">Developer friendly install guide</a></p>
+      </form>
 
       {{ backLink({
         "href": "/docs",
-        "text": "Back to Home",
-        "classes": "nhsuk-u-margin-top-7"
+        "text": "Back to Home"
       }) }}
 
     </div>
