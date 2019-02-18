@@ -35,15 +35,25 @@
 
       <img class="app-img-guide nhsuk-u-margin-bottom-0" alt="Screenshot of the prototype kit welcome page" src="/images/prototype-kit-landing-page.png" />
 
-      <h3>If you don't see that page</h3>
+      <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-7">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+          I don't see that page
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <h3>If you don't see that page</h3>
 
-      <p>Check the localhost number in the terminal:</p>
+          {% block branchingContent %}
+          {% endblock %}
 
-      <img class="app-img-guide nhsuk-u-margin-bottom-0" alt="Screenshot of the terminal running the kit" src="/images/mac/terminal-npm-run-3000.png" />
+          <img class="app-img-guide nhsuk-u-margin-bottom-0" alt="Screenshot of the terminal running the kit" src="/images/mac/terminal-npm-run-3000.png" />
 
-      <p>Make sure the number in the terminal matches the one in the web address.</p>
+          <p>Make sure the number in the terminal matches the one in the web address.</p>
 
-      <p>The kit automatically changes to <strong>localhost:3001</strong> if <strong>localhost:3000</strong> is already in use.</p>
+          <p>The kit automatically changes to <strong>http://localhost:3001</strong> if <strong>http://localhost:3000</strong> is already in use.</p>
+        </div>
+      </details>
 
       <h2>Installation complete</h2>
 

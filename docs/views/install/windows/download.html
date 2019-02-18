@@ -1,9 +1,25 @@
 {% extends "install/download.html" %}
 
 {% block branchingContent %}
-  <h2>Create a folder</h2>
-
   <p>Create a folder called projects in your Documents folder.</p>
+
+  <img class="app-img-guide nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-6" alt="Screenshot of projects folder" src="/images/windows/download-folder.png" />
+{% endblock %}
+
+{% block branchingContentTwo %}
+  <img class="app-img-guide nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-6" alt="Screenshot of the downloaded zip file" src="/images/windows/download-unzip.png" />
+
+  <p>Open that folder by double clicking on it. You should then see another folder named <strong>nhsuk-prototype-kit-master</strong>.</p>
+
+  <img class="app-img-guide nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-6" alt="Screenshot of the downloaded zip file" src="/images/windows/download-unzip-open.png" />
+{% endblock %}
+
+{% block branchingContentThree %}
+  <img class="app-img-guide nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-6" alt="Screenshot of the renamed folder" src="/images/windows/download-rename.png" />
+{% endblock %}
+
+{% block branchingContentFour %}
+  <img class="app-img-guide nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-6" alt="Screenshot of the projects folder" src="/images/windows/download-move.png" />
 {% endblock %}
 
 {% block pagination %}

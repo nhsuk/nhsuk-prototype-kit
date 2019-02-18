@@ -33,7 +33,7 @@
       
       <p>The kit is designed to work with Node.js LTS (Long Term Support) version 8 or higher.</p>
 
-      <h2>Check if you have Node</h2>
+      <h2>1. Check if you have Node</h2>
 
       {% block branchingContent %}
       {% endblock %}
@@ -46,16 +46,18 @@
       <p>If it says:</p>
       
       <ul>
-        <li><code class="app-code">command not found</code></li>
-        <li><code class="app-code">Error 0x2 starting node.exe --version</code></li>
-        <li>or another number such as <code class="app-code">0.12</code> or <code class="app-code">5.x.x</code></li>
+        <li><strong>command not found</strong></li>
+        <li><strong>Error 0x2 starting node.exe --version</strong></li>
+        <li>or another number such as <strong>0.12</strong> or <strong>5.x.x</strong></li>
       </ul>
       
       <p>Then you will need to download and install the LTS version 8 or higher.</p>
 
-      <p>If the version number starts with an 8 or higher, you have the correct version installed and can go to step 3.</p>
+      <h3>If the version number starts with an 8 or higher</h3>
+      
+      <p>You have the correct version installed and can go to {% block branchingLink %}{% endblock %}.</p>
 
-      <h2>Download and install Node.js LTS version</h2>
+      <h2>2. Download and install Node.js LTS version</h2>
 
       <p>Download the LTS version 8 or higher.</p>
       
@@ -63,11 +65,11 @@
 
       <p><a href="https://nodejs.org/en/" target="_blank">Download and install Node.js (opens in new window)</a>.</p>
 
-      <h2>Once Node is installed</h2>
+      <h2>3. Check if Node is installed properly</h2>
 
       <p>You’ll need to quit and restart {% block branchingTerminal %}{% endblock %} to be able to use Node for the first time.</p>
 
-      <p>To check it is installed correctly you can again run:</p>
+      <p>To check it is installed correctly you can run:</p>
 
       <pre class="app-pre"><code class="app-code">node --version</code></pre>
 
