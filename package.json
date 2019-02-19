@@ -1,7 +1,7 @@
 {
   "name": "nhsuk-prototype-kit",
-  "version": "0.0.1",
-  "description": "NHS.UK prototype kit",
+  "version": "1.0.0",
+  "description": "Rapidly create HTML prototypes of NHS websites and services.",
   "main": "app.js",
   "scripts": {
     "build": "gulp build",
@@ -35,7 +35,5 @@
     "nunjucks": "^3.1.6",
     "path": "^0.12.7"
   },
-  "devDependencies": {
-    "concurrently": "^4.1.0"
-  }
+  "devDependencies": {}
 }

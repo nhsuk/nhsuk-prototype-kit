@@ -1,0 +1,33 @@
+{% extends "install/terminal.html" %}
+
+{% block pageTitle %}
+  Git bash - NHS.UK prototype kit
+{% endblock %}
+
+{% block branchingHeader %}
+  Terminal (Git Bash)
+{% endblock %}
+
+{% block branchingContent %}
+  <p>This guide will use <strong>Git Bash</strong> as a terminal instead of the existing <strong>CMD</strong> application.</p>
+
+  <p>Installing <strong>git bash</strong> installs two things for you: a terminal (for entering commands), and git (used later to share your work with others).</p>
+
+  <h3>Installing Git Bash</h3>
+
+  <p>Install with all default options.</p>
+
+  <p><a href="https://git-scm.com/download/win" target="_blank">Download Git bash (opens in new window)</a></p>
+
+  <p>Once you have git bash installed, return to this guide.</p>
+
+{% endblock %}
+
+{% block pagination %}
+  {{ pagination({
+    "previousUrl": "/docs/install/windows/requirements",
+    "previousPage": "Requirements",
+    "nextUrl": "/docs/install/windows/node",
+    "nextPage": "Install Node.js"
+  }) }}
+{% endblock %}
