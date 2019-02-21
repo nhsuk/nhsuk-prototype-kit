@@ -14,6 +14,7 @@ const sessionInMemory = require('express-session')
 dotenv.config()
 
 // Local dependencies
+const packageInfo = require('./package.json');
 const authentication = require('./middleware/authentication');
 const automaticRouting = require('./middleware/auto-routing');
 const config = require('./app/config');
@@ -56,7 +57,8 @@ var nunjucksConfig = {
 
 nunjucksConfig.express = app
 
-var nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig)
+var nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig);
+nunjucksAppEnv.addGlobal('version', packageInfo.version);
 
 // Add Nunjucks filters
 utils.addNunjucksFilters(nunjucksAppEnv)
@@ -186,6 +188,7 @@ if (useDocumentation || onlyDocumentation == 'true') {
     autoescape: true,
     express: documentationApp
   });
+  nunjucksAppEnv.addGlobal('version', packageInfo.version);
 
   // Add Nunjucks filters
   utils.addNunjucksFilters(nunjucksAppEnv)
