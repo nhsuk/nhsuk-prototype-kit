@@ -1,0 +1,32 @@
+{% extends "install/terminal.html" %}
+
+{% block pageTitle %}
+  NHS.UK prototype kit - Command Prompt
+{% endblock %}
+
+{% block branchingContent %}
+  <p class="nhsuk-body-l">The first thing you need to do is open the <strong>Command Prompt</strong> on your Windows machine.</p>
+
+  <p>You'll use the Command Prompt to install, start and stop the kit.</p>
+
+  <p>To open the Command Prompt:</p>
+  <ul>
+    <li>Click Start</li>
+    <li>In the Search, type cmd (short for command) or commandprompt, and press Enter.</li>
+  </ul>
+
+  <img class="app-img-guide nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-6" alt="Screenshot of the location of the command prompt" src="/images/windows/command-prompt-open.png" />
+
+  <p>It will look similar to this:</p>
+
+  <img class="app-img-guide nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-6" alt="Screenshot of the command prompt" src="/images/windows/command-prompt.png" />
+{% endblock %}
+
+{% block pagination %}
+  {{ pagination({
+    "previousUrl": "/docs/install/mac-or-windows",
+    "previousPage": "Mac or Windows",
+    "nextUrl": "/docs/install/windows/node",
+    "nextPage": "Step 2: Install Node.js"
+  }) }}
+{% endblock %}
