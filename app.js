@@ -163,10 +163,10 @@ if(onlyDocumentation == 'true') {
     // Redirect to the documentation pages if it is
     res.redirect('/docs');
   });
-} else {
-  // Else use custom application routes
-  app.use('/', routes);
 }
+
+// Use custom application routes
+app.use('/', routes);
 
 // Automatically route pages
 app.get(/^([^.]+)$/, function (req, res, next) {
