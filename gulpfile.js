@@ -44,13 +44,15 @@ function compileScripts() {
   .pipe(gulp.dest('public/js'));
 }
 
-// Compile Images
-function compileImages() {
+// Compile assets
+function compileAssets() {
   return gulp.src([
-    'app/assets/images/**/*.*',
-    'docs/assets/images/**/*.*'
+    'app/assets/**/**/*.*',
+    'docs/assets/**/**/*.*',
+    '!**/assets/**/**/*.js', // Don't copy JS files
+    '!**/assets/**/**/*.scss', // Don't copy SCSS files
   ])
-  .pipe(gulp.dest('public/images'));
+  .pipe(gulp.dest('public'));
 }
 
 // Start nodemon
@@ -104,10 +106,10 @@ function startBrowserSync(done){
 function watch() {
   gulp.watch('app/assets/sass/**/*.scss', compileStyles);
   gulp.watch('app/assets/javascript/**/*.js', compileScripts);
-  gulp.watch('app/assets/images/**/*.*', compileImages);
+  gulp.watch('app/assets/**/**/*.*', compileAssets);
   gulp.watch('docs/assets/sass/**/*.scss', compileStyles);
   gulp.watch('docs/assets/javascript/**/*.js', compileScripts);
-  gulp.watch('docs/assets/images/**/*.*', compileImages);
+  gulp.watch('docs/assets/**/**/*.*', compileAssets);
 }
 
 exports.watch = watch;
@@ -115,5 +117,5 @@ exports.compileStyles = compileStyles;
 exports.compileScripts = compileScripts;
 exports.cleanPublic = cleanPublic;
 
-gulp.task('build', gulp.series(cleanPublic, compileStyles, compileScripts, compileImages));
+gulp.task('build', gulp.series(cleanPublic, compileStyles, compileScripts, compileAssets));
 gulp.task('default', gulp.series(startNodemon, startBrowserSync, watch));
