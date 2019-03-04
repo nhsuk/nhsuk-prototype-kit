@@ -1,5 +1,12 @@
 # NHS.UK prototype kit Changelog
 
+## 1.0.2 - Mar 4, 2019
+
+:wrench: **Fixes**
+
+- Documentation and examples for adding custom JavaScript, images or other assets.
+- All files put into the `app/assets` folder will automatically be copied to the public directory for use in web pages.
+
 ## 1.0.1 - Feb 21, 2019
 
 :new: **New features**
