@@ -6,15 +6,23 @@
 
 {% block content %}
   <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-three-quarters">
+    <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-fieldset__legend--l">Heading or question goes here</h1>
+      <h1 class="nhsuk-fieldset__legend--l">
+        Heading or question goes here
+      </h1>
 
-      <form id="form_id" action="/templates/check-your-answers">
+      <form action="/templates/check-your-answers" method="post">
 
-        <p>[Insert question content here]</p>
+        <p>
+          [Insert question content here]
+        </p>
 
-        <p>[Visit the <a href="https://beta.nhs.uk/service-manual/">NHS digital service manual</a> for guidance and examples.]</p>
+        <p>
+          [Visit the 
+            <a href="https://beta.nhs.uk/service-manual/">NHS digital service manual</a> 
+          for guidance and examples.]
+        </p>
 
         {{ button({
           "text": "Continue",

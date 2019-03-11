@@ -1,5 +1,13 @@
 # NHS.UK prototype kit Changelog
 
+## 1.0.3 - Mar 11, 2019
+
+:wrench: **Fixes**
+
+- Updated the passing data page to page example and updated various page examples
+- Use the latest version of the NHS.UK frontend library (2.0.0) which includes the summary list component
+- Use the summary list from the NHS.UK frontend library and remove the custom code from the prototype kit
+
 ## 1.0.2 - Mar 4, 2019
 
 :wrench: **Fixes**

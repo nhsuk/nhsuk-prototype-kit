@@ -6,65 +6,38 @@
 
 {% block beforeContent %}
 {{ breadcrumb({
-  items: [
-    {
-      href: "#",
-      text: "Home"
-    },
-        {
-      href: "#",
-      text: "Section"
-    }
-  ],
-  href: "#",
-  text: "Subsection"
+  href: "/",
+  text: "Home"
 }) }}
 {% endblock %}
 
 {% block content %}
   <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-three-quarters">
-      <h1>Service name goes here</h1>
-    </div>
-  </div>
+    <div class="nhsuk-grid-column-two-thirds">
 
-  <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-three-quarters">
+      <h1>
+        Service name goes here
+      </h1>
 
-      <p>Use this service to:</p>
-
-      <ul>
-        <li>do something</li>
-        <li>update your name, address or other details</li>
-        <li>do something else</li>
-      </ul>
-
-      <h2>To use this service you'll need:</h2>
+      <p>
+        Use this service to:
+      </p>
 
       <ul>
-        <li>to be a over a certain age</li>
-        <li>have something else, like an NHS login</li>
+        <li>
+          do something
+        </li>
+        <li>
+          update your name, address or other details
+        </li>
+        <li>
+          do something else
+        </li>
       </ul>
 
-      <p>Registering takes around 5 minutes.</p>
-
-      <a href="/templates/question-page" class="nhsuk-button nhsuk-u-margin-bottom-8">Start now</a>
-
-    </div>
-
-    <div class="nhsuk-grid-column-one-quarter">
-
-      <aside class="nhsuk-related-nav" role="complementary">
-        <h2 class="nhsuk-related-nav__heading" id="subsection-title">Related content</h2>
-        <nav class="nhsuk-related-nav__items" role="navigation" aria-labelledby="subsection-title">
-          <ul class="nhsuk-related-nav__list">
-            <li class="nhsuk-related-nav__item"><a class="nhsuk-related-nav__link" href="#">Related link one</a></li>
-            <li class="nhsuk-related-nav__item"><a class="nhsuk-related-nav__link" href="#">Related link two</a></li>
-            <li class="nhsuk-related-nav__item"><a class="nhsuk-related-nav__link" href="#">Related link three</a></li>
-            <li class="nhsuk-related-nav__item"><a class="nhsuk-related-nav__link" href="#">Related link four</a></li>
-          </ul>
-        </nav>
-      </aside>
+      <a href="/" class="nhsuk-button nhsuk-u-margin-bottom-8">
+        Start now
+      </a>
 
     </div>
 

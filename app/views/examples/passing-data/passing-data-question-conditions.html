@@ -1,7 +1,7 @@
 {% extends 'layouts/layout.html' %}
 
 {% block pageTitle %}
-  Example - passing data from page to page - step 3
+  Conditions - Passing data example
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,7 +21,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form action="/examples/passing-data/register-gp-step5" method="post" class="form">
+      <form action="/examples/passing-data/passing-data-check-answers" method="post" class="form">
         <div class="nhsuk-form-group">
           <fieldset class="nhsuk-fieldset" aria-describedby="conditions-hint">
             <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
@@ -37,30 +37,6 @@
                 <input class="nhsuk-checkboxes__input" id="conditions-1" name="condition" type="checkbox" value="Asthma"{{ checked("condition", "Asthma") }}>
                 <label class="nhsuk-label nhsuk-checkboxes__label" for="conditions-1">
                   Asthma
-                </label>
-              </div>
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="conditions-2" name="condition" type="checkbox" value="Cancer"{{ checked("condition", "Cancer") }}>
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="conditions-2">
-                  Cancer
-                </label>
-              </div>
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="conditions-3" name="condition" type="checkbox" value="Lung disease (like emphysema or bronchitis)"{{ checked("condition", "Lung disease (like emphysema or bronchitis)") }}>
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="conditions-3">
-                  Lung disease (like emphysema or bronchitis)
-                </label>
-              </div>
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="conditions-4" name="condition" type="checkbox" value="Diabetes"{{ checked("condition", "Diabetes") }}>
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="conditions-4">
-                  Diabetes
-                </label>
-              </div>
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="conditions-5" name="condition" type="checkbox" value="Disabilities, including physical and learning disabilities"{{ checked("condition", "Disabilities, including physical and learning disabilities") }}>
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="conditions-5">
-                  Disabilities, including physical and learning disabilities
                 </label>
               </div>
               <div class="nhsuk-checkboxes__item">
@@ -81,31 +57,13 @@
                   High blood pressure
                 </label>
               </div>
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="conditions-9" name="condition" type="checkbox" value="Mental health issues, such as depression"{{ checked("condition", "Mental health issues, such as depression") }}>
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="conditions-9">
-                  Mental health issues, such as depression
-                </label>
-              </div>
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="conditions-10" name="condition" type="checkbox" value="Stroke or mini stroke"{{ checked("condition", "Stroke or mini stroke") }}>
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="conditions-10">
-                  Stroke or mini stroke
-                </label>
-              </div>
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="conditions-11" name="condition" type="checkbox" value="Thyroid problems"{{ checked("condition", "Thyroid problems") }}>
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="conditions-11">
-                  Thyroid problems
-                </label>
-              </div>
             </div>
           </fieldset>
         </div>
-        <button class="nhsuk-button nhsuk-u-margin-top-4">Continue</button>
+        <button class="nhsuk-button">Continue</button>
       </form>
       <div class="nhsuk-back-link">
-        <a href="/examples/passing-data/register-gp-step3" class="nhsuk-back-link__link">
+        <a href="/examples/passing-data/passing-data-question-contact" class="nhsuk-back-link__link">
         <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
         </svg>

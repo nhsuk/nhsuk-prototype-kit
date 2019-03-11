@@ -21,15 +21,20 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1>Clear data</h1>
-      <form method="post">
-      {{ panel({
-          "HTML": "<p>This will clear all of the data entered in this session</p>"
-      }) }}
+      <h1>
+        Clear data
+      </h1>
 
-      {{ button({
-        "text": "Clear the data"
-      }) }}
+      <form method="post">
+
+        {{ panel({
+            "HTML": "<p>This will clear all of the data entered in this session</p>"
+        }) }}
+
+        {{ button({
+          "text": "Clear the data"
+        }) }}
+
       </form>
 
     </div>
