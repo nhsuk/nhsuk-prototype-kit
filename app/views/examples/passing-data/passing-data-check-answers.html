@@ -25,41 +25,41 @@
         Check your answers
       </h1>
 
-      <dl class="app-check-your-answers app-check-your-answers--short">
-
-        <div class="app-check-your-answers__contents">
-          <dt class="app-check-your-answers__question">
+      <dl class="nhsuk-summary-list">
+        
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
             Name
           </dt>
-          <dd class="app-check-your-answers__answer">
+          <dd class="nhsuk-summary-list__value">
             {{ data['first-name'] }} {{ data['last-name'] }}
           </dd>
-          <dd class="app-check-your-answers__change">
+          <dd class="nhsuk-summary-list__actions">
             <a href="/examples/passing-data/passing-data-question-name">
               Change<span class="nhsuk-u-visually-hidden"> name</span>
             </a>
           </dd>
         </div>
-
-        <div class="app-check-your-answers__contents">
-          <dt class="app-check-your-answers__question">
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
             Contact preference
           </dt>
-          <dd class="app-check-your-answers__answer">
+          <dd class="nhsuk-summary-list__value">
             {{ data['contact'] }}
           </dd>
-          <dd class="app-check-your-answers__change">
+          <dd class="nhsuk-summary-list__actions">
             <a href="/examples/passing-data/passing-data-question-contact">
               Change<span class="nhsuk-u-visually-hidden"> contact preference</span>
             </a>
-          </dd>
+          </dd>        
         </div>
-
-        <div class="app-check-your-answers__contents">
-          <dt class="app-check-your-answers__question">
+      
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
             Conditions
           </dt>
-          <dd class="app-check-your-answers__answer">
+          <dd class="nhsuk-summary-list__value">
             <ul class="nhsuk-list nhsuk-u-margin-bottom-1">
               {% for item in data['condition'] %}
                 <li>{{ item }}</li>
@@ -68,13 +68,13 @@
               {% endfor %}
             </ul>
           </dd>
-          <dd class="app-check-your-answers__change">
+          <dd class="nhsuk-summary-list__actions">
             <a href="/examples/passing-data/passing-data-question-conditions">
               Change<span class="nhsuk-u-visually-hidden"> conditions</span>
             </a>
           </dd>
         </div>
-
+        
       </dl>
 
     </div>
