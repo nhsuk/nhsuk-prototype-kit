@@ -16,104 +16,121 @@
         Personal details
       </h2>
 
-      <dl class="app-check-your-answers app-check-your-answers--short">
-
-        <div class="app-check-your-answers__contents">
-          <dt class="app-check-your-answers__question">
-            NHS number
-          </dt>
-          <dd class="app-check-your-answers__answer">
-            485 777 3456
-          </dd>
-          <dd class="app-check-your-answers__change">
-            <a href="#">
-              Change<span class="nhsuk-u-visually-hidden"> NHS number</span>
-            </a>
-          </dd>
-        </div>
-
-        <div class="app-check-your-answers__contents">
-          <dt class="app-check-your-answers__question">
-            Name
-          </dt>
-          <dd class="app-check-your-answers__answer">
-            Kevin Francis
-          </dd>
-          <dd class="app-check-your-answers__change">
-            <a href="#">
-              Change<span class="nhsuk-u-visually-hidden"> name</span>
-            </a>
-          </dd>
-        </div>
-
-        <div class="app-check-your-answers__contents">
-          <dt class="app-check-your-answers__question">
-            Date of birth
-          </dt>
-          <dd class="app-check-your-answers__answer">
-            15 March 1984
-          </dd>
-          <dd class="app-check-your-answers__change">
-            <a href="#">
-              Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
-            </a>
-          </dd>
-        </div>
-
-        <div class="app-check-your-answers__contents">
-          <dt class="app-check-your-answers__question">
-            Home address
-          </dt>
-          <dd class="app-check-your-answers__answer">
-            8 Bridgewater Place<br>
-            Leeds<br>
-            LS11 5BZ
-          </dd>
-          <dd class="app-check-your-answers__change">
-            <a href="#">
-              Change<span class="nhsuk-u-visually-hidden"> home address</span>
-            </a>
-          </dd>
-        </div>
-
-      </dl>
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "NHS number"
+            },
+            value: {
+              text: "485 777 3456"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "NHS number"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: "Kevin Francis"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Date of birth"
+            },
+            value: {
+              html: "15 March 1984"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "date of birth"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Home address"
+            },
+            value: {
+              html: '8 Bridgewater Place<br>Leeds<br>LS11 5BZ'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "home address"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
 
       <h2>
         Medical details
       </h2>
 
-      <dl class="app-check-your-answers app-check-your-answers--short">
-
-        <div class="app-check-your-answers__contents">
-          <dt class="app-check-your-answers__question">
-            Allergies
-          </dt>
-          <dd class="app-check-your-answers__answer">
-            No allergies
-          </dd>
-          <dd class="app-check-your-answers__change">
-            <a href="#">
-              Change<span class="nhsuk-u-visually-hidden"> allergies</span>
-            </a>
-          </dd>
-        </div>
-
-        <div class="app-check-your-answers__contents">
-          <dt class="app-check-your-answers__question">
-            Conditions
-          </dt>
-          <dd class="app-check-your-answers__answer">
-            Asthma <br>
-            Disabilities, including physical and learning disabilities
-          </dd>
-          <dd class="app-check-your-answers__change">
-            <a href="#">
-              Change<span class="nhsuk-u-visually-hidden"> conditions</span>
-            </a>
-          </dd>
-        </div>
-
-      </dl>
+      {{ summaryList({
+        rows: [
+          {
+            key: {
+              text: "Allergies"
+            },
+            value: {
+              text: "No allergies"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "allergies"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Conditions"
+            },
+            value: {
+              html: "Asthma <br> Disabilities, including physical and learning disabilities"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "conditions"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
 
       <h2>
         Now send you application
