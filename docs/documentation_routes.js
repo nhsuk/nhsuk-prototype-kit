@@ -7,28 +7,53 @@ router.get('/', function(req , res){
   res.render('index');
 });
 
-// Install routing
+// Install guide branching
 router.post('/install', function (req, res) {
-  let install = req.body.install;
 
-  if (install === 'Simple') {
+  var install = req.session.data['install']
+
+  if (install == "Simple"){
     res.redirect('/docs/install/simple')
-  } if (install === 'Developer') {
+  }
+  if (install == "Developer"){
     res.redirect('/docs/install/advanced')
-  } else {
+  }
+  else {
     res.redirect('/docs/install/download-zip')
   }
-});
 
-// Mac or Windows install
+})
+
+// Install - Mac or Windows branching
 router.post('/install/mac', function (req, res) {
-  let machine = req.body.machine;
 
-  if (machine === 'Mac') {
+  var machine = req.session.data['machine']
+
+  if (machine == "Mac"){
     res.redirect('/docs/install/mac/terminal')
-  } else {
+  }
+  else {
     res.redirect('/docs/install/windows/terminal')
   }
-});
+
+})
+
+// Branching example
+router.post('/examples/branching/answer', function (req, res) {
+
+  // Make a variable and give it the value from 'know-nhs-number'
+  var nhsNumber = req.session.data['know-nhs-number']
+
+  // Check whether the variable matches a condition
+  if (nhsNumber == "Yes"){
+    // Send user to next page
+    res.redirect('/docs/examples/branching/answer-yes')
+  }
+  else {
+    // Send user to ineligible page
+    res.redirect('/docs/examples/branching/answer-no')
+  }
+
+})
 
 module.exports = router;
