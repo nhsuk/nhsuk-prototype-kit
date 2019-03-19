@@ -1,5 +1,19 @@
 # NHS.UK prototype kit Changelog
 
+## 2.0.0 - Mar 19, 2019
+
+:new: **New features**
+
+- Documentation for updating the kit
+
+:wrench: **Fixes**
+
+- [Moved main.js below jQuery in scripts.html](https://github.com/nhsuk/nhsuk-frontend/issues/98)
+
+:boom: **Breaking changes**
+
+- Examples and templates - have been moved from the app folder into the docs folder to allow updates without affecting the users prototype app folder
+
 ## 1.0.3 - Mar 11, 2019
 
 :wrench: **Fixes**
