@@ -1,6 +1,6 @@
 # NHS.UK prototype kit Changelog
 
-## 2.0.0 - Mar 19, 2019
+## 2.0.0 - TBC
 
 :new: **New features**
 
