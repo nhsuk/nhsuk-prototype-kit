@@ -36,7 +36,7 @@
 
       {% block skipLink %}
         {{ skipLink({
-          href: '#main-content',
+          href: '#maincontent',
           text: 'Skip to main content'
         }) }}
       {% endblock %}
@@ -49,7 +49,7 @@
 
       {% block main %}
         <div class="nhsuk-width-container">
-          <main class="nhsuk-main-wrapper {{ mainClasses }}" id="main-content" role="main">
+          <main class="nhsuk-main-wrapper {{ mainClasses }}" id="maincontent" role="main">
             {% block content %}{% endblock %}
           </main>
         </div>
