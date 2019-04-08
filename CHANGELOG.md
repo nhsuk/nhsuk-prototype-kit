@@ -8,7 +8,9 @@
 
 :wrench: **Fixes**
 
-- [Moved main.js below jQuery in scripts.html](https://github.com/nhsuk/nhsuk-frontend/issues/98)
+- [Moved main.js below jQuery in scripts.html](https://github.com/nhsuk/nhsuk-prototype-kit/issues/98)
+
+- Reorder the asset `preconnect` and remove unneeded `dns-prefetch` ([Issue 104](https://github.com/nhsuk/nhsuk-prototype-kit/issues/104)) and also reordered attributes based on [frontend coding standards](https://github.com/nhsuk/nhsuk-frontend/blob/master/docs/contributing/coding-standards.md#html)
 
 :boom: **Breaking changes**
 
@@ -39,7 +41,7 @@
 :wrench: **Fixes**
 
 -  [Header and footer inconsistency on the branching examples](https://github.com/nhsuk/nhsuk-prototype-kit/issues/71)
--  Fix inconsistencies with page titles, should be `Page name - NHS.UK prototype kit` 
+-  Fix inconsistencies with page titles, should be `Page name - NHS.UK prototype kit`
 
 ## 1.0.0 - Feb 5, 2019
 
