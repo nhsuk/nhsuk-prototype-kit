@@ -12,21 +12,22 @@
 
     <title>{% block pageTitle %}NHS.UK prototype kit{% endblock %}</title>
 
-    <link rel="preload" as="font" href="https://assets.nhs.uk/fonts/FrutigerLTW01-55Roman.woff2" type="font/woff2" crossorigin>
-    <link rel="preload" as="font" href="https://assets.nhs.uk/fonts/FrutigerLTW01-65Bold.woff2" type="font/woff2" crossorigin>
-    <link rel="preconnect  dns-prefetch" href="https://www.nhs.uk/">
-    <link rel="preconnect  dns-prefetch" href="https://assets.nhs.uk/" crossorigin>
+    <link href="https://www.nhs.uk/" rel="preconnect">
+    <link href="https://assets.nhs.uk/" rel="preconnect" crossorigin>
+
+    <link type="font/woff2" href="https://assets.nhs.uk/fonts/FrutigerLTW01-55Roman.woff2" rel="preload" as="font" crossorigin>
+    <link type="font/woff2" href="https://assets.nhs.uk/fonts/FrutigerLTW01-65Bold.woff2" rel="preload" as="font" crossorigin>
 
     {% block headCSS %}
-      <link rel="stylesheet" href="/css/main.css">
+      <link href="/css/main.css" rel="stylesheet">
     {% endblock %}
 
     <script src="/nhsuk-frontend/nhsuk.min.js" defer></script>
 
     {% block headIcons %}
-      <!--[if IE]><link rel="shortcut icon" href="/nhsuk-frontend/assets/favicons/favicon.ico"><![endif]-->
-      <link rel="apple-touch-icon" href="/nhsuk-frontend/assets/favicons/apple-touch-icon.png">
-      <link rel="icon" href="/nhsuk-frontend/assets/favicons/favicon.png">
+      <!--[if IE]><link href="/nhsuk-frontend/assets/favicons/favicon.ico" rel="shortcut icon"><![endif]-->
+      <link href="/nhsuk-frontend/assets/favicons/apple-touch-icon.png" rel="apple-touch-icon">
+      <link href="/nhsuk-frontend/assets/favicons/favicon.png" rel="icon">
     {% endblock %}
   </head>
 
@@ -36,7 +37,7 @@
 
       {% block skipLink %}
         {{ skipLink({
-          href: '#main-content',
+          href: '#maincontent',
           text: 'Skip to main content'
         }) }}
       {% endblock %}
@@ -49,7 +50,7 @@
 
       {% block main %}
         <div class="nhsuk-width-container">
-          <main class="nhsuk-main-wrapper {{ mainClasses }}" id="main-content" role="main">
+          <main class="nhsuk-main-wrapper {{ mainClasses }}" id="maincontent" role="main">
             {% block content %}{% endblock %}
           </main>
         </div>

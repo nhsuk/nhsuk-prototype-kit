@@ -1,5 +1,23 @@
 # NHS.UK prototype kit Changelog
 
+## 2.0.0 - TBC
+
+:new: **New features**
+
+- Documentation for updating the kit
+
+:wrench: **Fixes**
+
+- [Moved main.js below jQuery in scripts.html](https://github.com/nhsuk/nhsuk-prototype-kit/issues/98)
+
+- Reorder the asset `preconnect` and remove unneeded `dns-prefetch` ([Issue 104](https://github.com/nhsuk/nhsuk-prototype-kit/issues/104)) and also reordered attributes based on [frontend coding standards](https://github.com/nhsuk/nhsuk-frontend/blob/master/docs/contributing/coding-standards.md#html)
+
+- Update package dependencies including latest version (2.1.0) of the NHS.UK frontend
+
+:boom: **Breaking changes**
+
+- Examples and templates - have been moved from the app folder into the docs folder to allow updates without affecting the users prototype app folder
+
 ## 1.0.3 - Mar 11, 2019
 
 :wrench: **Fixes**
@@ -25,7 +43,7 @@
 :wrench: **Fixes**
 
 -  [Header and footer inconsistency on the branching examples](https://github.com/nhsuk/nhsuk-prototype-kit/issues/71)
--  Fix inconsistencies with page titles, should be `Page name - NHS.UK prototype kit` 
+-  Fix inconsistencies with page titles, should be `Page name - NHS.UK prototype kit`
 
 ## 1.0.0 - Feb 5, 2019
 
