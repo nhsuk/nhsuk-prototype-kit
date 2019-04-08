@@ -12,6 +12,8 @@
 
 - Reorder the asset `preconnect` and remove unneeded `dns-prefetch` ([Issue 104](https://github.com/nhsuk/nhsuk-prototype-kit/issues/104)) and also reordered attributes based on [frontend coding standards](https://github.com/nhsuk/nhsuk-frontend/blob/master/docs/contributing/coding-standards.md#html)
 
+- Update package dependencies including latest version (2.0.1) of the NHS.UK frontend
+
 :boom: **Breaking changes**
 
 - Examples and templates - have been moved from the app folder into the docs folder to allow updates without affecting the users prototype app folder
