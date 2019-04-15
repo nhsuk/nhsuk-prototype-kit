@@ -1,5 +1,11 @@
 # NHS.UK prototype kit Changelog
 
+## 2.0.1 - April 15, 2019
+
+:wrench: **Fixes**
+
+- [Change mini-hub example to two-thirds column](https://github.com/nhsuk/nhsuk-prototype-kit/issues/109)
+
 ## 2.0.0 - April 4, 2019
 
 :new: **New features**
