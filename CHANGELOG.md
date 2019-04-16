@@ -6,6 +6,10 @@
 
 - Layouts - restructure and tidy page layouts so they are easier to understand and edit
 
+:wrench: **Fixes**
+
+- Update package dependencies
+
 ## 2.0.1 - April 15, 2019
 
 :wrench: **Fixes**
