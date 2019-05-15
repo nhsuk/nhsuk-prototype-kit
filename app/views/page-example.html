@@ -6,12 +6,13 @@
     - add custom CSS and JavaScript
 -->
 
-<!-- Set the page title inside thie pageTitle block -->
+<!-- Set the page title inside the pageTitle block -->
 {% block pageTitle %}
   Content page example - NHS.UK prototype kit
 {% endblock %}
 
-<!-- Breadcrumb goes inside thie beforeContent block -->
+<!-- Breadcrumb goes inside the beforeContent block -->
+<!-- More info and code for the breadcrumb can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/breadcrumbs -->
 {% block beforeContent %}
   {{ breadcrumb({
     href: "/",
