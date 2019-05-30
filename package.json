@@ -9,7 +9,9 @@
     "start": "node app.js",
     "test": "",
     "prewatch": "gulp build",
-    "watch": "gulp"
+    "watch": "gulp",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "https://github.com/nhsuk/",
   "license": "MIT",
@@ -18,7 +20,7 @@
     "@babel/preset-env": "^7.4.3",
     "basic-auth": "^2.0.1",
     "body-parser": "^1.18.3",
-    "browser-sync": "^2.26.3",
+    "browser-sync": "^2.26.4",
     "client-sessions": "^0.8.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.4",
@@ -33,7 +35,9 @@
     "keypather": "^3.0.0",
     "nhsuk-frontend": "^2.1.0",
     "nunjucks": "^3.2.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "snyk": "^1.169.2"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "snyk": true
 }
