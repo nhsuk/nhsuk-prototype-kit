@@ -1,6 +1,6 @@
 {
   "name": "nhsuk-prototype-kit",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Rapidly create HTML prototypes of NHS websites and services.",
   "main": "app.js",
   "scripts": {
@@ -18,7 +18,7 @@
     "@babel/preset-env": "^7.4.3",
     "basic-auth": "^2.0.1",
     "body-parser": "^1.18.3",
-    "browser-sync": "^2.26.3",
+    "browser-sync": "^2.26.7",
     "client-sessions": "^0.8.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.4",

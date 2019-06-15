@@ -1,5 +1,11 @@
 # NHS.UK prototype kit Changelog
 
+## 3.0.1 - June 15, 2019
+
+:wrench: **Fixes**
+
+- Update `browser-sync` to 2.26.7 to fix vulnerability issues. 
+
 ## 3.0.0 - May 14, 2019
 
 :boom: **Breaking changes**
