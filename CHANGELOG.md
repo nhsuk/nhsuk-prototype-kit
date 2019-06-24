@@ -1,5 +1,12 @@
 # NHS.UK prototype kit Changelog
 
+## 3.0.1 - 24th June 2019
+
+:wrench: **Fixes**
+
+- Update to NHS.UK frontend v2.2.0 and use the new favicons
+- Update package dependencies to latest versions
+
 ## 3.0.0 - May 14, 2019
 
 :boom: **Breaking changes**
