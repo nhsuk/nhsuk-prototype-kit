@@ -9,7 +9,9 @@
     "start": "node app.js",
     "test": "",
     "prewatch": "gulp build",
-    "watch": "gulp"
+    "watch": "gulp",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "https://github.com/nhsuk/",
   "license": "MIT",
@@ -33,7 +35,9 @@
     "keypather": "^3.0.0",
     "nhsuk-frontend": "^2.2.0",
     "nunjucks": "^3.2.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "snyk": "^1.189.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "snyk": true
 }
