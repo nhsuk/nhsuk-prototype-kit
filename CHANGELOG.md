@@ -6,6 +6,7 @@
 
 - Update to NHS.UK frontend v2.3.0
 - Update package dependencies to latest versions
+- Use the lede text class on paragraphs below the page headings
 
 ## 3.0.1 - 24th June 2019
 
