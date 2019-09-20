@@ -1,6 +1,50 @@
 # NHS.UK prototype kit Changelog
 
-## 2.0.0 - TBC
+## 3.0.4 - 20th September 2019
+
+:wrench: **Fixes**
+
+- Only set cookies on prototypes that aren't documentation only versions of the kit
+
+## 3.0.3 - 11th September 2019
+
+:wrench: **Fixes**
+
+- Use the latest version of the NHS.UK frontend library (v2.3.1)
+- Update package dependencies to latest versions
+
+## 3.0.2 - 29th August 2019
+
+:wrench: **Fixes**
+
+- Update to NHS.UK frontend v2.3.0
+- Update package dependencies to latest versions
+- Use the lede text class on paragraphs below the page headings
+
+## 3.0.1 - 24th June 2019
+
+:wrench: **Fixes**
+
+- Update to NHS.UK frontend v2.2.0 and use the new favicons
+- Update package dependencies to latest versions
+
+## 3.0.0 - May 14, 2019
+
+:boom: **Breaking changes**
+
+- Layouts - restructure and tidy page layouts so they are easier to understand and edit
+
+:wrench: **Fixes**
+
+- Update package dependencies
+
+## 2.0.1 - April 15, 2019
+
+:wrench: **Fixes**
+
+- [Change mini-hub example to two-thirds column](https://github.com/nhsuk/nhsuk-prototype-kit/issues/109)
+
+## 2.0.0 - April 4, 2019
 
 :new: **New features**
 
