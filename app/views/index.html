@@ -1,21 +1,26 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
 <!-- 
-ADDING CUSTOM CSS
-Add your custom CSS/Sass to /app/assets/sass/main.scss
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
 -->
 
-
-<!-- Extends the layout from /app/views/layouts/layout.html -->
-{% extends 'layouts/layout.html' %}
-
-<!-- Set the page title inside this block -->
+<!-- Set the page title inside the pageTitle block -->
 {% block pageTitle %}
   NHS.UK prototype kit
 {% endblock %}
 
-<!-- Breadcrumb goes inside this block -->
+<!-- Breadcrumb goes inside the beforeContent block -->
 {% block beforeContent %}
 {% endblock %}
 
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
@@ -27,12 +32,15 @@ Add your custom CSS/Sass to /app/assets/sass/main.scss
       </h1>
 
       <!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
 
-      <p class="nhsuk-body-l">
+      <p class="nhsuk-lede-text">
         This kit lets you rapidly create HTML prototypes of NHS services.
       </p>
 
-      <h2 class="nhsuk-heading-m">
+      <hr>
+
+      <h2>
         About this page
       </h2>
 
@@ -45,10 +53,12 @@ Add your custom CSS/Sass to /app/assets/sass/main.scss
       </p>
 
       <p>
-        You can also find the code for an <a href="/page-example">example page</a> at <strong>/app/views/page-example.html</strong>, which includes a selection of NHS.UK frontend styles and components.
+        There is also an <a href="/page-example">example page</a>, which contains a selection of NHS.UK frontend styles and components.
       </p>
 
-      <h2 class="nhsuk-heading-m">
+      <hr>
+
+      <h2>
         Documentation
       </h2>
 
@@ -57,7 +67,7 @@ Add your custom CSS/Sass to /app/assets/sass/main.scss
           Get started with <a href="/docs">how to guides and page templates</a>
         </li>
         <li>
-          Copy and paste styles and component code snippets from the <a href="https://beta.nhs.uk/service-manual/styles-components-patterns">NHS digital service manual</a>
+          Copy and paste styles and components from the <a href="https://beta.nhs.uk/service-manual/styles-components-patterns">NHS digital service manual</a>
         </li>
       </ul>
 

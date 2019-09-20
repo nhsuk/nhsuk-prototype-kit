@@ -1,9 +1,18 @@
-{% extends 'layouts/layout-nhsuk.html' %}
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
 
+<!-- Set the page title inside the pageTitle block -->
 {% block pageTitle %}
   Content page example - NHS.UK prototype kit
 {% endblock %}
 
+<!-- Breadcrumb goes inside the beforeContent block -->
+<!-- More info and code for the breadcrumb can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/breadcrumbs -->
 {% block beforeContent %}
   {{ breadcrumb({
     href: "/",
@@ -11,22 +20,28 @@
   }) }}
 {% endblock %}
 
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
 {% block content %}
+
   <div class="nhsuk-grid-row">
 
     <div class="nhsuk-grid-column-two-thirds">
 
+      <!-- Change the page title here -->
       <h1>
         Page heading goes here
       </h1>
 
-      <p class="nhsuk-body-l">
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
+      <p class="nhsuk-lede-text">
         This page example includes a selection of styles and components available to the prototype kit.
       </p>
       
       <p>
         For more styles, code snippets and guidance on components visit the
-        <a href="https://beta.nhs.uk/service-manual/">NHS digital service manual</a>.
+        <a href="https://beta.nhs.uk/service-manual/styles-components-patterns">NHS digital service manual</a>.
       </p>
 
       <figure class="nhsuk-image">
@@ -102,6 +117,8 @@
         "lastReview": "12 February 2017",
         "nextReview": "1 February 2020"
       }) }}
+
+      <!-- End of content -->
 
     </div>  
 
