@@ -31,22 +31,32 @@
 {% endblock %}
 
 {% block footer %}
-  {{ footer({
-    "links": [
-      {
-        "URL": "/docs",
-        "label": "Home"
-      },
-      {
-        "URL": "/docs/about",
-        "label": "About and support"
-      },
-      {
-        "URL": "https://github.com/nhsuk/nhsuk-prototype-kit",
-        "label": "NHS.UK prototype kit - GitHub"
-      }
-    ]
-  })}}
+
+  <footer role="contentinfo">
+    <div class="nhsuk-footer" id="nhsuk-footer">
+      <div class="nhsuk-width-container">
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-full">
+            <p class="nhsuk-u-secondary-text-color nhsuk-u-font-size-16">This website only stores the cookies that are needed to make it work. Read more about how <a href="/docs/cookies">we use cookies.</a></p>
+          </div>
+        </div>
+
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-full">
+            <h2 class="nhsuk-u-visually-hidden">Support links</h2>
+            <ul class="nhsuk-footer__list">
+              <li class="nhsuk-footer__list-item"><a class="nhsuk-footer__list-item-link" href="/docs">Home</a></li>
+              <li class="nhsuk-footer__list-item"><a class="nhsuk-footer__list-item-link" href="/docs/about">About and support</a></li>
+              <li class="nhsuk-footer__list-item"><a class="nhsuk-footer__list-item-link" href="https://github.com/nhsuk/nhsuk-prototype-kit">NHS.UK prototype kit - GitHub</a></li>
+            </ul>
+
+            <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 {% endblock %}
 
 {% block bodyEnd %}
