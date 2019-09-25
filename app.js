@@ -74,7 +74,7 @@ let sessionOptions = {
 }
 
 // Support session data in cookie or memory
-if (useCookieSessionStore === 'true') {
+if (useCookieSessionStore === 'true' && !onlyDocumentation) {
   app.use(sessionInCookie(Object.assign(sessionOptions, {
     cookieName: sessionName,
     proxy: true,
