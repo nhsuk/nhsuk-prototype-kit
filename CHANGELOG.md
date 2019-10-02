@@ -3,6 +3,7 @@
 ## 3.0.4 - 2nd October 2019
 
 - Use the latest version of the NHS.UK frontend library (v2.3.2)
+- Update package dependencies to latest versions
 
 ## 3.0.3 - 11th September 2019
 
