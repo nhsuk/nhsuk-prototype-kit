@@ -1,0 +1,100 @@
+
+// ==========================================================================
+// COMPONENTS / ALERTS
+// ==========================================================================
+.nhsuk-message {
+  box-sizing: border-box;
+  clear: both;
+  padding: 16px 16px 0px 16px;
+  margin-bottom: 16px;
+  margin-top: 8px;
+  border-radius: 4px;
+  position: relative;
+  max-width: 75%;
+  display: flex;
+
+
+  p{
+
+    padding:0;
+    font-size: .9em;
+  }
+
+}
+p.nhsuk-message-name{
+  font-size: .9em;
+}
+
+.nhsuk-message_requester{
+  background-color:#EDF4FB;
+}
+
+.nhsuk-message_responder {
+background-color: #c6ece9;
+float: right;
+
+}
+
+.nhsuk-message_requester:after{
+	bottom: 100%;
+	left: 100px;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.nhsuk-message_requester:after {
+	border-bottom-color:#EDF4FB;
+	border-width: 10px;
+
+}
+.nhsuk-message_responder--wrapper{
+  float: right;
+p:first-child{
+  float: right;
+}
+}
+.nhsuk-message_responder-name{
+  text-align: right;
+
+}
+
+.nhsuk-message_responder:after{
+	bottom: 100%;
+	right: 100px;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.nhsuk-message_responder:after {
+	border-bottom-color:#c6ece9;
+	border-width: 10px;
+
+}
+
+
+.nhsuk-message_responder:before{
+  justify-content: flex-end;
+}
+.message-panel{
+  // max-height: 300px;
+  min-height: 300px;
+  position:relative;
+  padding-top: 16px;
+  margin-bottom: 16px;
+  overflow:scroll;
+  top: -1px;
+  //border-bottom: 1px solid $color_nhsuk-grey-3;
+  border-top: 1px solid $color_nhsuk-grey-3;
+  //-webkit-box-shadow: inset 4px 136px 11px -134px rgba(158,158,158,1);
+//-moz-box-shadow: inset 4px 136px 11px -134px rgba(158,158,158,1);
+//box-shadow: inset 4px 136px 11px -134px rgba(158,158,158,1);
+
+}

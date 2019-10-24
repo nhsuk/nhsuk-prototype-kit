@@ -1,0 +1,69 @@
+// ==========================================================================
+// COMPONENTS /
+// ==========================================================================
+
+.nhsuk-action-bar{
+  a:first-child{
+    margin-right: 32px;
+  }
+}
+
+nav.patient-info{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+ul{
+
+  display:flex;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  justify-content: space-between;
+
+}
+li{
+  padding: 8px;
+  margin-bottom: 0;
+  margin-right: 32px;
+  font-size: 16px;
+
+}
+ul li:first-child{
+  background-color:#425563;
+  color:#f0f4f5;
+
+}
+a{
+  padding: 0;
+
+}
+}
+
+
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+
+
+
+}
+
+.flex-container  div {
+
+  margin-right: 10px;
+ul {
+  display: inline;
+  margin-left: 32px;
+  justify-content: space-between;
+
+  li{
+    display: inline;
+    text-align:center;
+    margin-right:32px;
+    padding: 8px;
+  }
+}
+
+}

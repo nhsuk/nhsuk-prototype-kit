@@ -1,0 +1,42 @@
+
+// ==========================================================================
+// COMPONENTS / ALERTS
+// ==========================================================================
+.panel {
+  box-sizing: border-box;
+  clear: both;
+  border-left-style: solid;
+  border-color: #bfc1c3;
+  padding: 8px 16px;
+  margin-bottom: 32px;
+
+  h1{
+    padding:0;
+    margin: .6em 0;
+  }
+
+}
+
+.panel-border-wide {
+  border-left-width: 10px;
+}
+
+.panel-border-wide.alert-info {
+  border-color: #425462;
+  background-color:$color_nhsuk-grey-5;
+}
+
+.panel-border-wide.alert-default {
+  border-color: #2b8cc4;
+  background-color: #dbeff9;
+}
+
+.panel-border-wide.alert-success {
+  border-color: #28a197;
+  background-color: #c6ece9;
+}
+
+.panel-border-wide.alert-error {
+  border-color: #c42b2b;
+  background-color: #f3dede;
+}

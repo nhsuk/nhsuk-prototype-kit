@@ -1,0 +1,60 @@
+.app-check-your-answers--no-border {
+  dl, dt, dd{
+    border: 0
+  }
+}
+ul {
+
+list-style-type: none;
+margin: 24px 0;
+line-height: 1.5em;
+padding-left: 0;
+
+li{
+  margin-left: 0;
+  padding-left: 0;
+}
+
+}
+ul.nhsuk-list{
+  list-style-type: none;
+  margin: 24px 0;
+  font-size: 1em;
+  line-height: 1.5em;
+
+  li{
+  border-bottom: 1px solid #d8dde0;
+  padding: 16px 0;
+  padding-left: 16px;}
+}
+.nhsuk-list-item{
+  border-bottom: 1px solid $color_nhsuk-grey-4;
+  padding-top:16px;
+}
+
+dl{
+
+
+dt{
+  margin-top: 24px;
+  font-weight: bold;
+}
+dd{
+  margin: 0;
+  padding: 4px 0;
+}
+}
+
+ul.ers-list--unstyled{
+  list-style-type: none;
+  padding-left: 0;
+
+a{
+  text-decoration: none;
+  color: $color_nhsuk-grey-1;
+  display: block;
+  h3{
+    color: $color_nhsuk-blue;
+  }
+}
+}

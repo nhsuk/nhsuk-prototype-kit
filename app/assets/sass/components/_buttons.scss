@@ -1,0 +1,92 @@
+
+// ==========================================================================
+// COMPONENTS / BUTTONS
+// ==========================================================================
+
+
+.nhsuk-button--ers{
+  @extend .nhsuk-button;
+  padding:4px 16px;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.nhsuk-button--ers_secondary {
+  @extend .nhsuk-button--ers;
+  background-color: #425563;
+  box-shadow: 0 4px 0 #232e35; }
+  .nhsuk-button--ers_secondary:hover, .nhsuk-button--ers_secondary:focus {
+    background-color: #384854; }
+  .nhsuk-button--ers_secondary.nhsuk-button--ers_disabled {
+    background-color: #425563; }
+
+.nhsuk-button--ers_reverse{
+@extend .nhsuk-button--ers;
+background-color: $color_nhsuk-white;
+border:1px solid  #425563;
+color: #425563;
+box-shadow: 0 4px 0 #425563;
+
+}
+.nhsuk-button--ers_reverse:link{
+  color: green;
+}
+
+.nhsuk-button--ers_reverse:hover, .nhsuk-button--ers_reverse:focus {
+  @extend .nhsuk-button--ers_reverse;
+  color:#425563;
+  background-color: $color_nhsuk-grey-5;
+cursor: pointer;}
+.nhsuk-button--ers_reverse.nhsuk-button--ers_disabled {
+  background-color: #425563;
+cursor: pointer;}
+
+.nhsuk-upload-button-container {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.nhsuk-upload-button-container input[type=file] {
+  font-size: 5em;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+// comment out changes
+.dropbtn {
+  background-color: $color_nhsuk-green;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}

@@ -1,0 +1,56 @@
+// ==========================================================================
+// COMPONENTS / SIDEBAR
+// ==========================================================================
+
+.nhsuk-sidebar {
+
+  position: relative;
+  border-right: 1px solid $color_nhsuk-grey-4;
+  min-height: 700px;
+  margin-bottom: 32px;
+
+
+  h3 {
+    margin-bottom: 0;
+    padding: 12px 0 12px 24px;
+    display: block;
+    background: $color_nhsuk-grey-4;
+  }
+}
+
+nav.nhsuk-sidebar-actions {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 4px;
+  }
+
+  li {
+    display: inline-block;
+    margin-bottom:8px;
+    width: 100%;
+    padding: 0;
+    border: 2px solid $color_nhsuk-grey-4;
+    border-radius: 4px;
+    background-color: $color_nhsuk-white;
+  }
+
+  a:link, a:visited {
+    color: $color_nhsuk-blue;
+    display: block;
+    padding: 12px 24px;
+    font-size: 16px;
+    position: relative;
+    font-weight: bold;
+    text-decoration: none;
+    width: 100%;
+    box-shadow: none;
+    vertical-align: middle;
+    line-height: 1.5em;
+
+  }
+  a:hover{
+    text-decoration: underline;
+    color: $color_nhsuk-blue;
+  }
+}

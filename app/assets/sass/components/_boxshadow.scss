@@ -1,0 +1,25 @@
+#boxshadow {
+  position: relative;
+  -webkit-box-shadow: 10px 10px 0px 3px rgba(153,153,153,0.26);
+-moz-box-shadow: 10px 10px 0px 3px rgba(153,153,153,0.26);
+box-shadow: 10px 10px 0px 3px rgba(153,153,153,0.26);
+  padding: 5px;
+  background: white;
+  border: 1px solid grey;
+}
+
+/* Make the image fit the box */
+#boxshadow img {
+  width: 75%;
+
+}
+
+#boxshadow::after {
+  content: '';
+  position: absolute;
+  z-index: -1; /* hide shadow behind image */
+  -webkit-box-shadow: 0 0px 20px rgba(0, 0, 0, 0.9);
+  -moz-box-shadow: 0 0px 20px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0px 20px rgba(0, 0, 0, 0.9);
+
+}
