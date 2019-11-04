@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Example - passing data from page to page
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        Upload Defer/Cease Report
+      </h1>
+
+      {{ insetText({
+      "HTML": "<h3>Formats accepted</h3><p>CSV, XML, JSON, EXCEL</p>"
+      }) }}
+
+      <p>
+        We recommend <a href="">SNOMED codes</a> are used when uploading data to the screening platform. Any codes that we don't recognise will need to be manually mapped.
+      </p>
+
+      <p>
+        <a class="nhsuk-button" href="upload-no-snomed">Upload</a>
+      </p>
+
+    </div>
+  </div>
+{% endblock %}
