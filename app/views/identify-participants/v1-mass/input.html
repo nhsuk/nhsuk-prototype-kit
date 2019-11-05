@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Example - passing data from page to page
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        Input NHS numbers
+      </h1>
+
+      <p>
+        You will need to paste or manually input NHS numbers from your clinical system. We recommend copying and pasting the data.
+      </p>
+
+      {{ textarea({
+        "name": "nhs-numbers",
+        "id": "nhs-numbers",
+        "label": {
+        "text": "Enter / Paste NHS numbers?"
+      },
+        "hint": {
+        "text": "NHS numbers need to separated by a space, comma or semi colon"
+        }
+      }) }}
+
+      <p>
+        <a class="nhsuk-button" href="amend">Continue</a>
+      </p>
+
+    </div>
+  </div>
+{% endblock %}
