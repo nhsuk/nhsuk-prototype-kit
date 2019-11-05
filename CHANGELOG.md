@@ -1,5 +1,13 @@
 # NHS.UK prototype kit Changelog
 
+## 3.0.5 - 29th October 2019
+
+- Add support for Node 12.x
+
+  Node 12.x recently became the long term supported version of Nodejs. The `gulp-sass` dependency had a peer dependency pinned to specific version `node-sass` that doesn't work on Node 12.x. Node 12.x support got added to `node-sass` in `4.12.0` and above.
+
+- Update package dependencies to latest versions
+
 ## 3.0.4 - 2nd October 2019
 
 - Use the latest version of the NHS.UK frontend library (v2.3.2)
