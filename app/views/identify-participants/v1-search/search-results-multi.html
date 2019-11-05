@@ -1,0 +1,102 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Example - passing data from page to page
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1>Search Results</h1>
+      <p><strong>We found 5 result for patients with NHS Number 9550972968</strong></p>
+      <p>If this isn't the patient you're looking for you can refine your search or perform a new search.</p>
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-table-responsive">
+  <table class="nhsuk-table">
+    <caption class="nhsuk-table__caption">Map your codes to SNOMED codes</caption>
+    <thead class="nhsuk-table__head">
+      <tr class="nhsuk-table__row">
+        <th class="nhsuk-table__header" scope="col">NHS number</th>
+        <th class="nhsuk-table__header" scope="col">Name</th>
+        <th class="nhsuk-table__header" scope="col">DOB</th>
+        <th class="nhsuk-table__header" scope="col">Reason</th>
+      </tr>
+    </thead>
+    <tbody class="nhsuk-table__body">
+      <tr class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">123 456 67890</td>
+        <td class="nhsuk-table__cell">Jane Smith</td>
+        <td class="nhsuk-table__cell">10 12 1980</td>
+        <td class="nhsuk-table__cell ">
+          <select class="nhsuk-select">
+            <option>Select</option>
+            <option>Cease</option>
+            <option>Defer</option>
+          </select>
+        </td>
+      </tr>
+      <tr class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">123 456 67890</td>
+        <td class="nhsuk-table__cell">Jane Smith</td>
+        <td class="nhsuk-table__cell">10 12 1980</td>
+        <td class="nhsuk-table__cell ">
+          <select class="nhsuk-select">
+            <option>Select</option>
+            <option>Cease</option>
+            <option>Defer</option>
+          </select>
+        </td>
+      </tr>
+      <tr class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">123 456 67890</td>
+        <td class="nhsuk-table__cell">Jane Smith</td>
+        <td class="nhsuk-table__cell">10 12 1980</td>
+        <td class="nhsuk-table__cell ">
+          <select class="nhsuk-select">
+            <option>Select</option>
+            <option>Cease</option>
+            <option>Defer</option>
+          </select>
+        </td>
+      </tr>
+      <tr class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">123 456 67890</td>
+        <td class="nhsuk-table__cell">Jane Smith</td>
+        <td class="nhsuk-table__cell">10 12 1980</td>
+        <td class="nhsuk-table__cell ">
+          <select class="nhsuk-select">
+            <option>Select</option>
+            <option>Cease</option>
+            <option>Defer</option>
+          </select>
+        </td>
+      </tr>
+      <tr class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">123 456 67890</td>
+        <td class="nhsuk-table__cell">Jane Smith</td>
+        <td class="nhsuk-table__cell">10 12 1980</td>
+        <td class="nhsuk-table__cell ">
+          <select class="nhsuk-select">
+            <option>Select</option>
+            <option>Cease</option>
+            <option>Defer</option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+    
+    <p><a class="nhsuk-button" href="review">Continue</a></p>
+    <p><a href="search">Search again</a></p>
+
+    </div>
+  </div>
+
+ 
+    
+{% endblock %}

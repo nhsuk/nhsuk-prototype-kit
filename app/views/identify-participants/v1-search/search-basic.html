@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Example - passing data from page to page
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form action="search-results-multi" method="post">
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+              Search for a patient
+            </h1>
+          </legend>
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="nhs-number">
+              Last Name
+            </label>
+            <input class="nhsuk-input nhsuk-u-width-three-quarters" id="nhs-number" name="nhs-number" value="{{ data['nhs-number'] }}" type="text">
+          </div>
+          
+          <div id="nhsuk-form-group-dob" class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset" aria-describedby="dob" role="group">
+            <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+              Date of birth
+            </legend>
+            <span class="nhsuk-hint">
+              For example, 31 3 1980
+            </span>
+            <span id="dob-error-error" class="nhsuk-error-message" style="display: none">
+              You must enter a date of birth
+            </span>
+            <div class="nhsuk-date-input" id="dob">
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-day">
+                    Day
+                  </label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dob-day" name="dob-day" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-month">
+                    Month
+                  </label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dob-month" name="dob-month" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-year">
+                    Year
+                  </label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="dob-year" name="dob-year" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        </fieldset>
+        <button class="nhsuk-button">Search</button>
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
