@@ -1,5 +1,11 @@
 # NHS.UK prototype kit Changelog
 
+## 3.0.6 - 7th November 2019
+
+:wrench: **Fixes**
+
+- Update to NHS.UK frontend v3.0.0
+
 ## 3.0.5 - 29th October 2019
 
 - Add support for Node 12.x
