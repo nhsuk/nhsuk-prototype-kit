@@ -1,6 +1,6 @@
 {
   "name": "nhsuk-prototype-kit",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "Rapidly create HTML prototypes of NHS websites and services.",
   "main": "app.js",
   "scripts": {
