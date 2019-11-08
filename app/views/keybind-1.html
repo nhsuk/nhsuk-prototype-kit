@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Example - passing data from page to page
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        Keybind Spike 1
+      </h1>
+      <p>https://craig.is/killing/mice</p>
+      <p>https://www.hongkiat.com/blog/keyboard-shortcuts-website/</p>
+
+      {{ input({
+        "label": {
+        "text": "Use Code '1' to focus on this text box"
+        },
+        "id": "input-example-1",
+        "name": "test-name"
+      }) }}
+
+      {{ input({
+        "label": {
+        "text": "Use Code '2' to focus on this text box"
+        },
+        "id": "input-example-2",
+        "name": "test-name"
+      }) }}
+
+     
+
+      <!--
+      <p>
+        <a class="nhsuk-button" href="upload-no-snomed">Upload</a>
+      </p>
+      -->
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    <!-- Custom JavaScript files can be added to this file -->
+    <script src="js/mousetrap.min.js"></script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      //console.log( "ready!" );
+      //Mousetrap.bind('4', function() { highlight(2); });
+      Mousetrap.bind('?', function() { alert("Help Section - Keyboard Commands"); });
+
+      Mousetrap.bind('1', function(e) {
+        document.getElementById("input-example-1").focus();
+        return false;
+      });
+      Mousetrap.bind('2', function(e) {
+        document.getElementById("input-example-2").focus();
+        return false;
+      });
+      
+    });
+   
+        
+
+    </script>
+    <!-- For adding page specific JavsScript -->
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}
