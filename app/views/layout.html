@@ -34,6 +34,16 @@
 <!-- Footer goes inside the footer block -->
 <!-- More info and code for the footer can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/footer -->
 {% block footer %}
+
+<!-- print out all the session values - this is just for testing -->
+    
+  <p>session data</p>
+
+  {% for key, value in data %}
+    {{ key }} : {{ value }} <br>
+  {% endfor %}
+
+
   {{ footer({
     "links": [
       {

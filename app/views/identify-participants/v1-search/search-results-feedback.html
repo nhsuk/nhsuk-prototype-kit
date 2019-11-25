@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Example - passing data from page to page
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-l">Your change is pending, you need to complete the [form name] and submit it to [org name]</h1>
+
+      <p>In order to cease Jane Smith from the screening programme for the reason ({{ data.reason }}) you will need to submit a signed and competed [form name] to [org name]</p>
+      <div class="nhsuk-inset-text">
+        <span class="nhsuk-u-visually-hidden">Proof required: [form name] - {{ data.reason }}</span>
+        <h3>Proof required: [form name] - {{ data.reason }}</h3>
+        <p><a href="">Download and complete the [form name]</a></p>
+      </div>
+
+      <p>You will need to:</p>
+      <ul>
+      <li>download the form</li>
+      <li>print the form</li>
+      <li>get the form signed by the patient</li>
+      <li>get the form signed by the patients GP</li>
+      <li>scan/photo the form and upload it to the <a href"">CSAS website</a></li>
+      </ul>
+
+      <p><a class="nhsuk-button" href="">Download [form name]</a></p>
+      <p><a href="search-results">Back to search results</a></p>  
+    </div>
+  </div>
+
+
+    
+    
+
+
+ 
+    
+{% endblock %}

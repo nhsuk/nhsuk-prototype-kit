@@ -16,7 +16,7 @@
 
       {{ input({
         "label": {
-        "text": "Use Code '1' to focus on this text box"
+        "text": "Use Code 'c y' to focus on this text box"
         },
         "id": "input-example-1",
         "name": "test-name"
@@ -24,7 +24,7 @@
 
       {{ input({
         "label": {
-        "text": "Use Code '2' to focus on this text box"
+        "text": "Use Code 'e c' to focus on this text box"
         },
         "id": "input-example-2",
         "name": "test-name"
@@ -53,11 +53,11 @@
       //Mousetrap.bind('4', function() { highlight(2); });
       Mousetrap.bind('?', function() { alert("Help Section - Keyboard Commands"); });
 
-      Mousetrap.bind('1', function(e) {
+      Mousetrap.bind('ctrl c y', function(e) {
         document.getElementById("input-example-1").focus();
         return false;
       });
-      Mousetrap.bind('2', function(e) {
+      Mousetrap.bind('ctrl e c', function(e) {
         document.getElementById("input-example-2").focus();
         return false;
       });

@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Example - passing data from page to page
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        Review Invitees
+      </h1>
+
+      <div class="nhsuk-grid-row nhsuk-panel-group">
+        <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item">
+          <div class="nhsuk-panel">
+            <h3 class="nhsuk-heading-xl">400</h3>
+            <p>Patients Invited</p>
+          </div>
+          </div>
+          <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item">
+            <div class="nhsuk-panel">
+              <h3 class="nhsuk-heading-xl">10</h3>
+              <p>Deferred</p>
+            </div>
+          </div>
+          <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item">
+            <div class="nhsuk-panel">
+              <h3 class="nhsuk-heading-xl">5</h3>
+              <p>Ceased</p>
+            </div>
+          </div>
+        </div>
+
+        <h2>Patients Deferred</h2>
+        <p><a href="">View all deferred patients</a></p>
+        <hr>
+        <h2>Patients Ceased</h2>
+        <p><a href="">View all ceased patients</a></p>
+      
+
+
+        <a class="nhsuk-button" href="review">Done</a>
+        <p><a href="search">Cease / Defer more patients</a></p>
+
+    </div>
+  </div>
+{% endblock %}
