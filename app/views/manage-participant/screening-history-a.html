@@ -8,33 +8,11 @@
   <script type="text/javascript" src="/js/auto.js"></script>
 
   <script type="text/javascript" src="/js/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/js/mouse-trap-custom.js"></script>
 
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      //console.log( "ready!" );
-      //Mousetrap.bind('4', function() { highlight(2); });
-      Mousetrap.bind('?', function() { alert("Help Section - Keyboard Commands"); });
-
-      Mousetrap.bind('ctrl c y', function(e) {
-        console.log('looking');
-
-        window.location.href = "#test-results";
-        //document.getElementById("test-results");
-        return false;
-      });
-      Mousetrap.bind('ctrl e c', function(e) {
-        document.getElementById("input-example-2").focus();
-        return false;
-      });
-      
-    });
-   
-        
-
-    </script>
 {% endblock %}
 {% block pageTitle %}
-  NHS e-referral Service
+  NHS Cervical Screening
 {% endblock %}
 
 {% block header %}
@@ -70,7 +48,7 @@
     <li><strong>Postcode: </strong> <a href="#">LS15 6FD</a></li>
   </ul>
   <div class="nhsuk-close">
-    <a class="" href="search">Close
+    <a class="" href="search-participant">Close
       <svg class="nhsuk-icon nhsuk-icon--ers nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
 <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
 </svg></a>
@@ -80,11 +58,11 @@
 
     <nav class="nhsuk-tabs" style="background-color: white">
       <ul role="navigation" style="margin-left: 32px">
-        <li><a class="selected" href="#patient" style="border-top: 1px solid #768692; border-left: 1px solid #768692">Patient</a></li>
-        <li><a href="#worklists" style="border-top: 1px solid #768692">GP Info</a></li>
-        <li><a href="#reports" style="border-top: 1px solid #768692">HPV</a></li>
-        <li><a href="#reports" style="border-top: 1px solid #768692">Notes</a></li>
-        <li><a href="#reports" style="border-top: 1px solid #768692">Audit</a></li>
+        <li><a class="selected" href="screening-history-a" style="border-top: 1px solid #768692; border-left: 1px solid #768692">Patient</a></li>
+        <li><a href="screening-history-a-gp-info" style="border-top: 1px solid #768692">GP Info</a></li>
+        <li><a href="screening-history-a-hpv" style="border-top: 1px solid #768692">HPV</a></li>
+        <li><a href="screening-history-a-notes" style="border-top: 1px solid #768692">Notes</a></li>
+        <li><a href="screening-history-a-audit" style="border-top: 1px solid #768692">Audit</a></li>
       </ul>
     </nav>
 
@@ -105,7 +83,8 @@
 
 
 
-    <h1 class="nhsuk-heading-l">Screening Summary</h1>
+    <h1 class="nhsuk-heading-l">Patient</h1>
+   <!--<h2 class="nhsuk-heading-s">Screening Summary</h2>-->
 
     <!-- TIME LINE -->
     <!-- move this somewhere after -->
@@ -176,7 +155,7 @@
     <!-- TIME LINE -->
 
 
-    <h2 id="test-results" class="nhsuk-heading-l">Test Results</h1>
+    <h2 id="testresults" class="nhsuk-heading-l">Test Results</h1>
     <div class="nhsuk-scrollable-pane">
 
 
@@ -209,6 +188,126 @@
 
 
               <tbody class="nhsuk-table__body nhsuk-body-">
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">R 12</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">R 36</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">S 12</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">R 12</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">R 12</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">R 12</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">R 36</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">S 12</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">R 12</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">R 12</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">R 12</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">R 36</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">S 12</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">R 12</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">R 12</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">R 12</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">R 36</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">S 12</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">R 12</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">R 12</span></td>
+                  <td class="nhsuk-table__cell">25 11 2018</td>
+                  <td class="nhsuk-table__cell"></td>
+                </tr>
                 <tr class="nhsuk-table__row">
                   <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
                   <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight">R 12</span></td>

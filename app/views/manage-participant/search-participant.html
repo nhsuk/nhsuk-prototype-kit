@@ -6,6 +6,8 @@
 {% block pageScripts %}
   <script type="text/javascript" src="/js/search.js"></script>
   <script type="text/javascript" src="/js/auto.js"></script>
+  <script type="text/javascript" src="/js/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/js/mouse-trap-custom.js"></script>
 {% endblock %}
 {% block pageTitle %}
   NHS e-referral Service
@@ -28,33 +30,7 @@
     <div class="nhsuk-header__transactional-service-name">
           <a class="nhsuk-header__transactional-service-name--link" href="/">Cervical Screening</a>
         </div>
-<!--
-    <div class="nhsuk-header__content" id="content-header">
-      <div class="nhsuk-header__menu">
-        <nav class="nhsuk-header__navigation" id="header-navigation" role="navigation" aria-label="Primary navigation">
-          <ul class="nhsuk-header__navigation-list" style="border:0">
-        <li class="nhsuk-header__navigation-item">
-          <a class="nhsuk-header__navigation-link" href="https://www.nhs.uk/conditions/social-care-and-support/">
-            Help
-          </a>
-        </li>
-        <li class="nhsuk-header__navigation-item">
-          <a class="nhsuk-header__navigation-link" href="https://www.nhs.uk/news/">
-            Alerts
 
-          </a>
-        </li>
-        <li class="nhsuk-header__navigation-item">
-          <a class="nhsuk-header__navigation-link" href="https://www.nhs.uk/service-search">
-            Dave Evans
-          </a>
-        </li>
-      </ul>
-        </nav>
-
-      </div>
-    </div>
-    -->
   </div>
 
 </header>
@@ -62,25 +38,6 @@
 {% endblock %}
 
 {% block content %}
-
-<!--
-<nav class="nhsuk-grey-background patient-info">
-  <ul role="navigation">
-    <li><span style=""><strong>NHS No: </strong> 123 456 7890</span></li>
-    <li><strong>Patient: </strong> <a href="#">Smith, Jane (Mrs)</a></li>
-    <li>30 years (4 June 1988)</li>
-    <li><strong>Postcode: </strong> <a href="#">LS15 6FD</a></li>
-  </ul>
-  <div class="nhsuk-close">
-    <a class="" href="search">Close
-      <svg class="nhsuk-icon nhsuk-icon--ers nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-<path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
-</svg></a>
-
-  </div>
-</nav>
--->
-
 
 <nav class="nhsuk-tabs">
   <ul role="navigation">
@@ -97,84 +54,65 @@
 <div class="nhsuk-grid-row nhsuk-panel--grey nhsuk-u-padding-top-4">
 
 <div class="nhsuk-grid-column-full">
-<div class="nhsuk-form">
-
-
-                        <div class="nhsuk-form-group">
-                          <div class="nhsuk-grid-row">
-                            <div class="nhsuk-grid-column-one-half">
-
-
-
-                            </div>
-                            <div class="nhsuk-grid-column-one-half">
-                              <legend class="nhsuk-fieldset__legend--s nhsuk-u-margin-bottom-2">
-                                Search by
-                              </legend>
-                              <div class="multiple-choice--hod nhsuk-radios nhsuk-radios--inline">
-                                <div class="nhsuk-radios__item">
-                                  <input class="nhsuk-radios__input" id="" name="searchby" type="radio" value="">
-                                  <label class="nhsuk-label nhsuk-radios__label nhsuk-radios__label" for="nhs-number">
-                                    NHS Number
-                                  </label>
-                                </div>
-                                <div class="nhsuk-radios__item">
-                                  <input class="nhsuk-radios__input" id="ubrn" name="searchby" type="radio" value="">
-                                  <label class="nhsuk-label nhsuk-radios__label" for="ubrn">
-                                    UBRN
-                                  </label>
-                                </div>
-                                <div class="nhsuk-radios__item">
-                                  <input class="nhsuk-radios__input" id="demographics" name="searchby" type="radio" value="">
-                                  <label class="nhsuk-label nhsuk-radios__label" for="demographics">
-                                    Demographics
-                                  </label>
-                                </div>
-                              </div>
-                            </div>
-
-                          </div>
-                        </div>
-
-                                                <div class="nhsuk-form-group">
-                          <div class="nhsuk-grid-row">
-                            <div class="nhsuk-grid-column-one-quarter">
-                              <!-- NHS NUMBER HERE -->
-
-
-
-                            </div>
-                            <div class="nhsuk-grid-column-one-quarter">
-                              <div class="nhsuk-date-input__item">
-                                <label class="nhsuk-label nhsuk-label__strong nhsuk-body-xs">
-                                  NHS number
-                                </label>
-                                <input class="nhsuk-input" type="number" inputmode="numeric" name="" value="">
-                              </div>
-                            </div>
-
-                          </div>
-                        </div>
-
-
-                        <div class="nhsuk-form-group">
-                          <div class="nhsuk-grid-row">
-                            <div class="nhsuk-grid-column-full">
-                              <a class="nhsuk-button--ers" href="screening-history-a">Search</a>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
+  <form id="searchform" action="screening-history-a" method="post" name="search-form">
+    <div class="nhsuk-form">
+      <div class="nhsuk-form-group">
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-one-half">
+          </div>
+          <div class="nhsuk-grid-column-one-half">
+            <legend class="nhsuk-fieldset__legend--s nhsuk-u-margin-bottom-2">
+              Search by
+            </legend>
+            <div class="multiple-choice--hod nhsuk-radios nhsuk-radios--inline">
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="" name="searchby" type="radio" value="">
+                <label class="nhsuk-label nhsuk-radios__label nhsuk-radios__label" for="nhs-number">
+                  NHS Number
+                </label>
+              </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="ubrn" name="searchby" type="radio" value="">
+              <label class="nhsuk-label nhsuk-radios__label" for="ubrn">
+                UBRN
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="demographics" name="searchby" type="radio" value="">
+              <label class="nhsuk-label nhsuk-radios__label" for="demographics">
+                Demographics
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nhsuk-form-group">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-quarter">
+        </div>
+        <div class="nhsuk-grid-column-one-quarter">
+          <div class="nhsuk-date-input__item">
+            <label class="nhsuk-label nhsuk-label__strong nhsuk-body-xs">
+              NHS number
+            </label>
+            <input id="searchfield" class="nhsuk-input" type="number" inputmode="numeric" name="" value="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nhsuk-form-group">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <button class="nhsuk-button--ers" type="submit">Search</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
 
 </div>
 </div>
-</div>
-</div>
-
-
 </main>
 </div>
 

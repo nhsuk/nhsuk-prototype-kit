@@ -15,16 +15,22 @@
       //Mousetrap.bind('4', function() { highlight(2); });
       Mousetrap.bind('?', function() { alert("Help Section - Keyboard Commands"); });
 
+patient-notes
+
       Mousetrap.bind('ctrl c y', function(e) {
         console.log('looking');
 
-        window.location.href = "#test-results";
-        //document.getElementById("test-results");
-        return false;
+        window.location.href = "#cytology";
+        document.getElementById("cytology").setAttribute("open", "open");
+        document.getElementById("cytology").setAttribute("aria-expanded", "true")
+        //return false;
       });
+
       Mousetrap.bind('ctrl e c', function(e) {
-        document.getElementById("input-example-2").focus();
-        return false;
+        window.location.href = "#colposcopy";
+        document.getElementById("colposcopy").setAttribute("open", "open");
+        document.getElementById("colposcopy").setAttribute("aria-expanded", "true")
+        //return false;
       });
       
     });
@@ -34,7 +40,7 @@
     </script>
 {% endblock %}
 {% block pageTitle %}
-  NHS e-referral Service
+  NHS Cervical Screening
 {% endblock %}
 
 {% block header %}
@@ -169,233 +175,48 @@
 
     <h2 id="test-results" class="nhsuk-heading-l">Next Recall Date: <span>01 08 2020</span></h1>
 
-    <details class="nhsuk-details nhsuk-expander">
+    
+    <details id="cytology" class="nhsuk-details nhsuk-expander">
       <summary class="nhsuk-details__summary">
         <span class="nhsuk-details__summary-text">
           Cytology Tests
         </span>
       </summary>
       <div class="nhsuk-details__text">
-        <!--<table>
-        <tbody>
-        <tr>
-          <th><strong>Day of the week</strong></th>
-          <th><strong>Opening hours</strong></th>
-        </tr>
-        <tr>
-          <th>Monday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Tuesday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Wednesday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Thursday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Friday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Saturday</th>
-          <td>9am to 1pm</td>
-        </tr>
-        <tr>
-          <th>Sunday</th>
-          <td>Closed</td>
-        </tr>
-        </tbody>
-        </table>-->
+        <p>cytology stuff here</p>
       </div>
     </details>
 
-    <details class="nhsuk-details nhsuk-expander">
-      <summary class="nhsuk-details__summary">
-        <span class="nhsuk-details__summary-text">
-          Cytology Tests
-        </span>
-      </summary>
-      <div class="nhsuk-details__text">
-        <!--<table>
-        <tbody>
-        <tr>
-          <th><strong>Day of the week</strong></th>
-          <th><strong>Opening hours</strong></th>
-        </tr>
-        <tr>
-          <th>Monday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Tuesday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Wednesday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Thursday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Friday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Saturday</th>
-          <td>9am to 1pm</td>
-        </tr>
-        <tr>
-          <th>Sunday</th>
-          <td>Closed</td>
-        </tr>
-        </tbody>
-        </table>-->
-      </div>
-    </details>
-
-    <details class="nhsuk-details nhsuk-expander">
+    <details id="colposcopy" class="nhsuk-details nhsuk-expander">
       <summary class="nhsuk-details__summary">
         <span class="nhsuk-details__summary-text">
           Colposcopy Info
         </span>
       </summary>
       <div class="nhsuk-details__text">
-        <!--<table>
-        <tbody>
-        <tr>
-          <th><strong>Day of the week</strong></th>
-          <th><strong>Opening hours</strong></th>
-        </tr>
-        <tr>
-          <th>Monday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Tuesday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Wednesday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Thursday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Friday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Saturday</th>
-          <td>9am to 1pm</td>
-        </tr>
-        <tr>
-          <th>Sunday</th>
-          <td>Closed</td>
-        </tr>
-        </tbody>
-        </table>-->
+        <p>Colposcopy info here</p>
       </div>
     </details>
 
-    <details class="nhsuk-details nhsuk-expander">
+    <details id="patient-notes" class="nhsuk-details nhsuk-expander">
       <summary class="nhsuk-details__summary">
         <span class="nhsuk-details__summary-text">
           Patient Notes
         </span>
       </summary>
       <div class="nhsuk-details__text">
-        <!--<table>
-        <tbody>
-        <tr>
-          <th><strong>Day of the week</strong></th>
-          <th><strong>Opening hours</strong></th>
-        </tr>
-        <tr>
-          <th>Monday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Tuesday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Wednesday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Thursday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Friday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Saturday</th>
-          <td>9am to 1pm</td>
-        </tr>
-        <tr>
-          <th>Sunday</th>
-          <td>Closed</td>
-        </tr>
-        </tbody>
-        </table>-->
+        <p>patient notes here</p>
       </div>
     </details>
 
-    <details class="nhsuk-details nhsuk-expander">
+    <details id="audit" class="nhsuk-details nhsuk-expander">
       <summary class="nhsuk-details__summary">
         <span class="nhsuk-details__summary-text">
           Audit
         </span>
       </summary>
       <div class="nhsuk-details__text">
-        <!--<table>
-        <tbody>
-        <tr>
-          <th><strong>Day of the week</strong></th>
-          <th><strong>Opening hours</strong></th>
-        </tr>
-        <tr>
-          <th>Monday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Tuesday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Wednesday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Thursday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Friday</th>
-          <td>9am to 6pm</td>
-        </tr>
-        <tr>
-          <th>Saturday</th>
-          <td>9am to 1pm</td>
-        </tr>
-        <tr>
-          <th>Sunday</th>
-          <td>Closed</td>
-        </tr>
-        </tbody>
-        </table>-->
+        <p>audit stuff here</p>
       </div>
     </details>
 
