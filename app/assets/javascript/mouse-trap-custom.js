@@ -2,7 +2,7 @@ $(document).ready(function() {
     Mousetrap.bind('?', function() { alert("Help Section - Keyboard Commands"); });
 
   // search
-  Mousetrap.bind('ctrl e c', function(e) {
+  Mousetrap.bind('e c', function(e) {
     var frm = document.getElementById("searchfield") || null;
     if (frm) {
         document.getElementById("searchfield").focus();
@@ -13,7 +13,7 @@ $(document).ready(function() {
     }
   });
 
-  Mousetrap.bind('ctrl c y', function(e) {
+  Mousetrap.bind('c y', function(e) {
     var frm = document.getElementById("searchfield") || null;
     if (frm) {
         document.getElementById("searchfield").focus();
@@ -41,12 +41,12 @@ $(document).ready(function() {
 //    return false;
 //  });
 
-  Mousetrap.bind('ctrl h p', function(e) {
+  Mousetrap.bind('h p', function(e) {
     window.location.href = "http://localhost:3000/manage-participant/screening-history-a-hpv";
     return false;
   });
 
-  Mousetrap.bind('ctrl e x i t', function() {
+  Mousetrap.bind('e x i t', function() {
       alert('Are you sure you want to leave?');
   })
   
