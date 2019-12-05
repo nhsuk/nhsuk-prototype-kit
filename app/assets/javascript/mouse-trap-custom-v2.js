@@ -1,3 +1,5 @@
+// this is just lazy beyond compare...even to my standards
+
 $(document).ready(function() {
     Mousetrap.bind('?', function() { alert("Help Section - Keyboard Commands"); });
 
@@ -6,10 +8,10 @@ $(document).ready(function() {
     var frm = document.getElementById("searchfield") || null;
     if (frm) {
         document.getElementById("searchfield").focus();
-        document.getElementById('searchform').action = "http://localhost:3000/manage-participant/v1/screening-history-a-notes";
+        document.getElementById('searchform').action = "http://localhost:3000/manage-participant/v2/screening-history-a-notes";
         return false;
     } else {
-        window.location.href = "http://localhost:3000/manage-participant/v1/screening-history-a-notes";
+        window.location.href = "http://localhost:3000/manage-participant/v2/screening-history-a-notes";
     }
   });
 
@@ -17,10 +19,10 @@ $(document).ready(function() {
     var frm = document.getElementById("searchfield") || null;
     if (frm) {
         document.getElementById("searchfield").focus();
-        document.getElementById('searchform').action = "http://localhost:3000/manage-participant/v1/screening-history-a#testresults";
+        document.getElementById('searchform').action = "http://localhost:3000/manage-participant/v2/screening-history-a#testresults";
         return false;
     } else {
-        window.location.href = "http://localhost:3000/manage-participant/v1/screening-history-a#testresults";
+        window.location.href = "http://localhost:3000/manage-participant/v2/screening-history-a#testresults";
     }
   });
 
@@ -42,7 +44,7 @@ $(document).ready(function() {
 //  });
 
   Mousetrap.bind('h p', function(e) {
-    window.location.href = "http://localhost:3000/manage-participant/v1/screening-history-a-hpv";
+    window.location.href = "http://localhost:3000/manage-participant/v2/screening-history-a-hpv";
     return false;
   });
 
