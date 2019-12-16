@@ -45,7 +45,7 @@
     <li><span style=""><strong>NHS No: </strong> 123 456 7890</span></li>
     <li><strong>Patient: </strong> Smith, Jane (Mrs)</li>
     <li>30 years (4 June 1988)</li>
-    <li><strong>Postcode: </strong> LS15 6FD</li>
+    <li><strong>Address: </strong> 20 Thornhill Street, Pudsey, LS15 6FD</li>
   </ul>
   <div class="nhsuk-close">
     <a class="" href="search-participant">Close
@@ -96,6 +96,18 @@
         height: 16px;
         width: 16px;
         border-radius: 8px;
+        background-color: grey;
+        top: 95%;
+        right: 50%
+      }
+
+      .nhsuk-panel--timeline--success::after {
+        content: "";
+        display: block;
+        position: relative;
+        height: 16px;
+        width: 16px;
+        border-radius: 8px;
         background-color: green;
         top: 95%;
         right: 50%
@@ -110,12 +122,50 @@
       }
     </style>
     <!-- move this somewhere after -->
-    <p><strong>Next test due date: </strong>31st October 2020</p>
-    
-    <div class="nhsuk-grid-row nhsuk-panel-group" style="text-align: center; border-bottom: 2px dashed black">
-      <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item nhsuk-panel--timeline">
+    <ul>
+      <li><strong>Name: </strong>Jane Smith</li>
+      <li><strong>NHS No: </strong>123 456 7890</li>
+      <li><strong>Date of Birth: </strong>04 06 1988</li>
+      <li><strong>Address: </strong>20 Thornhill Street, Pudsey, LS15 6FD</li>
+    </ul>
+    {{ details({
+      "text": "View more patient information",
+      "HTML": "
+
+    <h4>Address History</h4>
+    <table>
+    <thead>
+      <tr>
+        <th>Moved in</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tr>
+      <td>07 2017</td>
+      <td>20 Thornhill Street, Pudsey, LS15 6FD</td>
+    </tr>
+    <tr>
+      <td>03 2013</td>
+      <td>29 Jubilee Close, Bradford, BD19 3WE</td>
+    </tr>
+    <tr>
+      <td>01 2011</td>
+      <td>1 High Street, Bradford, BD13 5TY</td>
+    </tr>
+    </table>
+
+    <hr>
+    <h4>Other Info</h4>
+    <p>other stuff here</p>
+    "
+    }) }}
+    <hr>
+    <h2 id="" class="nhsuk-heading-l">Patient Summary</h2>
+    <p><strong>Next test due date: </strong>01 08 2020 - <a href="">change</a></p>
+    <div class="nhsuk-grid-row nhsuk-panel-group" style="text-align: center; border-bottom: 2px dashed black; width:90%; margin-left: 5%">
+      <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item nhsuk-panel--timeline--success">
         <div class="nhsuk-panel">
-          <h4 style="border: 2px solid blue" class="vertical-line">PNL
+          <h4 style="margin-bottom: 0px" class="vertical-line">PNL
             <span style="position: relative">
             <svg style="position: absolute; top: -3px" class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none">
               <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
@@ -125,9 +175,9 @@
           <p>03 2020</p>
         </div>
       </div>
-      <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item nhsuk-panel--timeline">
+      <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item nhsuk-panel--timeline--success">
         <div class="nhsuk-panel">
-          <h4 style="border: 2px solid blue">Invite
+          <h4 style="margin-bottom: 0px">Invite
             <span style="position: relative">
               <svg style="position: absolute; top: -3px" class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none">
                 <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
@@ -145,14 +195,14 @@
       </div>-->
       <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item nhsuk-panel--timeline">
         <div class="nhsuk-panel">
-          <h4 style="border: 2px solid blue">Test</h4>
+          <h4 style="margin-bottom: 0px">Next Test Due Date</h4>
           <p>01 08 2020</p>
         </div>
       </div>
     </div>
 
     
-    
+    <hr>
 
     <!-- TIME LINE -->
 
@@ -172,11 +222,10 @@
               <thead class="nhsuk-table__head">
                 <tr class="nhsuk-table__row">
 
-                  <th class="nhsuk-table__header fixed-side" scope="col"></th>
-
                   <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
                     <button onclick="sortTable()" type="button" data-index="0">Test Date</button>
                   </th>
+
                   <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
                   <button onclick="sortTable()" type="button" data-index="0">Result</button>
                   </th>
@@ -184,6 +233,11 @@
                   </th>
                   <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
                   <button onclick="sortTable()" type="button" data-index="0">Slide No</button>
+                  </th>
+
+                  </th>
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Slide Result</button>
                   </th>
 
                   </th>
@@ -199,65 +253,38 @@
                   <!--<th class="nhsuk-table__header" aria-sort="none" scope="col"><button type="button" data-index="0">Invite Date</button></th>-->
 
                   <th class="nhsuk-table__header" aria-sort="none" scope="col">
-                    <button onclick="sortTable()" type="button" data-index="0">Edit</button>
+                    <button onclick="sortTable()" type="button" data-index="0">Change</button>
                 </tr>
               </thead>
 
 
               <tbody class="nhsuk-table__body nhsuk-body-">
                 <tr class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight" style="background-color: green; color: white; font-weight: bold">R 12</span></td>
-                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
-                  <td class="nhsuk-table__cell">Routine 12 months</td>
-                  <td class="nhsuk-table__cell">12386023</td>
-                  <td class="nhsuk-table__cell">60020 BISHOP AUCKLAND</td>
-                  <td class="nhsuk-table__cell">Yes - 0</td>
-                  <td class="nhsuk-table__cell"><a href="">Edit</a></td>
+                  <td class="nhsuk-table__cell fixed-side">01 04 2019</td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight" style="background-color: green; color: white; font-weight: bold">A36</span> Routine 36 months</td>
+                  <td class="nhsuk-table__cell">1234567</td>
+                  <td class="nhsuk-table__cell">n/a</td>
+                  <td class="nhsuk-table__cell">60020 Derby Royal Hospital</td>
+                  <td class="nhsuk-table__cell">Y - 0</td>
+                  <td class="nhsuk-table__cell"><a href="">Change</a></td>
                 </tr>
                 <tr class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight" style="background-color: green; color: white; font-weight: bold">R 12</span></td>
-                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
-                  <td class="nhsuk-table__cell">Routine 12 months</td>
-                  <td class="nhsuk-table__cell">12386023</td>
-                  <td class="nhsuk-table__cell">60020 BISHOP AUCKLAND</td>
-                  <td class="nhsuk-table__cell">Yes - 0</td>
-                  <td class="nhsuk-table__cell"><a href="">Edit</a></td>
+                  <td class="nhsuk-table__cell fixed-side">01 04 2016</td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight" style="background-color: green; color: white; font-weight: bold">A36</span> Routine 36 months</td>
+                  <td class="nhsuk-table__cell">2345678</td>
+                  <td class="nhsuk-table__cell">n/a</td>
+                  <td class="nhsuk-table__cell">60020 Derby Royal Hospital</td>
+                  <td class="nhsuk-table__cell">Y - 0</td>
+                  <td class="nhsuk-table__cell"><a href="">Change</a></td>
                 </tr>
                 <tr class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight" style="background-color: green; color: white; font-weight: bold">R 12</span></td>
-                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
-                  <td class="nhsuk-table__cell">Routine 12 months</td>
-                  <td class="nhsuk-table__cell">12386023</td>
-                  <td class="nhsuk-table__cell">60020 BISHOP AUCKLAND</td>
-                  <td class="nhsuk-table__cell">Yes - 0</td>
-                  <td class="nhsuk-table__cell"><a href="">Edit</a></td>
-                </tr>
-                <tr class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight" style="background-color: red; color: white; font-weight: bold">S 4</span></td>
-                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
-                  <td class="nhsuk-table__cell">Suspend 6 months</td>
-                  <td class="nhsuk-table__cell">12386023</td>
-                  <td class="nhsuk-table__cell">60020 BISHOP AUCKLAND</td>
-                  <td class="nhsuk-table__cell">Yes - 0</td>
-                  <td class="nhsuk-table__cell"><a href="">Edit</a></td>
-                </tr>
-                <tr class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight" style="background-color: red; color: white; font-weight: bold">S 4</span></td>
-                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
-                  <td class="nhsuk-table__cell">Suspend 3 months</td>
-                  <td class="nhsuk-table__cell">12386023</td>
-                  <td class="nhsuk-table__cell">60020 - BISHOP AUCKLAND</td>
-                  <td class="nhsuk-table__cell">Yes - 0</td>
-                  <td class="nhsuk-table__cell"><a href="">Edit</a></td>
-                </tr>
-                <tr class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight" style="background-color: red; color: white; font-weight: bold">S 4</span></td>
-                  <td class="nhsuk-table__cell fixed-side"><a href="#">01 04 2019</a></td>
-                  <td class="nhsuk-table__cell">Suspend 3 months</td>
-                  <td class="nhsuk-table__cell">12386023</td>
-                  <td class="nhsuk-table__cell">60020 BISHOP AUCKLAND</td>
-                  <td class="nhsuk-table__cell">No</td>
-                  <td class="nhsuk-table__cell"><a href="">Edit</a></td>
+                  <td class="nhsuk-table__cell fixed-side">01 04 2016</td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight" style="background-color: green; color: white; font-weight: bold">A36</span> Routine 36 months</td>
+                  <td class="nhsuk-table__cell">n/a</td>
+                  <td class="nhsuk-table__cell">n/a</td>
+                  <td class="nhsuk-table__cell">60020 Derby Royal Hospital</td>
+                  <td class="nhsuk-table__cell">Y - 0</td>
+                  <td class="nhsuk-table__cell"><a href="">Change</a></td>
                 </tr>
                 
               </tbody>

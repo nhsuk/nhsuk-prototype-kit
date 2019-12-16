@@ -46,7 +46,7 @@
     <li><span style=""><strong>NHS No: </strong> 123 456 7890</span></li>
     <li><strong>Patient: </strong> Smith, Jane (Mrs)</li>
     <li>30 years (4 June 1988)</li>
-    <li><strong>Postcode: </strong> LS15 6FD</li>
+    <li><strong>Address: </strong> 20 Thornhill Street, Pudsey, LS15 6FD</li>
   </ul>
   <div class="nhsuk-close">
     <a class="" href="search-participant">Close
@@ -84,47 +84,45 @@
 
 
 
-    <h1 class="nhsuk-heading-l">Patient Notes</h1>
-    <p>Test data</p>
+    <h1 class="nhsuk-heading-l">Notes</h1>
+    <h4>Case Number: 123456, Missing test results - OPEN</h4>
+    <p>No test results have been logged for the patient</p>
 
-    <p>This week</p>
-    <p>GP: Telephone. Called by paramedic. Patients neighbour called 999 after finding patient wandering outside the house in night clothes. Paramedic reports patient is unkempt and smells of urine and the house is neglected and dirty / food in fridge is out of date. Patient appears confused but all obs are within normal limits. Request home visit to assess whether patient is safe to remain at home and whether the care package is in place / needs escalating. For home visit today.</p>
-<hr>
-    <p>Last entry</p>
-    <p>+ 4 weeks</p>
-    <p>Nurse: Interim diabetic check. Hba1C 68.   Blood pressure 132/72. Other bloods acceptable. Urine normal. Taking medication as prescribed but admits has lapsed with diet recently. Attended with daughter – who is concerned re mum’s short term memory getting worse.  Advised to see GP to discuss.  Advice given re diet. Recheck Hpa1C three months and nurse review.</p>
-<hr>
-    <p>Last entry</p>
-    <p>+ 5 weeks></p>
-    <p>GP: Telephone Call. From on call list. Patient feeling generally unwell and has symptoms of cystitis. No abdominal pain.     No temperature symptoms.      No rigors or loin pain.     No visible blood in urine.  Symptoms now for four days.  Script for antibiotics. </p>
-    <p>Diagnosis: urinary tract infection.</p>
-    <p>Trimethoprim 200mg BD 3 Days. Advised to increase oral fluids and let us know if symptoms are not settling with treatment or if she is feeling worse.</p>
+    {{ details({
+      "text": "Show all responses",
+      "HTML": "
 
-   <!--<h2 class="nhsuk-heading-s">Screening Summary</h2>-->
+    <h4>CSAS</h4>
+    <p>Test results have been added manually - S.Woods 05 11 2018<strong></strong></p>
 
-    <!-- TIME LINE -->
-    <!-- move this somewhere after -->
-    <style>
-      .nhsuk-panel--timeline::after {
-        content: "";
-        display: block;
-        position: relative;
-        height: 16px;
-        width: 16px;
-        border-radius: 8px;
-        background-color: green;
-        top: 95%;
-        right: 50%
-      }
+    <hr>
+    <h4>Lab</h4>
+    <p>Test results have now been correctly forwarded - A.Mistry 31 10 2018<strong></strong></p>
+    "
+    }) }}
+    <hr>
 
-      .vertical-line::after {
-        content: "";
-        width: 1px; /* Line width */
-      background-color: black; /* Line color */
-      height: 100%; /* Override in-line if you want specific height. */
-      
-      }
-    </style>
+    <h4>Case Number: 234567, Address Mismatch - CLOSED</h4>
+    <p>Address on PDS is incorrect and needs updating</p>
+
+    {{ details({
+      "text": "Show all responses",
+      "HTML": "
+
+    <h4>CSAS</h4>
+    <p>Address was a mispelling and has now been fixed - S.Woods 05 11 2018<strong></strong></p>
+
+    <hr>
+    <h4>Lab</h4>
+    <p>New address was not recognised, added new patient address - A.Mistry 31 10 2018<strong></strong></p>
+
+    <hr>
+    <h4>Sample Taker</h4>
+    <p>Patient sample taken, address was wrong on system, updated on form - K.Bingham 21 09 2018<strong></strong></p>
+    "
+    }) }}
+    <hr>
+    
 
  
   </div>
