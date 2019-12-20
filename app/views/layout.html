@@ -14,7 +14,7 @@
 
 <!-- Set the page title inside the pageTitle block -->
 {% block pageTitle %}
-  Screening Platform
+  Cervical Screening
 {% endblock %}
 
 <!-- Header goes inside the header block -->
@@ -22,7 +22,7 @@
 {% block header %}
   {{ header({
     "service": {
-        "name": "Screening Platform",
+        "name": "Cervical Screening",
         "href": "/"
       },
       "showNav": "false",
@@ -36,13 +36,13 @@
 {% block footer %}
 
 <!-- print out all the session values - this is just for testing -->
-    
+    {#
   <p>session data</p>
 
   {% for key, value in data %}
     {{ key }} : {{ value }} <br>
   {% endfor %}
-
+#}
 
   {{ footer({
     "links": [
