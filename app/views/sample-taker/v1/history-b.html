@@ -59,10 +59,10 @@
     <nav class="nhsuk-tabs" style="background-color: white">
       <ul role="navigation" style="margin-left: 32px">
         <li><a class="selected" href="screening-history-a" style="border-top: 1px solid #768692; border-left: 1px solid #768692">Patient summary</a></li>
-        <li><a href="#" style="border-top: 1px solid #768692">Timeline</a></li>
-        <li><a href="#" style="border-top: 1px solid #768692">GP information</a></li>
-        <li><a href="#" style="border-top: 1px solid #768692">HPV</a></li>
-        <li><a href="#" style="border-top: 1px solid #768692">Comments</a></li>
+        <li><a href="timeline-b" style="border-top: 1px solid #768692">Timeline</a></li>
+        <li><a href="gp-info-b" style="border-top: 1px solid #768692">GP information</a></li>
+        <li><a href="hpv-b" style="border-top: 1px solid #768692">HPV</a></li>
+        <li><a href="comments-b" style="border-top: 1px solid #768692">Comments</a></li>
       </ul>
     </nav>
 
@@ -87,7 +87,13 @@
    
 
     <span class="nhsuk-tag__highlight nhsuk-tag-large nhsuk-u-margin-bottom-2">ELIGIBLE</span>
-    <p><strong>Next test due date: </strong>03 03 2022 - <a href="">change</a></p>
+    <!--Add drop down actions button parallel to this tag with the following actions 
+        A4 PDF (2009)
+        A5 PDF (2003)
+        A4 PDF (2003)
+        A5 PDF
+    -->
+    <p><strong>Next test due date: </strong>22 04 2020 - <a href="">change</a></p>
     <ul>
       <li><strong>Name: </strong>Jane Smith</li>
       <li><strong>NHS No: </strong>123 456 7890</li>
@@ -120,7 +126,7 @@
     </tr>
     </table>
 
-    <hr>
+    
   
     "
     }) }}
@@ -133,11 +139,44 @@
   
   <div class="nhsuk-grid-row nhsuk-u-padding-left-5">
 <div class="nhsuk-grid-column-full">
-  
-<h2 id="" class="nhsuk-heading-l">Recent history</h2>
 
-<!--Timeline to go here-->
-<p>Timeline goes here</p>
+<div class="nhsuk-heading-links-container">
+   <h2 id="" class="nhsuk-heading-l">Recent history</h2> 
+   <div class="nhsuk-heading-links">
+       <ul>
+           <li><a href="timeline-b">View full timeline</a></li>
+       </ul>
+
+
+   </div>
+
+</div>
+
+<div class="nhs-progress-bar">
+        <ol class="nhs-progress-bar__list">
+        
+        <li class="nhs-progress-bar__list-item">
+          <span class="nhs-progress-bar__icon nhs-progress-bar__icon--complete"></span>
+          <span class="nhs-progress-bar__label">PNL Generated </br>10.11.19</span>
+        </li>
+        
+        <li class="nhs-progress-bar__list-item" aria-current="step">
+          <span class="nhs-progress-bar__icon"></span>
+          <span class="nhs-progress-bar__label">Invite sent</span>
+        </li>
+        
+        <li class="nhs-progress-bar__list-item">
+          <span class="nhs-progress-bar__icon"></span>
+          <span class="nhs-progress-bar__label">Results received</span>
+        </li>
+        
+        <li class="nhs-progress-bar__list-item">
+          <span class="nhs-progress-bar__icon"></span>
+          <span class="nhs-progress-bar__label">Next test due date</span>
+        </li>
+        
+        </ol>
+        </div> 
    </div>
 </div>
 <div class="nhsuk-grid-row nhsuk-u-padding-left-5 nhsuk-u-margin-top-5">
@@ -210,15 +249,7 @@
                         <td class="nhsuk-table__cell">Leeds General Infirmary</td>
                         
                       </tr>
-                      <tr class="nhsuk-table__row">
-                            <td class="nhsuk-table__cell fixed-side">12 04 2011</td>
-                            <td class="nhsuk-table__cell">Negative</td>
-                            <td class="nhsuk-table__cell">HPV Negative</td>
-                            <td class="nhsuk-table__cell">Routine</td>
-                            <td class="nhsuk-table__cell">36 months</td>
-                            <td class="nhsuk-table__cell">Leeds General Infirmary</td>
-                            
-                          </tr>
+                
                 
               </tbody>
             </table>

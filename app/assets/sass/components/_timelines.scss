@@ -1,0 +1,188 @@
+/* ==========================================================================
+   #FULL TIMELINE
+   ========================================================================== */
+   .nhs-screening-whole-timeline {
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .nhs-screening-whole-timeline:before {
+    background-color: #005eb8;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 10px;
+    width: 5px;
+  }
+  
+  .nhs-screening-whole-timeline--full {
+    margin-bottom: 0;
+  }
+  
+  .nhs-screening-whole-timeline--full:before {
+    height: calc(100% - 75px);
+  }
+  
+  .nhs-screening-whole-timeline__item {
+    padding-bottom: 30px;
+    padding-left: 20px;
+    position: relative;
+  }
+  
+  .nhs-screening-whole-timeline__item:before {
+    background-color: #005eb8;
+    content: "";
+    height: 5px;
+    left: 0;
+    position: absolute;
+    top: 10px;
+    width: 15px;
+  }
+  
+  .nhs-screening-whole-timeline__title {
+    font-weight: 700;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    display: inline;
+  }
+  
+  @media print {
+    .nhs-screening-whole-timeline__title {
+      font-family: sans-serif;
+    }
+  }
+  
+  @media (min-width: 40.0625em) {
+    .nhs-screening-whole-timeline__title {
+      font-size: 19px;
+      font-size: 1.1875rem;
+      line-height: 1.31579;
+    }
+  }
+  
+  @media print {
+    .nhs-screening-whole-timelinee__title {
+      font-size: 14pt;
+      line-height: 1.15;
+    }
+  }
+  
+  .nhs-screening-whole-timeline__by {
+    font-weight: 400;
+    font-size: 14px;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #6f777b;
+    display: inline;
+    margin: 0;
+  }
+  
+  @media print {
+    .nhs-screening-whole-timeline__by {
+      font-family: sans-serif;
+    }
+  }
+  
+  @media (min-width: 40.0625em) {
+    .nhs-screening-whole-timeline__by {
+      font-size: 14px;
+      font-size: 1.1875rem;
+      line-height: 1.31579;
+    }
+  }
+  
+  @media print {
+    .nhs-screening-whole-timeline__by {
+      font-size: 14pt;
+      line-height: 1.15;
+    }
+  }
+  
+  .nhs-screening-whole-timeline__date {
+    font-weight: 400;
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.14286;
+    margin-top: 5px;
+    margin-bottom: 0;
+  }
+  
+  @media print {
+    .nhs-screening-whole-timeline__date {
+      font-family: sans-serif;
+    }
+  }
+  
+  @media (min-width: 40.0625em) {
+    .nhs-screening-whole-timeline__date {
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 1.25;
+    }
+  }
+  
+  @media print {
+    .nhs-screening-whole-timeline__date {
+      font-size: 14pt;
+      line-height: 1.2;
+    }
+  }
+  
+  .nhs-screening-whole-timeline__description {
+    font-weight: 400;
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.14286;
+    margin-top: 20px;
+  }
+  
+  @media print {
+    .nhs-screening-whole-timeline__description {
+      font-family: sans-serif;
+    }
+  }
+  
+  @media (min-width: 40.0625em) {
+    .nhs-screening-whole-timeline__description {
+      font-size: 16px;
+      font-size: 1rem;
+      line-height: 1.25;
+    }
+  }
+  
+  @media print {
+    .nhs-screening-whole-timeline__description {
+      font-size: 14pt;
+      line-height: 1.2;
+    }
+  }
+  
+  .nhs-screening-whole-timeline__documents {
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+  
+  .nhs-screening-whole-timeline__document-item {
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+  
+  .nhs-screening-whole-timeline__document-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .nhs-screening-whole-timeline__document-link {
+    background-image: url(/assets/images/icon-document.png);
+    background-repeat: no-repeat;
+    background-size: 20px 16px;
+    background-position: 0 50%;
+    padding-left: 25px;
+  }
+  
+  .nhs-screening-whole-timeline__document-link:focus {
+    color: #0b0c0c;
+  }
