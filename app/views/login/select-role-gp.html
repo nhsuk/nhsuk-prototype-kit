@@ -2,7 +2,10 @@
 
 {% extends 'layout.html' %}
 
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/radio-choice.js"></script>
 
+{% endblock %}
 {% block pageTitle %}
   NHS.UK prototype kit
 {% endblock %}
@@ -11,6 +14,7 @@
 
 
 {% block content %}
+<form name="radio-buttons">
   <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
     <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-top-4">
         <div class="nhsuk-form-group">
@@ -24,15 +28,15 @@
           
               <div class="nhsuk-radios">
                 <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="gp-admin" name="role" type="radio" value="no">
+                  <input class="nhsuk-radios__input" id="sample-taker-a" name="role" type="radio" data-href="/sample-taker/search/search-a">
                   <label class="nhsuk-label nhsuk-radios__label" for="gp-admin">
-                  GP Administrator
+                  Sample Taker A
                   </label>
                 </div>
                 <div class="nhsuk-radios__item">
-                  <input class="nhsuk-radios__input" id="sample-taker" name="role" type="radio" value="yes">
+                  <input class="nhsuk-radios__input" id="sample-taker-b" name="role" type="radio" data-href="/sample-taker/search/search-b">
                   <label class="nhsuk-label nhsuk-radios__label" for="sample-taker">
-                   Sample Taker
+                   Sample Taker B
                   </label>
                 </div>
               </div>
@@ -40,8 +44,9 @@
            
           
           </div>
-          <a class="nhsuk-button" href="/sample-taker/search" type="submit">
-            Continue</a>
+          <button class="nhsuk-button" type="submit">Continue</button>
+        </form>
+           
     </div>
   </div>
 {% endblock %}
