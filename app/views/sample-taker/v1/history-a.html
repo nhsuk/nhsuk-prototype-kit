@@ -6,6 +6,8 @@
 {% block pageScripts %}
   <script type="text/javascript" src="/js/search.js"></script>
   <script type="text/javascript" src="/js/auto.js"></script>
+  <script type="text/javascript" src="/js/action-menu.js"></script>
+
 {% endblock %}
 {% block pageTitle %}
   NHS Cervical Screening
@@ -96,10 +98,29 @@ body {
       HPV Vaccinated
         </li>
       </ul>
-      <button class="nhsuk-button">Print HMR101</button>
+      <div class="nhsuk-heading-menu__actions">
+
+      <div class="dropdown">
+          <button onclick="myFunction()" class="dropbtn">Print HMR101
+            <svg class="nhsuk-icon nhsuk-icon__arrow-down nhsuk-icon--ers" viewBox="0 0 150 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
+        
+              <g id="Arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <polygon id="Rectangle" fill="#f1f1f1" fill-rule="nonzero" transform="translate(75.000000, 75.000000) rotate(45.000000) translate(-75.000000, -75.000000) " points="75 75 97 53 97 97 53 97"></polygon>
+              </g>
+            </svg>
+        
+        
+          </button>
+          <div id="myDropdown" class="dropdown-content" style="left: 0px">
+            <a href="print-a">A4 PDF (2009)</a>
+            <a href="#">A5 PDF (2003)</a>
+            <a href="#">A4 PDF (2003)</a>
+            <a href="#">A5 PDF</a>
+          </div>
+        </div>
+      <!--<button class="nhsuk-button">Print HMR101</button>-->
       </div>
 
-      <hr>
 
       <div class="nhsuk-expander-group">
   <details class="nhsuk-details nhsuk-expander">
@@ -167,7 +188,7 @@ body {
                   <td class="nhsuk-table__cell fixed-side">01 04 2019</td>
                   <td class="nhsuk-table__cell">Negative</td>
                   <td class="nhsuk-table__cell">HPV Negative</td>
-                  <td class="nhsuk-table__cell">A</td>
+                  <td class="nhsuk-table__cell">Routine</td>
                   <td class="nhsuk-table__cell">12</td>
                   <td class="nhsuk-table__cell">Jane Smith</td>
                   <td class="nhsuk-table__cell">Leeds General Infirmary</td>
@@ -177,7 +198,7 @@ body {
                   <td class="nhsuk-table__cell fixed-side">01 04 2016</td>
                   <td class="nhsuk-table__cell">Negative</td>
                   <td class="nhsuk-table__cell">HPV Negative</td>
-                  <td class="nhsuk-table__cell">A</td>
+                  <td class="nhsuk-table__cell">Routine</td>
                   <td class="nhsuk-table__cell">12</td>
                   <td class="nhsuk-table__cell">Jane Smith</td>
                   <td class="nhsuk-table__cell">Leeds General Infirmary</td>
@@ -187,7 +208,7 @@ body {
                   <td class="nhsuk-table__cell fixed-side">01 04 2014</td>
                   <td class="nhsuk-table__cell">Negative</td>
                   <td class="nhsuk-table__cell">HPV Negative</td>
-                  <td class="nhsuk-table__cell">A</td>
+                  <td class="nhsuk-table__cell">Routine</td>
                   <td class="nhsuk-table__cell">12</td>
                   <td class="nhsuk-table__cell">Jane Smith</td>
                   <td class="nhsuk-table__cell">Leeds General Infirmary</td>
@@ -205,7 +226,6 @@ body {
     </div>
     </div>
   </details>
-  <hr>
   <details class="nhsuk-details nhsuk-expander">
     <summary class="nhsuk-details__summary">
       <span class="nhsuk-details__summary-text">
