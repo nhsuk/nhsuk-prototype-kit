@@ -25,6 +25,7 @@
   }
   
   .nhs-progress-bar__list::before {
+    display: block;
     border-top: 6px solid #00703c;
     content: "";
     left: 0;
