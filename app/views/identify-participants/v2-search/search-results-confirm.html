@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Example - passing data from page to page
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form action="search-results-feedback" method="post">
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+              Are you sure that you want to cease Jane Smith from the screening programme?
+            </h1>
+          </legend>
+          <span class="nhsuk-hint" id="example-hint">
+            <p>You will need send a completed [insert form name] to CSAS.</p>
+            <p>The form needs to be signed by the patient and their GP.</p>
+          </span>
+          <div class="nhsuk-radios">
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-1" name="" type="radio" value="yes">
+                <label class="nhsuk-label nhsuk-radios__label" for="">
+                  Yes - I want to cease Jane from the screening programme
+                </label>
+            </div>
+            <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-2" name="" type="radio" value="no">
+                  <label class="nhsuk-label nhsuk-radios__label" for="">
+                    No - I do not want to cease Jane Smith from the screening programme
+                  </label>
+            </div>
+          </div>       
+        </fieldset>
+      </div>
+      <button class="nhsuk-button">Continue</button>
+      </form>
+      
+    </div>
+  </div>
+
+
+    
+    
+
+
+ 
+    
+{% endblock %}

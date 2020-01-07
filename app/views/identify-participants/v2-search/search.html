@@ -1,0 +1,157 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Example - passing data from page to page
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form action="search-results" method="post">
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+              Find a patient
+            </h1>
+          </legend>
+          <div id="nhsuk-form-group-gender-advanced" class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset" aria-describedby="gender-radio">
+          <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+            Gender
+          </legend>
+          <span id="advanced-gender-error-error" class="nhsuk-error-message" style="display: none">
+            You must select a gender
+          </span>
+          <div class="nhsuk-radios nhsuk-radios--inline" id="gender-radio">
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="gender-female-advanced" name="gender-advanced" type="radio" value="Female">
+              <label class="nhsuk-label nhsuk-radios__label" for="gender-female-advanced">
+                Female
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="gender-male-advanced" name="gender-advanced" type="radio" value="Male">
+              <label class="nhsuk-label nhsuk-radios__label" for="gender-male-advanced">
+                Male
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="gender-not-known-advanced" name="gender-advanced" type="radio" value="Not known">
+              <label class="nhsuk-label nhsuk-radios__label" for="gender-not-known-advanced">
+                Search all
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+      </div>
+      <div class="nhsuk-form-group" id="nhsuk-form-group-first-name-advanced">
+        <label class="nhsuk-label nhsuk-label__strong" for="first-name-advanced">
+          First name
+        </label>
+        <span id="advanced-first-name-error-error" class="nhsuk-error-message" style="display: none">
+          You must enter a first name
+        </span>
+        <input class="nhsuk-input nhsuk-input--width-20" id="first-name-advanced" name="first-name" type="text">
+      </div>
+      <div id="nhsuk-form-group-last-name-advanced" class="nhsuk-form-group">
+        <label class="nhsuk-label nhsuk-label__strong" for="last-name-advanced">
+          Last name
+        </label>
+        <span id="advanced-last-name-error-error" class="nhsuk-error-message" style="display: none">
+          You must enter a last name
+        </span>
+        <input class="nhsuk-input nhsuk-input--width-20" id="last-name-advanced" name="last-name" type="text">
+      </div>
+
+      <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
+        <div class="nhsuk-form-group">
+          <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
+            <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+              Date of birth from
+            </legend>
+            <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
+              You must enter a date
+            </span>
+            <div class="nhsuk-date-input" id="dob-from">
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
+                    Day
+                  </label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="dob-day-from" name="dob-day-from" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
+                    Month
+                  </label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="dob-month-from" name="dob-month-from" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
+                    Year
+                  </label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="dob-year-from" name="dob-year-from" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="nhsuk-from-group">
+          <fieldset class="nhsuk-fieldset" aria-describedby="dob-to" role="group">
+            <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+              Date of birth to
+            </legend>
+            <span id="dob-to-error-error" class="nhsuk-error-message" style="display: none">
+              You must enter a date
+            </span>
+            <div class="nhsuk-date-input" id="dob-to">
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-to">
+                    Day
+                  </label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="dob-day-to" name="dob-day-to" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-to">
+                    Month
+                  </label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="dob-month-to" name="dob-month-to" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-to">
+                    Year
+                  </label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="dob-year-to" name="dob-year-to" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <div class="nhsuk-form-group" id="nhsuk-form-group-postcode-advanced">
+            <label class="nhsuk-label nhsuk-label__strong" for="address-postcode">
+              Postcode
+            </label>
+            <span id="advanced-postcode-error-error" class="nhsuk-error-message" style="display: none">
+              You must enter a postcode
+            </span>
+            <input class="nhsuk-input nhsuk-input--width-10" id="address-postcode" name="address-postcode" type="text">
+          </div>
+
+        </fieldset>
+        <button class="nhsuk-button">Search</button>
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

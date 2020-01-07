@@ -4,9 +4,9 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -49,7 +49,7 @@
             </div>
           </div>
         </div>
-  
+
     <h2>User Journey - to add</h2>
       <p>info to add</p>
         <ul>
@@ -117,6 +117,36 @@
           {{ button({
             "text": "v01",
             "href": "identify-participants/v1-search/search"
+          }) }}
+          <hr>
+        </div>
+
+      </details>
+      <details class="nhsuk-details nhsuk-expander version-list">
+        <summary class="nhsuk-details__summary">
+          <span style="width:80%; display: inline-block" class="nhsuk-details__summary-text">
+            v2 - search
+          </span>
+          <span style="width: 10%; display: inline-block" class="nhsuk-tag">not tested</span>
+        </summary>
+        <div class="nhsuk-details__text version-text">
+          <br>
+          <h3><a href="identify-participants/v1-search/search">v2-search Prototype</a></h3>
+            <p>To add</p>
+            <ul>
+              <li>To add</li>
+            </ul>
+          <h3>User testing</h3>
+          <ul>
+            <li>To add</li>
+          </ul>
+          <h3>Design Challenges</h3>
+          <ul>
+            <li>To add</li>
+          </ul>
+          {{ button({
+            "text": "v02",
+            "href": "identify-participants/v2-search/search"
           }) }}
           <hr>
         </div>
@@ -199,7 +229,7 @@
 
         </div>
       </details>
-   
+
     </div>
   </div>
 {% endblock %}

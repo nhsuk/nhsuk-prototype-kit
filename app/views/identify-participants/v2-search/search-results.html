@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Example - passing data from page to page
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1>Search Results</h1>
+      <p><strong>We found 1 result for patients with NHS Number 9550972968</strong></p>
+      <p>If this isn't the patient you're looking for you can refine your search or perform a new search.</p>
+    </div>
+  </div>
+
+  
+  <div class="nhsuk-grid-row">
+  <form action="search-results-confirm" method="post">
+    <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-table-responsive">
+    <table class="nhsuk-table">
+    <caption class="nhsuk-table__caption">Map your codes to SNOMED codes</caption>
+    <thead class="nhsuk-table__head">
+      <tr class="nhsuk-table__row">
+        <th class="nhsuk-table__header" scope="col">NHS number</th>
+        <th class="nhsuk-table__header" scope="col">Name</th>
+        <th class="nhsuk-table__header" scope="col">DOB</th>
+        <th class="nhsuk-table__header" scope="col">Reason</th>
+      </tr>
+    </thead>
+    <tbody class="nhsuk-table__body">
+      <tr class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">123 456 67890</td>
+        <td class="nhsuk-table__cell">Jane Smith</td>
+        <td class="nhsuk-table__cell">10 12 1980</td>
+        <td class="nhsuk-table__cell ">
+          <select name="reason" class="nhsuk-select">
+            <option>Select</option>
+            <optgroup label="Defer">
+            <option value="Recent test">Recent test</option>
+            <option value="Current pregnancy">Current pregnancy</option>
+            <option value="Patient wishes to defer">Patient wishes to defer</option>
+            <option value="Undergoing relevant treatment">Undergoing relevant treatment</option>
+            <option value="Administrative reason">Administrative reason</option>
+            <option value="Practice invitation">Practice invitation</option>
+            <option value="Discharge from colposcopy">Discharge from colposcopy</option>
+             </optgroup>
+            <optgroup label="Cease">
+            <option value="Due to age">Due to age</option>
+            <option value="No cervix">No cervix</option>
+            <option value="Patient's requested for no further tests">Patient's requested for no further tests</option>
+            <option value="Other reason">Other reason</option>
+            <option value="Mental capacity act (best interests)">Mental capacity act (best interests)</option>
+            </optgroup>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+    
+    <p><button class="nhsuk-button" type"submit">Continue</button></p>
+    <p><a href="search">Search again</a></p>
+
+    </div>
+    </form>
+  </div>
+
+ 
+    
+{% endblock %}
