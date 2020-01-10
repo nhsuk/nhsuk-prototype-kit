@@ -53,8 +53,12 @@
 <div class="tab active" id="patient">
 <div class="nhsuk-grid-row nhsuk-panel--grey nhsuk-u-padding-top-4">
 
+{% if data.error.length %}
+BLAHH
+{% endif %}
+
 <div class="nhsuk-grid-column-full">
-  <form id="searchform" action="/examples/branching/answer" method="post" name="search-form">
+  <form id="searchform" action="/search-v2/" method="post" name="search-form">
     <div class="nhsuk-form">
       <div class="nhsuk-form-group">
         <div class="nhsuk-grid-row">
@@ -90,7 +94,7 @@
             <label class="nhsuk-label nhsuk-label__strong nhsuk-body-xs">
               NHS number
             </label>
-            <input id="searchfield" class="nhsuk-input" type="number" inputmode="numeric" name="" value="">
+            <input id="searchfield" class="nhsuk-input" type="number" inputmode="numeric" name="searchnhs" value="">
           </div>
         </div>
       </div>
@@ -98,7 +102,7 @@
     <div class="nhsuk-form-group">
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-full">
-          <a class="nhsuk-button--ers" type="submit">Search</a>
+          <button class="nhsuk-button--ers" type="submit">Search</button>
         </div>
       </div>
     </div>

@@ -8,20 +8,26 @@ module.exports = router;
 
 
 // Branching example
-router.post('examples/branching/answer', function (req, res) {
+router.post('/search-v2/', function (req, res) {
+    
+    var nhsNumber = req.session.data['searchnhs']
+    // 3816158897 - invited
+    // 6170211547 - routine
+    // 7594384164 - colposcopy
 
-    console.log("testing testing search")
-    // Make a variable and give it the value from 'know-nhs-number'
-    //var nhsNumber = req.session.data['know-nhs-number']
-  
-    // Check whether the variable matches a condition
-    //if (nhsNumber == "Yes"){
-      // Send user to next page
-      //res.redirect('/docs/examples/branching/answer-yes')
-    //}
-    //else {
-      // Send user to ineligible page
-      //res.redirect('/docs/examples/branching/answer-no')
-   // }
+    if (nhsNumber == "3816158897") {
+        res.redirect('/sample-taker/v2/history')
+    }
+
+    if (nhsNumber == "6170211547") {
+        res.redirect('/sample-taker/v2/history-routine')
+    }
+    
+    if (nhsNumber == "7594384164") {
+        res.redirect('/sample-taker/v2/history-colposcopy')
+    }
+
+    console.log("not found")
+    //res.render("sample-taker/search/index.html")
   
   })
