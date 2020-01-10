@@ -10,7 +10,6 @@
   <script type="text/javascript" src="/js/mousetrap.min.js"></script>
   <script type="text/javascript" src="/js/mouse-trap-custom-v2.js"></script>
 
-    
 {% endblock %}
 {% block pageTitle %}
   NHS Cervical Screening
@@ -43,7 +42,7 @@
 {% block content %}
 <nav class="nhsuk-grey-background patient-info" style="margin-bottom: 32px">
   <ul role="navigation">
-    <li><span style=""><strong>NHS No: </strong> 123 456 7890</span></li>
+    <li><strong>NHS No: </strong> 123 456 7890</span></li>
     <li><strong>Patient: </strong> Smith, Jane (Mrs)</li>
     <li>30 years (4 June 1988)</li>
     <li><strong>Address: </strong> 20 Thornhill Street, Pudsey, LS15 6FD</li>
@@ -59,11 +58,10 @@
 
     <nav class="nhsuk-tabs" style="background-color: white">
       <ul role="navigation" style="margin-left: 32px">
-        <li><a href="screening-history-a" style="border-top: 1px solid #768692; border-left: 1px solid #768692">Patient</a></li>
-        <li><a href="screening-history-a-gp-info" style="border-top: 1px solid #768692">GP Info</a></li>
-        <li><a href="screening-history-a-hpv" style="border-top: 1px solid #768692">HPV</a></li>
-        <li><a href="screening-history-a-notes" style="border-top: 1px solid #768692">Notes</a></li>
-        <li><a class="selected" href="screening-history-a-audit" style="border-top: 1px solid #768692">Audit</a></li>
+        <li><a href="screening-history" style="border-top: 1px solid #768692; border-left: 1px solid #768692">Patient summary</a></li>
+        <li><a href="full-history" style="border-top: 1px solid #768692; border-left: 1px solid #768692">History</a></li>
+        <li><a class="selected" href="gp-info" style="border-top: 1px solid #768692; border-left: 1px solid #768692">GP information</a></li>
+        <li><a href="additional-info" style="border-top: 1px solid #768692">Additional information</a></li>
       </ul>
     </nav>
 
@@ -84,7 +82,7 @@
 
 
 
-    <h1 class="nhsuk-heading-l">Audit</h1>
+
    <!--<h2 class="nhsuk-heading-s">Screening Summary</h2>-->
 
     <!-- TIME LINE -->
@@ -111,74 +109,20 @@
       }
     </style>
 
-    <div class="nhsuk-scrollable-pane">
+   
+          <h1 class="nhsuk-heading-l">GP information</h1>
+          <h4>GP Practice: PTRS Partnership</h4>
+          <ul>
+            <li><strong>GP Practice Code: </strong>000040</li>
+            <li><strong>National code: </strong>123456</li>
+            <li><strong>Address: </strong>PTRS Partnership, High Road, Leeds, LS28 5SZ</li>
+            <li><strong>Contact Details: </strong>0113 3343000</li>
+            <li><strong>Contact Email: </strong><a href="">ptrs@nhs.net</a></li>
+          </ul>
 
-
-
-      <div class="nhsuk-scrollable-pane__wrapper">
-       
-        <div id="table-scroll" class="table-scroll">
-          <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
-            <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table">
-
-              <!-- TABLE START -->
-              <thead class="nhsuk-table__head">
-                <tr class="nhsuk-table__row">
-
-                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
-                    <button onclick="sortTable()" type="button" data-index="0">What's changed</button>
-
-
-                  </th>
-                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
-                  <button onclick="sortTable()" type="button" data-index="0">who did it</button>
-                  </th>
-
-                  <th class="nhsuk-table__header" aria-sort="none" scope="col"><button type="button" data-index="0">when was it changed</button></th>
-
-                  <th class="nhsuk-table__header" aria-sort="none" scope="col">
-                    <button onclick="sortTable()" type="button" data-index="0">Previous Value</button>
-                </tr>
-              </thead>
-
-
-              <tbody class="nhsuk-table__body nhsuk-body-">
-                <tr class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell fixed-side"><a href="#">Address</a></td>
-                  <td class="nhsuk-table__cell">D Smith</td>
-                  <td class="nhsuk-table__cell">25 11 2018</td>
-                  <td class="nhsuk-table__cell">12 Hall Park Road</td>
-                </tr>
-                <tr class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell fixed-side"><a href="#">Cytology result</a></td>
-                  <td class="nhsuk-table__cell">D Smith</td>
-                  <td class="nhsuk-table__cell">26 05 2018</td>
-                  <td class="nhsuk-table__cell">new entry</td>
-                </tr>
-                <tr class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell fixed-side"><a href="#">Cytology result</a></td>
-                  <td class="nhsuk-table__cell">K Hall</td>
-                  <td class="nhsuk-table__cell">25 11 2015</td>
-                  <td class="nhsuk-table__cell">new entry</td>
-                </tr>
-                <tr class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell fixed-side"><a href="#">Registration</a></td>
-                  <td class="nhsuk-table__cell">CSAS - J Edwards</td>
-                  <td class="nhsuk-table__cell">25 11 2013</td>
-                  <td class="nhsuk-table__cell">new entry</td>
-                </tr>        
-              </tbody>
-            </table>
-
+          
           </div>
-
-        </div>
-
-
-      </div>
-    </div>
-  </div>
-</div>
+          </div>
 
 
           </main>
