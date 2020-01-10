@@ -11,6 +11,10 @@ nav.nhsuk-tabs{
   background: #F0F4F5;
   border-bottom: 1px solid $color_nhsuk-grey-2;
 
+  &.nhsuk-tabs__grey {
+    background: white;
+  }
+
 ul{
   max-width: 75%;
   display:flex;
@@ -25,6 +29,10 @@ li{
   margin-bottom: 0;
   font-size: 16px;
   border-right:1px solid $color_nhsuk-grey-2;
+
+  
+
+  
 
   a:link, a:visited,a:hover, a:active{
     margin-bottom: 0;
@@ -74,6 +82,11 @@ nav.nhsuk-tabs > ul > li > a:hover
 nav.nhsuk-tabs > ul > li > a.selected
 {
   background-color: #fff;
+}
+
+nav.nhsuk-tabs.nhsuk-tabs__grey > ul > li > a.selected
+{
+  background-color: #F0F4F5;
 }
 
 .tab
