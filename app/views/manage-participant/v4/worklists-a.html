@@ -5,8 +5,6 @@
 {% block pageScripts %}
   <script type="text/javascript" src="/js/search.js"></script>
   <script type="text/javascript" src="/js/auto.js"></script>
-  <script type="text/javascript" src="/js/mousetrap.min.js"></script>
-  <script type="text/javascript" src="/js/mouse-trap-custom-v2.js"></script>
 {% endblock %}
 {% block pageTitle %}
   NHS e-referral Service
@@ -39,7 +37,7 @@
 <nav class="nhsuk-tabs nhsuk-tabs__grey">
   <ul role="navigation">
     <li class="nhsuk-tabs__grey"><a href="search-participant">Patient</a></li>
-    <li class="nhsuk-tabs__grey"><a class="selected" href="worklists">Worklists</a></li>
+    <li class="nhsuk-tabs__grey"><a class="selected" href="worklists-a">Worklists</a></li>
     <li class="nhsuk-tabs__grey"><a href="#reports">Reports</a></li>
   </ul>
 </nav>
@@ -49,6 +47,7 @@
 
 <div class="tab active" id="patient">
 <div class="nhsuk-grid-row">
+<div class="nhsuk-grid-column-full">
 <h1 class="nhsuk-heading-l">Worklists</h1>
 <div class="nhsuk-grid-row nhsuk-panel-group">
   <div class="nhsuk-grid-column-one-half nhsuk-panel-group__item">
@@ -66,8 +65,7 @@
 </div>
 
 
-<a href="worklists-nhsno-mismatch" class="nhsuk-button--ers">Get next mismatch</a>
-<div class="nhsuk-grid-column-full">
+<a href="worklists-a-nhsno-mismatch" class="nhsuk-button--ers">Get next mismatch</a>
   
 </div>
 

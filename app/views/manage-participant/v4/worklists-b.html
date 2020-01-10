@@ -1,0 +1,212 @@
+{% extends "layout-clinical.html" %}
+
+{% set mainClasses = '' %}
+{% set containerClasses = 'nhsuk-width-container-fluid' %}
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+  <script type="text/javascript" src="/js/sort.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS e-referral Service
+{% endblock %}
+
+{% block header %}
+<header class="nhsuk-header" role="banner">
+  <div class="nhsuk-width-container-fluid nhsuk-header__container">
+    <div class="nhsuk-header__logo">
+      <a class="nhsuk-header__link" href="/" aria-label="NHS homepage">
+        <svg class="nhsuk-logo nhsuk-logo--white" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false" viewBox="0 0 40 16">
+          <path fill="#fff" d="M0 0h40v16H0z"></path>
+          <path fill="#005eb8" d="M3.9 1.5h4.4l2.6 9h.1l1.8-9h3.3l-2.8 13H9l-2.7-9h-.1l-1.8 9H1.1M17.3 1.5h3.6l-1 4.9h4L25 1.5h3.5l-2.7 13h-3.5l1.1-5.6h-4.1l-1.2 5.6h-3.4M37.7 4.4c-.7-.3-1.6-.6-2.9-.6-1.4 0-2.5.2-2.5 1.3 0 1.8 5.1 1.2 5.1 5.1 0 3.6-3.3 4.5-6.4 4.5-1.3 0-2.9-.3-4-.7l.8-2.7c.7.4 2.1.7 3.2.7s2.8-.2 2.8-1.5c0-2.1-5.1-1.3-5.1-5 0-3.4 2.9-4.4 5.8-4.4 1.6 0 3.1.2 4 .6"></path>
+          <image src="https://assets.nhs.uk/images/nhs-logo.png" xlink:href=""></image>
+        </svg>
+      </a>
+    </div>
+    
+    <div class="nhsuk-header__transactional-service-name">
+          <a class="nhsuk-header__transactional-service-name--link" href="/">Cervical Screening</a>
+        </div>
+
+  </div>
+</header>
+{% endblock %}
+
+{% block content %}
+
+
+<nav class="nhsuk-tabs nhsuk-tabs__grey">
+  <ul role="navigation">
+    <li class="nhsuk-tabs__grey"><a href="search-participant">Patient</a></li>
+    <li class="nhsuk-tabs__grey"><a class="selected" href="worklists-b">Worklists</a></li>
+    <li class="nhsuk-tabs__grey"><a href="#reports">Reports</a></li>
+  </ul>
+</nav>
+
+<div class="nhsuk-width-container nhsuk-width-container-fluid">
+<main class=" " id="main-content" role="main">
+
+<div class="tab active" id="patient">
+<div class="nhsuk-grid-row">
+<div class="nhsuk-grid-column-full">
+<h1 class="nhsuk-heading-l">Worklists</h1>
+<h2 class="nhsuk-heading-m">Results</h2>
+
+<div class="nhsuk-table-responsive">
+                  <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable">
+
+                    <!-- TABLE START -->
+                    <thead class="nhsuk-table__head">
+                      <tr class="nhsuk-table__row">
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">Area</button>
+                        </th>
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">Date</button>
+                        </th>
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">No of Results</button>
+                        </th>
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">No of Mismatches</button>
+                        </th>
+                        <th class="nhsuk-table_header"></th>
+                       
+                      </tr>
+                    </thead>
+
+
+                    <tbody class="nhsuk-table__body">
+
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <strong>Gateshead</strong>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          13 01 2020
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          121
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          10
+                        </td>
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <a class="nhsuk-button--ers nhsuk-u-margin-bottom-0" href="worklists-b-result">Start</a>
+                        </td>
+                      </tr>
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <strong>Derby</strong>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          13 01 2020
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          234
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          9
+                        </td>
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <a class="nhsuk-button--ers nhsuk-u-margin-bottom-0" href="worklists-b-result">Start</a>
+                        </td>
+                      </tr>
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <strong>Manchester</strong>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          13 01 2020
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          425
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          46
+                        </td>
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <a class="nhsuk-button--ers nhsuk-u-margin-bottom-0" href="worklists-b-result">Start</a>
+                        </td>
+                      </tr>
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <strong>Gateshead</strong>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          12 01 2020
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          175
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          22
+                        </td>
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          Taken
+                        </td>
+                      </tr>
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <strong>Derby</strong>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          12 01 2020
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          293
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          34
+                        </td>
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          Taken
+                        </td>
+                      </tr>
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <strong>Manchester</strong>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          12 01 2020
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          275
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          5
+                        </td>
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          Taken
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                  <!--<br>
+                  <p class="align-centre"><a class="nhsuk-button--ers_secondary" href="#">Load 10 more results</a></p>-->
+                </div>
+
+
+<!--<a href="worklists-nhsno-mismatch" class="nhsuk-button--ers">Get next mismatch</a>-->
+  
+</div>
+
+</div>
+</div>
+</main>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+ <div class="nhsuk-footer" id="nhsuk-footer">
+   <div class="nhsuk-width-container nhsuk-width-container-fluid">
+
+     <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+   </div>
+ </div>
+</footer>
+{% endblock %}

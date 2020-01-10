@@ -5,8 +5,7 @@
 {% block pageScripts %}
   <script type="text/javascript" src="/js/search.js"></script>
   <script type="text/javascript" src="/js/auto.js"></script>
-  <script type="text/javascript" src="/js/mousetrap.min.js"></script>
-  <script type="text/javascript" src="/js/mouse-trap-custom-v2.js"></script>
+  <script type="text/javascript" src="/js/sort.js"></script>
 {% endblock %}
 {% block pageTitle %}
   NHS e-referral Service
@@ -39,7 +38,7 @@
 <nav class="nhsuk-tabs nhsuk-tabs__grey">
   <ul role="navigation">
     <li class="nhsuk-tabs__grey"><a href="search-participant">Patient</a></li>
-    <li class="nhsuk-tabs__grey"><a class="selected" href="work-items">Worklists</a></li>
+    <li class="nhsuk-tabs__grey"><a class="selected" href="work-items-a">Worklists</a></li>
     <li class="nhsuk-tabs__grey"><a href="#reports">Reports</a></li>
   </ul>
 </nav>
@@ -49,9 +48,10 @@
 
 <div class="tab active" id="patient">
 <div class="nhsuk-grid-row">
+<div class="nhsuk-grid-column-full">
 {{ backLink({
-  "href": "worklists",
-  "text": "Back to Worklists"
+  "href": "worklists-b-result",
+  "text": "Back to Results"
 }) }}
 <h1 class="nhsuk-heading-l">Result Mismatch</h1>
 
@@ -99,7 +99,7 @@
                     <!-- TABLE START -->
                     <thead class="nhsuk-table__head">
                       <tr class="nhsuk-table__row">
-                        <th class="nhsuk-table_header">Select</th>
+                        <th class="nhsuk-table_header"></th>
                         <th class="nhsuk-table__header" aria-sort="none" scope="col">
                           <button onclick="sortTable()" type="button" data-index="0">Match</button>
                         </th>
@@ -235,10 +235,9 @@
                 </div>
 
 
-<a href="worklists-address-mismatch" class="nhsuk-button--ers">Save and get next mismatch</a>
-<p><a href="worklists">Save and exit</a></p>
-<p><a href="worklists-address-mismatch">Skip Mismatch</a></p>
-
+<a href="worklists-b-result" class="nhsuk-button--ers">Save</a>
+<p><a href="worklists-b-result">Leave without saving</a></p>
+</div>
 </div>
 </div>
 </main>

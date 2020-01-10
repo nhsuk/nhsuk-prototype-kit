@@ -5,8 +5,7 @@
 {% block pageScripts %}
   <script type="text/javascript" src="/js/search.js"></script>
   <script type="text/javascript" src="/js/auto.js"></script>
-  <script type="text/javascript" src="/js/mousetrap.min.js"></script>
-  <script type="text/javascript" src="/js/mouse-trap-custom-v2.js"></script>
+  <script type="text/javascript" src="/js/sort.js"></script>
 {% endblock %}
 {% block pageTitle %}
   NHS e-referral Service
@@ -39,7 +38,7 @@
 <nav class="nhsuk-tabs nhsuk-tabs__grey">
   <ul role="navigation">
     <li class="nhsuk-tabs__grey"><a href="search-participant">Patient</a></li>
-    <li class="nhsuk-tabs__grey"><a class="selected" href="work-items">Worklists</a></li>
+    <li class="nhsuk-tabs__grey"><a class="selected" href="work-items-a">Worklists</a></li>
     <li class="nhsuk-tabs__grey"><a href="#reports">Reports</a></li>
   </ul>
 </nav>
@@ -49,8 +48,9 @@
 
 <div class="tab active" id="patient">
 <div class="nhsuk-grid-row">
+<div class="nhsuk-grid-column-full">
 {{ backLink({
-  "href": "worklists",
+  "href": "worklists-a",
   "text": "Back to Worklists"
 }) }}
 <h1 class="nhsuk-heading-l">Result Mismatch</h1>
@@ -99,12 +99,12 @@
                     <!-- TABLE START -->
                     <thead class="nhsuk-table__head">
                       <tr class="nhsuk-table__row">
-                        <th class="nhsuk-table_header">Select</th>
+                        <th class="nhsuk-table_header"></th>
                         <!--<th class="nhsuk-table__header" aria-sort="none" scope="col">
                           <button onclick="sortTable()" type="button" data-index="0">Match</button>
                         </th>-->
                         <th class="nhsuk-table__header" aria-sort="none" scope="col">
-                          <button onclick="sortTable()" type="button" data-index="0">Details</button>
+                          <button onclick="sortTable()" type="button" data-index="0">Address</button>
                         </th>
                         
                        
@@ -127,7 +127,7 @@
                           85%
                         </td>-->
                         <td class="nhsuk-table__cell">
-                          <strong>Lab address</strong>
+                          <strong>From Lab</strong>
                           <br>
                           20 Thornhill St, Pudsey, LS26 7ED
                         </td>
@@ -145,7 +145,7 @@
                           100%
                         </td>-->
                         <td class="nhsuk-table__cell">
-                          <strong>Current PDS address</strong>
+                          <strong>On PDS </strong>
                           <br>
                           20 Thornhill Street, Pudsey, LS26 7ED
                         </td>
@@ -178,10 +178,10 @@
                 </div>
 
 
-<a href="worklists-nhsno-mismatch" class="nhsuk-button--ers">Save and get next mismatch</a>
-<p><a href="worklists">Save and exit</a></p>
-<p><a href="worklists-nhsno-mismatch">Skip Mismatch</a></p>
-
+<a href="worklists-a-nhsno-mismatch" class="nhsuk-button--ers">Save and get next mismatch</a>
+<p><a href="worklists-a">Save and exit</a></p>
+<p><a href="worklists-a-nhsno-mismatch">Skip Mismatch</a></p>
+</div
 </div>
 </div>
 </main>
