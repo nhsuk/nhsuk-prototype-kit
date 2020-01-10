@@ -76,7 +76,7 @@
       </div>
         <div class="nhsuk-grid-row">
           <div class="nhsuk-grid-column-two-thirds">
-            <form action="add-result-confirmation" method="post" class="form">
+            <form action="add-result-check" method="post" class="form">
               <fieldset class="nhsuk-fieldset">
                 <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
                   <h1 class="nhsuk-fieldset__heading">
@@ -130,7 +130,7 @@
         Test  type
     </legend>
 
-    <div class="nhsuk-radios">
+    <div class="nhsuk-radios nhsuk-radios--inline">
       <div class="nhsuk-radios__item">
         <input class="nhsuk-radios__input" id="scottish" name="test-type" type="radio" value="Scottish" {{ checked("test-type", "Scottish") }}>
         <label class="nhsuk-label nhsuk-radios__label" for="example-1">
