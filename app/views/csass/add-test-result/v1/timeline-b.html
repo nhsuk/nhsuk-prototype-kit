@@ -1,0 +1,307 @@
+{% extends "layout-clinical.html" %}
+
+{% set mainClasses = '' %}
+{% set containerClasses = 'nhsuk-width-container-fluid' %}
+{% set bodyClasses = 'nhsuk-white-background' %}
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+
+  <script type="text/javascript" src="/js/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/js/mouse-trap-custom-v2.js"></script>
+
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+<header class="nhsuk-header" role="banner">
+  <div class="nhsuk-width-container-fluid nhsuk-header__container">
+    <div class="nhsuk-header__logo">
+      <a class="nhsuk-header__link" href="/" aria-label="NHS homepage">
+        <svg class="nhsuk-logo nhsuk-logo--white" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false" viewBox="0 0 40 16">
+          <path fill="#fff" d="M0 0h40v16H0z"></path>
+          <path fill="#005eb8" d="M3.9 1.5h4.4l2.6 9h.1l1.8-9h3.3l-2.8 13H9l-2.7-9h-.1l-1.8 9H1.1M17.3 1.5h3.6l-1 4.9h4L25 1.5h3.5l-2.7 13h-3.5l1.1-5.6h-4.1l-1.2 5.6h-3.4M37.7 4.4c-.7-.3-1.6-.6-2.9-.6-1.4 0-2.5.2-2.5 1.3 0 1.8 5.1 1.2 5.1 5.1 0 3.6-3.3 4.5-6.4 4.5-1.3 0-2.9-.3-4-.7l.8-2.7c.7.4 2.1.7 3.2.7s2.8-.2 2.8-1.5c0-2.1-5.1-1.3-5.1-5 0-3.4 2.9-4.4 5.8-4.4 1.6 0 3.1.2 4 .6"></path>
+          <image src="https://assets.nhs.uk/images/nhs-logo.png" xlink:href=""></image>
+        </svg>
+      </a>
+    </div>
+    <!-- END LOGO -->
+    <!-- SERVICE NAME -->
+    <div class="nhsuk-header__transactional-service-name">
+          <a class="nhsuk-header__transactional-service-name--link" href="/">Cervical Screening</a>
+        </div>
+
+  </div>
+
+</header>
+
+{% endblock %}
+
+{% block content %}
+<nav class="nhsuk-grey-background patient-info" style="margin-bottom: 32px">
+  <ul role="navigation">
+    <li><span style=""><strong>NHS No: </strong> 123 456 7890</span></li>
+    <li><strong>Patient: </strong> Smith, Jane (Mrs)</li>
+    <li>30 years (4 June 1988)</li>
+    <li><strong>Address: </strong> 20 Thornhill Street, Pudsey, LS15 6FD</li>
+  </ul>
+  <div class="nhsuk-close">
+    <a class="" href="search-participant">Close
+      <svg class="nhsuk-icon nhsuk-icon--ers nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+</svg></a>
+
+  </div>
+</nav>
+
+<nav class="nhsuk-tabs" style="background-color: white">
+        <ul role="navigation" style="margin-left: 32px">
+          <li><a href="history-b" style="border-top: 1px solid #768692; border-left: 1px solid #768692">Patient summary</a></li>
+          <li><a class="selected" href="timeline-b" style="border-top: 1px solid #768692">Timeline</a></li>
+          <li><a href="gp-info-b" style="border-top: 1px solid #768692">GP information</a></li>
+          <li><a href="hpv-b" style="border-top: 1px solid #768692">HPV</a></li>
+          <li><a href="comments-b" style="border-top: 1px solid #768692">Comments</a></li>
+        </ul>
+      </nav>
+
+<div class="nhsuk-width-container nhsuk-width-container-fluid">
+          <main class=" " id="main-content" role="main">
+
+
+
+<div class="nhsuk-grid-row nhsuk-u-margin-bottom-5 nhsuk-u-margin-top-4">
+
+  <div class="nhsuk-filter-layout__content nhsuk-u-border-left nhsuk-u-padding-left-5 nhsuk-u-padding-right-5">
+    
+        <h1 class="nhsuk-heading-l">Timeline</h1>
+
+        <div class="nhs-screening-whole-timeline">
+                <div class="nhs-screening-whole-timeline__item">
+                
+                        <div class="nhs-screening-whole-timeline__header">
+                          <h2 class="nhs-screening-whole-timeline__title">
+                            Invite sent
+                          </h2>
+                        
+                          <p class="nhs-screening-whole-timeline__by">by AJackson-Admin</p>
+                        
+                        </div>
+                        
+                        <p class="nhs-screening-whole-timeline__date"><time datetime="2018-01-25T14:04">02 Jan 2020 at 08:39am</time></p>
+                        
+                        <p class="nhs-screening-whole-timeline__description">Invite sent to patient 02.01.2020</p>
+                        
+                        
+                        </div>
+
+                <div class="nhs-screening-whole-timeline__item">
+                
+                <div class="nhs-screening-whole-timeline__header">
+                  <h2 class="nhs-screening-whole-timeline__title">
+                    PNL Generated
+                  </h2>
+                
+                  <p class="nhs-screening-whole-timeline__by">by CSAS Admin RW34</p>
+                
+                </div>
+                
+                <p class="nhs-screening-whole-timeline__date"><time datetime="2018-01-25T14:04">10 Nov 2019 at 14:04pm</time></p>
+                
+                <p class="nhs-screening-whole-timeline__description">Patient appears on prior notification list generated</p>
+                
+                <ul class="nhs-screening-whole-timeline__documents">
+                
+                  <li class="nhs-screening-whole-timeline__document-item"><a class="nhs-screening-whole-timeline__document-link" href="#1">Prior notification list</a></li>
+                
+                </ul>
+                
+                </div>
+                
+                <div class="nhs-screening-whole-timeline__item">
+                
+                <div class="nhs-screening-whole-timeline__header">
+                  <h2 class="nhs-screening-whole-timeline__title">
+                   Next test due date added
+                  </h2>
+                
+                  <p class="nhs-screening-whole-timeline__by">by CSAS Admin DF21</p>
+                
+                </div>
+                
+                <p class="nhs-screening-whole-timeline__date"><time datetime="2017-12-05T09:10">15 Apr 2017 at 9:10am</time></p>
+                
+                <p class="nhs-screening-whole-timeline__description">Next test due date added for 22.4.20</p>
+        
+                
+                </div>
+                
+                <div class="nhs-screening-whole-timeline__item">
+                
+                <div class="nhs-screening-whole-timeline__header">
+                  <h2 class="nhs-screening-whole-timeline__title">
+                    Results added
+                  </h2>
+                
+                  <p class="nhs-screening-whole-timeline__by">by Gateshead-Admin3</p>
+                
+                </div>
+                
+                <p class="nhs-screening-whole-timeline__date"><time datetime="2017-11-20T14:27">10 April 2017 at 14:27pm</time></p>
+                
+                <p class="nhs-screening-whole-timeline__description">Patient's results have been added and are ready to view</p>
+                <ul class="nhs-screening-whole-timeline__documents">
+                
+                        <li class="nhs-screening-whole-timeline__document-item"><a class="nhs-screening-whole-timeline__document-link" href="#1">Results</a></li>
+                      
+                      </ul>
+                </div>
+
+                <div class="nhs-screening-whole-timeline__item">
+                
+                        <div class="nhs-screening-whole-timeline__header">
+                          <h2 class="nhs-screening-whole-timeline__title">
+                           Invite sent
+                          </h2>
+                        
+                          <p class="nhs-screening-whole-timeline__by">by JFoster-Admin</p>
+                        
+                        </div>
+                        
+                        <p class="nhs-screening-whole-timeline__date"><time datetime="2018-01-25T14:04">25 Mar 2017 at 12:04pm</time></p>
+                        
+                        <p class="nhs-screening-whole-timeline__description">Invite sent to patient 25.03.2017</p>
+                        
+                        
+                        </div>
+
+                
+                        <div class="nhs-screening-whole-timeline__item">
+                
+                                <div class="nhs-screening-whole-timeline__header">
+                                  <h2 class="nhs-screening-whole-timeline__title">
+                                    PNL Generated
+                                  </h2>
+                                
+                                  <p class="nhs-screening-whole-timeline__by">by CSAS Admin RT14</p>
+                                
+                                </div>
+                                
+                                <p class="nhs-screening-whole-timeline__date"><time datetime="2018-01-25T14:04">03 Mar 2017 at 10:00am</time></p>
+                                
+                                <p class="nhs-screening-whole-timeline__description">Patient appears on prior notification list generated</p>
+                                
+                                <ul class="nhs-screening-whole-timeline__documents">
+                                
+                                  <li class="nhs-screening-whole-timeline__document-item"><a class="nhs-screening-whole-timeline__document-link" href="#1">Prior notification list</a></li>
+                                
+                                </ul>
+                                
+                                </div>
+                                <div class="nhs-screening-whole-timeline__item">
+                
+                                        <div class="nhs-screening-whole-timeline__header">
+                                          <h2 class="nhs-screening-whole-timeline__title">
+                                           Next test due date added
+                                          </h2>
+                                        
+                                          <p class="nhs-screening-whole-timeline__by">by CSAS Admin DF21</p>
+                                        
+                                        </div>
+                                        
+                                        <p class="nhs-screening-whole-timeline__date"><time datetime="2017-12-05T09:10">20 Apr 2014 at 9:10am</time></p>
+                                        
+                                        <p class="nhs-screening-whole-timeline__description">Next test due date added for 22.5.17</p>
+                                
+                                        
+                                        </div>
+                                        <div class="nhs-screening-whole-timeline__item">
+                
+                                                <div class="nhs-screening-whole-timeline__header">
+                                                  <h2 class="nhs-screening-whole-timeline__title">
+                                                    Results added
+                                                  </h2>
+                                                
+                                                  <p class="nhs-screening-whole-timeline__by">by Gateshead-Admin2</p>
+                                                
+                                                </div>
+                                                
+                                                <p class="nhs-screening-whole-timeline__date"><time datetime="2017-11-20T14:27">13 April 2014 at 14:14pm</time></p>
+                                                
+                                                <p class="nhs-screening-whole-timeline__description">Patient's results have been added and are ready to view</p>
+                                                <ul class="nhs-screening-whole-timeline__documents">
+                                                
+                                                        <li class="nhs-screening-whole-timeline__document-item"><a class="nhs-screening-whole-timeline__document-link" href="#1">Results</a></li>
+                                                      
+                                                      </ul>
+                                                </div>
+                                                <div class="nhs-screening-whole-timeline__item">
+                
+                                                        <div class="nhs-screening-whole-timeline__header">
+                                                          <h2 class="nhs-screening-whole-timeline__title">
+                                                            Invite sent
+                                                          </h2>
+                                                        
+                                                          <p class="nhs-screening-whole-timeline__by">by JFoster-Admin</p>
+                                                        
+                                                        </div>
+                                                        
+                                                        <p class="nhs-screening-whole-timeline__date"><time datetime="2018-01-25T14:04">25 Mar 2014 at 17:04pm</time></p>
+                                                        
+                                                        <p class="nhs-screening-whole-timeline__description">Invite sent to patient 12.03.2014</p>
+                                                        
+                                                        
+                                                        </div>
+                                                        <div class="nhs-screening-whole-timeline__item">
+                
+                                                                <div class="nhs-screening-whole-timeline__header">
+                                                                  <h2 class="nhs-screening-whole-timeline__title">
+                                                                    PNL Generated
+                                                                  </h2>
+                                                                
+                                                                  <p class="nhs-screening-whole-timeline__by">by CSAS Admin VA20</p>
+                                                                
+                                                                </div>
+                                                                
+                                                                <p class="nhs-screening-whole-timeline__date"><time datetime="2018-01-25T14:04">22 Feb 2014 at 09:20am</time></p>
+                                                                
+                                                                <p class="nhs-screening-whole-timeline__description">Patient appears on prior notification list generated</p>
+                                                                
+                                                                <ul class="nhs-screening-whole-timeline__documents">
+                                                                
+                                                                  <li class="nhs-screening-whole-timeline__document-item"><a class="nhs-screening-whole-timeline__document-link" href="#1">Prior notification list</a></li>
+                                                                
+                                                                </ul>
+                                                                
+                                                                </div>
+
+                
+               
+                
+                </div> 
+
+
+
+</div>
+          </div>
+
+
+          </main>
+        </div>
+
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+ <div class="nhsuk-footer" id="nhsuk-footer">
+   <div class="nhsuk-width-container nhsuk-width-container-fluid">
+
+     <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+   </div>
+ </div>
+</footer>
+{% endblock %}
+
+

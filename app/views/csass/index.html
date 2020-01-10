@@ -4,15 +4,15 @@
 
 <!-- Extends the layout from /views/layout.html -->
 {% extends 'layout.html' %}
-<!-- 
+<!--
   In /views/layout.html you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
 <!-- Set the page title inside the pageTitle block -->
 {% block pageTitle %}
-  Taking a sample
+  Sample Taker
 {% endblock %}
 
 <!-- Breadcrumb goes inside the beforeContent block -->
@@ -25,8 +25,8 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
 
-    <h1>Taking a sample</h1>
-      <mark>add participant info here</mark>
+    <h1>CSAS Users</h1>
+      <mark>add info here</mark>
       </br>
       </br>
       <div class="nhsuk-grid-row nhsuk-panel-group">
@@ -49,7 +49,7 @@
             </div>
           </div>
         </div>
-  
+
     <h2>User Journey - to add</h2>
       <p>info to add</p>
         <ul>
@@ -58,17 +58,16 @@
           <li><a href="v1/index">Current version</a></li>
         </ul>
 
-
       <details class="nhsuk-details nhsuk-expander version-list">
         <summary class="nhsuk-details__summary">
           <span style="width:80%; display: inline-block" class="nhsuk-details__summary-text">
-            v1
+          v1 - Add a test  result
           </span>
           <span style="width: 10%; display: inline-block" class="nhsuk-tag">not tested</span>
         </summary>
         <div class="nhsuk-details__text version-text">
           <br>
-          <h3><a href="/v1/index">v1 Prototype</a></h3>
+          <h3><a href="csass/add-test-result/v1/patient-summary">v1 - Add a result Prototype</a></h3>
             <p>To add</p>
             <ul>
               <li>To add</li>
@@ -82,8 +81,8 @@
             <li>To add</li>
           </ul>
           {{ button({
-            "text": "v01",
-            "href": "/v1/index"
+            "text": "start",
+            "href": "csass/add-test-result/v1/patient-details"
           }) }}
           <hr>
         </div>
@@ -92,19 +91,36 @@
 
       <details class="nhsuk-details nhsuk-expander version-list">
         <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            Error messages
+          <span style="width:80%; display: inline-block" class="nhsuk-details__summary-text">
+          v1 - Add a private test
           </span>
+          <span style="width: 10%; display: inline-block" class="nhsuk-tag">not tested</span>
         </summary>
-        <div class="nhsuk-details__text">
-          <h4 class="nhsuk-heading-s nhsuk-u-margin-top-5">Add Title</h4>
+        <div class="nhsuk-details__text version-text">
+          <br>
+          <h3><a href="csass/add-test-result/v1/patient-details">v1 - Add a private test prototype</a></h3>
+            <p>To add</p>
+            <ul>
+              <li>To add</li>
+            </ul>
+          <h3>User testing</h3>
           <ul>
-            <li><a href="">Add error</a></li>
+            <li>To add</li>
           </ul>
-
+          <h3>Design Challenges (2)</h3>
+          <ul>
+            <li>To add</li>
+          </ul>
+          {{ button({
+            "text": "v01a",
+            "href": "csass/add-test/history-a"
+          }) }}
+          <hr>
         </div>
+
       </details>
-   
+
+
     </div>
   </div>
 {% endblock %}
