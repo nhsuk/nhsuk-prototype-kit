@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // Documentation router
-router.get('/', function(req , res){ 
+router.get('/', function(req , res){
   res.render('index');
 });
 
@@ -55,5 +55,6 @@ router.post('/examples/branching/answer', function (req, res) {
   }
 
 })
+
 
 module.exports = router;
