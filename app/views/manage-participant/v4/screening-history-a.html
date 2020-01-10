@@ -1,0 +1,321 @@
+{% extends "layout-clinical.html" %}
+
+{% set mainClasses = '' %}
+{% set containerClasses = 'nhsuk-width-container-fluid' %}
+{% set bodyClasses = 'nhsuk-white-background' %}
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+
+  <script type="text/javascript" src="/js/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/js/mouse-trap-custom-v2.js"></script>
+
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+<header class="nhsuk-header" role="banner">
+  <div class="nhsuk-width-container-fluid nhsuk-header__container">
+    <div class="nhsuk-header__logo">
+      <a class="nhsuk-header__link" href="/" aria-label="NHS homepage">
+        <svg class="nhsuk-logo nhsuk-logo--white" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false" viewBox="0 0 40 16">
+          <path fill="#fff" d="M0 0h40v16H0z"></path>
+          <path fill="#005eb8" d="M3.9 1.5h4.4l2.6 9h.1l1.8-9h3.3l-2.8 13H9l-2.7-9h-.1l-1.8 9H1.1M17.3 1.5h3.6l-1 4.9h4L25 1.5h3.5l-2.7 13h-3.5l1.1-5.6h-4.1l-1.2 5.6h-3.4M37.7 4.4c-.7-.3-1.6-.6-2.9-.6-1.4 0-2.5.2-2.5 1.3 0 1.8 5.1 1.2 5.1 5.1 0 3.6-3.3 4.5-6.4 4.5-1.3 0-2.9-.3-4-.7l.8-2.7c.7.4 2.1.7 3.2.7s2.8-.2 2.8-1.5c0-2.1-5.1-1.3-5.1-5 0-3.4 2.9-4.4 5.8-4.4 1.6 0 3.1.2 4 .6"></path>
+          <image src="https://assets.nhs.uk/images/nhs-logo.png" xlink:href=""></image>
+        </svg>
+      </a>
+    </div>
+    <!-- END LOGO -->
+    <!-- SERVICE NAME -->
+    <div class="nhsuk-header__transactional-service-name">
+          <a class="nhsuk-header__transactional-service-name--link" href="/">Cervical Screening</a>
+        </div>
+
+  </div>
+
+</header>
+
+{% endblock %}
+
+{% block content %}
+<nav class="nhsuk-grey-background patient-info" style="margin-bottom: 32px">
+  <ul role="navigation">
+    <li><span style=""><strong>NHS No: </strong> 123 456 7890</span></li>
+    <li><strong>Patient: </strong> Smith, Jane (Mrs)</li>
+    <li>30 years (4 June 1988)</li>
+    <li><strong>Address: </strong> 20 Thornhill Street, Pudsey, LS15 6FD</li>
+  </ul>
+  <div class="nhsuk-close">
+    <a class="" href="search-participant">Close
+      <svg class="nhsuk-icon nhsuk-icon--ers nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+</svg></a>
+
+  </div>
+</nav>
+
+    <nav class="nhsuk-tabs" style="background-color: white">
+      <ul role="navigation" style="margin-left: 32px">
+        <li><a class="selected" href="screening-history-a" style="border-top: 1px solid #768692; border-left: 1px solid #768692">Patient</a></li>
+        <li><a href="screening-history-a-gp-info" style="border-top: 1px solid #768692">GP Info</a></li>
+        <li><a href="screening-history-a-hpv" style="border-top: 1px solid #768692">HPV</a></li>
+        <li><a href="screening-history-a-notes" style="border-top: 1px solid #768692">Notes</a></li>
+        <li><a href="screening-history-a-audit" style="border-top: 1px solid #768692">Audit</a></li>
+      </ul>
+    </nav>
+
+<div class="nhsuk-width-container nhsuk-width-container-fluid">
+          <main class=" " id="main-content" role="main">
+
+
+
+<div class="nhsuk-grid-row nhsuk-u-margin-bottom-5 nhsuk-u-margin-top-4">
+
+
+
+
+
+  <div class="nhsuk-filter-layout__content nhsuk-u-border-left nhsuk-u-padding-left-5 nhsuk-u-padding-right-5">
+
+
+
+
+
+    <h1 class="nhsuk-heading-l">Patient</h1>
+   <!--<h2 class="nhsuk-heading-s">Screening Summary</h2>-->
+
+    <!-- TIME LINE -->
+    <!-- move this somewhere after -->
+    <style>
+      .nhsuk-panel--timeline::after {
+        content: "";
+        display: block;
+        position: relative;
+        height: 16px;
+        width: 16px;
+        border-radius: 8px;
+        background-color: grey;
+        top: 95%;
+        right: 50%
+      }
+
+      .nhsuk-panel--timeline--success::after {
+        content: "";
+        display: block;
+        position: relative;
+        height: 16px;
+        width: 16px;
+        border-radius: 8px;
+        background-color: green;
+        top: 95%;
+        right: 50%
+      }
+
+      .vertical-line::after {
+        content: "";
+        width: 1px; /* Line width */
+      background-color: black; /* Line color */
+      height: 100%; /* Override in-line if you want specific height. */
+      
+      }
+    </style>
+    <!-- move this somewhere after -->
+    <ul>
+      <li><strong>Name: </strong>Jane Smith</li>
+      <li><strong>NHS No: </strong>123 456 7890</li>
+      <li><strong>Date of Birth: </strong>04 06 1988</li>
+      <li><strong>Address: </strong>20 Thornhill Street, Pudsey, LS15 6FD</li>
+    </ul>
+    {{ details({
+      "text": "View more patient information",
+      "HTML": "
+
+    <h4>Address History</h4>
+    <table>
+    <thead>
+      <tr>
+        <th>Moved in</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tr>
+      <td>07 2017</td>
+      <td>20 Thornhill Street, Pudsey, LS15 6FD</td>
+    </tr>
+    <tr>
+      <td>03 2013</td>
+      <td>29 Jubilee Close, Bradford, BD19 3WE</td>
+    </tr>
+    <tr>
+      <td>01 2011</td>
+      <td>1 High Street, Bradford, BD13 5TY</td>
+    </tr>
+    </table>
+
+    <hr>
+    <h4>Other Info</h4>
+    <p>other stuff here</p>
+    "
+    }) }}
+    <hr>
+    <h2 id="" class="nhsuk-heading-l">Patient Summary</h2>
+    <p><strong>Next test due date: </strong>01 08 2020 - <a href="">change</a></p>
+    <div class="nhsuk-grid-row nhsuk-panel-group" style="text-align: center; border-bottom: 2px dashed black; width:90%; margin-left: 5%">
+      <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item nhsuk-panel--timeline--success">
+        <div class="nhsuk-panel">
+          <h4 style="margin-bottom: 0px" class="vertical-line">PNL
+            <span style="position: relative">
+            <svg style="position: absolute; top: -3px" class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none">
+              <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+            </svg>
+            </span>
+          </h4>
+          <p>03 2020</p>
+        </div>
+      </div>
+      <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item nhsuk-panel--timeline--success">
+        <div class="nhsuk-panel">
+          <h4 style="margin-bottom: 0px">Invite
+            <span style="position: relative">
+              <svg style="position: absolute; top: -3px" class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none">
+                <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+              </svg>
+            </span>
+          </h4>
+          <p>06 2020</p>
+        </div>
+      </div>
+      <!--<div class="nhsuk-grid-column-one-quarter nhsuk-panel-group__item nhsuk-panel--timeline">
+        <div class="nhsuk-panel">
+          <h4 style="border: 2px solid blue">Notification</h4>
+          <p>16 06 2020</p>
+        </div>
+      </div>-->
+      <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item nhsuk-panel--timeline">
+        <div class="nhsuk-panel">
+          <h4 style="margin-bottom: 0px">Next Test Due Date</h4>
+          <p>01 08 2020</p>
+        </div>
+      </div>
+    </div>
+
+    
+    <hr>
+
+    <!-- TIME LINE -->
+
+
+    <h2 id="testresults" class="nhsuk-heading-l">Test Results</h2>
+    <div class="nhsuk-scrollable-pane">
+
+
+
+      <div class="nhsuk-scrollable-pane__wrapper">
+       
+        <div id="table-scroll" class="table-scroll">
+          <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+            <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table">
+
+              <!-- TABLE START -->
+              <thead class="nhsuk-table__head">
+                <tr class="nhsuk-table__row">
+
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                    <button onclick="sortTable()" type="button" data-index="0">Test Date</button>
+                  </th>
+
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Result</button>
+                  </th>
+
+                  </th>
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Slide No</button>
+                  </th>
+
+                  </th>
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Slide Result</button>
+                  </th>
+
+                  </th>
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Nat Code</button>
+                  </th>
+
+                  </th>
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">HPV Primary</button>
+                  </th>
+
+                  <!--<th class="nhsuk-table__header" aria-sort="none" scope="col"><button type="button" data-index="0">Invite Date</button></th>-->
+
+                  <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                    <button onclick="sortTable()" type="button" data-index="0">Edit</button>
+                </tr>
+              </thead>
+
+
+              <tbody class="nhsuk-table__body nhsuk-body-">
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">01 04 2019</td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight" style="background-color: green; color: white; font-weight: bold">2 A 36</span> Routine 36 months</td>
+                  <td class="nhsuk-table__cell">1234567</td>
+                  <td class="nhsuk-table__cell">n/a</td>
+                  <td class="nhsuk-table__cell">60020 Derby Royal Hospital</td>
+                  <td class="nhsuk-table__cell">N</td>
+                  <td class="nhsuk-table__cell"><a href="">Edit</a></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">01 04 2016</td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight" style="background-color: green; color: white; font-weight: bold">2 A 36</span> Routine 36 months</td>
+                  <td class="nhsuk-table__cell">2345678</td>
+                  <td class="nhsuk-table__cell">n/a</td>
+                  <td class="nhsuk-table__cell">60020 Derby Royal Hospital</td>
+                  <td class="nhsuk-table__cell">N</td>
+                  <td class="nhsuk-table__cell"><a href="">Edit</a></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">01 04 2016</td>
+                  <td class="nhsuk-table__cell"><span class="nhsuk-tag nhsuk-tag__highlight" style="background-color: green; color: white; font-weight: bold">2 A 36</span> Routine 36 months</td>
+                  <td class="nhsuk-table__cell">n/a</td>
+                  <td class="nhsuk-table__cell">n/a</td>
+                  <td class="nhsuk-table__cell">60020 Derby Royal Hospital</td>
+                  <td class="nhsuk-table__cell">N</td>
+                  <td class="nhsuk-table__cell"><a href="">Edit</a></td>
+                </tr>
+                
+              </tbody>
+            </table>
+
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+          </main>
+        </div>
+
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+ <div class="nhsuk-footer" id="nhsuk-footer">
+   <div class="nhsuk-width-container nhsuk-width-container-fluid">
+
+     <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+   </div>
+ </div>
+</footer>
+{% endblock %}
+
+
