@@ -1,0 +1,271 @@
+{% extends "layout-clinical.html" %}
+
+{% set mainClasses = '' %}
+{% set containerClasses = 'nhsuk-width-container-fluid' %}
+{% set bodyClasses = 'nhsuk-white-background' %}
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+
+  <script type="text/javascript" src="/js/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/js/mouse-trap-custom-v2.js"></script>
+
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+<header class="nhsuk-header" role="banner">
+  <div class="nhsuk-width-container-fluid nhsuk-header__container">
+    <div class="nhsuk-header__logo">
+      <a class="nhsuk-header__link" href="/" aria-label="NHS homepage">
+        <svg class="nhsuk-logo nhsuk-logo--white" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false" viewBox="0 0 40 16">
+          <path fill="#fff" d="M0 0h40v16H0z"></path>
+          <path fill="#005eb8" d="M3.9 1.5h4.4l2.6 9h.1l1.8-9h3.3l-2.8 13H9l-2.7-9h-.1l-1.8 9H1.1M17.3 1.5h3.6l-1 4.9h4L25 1.5h3.5l-2.7 13h-3.5l1.1-5.6h-4.1l-1.2 5.6h-3.4M37.7 4.4c-.7-.3-1.6-.6-2.9-.6-1.4 0-2.5.2-2.5 1.3 0 1.8 5.1 1.2 5.1 5.1 0 3.6-3.3 4.5-6.4 4.5-1.3 0-2.9-.3-4-.7l.8-2.7c.7.4 2.1.7 3.2.7s2.8-.2 2.8-1.5c0-2.1-5.1-1.3-5.1-5 0-3.4 2.9-4.4 5.8-4.4 1.6 0 3.1.2 4 .6"></path>
+          <image src="https://assets.nhs.uk/images/nhs-logo.png" xlink:href=""></image>
+        </svg>
+      </a>
+    </div>
+    <!-- END LOGO -->
+    <!-- SERVICE NAME -->
+    <div class="nhsuk-header__transactional-service-name">
+          <a class="nhsuk-header__transactional-service-name--link" href="/">Cervical Screening</a>
+        </div>
+
+  </div>
+
+</header>
+
+{% endblock %}
+
+{% block content %}
+<nav class="nhsuk-grey-background patient-info" style="margin-bottom: 32px">
+  <ul role="navigation">
+    <li><span style=""><strong>NHS No: </strong> 123 456 7890</span></li>
+    <li><strong>Patient: </strong> Smith, Jane (Mrs)</li>
+    <li>30 years (4 June 1988)</li>
+    <li><strong>Address: </strong> 20 Thornhill Street, Pudsey, LS15 6FD</li>
+  </ul>
+  <div class="nhsuk-close">
+    <a class="" href="search-participant">Close
+      <svg class="nhsuk-icon nhsuk-icon--ers nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+</svg></a>
+
+  </div>
+</nav>
+
+
+
+
+<div class="nhsuk-width-container nhsuk-width-container-fluid">
+          <main class=" " id="main-content" role="main">
+
+
+
+                <div class="nhsuk-grid-row nhsuk-u-margin-bottom-5 nhsuk-u-margin-top-4">
+
+                  <div class="nhsuk-grid-column-full">
+                    <div class="nhsuk-back-link">
+        <a class="nhsuk-back-link__link" href="/manage-participant/v4/screening-history" wiid="C62">
+          <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" wiid="C63">
+            <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z" wiid="C64"></path>
+          </svg>
+          Go back to patient summary</a>
+      </div>
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-two-thirds">
+            <form action="add-result-check" method="post" class="form">
+              <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                  <h1 class="nhsuk-fieldset__heading">
+                    Add a test result
+                  </h1>
+                </legend>
+                <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
+                  <div class="nhsuk-form-group">
+                    <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
+                      <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+                        Test date
+                      </legend>
+                      <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
+                        You must enter a date
+                      </span>
+                      <div class="nhsuk-date-input" id="dob-from">
+                        <div class="nhsuk-date-input__item">
+                          <div class="nhsuk-form-group">
+                            <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
+                              Day
+                            </label>
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="day" name="test-date" type="number" pattern="[0-9]*" value="{{ data['day'] }}">
+                          </div>
+                        </div>
+                        <div class="nhsuk-date-input__item">
+                          <div class="nhsuk-form-group">
+                            <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
+                              Month
+                            </label>
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="test-date" type="number" pattern="[0-9]*" value="{{ data['month'] }}">
+                          </div>
+                        </div>
+                        <div class="nhsuk-date-input__item">
+                          <div class="nhsuk-form-group">
+                            <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
+                              Year
+                            </label>
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="year" type="number" pattern="[0-9]*" value="{{ data['year'] }}">
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+
+                </div>
+                <div class="nhsuk-form-group">
+                  <div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset">
+      <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+        Test  type
+    </legend>
+
+    <div class="nhsuk-radios nhsuk-radios--inline">
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="scottish" name="test-type" type="radio" value="Scottish" {{ checked("test-type", "Scottish") }}>
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+        Scottish
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="private" name="test-type" type="radio" value="Private" {{ checked("test-type", "Private") }}>
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+        Private
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="vault-smear" name="test-type" type="radio" value="Vault smear"{{ checked("test-type", "Vault smear") }}>
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+        Vault smear
+        </label>
+      </div>
+    </div>
+  </fieldset>
+
+</div>
+<div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
+  <div class="nhsuk-form-group">
+    <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
+      <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+        Outcome
+      </legend>
+      <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
+        You must enter the results
+      </span>
+      <div class="nhsuk-date-input" id="dob-from">
+        <div class="nhsuk-date-input__item">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
+              Result
+            </label>
+            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="result" name="result" type="number" pattern="[0-9]*" value="{{ data['result'] }}">
+          </div>
+        </div>
+        <div class="nhsuk-date-input__item">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
+              Infection
+            </label>
+            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="infection" name="infection" type="number" pattern="[0-9]*" value="{{ data['infection'] }}">
+          </div>
+        </div>
+        <div class="nhsuk-date-input__item">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
+            Action
+            </label>
+            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="action" name="action" type="text" pattern="[0-9]*" value="{{ data['action'] }}">
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+</div>
+
+                </div>
+
+            <div class="nhsuk-form-group" id="nhsuk-form-group-first-name-advanced">
+              <label class="nhsuk-label nhsuk-label__strong" for="first-name-advanced">
+              Sample taker
+              </label>
+              <span id="advanced-first-name-error-error" class="nhsuk-error-message" style="display: none">
+                You must enter a name
+              </span>
+              <input class="nhsuk-input nhsuk-input--width-20" id="sample-taker" name="sample-taker" type="text" value="{{ data['sample-taker'] }}">
+            </div>
+            <div id="nhsuk-form-group-last-name-advanced" class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-label__strong" for="last-name-advanced">
+              National code
+              </label>
+              <span id="advanced-last-name-error-error" class="nhsuk-error-message" style="display: none">
+                You must enter a code
+              </span>
+              <input class="nhsuk-input nhsuk-input--width-20" id="nat-code" name="nat-code" type="text" value="{{ data['nat-code'] }}">
+            </div>
+
+            <div id="nhsuk-form-group-last-name-advanced" class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-label__strong" for="last-name-advanced">
+              CRM case number
+              </label>
+
+              <input class="nhsuk-input nhsuk-input--width-20" id="case-number" name="case-number" type="number" value="{{ data['case-number'] }}">
+            </div>
+
+              </fieldset>
+              <button class="nhsuk-button--ers">Continue</button>
+            </form>
+
+          </div>
+        </div>
+
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      </div>
+
+
+          </main>
+        </div>
+
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+ <div class="nhsuk-footer" id="nhsuk-footer">
+   <div class="nhsuk-width-container nhsuk-width-container-fluid">
+
+     <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+   </div>
+ </div>
+</footer>
+{% endblock %}
