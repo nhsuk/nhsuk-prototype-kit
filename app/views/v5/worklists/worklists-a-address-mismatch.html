@@ -37,11 +37,12 @@
 {% block content %}
 
 <div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
 
-{{ backLink({
+  {{ backLink({
   "href": "worklists-a",
   "text": "Back to Worklists"
-}) }}
+  }) }}
   <h1 class="nhsuk-heading-l">Result Mismatch</h1>
 
   <ul class="nhsuk-list nhsuk-list--tick">
@@ -175,6 +176,7 @@
   <a href="worklists-a-nhsno-mismatch" class="nhsuk-button nhsuk-button--ers">Save and get next mismatch</a>
   <p><a href="worklists-a">Save and exit</a></p>
   <p><a href="worklists-a-nhsno-mismatch">Skip Mismatch</a></p>
+  </div>
 </div>
 
 
