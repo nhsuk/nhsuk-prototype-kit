@@ -59,7 +59,7 @@ router.post('/search-v5/', function (req, res) {
   var nhsNumber = req.session.data['searchnhs']
 
   if (nhsNumber == "3816158897") {
-      res.redirect('/v5/patient/screening-history')
+      res.redirect('/v5/patient/patient-summary')
   }
 
   if (nhsNumber == "6170211547") {
@@ -70,7 +70,7 @@ router.post('/search-v5/', function (req, res) {
       res.redirect('/v5/patient/history-colposcopy')
   }
 
-  res.redirect('/v5/patient/screening-history')
+  res.redirect('/v5/patient/patient-summary')
 
 })
 

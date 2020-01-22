@@ -7,6 +7,7 @@
 //@import 'components/tabs';
 @import 'components/tables'; // taken from eRS
 @import 'components/tags'; // taken from eRS
+@import 'components/timelines'; // taken from govuk
 @import 'components/patient-banner'; //rename to the patient banner
 @import 'components/sub-navigation'; // tab navigation taken from eRS
 
@@ -30,6 +31,10 @@
     background-color: #c6ece9;
 }
 
+.nhsuk-inset-text.nhsuk-inset-text__screening.nhsuk-inset-text__screening--info {
+    border-color: #2b8cc4;
+    background-color: #dbeff9;
+}
 
 // breakpoints stops is collapsing
 @media (min-width: 1024px) {

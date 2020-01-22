@@ -1,0 +1,241 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+  <script type="text/javascript" src="/js/action-menu.js"></script>
+  <script type="text/javascript" src="/js/sort.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "true"
+  })
+}}
+{% endblock %}
+
+
+{% block content %}
+<nav class="nhsuk-sub-navigation">
+  <ul class="nhsuk-sub-navigation__list">
+    <li class="nhsuk-sub-navigation__item"><a href="patient-summary" class="nhsuk-sub-navigation__link" aria-current="page">Patient Summary</a></li>
+    <li class="nhsuk-sub-navigation__item"><a href="history" class="nhsuk-sub-navigation__link">History</a></li>
+    <li class="nhsuk-sub-navigation__item"><a href="gp-info" class="nhsuk-sub-navigation__link">GP Information</a></li>
+    <li class="nhsuk-sub-navigation__item"><a href="additional-info" class="nhsuk-sub-navigation__link">Additional Information</a></li>
+  </ul>
+</nav>
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-one-half">
+    <h1 class="nhsuk-heading-l">Patient summary</h1>
+    <span class="nhsuk-tag__highlight nhsuk-tag-large nhsuk-u-margin-bottom-2">REPEAT ADVISED</span>
+    <dl class="nhsuk-summary-list nhsuk-u-margin-top-4">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Next test due date:
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            09-April-2020
+          </dd>  
+          <dd class="nhsuk-summary-list__actions">  
+            <a class="nhsuk-button nhsuk-button--ers" href="enter-reason">Cease/defer</a> 
+          </dd>  
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Address: 
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            20 Thornhill Street, Pudsey,<br> LS15 6FD 
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+            <a href="#">
+              <span class="nhsuk-tag__warning">FP69</span>
+            </a>
+        </dd>   
+      </div>
+    </dl>
+    {{ details({
+      "text": "View previous addresses",
+      "HTML": "
+
+      <h4>Address History</h4>
+      <table>
+      <thead>
+      <tr>
+        <th>Moved in</th>
+        <th>Address</th>
+      </tr>
+      </thead>
+      <tr>
+      <td>07 2017</td>
+      <td>20 Thornhill Street, Pudsey, LS15 6FD</td>
+      </tr>
+      <tr>
+      <td>03 2013</td>
+      <td>29 Jubilee Close, Bradford, BD19 3WE</td>
+      </tr>
+      <tr>
+      <td>01 2011</td>
+      <td>1 High Street, Bradford, BD13 5TY</td>
+      </tr>
+      </table>"
+      }) }}
+  </div>
+</div>
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-full">
+    <h2 id="testresults" class="nhsuk-heading-l">Previous test results</h2>
+    <a class="nhsuk-button nhsuk-button--secondary" href="/csass/add-test-result/v1/add-result">Add result</a>  
+
+    <div class="nhsuk-scrollable-pane">
+    <div class="nhsuk-scrollable-pane__wrapper">
+        <div id="table-scroll" class="table-scroll">
+          <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+             <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table">
+
+              <!-- TABLE START -->
+              <thead class="nhsuk-table__head">
+                <tr class="nhsuk-table__row">
+
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                    <button onclick="sortTable()" type="button" data-index="0">Test Date</button>
+                  </th>
+
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Result</button>
+                  </th>
+
+
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Infection</button>
+                  </th>
+
+
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Action</button>
+                  </th>
+
+
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Repeat months</button>
+                  </th>
+
+
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Screening lab</button>
+                  </th>
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Slide no</button>
+                  </th>
+
+
+                </tr>
+              </thead>
+
+
+              <tbody class="nhsuk-table__body nhsuk-body-">
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">01-Apr-2017</td>
+                  <td class="nhsuk-table__cell">Negative</td>
+                  <td class="nhsuk-table__cell">HPV Negative</td>
+                  <td class="nhsuk-table__cell">Routine</td>
+                  <td class="nhsuk-table__cell">36 months</td>
+                  <td class="nhsuk-table__cell">Leeds General Infirmary</td>
+                  <td class="nhsuk-table__cell">123</td>
+
+                </tr>
+                <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell fixed-side">10-Apr-2014</td>
+                        <td class="nhsuk-table__cell">Negative</td>
+                        <td class="nhsuk-table__cell">HPV Negative</td>
+                        <td class="nhsuk-table__cell">Routine</td>
+                        <td class="nhsuk-table__cell">36 months</td>
+                        <td class="nhsuk-table__cell">Leeds General Infirmary</td>
+                          <td class="nhsuk-table__cell">123</td>
+
+                      </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+
+    <h2 id="testresults" class="nhsuk-heading-l">HPV Vaccinations</h2>
+    <a class="nhsuk-button nhsuk-button--ers" role name="button" href="add-result">Add result</a>
+    
+    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success">
+      <span class="nhsuk-u-visually-hidden">HPV Vaccination information</span>
+      <h3 class="nhsuk-heading-s">All HPV Vaccinations have been given</h3>
+    </div>
+
+    <div class="nhsuk-scrollable-pane__wrapper">
+      <div id="table-scroll" class="table-scroll">
+              <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+                <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table">
+
+              <!-- TABLE START -->
+              <thead class="nhsuk-table__head">
+                <tr class="nhsuk-table__row">
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                    <button onclick="sortTable()" type="button" data-index="0">Vaccination Date</button>
+                  </th>
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Type</button>
+                  </th>
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Batch</button>
+                  </th>
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Given by</button>
+                  </th>
+                  <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                    Action
+                </tr>
+              </thead>
+
+
+              <tbody class="nhsuk-table__body nhsuk-body-">
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">01-Apr-2019</td>
+                  <td class="nhsuk-table__cell">Gardasil</td>
+                  <td class="nhsuk-table__cell">AB12345</td>
+                  <td class="nhsuk-table__cell">Alan Davies</td>
+                  <td class="nhsuk-table__cell"><a href="">Edit</a></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">01-Apr-2015</td>
+                  <td class="nhsuk-table__cell">Cervarix</td>
+                  <td class="nhsuk-table__cell">AHPVTRHF123BB</td>
+                  <td class="nhsuk-table__cell">Julie Williams</td>
+                  <td class="nhsuk-table__cell"><a href="">Edit</a></td>
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">01-Apr-2011</td>
+                  <td class="nhsuk-table__cell">Cervarix</td>
+                  <td class="nhsuk-table__cell">AHPVLHUY123AA</td>
+                  <td class="nhsuk-table__cell">Julie Williams</td>
+                  <td class="nhsuk-table__cell"><a href="">Edit</a></td>
+                </tr>
+              </tbody>
+            </table>
+              </div>
+            </div>
+    </div>
+  </div>
+</div>              
+
+{% endblock %}
