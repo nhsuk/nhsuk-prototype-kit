@@ -1,0 +1,98 @@
+<!-- 
+  This is the main layout where you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Extends the layout from /docs/views/template.html -->
+{% extends "template.html" %}
+
+<!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+{% block headCSS %}
+  <link href="/css/main-v2.css" rel="stylesheet">
+{% endblock %}
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  Cervical Screening
+{% endblock %}
+
+<!-- Header goes inside the header block -->
+<!-- More info and code for the header can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/header -->
+{% block header %}
+  {{ header({
+    "service": {
+        "name": "Cervical Screening",
+        "href": "/"
+      },
+      "showNav": "false",
+      "showSearch": "false"
+    })
+  }}
+{% endblock %}
+
+{% block patientBanner%}
+
+<nav class="nhsuk-breadcrumb patient-info" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container patient-info-container">
+    <ul role="navigation">
+      <li><span><strong>NHS No: </strong> 123 456 7890</span></li>
+      <li><strong>Patient: </strong> Smith, Jane (Mrs)</li>
+      <li>30 years (4 June 1988)</li>
+      <li><strong>Address: </strong> 20 Thornhill Street, Pudsey, LS15 6FD</li>
+    </ul>
+    <div class="nhsuk-close">
+      <a class="" href="/sample-taker/search">Close
+        <svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+{% endblock %}
+
+{% block main %}
+<div class="nhsuk-width-container">
+  <main class="nhsuk-main-wrapper nhsuk-u-padding-top-4" id="maincontent" role="main">
+    {% block content %}{% endblock %}
+  </main>
+</div>
+{% endblock %}
+
+<!-- Footer goes inside the footer block -->
+<!-- More info and code for the footer can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/footer -->
+{% block footer %}
+
+<!-- print out all the session values - this is just for testing -->
+    {#
+  <p>session data</p>
+
+  {% for key, value in data %}
+    {{ key }} : {{ value }} <br>
+  {% endfor %}
+#}
+
+  {{ footer({
+    "links": [
+      {
+        "URL": "/",
+        "label": "Home"
+      },
+      {
+        "URL": "/page-example",
+        "label": "Example page"
+      }
+    ]
+  })}}
+{% endblock %}
+
+{% block bodyEnd %}
+  {% block scripts %}
+    <!-- Custom JavaScript files can be added to this file -->
+    {% include "includes/scripts.html" %}
+    <!-- For adding page specific JavsScript -->
+    {% block pageScripts %}{% endblock %}
+  {% endblock %}
+{% endblock %}

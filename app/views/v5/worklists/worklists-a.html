@@ -1,0 +1,64 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "true",
+    "showSearch": "true",
+    "primaryLinks": [
+      {
+        "url"  : "/v5/patient/search",
+        "label" : "Patient"
+      },
+      {
+        'url' : '/v5/worklists/worklists-a',
+        'label' : 'Worklists'
+      },
+      {
+        'url'  : '',
+        'label' : 'Reports'
+      }
+    ]
+  })
+}}
+{% endblock %}
+
+{% block content %}
+
+
+<h1 class="nhsuk-heading-l">Worklists</h1>
+
+<div class="nhsuk-grid-row nhsuk-panel-group">
+  <div class="nhsuk-grid-column-one-half nhsuk-panel-group__item">
+    <div class="nhsuk-panel">
+      <h2 class="nhsuk-heading-xl nhsuk-u-margin-bottom-4">55</h2>
+      <p>Result mismatches to do</p>
+    </div>
+  </div>
+  <div class="nhsuk-grid-column-one-half nhsuk-panel-group__item">
+    <div class="nhsuk-panel">
+      <h2 class="nhsuk-heading-xl nhsuk-u-margin-bottom-4">15</h2>
+      <p>Result mismatches done today by you</p>
+    </div>
+  </div>
+</div>
+
+
+<a href="worklists-a-nhsno-mismatch" class="nhsuk-button nhsuk-button--ers">Get next mismatch</a>
+  
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'layout-v2.html' %}
+
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+{% block content %}
+<form action="/v5/login/role-select" method="post" class="form">
+  <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+    <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-top-4">
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h1 class="nhsuk-fieldset__heading">
+              Choose a role from the list to log in with
+            </h1>
+          </legend>
+          
+          <div class="nhsuk-radios">
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="role-select-1" name="role" type="radio" value="sampleTaker">
+              <label class="nhsuk-label nhsuk-radios__label" for="role-select-1">
+                Sample Taker
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="role-select-2" name="role" type="radio" value="lab">
+              <label class="nhsuk-label nhsuk-radios__label" for="role-select-2">
+                Laboratory Technician
+              </label>
+            </div>     
+          </div>
+
+        </fieldset>
+      </div>
+    </div>
+  </div> 
+  <button class="nhsuk-button">Continue</button> 
+</form>
+             
+{% endblock %}
