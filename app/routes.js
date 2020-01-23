@@ -13,11 +13,11 @@ router.post('/csass/add-test-result/v1/change', function (req, res) {
   // Check whether the variable matches a condition
   if (reason == "Defer"){
     // Send user to next page
-    res.redirect('/csass/add-test-result/v1/defer')
+    res.redirect('/archive/csass/add-test-result/v1/defer')
   }
   else {
     // Send user to ineligible page
-    res.redirect('/csass/add-test-result/v1/cease')
+    res.redirect('/archive/csass/add-test-result/v1/cease')
   }
 })
 

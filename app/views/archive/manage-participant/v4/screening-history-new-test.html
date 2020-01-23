@@ -7,6 +7,8 @@
   <script type="text/javascript" src="/js/search.js"></script>
   <script type="text/javascript" src="/js/auto.js"></script>
 <script type="text/javascript" src="/js/action-menu.js"></script>
+  <script type="text/javascript" src="/js/mousetrap.min.js"></script>
+  <script type="text/javascript" src="/js/mouse-trap-custom-v2.js"></script>
   <script type="text/javascript" src="/js/sort.js"></script>
 
 {% endblock %}
@@ -86,9 +88,9 @@
 </nav>
 
 
-    <nav class="nhsuk-tabs" style="background-color: white">
+     <nav class="nhsuk-tabs" style="background-color: white">
       <ul role="navigation" style="margin-left: 32px">
-        <li><a class="selected" href="screening-history-deferred" style="border-top: 1px solid #768692; border-left: 1px solid #768692">Patient summary</a></li>
+        <li><a class="selected" href="screening-history-new-test" style="border-top: 1px solid #768692; border-left: 1px solid #768692">Patient summary</a></li>
         <li><a href="full-history" style="border-top: 1px solid #768692">History</a></li>
         <li><a href="gp-info" style="border-top: 1px solid #768692">GP information</a></li>
         <li><a href="additional-info" style="border-top: 1px solid #768692">Additional information</a></li>
@@ -103,7 +105,7 @@
                                 <div class="nhsuk-filter-layout__content nhsuk-u-border-left nhsuk-u-padding-left-5 nhsuk-u-padding-right-5">
                                   <div class="panel panel-border-wide alert-success">
                                     <h1 class="nhsuk-heading-s">
-                                      The next test due date and status have been updated
+                                    Test results have been added
                                     </h1>
                                   </div>
                                 <h1 class="nhsuk-heading-l">Patient summary</h1>
@@ -126,7 +128,7 @@
   
    
 
-    <span class="nhsuk-tag__highlight nhsuk-tag-large nhsuk-u-margin-bottom-2">DEFERRED</span>
+    <span class="nhsuk-tag__highlight nhsuk-tag-large nhsuk-u-margin-bottom-2">REPEAT ADVISED</span>
 
     <div class="nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-2"></div>
       <dl class="nhsuk-summary-list nhsuk-u-margin-top-4">
@@ -136,7 +138,7 @@
             Next test due date:
           </dt>
           <dd class="nhsuk-summary-list__value">
-            09-April-2025
+            Not applicable
           </dd>
       
           <dd class="nhsuk-summary-list__actions">
@@ -161,6 +163,7 @@
             <a href="#">
               <span class="nhsuk-tag__warning">FP69</span>
             </a>
+          
           
            
           </dd>
@@ -217,7 +220,7 @@
         <div class="nhsuk-grid-column-full">
 
     <h2 id="testresults" class="nhsuk-heading-l">Previous test results</h2>
-    <a class="nhsuk-button" href="/csas/add-test-result/v1/add-result">Add test result</a>  
+    <a class="nhsuk-button" href="../../csas/add-test-result/v1/add-result">Add test result</a>  
     <a class="nhsuk-button nhsuk-button--secondary" href="#">Upload test result</a>
     
     

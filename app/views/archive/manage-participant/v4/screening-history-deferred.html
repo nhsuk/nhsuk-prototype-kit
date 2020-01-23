@@ -27,7 +27,6 @@
       </a>
     </div>
     <!-- END LOGO -->
-    
     <!-- SERVICE NAME -->
     <div class="nhsuk-header__transactional-service-name">
           <a class="nhsuk-header__transactional-service-name--link" href="/">Cervical Screening</a>
@@ -65,7 +64,6 @@
 </div>
 </div>
 <!-- END search -->
-
 </header>
 
 {% endblock %}
@@ -90,7 +88,7 @@
 
     <nav class="nhsuk-tabs" style="background-color: white">
       <ul role="navigation" style="margin-left: 32px">
-        <li><a class="selected" href="history" style="border-top: 1px solid #768692; border-left: 1px solid #768692">Patient summary</a></li>
+        <li><a class="selected" href="screening-history-deferred" style="border-top: 1px solid #768692; border-left: 1px solid #768692">Patient summary</a></li>
         <li><a href="full-history" style="border-top: 1px solid #768692">History</a></li>
         <li><a href="gp-info" style="border-top: 1px solid #768692">GP information</a></li>
         <li><a href="additional-info" style="border-top: 1px solid #768692">Additional information</a></li>
@@ -101,8 +99,13 @@
           <main class=" " id="main-content" role="main">
 
                 <div class="nhsuk-grid-row nhsuk-u-margin-bottom-2 nhsuk-u-margin-top-4">
-                        <div class="nhsuk-grid-column-one-half nhsuk-u-border-left-5">
+                        <div class="nhsuk-grid-column-full nhsuk-u-border-left-5">
                                 <div class="nhsuk-filter-layout__content nhsuk-u-border-left nhsuk-u-padding-left-5 nhsuk-u-padding-right-5">
+                                  <div class="panel panel-border-wide alert-success">
+                                    <h1 class="nhsuk-heading-s">
+                                      The next test due date and status have been updated
+                                    </h1>
+                                  </div>
                                 <h1 class="nhsuk-heading-l">Patient summary</h1>
                                 </div>
                             </div>
@@ -123,7 +126,7 @@
   
    
 
-    <span class="nhsuk-tag__highlight nhsuk-tag-large nhsuk-u-margin-bottom-2">REPEAT ADVISED</span>
+    <span class="nhsuk-tag__highlight nhsuk-tag-large nhsuk-u-margin-bottom-2">DEFERRED</span>
 
     <div class="nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-2"></div>
       <dl class="nhsuk-summary-list nhsuk-u-margin-top-4">
@@ -133,12 +136,12 @@
             Next test due date:
           </dt>
           <dd class="nhsuk-summary-list__value">
-            09-April-2020
+            09-April-2025
           </dd>
       
           <dd class="nhsuk-summary-list__actions">
       
-            <a href="/csass/add-test-result/v1/change-due-date">
+            <a href="#">
               Change<span class="nhsuk-u-visually-hidden"></span>
             </a>
       
@@ -150,7 +153,7 @@
             Address: 
           </dt>
           <dd class="nhsuk-summary-list__value">
-            20 Thornhill Street, Pudsey,<br> LS15 6FD 
+            20 Thornhill Street, Pudsey, LS15 6FD 
           </dd>
       
           <dd class="nhsuk-summary-list__actions">
@@ -214,7 +217,7 @@
         <div class="nhsuk-grid-column-full">
 
     <h2 id="testresults" class="nhsuk-heading-l">Previous test results</h2>
-    <a class="nhsuk-button" href="/csass/add-test-result/v1/add-result">Add test result</a>  
+    <a class="nhsuk-button" href="../../csas/add-test-result/v1/add-result">Add test result</a>  
     <a class="nhsuk-button nhsuk-button--secondary" href="#">Upload test result</a>
     
     
