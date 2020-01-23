@@ -2,9 +2,6 @@
 
 @import 'node_modules/nhsuk-frontend/packages/nhsuk';
 
-//@import 'components/panel-confirmation';
-//@import 'components/alerts';
-//@import 'components/tabs';
 @import 'components/action-menu'; // extends the eRS buttons
 @import 'components/buttons'; // extends the NHSUK button
 @import 'components/patient-banner'; //rename to the patient banner
@@ -12,9 +9,6 @@
 @import 'components/tables'; // taken from eRS
 @import 'components/tags'; // taken from eRS
 @import 'components/timelines'; // taken from govuk
-
-
-//@import 'components/test'; 
 
 
 

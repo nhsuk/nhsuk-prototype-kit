@@ -25,20 +25,25 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-three-quarters">
 
-    <h1>V5</h1>
-      <p>Removed loads of custom components and replaced them with NHSUK components or extended them.</p>
-      <p></p>
-      </br>
-      </br>
-      <div class="nhsuk-grid-row nhsuk-panel-group">
+    <h1 class="nhsuk-heading-l">V5</h1>
+    <p>Refactored the whole prototype to reuse the same screens and use more of the NHSUK components.</p>
+    <a class="nhsuk-button" href="v5/login/smartcard">Start</a>
 
-          <div class="nhsuk-grid-column-one-half nhsuk-panel-group__item">
+      <div class="nhsuk-grid-row nhsuk-panel-group">
+        <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item">
+          <div class="nhsuk-panel">
+            <h3 class="nhsuk-heading-xl">-</h3>
+            <p>Roles involved</p>
+          </div>
+        </div>
+
+          <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item">
             <div class="nhsuk-panel">
               <h3 class="nhsuk-heading-xl">-</h3>
               <p>Users involved</p>
             </div>
           </div>
-          <div class="nhsuk-grid-column-one-half nhsuk-panel-group__item">
+          <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item">
             <div class="nhsuk-panel">
               <h3 class="nhsuk-heading-xl">-</h3>
               <p>Mins of user testing</p>
@@ -46,38 +51,48 @@
           </div>
         </div>
   
-    <h2>User Journey - to add</h2>
-      <p>Prototype for V5</p>
+    <!--<h2>User Journey - to add</h2>
         <ul>
           <li><a href="">JIRA Epic</a></li>
           <li><a href="">Confluence</a></li>
-          <!--<li><a href="v1/index">Current version</a></li>-->
+        </ul>
+        -->
+
+        <h3>What's Changed</h3>
+        <ul>
+          <li>Removed a large portion of custom styling and used NHSUK components where possible</li>
+          <li>Elements on pages are shown/hidden based on role</li>
+          <li>link to any confluence stuff</li>
+        </ul>
+        <h3>User testing (0)</h3>
+        <ul>
+          <li>link to any confluence stuff</li>
+        </ul>
+        <h3>Design Challenges (0)</h3>
+        <ul>
+          <li>To add</li>
+        </ul>
+        {{ button({
+          "text": "Start",
+          "href": "v5/login/smartcard"
+        }) }}
+
+        <h2 class="nhsuk-heading-l">Quick Links</h2>
+        <ul>
+          <li><a href="v5/patient/add-test-result/add-result">add test result</a></li>
+          <li><a href="v5/patient/change-due-date/enter-reason">change recall</a></li>
+          <li><a href="v5/worklists/">worklist</a></li>
+          <li><a href="patient/patient-summary">patient summary</a></li>
+        </ul>
+        <h3>scenarios</h3>
+        <ul>
+          <li><a href="">new test added</a></li>
+          <li><a href="">recall Changed</a></li>
+          <li><a href="">routine</a></li>
         </ul>
 
-            <h3><a href="v5/login/smartcard">v5 - Prototype</a></h3>
-              <p>Removed loads of custom components and replaced them with NHSUK components or extended them.</p>
-              <ul>
-                <li>To add</li>
-              </ul>
-            <h3>User testing (0)</h3>
-            <ul>
-              <li>To add</li>
-            </ul>
-            <h3>Design Challenges (0)</h3>
-            <ul>
-              <li>To add</li>
-            </ul>
-            {{ button({
-              "text": "v5",
-              "href": "v5/login/smartcard"
-            }) }}
-            <hr>
 
 
-   
-
-
-    
       <details class="nhsuk-details nhsuk-expander version-list">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
