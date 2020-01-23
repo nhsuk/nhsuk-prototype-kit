@@ -9,29 +9,7 @@
 {% endblock %}
 
 {% block header %}
-{{ header({
-    "service": {
-      "name": "Cervical Screening",
-      "longName": "false"
-    },
-    "showNav": "true",
-    "showSearch": "true",
-    "primaryLinks": [
-      {
-        "url"  : "/v5/patient/search",
-        "label" : "Patient"
-      },
-      {
-        'url' : '/v5/worklists/worklists-a',
-        'label' : 'Worklists'
-      },
-      {
-        'url'  : '',
-        'label' : 'Reports'
-      }
-    ]
-  })
-}}
+  {% include '../components/header.html' %}
 {% endblock %}
 
 {% block content %}

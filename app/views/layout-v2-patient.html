@@ -32,7 +32,6 @@
 {% endblock %}
 
 {% block patientBanner%}
-
 <nav class="nhsuk-breadcrumb patient-info" aria-label="Breadcrumb">
   <div class="nhsuk-width-container patient-info-container">
     <ul role="navigation">
@@ -50,15 +49,16 @@
     </div>
   </div>
 </nav>
-
 {% endblock %}
 
 {% block main %}
-<div class="nhsuk-width-container">
-  <main class="nhsuk-main-wrapper nhsuk-u-padding-top-4" id="maincontent" role="main">
-    {% block content %}{% endblock %}
-  </main>
-</div>
+
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper nhsuk-u-padding-top-4" id="maincontent" role="main">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+
 {% endblock %}
 
 <!-- Footer goes inside the footer block -->
@@ -66,13 +66,13 @@
 {% block footer %}
 
 <!-- print out all the session values - this is just for testing -->
-    {#
+    
   <p>session data</p>
 
   {% for key, value in data %}
     {{ key }} : {{ value }} <br>
   {% endfor %}
-#}
+
 
   {{ footer({
     "links": [

@@ -30,6 +30,7 @@
     <li class="nhsuk-sub-navigation__item"><a href="history" class="nhsuk-sub-navigation__link">History</a></li>
     <li class="nhsuk-sub-navigation__item"><a href="gp-info" class="nhsuk-sub-navigation__link">GP Information</a></li>
     <li class="nhsuk-sub-navigation__item"><a href="additional-info" class="nhsuk-sub-navigation__link">Additional Information</a></li>
+    <li class="nhsuk-sub-navigation__item" style="float: right; font-size: 14px">role: {{ data.role }}</li>
   </ul>
 </nav>
 
@@ -46,7 +47,9 @@
             09-April-2020
           </dd>  
           <dd class="nhsuk-summary-list__actions">  
-            <a class="nhsuk-button nhsuk-button--ers" href="enter-reason">Cease/defer</a> 
+            {% if data.role == 'csas' %}
+            <a class="nhsuk-button nhsuk-button--ers" href="change-due-date/enter-reason">Cease/defer</a> 
+            {% endif %}
           </dd>  
       </div>
       <div class="nhsuk-summary-list__row">
@@ -58,7 +61,11 @@
         </dd>
         <dd class="nhsuk-summary-list__actions">
             <a href="#">
-              <span class="nhsuk-tag__warning">FP69</span>
+              {% if data.role == 'csas' %}
+                <span class="nhsuk-tag__warning">FP69</span>
+              {% else %}
+                <span class="nhsuk-tag__warning">Patient no longer lives at this address</span>
+              {% endif %}
             </a>
         </dd>   
       </div>
@@ -88,14 +95,23 @@
       <td>1 High Street, Bradford, BD13 5TY</td>
       </tr>
       </table>"
-      }) }}
+    }) }}
+    
+    {% if data.role == 'sampleTaker' %}
+
+    {% include '../components/hmr101.html' %}
+    
+    {% endif %}
   </div>
 </div>
 
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-full">
     <h2 id="testresults" class="nhsuk-heading-l">Previous test results</h2>
-    <a class="nhsuk-button nhsuk-button--secondary" href="/csass/add-test-result/v1/add-result">Add result</a>  
+
+    {% if data.role == 'csas' %}
+    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="add-test-result/add-result">Add result</a>  
+    {% endif %}
 
     <div class="nhsuk-scrollable-pane">
     <div class="nhsuk-scrollable-pane__wrapper">
@@ -175,9 +191,12 @@
     </div>
 
     <h2 id="testresults" class="nhsuk-heading-l">HPV Vaccinations</h2>
+
+    {% if data.role == 'csas' %}
     <a class="nhsuk-button nhsuk-button--ers" role name="button" href="add-result">Add result</a>
-    
-    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success">
+    {% endif %}
+
+    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-0">
       <span class="nhsuk-u-visually-hidden">HPV Vaccination information</span>
       <h3 class="nhsuk-heading-s">All HPV Vaccinations have been given</h3>
     </div>
@@ -202,8 +221,12 @@
                   <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
                   <button onclick="sortTable()" type="button" data-index="0">Given by</button>
                   </th>
+                  
+                  {% if data.role == 'csas' %}
                   <th class="nhsuk-table__header" aria-sort="none" scope="col">
                     Action
+                  </th>
+                  {% endif %}
                 </tr>
               </thead>
 
@@ -214,21 +237,31 @@
                   <td class="nhsuk-table__cell">Gardasil</td>
                   <td class="nhsuk-table__cell">AB12345</td>
                   <td class="nhsuk-table__cell">Alan Davies</td>
+                  
+                  {% if data.role == 'csas' %}
                   <td class="nhsuk-table__cell"><a href="">Edit</a></td>
+                  {% endif %}
+
                 </tr>
                 <tr class="nhsuk-table__row">
                   <td class="nhsuk-table__cell fixed-side">01-Apr-2015</td>
                   <td class="nhsuk-table__cell">Cervarix</td>
                   <td class="nhsuk-table__cell">AHPVTRHF123BB</td>
                   <td class="nhsuk-table__cell">Julie Williams</td>
+                  
+                  {% if data.role == 'csas' %}
                   <td class="nhsuk-table__cell"><a href="">Edit</a></td>
+                  {% endif %}
                 </tr>
                 <tr class="nhsuk-table__row">
                   <td class="nhsuk-table__cell fixed-side">01-Apr-2011</td>
                   <td class="nhsuk-table__cell">Cervarix</td>
                   <td class="nhsuk-table__cell">AHPVLHUY123AA</td>
                   <td class="nhsuk-table__cell">Julie Williams</td>
+                  
+                  {% if data.role == 'csas' %}
                   <td class="nhsuk-table__cell"><a href="">Edit</a></td>
+                  {% endif %}
                 </tr>
               </tbody>
             </table>

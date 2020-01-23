@@ -93,9 +93,11 @@
 
       {% block beforeContent %}{% endblock %}
 
-      {% block main %}
+      {% block main %} 
         <div class="nhsuk-width-container {{ containerClasses }}">
           <main class="nhsuk-main-wrapper {{ mainClasses }}" id="maincontent" role="main">
+            {% block loggedIn %}
+            {% endblock %}
             {% block content %}{% endblock %}
           </main>
         </div>
@@ -105,6 +107,7 @@
         {{ footer({
           "showLogo": "false"
         })}}
+     
       {% endblock %}
 
     {% block bodyEnd %}{% endblock %}

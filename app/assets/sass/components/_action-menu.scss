@@ -8,6 +8,7 @@
   min-height: 40px;
   vertical-align: middle;
   display: inline;
+  
   &:after {
       content: "";
       display: inline-block;
@@ -43,7 +44,7 @@
   min-width: 200px;
   font-size: 16px;
 
-  a{
+  a {
     color: $color_nhsuk-blue;
     display: block;
     padding: 8px;
@@ -56,19 +57,28 @@
   }
 }
 
-.dropbtn {
-  @extend .nhsuk-button--ers;
-  padding:4px 16px;
-  font-size: 18px;
-  font-weight: normal;
-  button.dropbtn:hover {
-    background-color: $color_nhsuk-blue !important;
-  }
-}
+
 
 .dropdown {
   position: relative;
   display: inline-block;
+
+  .dropbtn {
+    @extend .nhsuk-button--ers;
+    padding:4px 16px;
+    font-size: 18px;
+    font-weight: normal;
+    
+    button.dropbtn:hover {
+      background-color: $color_nhsuk-blue !important;
+    }
+
+    .nhsuk-icon--ers {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+    }
+  }
 }
 
 .dropdown-content {
@@ -84,6 +94,10 @@
   z-index: 200;
   right: 0;
   padding-top: 12px;
+
+  &.show {
+    display: block;
+  }
 }
 
 .dropdown-content a {
@@ -97,5 +111,3 @@
   border-top: 1px solid $color_nhsuk-grey-5;
 
 }
-
-.show {display: block;}

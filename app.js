@@ -136,6 +136,7 @@ if (!sessionDataDefaultsFileExists) {
 
   fs.createReadStream(path.join(__dirname, '/lib/template.session-data-defaults.js'))
     .pipe(fs.createWriteStream(sessionDataDefaultsFile))
+
 }
 
 // Check if the app is documentation only
