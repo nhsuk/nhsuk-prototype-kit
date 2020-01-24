@@ -88,7 +88,7 @@
                   Slide number
                   </label>
 
-                  <input class="nhsuk-input nhsuk-input--width-20" id="case-number" name="case-number" type="number" value="{{ data['slide-number'] }}">
+                  <input class="nhsuk-input nhsuk-input--width-20" id="slide-no" name="slide-no" type="number" value="{{ data['slide-no'] }}">
                 </div>
                 <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
                   <div class="nhsuk-form-group">
@@ -105,7 +105,7 @@
                             <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
                               Day
                             </label>
-                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="day" name="test-date" type="number" pattern="[0-9]*" value="{{ data['day'] }}">
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="day" name="day" type="number" pattern="[0-9]*" value="{{ data['day'] }}">
                           </div>
                         </div>
                         <div class="nhsuk-date-input__item">
@@ -113,7 +113,7 @@
                             <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
                               Month
                             </label>
-                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="test-date" type="number" pattern="[0-9]*" value="{{ data['month'] }}">
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="month" type="number" pattern="[0-9]*" value="{{ data['month'] }}">
                           </div>
                         </div>
                         <div class="nhsuk-date-input__item">
@@ -139,7 +139,7 @@
 
     <div class="nhsuk-radios nhsuk-radios--inline">
       <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="scottish" name="test-type" type="radio" value="Scottish" {{ checked("test-type", "NHS") }}>
+        <input class="nhsuk-radios__input" id="scottish" name="test-type" type="radio" value="NHS" {{ checked("test-type", "NHS") }}>
         <label class="nhsuk-label nhsuk-radios__label" for="example-1">
         NHS
         </label>
@@ -151,7 +151,7 @@
         </label>
       </div>
       <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="private" name="test-type" type="radio" value="Private" {{ checked("test-type", "Welsh") }}>
+        <input class="nhsuk-radios__input" id="private" name="test-type" type="radio" value="Welsh" {{ checked("test-type", "Welsh") }}>
         <label class="nhsuk-label nhsuk-radios__label" for="example-2">
         Welsh
         </label>
@@ -163,13 +163,13 @@
         </label>
       </div>
       <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="vault-smear" name="test-type" type="radio" value="Vault smear"{{ checked("test-type", "Private") }}>
+        <input class="nhsuk-radios__input" id="vault-smear" name="test-type" type="radio" value="Private"{{ checked("test-type", "Private") }}>
         <label class="nhsuk-label nhsuk-radios__label" for="example-2">
         Private
         </label>
       </div>
       <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="vault-smear" name="test-type" type="radio" value="Vault smear"{{ checked("test-type", "Abroad") }}>
+        <input class="nhsuk-radios__input" id="vault-smear" name="test-type" type="radio" value="Abroad"{{ checked("test-type", "Abroad") }}>
         <label class="nhsuk-label nhsuk-radios__label" for="example-2">
         Abroad
         </label>
@@ -192,7 +192,7 @@
             <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
               HPV infection
             </label>
-            <input class="nhsuk-input nhsuk-input--width-20" id="result" name="result" type="text" pattern="[a-z]*" value="{{ data['result'] }}">
+            <input class="nhsuk-input nhsuk-input--width-20" id="infection" name="infection" type="text" value="{{ data['infection'] }}">
           </div>
 
 
@@ -200,7 +200,7 @@
             <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
               Cytology result
             </label>
-            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-20" id="infection" name="infection" type="text" pattern="[a-z]*" value="{{ data['infection'] }}">
+            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-20" id="result" name="result" type="text" value="{{ data['result'] }}">
           </div>
 
 
@@ -225,10 +225,10 @@
               <label class="nhsuk-label nhsuk-label__strong" for="first-name-advanced">
               Source at  the moment
 
-              <span id="" class="nhsuk-hint" style="">
+              <span id="" class="nhsuk-hint">
                 For example  G, X, P
               </span>  </label>
-              <input class="nhsuk-input nhsuk-input--width-20" id="sample-taker" name="sample-taker" type="text" value="{{ data['sample-taker'] }}">
+              <input class="nhsuk-input nhsuk-input--width-20" id="source" name="source" type="text" value="{{ data['source'] }}">
             </div>
             <div id="nhsuk-form-group-last-name-advanced" class="nhsuk-form-group">
               <label class="nhsuk-label nhsuk-label__strong" for="last-name-advanced">
@@ -245,7 +245,7 @@
               CRM case number
               </label>
 
-              <input class="nhsuk-input nhsuk-input--width-20" id="case-number" name="case-number" type="number" value="{{ data['case-number'] }}">
+              <input class="nhsuk-input nhsuk-input--width-20" id="case-number" name="case-number" type="text" value="{{ data['case-number'] }}">
             </div>
 
               </fieldset>
