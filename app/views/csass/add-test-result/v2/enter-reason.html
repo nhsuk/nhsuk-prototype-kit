@@ -4,15 +4,15 @@
 {% set containerClasses = 'nhsuk-width-container-fluid' %}
 {% set bodyClasses = 'nhsuk-white-background' %}
 {% block pageScripts %}
-  <script type="text/javascript" src="/js/search.js"></script>
-  <script type="text/javascript" src="/js/auto.js"></script>
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
 
-  <script type="text/javascript" src="/js/mousetrap.min.js"></script>
-  <script type="text/javascript" src="/js/mouse-trap-custom-v2.js"></script>
+<script type="text/javascript" src="/js/mousetrap.min.js"></script>
+<script type="text/javascript" src="/js/mouse-trap-custom-v2.js"></script>
 
 {% endblock %}
 {% block pageTitle %}
-  NHS Cervical Screening
+NHS Cervical Screening
 {% endblock %}
 
 {% block header %}
@@ -22,7 +22,9 @@
       <a class="nhsuk-header__link" href="/" aria-label="NHS homepage">
         <svg class="nhsuk-logo nhsuk-logo--white" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false" viewBox="0 0 40 16">
           <path fill="#fff" d="M0 0h40v16H0z"></path>
-          <path fill="#005eb8" d="M3.9 1.5h4.4l2.6 9h.1l1.8-9h3.3l-2.8 13H9l-2.7-9h-.1l-1.8 9H1.1M17.3 1.5h3.6l-1 4.9h4L25 1.5h3.5l-2.7 13h-3.5l1.1-5.6h-4.1l-1.2 5.6h-3.4M37.7 4.4c-.7-.3-1.6-.6-2.9-.6-1.4 0-2.5.2-2.5 1.3 0 1.8 5.1 1.2 5.1 5.1 0 3.6-3.3 4.5-6.4 4.5-1.3 0-2.9-.3-4-.7l.8-2.7c.7.4 2.1.7 3.2.7s2.8-.2 2.8-1.5c0-2.1-5.1-1.3-5.1-5 0-3.4 2.9-4.4 5.8-4.4 1.6 0 3.1.2 4 .6"></path>
+          <path fill="#005eb8"
+            d="M3.9 1.5h4.4l2.6 9h.1l1.8-9h3.3l-2.8 13H9l-2.7-9h-.1l-1.8 9H1.1M17.3 1.5h3.6l-1 4.9h4L25 1.5h3.5l-2.7 13h-3.5l1.1-5.6h-4.1l-1.2 5.6h-3.4M37.7 4.4c-.7-.3-1.6-.6-2.9-.6-1.4 0-2.5.2-2.5 1.3 0 1.8 5.1 1.2 5.1 5.1 0 3.6-3.3 4.5-6.4 4.5-1.3 0-2.9-.3-4-.7l.8-2.7c.7.4 2.1.7 3.2.7s2.8-.2 2.8-1.5c0-2.1-5.1-1.3-5.1-5 0-3.4 2.9-4.4 5.8-4.4 1.6 0 3.1.2 4 .6">
+          </path>
           <image src="https://assets.nhs.uk/images/nhs-logo.png" xlink:href=""></image>
         </svg>
       </a>
@@ -30,8 +32,8 @@
     <!-- END LOGO -->
     <!-- SERVICE NAME -->
     <div class="nhsuk-header__transactional-service-name">
-          <a class="nhsuk-header__transactional-service-name--link" href="/">Cervical Screening</a>
-        </div>
+      <a class="nhsuk-header__transactional-service-name--link" href="/">Cervical Screening</a>
+    </div>
 
   </div>
 
@@ -50,216 +52,99 @@
   <div class="nhsuk-close">
     <a class="" href="#">Close
       <svg class="nhsuk-icon nhsuk-icon--ers nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-<path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
-</svg></a>
+        <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+      </svg></a>
 
   </div>
 </nav>
-<div class="nhsuk-width-container nhsuk-width-container-fluid">
-          <main class=" " id="main-content" role="main">
-                <div class="nhsuk-grid-row nhsuk-u-margin-bottom-5 nhsuk-u-margin-top-4">
 
-                  <div class="nhsuk-grid-column-full nhsuk-u-padding-left-5 nhsuk-u-padding-right-5">
-                    <div class="nhsuk-back-link">
-        <a class="nhsuk-back-link__link" href="/manage-participant/v4/screening-history">
-          <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" wiid="C63">
-            <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z" wiid="C64"></path>
-          </svg>
-          Go back to patient summary</a>
-      </div>
+
+
+
+<div class="nhsuk-width-container nhsuk-width-container-fluid">
+  <main class=" " id="main-content" role="main">
+
+
+
+    <div class="nhsuk-grid-row nhsuk-u-margin-bottom-5 nhsuk-u-margin-top-4">
+
+      <div class="nhsuk-grid-column-full nhsuk-u-padding-left-5 nhsuk-u-padding-right-5">
+        <div class="nhsuk-back-link">
+          <a class="nhsuk-back-link__link" href="/csass/add-test-result/v2/patient-summary">
+            <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" wiid="C63">
+              <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z" wiid="C64"></path>
+            </svg>
+            Go back to patient summary</a>
+        </div>
         <div class="nhsuk-grid-row">
           <div class="nhsuk-grid-column-two-thirds">
-            <form action="https://cervical-screening.herokuapp.com/manage-participant/v4/screening-history-ceased" method="post">
+            <form action="/csass/add-test-result/v2/change" method="post">
 
+              {% call fieldset({
+                legend: {
+                  text: "What do you wish to do?",
+                  classes: "nhsuk-fieldset__legend--l",
+                  isPageHeading: true
+                }
+              }) %}
 
-                <div class="nhsuk-form-group">
-                  <fieldset class="nhsuk-fieldset">
-                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                      <h1 class="nhsuk-fieldset__heading">
-                        Enter a reason change the status
-                      </h1>
-                    </legend>
-                    <div class="nhsuk-radios">
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-                          Recent test
-                        </label>
-                      </div>
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                        Current pregnancy
-                        </label>
-                      </div>
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                          Patient wishes to defer
-                        </label>
-                      </div>
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                          Undergoing relevant treatment
-                        </label>
-                      </div>
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                        Administritive reason
-                        </label>
-                        </div>
-                        <div class="nhsuk-radios__item">
-                          <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                          <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                          Practice invitation
-                          </label>
-                        </div>
-                        <div class="nhsuk-radios__item">
-                          <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                          <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                          Discharge from colposcopy
-                          </label>
-                        </div>
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-                          Due to age
-                        </label>
-                      </div>
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                          No cervix
-                        </label>
-                      </div>
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                          Patient requests no further tests
-                        </label>
-                      </div>
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                          Mental capacity  act (best interests)
-                        </label>
-                      </div>
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                          Other reason
-                        </label>
-                      </div>
-                    </div>
-                    </div>
+              {{ radios({
+                "idPrefix": "change-due-date",
+                "name": "change-due-date",
+                "items": [
+                  {
+                    "value": "Cease",
+                    "text": "Cease"
+                  },
+                  {
+                    "value": "Defer",
+                    "text": "Defer"
+                  }
+                ]
+              }) }}
 
+              {% endcall %}
 
-                      <div class="nhsuk-form-group">
-
-                      <label class="nhsuk-label nhsuk-label__strong" for="last-name-advanced">
-                      CRM case number
-                      </label>
-
-                      <input class="nhsuk-input nhsuk-input--width-20" id="last-name-advanced" name="last-name" type="number">
-                      </div>
-                      <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
-                        <div class="nhsuk-form-group">
-                          <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
-                            <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
-                              Test date
-                            </legend>
-                            <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
-                              You must enter a date
-                            </span>
-                            <div class="nhsuk-date-input" id="dob-from">
-                              <div class="nhsuk-date-input__item">
-                                <div class="nhsuk-form-group">
-                                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
-                                    Day
-                                  </label>
-                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dob-day" name="dob-day" type="number" pattern="[0-9]*" value="09" required="">                                </div>
-                              </div>
-                              <div class="nhsuk-date-input__item">
-                                <div class="nhsuk-form-group">
-                                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
-                                    Month
-                                  </label>
-                                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="test-date" type="number" pattern="[0-9]*" value="04">
-                                </div>
-                              </div>
-                              <div class="nhsuk-date-input__item">
-                                <div class="nhsuk-form-group">
-                                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
-                                    Year
-                                  </label>
-                                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="year" type="number" pattern="[0-9]*" value="2020">
-                                </div>
-                              </div>
-                            </div>
-                          </fieldset>
-                        </div>
-
-                      </div>
-
-
-                <div class="nhsuk-form-group">
-                  <label class="nhsuk-label" for="example">
-                    Can you provide more detail?
-                  </label>
-                  <span class="nhsuk-hint" id="example-hint">
-                    Do not include clinical information at  this point.
-                  </span>
-                  <textarea class="nhsuk-textarea" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-                  <button class="nhsuk-button--ers">Continue</button>
-
-
-
-
-
-
-
+              {{ button({
+                "text": "Continue"
+              }) }}
 
             </form>
-
           </div>
+
+
+
+
         </div>
+      </div>
 
-                  </div>
-
-
-
-
-                      </div>
-                      </div>
+    </div>
 
 
-          </main>
-        </div>
+
+
+
+
+
+
+
+
+</div>
+
+
+</main>
+</div>
 
 
 {% endblock %}
 
 {% block footer %}
 <footer role="contentinfo">
- <div class="nhsuk-footer" id="nhsuk-footer">
-   <div class="nhsuk-width-container nhsuk-width-container-fluid">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
 
-     <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
-   </div>
- </div>
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+    </div>
+  </div>
 </footer>
 {% endblock %}
