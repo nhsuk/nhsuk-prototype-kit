@@ -1,0 +1,54 @@
+
+
+{% extends 'layout.html' %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/radio-choice.js"></script>
+
+{% endblock %}
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+
+
+
+{% block content %}
+<form name="radio-buttons">
+  <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+    <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-top-4">
+        <div class="nhsuk-form-group">
+
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                <h1 class="nhsuk-fieldset__heading">
+                  Choose a role from the list to log in with
+                </h1>
+              </legend>
+          
+              <div class="nhsuk-radios">
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="sample-taker" name="role" type="radio" data-href="/sample-taker/search">
+                  <label class="nhsuk-label nhsuk-radios__label" for="gp-admin">
+                  Sample Taker
+                  </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="sample-taker" name="role" type="radio" data-href="/sample-taker/search">
+                  <label class="nhsuk-label nhsuk-radios__label" for="gp-admin">
+                  Laboratory Technician
+                  </label>
+                </div>
+                
+                </div>
+              </div>
+            </fieldset>
+            <button class="nhsuk-button" type="submit">Continue</button>
+          </form>
+             
+          
+          </div>
+          
+    </div>
+  </div>
+{% endblock %}
