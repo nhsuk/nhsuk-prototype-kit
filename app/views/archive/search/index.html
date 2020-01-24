@@ -53,12 +53,8 @@
 <div class="tab active" id="patient">
 <div class="nhsuk-grid-row nhsuk-panel--grey nhsuk-u-padding-top-4">
 
-{% if data.error.length %}
-BLAHH
-{% endif %}
-
 <div class="nhsuk-grid-column-full">
-  <form id="searchform" action="/search/search-results" method="post" name="search-form">
+  <form id="searchform" action="search-results" method="post" name="search-form">
     <div class="nhsuk-form">
       <div class="nhsuk-form-group">
         <div class="nhsuk-grid-row">
@@ -75,7 +71,7 @@ BLAHH
                   NHS Number
                 </label>
               </div>
-            <div class="nhsuk-radios__item" onclick="window.location.replace('/sample-taker/search/search-demographic');">
+            <div class="nhsuk-radios__item" onclick="window.location.replace('search-demographic');">
               <input class="nhsuk-radios__input" id="demographics" name="searchby" type="radio" value="">
               <label class="nhsuk-label nhsuk-radios__label" for="demographics">
                 Demographics

@@ -9,13 +9,13 @@
 {% endblock %}
 
 {% block header %}
-  {% include '../components/header.html' %}
+  {% include 'v5/components/header.html' %}
 {% endblock %}
 
 {% block content %}
 <div class="nhsuk-grid-row">
 <div class="nhsuk-grid-column-full">
-  <form id="searchform" action="/search-v2/" method="post" name="search-form">
+  <form id="searchform" action="search-results" method="post" name="search-form">
     <div class="nhsuk-form">
       <div class="nhsuk-form-group">
         <div class="nhsuk-grid-row">

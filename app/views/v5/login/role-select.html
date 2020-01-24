@@ -5,73 +5,62 @@
 {% endblock %}
 
 {% block content %}
-<form action="/v5/login/role-select" method="post" class="form">
-  <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
-    <div class="nhsuk-grid-column-two-thirds nhsuk-u-margin-top-4">
-      <div class="nhsuk-form-group">
-        <fieldset class="nhsuk-fieldset">
-          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-            <h1 class="nhsuk-fieldset__heading">
-              Choose a role from the list to log in with
-            </h1>
-          </legend>
-          
-          <div class="nhsuk-radios">
-            <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="role-select-1" name="role" type="radio" value="sampleTaker">
-              <label class="nhsuk-label nhsuk-radios__label" for="role-select-1">
-                Sample Taker
-              </label>
-            </div>
-            <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="role-select-2" name="role" type="radio" value="gpAdmin">
-              <label class="nhsuk-label nhsuk-radios__label" for="role-select-2">
-                GP Admin
-              </label>
-            </div>
-            <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="role-select-3" name="role" type="radio" value="colposcopy">
-              <label class="nhsuk-label nhsuk-radios__label" for="role-select-3">
-                Colposcopy
-              </label>
-            </div>
-            <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="role-select-4" name="role" type="radio" value="labs">
-              <label class="nhsuk-label nhsuk-radios__label" for="role-select-4">
-                Laboratory Technician
-              </label>
-            </div>
-            <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="role-select-5" name="role" type="radio" value="csas">
-              <label class="nhsuk-label nhsuk-radios__label" for="role-select-5">
-                CSAS Lablinks
-              </label>
-            </div>
-            <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="role-select-6" name="role" type="radio" value="csas">
-              <label class="nhsuk-label nhsuk-radios__label" for="role-select-6">
-                CSAS Comms
-              </label>
-            </div>
-            <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="role-select-7" name="role" type="radio" value="csas">
-              <label class="nhsuk-label nhsuk-radios__label" for="role-select-7">
-                CSAS QA
-              </label>
-            </div>
-            <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="role-select-8" name="role" type="radio" value="csas">
-              <label class="nhsuk-label nhsuk-radios__label" for="role-select-8">
-                CSAS Call Recall
-              </label>
-            </div>     
-          </div>
-
-        </fieldset>
-      </div>
-    </div>
-  </div> 
-  <button class="nhsuk-button">Continue</button> 
-</form>
              
+<form action="/v5/patient/search/search" method="post">
+
+                {% call fieldset({
+                  legend: {
+                    text: "Choose a role to login with",
+                    classes: "nhsuk-fieldset__legend--l",
+                    isPageHeading: true
+                  }
+                }) %}
+
+                {{ radios({
+                  "idPrefix": "change-due-date",
+                  "name": "change-due-date",
+                  "items": [
+                    {
+                      "value": "sampleTaker",
+                      "text": "Sample taker"
+                    },
+                    {
+                      "value": "gpAdmin",
+                      "text": "GP admin"
+                    },
+                    {
+                      "value": "colposcopy",
+                      "text": "Colposcopy"
+                    },
+                    {
+                      "value": "lab",
+                      "text": "Laboratory technician"
+                    },
+                    {
+                      "value": "csas",
+                      "text": "CSAS Lablinks"
+                    },
+                    {
+                      "value": "csas",
+                      "text": "CSAS Comms"
+                    },
+                    {
+                      "value": "csas",
+                      "text": "CSAS QA"
+                    },
+                    {
+                      "value": "csas",
+                      "text": "CSAS Call Recall"
+                    }
+                  ]
+                }) }}
+
+                {% endcall %}
+
+                {{ button({
+                  "text": "Continue"
+                }) }}
+
+              </form>
+
 {% endblock %}
