@@ -42,7 +42,7 @@
 {% block content %}
 <nav class="nhsuk-grey-background patient-info" style="margin-bottom: 32px">
   <ul role="navigation">
-    <li><span style=""><strong>NHS No: </strong> 123 456 7890</span></li>
+    <li><strong>NHS No: </strong> 123 456 7890</span></li>
     <li><strong>Patient: </strong> Smith, Jane (Mrs)</li>
     <li>30 years (4 June 1988)</li>
     <li><strong>Address: </strong> 20 Thornhill Street, Pudsey, LS15 6FD</li>
@@ -68,7 +68,7 @@
 
                   <div class="nhsuk-grid-column-full nhsuk-u-padding-left-5 nhsuk-u-padding-right-5">
                     <div class="nhsuk-back-link">
-        <a class="nhsuk-back-link__link" href="/manage-participant/v4/screening-history" wiid="C62">
+        <a class="nhsuk-back-link__link" href="patient-summary" wiid="C62">
           <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" wiid="C63">
             <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z" wiid="C64"></path>
           </svg>
@@ -141,13 +141,19 @@
       <div class="nhsuk-radios__item">
         <input class="nhsuk-radios__input" id="scottish" name="test-type" type="radio" value="Scottish" {{ checked("test-type", "Scottish") }}>
         <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+        NHS
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="scottish" name="test-type" type="radio" value="Scottish" {{ checked("test-type", "Scottish") }}>
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
         Scottish
         </label>
       </div>
       <div class="nhsuk-radios__item">
         <input class="nhsuk-radios__input" id="private" name="test-type" type="radio" value="Private" {{ checked("test-type", "Private") }}>
         <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-        Private
+        Welsh
         </label>
       </div>
       <div class="nhsuk-radios__item">
@@ -159,15 +165,10 @@
       <div class="nhsuk-radios__item">
         <input class="nhsuk-radios__input" id="vault-smear" name="test-type" type="radio" value="Vault smear"{{ checked("test-type", "Vault smear") }}>
         <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-        Scottish test
+        Private
         </label>
       </div>
-      <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="vault-smear" name="test-type" type="radio" value="Vault smear"{{ checked("test-type", "Vault smear") }}>
-        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-        Welsh test
-        </label>
-      </div>
+      
     </div>
   </fieldset>
 
@@ -183,7 +184,7 @@
 
           <div class="nhsuk-form-group">
             <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
-              Result
+              HPV infection
             </label>
             <input class="nhsuk-input nhsuk-input--width-20" id="result" name="result" type="text" pattern="[A-Z]*" value="{{ data['result'] }}">
           </div>
@@ -191,7 +192,7 @@
 
           <div class="nhsuk-form-group">
             <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
-              Infection
+              Cytology result
             </label>
             <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-20" id="infection" name="infection" type="number" pattern="[0-9]*" value="{{ data['infection'] }}">
           </div>
@@ -207,7 +208,7 @@
 
             <div class="nhsuk-form-group" id="nhsuk-form-group-first-name-advanced">
               <label class="nhsuk-label nhsuk-label__strong" for="first-name-advanced">
-              Sender
+              Sample taker
               </label>
               <span id="advanced-first-name-error-error" class="nhsuk-error-message" style="display: none">
                 You must enter a name

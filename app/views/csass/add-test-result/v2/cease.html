@@ -42,7 +42,7 @@
 {% block content %}
 <nav class="nhsuk-grey-background patient-info" style="margin-bottom: 32px">
   <ul role="navigation">
-    <li><span style=""><strong>NHS No: </strong> 123 456 7890</span></li>
+    <li><strong>NHS No: </strong> 123 456 7890</span></li>
     <li><strong>Patient: </strong> Smith, Jane (Mrs)</li>
     <li>30 years (4 June 1988)</li>
     <li><strong>Address: </strong> 20 Thornhill Street, Pudsey, LS15 6FD</li>
@@ -76,7 +76,7 @@
       </div>
         <div class="nhsuk-grid-row">
           <div class="nhsuk-grid-column-two-thirds">
-            <form action="https://cervical-screening.herokuapp.com/manage-participant/v4/screening-history-ceased" method="post">
+            <form action="patient-summary-ceased" method="post">
 
 
                 <div class="nhsuk-form-group">
@@ -92,7 +92,7 @@
                       <div class="nhsuk-radios__item">
                         <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
                         <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-                          Due to age
+                          Over 65
                         </label>
                       </div>
                       <div class="nhsuk-radios__item">
@@ -104,13 +104,19 @@
                       <div class="nhsuk-radios__item">
                         <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
                         <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                          Patient requests no further tests
+                          Receiving radiotherapy or other treatment
                         </label>
                       </div>
                       <div class="nhsuk-radios__item">
                         <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
                         <label class="nhsuk-label nhsuk-radios__label" for="example-2">
                           Mental capacity  act (best interests)
+                        </label>
+                      </div>
+                      <div class="nhsuk-radios__item">
+                        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
+                        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                          Patient choice
                         </label>
                       </div>
                       <div class="nhsuk-radios__item">
