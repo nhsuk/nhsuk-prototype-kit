@@ -76,7 +76,7 @@
       </div>
         <div class="nhsuk-grid-row">
           <div class="nhsuk-grid-column-two-thirds">
-            <form action="../../../manage-participant/v4/screening-history-new-test" method="post">
+            <form action="patient-summary-added-test" method="post">
               <fieldset class="nhsuk-fieldset">
                 <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
                   <h1 class="nhsuk-fieldset__heading">
@@ -85,6 +85,19 @@
                 </legend>
 
                 <dl class="nhsuk-summary-list">
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                    Slide number
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['slide-no'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"> name</span>
+                      </a>
+                    </dd>
+                  </div>
 
                   <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
@@ -116,11 +129,11 @@
 
                   <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
-                      Outcome
+                      HPV infection
 
                     </dt>
                     <dd class="nhsuk-summary-list__value">
-                        {{ data['result'] }} {{ data['infection'] }} {{ data['action'] }}
+                       {{ data['infection'] }}
 
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
@@ -131,10 +144,39 @@
                   </div>
                   <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
-                        Sample taker
+                      Cytology result
+
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                       {{ data['result'] }}
+
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"></span>
+                      </a>
+                    </dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Sender
                     </dt>
                     <dd class="nhsuk-summary-list__value">
                         {{ data['sample-taker'] }}
+
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"></span>
+                      </a>
+                    </dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Source at the moment
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {{ data['source'] }}
 
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
