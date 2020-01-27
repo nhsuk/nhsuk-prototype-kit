@@ -31,7 +31,7 @@
     "text": "Go back to patient summary"
   }) }}
 
-            <form action="screening-history-ceased" method="post">
+            <form action="/v5/change-due-date/" method="post">
 
 
                 <div class="nhsuk-form-group">
@@ -43,75 +43,75 @@
                     </legend>
                     <div class="nhsuk-radios">
                       <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-                          Recent test
+                        <input class="nhsuk-radios__input" id="recall-1" name="recall" type="radio" value="defer">
+                        <label class="nhsuk-label nhsuk-radios__label" for="recall-1">
+                          Defer - Recent test
                         </label>
                       </div>
                       <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                        Current pregnancy
+                        <input class="nhsuk-radios__input" id="recall-2" name="recall" type="radio" value="defer">
+                        <label class="nhsuk-label nhsuk-radios__label" for="recall-2">
+                          Defer - Current pregnancy
                         </label>
                       </div>
                       <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                          Patient wishes to defer
+                        <input class="nhsuk-radios__input" id="recall-3" name="recall" type="radio" value="defer">
+                        <label class="nhsuk-label nhsuk-radios__label" for="recall-3">
+                          Defer - Patient wishes to defer
                         </label>
                       </div>
                       <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                          Undergoing relevant treatment
+                        <input class="nhsuk-radios__input" id="recall-4" name="recall" type="radio" value="defer">
+                        <label class="nhsuk-label nhsuk-radios__label" for="recall-4">
+                          Defer - Undergoing relevant treatment
                         </label>
                       </div>
                       <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                        Administritive reason
+                        <input class="nhsuk-radios__input" id="recall-5" name="recall" type="radio" value="defer">
+                        <label class="nhsuk-label nhsuk-radios__label" for="recall-5">
+                          Defer - Administritive reason
                         </label>
                         </div>
                         <div class="nhsuk-radios__item">
-                          <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                          <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                          Practice invitation
+                          <input class="nhsuk-radios__input" id="recall-6" name="recall" type="radio" value="no">
+                          <label class="nhsuk-label nhsuk-radios__label" for="recall-6">
+                          Defer - Practice invitation
                           </label>
                         </div>
                         <div class="nhsuk-radios__item">
-                          <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                          <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                          Discharge from colposcopy
+                          <input class="nhsuk-radios__input" id="recall-7" name="recall" type="radio" value="defer">
+                          <label class="nhsuk-label nhsuk-radios__label" for="recall-7">
+                          Defer - Discharge from colposcopy
                           </label>
                         </div>
                       <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-                          Due to age
+                        <input class="nhsuk-radios__input" id="example-8" name="recall" type="radio" value="defer">
+                        <label class="nhsuk-label nhsuk-radios__label" for="example-8">
+                          Defer - Due to age
                         </label>
                       </div>
                       <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                          No cervix
+                        <input class="nhsuk-radios__input" id="recall-9" name="recall" type="radio" value="cease">
+                        <label class="nhsuk-label nhsuk-radios__label" for="recall-9">
+                          Cease - No cervix
                         </label>
                       </div>
                       <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                          Patient requests no further tests
+                        <input class="nhsuk-radios__input" id="recall-10" name="recall" type="radio" value="cease">
+                        <label class="nhsuk-label nhsuk-radios__label" for="recall-10">
+                          Cease - Patient requests no further tests
                         </label>
                       </div>
                       <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                          Mental capacity  act (best interests)
+                        <input class="nhsuk-radios__input" id="recall-11" name="recall" type="radio" value="cease">
+                        <label class="nhsuk-label nhsuk-radios__label" for="recall-11">
+                          Cease - Mental capacity  act (best interests)
                         </label>
                       </div>
                       <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                          Other reason
+                        <input class="nhsuk-radios__input" id="recall-12" name="recall" type="radio" value="cease">
+                        <label class="nhsuk-label nhsuk-radios__label" for="recall-12">
+                          Cease - Other reason
                         </label>
                       </div>
                     </div>

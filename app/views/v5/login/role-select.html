@@ -6,7 +6,7 @@
 
 {% block content %}
              
-<form action="/v5/patient/search/search" method="post">
+<form action="/v5/login/role-select" method="post">
 
                 {% call fieldset({
                   legend: {
@@ -17,8 +17,8 @@
                 }) %}
 
                 {{ radios({
-                  "idPrefix": "change-due-date",
-                  "name": "change-due-date",
+                  "idPrefix": "role",
+                  "name": "role",
                   "items": [
                     {
                       "value": "sampleTaker",

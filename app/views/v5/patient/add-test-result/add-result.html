@@ -96,15 +96,21 @@
 
     <div class="nhsuk-radios nhsuk-radios--inline">
       <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="scottish" name="test-type" type="radio" value="NHS" {{ checked("test-type", "NHS") }}>
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+        NHS
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
         <input class="nhsuk-radios__input" id="scottish" name="test-type" type="radio" value="Scottish" {{ checked("test-type", "Scottish") }}>
         <label class="nhsuk-label nhsuk-radios__label" for="example-1">
         Scottish
         </label>
       </div>
       <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="private" name="test-type" type="radio" value="Private" {{ checked("test-type", "Private") }}>
+        <input class="nhsuk-radios__input" id="private" name="test-type" type="radio" value="Welsh" {{ checked("test-type", "Welsh") }}>
         <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-        Private
+        Welsh
         </label>
       </div>
       <div class="nhsuk-radios__item">
@@ -114,17 +120,18 @@
         </label>
       </div>
       <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="vault-smear" name="test-type" type="radio" value="Vault smear"{{ checked("test-type", "Vault smear") }}>
+        <input class="nhsuk-radios__input" id="vault-smear" name="test-type" type="radio" value="Private"{{ checked("test-type", "Private") }}>
         <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-        Scottish test
+        Private
         </label>
       </div>
       <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="vault-smear" name="test-type" type="radio" value="Vault smear"{{ checked("test-type", "Vault smear") }}>
+        <input class="nhsuk-radios__input" id="vault-smear" name="test-type" type="radio" value="Abroad"{{ checked("test-type", "Abroad") }}>
         <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-        Welsh test
+        Abroad
         </label>
       </div>
+      
     </div>
   </fieldset>
 
@@ -140,17 +147,17 @@
 
           <div class="nhsuk-form-group">
             <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
-              Result
+              HPV infection
             </label>
-            <input class="nhsuk-input nhsuk-input--width-20" id="result" name="result" type="text" pattern="[A-Z]*" value="{{ data['result'] }}">
+            <input class="nhsuk-input nhsuk-input--width-20" id="infection" name="infection" type="text" value="{{ data['infection'] }}">
           </div>
 
 
           <div class="nhsuk-form-group">
             <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
-              Infection
+              Cytology result
             </label>
-            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-20" id="infection" name="infection" type="number" pattern="[0-9]*" value="{{ data['infection'] }}">
+            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-20" id="result" name="result" type="text" value="{{ data['result'] }}">
           </div>
 
 

@@ -35,13 +35,23 @@ router.post('/csass/add-test-result/v1/change', function (req, res) {
   }
 })
 
-module.exports = router;
-
 router.post('/v5/login/role-select', function(req, res) {
   console.log('select a role');
   var roleSelected = req.session.data['role'];
   console.log('role: ' + roleSelected);
-  res.redirect('/v5/patient/search')
+  res.redirect('/v5/patient/search/search')
+})
+
+router.post('/v5/change-due-date', function(req, res) {
+  if (req.session.data['recall'] == 'defer') {
+    res.redirect('/v5/patient/patient-summary-deferred')
+  } 
+
+  if (req.session.data['recall'] == 'cease') {
+    res.redirect('/v5/patient/patient-summary-ceased')
+  }
+
+  res.redirect('/v5/patient/patient-summary-deferred')
 })
 
 router.post('/search-v2/', function (req, res) {
@@ -81,3 +91,6 @@ router.post('/search-v2/', function (req, res) {
     console.log("not found")
     //res.render("sample-taker/search/index.html")
   })
+
+  
+  module.exports = router;
