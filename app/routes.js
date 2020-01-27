@@ -71,14 +71,13 @@ router.post('/search-v2/', function (req, res) {
     console.log("not found")
   })
 
+
+
+
+
   router.post('/search-v5/', function (req, res) {
     var nhsNumber = req.session.data['searchnhs']
 
-    // NOT USED
-    if (nhsNumber == "3816158897") {
-        res.redirect('/v5/patient/patient-summary')
-    }
-    
     // Routine recall
     // Recall is 5 years away
     if (nhsNumber == "6170211547") {
@@ -92,6 +91,22 @@ router.post('/search-v2/', function (req, res) {
       req.session.data['address'] = '19 Polly Fall Close, Bradford, BD10 3RT';
       res.redirect('/v5/patient/patient-summary')
     }
+
+
+
+    
+    // NOT USED
+    if (nhsNumber == "3816158897") {
+        res.redirect('/v5/patient/patient-summary')
+    }
+
+
+    
+    
+
+
+
+
 
     // Referred to colposcopy
     // Recall is 6 months away
