@@ -19,10 +19,10 @@
     <div class="nhsuk-form">
       <div class="nhsuk-form-group">
         <div class="nhsuk-grid-row">
-          
+
           <div class="nhsuk-grid-column-one-half">
             <legend class="nhsuk-fieldset__legend--s nhsuk-u-margin-bottom-2">
-              <h1 class="nhsuk-heading-l">Search by</h1> 
+              <h1 class="nhsuk-heading-l">Search by</h1>
             </legend>
             <div class="multiple-choice--hod nhsuk-radios nhsuk-radios--inline">
               <div class="nhsuk-radios__item" onclick="window.location.replace('search');">
@@ -43,11 +43,11 @@
     </div>
     <!--<div class="nhsuk-form-group">-->
       <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-one-half">  
+      <div class="nhsuk-grid-column-one-half">
         <form action="search-results" method="post">
         <fieldset class="nhsuk-fieldset">
-          
-        <div id="nhsuk-form-group-gender-advanced" class="nhsuk-form-group">
+
+      <!--  <div id="nhsuk-form-group-gender-advanced" class="nhsuk-form-group">
           <fieldset class="nhsuk-fieldset" aria-describedby="gender-radio">
             <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
               Gender
@@ -76,10 +76,10 @@
               </div>
             </div>
           </fieldset>
-        </div>
+        </div>-->
       <div class="nhsuk-form-group" id="nhsuk-form-group-first-name-advanced">
         <label class="nhsuk-label nhsuk-label__strong" for="first-name-advanced">
-          First name
+          First name (optional)
         </label>
         <span id="advanced-first-name-error-error" class="nhsuk-error-message" style="display: none">
           You must enter a first name
@@ -96,12 +96,33 @@
         <input class="nhsuk-input nhsuk-input--width-20" id="last-name-advanced" name="last-name" type="text">
       </div>
 
+      <div class="nhsuk-form-group">
+
+          <fieldset class="nhsuk-fieldset" aria-describedby="widen-search-checkbox">
+
+            <div class="nhsuk-checkboxes">
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="widen-search-checkbox" name="widen-search" type="checkbox" value="widen-search">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="widen-search-checkbox">
+                  Widen search to include similar names and misspellings
+                </label>
+              </div>
+
+            </div>
+          </fieldset>
+
+        </div>
+
       <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
         <div class="nhsuk-form-group">
           <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
             <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
-              Date of birth from
+              Date of birth
             </legend>
+            <span class="nhsuk-hint">
+              For example, 31 3 1980
+            </span>
             <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
               You must enter a date
             </span>
@@ -133,7 +154,7 @@
             </div>
           </fieldset>
         </div>
-        <div class="nhsuk-from-group">
+        <!--<div class="nhsuk-from-group">
           <fieldset class="nhsuk-fieldset" aria-describedby="dob-to" role="group">
             <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
               Date of birth to
@@ -168,11 +189,11 @@
               </div>
             </div>
           </fieldset>
-        </div>
+        </div>-->
       </div>
       <div class="nhsuk-form-group" id="nhsuk-form-group-postcode-advanced">
             <label class="nhsuk-label nhsuk-label__strong" for="address-postcode">
-              Postcode
+              Postcode (optional)
             </label>
             <span id="advanced-postcode-error-error" class="nhsuk-error-message" style="display: none">
               You must enter a postcode
@@ -189,7 +210,7 @@
     <div class="nhsuk-form-group">
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-full">
-          <button class="nhsuk-button nhsuk-button--ers" type="submit">Search</button>
+          <button class="nhsuk-button nhsuk-button--ers" type="submit">Find patient</button>
         </div>
       </div>
     </div>
