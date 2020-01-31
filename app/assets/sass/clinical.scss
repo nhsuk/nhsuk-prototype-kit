@@ -1,7 +1,10 @@
 // Import NHS.UK frontend library
 @import 'node_modules/nhsuk-frontend/packages/nhsuk';
 
+
+
 // Components that are not in the NHS.UK frontend library
+
 @import 'components/panel-confirmation';
 @import 'components/related-nav';
 @import 'components/autocomplete';
@@ -23,6 +26,9 @@
 @import 'components/modal';
 @import 'components/progress-bar';
 @import 'components/timelines';
+
+
+$nhsuk-page-width: 1280px;
 
 
 .flex-container{
@@ -66,9 +72,6 @@
   padding: 4px;
 }
 
-// STYLEGUIDE //
-
-
 
 .styleguide-example{
   border: 1px solid $color_nhsuk-grey-4;
@@ -78,7 +81,6 @@
   overflow: hidden;
 
 }
-
 
 .styleguide-example::before{
   content:"EXAMPLE";
@@ -94,8 +96,6 @@
   -webkit-font-smoothing:antialiased;
 
 }
-
-
 
 .nhsuk-section-border{
   display:inline-block;
@@ -120,7 +120,6 @@
 .nhsuk-close{
   padding: 8px 0;
   margin-right: 16px;
-
 }
 
 .nhsuk-search-input:after{
@@ -133,13 +132,6 @@
   margin-bottom: 0;
   margin-right: 24px;
 }
-/*
-table td{
-  cursor:default;
-  a{
-    cursor: pointer;
-  }
-}*/
 
 .nhsuk-inset-text--ers{
   @extend .nhsuk-inset-text;
@@ -172,7 +164,7 @@ table td{
 
 @mixin nhsuk-width-container-fluid {
   margin: 0 $nhsuk-gutter-half;
-  max-width: 100%; /* [5] */
+  max-width: 100%; 
 }
 
 .nhsuk-width-container-fluid {
@@ -207,7 +199,6 @@ display: flex;
 justify-content: space-between;
 width: 100%;
 }
-
 
 .nhsuk-label__strong{
   font-weight: 600;

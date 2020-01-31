@@ -6,48 +6,124 @@ const router = express.Router();
 
 // CEASE / DEFER
 router.post('/csass/add-test-result/v2/change', function (req, res) {
-
   // Make a variable and give it the value from 'know-nhs-number'
   var reason = req.session.data['change-due-date']
 
   // Check whether the variable matches a condition
   if (reason == "Defer"){
     // Send user to next page
-    res.redirect('/csass/add-test-result/v2/defer')
+    res.redirect('/archive/csass/add-test-result/v2/defer')
   }
   else {
     // Send user to ineligible page
-    res.redirect('/csass/add-test-result/v2/cease')
+    res.redirect('/archive/csass/add-test-result/v2/cease')
   }
-
 })
 
+router.post('/csass/add-test-result/v1/change', function (req, res) {
+  // Make a variable and give it the value from 'know-nhs-number'
+  var reason = req.session.data['change-due-date']
 
+  // Check whether the variable matches a condition
+  if (reason == "Defer"){
+    // Send user to next page
+    res.redirect('/archive/csass/add-test-result/v1/defer')
+  }
+  else {
+    // Send user to ineligible page
+    res.redirect('/archive/csass/add-test-result/v1/cease')
+  }
+})
 
-module.exports = router;
+router.post('/v5/login/role-select', function(req, res) {
+  console.log('select a role');
+  var roleSelected = req.session.data['role'];
+  console.log('role: ' + roleSelected);
+  res.redirect('/v5/patient/search/search')
+})
 
+router.post('/v5/change-due-date', function(req, res) {
+  if (req.session.data['recall'] == 'defer') {
+    res.redirect('/v5/patient/patient-summary-deferred')
+  } 
 
-// Branching example
+  if (req.session.data['recall'] == 'cease') {
+    res.redirect('/v5/patient/patient-summary-ceased')
+  }
+
+  res.redirect('/v5/patient/patient-summary-deferred')
+})
+
 router.post('/search-v2/', function (req, res) {
-
     var nhsNumber = req.session.data['searchnhs']
     // 3816158897 - invited
     // 6170211547 - routine
     // 7594384164 - colposcopy
-
     if (nhsNumber == "3816158897") {
-        res.redirect('/sample-taker/v2/history')
+        res.redirect('/archive/sample-taker/v2/history')
     }
-
     if (nhsNumber == "6170211547") {
-        res.redirect('/sample-taker/v2/history-routine')
+        res.redirect('/archive/sample-taker/v2/history-routine')
     }
-
     if (nhsNumber == "7594384164") {
-        res.redirect('/sample-taker/v2/history-colposcopy')
+        res.redirect('/archive/sample-taker/v2/history-colposcopy')
+    }
+    console.log("not found")
+  })
+
+
+
+
+
+  router.post('/search-v5/', function (req, res) {
+    var nhsNumber = req.session.data['searchnhs']
+
+    // Routine recall
+    // Recall is 5 years away
+    if (nhsNumber == "6170211547") {
+      req.session.data['nhsNumber'] = '617 021 1547';
+      req.session.data['title'] = 'Miss';
+      req.session.data['firstName'] = 'Josie';
+      req.session.data['lastName'] = 'Jackson';
+      req.session.data['dob'] = '29 years (4 June 1991)';
+      req.session.data['ntdd'] = '09 04 2025';
+      req.session.data['status'] = 'ROUTINE';
+      req.session.data['address'] = '19 Polly Fall Close, Bradford, BD10 3RT';
+      res.redirect('/v5/patient/patient-summary')
     }
 
-    console.log("not found")
-    //res.render("sample-taker/search/index.html")
 
+
+    
+    // NOT USED
+    if (nhsNumber == "3816158897") {
+        res.redirect('/v5/patient/patient-summary')
+    }
+
+
+    
+    
+
+
+
+
+
+    // Referred to colposcopy
+    // Recall is 6 months away
+    if (nhsNumber == "7594384164") {
+      req.session.data['nhsNumber'] = '759 438 4164';
+      req.session.data['title'] = 'Mrs';
+      req.session.data['firstName'] = 'Francesca';
+      req.session.data['lastName'] = 'Williams';
+      req.session.data['dob'] = '40 years (15 Dec 1979)';
+      req.session.data['ntdd'] = '09 04 2020';
+      req.session.data['status'] = 'REFERRED TO COLPOSCOPY';
+      req.session.data['address'] = '19 Polly Fall Close, Bradford, BD10 3RT';
+      res.redirect('/v5/patient/patient-summary')
+    }
+
+    res.redirect('/v5/patient/patient-summary')
   })
+
+  
+  module.exports = router;

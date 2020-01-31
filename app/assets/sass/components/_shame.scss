@@ -1,0 +1,39 @@
+// --------------------- //
+// --***-- SHAME --***-- //
+// --------------------- //
+
+// Here lies all things fudged and broken
+
+.nhsuk-width-container-fluid, .nhsuk-width-container, .nhsuk-header__navigation {
+    max-width: 1280px;
+}
+
+// OVERRIDES THAT NEED TIDYING
+// make the menu align to the left
+.nhsuk-header__navigation-list {
+    justify-content: left;
+}
+
+// change the inset text to be closer to the eRS alert panel
+.nhsuk-inset-text.nhsuk-inset-text__screening.nhsuk-inset-text__screening--success {
+    border-color: #28a197;
+    background-color: #c6ece9;
+}
+
+.nhsuk-inset-text.nhsuk-inset-text__screening.nhsuk-inset-text__screening--info {
+    border-color: #2b8cc4;
+    background-color: #dbeff9;
+}
+
+// breakpoints stops is collapsing
+@media (min-width: 1024px) {
+    .nhsuk-width-container {
+        margin: 0 32px;
+    }
+}
+
+@media (min-width: 1344px) {
+    .nhsuk-width-container {
+    margin: 0 auto;
+    }   
+}

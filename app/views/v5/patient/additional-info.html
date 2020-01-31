@@ -1,0 +1,160 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "true"
+  })
+}}
+{% endblock %}
+
+{% block patientBanner %}
+  {% include 'v5/components/patient-banner.html' %}
+{% endblock %}
+
+{% block content %}
+
+<nav class="nhsuk-sub-navigation">
+  <ul class="nhsuk-sub-navigation__list">
+    <li class="nhsuk-sub-navigation__item"><a href="patient-summary" class="nhsuk-sub-navigation__link">Patient Summary</a></li>
+    <li class="nhsuk-sub-navigation__item"><a href="history" class="nhsuk-sub-navigation__link">History</a></li>
+    <li class="nhsuk-sub-navigation__item"><a href="gp-info" class="nhsuk-sub-navigation__link">GP Information</a></li>
+    <li class="nhsuk-sub-navigation__item"><a href="additional-info" class="nhsuk-sub-navigation__link" aria-current="page">Additional Information</a></li>
+  </ul>
+</nav>
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-two-thirds">
+    <form class="nhsuk-form" action="index.html" method="post">
+      <fieldset class="nhsuk-fieldset">
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+          <h1 class="nhsuk-fieldset__heading">
+            Additional information
+          </h1>
+        </legend>
+        <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--info nhsuk-u-margin-top-0">
+          <span class="nhsuk-u-visually-hidden">Do not enter any clinical information in this section</span>
+          <h3 class="nhsuk-heading-s">Do not enter any clinical information in this section</h3>
+        </div>
+        <div class="nhsuk-form-group">
+        <label class="nhsuk-label" for="address-line-1">
+            Case reference (optional)
+        </label>
+        <input class="nhsuk-input nhsuk-u-width-one-half" id="address-line-1" name="address-line-1" type="text">
+        </div>
+
+        <div class="nhsuk-form-group">
+        <label class="nhsuk-label" for="address-line-1">
+          Who is this  information relevant for?
+          <span class="nhsuk-hint"> for example, CSAS, lab, GP</span>
+
+        </label>
+        <input class="nhsuk-input nhsuk-u-width-one-half" id="address-line-1" name="address-line-1" type="text">
+        </div>
+
+        <div class="nhsuk-form-group">
+        <label class="nhsuk-label" for="address-line-1">
+          Enter additional information
+        </label>
+        <textarea class="nhsuk-textarea" id="additional-info" name="name" rows="6" cols="5"></textarea>
+        </div>
+
+      </fieldset>
+      <button class="nhsuk-button nhsuk-button--ers" type="button" name="button">Save entry</button>
+    </form>
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <h2 class="nhsuk-heading-l">History</h2>
+    <div class="nhsuk-scrollable-pane__wrapper">
+        <div id="table-scroll" class="table-scroll">
+          <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+            <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table">
+
+              <!-- TABLE START -->
+              <thead class="nhsuk-table__head">
+                <tr class="nhsuk-table__row">
+
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                    <button onclick="sortTable()" type="button" data-index="0">Date of entry</button>
+                  </th>
+
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Entry</button>
+                  </th>
+
+                  </th>
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Entry relevant for</button>
+                  </th>
+
+                  </th>
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Entry created by</button>
+                  </th>
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+        
+                  </th>
+                 
+                 
+
+                  
+                </tr>
+              </thead>
+
+
+              <tbody class="nhsuk-table__body nhsuk-body-">
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">01 04 2017</td>
+                  <td class="nhsuk-table__cell">Correspondence address for test dated 21 01 14: 56 Jasper Close Leeds LS12 3PD</td>
+                  <td class="nhsuk-table__cell">CSAS, LAB</td>
+                  <td class="nhsuk-table__cell">H.Lockey12 - Jackson Road Practice</td>
+                  <td class="nhsuk-table__cell"></td>
+        
+                  
+                </tr>
+                <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell fixed-side">10 01 2014</td>
+                        <td class="nhsuk-table__cell">Patient sensitive about receiving multiple invite letters </td>
+                        <td class="nhsuk-table__cell">CSAS</td>
+                        <td class="nhsuk-table__cell">P.Piotr11 - CSAS</td>
+                        <td class="nhsuk-table__cell"><a href="">Delete</a></td>
+                 
+                       
+                      </tr>
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell fixed-side">21 04 2013</td>
+                        <td class="nhsuk-table__cell">Correspondence address for test dated: 20 04 2013: 56 Jasper Close Leeds LS12 3PD </td>
+                        <td class="nhsuk-table__cell">CSAS, LAB</td>
+                        <td class="nhsuk-table__cell">A.Green - Jackson Road Practice</td>
+                        <td class="nhsuk-table__cell"></td>
+                      
+                       
+                      </tr>
+                
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

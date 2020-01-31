@@ -1,0 +1,53 @@
+
+
+{% extends 'layout.html' %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/radio-choice.js"></script>
+
+{% endblock %}
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+{% block content %}
+
+
+
+              <form action="../search/index" method="post">
+
+                {% call fieldset({
+                  legend: {
+                    text: "Choose a role to login with",
+                    classes: "nhsuk-fieldset__legend--l",
+                    isPageHeading: true
+                  }
+                }) %}
+
+                {{ radios({
+                  "idPrefix": "change-due-date",
+                  "name": "change-due-date",
+                  "items": [
+                    {
+                      "value": "Sample taker",
+                      "text": "Sample taker"
+                    },
+                    {
+                      "value": "Lab technician",
+                      "text": "Lab technician"
+                    },
+                    {
+                      "value": "Cervical screening admin",
+                      "text": "Cervical screening admin"
+                    }
+                  ]
+                }) }}
+
+                {% endcall %}
+
+                {{ button({
+                  "text": "Continue"
+                }) }}
+
+              </form>
+
+{% endblock %}

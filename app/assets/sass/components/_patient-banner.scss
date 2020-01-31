@@ -1,0 +1,101 @@
+// ==========================================================================
+// COMPONENTS / PATIENT BANNER
+// extends the breadcrumb component
+// ==========================================================================
+
+// this is a custom componetnt for the patient banner.
+// it is using the breadcrumb component for the sizing and positioning.
+
+.nhsuk-action-bar{
+  a:first-child{
+    margin-right: 32px;
+    
+  }
+}
+
+
+
+nav.patient-info{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding-top: 0;
+  padding-bottom:0;
+
+  .patient-info-container {
+    width: 100%;
+    position: relative;
+  }
+
+  ul{
+    width: 100%;
+    display:flex;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    justify-content: left;
+
+  }
+  li{
+    padding: 16px;
+    margin-bottom: 0;
+    margin-right: 32px;
+    font-size: 16px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+
+  }
+  ul li:first-child{
+    background-color:#425563;
+    color:#f0f4f5;
+    padding-bottom: 12px;
+    padding-top: 12px;
+
+  }
+  a{
+  padding: 0;
+
+  }
+}
+
+
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+
+
+
+}
+
+.flex-container  div {
+
+  margin-right: 10px;
+ul {
+  display: inline;
+  margin-left: 32px;
+  justify-content: space-between;
+
+  li{
+    display: inline;
+    text-align:center;
+    margin-right:32px;
+    padding: 8px;
+  }
+}
+
+}
+
+.nhsuk-close{
+  position: absolute;
+  right:32px;
+  top: 4px;
+  padding: 8px 0;
+
+  .nhsuk-icon__close {
+    position: absolute;
+    top: 4px;
+    right: -32px;
+  }
+}

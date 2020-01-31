@@ -1,0 +1,224 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+  {{ backLink({
+    "href": "worklists-b",
+    "text": "Back to worklists"
+  }) }}
+  <h1 class="nhsuk-heading-l">Results - Gateshead - 13 01 2020</h1>
+
+
+
+  <dl class="nhsuk-summary-list">
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Total Results
+      </dt>
+      <dd class="nhsuk-summary-list__actions">
+        300
+      </dd>
+      <dd class="nhsuk-summary-list__actions">
+        <!--<a href="#">
+        View Details
+        <span class="nhsuk-u-visually-hidden"> name</span>
+        </a>-->
+      </dd>
+    </div>
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Automatched Results
+      </dt>
+      <dd class="nhsuk-summary-list__actions">
+        280
+      </dd>
+      <dd class="nhsuk-summary-list__actions">
+        <a href="">View Details</a>
+      </dd>
+    </div>
+      <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Mismatches Done
+      </dt>
+      <dd class="nhsuk-summary-list__actions">
+        10
+      </dd>
+      <dd class="nhsuk-summary-list__actions">
+        <a href="">View Details</a>
+      </dd>
+    </div>
+  </dl>
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <h2>Pending Mismatches (10)</h2>
+    <div class="nhsuk-table-responsive">
+                  <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable">
+
+                    <!-- TABLE START -->
+                    <thead class="nhsuk-table__head">
+                      <tr class="nhsuk-table__row">
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">Result No</button>
+                        </th>
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">Mismatch Type</button>
+                        </th>
+                        <th class="nhsuk-table_header"></th>
+                       
+                      </tr>
+                    </thead>
+
+
+                    <tbody class="nhsuk-table__body">
+
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <strong>1</strong>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          Address
+                        </td>
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="worklists-b-address-mismatch">Start</a>
+                        </td>
+                      </tr>
+
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <strong>2</strong>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          Address
+                        </td>
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="worklists-b-address-mismatch">Start</a>
+                        </td>
+                      </tr>
+
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <strong>3</strong>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          Address
+                        </td>
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="worklists-b-address-mismatch">Start</a>
+                        </td>
+                      </tr>
+
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <strong>4</strong>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          NHS No
+                        </td>
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="worklists-b-nhsno-mismatch">Start</a>
+                        </td>
+                      </tr>
+
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <strong>5</strong>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          NHS No
+                        </td>
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="worklists-b-nhsno-mismatch">Start</a>
+                        </td>
+                      </tr>
+
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <strong>6</strong>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          NHS No
+                        </td>
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="worklists-b-nhsno-mismatch">Start</a>
+                        </td>
+                      </tr>
+
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <strong>7</strong>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          NHS No
+                        </td>
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="worklists-b-nhsno-mismatch">Start</a>
+                        </td>
+                      </tr>
+
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <strong>8</strong>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          NHS No
+                        </td>
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="worklists-b-nhsno-mismatch">Start</a>
+                        </td>
+                      </tr>
+
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <strong>9</strong>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          NHS No
+                        </td>
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="worklists-b-nhsno-mismatch">Start</a>
+                        </td>
+                      </tr>
+
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <strong>10</strong>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          NHS No
+                        </td>
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="worklists-b-nhsno-mismatch">Start</a>
+                        </td>
+                      </tr>
+
+
+                      
+
+                    </tbody>
+                  </table>
+                  <!--<br>
+                  <p class="align-centre"><a class="nhsuk-button--ers_secondary" href="#">Load 10 more results</a></p>-->
+    </div>
+  </div>
+</div>
+
+{% endblock %}

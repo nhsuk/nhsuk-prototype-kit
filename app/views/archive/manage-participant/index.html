@@ -1,0 +1,250 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  Manage Participant
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+    <h1>Manage Participant</h1>
+      <p>Viewing and editing patient history and test results - CSAS / Sample takers and more</p>
+      </br>
+      <div class="nhsuk-grid-row nhsuk-panel-group">
+        <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item">
+          <div class="nhsuk-panel">
+            <h3 class="nhsuk-heading-xl">4</h3>
+            <p>Iterations</p>
+          </div>
+          </div>
+          <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item">
+            <div class="nhsuk-panel">
+              <h3 class="nhsuk-heading-xl">18</h3>
+              <p>Users involved</p>
+            </div>
+          </div>
+          <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item">
+            <div class="nhsuk-panel">
+              <h3 class="nhsuk-heading-xl">510</h3>
+              <p>Mins of user testing</p>
+            </div>
+          </div>
+        </div>
+  
+    <h2>User Journey - to add</h2>
+      <p>info to add</p>
+        <ul>
+          <!--<li><a href="">JIRA Epic</a></li>
+          <li><a href="">Confluence</a></li>-->
+          <!--<li><a href="manage-participant/v3/search-participant">Current version</a></li>-->
+        </ul>
+      
+      <details class="nhsuk-details nhsuk-expander version-list">
+        <summary class="nhsuk-details__summary">
+          <span style="width:80%; display: inline-block" class="nhsuk-details__summary-text">
+            v4
+          </span>
+          <span style="width: 10%; display: inline-block" class="nhsuk-tag">Not Tested</span>
+        </summary>
+        <div class="nhsuk-details__text version-text">
+          <br>
+          <h3><a href="manage-participant/v4/search-participant">Screening History v4 Prototype</a></h3>
+            <p>to do</p>
+            <ul>
+              <li></li>
+            </ul>
+          <h3>User testing ()</h3>
+          <ul>
+            <li><a href="">place</a> - date - role - time</li>
+          </ul>
+          <h3>Design Challenges ()</h3>
+          <ul>
+            <li>to do</li>
+          </ul>
+          {{ button({
+            "text": "v04",
+            "href": "manage-participant/v4/search-participant"
+          }) }}
+          <hr>
+        </div>
+
+      </details>
+      
+      <details class="nhsuk-details nhsuk-expander version-list">
+        <summary class="nhsuk-details__summary">
+          <span style="width:80%; display: inline-block" class="nhsuk-details__summary-text">
+            v3
+          </span>
+          <span style="width: 10%; display: inline-block" class="nhsuk-tag">Tested</span>
+        </summary>
+        <div class="nhsuk-details__text version-text">
+          <br>
+          <h3><a href="manage-participant/v3/search-participant">Screening History v3 Prototype</a></h3>
+            <p>Rapid tweak of the prototype to add further data.</p>
+            <ul>
+              <li>Updated the timeline to be less buttony</li>
+              <li>Added some patient info and previous addresses, address to the patient banner</li>
+              <li>Another iteration on the results</li>
+              <li>Added further GP info</li>
+              <li>Made it clearer when HPV vaccination had been fully done</li>
+              <li>Removed notes section</li>
+            </ul>
+          <h3>User testing (2</h3>
+          <ul>
+            <li><a href="https://confluence.digital.nhs.uk/pages/viewpage.action?pageId=100337367">CSAS</a> - 17-12-2019 - LabLinks, Comms, Call/Recall - 180mins</li>
+            <li><a href="https://confluence.digital.nhs.uk/display/CSP/Sprint4-GP%3A+Sample+Taker+UI+Testing+V3+-+The+Sidings+Medical+Practice+17.12.19">Sidings Medical Practice</a> - 17-12-2019 - Sample Takers - 60mins</li>
+          </ul>
+          <h3>Design Challenges (1)</h3>
+          <ul>
+            <li>Sample takers are overwhelmed with the information available, we need to look at how we might make it easier for sample takers to know whether a person is eligible for screening.</li>
+          </ul>
+          {{ button({
+            "text": "v03",
+            "href": "manage-participant/v3/search-participant"
+          }) }}
+          <hr>
+        </div>
+
+      </details>
+
+
+      <details class="nhsuk-details nhsuk-expander version-list">
+        <summary class="nhsuk-details__summary">
+          <span style="width:80%; display: inline-block" class="nhsuk-details__summary-text">
+            v2a
+          </span>
+          <span style="width: 10%; display: inline-block" class="nhsuk-tag">Tested</span>
+        </summary>
+        <div class="nhsuk-details__text version-text">
+          <br>
+          <h3><a href="manage-participant/v2/search-participant">Screening History v2 Prototype</a></h3>
+            <p>Rapid tweak of the prototype to add further data.</p>
+            <ul>
+              <li>Removed UBRN from search</li>
+              <li>Added hpv and gp info details</li>
+              <li>Added colour coding on test results</li>
+            </ul>
+          <h3>User testing (9)</h3>
+          <ul>
+            <li><a href="https://confluence.digital.nhs.uk/display/CSP/Sprint3-CSAS%3A+5+participants+-+Prototype+v2+041219?src=contextnavpagetreemode">CSAS Leeds</a> - 4th Dec - Admin, Comms, Lablinks and QC - 240mins</li>
+            <li><a href="https://confluence.digital.nhs.uk/display/CSP/Sprint3-CSAS%3A+5+participants+-+Prototype+v2+041219?src=contextnavpagetreemode">CSAS Leeds</a> - 3rd Dec - Team Leader - 180mins</li>
+            <li><a href="https://confluence.digital.nhs.uk/display/CSP/Sprint4-GP%3A+Hampstead+Group+Practice+Sample+Takers+UI+Testing">Hampstead Group Practice</a> - 11th Dec - 2 Sample Takers - 60mins</li>
+          </ul>
+          <h3>Design Challenges (2)</h3>
+          <ul>
+            <li>How do we make the results easier to see - they are still not clear to users</li>
+            <li>How do we make the the data even more robust</li>
+            <li>Notes are confusing, we should remove those</li>
+          </ul>
+          {{ button({
+            "text": "v02a",
+            "href": "manage-participant/v2/search-participant"
+          }) }}
+          <hr>
+        </div>
+
+      </details>
+
+
+      <details class="nhsuk-details nhsuk-expander version-list">
+        <summary class="nhsuk-details__summary">
+          <span style="width:80%; display: inline-block" class="nhsuk-details__summary-text">
+            v1a
+          </span>
+          <span style="width: 10%; display: inline-block" class="nhsuk-tag">Tested</span>
+        </summary>
+        <div class="nhsuk-details__text version-text">
+          <br>
+          <h3><a href="manage-participant/v1/search-participant">Screening History v1 Prototype</a></h3>
+            <p>Based on initial sketch work with CSAS</p>
+            <ul>
+              <li>Starts with the search screen</li>
+              <li>Key bindings for navigation - mousetrap plugin</li>
+            </ul>
+          <h3>User testing (2)</h3>
+          <ul>
+            <li>Wombwell GP - 29th Nov - Practice Manager / Nurse / Admin - 90mins</li>
+            <li>CSAS Leeds - 3rd Dec - Team Leader - 120mins</li>
+          </ul>
+          <h3>Design Challenges (3)</h3>
+          <ul>
+            <li>Make the data more relevant</li>
+            <li>Add data about HPV and GPs</li>
+            <li>How do we make the results easier to see</li>
+          </ul>
+          {{ button({
+            "text": "v01a",
+            "href": "manage-participant/v1/search-participant"
+          }) }}
+          <hr>
+        </div>
+
+      </details>
+
+      <details class="nhsuk-details nhsuk-expander version-list">
+        <summary class="nhsuk-details__summary">
+          <span style="width:80%; display: inline-block" class="nhsuk-details__summary-text">
+            v1b
+          </span>
+          <span style="width: 10%; display: inline-block" class="nhsuk-tag">not tested</span>
+        </summary>
+        <div class="nhsuk-details__text version-text">
+          <br>
+          <h3><a href="manage-participant/v1/screening-history-b">Screening History v1 Prototype</a></h3>
+            <p>Based on initial sketch work with CSAS</p>
+            <ul>
+              <li>To add</li>
+            </ul>
+          <h3>User testing</h3>
+          <ul>
+            <li>To add</li>
+          </ul>
+          <h3>Design Challenges (2)</h3>
+          <ul>
+            <li>To add</li>
+          </ul>
+          {{ button({
+            "text": "v01b",
+            "href": "manage-participant/v1/screening-history-b"
+          }) }}
+          <hr>
+        </div>
+
+      </details>
+
+      <details class="nhsuk-details nhsuk-expander version-list">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Error messages
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <h4 class="nhsuk-heading-s nhsuk-u-margin-top-5">Add Title</h4>
+          <ul>
+            <li><a href="">Add error</a></li>
+          </ul>
+
+        </div>
+      </details>
+   
+    </div>
+  </div>
+{% endblock %}
