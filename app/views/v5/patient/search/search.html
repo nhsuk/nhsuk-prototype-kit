@@ -28,20 +28,12 @@
             <legend class="nhsuk-fieldset__legend--s nhsuk-u-margin-bottom-2">
               <h1 class="nhsuk-heading-l">Search by</h1>
             </legend>
-            <div class="multiple-choice--hod nhsuk-radios nhsuk-radios--inline">
-              <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="" name="searchby" type="radio" value="" checked="checked">
-                <label class="nhsuk-label nhsuk-radios__label nhsuk-radios__label" for="nhs-number">
-                  NHS Number
-                </label>
-              </div>
-            <div class="nhsuk-radios__item" onclick="window.location.replace('search-demographic');">
-              <input class="nhsuk-radios__input" id="demographics" name="searchby" type="radio" value="">
-              <label class="nhsuk-label nhsuk-radios__label" for="demographics">
-                Demographics
-              </label>
-            </div>
-          </div>
+            <nav class="nhsuk-sub-navigation">
+  <ul class="nhsuk-sub-navigation__list">
+    <li class="nhsuk-sub-navigation__item"><a href="#" class="nhsuk-sub-navigation__link" aria-current="page">NHS number</a></li>
+    <li class="nhsuk-sub-navigation__item"><a href="search-demographic" class="nhsuk-sub-navigation__link">Demographics</a></li>
+  </ul>
+</nav>
         </div>
       </div>
     </div>
@@ -62,7 +54,7 @@
     <div class="nhsuk-form-group">
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-full">
-          <button class="nhsuk-button nhsuk-button--ers" type="submit">Search</button>
+          <button class="nhsuk-button nhsuk-button--ers" type="submit">Find patient</button>
         </div>
       </div>
     </div>
