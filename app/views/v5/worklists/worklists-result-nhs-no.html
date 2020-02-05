@@ -1,0 +1,145 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+  {{ backLink({
+    "href": "worklists",
+    "text": "Back to Results"
+  }) }}
+  <h1 class="nhsuk-heading-l">Manually resolve a mismatch</h1>
+
+  <div class="nhsuk-table-responsive">
+    <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable">
+
+      <!-- TABLE START -->
+      <thead class="nhsuk-table__head">
+       
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">Lab details</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">System details</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">Match</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+
+          </th>
+        
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+
+        <tr class="nhsuk-table__row">
+          
+          <td class="nhsuk-table__cell">
+            <strong>NHS number:</strong> Unknown<br>
+            <strong>Name:</strong> Jane Louise Smith <strong>DOB:</strong> 01 01 1970
+            <br>
+            <strong>Address:</strong> 20 Thornhill Street, Pudsey <strong>Postcode:</strong> LS28 7ED
+          </td>
+          <td class="nhsuk-table__cell">
+            <strong>NHS number:</strong> 1294205191<br>
+            <strong>Name:</strong> <mark>Jane Louise Smith</mark> <strong>DOB:</strong><mark> 01 01 1970</mark>
+            <br>
+            <strong>Address:</strong> <mark>20 Thornhill Street, Leeds</mark> <strong>Postcode:</strong><mark> LS28 7ED</mark> 
+          </td>
+          <td class="nhsuk-table__cell">
+           98%
+          <td class="nhsuk-table__cell multiple-choice--hod">
+            <div class="nhsuk-checkboxes__item">
+              <input type="checkbox" class="nhsuk-checkboxes__input jsCheckbox" id="radio-1">
+              <label class="nhsuk-label nhsuk-checkboxes__label" for="radio-1">
+                &nbsp;
+              </label>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="nhsuk-table__row">
+          
+            <td class="nhsuk-table__cell">
+              
+            </td>
+            <td class="nhsuk-table__cell">
+              <strong>NHS number:</strong> 6729402491<br>
+              <strong>Name:</strong> <mark>Jane</mark> Amy <mark>Smith</mark> <strong>DOB:</strong><mark> 01</mark> 03 1965
+              <br>
+              <strong>Address:</strong> <mark>20</mark> Hartwell <mark>Drive, Leeds</mark> <strong>Postcode:</strong><mark> LS</mark>15 6JK
+            </td>
+            <td class="nhsuk-table__cell">
+             70%
+            <td class="nhsuk-table__cell multiple-choice--hod">
+              <div class="nhsuk-checkboxes__item">
+                <input type="checkbox" class="nhsuk-checkboxes__input jsCheckbox" id="radio-1">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="radio-1">
+                  &nbsp;
+                </label>
+              </div>
+            </td>
+          </tr>
+          <tr class="nhsuk-table__row">
+          
+            <td class="nhsuk-table__cell">
+              
+            </td>
+            <td class="nhsuk-table__cell">
+              <strong>NHS number:</strong> 8973101119<br>
+              <strong>Name:</strong> <mark>Jane Smith</mark> <strong>DOB:</strong> 14 04 1992
+              <br>
+              <strong>Address:</strong> 6 Smithy Avenue<mark> Leeds</mark> <strong>Postcode:</strong><mark> LS</mark>13 UDA
+            </td>
+            <td class="nhsuk-table__cell">
+             32%
+            <td class="nhsuk-table__cell multiple-choice--hod">
+              <div class="nhsuk-checkboxes__item">
+                <input type="checkbox" class="nhsuk-checkboxes__input jsCheckbox" id="radio-1">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="radio-1">
+                  &nbsp;
+                </label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+
+
+
+      </table>
+      </div>
+    </div>
+</div>
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-half">
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label" for="example">
+          Comments
+        </label>
+        <span class="nhsuk-hint" id="example-hint">
+          Enter a reason for choosing the match
+        </span>
+        <textarea class="nhsuk-textarea" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
+      </div>
+      
+
+      <a href="worklists-result-address" class="nhsuk-button nhsuk-button--ers">Confirm match</a>
+      <p><a class="nhsuk-button nhsuk-button--ers_secondary" href="worklists-b-result">Reject mismatch</a></p>
+
+  </div>
+  </div>
+  {% endblock %}
