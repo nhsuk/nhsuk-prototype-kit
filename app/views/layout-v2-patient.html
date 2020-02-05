@@ -48,14 +48,15 @@
 {% block footer %}
 
 <!-- print out all the session values - this is just for testing -->
-    
+
+{#
   <p>session data</p>
 
   {% for key, value in data %}
     {{ key }} : {{ value }} <br>
   {% endfor %}
 
-
+#}
   {{ footer({
     "links": [
       {
