@@ -40,75 +40,31 @@ NHS Cervical Screening
 
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-full">
-    <h1 class="nhsuk-heading-l">GP Info</h1>
-    <h4>Dr Katherine Johnson</h4>
+    <h1 class="nhsuk-heading-l">GP Information</h1>
 
+    {{ summaryList({
+    rows: [
+    {
+      key: { text: "Practice Code" },
+      value: { text: "K81052" }
+    },
+    {
+      key: { text: "Practice Name" },
+      value: { text: "Lambourn Surgery" }
+    },
+    {
+      key: { text: "Practice Address" },
+      value: { html: "<p>Bockhampton Road</p><p>Lambourn</p><p>Hungerford</p><p>Berkshire</p><p>RG17 8PS</p>" }
+    },
+    {
+      key: { text: "Practice Number" },
+      value: { text: "01488 71715" }
+    }
+    
+  ]
+  }) }}
 
-    <dl class="nhsuk-summary-list">
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-        GMC number
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          123456789
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-
-        </dd>
-      </div>
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-        Start date
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-          13-Sep-1994
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-
-        </dd>
-      </div>
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-        Date of birth
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-        21-Oct-1979
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-
-        </dd>
-      </div>
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-          Contact number
-
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-        0113 334 3343
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-
-        </dd>
-      </div>
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">
-        Contact email
-        </dt>
-        <dd class="nhsuk-summary-list__value">
-        k.johnson.ptrs@nhs.net
-        </dd>
-        <dd class="nhsuk-summary-list__actions">
-
-        </dd>
-      </div>
-
-
-
-
-
-    </dl>
-
-          <p><a href="">View all GP's at this practice</a></p>
+  <p><a href="">View all GP's at this practice</a></p>
   </div>
 </div>
 
