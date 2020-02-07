@@ -28,15 +28,19 @@
 
 
 {% block content %}
-<nav class="nhsuk-sub-navigation">
-  <ul class="nhsuk-sub-navigation__list">
-    <li class="nhsuk-sub-navigation__item"><a href="patient-summary" class="nhsuk-sub-navigation__link" aria-current="page">Patient Summary</a></li>
-    <li class="nhsuk-sub-navigation__item"><a href="history" class="nhsuk-sub-navigation__link">History</a></li>
-    <li class="nhsuk-sub-navigation__item"><a href="gp-info" class="nhsuk-sub-navigation__link">GP Information</a></li>
-    <li class="nhsuk-sub-navigation__item"><a href="additional-info" class="nhsuk-sub-navigation__link">Additional Information</a></li>
-    <li class="nhsuk-sub-navigation__item" style="float: right; font-size: 14px">role: {{ data.role }}</li>
-  </ul>
-</nav>
+  {% if data.role != 'sampleTaker' %}
+  <nav class="nhsuk-sub-navigation">
+    <ul class="nhsuk-sub-navigation__list">
+      <li class="nhsuk-sub-navigation__item"><a href="patient-summary" class="nhsuk-sub-navigation__link" aria-current="page">Patient Summary</a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="history" class="nhsuk-sub-navigation__link">History</a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="gp-info" class="nhsuk-sub-navigation__link">GP Information</a></li>
+      {% if data.role == 'csas' %}
+        <li class="nhsuk-sub-navigation__item"><a href="additional-info" class="nhsuk-sub-navigation__link">Additional Information</a></li>
+      {% endif %}
+      <!--<li class="nhsuk-sub-navigation__item" style="float: right; font-size: 14px">role: {{ data.role }}</li>-->
+    </ul>
+  </nav>
+{% endif %}
 
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-one-half">
@@ -55,7 +59,9 @@
           Not applicable
         </dd>
         <dd class="nhsuk-summary-list__actions">
-          <a class="nhsuk-button--ers" href="enter-reason">Change date</a>
+          {% if data.role == 'csas' %}
+            <a class="nhsuk-button nhsuk-button--ers" href="change-due-date/enter-reason">Change date</a> 
+          {% endif %}
         </dd>
       </div>
       <div class="nhsuk-summary-list__row">
@@ -66,11 +72,14 @@
           20 Thornhill Street <br> Pudsey, LS15 6FD
         </dd>
         <dd class="nhsuk-summary-list__actions">
-          <span class="nhsuk-tag__warning">FP69</span>
+          {% if data.role == 'csas' %}
+            <span class="nhsuk-tag__warning">FP69</span>
+          {% endif %}
         </dd>
       </div>
     </dl>
-    {{ details({
+    {% if data.role != 'sampleTaker' %}
+      {{ details({
       "text": "View previous addresses",
       "HTML": "
 
@@ -96,8 +105,8 @@
         </tr>
       </table>
       "
-    }) }}
-
+      }) }}
+    {% endif %}
   </div>
 </div>
 
@@ -150,9 +159,12 @@
                   <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
                     <button onclick="sortTable()" type="button" data-index="0">Sample taker</button>
                     </th>
-                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
-                  <button onclick="sortTable()" type="button" data-index="0">Slide no</button>
-                  </th>
+
+                  {% if data.role != 'sampleTaker' %}
+                    <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                      <button onclick="sortTable()" type="button" data-index="0">Slide no</button>
+                    </th>
+                  {% endif %}
 
 
                 </tr>
@@ -169,7 +181,9 @@
                 <td class="nhsuk-table__cell">36 months</td>
                 <td class="nhsuk-table__cell">Leeds General Infirmary</td>
                 <td class="nhsuk-table__cell">Serena Waldorv</td>
-                <td class="nhsuk-table__cell">1323</td>
+                {% if data.role != 'sampleTaker' %}
+                  <td class="nhsuk-table__cell">1323</td>
+                {% endif %}
 
               </tr>
               <tr class="nhsuk-table__row">
@@ -181,7 +195,9 @@
                 <td class="nhsuk-table__cell">36 months</td>
                 <td class="nhsuk-table__cell">Leeds General Infirmary</td>
                 <td class="nhsuk-table__cell">Dupreet Jawal</td>
-                <td class="nhsuk-table__cell">1323</td>
+                {% if data.role != 'sampleTaker' %}
+                  <td class="nhsuk-table__cell">1323</td>
+                {% endif %}
 
               </tr>
 
