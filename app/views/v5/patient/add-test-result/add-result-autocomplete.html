@@ -40,7 +40,7 @@ function customSuggest (query, syncResults) {
       }
 
       function inputValueTemplate (result) {
-        return result && result.result
+        return result && result.result + '-' + result.code
       }
 
       function suggestionTemplate (result) {
@@ -211,27 +211,11 @@ function customSuggest (query, syncResults) {
 
           <div class="nhsuk-form-group">
             <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
+              <span id="" class="nhsuk-hint" style="">
+                Enter codes or full description
+              </span>  
             <div id="my-autocomplete-container" class="codecomplete"></div>
           </div>
-
-<!--
-          <div class="nhsuk-form-group">
-            <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
-              HPV infection
-            </label>
-            <input class="nhsuk-input nhsuk-input--width-20" id="infection" name="infection" type="text" value="{{ data['infection'] }}">
-          </div>
-
-
-          <div class="nhsuk-form-group">
-            <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
-              Cytology result
-            </label>
-            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-20" id="result" name="result" type="text" value="{{ data['result'] }}">
-          </div>
--->
-
-
     </fieldset>
   </div>
 
