@@ -5,7 +5,6 @@
   display: inline-block;
   font-family: Frutiger, sans-serif;
   font-size: 14px;
-
   padding: 4px;
   font-weight: 400;
   border-width: 1px;
@@ -14,10 +13,12 @@
 
 }
 .nhsuk-tag-large{
-  padding:16px;
+  padding:4px 8px;
   font-weight: 700;
-  border-width: 4px;
-  font-size: 24px;
+  border-width: 2px;
+  font-size: 1em;
+  text-transform: uppercase;
+
 }
 .nhsuk-tag__success{
     @extend .nhsuk-tag;
@@ -37,6 +38,6 @@
 }
 .nhsuk-tag__highlight{
   @extend .nhsuk-tag;
-color: $color_nhsuk-blue;
-border-color: $color_nhsuk-blue;
+color: $color_nhsuk-white;
+background-color: $color_nhsuk-blue;
 }

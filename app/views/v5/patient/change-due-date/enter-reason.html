@@ -31,14 +31,18 @@
     "text": "Go back to patient summary"
   }) }}
 
-              <form action="enter-reason-check" method="post" class="form">
-                <div class="nhsuk-form-group">
+
+
+              <form action="enter-test-date" method="post" class="form">
+
                   <fieldset class="nhsuk-fieldset">
                     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
                       <h1 class="nhsuk-fieldset__heading">
                         Choose a reason to change the next test due  date
                       </h1>
                     </legend>
+
+
                     <div class="nhsuk-form-group">
 
 
@@ -47,15 +51,19 @@
   </label>
 
   <select class="nhsuk-select" name="reason">
+
       <optgroup label="Cease">
-    <option value="No cervix"{{ ("no-cervix") }}>No cervix</option>
-    <option value="Patient choice"{{ ("patient-choice") }}>Patient choice</option>
-    <option value="Mental capacity act"{{ ("mental-capacity") }}>Mental capacity act</option>
-      <option value="Receiving radiotherapy"{{ ("receiving-radiotherapy") }}>Receiving radiotherapy</option>
-      <option value="Aged over 65"{{ ("over-65") }}>Aged over 65</option>
-      <option value="Other reason"{{ ("other-reason") }}>Other reason</option>
+        <option value="No cervix">No cervix</option>
+        <option value="Patient choice">Patient choice</option>
+        <option value="Mental capacity act">Mental capacity act</option>
+          <option value="Receiving radiotherapy">Receiving radiotherapy</option>
+          <option value="Aged over 65"{{ ("over-65") }}>Aged over 65</option>
+          <option value="Other reason"{{ ("other-reason") }}>Other reason</option>
+
       </optgroup>
-      <optgroup label="Defer">
+
+
+      <optgroup label="Defer" name="Defer">
         <option value="Pregnancy"{{ ("pregnancy") }}>Pregnancy</option>
         <option value="Patient choice"{{ ("patient-choice") }}>Patient choice</option>
         <option value="Undergoing treatment"{{ ("treatment") }}>Undergoing treatment</option>
@@ -66,129 +74,15 @@
 
   </select>
 </div>
-                    <!-- <div class="nhsuk-radios">
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="recall-1" name="recall" type="radio" value="defer">
-                        <label class="nhsuk-label nhsuk-radios__label" for="recall-1">
-                          Defer - Recent test
-                        </label>
-                      </div>
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="recall-2" name="recall" type="radio" value="defer">
-                        <label class="nhsuk-label nhsuk-radios__label" for="recall-2">
-                          Defer - Current pregnancy
-                        </label>
-                      </div>
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="recall-3" name="recall" type="radio" value="defer">
-                        <label class="nhsuk-label nhsuk-radios__label" for="recall-3">
-                          Defer - Patient wishes to defer
-                        </label>
-                      </div>
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="recall-4" name="recall" type="radio" value="defer">
-                        <label class="nhsuk-label nhsuk-radios__label" for="recall-4">
-                          Defer - Undergoing relevant treatment
-                        </label>
-                      </div>
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="recall-5" name="recall" type="radio" value="defer">
-                        <label class="nhsuk-label nhsuk-radios__label" for="recall-5">
-                          Defer - Administritive reason
-                        </label>
-                        </div>
-                        <div class="nhsuk-radios__item">
-                          <input class="nhsuk-radios__input" id="recall-6" name="recall" type="radio" value="no">
-                          <label class="nhsuk-label nhsuk-radios__label" for="recall-6">
-                          Defer - Practice invitation
-                          </label>
-                        </div>
-                        <div class="nhsuk-radios__item">
-                          <input class="nhsuk-radios__input" id="recall-7" name="recall" type="radio" value="defer">
-                          <label class="nhsuk-label nhsuk-radios__label" for="recall-7">
-                          Defer - Discharge from colposcopy
-                          </label>
-                        </div>
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="example-8" name="recall" type="radio" value="defer">
-                        <label class="nhsuk-label nhsuk-radios__label" for="example-8">
-                          Defer - Due to age
-                        </label>
-                      </div>
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="recall-9" name="recall" type="radio" value="cease">
-                        <label class="nhsuk-label nhsuk-radios__label" for="recall-9">
-                          Cease - No cervix
-                        </label>
-                      </div>
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="recall-10" name="recall" type="radio" value="cease">
-                        <label class="nhsuk-label nhsuk-radios__label" for="recall-10">
-                          Cease - Patient requests no further tests
-                        </label>
-                      </div>
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="recall-11" name="recall" type="radio" value="cease">
-                        <label class="nhsuk-label nhsuk-radios__label" for="recall-11">
-                          Cease - Mental capacity  act (best interests)
-                        </label>
-                      </div>
-                      <div class="nhsuk-radios__item">
-                        <input class="nhsuk-radios__input" id="recall-12" name="recall" type="radio" value="cease">
-                        <label class="nhsuk-label nhsuk-radios__label" for="recall-12">
-                          Cease - Other reason
-                        </label>
-                      </div>
-                    </div>-->
-                    </div>
 
 
-                      <div class="nhsuk-form-group">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label" for="example">
+                  CRM
+                  </label>
+                <input class="nhsuk-input nhsuk-input--width-10" type="number" name="crm" value="crm">
+              </div>
 
-                      <label class="nhsuk-label nhsuk-label__strong" for="last-name-advanced">
-                      CRM case number
-                      </label>
-
-                      <input class="nhsuk-input nhsuk-input--width-20" id="last-name-advanced" name="last-name" type="number">
-                      </div>
-                    <!--  <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
-                        <div class="nhsuk-form-group">
-                          <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
-                            <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
-                              Test date
-                            </legend>
-                            <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
-                              You must enter a date
-                            </span>
-                            <div class="nhsuk-date-input" id="dob-from">
-                              <div class="nhsuk-date-input__item">
-                                <div class="nhsuk-form-group">
-                                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
-                                    Day
-                                  </label>
-                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dob-day" name="dob-day" type="number" pattern="[0-9]*" value="09" required="">                                </div>
-                              </div>
-                              <div class="nhsuk-date-input__item">
-                                <div class="nhsuk-form-group">
-                                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
-                                    Month
-                                  </label>
-                                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="test-date" type="number" pattern="[0-9]*" value="04">
-                                </div>
-                              </div>
-                              <div class="nhsuk-date-input__item">
-                                <div class="nhsuk-form-group">
-                                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
-                                    Year
-                                  </label>
-                                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="year" type="number" pattern="[0-9]*" value="2020">
-                                </div>
-                              </div>
-                            </div>
-                          </fieldset>
-                        </div>
-
-                      </div>-->
 
 
                 <div class="nhsuk-form-group">
@@ -198,35 +92,14 @@
                   <span class="nhsuk-hint" id="example-hint">
                     Do not include clinical information at  this point.
                   </span>
-                  <textarea class="nhsuk-textarea" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
+                  <textarea class="nhsuk-textarea" id="example" name="details" rows="5" aria-describedby="example-hint" value="details"></textarea>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
                   <button class="nhsuk-button--ers">Continue</button>
-
-
-
-
-
-
-
-
             </form>
-            <p>session data</p>
-  {% for key, value in data %}
-    {{ key }} : {{ value }} <br>
-  {% endfor %}
 
-  </div>
-</div>
+            </div>
+
+
+
 
 {% endblock %}

@@ -4,6 +4,21 @@ const router = express.Router();
 
 // Add your routes here - above the module.exports line
 
+router.post('v5/patient/change-due-date/change', function (req, res) {
+  // Make a variable and give it the value from 'know-nhs-number'
+  var reason = req.session.data['reason']
+
+  // Check whether the variable matches a condition
+  if (reason == "Defer"){
+    // Send user to next page
+    res.redirect('v5/patient/change-due-date/enter-test-date')
+  }
+  else {
+    // Send user to ineligible page
+    res.redirect('v5/patient/change-due-date/enter-reason-check')
+  }
+})
+
 // CEASE / DEFER
 router.post('/csass/add-test-result/v2/change', function (req, res) {
   // Make a variable and give it the value from 'know-nhs-number'
@@ -45,7 +60,7 @@ router.post('/v5/login/role-select', function(req, res) {
 router.post('/v5/change-due-date', function(req, res) {
   if (req.session.data['recall'] == 'defer') {
     res.redirect('/v5/patient/patient-summary-deferred')
-  } 
+  }
 
   if (req.session.data['recall'] == 'cease') {
     res.redirect('/v5/patient/patient-summary-ceased')
@@ -94,15 +109,15 @@ router.post('/search-v2/', function (req, res) {
 
 
 
-    
+
     // NOT USED
     if (nhsNumber == "3816158897") {
         res.redirect('/v5/patient/patient-summary')
     }
 
 
-    
-    
+
+
 
 
 
@@ -125,5 +140,5 @@ router.post('/search-v2/', function (req, res) {
     res.redirect('/v5/patient/patient-summary')
   })
 
-  
+
   module.exports = router;
