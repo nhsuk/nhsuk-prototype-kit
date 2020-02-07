@@ -15,7 +15,7 @@ console.log(reason);
   || (reason == "Other reason")){
 
     // Send user to next page
-    res.redirect('/v5/patient/change-due-date/enter-reason-check')
+    res.redirect('/v5/patient/change-due-date/enter-reason-check-cease')
   }
   else {
     // Send user to ineligible page

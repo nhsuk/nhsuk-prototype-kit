@@ -17,12 +17,12 @@
 // change the inset text to be closer to the eRS alert panel
 .nhsuk-inset-text.nhsuk-inset-text__screening.nhsuk-inset-text__screening--success {
     border-color: #28a197;
-    background-color: #c6ece9;
+    background-color: none;
 }
 
 .nhsuk-inset-text.nhsuk-inset-text__screening.nhsuk-inset-text__screening--info {
-    border-color: #2b8cc4;
-    background-color: #dbeff9;
+    border-color: #005eb8;
+    background-color: none;
 }
 
 // breakpoints stops is collapsing
@@ -35,5 +35,5 @@
 @media (min-width: 1344px) {
     .nhsuk-width-container {
     margin: 0 auto;
-    }   
+    }
 }
