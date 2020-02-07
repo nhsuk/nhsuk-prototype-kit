@@ -31,17 +31,42 @@
     "text": "Go back to patient summary"
   }) }}
 
-            <form action="/v5/change-due-date/" method="post">
-
-
+              <form action="enter-reason-check" method="post" class="form">
                 <div class="nhsuk-form-group">
                   <fieldset class="nhsuk-fieldset">
                     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
                       <h1 class="nhsuk-fieldset__heading">
-                        Enter a reason change the status
+                        Choose a reason to change the next test due  date
                       </h1>
                     </legend>
-                    <div class="nhsuk-radios">
+                    <div class="nhsuk-form-group">
+
+
+  <label class="nhsuk-label" for="select-1">
+    Choose a reason
+  </label>
+
+  <select class="nhsuk-select" name="reason">
+      <optgroup label="Cease">
+    <option value="No cervix"{{ ("no-cervix") }}>No cervix</option>
+    <option value="Patient choice"{{ ("patient-choice") }}>Patient choice</option>
+    <option value="Mental capacity act"{{ ("mental-capacity") }}>Mental capacity act</option>
+      <option value="Receiving radiotherapy"{{ ("receiving-radiotherapy") }}>Receiving radiotherapy</option>
+      <option value="Aged over 65"{{ ("over-65") }}>Aged over 65</option>
+      <option value="Other reason"{{ ("other-reason") }}>Other reason</option>
+      </optgroup>
+      <optgroup label="Defer">
+        <option value="Pregnancy"{{ ("pregnancy") }}>Pregnancy</option>
+        <option value="Patient choice"{{ ("patient-choice") }}>Patient choice</option>
+        <option value="Undergoing treatment"{{ ("treatment") }}>Undergoing treatment</option>
+        <option value="Recent test"{{ ("recent-test") }}>Recent test</option>
+        <option value="Under care of colposcopy"{{ ("colposcopy") }}>Under care of colposcopy</option>
+        <option value="Other reason"{{ ("patient-choice") }}>Other reason</option>
+      </optgroup>
+
+  </select>
+</div>
+                    <!-- <div class="nhsuk-radios">
                       <div class="nhsuk-radios__item">
                         <input class="nhsuk-radios__input" id="recall-1" name="recall" type="radio" value="defer">
                         <label class="nhsuk-label nhsuk-radios__label" for="recall-1">
@@ -114,7 +139,7 @@
                           Cease - Other reason
                         </label>
                       </div>
-                    </div>
+                    </div>-->
                     </div>
 
 
@@ -126,7 +151,7 @@
 
                       <input class="nhsuk-input nhsuk-input--width-20" id="last-name-advanced" name="last-name" type="number">
                       </div>
-                      <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
+                    <!--  <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
                         <div class="nhsuk-form-group">
                           <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
                             <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
@@ -163,12 +188,12 @@
                           </fieldset>
                         </div>
 
-                      </div>
+                      </div>-->
 
 
                 <div class="nhsuk-form-group">
                   <label class="nhsuk-label" for="example">
-                    Can you provide more detail?
+                    Detail
                   </label>
                   <span class="nhsuk-hint" id="example-hint">
                     Do not include clinical information at  this point.
@@ -196,6 +221,10 @@
 
 
             </form>
+            <p>session data</p>
+  {% for key, value in data %}
+    {{ key }} : {{ value }} <br>
+  {% endfor %}
 
   </div>
 </div>
