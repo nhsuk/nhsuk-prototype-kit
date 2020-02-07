@@ -32,9 +32,7 @@
       There is 1 mismatch
     </h2>
     <div class="nhsuk-error-summary__body">
-      <p>
-        Choose a record from system details to resolve the mismatch
-      </p>
+      
       <ul class="nhsuk-list nhsuk-error-summary__list">
         <li>
           <a href="#example-error-1">Address does not match</a>
@@ -89,6 +87,14 @@
                   <td class="nhsuk-table__cell multiple-choice--hod" style="border-bottom: none;">
                    
                   </td>
+                  <td class="nhsuk-table__cell multiple-choice--hod" style="border-bottom: none;">
+                    <div class="nhsuk-checkboxes__item">
+                      <input type="checkbox" class="nhsuk-checkboxes__input jsCheckbox" id="radio-1">
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="radio-1">
+                        &nbsp;
+                      </label>
+                    </div>
+                  </td>
                 </tr>
         
            
@@ -106,49 +112,56 @@
 
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-one-half">
-      <div class="nhsuk-form-group">
-        <label class="nhsuk-label" for="example">
-          Comments
-        </label>
-        <span class="nhsuk-hint" id="example-hint">
-          Enter a reason for choosing the match
-        </span>
-        <textarea class="nhsuk-textarea" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
-      </div>
       
+        <div class="nhsuk-form-group">
 
-      <div class="nhsuk-form-group">
-
-        <fieldset class="nhsuk-fieldset">
-          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-            <h1 class="nhsuk-fieldset__heading nhsuk-heading-s">
-              Tell us how you want to resolve this mismatch
-            </h1>
-          </legend>
-      
-          <div class="nhsuk-radios">
-            <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
-              <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-                Confirm 
-              </label>
-            </div>
-            <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-                <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                  Send results to GP
-                </label>
+            <fieldset class="nhsuk-fieldset">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                <h1 class="nhsuk-fieldset__heading nhsuk-heading-s">
+                  Tell us how you want to resolve this mismatch
+                </h1>
+              </legend>
+          
+              <div class="nhsuk-radios">
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+                  <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                    Use selected system details
+                  </label>
+                </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
+                    <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                      Use lab details 
+                    </label>
+                  </div>
+                <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
+                    <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                      Send results to GP
+                    </label>
+                  </div>
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
+                  <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                    Reject results
+                  </label>
+                </div>
               </div>
-            <div class="nhsuk-radios__item">
-              <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-              <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                Reject 
-              </label>
-            </div>
+            </fieldset>
+            <br>
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="example">
+                  Comments
+                </label>
+                <span class="nhsuk-hint" id="example-hint">
+                  Enter a reason for choosing this option
+                </span>
+                <textarea class="nhsuk-textarea" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
+              </div>
+              
           </div>
-        </fieldset>
-      
-      </div>
+          
       <a class="nhsuk-button nhsuk-button--ers" href="worklists-completed">Submit</a>
       
 
