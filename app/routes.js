@@ -9,10 +9,10 @@ router.post('/patient/change-due-date/change', function (req, res) {
   var reason = req.session.data['reason']
 console.log(reason);
   // Check whether the variable matches a condition
-  if ((reason == "No cervix") || (reason == "Patient choice")
+  if ((reason == "No cervix") || (reason == "Cease - Patient choice")
    || (reason == "Mental capacity act") || (reason == "Receiving radiotherapy")
    || (reason == "Aged over 65") || (reason == "Patient choice")
-  || (reason == "Other reason")){
+  || (reason == "Cease - Other reason")){
 
     // Send user to next page
     res.redirect('/v5/patient/change-due-date/enter-reason-check-cease')

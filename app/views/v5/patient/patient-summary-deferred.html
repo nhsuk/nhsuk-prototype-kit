@@ -56,7 +56,7 @@
           Next test due date
         </dt>
         <dd class="nhsuk-summary-list__value">
-        20-July-2020
+          {{ data['ntdd'] or '20-July-2020' }}
         </dd>
         <dd class="nhsuk-summary-list__actions">
           {% if data.role == 'csas' %}

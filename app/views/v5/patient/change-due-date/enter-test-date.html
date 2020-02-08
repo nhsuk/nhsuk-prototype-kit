@@ -5,6 +5,39 @@
   <script type="text/javascript" src="/js/auto.js"></script>
   <script type="text/javascript" src="/js/action-menu.js"></script>
   <script type="text/javascript" src="/js/sort.js"></script>
+
+  <script>
+  window.onload = function(e){ 
+
+    var tempNTDD = new Date(Date.now());
+    tempNTDD.setMonth(12);
+    document.getElementById('day').value = ("0" + tempNTDD.getDate()).slice(-2);
+    document.getElementById('month').value = ("0" + (tempNTDD.getMonth()+1)).slice(-2);
+    document.getElementById('year').value = tempNTDD.getFullYear();
+
+    document.getElementById('ntdd').value = ("0" + tempNTDD.getDate()).slice(-2) + " " + ("0" + (tempNTDD.getMonth()+1)).slice(-2) + " " + tempNTDD.getFullYear()
+
+
+    var element = document.getElementsByName('change-due-date');
+
+    for (i = 0; i < element.length; i++) {
+ 
+      element[i].addEventListener('change', function(e) {
+
+        var ntdd = new Date(Date.now());
+        ntdd.setMonth(e.target.value);
+
+        document.getElementById('day').value = ("0" + ntdd.getDate()).slice(-2);
+        document.getElementById('month').value = ("0" + (ntdd.getMonth()+1)).slice(-2);
+        document.getElementById('year').value = ntdd.getFullYear();
+
+        document.getElementById('ntdd').value = ("0" + ntdd.getDate()).slice(-2) + " " + ("0" + (ntdd.getMonth()+1)).slice(-2) + " " + ntdd.getFullYear();
+
+
+      })
+    }
+}
+  </script>
 {% endblock %}
 {% block pageTitle %}
   NHS Cervical Screening
@@ -49,15 +82,16 @@
       "classes": "nhsuk-radios--inline",
       "items": [
         {
-          "value": "6 months",
+          "value": "6",
           "text": "6 months"
         },
         {
-          "value": "12 months",
-          "text": "12 months"
+          "value": "12",
+          "text": "12 months",
+          "checked": "checked"
         },
         {
-          "value": "18 months",
+          "value": "18",
           "text": "18 months"
         }
       ]
@@ -86,14 +120,14 @@
                                   <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
                                     Day
                                   </label>
-                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="dob-day" name="dob-day" type="number" pattern="[0-9]*" value="09" required="">                                </div>
+                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="day" name="day" type="number" pattern="[0-9]*" value="09" required="">                                </div>
                               </div>
                               <div class="nhsuk-date-input__item">
                                 <div class="nhsuk-form-group">
                                   <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
                                     Month
                                   </label>
-                                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="test-date" type="number" pattern="[0-9]*" value="04">
+                                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="month" type="number" pattern="[0-9]*" value="04">
                                 </div>
                               </div>
                               <div class="nhsuk-date-input__item">
@@ -105,6 +139,7 @@
                                 </div>
                               </div>
                             </div>
+                            <input type="hidden" id="ntdd" name="ntdd" value="">
                           </fieldset>
                         </div>
 
@@ -117,10 +152,6 @@
                   "classes":"nhsuk-button--ers"
                 }) }}
             </form>
-            <p>session data</p>
-  {% for key, value in data %}
-    {{ key }} : {{ value }} <br>
-  {% endfor %}
 
   </div>
 </div>
