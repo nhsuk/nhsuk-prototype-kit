@@ -1,5 +1,11 @@
 # NHS.UK prototype kit Changelog
 
+## 3.0.7 - 10th February 2020
+
+:new: **New features**
+
+- Add phase banner and tag components
+
 ## 3.0.6 - 7th November 2019
 
 :wrench: **Fixes**
