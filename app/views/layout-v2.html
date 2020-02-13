@@ -1,6 +1,6 @@
-<!-- 
+<!--
   This is the main layout where you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
@@ -52,18 +52,26 @@
   {% endfor %}
 #}
 
-  {{ footer({
-    "links": [
-      {
-        "URL": "/",
-        "label": "Home"
-      },
-      {
-        "URL": "/page-example",
-        "label": "Example page"
-      }
-    ]
-  })}}
+{{ footer({
+  "links": [
+    {
+      "URL": "/",
+      "label": "About cervical screening"
+    },
+    {
+      "URL": "/",
+      "label": "Accessibility statement"
+    },
+    {
+      "URL": "/",
+      "label": "Cookie policy"
+    },
+    {
+      "URL": "/",
+      "label": "Terms and conditions"
+    }
+  ]
+})}}
 {% endblock %}
 
 {% block bodyEnd %}
