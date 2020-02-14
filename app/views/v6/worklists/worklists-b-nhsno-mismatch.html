@@ -1,0 +1,208 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+  {{ backLink({
+    "href": "worklists-b-result",
+    "text": "Back to Results"
+  }) }}
+  <h1 class="nhsuk-heading-l">Result Mismatch</h1>
+
+  <ul class="nhsuk-list nhsuk-list--tick">
+    <li style="font-size: 19px; border: none; ">
+      <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"></path>
+      <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"></path>
+      </svg>
+      </svg>
+      <strong>NHS No:</strong> N/A
+    </li> 
+    <li style="font-size: 19px; border: none; ">
+      <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+      </svg>
+      <strong>DOB:</strong> 01 01 1970
+    </li>
+    <li style="font-size: 19px; border: none; ">
+      <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+      </svg>
+      <strong>Name:</strong> Jane Smith
+    </li>
+    <li style="font-size: 19px; border: none; ">
+      <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+      </svg>
+      <strong>Address:</strong> 20 Thornhill Street, Pudsey
+    </li>
+    <li style="font-size: 19px; border: none; ">
+      <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+      </svg>
+      <strong>Postcode: </strong> LS28 7ED
+    </li>
+  </ul>
+
+  <h2>Resolve Mismatch - NHS No</h2>
+  <p>There are 5 matches available, the first one is the closest match.</p>
+
+  <div class="nhsuk-table-responsive">
+                  <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable">
+
+                    <!-- TABLE START -->
+                    <thead class="nhsuk-table__head">
+                      <tr class="nhsuk-table__row">
+                        <th class="nhsuk-table_header"></th>
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">Match</button>
+                        </th>
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">NHS No</button>
+                        </th>
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">Details</button>
+                        </th>
+                        
+                       
+                      </tr>
+                    </thead>
+
+
+                    <tbody class="nhsuk-table__body">
+
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <div class="nhsuk-checkboxes__item">
+                            <input type="checkbox" class="nhsuk-checkboxes__input jsCheckbox" id="radio-1">
+                            <label class="nhsuk-label nhsuk-checkboxes__label" for="radio-1">
+                              &nbsp;
+                            </label>
+                          </div>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          98%
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          123 456 7890
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          <strong>Name:</strong> Jane <mark>Louise</mark> Smith <strong>DOB:</strong> 01 01 1970
+                          <br>
+                          <strong>Address:</strong> 20 Thornhill Street, Pudsey <strong>PostCode:</strong> LS28 7ED
+                        </td>
+                      </tr>
+
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <div class="nhsuk-checkboxes__item">
+                            <input type="checkbox" class="nhsuk-checkboxes__input jsCheckbox" id="radio-1">
+                            <label class="nhsuk-label nhsuk-checkboxes__label" for="radio-1">
+                              &nbsp;
+                            </label>
+                          </div>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          80%
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          234 567 8901
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          <strong>Name:</strong> Jane Smith <strong>DOB:</strong> <mark>10</mark> 01 1970
+                          <br>
+                          <strong>Address:</strong> 1 High Street, Pudsey <strong>PostCode:</strong> LS28 <mark>5RD</mark>
+                        </td>
+                      </tr>
+
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <div class="nhsuk-checkboxes__item">
+                            <input type="checkbox" class="nhsuk-checkboxes__input jsCheckbox" id="radio-1">
+                            <label class="nhsuk-label nhsuk-checkboxes__label" for="radio-1">
+                              &nbsp;
+                            </label>
+                          </div>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          75%
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          345 678 9012
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          <strong>Name:</strong> Janet</mark> Smith <strong>DOB:</strong> 01 01 <mark>1971</mark>
+                          <br>
+                          <strong>Address:</strong> <mark>15 Wood Close</mark>, Pudsey <strong>PostCode:</strong> LS28 <mark>8EG</mark>
+                        </td>
+                      </tr>
+
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <div class="nhsuk-checkboxes__item">
+                            <input type="checkbox" class="nhsuk-checkboxes__input jsCheckbox" id="radio-1">
+                            <label class="nhsuk-label nhsuk-checkboxes__label" for="radio-1">
+                              &nbsp;
+                            </label>
+                          </div>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          60%
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          456 789 0123
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          <strong>Name:</strong> Jane Smith <strong>DOB:</strong> <mark>05 10 1985</mark>
+                          <br>
+                          <strong>Address:</strong> <mark>10 Lane End Road</mark>, Pudsey <strong>PostCode:</strong> LS28 <mark>3RG</mark>
+                        </td>
+                      </tr>
+
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <div class="nhsuk-checkboxes__item">
+                            <input type="checkbox" class="nhsuk-checkboxes__input jsCheckbox" id="radio-1">
+                            <label class="nhsuk-label nhsuk-checkboxes__label" for="radio-1">
+                              &nbsp;
+                            </label>
+                          </div>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          55%
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          567 890 1234
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          <strong>Name:</strong> Jane Smith <strong>DOB:</strong> 01 <mark>04</mark> 1970
+                          <br>
+                          <strong>Address:</strong> 20 Thornhill Street, <mark>Horsforth</mark> <strong>PostCode:</strong> <mark>LS17 5RD</mark>
+                        </td>
+                      </tr>
+
+
+                    </tbody>
+                  </table>
+                 
+  </div>
+
+  <a href="worklists-result-address" class="nhsuk-button nhsuk-button--ers">Confirm match</a>
+  <p><a class="nhsuk-button nhsuk-button--ers_secondary" href="worklists-b-result">Reject mismatch</a></p>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,165 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+  <h1 class="nhsuk-heading-l">Results</h1>
+  <h2 class="nhsuk-heading-m"></h2>
+  <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-0">
+    <span class="nhsuk-u-visually-hidden">Gateshead mismatches completed</span>
+    <h3 class="nhsuk-heading-s">All mismatches resolved for Gateshead</h3>
+  </div>
+   <div class="nhsuk-table-responsive">
+                  <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable">
+
+                    <!-- TABLE START -->
+                    <thead class="nhsuk-table__head">
+                      <tr class="nhsuk-table__row">
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">Labs</button>
+                        </th>
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">Date</button>
+                        </th>
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">No of Results</button>
+                        </th>
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">No of Mismatches</button>
+                        </th>
+                        <th class="nhsuk-table_header"></th>
+                       
+                      </tr>
+                      
+                    </thead>
+                      <tbody class="nhsuk-table__body">
+
+                      <tr class="nhsuk-table__row">
+                        <td class="nhsuk-table__cell">
+                          <strong>Gateshead</strong>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          06 02 2020
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          991
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          34
+                        </td>
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <p>Done</p>
+                        </td>
+                      </tr>
+                                    <tr class="nhsuk-table__row">
+                                    <td class="nhsuk-table__cell">
+                                      <strong>Manchester</strong>
+                                    </td>
+                                    <td class="nhsuk-table__cell">
+                                      06 02 2020
+                                    </td>
+                                    <td class="nhsuk-table__cell">
+                                      678
+                                    </td>
+                                    <td class="nhsuk-table__cell">
+                                      20
+                                    </td>
+                                    <td class="nhsuk-table__cell multiple-choice--hod">
+                                      <a class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-bottom-0" href="#">Resolve</a>
+                                    </td>
+                                  </tr>
+                                              <tr class="nhsuk-table__row">
+                                                <td class="nhsuk-table__cell">
+                                                  <strong>Derby</strong>
+                                                </td>
+                                                <td class="nhsuk-table__cell">
+                                                  06 02 2020
+                                                </td>
+                                                <td class="nhsuk-table__cell">
+                                                  789
+                                                </td>
+                                                <td class="nhsuk-table__cell">
+                                                  12
+                                                </td>
+                                                <td class="nhsuk-table__cell multiple-choice--hod">
+                                                  <a class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-bottom-0" href="#">Resolve</a>
+                                                </td>
+                                              </tr>
+                                                          <tr class="nhsuk-table__row">
+                                                      <td class="nhsuk-table__cell">
+                                                        <strong>Bristol</strong>
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        06 02 2020
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        652
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        23
+                                                      </td>
+                                                      <td class="nhsuk-table__cell multiple-choice--hod">
+                                                        <a class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-bottom-0" href="#">Resolve</a>
+                                                      </td>
+                                                    </tr>
+                                                          <tr class="nhsuk-table__row">
+                                                            <td class="nhsuk-table__cell">
+                                                              <strong>Wolverhampton</strong>
+                                                            </td>
+                                                            <td class="nhsuk-table__cell">
+                                                              06 02 2020
+                                                            </td>
+                                                            <td class="nhsuk-table__cell">
+                                                            710
+                                                            </td>
+                                                            <td class="nhsuk-table__cell">
+                                                              10
+                                                            </td>
+                                                            <td class="nhsuk-table__cell multiple-choice--hod">
+                                                              <p>Done</p>
+                                                            </td>
+                                                          </tr>
+                                                                  <tr class="nhsuk-table__row">
+                                                                <td class="nhsuk-table__cell">
+                                                                  <strong>London</strong>
+                                                                </td>
+                                                                <td class="nhsuk-table__cell">
+                                                                  06 02 2020
+                                                                </td>
+                                                                <td class="nhsuk-table__cell">
+                                                                809
+                                                                </td>
+                                                                <td class="nhsuk-table__cell">
+                                                                  5
+                                                                </td>
+                                                                <td class="nhsuk-table__cell multiple-choice--hod">
+                                                                  <p>Done</p>
+                                                                </td>
+                                                              </tr>
+                                                                           
+                      </tbody>
+                    </table>
+                    </div>
+
+                    <p style="text-align: center;"><a class="nhsuk-button nhsuk-button--ers_reverse">Load more</a></p>
+                    
+
+
+  </div>
+  </div>
+{% endblock %}

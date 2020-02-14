@@ -1,0 +1,159 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+  <script type="text/javascript" src="/js/action-menu.js"></script>
+  <script type="text/javascript" src="/js/sort.js"></script>
+
+  <script>
+  window.onload = function(e){ 
+
+    var tempNTDD = new Date(Date.now());
+    tempNTDD.setMonth(12);
+    document.getElementById('day').value = ("0" + tempNTDD.getDate()).slice(-2);
+    document.getElementById('month').value = ("0" + (tempNTDD.getMonth()+1)).slice(-2);
+    document.getElementById('year').value = tempNTDD.getFullYear();
+
+    document.getElementById('ntdd').value = ("0" + tempNTDD.getDate()).slice(-2) + " " + ("0" + (tempNTDD.getMonth()+1)).slice(-2) + " " + tempNTDD.getFullYear()
+
+
+    var element = document.getElementsByName('change-due-date');
+
+    for (i = 0; i < element.length; i++) {
+ 
+      element[i].addEventListener('change', function(e) {
+
+        var ntdd = new Date(Date.now());
+        ntdd.setMonth(e.target.value);
+
+        document.getElementById('day').value = ("0" + ntdd.getDate()).slice(-2);
+        document.getElementById('month').value = ("0" + (ntdd.getMonth()+1)).slice(-2);
+        document.getElementById('year').value = ntdd.getFullYear();
+
+        document.getElementById('ntdd').value = ("0" + ntdd.getDate()).slice(-2) + " " + ("0" + (ntdd.getMonth()+1)).slice(-2) + " " + ntdd.getFullYear();
+
+
+      })
+    }
+}
+  </script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "true"
+  })
+}}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+  {{ backLink({
+    "href": "enter-reason",
+    "text": "Go back to enter a reason"
+  }) }}
+
+
+
+  <form action="enter-reason-check-defer" method="post">
+
+    {% call fieldset({
+      legend: {
+        text: "Add projected next test date",
+        classes: "nhsuk-fieldset__legend--l",
+        isPageHeading: true
+      }
+    }) %}
+
+    {{ radios({
+      "idPrefix": "change-due-date",
+      "name": "change-due-date",
+      "classes": "nhsuk-radios--inline",
+      "items": [
+        {
+          "value": "6",
+          "text": "6 months"
+        },
+        {
+          "value": "12",
+          "text": "12 months",
+          "checked": "checked"
+        },
+        {
+          "value": "18",
+          "text": "18 months"
+        }
+      ]
+    }) }}
+
+    {% endcall %}
+
+
+
+
+
+
+
+                    <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
+                        <div class="nhsuk-form-group">
+                          <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
+                            <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+                              Test date
+                            </legend>
+                            <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
+                              You must enter a date
+                            </span>
+                            <div class="nhsuk-date-input" id="dob-from">
+                              <div class="nhsuk-date-input__item">
+                                <div class="nhsuk-form-group">
+                                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
+                                    Day
+                                  </label>
+                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="day" name="day" type="number" pattern="[0-9]*" value="09" required="">                                </div>
+                              </div>
+                              <div class="nhsuk-date-input__item">
+                                <div class="nhsuk-form-group">
+                                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
+                                    Month
+                                  </label>
+                                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="month" type="number" pattern="[0-9]*" value="04">
+                                </div>
+                              </div>
+                              <div class="nhsuk-date-input__item">
+                                <div class="nhsuk-form-group">
+                                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
+                                    Year
+                                  </label>
+                                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="year" type="number" pattern="[0-9]*" value="2020">
+                                </div>
+                              </div>
+                            </div>
+                            <input type="hidden" id="ntdd" name="ntdd" value="">
+                          </fieldset>
+                        </div>
+
+                      </div>
+
+
+
+                {{ button({
+                  "text": "Continue",
+                  "classes":"nhsuk-button--ers"
+                }) }}
+            </form>
+
+  </div>
+</div>
+
+{% endblock %}

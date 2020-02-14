@@ -1,0 +1,102 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+  <script type="text/javascript" src="/js/action-menu.js"></script>
+  <script type="text/javascript" src="/js/sort.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "true"
+  })
+}}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+  {{ backLink({
+    "href": "enter-reason",
+    "text": "Go back to enter a reason"
+  }) }}
+
+            <form action="../patient-summary-ceased" method="post">
+              <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                  <h1 class="nhsuk-fieldset__heading">
+                    Check your changes
+                  </h1>
+                </legend>
+
+                <dl class="nhsuk-summary-list">
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                    Reason
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['reason'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"> name</span>
+                      </a>
+                    </dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                  CRM number
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['crm'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"> name</span>
+                      </a>
+                    </dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                    Details
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['details'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"> contact preference</span>
+                      </a>
+                    </dd>
+                  </div>
+
+
+
+                </dl>
+
+
+
+
+
+
+
+              </fieldset>
+              <button class="nhsuk-button--ers"> Continue</button>
+            </form>
+
+  </div>
+</div>
+
+{% endblock %}

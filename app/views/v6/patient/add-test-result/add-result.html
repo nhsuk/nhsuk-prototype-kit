@@ -1,0 +1,256 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+  <script type="text/javascript" src="/js/action-menu.js"></script>
+  <script type="text/javascript" src="/js/sort.js"></script>
+
+  <script>
+function customSuggest (query, syncResults) {
+          var results = [
+  { code: 'X0A', result: 'No cytology result, HPV negative, routine recall', recall: '36/60', allowableRecall: 'none' },
+  { code: 'X0R', result: 'No cytology result, HPV negative, early recall –12 or 36 months', recall: '36', allowableRecall: '12' },
+  { code: 'X0S', result: 'No cytology result, HPV negative, refer colposcopy', recall: '12', allowableRecall: 'none' },
+  { code: 'XUR', result: 'No cytology result, HPV not available, early recall –3 months', recall: '3', allowableRecall: 'none' },
+  { code: 'XUS', result: 'No cytology result, HPV not available, refer colposcopy', recall: '12', allowableRecall: 'none' },
+  { code: 'X9S', result: 'No cytology result, HPV positive, refer colposcopy', recall: '12', allowableRecall: 'none' },
+  { code: '19R', result: 'Inadequate cytology, HPV positive, early recall –3 months', recall: '12', allowableRecall: 'none' },
+  { code: '19S', result: 'Inadequate cytology, HPV positive, refer colposcopy', recall: '12', allowableRecall: 'none' },
+  { code: '39S', result: 'Low grade dyskaryosis, HPV positive, refer for colposcopy', recall: '12', allowableRecall: 'none' },
+  { code: '49S', result: 'High-grade dyskaryosis (severe), HPV positive, refer colposcopy', recall: '12', allowableRecall: 'none' },
+  { code: '59S', result: 'High-grade dyskaryosis invasive squamous carcinoma, HPV positive, refer colposcopy', recall: '12', allowableRecall: 'none' },
+  { code: '69S', result: 'Glandular neoplasia of endocervical type, HPV positive, refer colposcopy', recall: '12', allowableRecall: 'none' },
+  { code: '79S', result: 'High-grade dyskaryosis (moderate), HPV positive, refer colposcopy', recall: '12', allowableRecall: 'none' },
+  { code: '89S', result: 'Borderline squamous, HPV positive, refer colposcopy', recall: '12', allowableRecall: 'none' },
+  { code: '99S', result: 'Borderline endocervical, HPV positive, refer colposcopy', recall: '12', allowableRecall: 'none' },
+  { code: '09R', result: 'Glandular neoplasia (non-cervical), HPV positive, early recall –12 or 36 months', recall: '12', allowableRecall: '36' },
+  { code: '29R', result: 'Normal cytology, HPV positive, early recall –12 or 36 months', recall: '12', allowableRecall: '36' },
+  { code: '09S', result: 'Glandular neoplasia (non-cervical), HPV positive, refer colposcopy', recall: '12', allowableRecall: 'none' },
+  { code: '29S', result: 'Normal cytology, HPV positive, refer colposcopy', recall: '12', allowableRecall: 'none' }
+]
+        syncResults(query
+          ? results.filter(function (result) {
+              var resultContains = result.code.toLowerCase().indexOf(query.toLowerCase()) !== -1
+              var endonymContains = result.result.toLowerCase().indexOf(query.toLowerCase()) !== -1
+              return resultContains || endonymContains
+            })
+          : []
+        )
+      }
+
+      function inputValueTemplate (result) {
+        return result && result.result + '-' + result.code
+      }
+
+      function suggestionTemplate (result) {
+        return result && '<strong>' + result.result + '</strong>' +
+          ' (' + result.code + '</span>)'
+      }
+
+      element = document.querySelector('#my-autocomplete-container')
+      id = 'autocomplete-customTemplates'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: 'result',
+        source: customSuggest,
+        templates: {
+          inputValue: inputValueTemplate,
+          suggestion: suggestionTemplate
+        }
+      })
+    
+
+</script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "true"
+  })
+}}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+  {{ backLink({
+    "href": "../patient-summary",
+    "text": "Go back to patient summary"
+  }) }}
+
+              <form action="add-result-check" method="post" class="form">
+              <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                  <h1 class="nhsuk-fieldset__heading">
+                    Add a test result
+                  </h1>
+                </legend>
+
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-label__strong" for="slidenumber">
+                  Slide number
+                  </label>
+                  <input class="nhsuk-input nhsuk-input--width-20" id="slide-number" name="slide-number" type="number" value="{{ data['slide-number'] }}">
+                </div>
+
+                <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
+                  <div class="nhsuk-form-group">
+                    <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
+                      <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+                        Test date
+                      </legend>
+                      <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
+                        You must enter a date
+                      </span>
+                      <div class="nhsuk-date-input" id="dob-from">
+                        <div class="nhsuk-date-input__item">
+                          <div class="nhsuk-form-group">
+                            <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
+                              Day
+                            </label>
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="day" name="day" type="number" pattern="[0-9]*" value="{{ data['day'] }}">
+                          </div>
+                        </div>
+                        <div class="nhsuk-date-input__item">
+                          <div class="nhsuk-form-group">
+                            <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
+                              Month
+                            </label>
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="month" type="number" pattern="[0-9]*" value="{{ data['month'] }}">
+                          </div>
+                        </div>
+                        <div class="nhsuk-date-input__item">
+                          <div class="nhsuk-form-group">
+                            <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
+                              Year
+                            </label>
+                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="year" type="number" pattern="[0-9]*" value="{{ data['year'] }}">
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+
+                </div>
+
+                  <div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset">
+      <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+        Test  type
+    </legend>
+
+    <div class="nhsuk-radios nhsuk-radios--inline">
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="scottish" name="test-type" type="radio" value="NHS" {{ checked("test-type", "NHS") }}>
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+        NHS
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="scottish" name="test-type" type="radio" value="Scottish" {{ checked("test-type", "Scottish") }}>
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+        Scottish
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="private" name="test-type" type="radio" value="Welsh" {{ checked("test-type", "Welsh") }}>
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+        Welsh
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="vault-smear" name="test-type" type="radio" value="Vault smear"{{ checked("test-type", "Vault smear") }}>
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+        Vault smear
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="vault-smear" name="test-type" type="radio" value="Private"{{ checked("test-type", "Private") }}>
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+        Private
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="vault-smear" name="test-type" type="radio" value="Abroad"{{ checked("test-type", "Abroad") }}>
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+        Abroad
+        </label>
+      </div>
+      
+    </div>
+  </fieldset>
+
+</div>
+<div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
+  <div class="nhsuk-form-group">
+    <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
+      <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+        Outcome
+      </legend>
+
+
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-date-input__label" for="codecomplete">
+              <span id="" class="nhsuk-hint" style="">
+                Enter codes or full description
+              </span>  
+            <div id="my-autocomplete-container" class="codecomplete"></div>
+          </div>
+    </fieldset>
+  </div>
+
+</div>
+
+
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-label__strong" for="sender">
+              Sender
+              </label>
+              <input class="nhsuk-input nhsuk-input--width-20" id="sample-taker" name="sample-taker" type="text" value="{{ data['sample-taker'] }}">
+            </div>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-label__strong" for="source">
+              Source at  the moment
+              <span id="" class="nhsuk-hint" style="">
+                For example  G, X, P
+              </span>  </label>
+              <input class="nhsuk-input nhsuk-input--width-20" id="source" name="source" type="text" value="{{ data['source'] }}">
+            </div>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-label__strong" for="nationalcode">
+              National code
+              </label>
+              <input class="nhsuk-input nhsuk-input--width-20" id="nat-code" name="nat-code" type="text" value="{{ data['nat-code'] }}">
+            </div>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-label__strong" for="casenumber">
+              CRM case number
+              </label>
+              <input class="nhsuk-input nhsuk-input--width-20" id="case-number" name="case-number" type="number" value="{{ data['case-number'] }}">
+            </div>
+
+          </fieldset>
+          <button class="nhsuk-button--ers">Continue</button>
+        </form>
+
+  </div>
+</div>
+{% endblock %}

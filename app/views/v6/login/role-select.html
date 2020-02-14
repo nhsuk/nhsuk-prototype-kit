@@ -1,0 +1,66 @@
+{% extends 'layout-v2.html' %}
+
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+{% block content %}
+             
+<form action="/v6/login/role-select" method="post">
+
+                {% call fieldset({
+                  legend: {
+                    text: "Choose a role to login with",
+                    classes: "nhsuk-fieldset__legend--l",
+                    isPageHeading: true
+                  }
+                }) %}
+
+                {{ radios({
+                  "idPrefix": "role",
+                  "name": "role",
+                  "items": [
+                    {
+                      "value": "sampleTaker",
+                      "text": "Sample taker"
+                    },
+                    {
+                      "value": "gpAdmin",
+                      "text": "GP admin"
+                    },
+                    {
+                      "value": "colposcopy",
+                      "text": "Colposcopy"
+                    },
+                    {
+                      "value": "lab",
+                      "text": "Laboratory technician"
+                    },
+                    {
+                      "value": "csas",
+                      "text": "CSAS Lablinks"
+                    },
+                    {
+                      "value": "csas",
+                      "text": "CSAS Comms"
+                    },
+                    {
+                      "value": "csas",
+                      "text": "CSAS QA"
+                    },
+                    {
+                      "value": "csas",
+                      "text": "CSAS Call Recall"
+                    }
+                  ]
+                }) }}
+
+                {% endcall %}
+
+                {{ button({
+                  "text": "Continue"
+                }) }}
+
+              </form>
+
+{% endblock %}
