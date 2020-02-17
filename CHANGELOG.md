@@ -1,5 +1,11 @@
 # NHS.UK prototype kit Changelog
 
+## 3.0.8 - 17th February 2020
+
+:wrench: **Fixes**
+
+- Use the latest version of the NHS.UK frontend library (3.0.3)
+
 ## 3.0.7 - 10th February 2020
 
 :new: **New features**
