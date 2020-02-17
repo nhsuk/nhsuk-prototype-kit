@@ -5,6 +5,7 @@
 :wrench: **Fixes**
 
 - Use the latest version of the NHS.UK frontend library (3.0.3)
+- Update package dependencies to latest versions
 
 ## 3.0.7 - 10th February 2020
 
