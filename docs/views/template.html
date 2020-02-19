@@ -35,7 +35,10 @@
 {% from 'select/macro.njk' import select %}
 {% from 'summary-list/macro.njk' import summaryList %}
 {% from 'textarea/macro.njk' import textarea %}
-    
+{% macro conditionalRadios(params) %}
+ {% include "./macros/conditional-radios/template.njk" %}
+{% endmacro %}
+
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="ie8" lang="en"><![endif]--><!--[if IE 9]><html class="ie9" lang="en"><![endif]--><!--[if gt IE 9]><!--><html lang="en" style="{{ html_style }}"><!--<![endif]-->
   <head>
@@ -93,7 +96,7 @@
 
       {% block beforeContent %}{% endblock %}
 
-      {% block main %} 
+      {% block main %}
         <div class="nhsuk-width-container {{ containerClasses }}">
           <main class="nhsuk-main-wrapper {{ mainClasses }}" id="maincontent" role="main">
             {% block loggedIn %}
@@ -107,7 +110,7 @@
         {{ footer({
           "showLogo": "false"
         })}}
-     
+
       {% endblock %}
 
     {% block bodyEnd %}{% endblock %}
