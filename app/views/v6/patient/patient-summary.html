@@ -43,7 +43,7 @@
 {% endif %}
 
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
-  <div class="nhsuk-grid-column-one-half">
+  <div class="nhsuk-grid-column-three-quarters">
     <h1 class="nhsuk-heading-l">Patient summary</h1>
     <span class="nhsuk-tag__highlight nhsuk-tag-large nhsuk-u-margin-bottom-2">{{ data['status'] or 'RECALL IN 3 MONTHS' }}</span>
     <dl class="nhsuk-summary-list nhsuk-u-margin-top-4">
@@ -53,12 +53,12 @@
         </dt>
         <dd class="nhsuk-summary-list__value">
           {{ data['ntdd'] or '20-Jan-2020' }}
-        </dd>  
-        <dd class="nhsuk-summary-list__actions">  
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
           {% if data.role == 'csas' %}
-            <a class="nhsuk-button nhsuk-button--ers" href="change-due-date/enter-reason">Change date</a> 
+            <a class="nhsuk-button nhsuk-button--ers" href="change-due-date/enter-reason">Change date</a>
           {% endif %}
-        </dd>  
+        </dd>
       </div>
       {% if data.role == 'sampleTaker' %}
         <div class="nhsuk-summary-list__row">
@@ -67,14 +67,14 @@
           </dt>
           <dd class="nhsuk-summary-list__value">
             09-Nov-2019
-          </dd>  
+          </dd>
           <dd class="nhsuk-summary-list__actions">
-          </dd>   
+          </dd>
         </div>
       {% endif %}
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
-            Address: 
+            Address:
         </dt>
         <dd class="nhsuk-summary-list__value">
             {{ data['address'] or '20 Thornhill Street, Pudsey, LS15 6FD' }}
@@ -85,7 +85,7 @@
                 <span class="nhsuk-tag__warning">FP69</span>
               {% endif %}
             </a>
-        </dd>   
+        </dd>
       </div>
     </dl>
     {% if data.role != 'sampleTaker' %}
@@ -116,11 +116,11 @@
       </table>"
       }) }}
     {% endif %}
-    
+
     {% if data.role == 'sampleTaker' %}
 
     {% include '../components/hmr101.html' %}
-    
+
     {% endif %}
   </div>
 </div>
@@ -130,7 +130,7 @@
     <h2 id="testresults" class="nhsuk-heading-l">Test results</h2>
 
     {% if data.role == 'csas' %}
-    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="add-test-result/add-result">Add result</a>  
+    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="add-test-result/add-result">Add result</a>
     {% endif %}
 
     <div class="nhsuk-scrollable-pane">
@@ -223,7 +223,7 @@
           </div>
         </div>
       </div>
-    
+
     </div>
 
     <h2 id="testresults" class="nhsuk-heading-l">HPV Vaccinations</h2>
@@ -257,7 +257,7 @@
                   <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
                   <button onclick="sortTable()" type="button" data-index="0">Given by</button>
                   </th>
-                  
+
                   {% if data.role == 'csas' %}
                   <th class="nhsuk-table__header" aria-sort="none" scope="col">
                     Action
@@ -273,7 +273,7 @@
                   <td class="nhsuk-table__cell">Gardasil</td>
                   <td class="nhsuk-table__cell">AB12345</td>
                   <td class="nhsuk-table__cell">Alan Davies</td>
-                  
+
                   {% if data.role == 'csas' %}
                   <td class="nhsuk-table__cell"><a href="">Edit</a></td>
                   {% endif %}
@@ -284,7 +284,7 @@
                   <td class="nhsuk-table__cell">Cervarix</td>
                   <td class="nhsuk-table__cell">AHPVTRHF123BB</td>
                   <td class="nhsuk-table__cell">Julie Williams</td>
-                  
+
                   {% if data.role == 'csas' %}
                   <td class="nhsuk-table__cell"><a href="">Edit</a></td>
                   {% endif %}
@@ -294,7 +294,7 @@
                   <td class="nhsuk-table__cell">Cervarix</td>
                   <td class="nhsuk-table__cell">AHPVLHUY123AA</td>
                   <td class="nhsuk-table__cell">Julie Williams</td>
-                  
+
                   {% if data.role == 'csas' %}
                   <td class="nhsuk-table__cell"><a href="">Edit</a></td>
                   {% endif %}
@@ -305,6 +305,6 @@
             </div>
     </div>
   </div>
-</div>              
+</div>
 
 {% endblock %}

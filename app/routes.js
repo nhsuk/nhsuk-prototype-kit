@@ -23,6 +23,8 @@ console.log(reason);
   }
 })
 
+
+// NEXT
 router.post('/v6/patient/change-due-date/change', function (req, res) {
   // Make a variable and give it the value from 'know-nhs-number'
   var reason = req.session.data['reason']
@@ -87,7 +89,7 @@ router.post('/v6/login/role-select', function(req, res) {
   res.redirect('/v6/patient/search/search')
 })
 
-
+// NEXT
 router.post('/v5/change-due-date', function(req, res) {
   if (req.session.data['recall'] == 'defer') {
     res.redirect('/v5/patient/patient-summary-deferred')
@@ -99,7 +101,7 @@ router.post('/v5/change-due-date', function(req, res) {
 
   res.redirect('/v5/patient/patient-summary-deferred')
 })
-
+//NEXT
 router.post('/v6/change-due-date', function(req, res) {
   if (req.session.data['recall'] == 'defer') {
     res.redirect('/v6/patient/patient-summary-deferred')
@@ -112,7 +114,7 @@ router.post('/v6/change-due-date', function(req, res) {
   res.redirect('/v6/patient/patient-summary-deferred')
 })
 
-
+//NEXT
 router.post('/search-v2/', function (req, res) {
     var nhsNumber = req.session.data['searchnhs']
     // 3816158897 - invited

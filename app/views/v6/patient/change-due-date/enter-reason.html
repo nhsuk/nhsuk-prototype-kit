@@ -32,49 +32,150 @@
   }) }}
 
 
+  <form action="/v6/patient/change-due-date/change" method="post" class="form">
 
-              <form action="/v6/patient/change-due-date/change" method="post" class="form">
+    {% set CeaseReasons %}
+    {% include 'radios/macro.njk' %}
+    {{ radios({
+    "idPrefix": "cease",
+    "name": "test",
+    "items": [
+      {
+        "value": "No cervix",
+        "text": "No cervix"
+      },
+      {
+        "value": "Cease - Patient choice",
+        "text": "Patient choice"
+      },
+      {
+        "value": "Mental capacity act",
+        "text": "Mental capacity act"
+      },
+      {
+        "value": "Receiving radiotherapy",
+        "text": "Receiving radiotherapy"
+      },
+      {
+        "value": "Aged over 65",
+        "text": "Aged over 65"
+      },
+      {
+        "value": "other reason",
+        "text": "Other reason"
+      }
+    ]
+    }) }}
 
-                  <fieldset class="nhsuk-fieldset">
-                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                      <h1 class="nhsuk-fieldset__heading">
-                        Choose a reason to change the next test due  date
-                      </h1>
-                    </legend>
+    {% endset %}
+
+    {% set DeferReasons %}
+    {% include 'radios/macro.njk' %}
+    {{ radios({
+    "idPrefix": "defer",
+    "name": "reason",
+    "items": [
+      {
+        "value": "Pregnancy",
+        "text": "Pregnancy"
+      },
+      {
+        "value": "Defer - patient choice",
+        "text": "Patient choice"
+      },
+      {
+        "value": "Undergoing treatment",
+        "text": "Undergoing treatment"
+      },
+      {
+        "value": "Recent test",
+        "text": "Recent test"
+      },
+      {
+        "value": "Under care of colposcopy",
+        "text": "Under care of colposcopy"
+      },
+      {
+        "value": "other reason",
+        "text": "Other reason"
+      }
+    ]
+  }) }}
+  <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
+                          <div class="nhsuk-form-group">
+                            <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
+                              <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+                                Test date
+                              </legend>
+                              <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
+                                You must enter a date
+                              </span>
+                              <div class="nhsuk-date-input" id="dob-from">
+                                <div class="nhsuk-date-input__item">
+                                  <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
+                                      Day
+                                    </label>
+                                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="day" name="day" type="number" pattern="[0-9]*" value="day" required="">                                </div>
+                                </div>
+                                <div class="nhsuk-date-input__item">
+                                  <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
+                                      Month
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="month" type="number" pattern="[0-9]*" value="month">
+                                  </div>
+                                </div>
+                                <div class="nhsuk-date-input__item">
+                                  <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
+                                      Year
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="year" type="number" pattern="[0-9]*" value="">
+                                  </div>
+                                </div>
+                              </div>
+                              <input type="hidden" id="ntdd" name="ntdd" value="19 01 2021">
+                            </fieldset>
+                          </div>
+
+  </div>
+
+{% endset %}
 
 
-                    <div class="nhsuk-form-group">
 
 
-  <label class="nhsuk-label" for="select-1">
-    Choose a reason
-  </label>
 
-  <select class="nhsuk-select" name="reason">
+              {{ conditionalRadios({
+          "idPrefix": "gov",
+          "name": "gov",
+          "fieldset": {
+            "legend": {
+              "text": "Choose a reason to change the next test due date",
+              "isPageHeading": true,
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "items": [
+          {
+            "value": "cease",
+            "text": "Cease",
+            "conditional": {
+            html: CeaseReasons
+            }
+          },
+            {
+              "value": "defer",
+              "text": "Defer",
+              "conditional": {
+              html: DeferReasons
+              }
+            }
 
-      <optgroup label="Cease">
-        <option value="No cervix">No cervix</option>
-        <option value="Cease - Patient choice">Patient choice</option>
-        <option value="Mental capacity act">Mental capacity act</option>
-          <option value="Receiving radiotherapy">Receiving radiotherapy</option>
-          <option value="Aged over 65">Aged over 65</option>
-          <option value="Cease - Other reason">Other reason</option>
 
-      </optgroup>
-
-
-      <optgroup label="Defer" name="Defer">
-        <option value="Pregnancy">Pregnancy</option>
-        <option value="Defer - Patient choice">Patient choice</option>
-        <option value="Undergoing treatment">Undergoing treatment</option>
-        <option value="Recent test">Recent test</option>
-        <option value="Under care of colposcopy">Under care of colposcopy</option>
-        <option value="Other reason">Other reason</option>
-      </optgroup>
-
-  </select>
-</div>
-
+          ]
+        }) }}
 
                 <div class="nhsuk-form-group">
                   <label class="nhsuk-label" for="example">
@@ -98,8 +199,4 @@
             </form>
 
             </div>
-
-
-
-
 {% endblock %}
