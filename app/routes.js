@@ -23,10 +23,11 @@ console.log(reason);
   }
 })
 
+
+// NEXT
 router.post('/v6/patient/change-due-date/change', function (req, res) {
   // Make a variable and give it the value from 'know-nhs-number'
   var reason = req.session.data['reason']
-console.log(reason);
   // Check whether the variable matches a condition
   if ((reason == "No cervix") || (reason == "Cease - Patient choice")
    || (reason == "Mental capacity act") || (reason == "Receiving radiotherapy")
@@ -74,20 +75,16 @@ router.post('/csass/add-test-result/v1/change', function (req, res) {
 })
 
 router.post('/v5/login/role-select', function(req, res) {
-  console.log('select a role');
   var roleSelected = req.session.data['role'];
-  console.log('role: ' + roleSelected);
   res.redirect('/v5/patient/search/search')
 })
 
 router.post('/v6/login/role-select', function(req, res) {
-  console.log('select a role');
   var roleSelected = req.session.data['role'];
-  console.log('role: ' + roleSelected);
   res.redirect('/v6/patient/search/search')
 })
 
-
+// NEXT
 router.post('/v5/change-due-date', function(req, res) {
   if (req.session.data['recall'] == 'defer') {
     res.redirect('/v5/patient/patient-summary-deferred')
@@ -99,7 +96,7 @@ router.post('/v5/change-due-date', function(req, res) {
 
   res.redirect('/v5/patient/patient-summary-deferred')
 })
-
+//NEXT
 router.post('/v6/change-due-date', function(req, res) {
   if (req.session.data['recall'] == 'defer') {
     res.redirect('/v6/patient/patient-summary-deferred')
@@ -112,12 +109,10 @@ router.post('/v6/change-due-date', function(req, res) {
   res.redirect('/v6/patient/patient-summary-deferred')
 })
 
-
+//NEXT
 router.post('/search-v2/', function (req, res) {
     var nhsNumber = req.session.data['searchnhs']
-    // 3816158897 - invited
-    // 6170211547 - routine
-    // 7594384164 - colposcopy
+
     if (nhsNumber == "3816158897") {
         res.redirect('/archive/sample-taker/v2/history')
     }
