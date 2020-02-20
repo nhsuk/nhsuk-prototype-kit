@@ -105,214 +105,244 @@ function customSuggest (query, syncResults) {
   <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
     <div class="nhsuk-grid-column-full nhsuk-u-margin-top-4">
 
-      <h1 class="nhsuk-heading-l">Components</h1>
-
-      <h2 class="nhsuk-heading-m">Action Menu - 
-      <a href="https://github.com/monsterlimo/screening/blob/master/app/assets/sass/components/_action-menu.scss">.SCSS</a> - 
-      <a href="https://github.com/monsterlimo/screening/blob/master/app/assets/javascript/action-menu.js">.JS</a>
-      </h2>
-      <div class="styleguide-example">
-        {% include 'v6/components/hmr101.html' %}
-      </div>
-      <div class="code-snippet">
-      <div class="app-tabs__container">
-        <div class="code-snippet__preformatted" data-index="ex-1">
-          <pre>
-          <code class="">
-          &lt;div class="nhsuk-heading-menu__actions"&gt;
-            &lt;div class="dropdown"&gt;
-              &lt;button onclick="myFunction()" class="dropbtn">Print HMR101
-                &lt;svg class="nhsuk-icon nhsuk-icon__arrow-down nhsuk-icon--ers" viewBox="0 0 150 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"&gt;
-                  &lt;g id="Arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"&gt;
-                    &lt;polygon id="Rectangle" fill="#f1f1f1" fill-rule="nonzero" transform="translate(75.000000, 75.000000) rotate(45.000000) translate(-75.000000, -75.000000) " points="75 75 97 53 97 97 53 97">&lt;/polygon&gt;
-                  &lt;/g&gt;
-                &lt;/svg&gt;
-              &lt;/button&gt;
-            &lt;div id="myDropdown" class="dropdown-content" style="left: 0"&gt;
-              &lt;a href="../patient/hmr101/print">A4 PDF (2009)&lt;/a&gt;
-              &lt;a href="#">A5 PDF (2003)&lt;/a&gt;
-              &lt;a href="#">A4 PDF (2003)&lt;/a&gt;
-              &lt;a href="#">A5 PDF&lt;/a&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-          </code>
-          </pre>
+      <h1 class="nhsuk-heading-s">Components</h1>
+      
+      <div class="nhsuk-inset-text" style="border-left-color: green; max-width: 100%;">
+        <h2 class="nhsuk-heading-l">Sub Navigation - 
+        <a href="https://github.com/monsterlimo/screening/blob/master/app/assets/sass/components/_sub-navigation.scss">.SCSS</a></h2>
+        <span class="nhsuk-tag__highlight nhsuk-tag-large nhsuk-u-margin-bottom-2" style="background-color: green;">
+          <svg class="nhsuk-icon nhsuk-icon__tick" style="stroke: white; vertical-align: middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+          </svg>
+          <span style="vertical-align: middle; font-size: 1.2em">READY</span>
+        </span>
+        <p>Usage: search / patient summary</p>
+        <p>Reference: <a href="https://hmcts-design-system.herokuapp.com/components/sub-navigation">https://hmcts-design-system.herokuapp.com/components/sub-navigation</a></p>
+      
+        <div class="styleguide-example">
+          <nav class="nhsuk-sub-navigation">
+            <ul class="nhsuk-sub-navigation__list">
+              <li class="nhsuk-sub-navigation__item"><a href="patient-summary" class="nhsuk-sub-navigation__link" aria-current="page">Patient Summary</a></li>
+              <li class="nhsuk-sub-navigation__item"><a href="history" class="nhsuk-sub-navigation__link">History</a></li>
+              <li class="nhsuk-sub-navigation__item"><a href="gp-info" class="nhsuk-sub-navigation__link">GP Information</a></li>
+              <li class="nhsuk-sub-navigation__item"><a href="additional-info" class="nhsuk-sub-navigation__link">Additional Information</a></li>
+            </ul>
+          </nav>
         </div>
-      </div>
-          
-      <br>
-
-      <h2 class="nhsuk-heading-m">Patient Banner - 
-      <a href="https://github.com/monsterlimo/screening/blob/master/app/assets/sass/components/_patient-banner.scss">.SCSS</a></h2>
-      <div class="styleguide-example">
-        {% include 'v6/components/patient-banner.html' %}
-      </div>
-      <div class="code-snippet">
-      <div class="app-tabs__container">
-        <div class="code-snippet__preformatted" data-index="ex-1">
-          <pre>
-          <code class="">
-          &lt;nav class="nhsuk-breadcrumb patient-info" aria-label="PatientBanner">
-            &lt;div class="nhsuk-width-container patient-info-container">
-              &lt;ul role="navigation">
-                &lt;li> &lt;span> &lt;strong>NHS No: &lt;/strong> 123 456 7890&lt;/span>&lt;/li>
-                &lt;li> &lt;strong>Patient: &lt;/strong> Smith, Jane (Mrs)&lt;/li>
-                &lt;li>30 years (4 June 1988)&lt;/li>
-                &lt;li> &lt;strong>Address: &lt;/strong> 20 Thornhill Street, Pudsey, LS15 6FD&lt;/li>
-              &lt;/ul>
-              &lt;div class="nhsuk-close">
-                &lt;a href="/v5/patient/search/search">Close
-                &lt;svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  &lt;path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z">&lt;/path>
-                &lt;/svg>
-                &lt;/a>
-              &lt;/div>
-            &lt;/div>
-          &lt;/nav>
-          </code>
-          </pre>
-        </div>
-      </div>
-
-      <br>
-
-      <h2 class="nhsuk-heading-m">Tag - 
-      <a href="https://github.com/monsterlimo/screening/blob/master/app/assets/sass/components/_tags-v2.scss">.SCSS</a></h2>
-      <div class="styleguide-example">
-        <span class="nhsuk-tag__highlight nhsuk-tag-large nhsuk-u-margin-bottom-2">RECALL IN 3 MONTHS</span>
-      </div>
-      <div class="code-snippet">
-      <div class="app-tabs__container">
-        <div class="code-snippet__preformatted" data-index="ex-1">
-          <pre>
-          <code class="">
-            &lt;span class="nhsuk-tag__highlight nhsuk-tag-large nhsuk-u-margin-bottom-2">RECALL IN 3 MONTHS&lt;/span>
-          </code>
-          </pre>
-        </div>
-      </div>
-
-      <br>
-
-      <h2 class="nhsuk-heading-m">Button - 
-      <a href="https://github.com/monsterlimo/screening/blob/master/app/assets/sass/components/_buttons.scss">.SCSS</a></h2>
-      <div class="styleguide-example">
-        <a href="" class="nhsuk-button nhsuk-button--ers">Submit</a>
-      </div>
-      <div class="code-snippet">
-      <div class="app-tabs__container">
-        <div class="code-snippet__preformatted" data-index="ex-1">
-          <pre>
-          <code class="">
-            &lt;a href="" class="nhsuk-button nhsuk-button--ers">Submit&lt;/a>
-          </code>
-          </pre>
-        </div>
-      </div>
-
-      <br>
-
-      <h2 class="nhsuk-heading-m">Sub Navigation - 
-      <a href="https://github.com/monsterlimo/screening/blob/master/app/assets/sass/components/_sub-navigation.scss">.SCSS</a></h2>
-      <div class="styleguide-example">
-        <nav class="nhsuk-sub-navigation">
-          <ul class="nhsuk-sub-navigation__list">
-            <li class="nhsuk-sub-navigation__item"><a href="patient-summary" class="nhsuk-sub-navigation__link" aria-current="page">Patient Summary</a></li>
-            <li class="nhsuk-sub-navigation__item"><a href="history" class="nhsuk-sub-navigation__link">History</a></li>
-            <li class="nhsuk-sub-navigation__item"><a href="gp-info" class="nhsuk-sub-navigation__link">GP Information</a></li>
-            <li class="nhsuk-sub-navigation__item"><a href="additional-info" class="nhsuk-sub-navigation__link">Additional Information</a></li>
-          </ul>
-        </nav>
-      </div>
-      <div class="code-snippet">
-      <div class="app-tabs__container">
-        <div class="code-snippet__preformatted" data-index="ex-1">
-          <pre>
-          <code class="">
-            &lt;nav class="nhsuk-sub-navigation">
-              &lt;ul class="nhsuk-sub-navigation__list">
-                &lt;li class="nhsuk-sub-navigation__item">&lt;a href="patient-summary" class="nhsuk-sub-navigation__link" aria-current="page">Patient Summary&lt;/a>&lt;/li>
-                &lt;li class="nhsuk-sub-navigation__item">&lt;a href="history" class="nhsuk-sub-navigation__link">History&lt;/a>&lt;/li>
-                &lt;li class="nhsuk-sub-navigation__item">&lt;a href="gp-info" class="nhsuk-sub-navigation__link">GP Information&lt;/a>&lt;/li>
-                &lt;li class="nhsuk-sub-navigation__item">&lt;a href="additional-info" class="nhsuk-sub-navigation__link">Additional Information&lt;/a>&lt;/li>
-              &lt;/ul>
-            &lt;/nav>     
-          </code>
-          </pre>
-        </div>
-      </div>
-
-      <br>
-
-      <h2 class="nhsuk-heading-m">Timeline - 
-      <a href="https://github.com/monsterlimo/screening/blob/master/app/assets/sass/components/_timelines.scss">.SCSS</a></h2>
-      <div class="styleguide-example">
-        <div class="nhs-screening-whole-timeline">
-          <div class="nhs-screening-whole-timeline__item">
-            <div class="nhs-screening-whole-timeline__header">
-              <h2 class="nhs-screening-whole-timeline__title">
-                Next test due date added
-              </h2>
-              <p class="nhs-screening-whole-timeline__by">by CSAS Admin TR10</p>
+        <div class="code-snippet">
+          <div class="app-tabs__container">
+            <div class="code-snippet__preformatted" data-index="ex-1">
+              <pre>
+                <code class="">
+    &lt;nav class="nhsuk-sub-navigation">
+      &lt;ul class="nhsuk-sub-navigation__list">
+        &lt;li class="nhsuk-sub-navigation__item">&lt;a href="patient-summary" class="nhsuk-sub-navigation__link" aria-current="page">Patient Summary&lt;/a>&lt;/li>
+        &lt;li class="nhsuk-sub-navigation__item">&lt;a href="history" class="nhsuk-sub-navigation__link">History&lt;/a>&lt;/li>
+        &lt;li class="nhsuk-sub-navigation__item">&lt;a href="gp-info" class="nhsuk-sub-navigation__link">GP Information&lt;/a>&lt;/li>
+        &lt;li class="nhsuk-sub-navigation__item">&lt;a href="additional-info" class="nhsuk-sub-navigation__link">Additional Information&lt;/a>&lt;/li>
+      &lt;/ul>
+    &lt;/nav>     
+                </code>
+              </pre>
             </div>
-            <p class="nhs-screening-whole-timeline__date"><time datetime="2017-12-05T09:10">20 Jan 2020 at 11:10am</time></p>
-            <p class="nhs-screening-whole-timeline__description">Next test due date added for 02.01.21</p>
           </div>
         </div>
       </div>
-      <div class="code-snippet">
-      <div class="app-tabs__container">
-        <div class="code-snippet__preformatted" data-index="ex-1">
-          <pre>
-          <code class="">
-            &lt;div class="nhs-screening-whole-timeline">
-              &lt;div class="nhs-screening-whole-timeline__item">
-                &lt;div class="nhs-screening-whole-timeline__header">
-                  &lt;h2 class="nhs-screening-whole-timeline__title">
-                    Next test due date added
-                  &lt;/h2>
-                  &lt;p class="nhs-screening-whole-timeline__by">by CSAS Admin TR10&lt;/p>
-                &lt;/div>
-                &lt;p class="nhs-screening-whole-timeline__date">&lt;time datetime="2017-12-05T09:10">20 Jan 2020 at 11:10am&lt;/time>&lt;/p>
-                &lt;p class="nhs-screening-whole-timeline__description">Next test due date added for 02.01.21&lt;/p>
-              &lt;/div>
-            &lt;/div>
-          </code>
-          </pre>
-        </div>
-      </div>
 
-      <br>
 
-      <h2 class="nhsuk-heading-m">Autocomplete - 
-      <a href="https://github.com/monsterlimo/screening/blob/master/app/assets/sass/components/_autocomplete.scss">.SCSS</a> -
-      <a href="https://alphagov.github.io/accessible-autocomplete/examples/">Gov Autocomplete</a>
       
-      </h2>
-      <div class="styleguide-example">
-        <div id="my-autocomplete-container" class="codecomplete"></div>
-      </div>
-      <div class="code-snippet">
-      <div class="app-tabs__container">
-        <div class="code-snippet__preformatted" data-index="ex-1">
-          <pre>
-          <code class="">
-            &lt;div id="my-autocomplete-container" class="codecomplete">&lt;/div>
-          </code>
-          </pre>
+      <div class="nhsuk-inset-text" style="border-left-color: green; max-width: 100%;">
+        <h2 class="nhsuk-heading-l">Warning Tag - 
+        <a href="https://github.com/monsterlimo/screening/blob/master/app/assets/sass/components/_tags.scss">.SCSS</a></h2>
+        <span class="nhsuk-tag__highlight nhsuk-tag-large nhsuk-u-margin-bottom-2" style="background-color: green;">
+          <svg class="nhsuk-icon nhsuk-icon__tick" style="stroke: white; vertical-align: middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+          </svg>
+          <span style="vertical-align: middle; font-size: 1.2em">READY</span>
+        </span>
+        <p>Usage: patient summary status / FP69</p>
+        <div class="styleguide-example">
+          <span class="nhsuk-tag__warning nhsuk-tag-large">large Warning</span>
+          <span class="nhsuk-tag__warning">Small Warning</span>
+        </div>
+        <div class="code-snippet">
+          <div class="app-tabs__container">
+            <div class="code-snippet__preformatted" data-index="ex-1">
+              <pre>
+                <code class="">
+    &lt;span class="nhsuk-tag__warning nhsuk-tag-large">large Warning&lt;/span>
+    &lt;span class="nhsuk-tag__warning">Small Warning&lt;/span>
+                </code>
+              </pre>
+            </div>
+          </div>
         </div>
       </div>
 
-      <br>
 
-      <h2 class="nhsuk-heading-m">Table - 
-      <a href="https://github.com/monsterlimo/screening/blob/master/app/assets/sass/components/_tables.scss">.SCSS</a></h2>
-      <div class="styleguide-example">
-        <div class="nhsuk-scrollable-pane">
-          <div class="nhsuk-scrollable-pane__wrapper">
-            <div id="table-scroll" class="table-scroll">
-              <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
-                <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table">
+
+      <div class="nhsuk-inset-text" style="border-left-color: green; max-width: 100%;">
+        <h2 class="nhsuk-heading-m">Button - 
+        <a href="https://github.com/monsterlimo/screening/blob/master/app/assets/sass/components/_buttons.scss">.SCSS</a></h2>
+        <span class="nhsuk-tag__highlight nhsuk-tag-large nhsuk-u-margin-bottom-2" style="background-color: green;">
+          <svg class="nhsuk-icon nhsuk-icon__tick" style="stroke: white; vertical-align: middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+          </svg>
+          <span style="vertical-align: middle; font-size: 1.2em">READY</span>
+        </span>
+        <p>Usage: most pages</p>
+        <p>Extended from the service manual</p>
+        <div class="styleguide-example">
+          <a href="" class="nhsuk-button nhsuk-button--ers">Submit</a>
+        </div>
+        <div class="code-snippet">
+          <div class="app-tabs__container">
+            <div class="code-snippet__preformatted" data-index="ex-1">
+              <pre>
+                <code class="">
+    &lt;a href="" class="nhsuk-button nhsuk-button--ers">Submit&lt;/a>
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="nhsuk-inset-text" style="border-left-color: Orange; max-width: 100%;">
+        <h2 class="nhsuk-heading-l">Highlight Tag - 
+        <a href="https://github.com/monsterlimo/screening/blob/master/app/assets/sass/components/_tags-v2.scss">.SCSS</a></h2>
+        <span class="nhsuk-tag__highlight nhsuk-tag-large nhsuk-u-margin-bottom-2" style="background-color: orange;">
+          <span style="vertical-align: middle; font-size: 1.2em">USE WITH CAUTION</span>
+        </span>
+        <p>Usage: patient summary</p>
+        <p>Issues: under review as this version was not seen compared to the warning tag</p>
+        <div class="styleguide-example">
+          <span class="nhsuk-tag__highlight nhsuk-tag-large">Large Highlight</span>
+          <span class="nhsuk-tag__highlight">Small Highlight</span>
+        </div>
+        <div class="code-snippet">
+          <div class="app-tabs__container">
+            <div class="code-snippet__preformatted" data-index="ex-1">
+              <pre>
+                <code class="">
+    &lt;span class="nhsuk-tag__highlight nhsuk-tag-large">Large Highlight&lt;/span>
+    &lt;span class="nhsuk-tag__highlight">Small Highlight&lt;/span>
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      
+      <div class="nhsuk-inset-text" style="border-left-color: Orange; max-width: 100%;">
+        <h2 class="nhsuk-heading-l">Patient Banner - 
+        <a href="https://github.com/monsterlimo/screening/blob/master/app/assets/sass/components/_patient-banner.scss">.SCSS</a></h2>
+        <span class="nhsuk-tag__highlight nhsuk-tag-large nhsuk-u-margin-bottom-2" style="background-color: orange;">
+          <span style="vertical-align: middle; font-size: 1.2em">USE WITH CAUTION</span>
+        </span>
+        <p>Usage: patient summary</p>
+        <p>Issues: not responsive, do users understand the close button, is there another place for the close button</p>
+        <div class="styleguide-example">
+          {% include 'v6/components/patient-banner.html' %}
+        </div>
+        <div class="code-snippet">
+          <div class="app-tabs__container">
+            <div class="code-snippet__preformatted" data-index="ex-1">
+              <pre>
+                <code class="">
+    &lt;nav class="nhsuk-breadcrumb patient-info" aria-label="PatientBanner">
+      &lt;div class="nhsuk-width-container patient-info-container">
+        &lt;ul role="navigation">
+          &lt;li> &lt;span> &lt;strong>NHS No: &lt;/strong> 123 456 7890&lt;/span>&lt;/li>
+          &lt;li> &lt;strong>Patient: &lt;/strong> Smith, Jane (Mrs)&lt;/li>
+          &lt;li>30 years (4 June 1988)&lt;/li>
+          &lt;li> &lt;strong>Address: &lt;/strong> 20 Thornhill Street, Pudsey, LS15 6FD&lt;/li>
+        &lt;/ul>
+        &lt;div class="nhsuk-close">
+          &lt;a href="/v5/patient/search/search">Close
+            &lt;svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              &lt;path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z">&lt;/path>
+            &lt;/svg>
+          &lt;/a>
+        &lt;/div>
+      &lt;/div>
+    &lt;/nav>
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="nhsuk-inset-text" style="border-left-color: orange; max-width: 100%;">
+        <h2 class="nhsuk-heading-m">Timeline - 
+        <a href="https://github.com/monsterlimo/screening/blob/master/app/assets/sass/components/_timelines.scss">.SCSS</a></h2>
+        <span class="nhsuk-tag__highlight nhsuk-tag-large nhsuk-u-margin-bottom-2" style="background-color: orange;">
+          <span style="vertical-align: middle; font-size: 1.2em">USE WITH CAUTION</span>
+        </span>
+        <p>Usage: patient history</p>
+        <p>Issues: Currently with the design team</p>
+        <p>Reference: <a href="https://hmcts-design-system.herokuapp.com/components/timeline">https://hmcts-design-system.herokuapp.com/components/timeline</a></p>
+        <div class="styleguide-example">
+          <div class="nhs-screening-whole-timeline">
+            <div class="nhs-screening-whole-timeline__item">
+              <div class="nhs-screening-whole-timeline__header">
+                <h2 class="nhs-screening-whole-timeline__title">
+                  Next test due date added
+                </h2>
+                <p class="nhs-screening-whole-timeline__by">by CSAS Admin TR10</p>
+              </div>
+              <p class="nhs-screening-whole-timeline__date"><time datetime="2017-12-05T09:10">20 Jan 2020 at 11:10am</time></p>
+              <p class="nhs-screening-whole-timeline__description">Next test due date added for 02.01.21</p>
+            </div>
+          </div>
+        </div>
+        <div class="code-snippet">
+          <div class="app-tabs__container">
+            <div class="code-snippet__preformatted" data-index="ex-1">
+              <pre>
+                <code class="">
+    &lt;div class="nhs-screening-whole-timeline">
+      &lt;div class="nhs-screening-whole-timeline__item">
+        &lt;div class="nhs-screening-whole-timeline__header">
+          &lt;h2 class="nhs-screening-whole-timeline__title">
+            Next test due date added
+          &lt;/h2>
+          &lt;p class="nhs-screening-whole-timeline__by">by CSAS Admin TR10&lt;/p>
+        &lt;/div>
+        &lt;p class="nhs-screening-whole-timeline__date">&lt;time datetime="2017-12-05T09:10">20 Jan 2020 at 11:10am&lt;/time>&lt;/p>
+        &lt;p class="nhs-screening-whole-timeline__description">Next test due date added for 02.01.21&lt;/p>
+      &lt;/div>
+    &lt;/div>
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="nhsuk-inset-text" style="border-left-color: orange; max-width: 100%;">
+        <h2 class="nhsuk-heading-m">Table - 
+        <a href="https://github.com/monsterlimo/screening/blob/master/app/assets/sass/components/_tables.scss">.SCSS</a></h2>
+        <span class="nhsuk-tag__highlight nhsuk-tag-large nhsuk-u-margin-bottom-2" style="background-color: orange;">
+          <span style="vertical-align: middle; font-size: 1.2em">USE WITH CAUTION</span>
+        </span>
+        <p>Usage: patient summary / additional info</p>
+        <p>Issues: No user need to sort, need to understand scrollable content</p>
+        <div class="styleguide-example">
+          <div class="nhsuk-scrollable-pane">
+            <div class="nhsuk-scrollable-pane__wrapper">
+              <div id="table-scroll" class="table-scroll">
+                <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+                  <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table">
                   <thead class="nhsuk-table__head">
                     <tr class="nhsuk-table__row">
                       <th class="nhsuk-table__header" scope="col">Test Date</th>
@@ -339,57 +369,142 @@ function customSuggest (query, syncResults) {
                       <td class="nhsuk-table__cell">1323</td>
                     </tr>
                   </tbody>
-                </table>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="code-snippet">
-      <div class="app-tabs__container">
-        <div class="code-snippet__preformatted" data-index="ex-1">
-          <pre>
-          <code class="">
-            &lt;div class="nhsuk-scrollable-pane">
-              &lt;div class="nhsuk-scrollable-pane__wrapper">
-                &lt;div id="table-scroll" class="table-scroll">
-                  &lt;div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
-                    &lt;table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table">
-                      &lt;thead class="nhsuk-table__head">
-                        &lt;tr class="nhsuk-table__row">
-                          &lt;th class="nhsuk-table__header" scope="col">Test Date&lt;/th>
-                          &lt;th class="nhsuk-table__header" scope="col">Test type&lt;/th>
-                          &lt;th class="nhsuk-table__header" scope="col">HPV infection&lt;/th>
-                          &lt;th class="nhsuk-table__header" scope="col">Cytology result&lt;/th>
-                          &lt;th class="nhsuk-table__header" scope="col">Action&lt;/th>
-                          &lt;th class="nhsuk-table__header" scope="col">Repeat&lt;/th>
-                          &lt;th class="nhsuk-table__header" scope="col">Screening lab&lt;/th>
-                          &lt;th class="nhsuk-table__header" scope="col">Sample taker code&lt;/th>
-                          &lt;th class="nhsuk-table__header" scope="col">Slide no&lt;/th>
-                        &lt;/tr>
-                      &lt;/thead>
-                      &lt;tbody class="nhsuk-table__body nhsuk-body-">
-                        &lt;tr class="nhsuk-table__row">
-                          &lt;td class="nhsuk-table__cell">01-Apr-2017&lt;/td>
-                          &lt;td class="nhsuk-table__cell">NHS&lt;/td>
-                          &lt;td class="nhsuk-table__cell">HPV Negative&lt;/td>
-                          &lt;td class="nhsuk-table__cell">No cytology result&lt;/td>
-                          &lt;td class="nhsuk-table__cell">Routine&lt;/td>
-                          &lt;td class="nhsuk-table__cell">36 months&lt;/td>
-                          &lt;td class="nhsuk-table__cell">Leeds General Infirmary&lt;/td>
-                          &lt;td class="nhsuk-table__cell">505007200042&lt;/td>
-                          &lt;td class="nhsuk-table__cell">1323&lt;/td>
-                        &lt;/tr>
-                      &lt;/tbody>
-                    &lt;/table>
-                  &lt;/div>
-                &lt;/div>
-              &lt;/div>
-            &lt;/div>
-          </code>
-          </pre>
+        <div class="code-snippet">
+          <div class="app-tabs__container">
+            <div class="code-snippet__preformatted" data-index="ex-1">
+              <pre>
+                <code class="">
+    &lt;div class="nhsuk-scrollable-pane">
+      &lt;div class="nhsuk-scrollable-pane__wrapper">
+        &lt;div id="table-scroll" class="table-scroll">
+          &lt;div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+            &lt;table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table">
+              &lt;thead class="nhsuk-table__head">
+                &lt;tr class="nhsuk-table__row">
+                  &lt;th class="nhsuk-table__header" scope="col">Test Date&lt;/th>
+                  &lt;th class="nhsuk-table__header" scope="col">Test type&lt;/th>
+                  &lt;th class="nhsuk-table__header" scope="col">HPV infection&lt;/th>
+                  &lt;th class="nhsuk-table__header" scope="col">Cytology result&lt;/th>
+                  &lt;th class="nhsuk-table__header" scope="col">Action&lt;/th>
+                  &lt;th class="nhsuk-table__header" scope="col">Repeat&lt;/th>
+                  &lt;th class="nhsuk-table__header" scope="col">Screening lab&lt;/th>
+                  &lt;th class="nhsuk-table__header" scope="col">Sample taker code&lt;/th>
+                  &lt;th class="nhsuk-table__header" scope="col">Slide no&lt;/th>
+                &lt;/tr>
+              &lt;/thead>
+              &lt;tbody class="nhsuk-table__body nhsuk-body-">
+                &lt;tr class="nhsuk-table__row">
+                  &lt;td class="nhsuk-table__cell">01-Apr-2017&lt;/td>
+                  &lt;td class="nhsuk-table__cell">NHS&lt;/td>
+                  &lt;td class="nhsuk-table__cell">HPV Negative&lt;/td>
+                  &lt;td class="nhsuk-table__cell">No cytology result&lt;/td>
+                  &lt;td class="nhsuk-table__cell">Routine&lt;/td>
+                  &lt;td class="nhsuk-table__cell">36 months&lt;/td>
+                  &lt;td class="nhsuk-table__cell">Leeds General Infirmary&lt;/td>
+                  &lt;td class="nhsuk-table__cell">505007200042&lt;/td>
+                  &lt;td class="nhsuk-table__cell">1323&lt;/td>
+                &lt;/tr>
+              &lt;/tbody>
+            &lt;/table>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+                </code>
+              </pre>
+            </div>
+          </div>
         </div>
       </div>
+
+
+
+      <div class="nhsuk-inset-text" style="border-left-color: red; max-width: 100%;">
+        <h2 class="nhsuk-heading-m">Action Menu - 
+          <a href="https://github.com/monsterlimo/screening/blob/master/app/assets/sass/components/_action-menu.scss">.SCSS</a> - 
+          <a href="https://github.com/monsterlimo/screening/blob/master/app/assets/javascript/action-menu.js">.JS</a>
+        </h2>
+        <span class="nhsuk-tag__highlight nhsuk-tag-large nhsuk-u-margin-bottom-2" style="background-color: red;">
+          <svg class="nhsuk-icon nhsuk-icon__cross" style="fill: white; vertical-align: middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"></path>
+            <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"></path>
+          </svg>
+          <span style="vertical-align: middle; font-size: 1.2em">NOT READY</span>
+        </span>
+        <p>Usage: patient summary - HMR101</p>
+        <p>Issues: May not be required if there is only one HMR101</p>
+        <div class="styleguide-example">
+          {% include 'v6/components/hmr101.html' %}
+        </div>
+        <div class="code-snippet">
+          <div class="app-tabs__container">
+            <div class="code-snippet__preformatted" data-index="ex-1">
+              <pre>
+                <code class="">
+      &lt;div class="nhsuk-heading-menu__actions"&gt;
+        &lt;div class="dropdown"&gt;
+          &lt;button onclick="myFunction()" class="dropbtn">Print HMR101
+            &lt;svg class="nhsuk-icon nhsuk-icon__arrow-down nhsuk-icon--ers" viewBox="0 0 150 150" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"&gt;
+              &lt;g id="Arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"&gt;
+                &lt;polygon id="Rectangle" fill="#f1f1f1" fill-rule="nonzero" transform="translate(75.000000, 75.000000) rotate(45.000000) translate(-75.000000, -75.000000) " points="75 75 97 53 97 97 53 97">&lt;/polygon&gt;
+              &lt;/g&gt;
+            &lt;/svg&gt;
+          &lt;/button&gt;
+        &lt;div id="myDropdown" class="dropdown-content" style="left: 0"&gt;
+          &lt;a href="../patient/hmr101/print">A4 PDF (2009)&lt;/a&gt;
+          &lt;a href="#">A5 PDF (2003)&lt;/a&gt;
+          &lt;a href="#">A4 PDF (2003)&lt;/a&gt;
+          &lt;a href="#">A5 PDF&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+
+      <div class="nhsuk-inset-text" style="border-left-color: red; max-width: 100%;">
+        <h2 class="nhsuk-heading-m">Autocomplete - 
+          <a href="https://github.com/monsterlimo/screening/blob/master/app/assets/sass/components/_autocomplete.scss">.SCSS</a> -
+          <a href="https://alphagov.github.io/accessible-autocomplete/examples/">Gov Autocomplete</a>
+        </h2>
+        <span class="nhsuk-tag__highlight nhsuk-tag-large nhsuk-u-margin-bottom-2" style="background-color: red;">
+          <svg class="nhsuk-icon nhsuk-icon__cross" style="fill: white; vertical-align: middle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"></path>
+            <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"></path>
+          </svg>
+          <span style="vertical-align: middle; font-size: 1.2em">NOT READY</span>
+        </span>
+        <p>Usage: Adding a test</p>
+        <p>Issues: Users struggled with it - currently with design team for contend changes</p>
+        <p>Reference: <a href="https://alphagov.github.io/accessible-autocomplete/examples/">https://alphagov.github.io/accessible-autocomplete/examples/</a>
+        <div class="styleguide-example">
+          <div id="my-autocomplete-container" class="codecomplete">
+          </div>
+        </div>
+        <div class="code-snippet">
+          <div class="app-tabs__container">
+            <div class="code-snippet__preformatted" data-index="ex-1">
+              <pre>
+                <code class="">
+      &lt;div id="my-autocomplete-container" class="codecomplete">&lt;/div>
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
     </div>
   </div>
 {% endblock %}
