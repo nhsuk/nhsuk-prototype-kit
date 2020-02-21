@@ -55,6 +55,21 @@
                       </a>
                     </dd>
                   </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        National code
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {{ data['nat-code'] }}
+
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"></span>
+                      </a>
+                    </dd>
+                  </div>
+               
 
                   <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
@@ -69,6 +84,35 @@
                       </a>
                     </dd>
                   </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Source code
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {{ data['source'] }}
+
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"></span>
+                      </a>
+                    </dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Sender code
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {{ data['sample-taker'] }}
+
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"></span>
+                      </a>
+                    </dd>
+                  </div>
+               
 
                   <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
@@ -116,10 +160,10 @@
                   </div>
                   <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
-                        Sender
+                        Primary source code
                     </dt>
                     <dd class="nhsuk-summary-list__value">
-                        {{ data['sample-taker'] }}
+                        {{ data['primary-source'] }}
 
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
@@ -130,32 +174,18 @@
                   </div>
                   <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
-                        Source at the moment
+                   HPV tested?
                     </dt>
                     <dd class="nhsuk-summary-list__value">
-                        {{ data['source'] }}
-
+                      {{ data['hpv-tested'] }}
                     </dd>
                     <dd class="nhsuk-summary-list__actions">
                       <a href="">
-                        Change<span class="nhsuk-u-visually-hidden"></span>
+                        Change<span class="nhsuk-u-visually-hidden"> value</span>
                       </a>
                     </dd>
                   </div>
-                  <div class="nhsuk-summary-list__row">
-                    <dt class="nhsuk-summary-list__key">
-                        National code
-                    </dt>
-                    <dd class="nhsuk-summary-list__value">
-                        {{ data['nat-code'] }}
-
-                    </dd>
-                    <dd class="nhsuk-summary-list__actions">
-                      <a href="">
-                        Change<span class="nhsuk-u-visually-hidden"></span>
-                      </a>
-                    </dd>
-                  </div>
+              
                   <div class="nhsuk-summary-list__row">
                     <dt class="nhsuk-summary-list__key">
                         CRM case  number

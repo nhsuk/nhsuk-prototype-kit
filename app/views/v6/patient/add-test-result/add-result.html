@@ -40,12 +40,11 @@ function customSuggest (query, syncResults) {
       }
 
       function inputValueTemplate (result) {
-        return result && result.result + '-' + result.code
+        return result && result.code + '-' + result.result 
       }
 
       function suggestionTemplate (result) {
-        return result && '<strong>' + result.result + '</strong>' +
-          ' (' + result.code + '</span>)'
+        return result && '<strong>(' + result.code + ') </strong>' + result.result 
       }
 
       element = document.querySelector('#my-autocomplete-container')
@@ -106,6 +105,13 @@ function customSuggest (query, syncResults) {
                   <input class="nhsuk-input nhsuk-input--width-20" id="slide-number" name="slide-number" type="number" value="{{ data['slide-number'] }}">
                 </div>
 
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-label__strong" for="nationalcode">
+                  National code
+                  </label>
+                  <input class="nhsuk-input nhsuk-input--width-20" id="nat-code" name="nat-code" type="text" value="{{ data['nat-code'] }}">
+                </div>
+
                 <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
                   <div class="nhsuk-form-group">
                     <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
@@ -145,6 +151,23 @@ function customSuggest (query, syncResults) {
                   </div>
 
                 </div>
+               
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-label__strong" for="source">
+                  Source code
+                  <span id="" class="nhsuk-hint" style="">
+                    For example  G, X, P
+                  </span>  </label>
+                  <input class="nhsuk-input nhsuk-input--width-20" id="source" name="source" type="text" value="{{ data['source'] }}">
+                </div>
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-label__strong" for="sender">
+                  Sender code
+                  </label>
+                  <input class="nhsuk-input nhsuk-input--width-20" id="sample-taker" name="sample-taker" type="text" value="{{ data['sample-taker'] }}">
+                </div>
+    
+    
 
                   <div class="nhsuk-form-group">
 
@@ -199,14 +222,14 @@ function customSuggest (query, syncResults) {
   <div class="nhsuk-form-group">
     <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
       <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
-        Outcome
+        Result
       </legend>
 
 
           <div class="nhsuk-form-group">
             <label class="nhsuk-label nhsuk-date-input__label" for="codecomplete">
               <span id="" class="nhsuk-hint" style="">
-                Enter codes or full description
+                Enter result code or part of a full result description, for example X0A or No Cytology Result
               </span>  
             <div id="my-autocomplete-container" class="codecomplete"></div>
           </div>
@@ -219,25 +242,35 @@ function customSuggest (query, syncResults) {
 
             <div class="nhsuk-form-group">
               <label class="nhsuk-label nhsuk-label__strong" for="sender">
-              Sender
+              Primary source code
               </label>
-              <input class="nhsuk-input nhsuk-input--width-20" id="sample-taker" name="sample-taker" type="text" value="{{ data['sample-taker'] }}">
+              <input class="nhsuk-input nhsuk-input--width-20" id="primary-source" name="primary-source" type="text" value="{{ data['primary-source'] }}">
             </div>
 
             <div class="nhsuk-form-group">
-              <label class="nhsuk-label nhsuk-label__strong" for="source">
-              Source at  the moment
-              <span id="" class="nhsuk-hint" style="">
-                For example  G, X, P
-              </span>  </label>
-              <input class="nhsuk-input nhsuk-input--width-20" id="source" name="source" type="text" value="{{ data['source'] }}">
-            </div>
 
-            <div class="nhsuk-form-group">
-              <label class="nhsuk-label nhsuk-label__strong" for="nationalcode">
-              National code
-              </label>
-              <input class="nhsuk-input nhsuk-input--width-20" id="nat-code" name="nat-code" type="text" value="{{ data['nat-code'] }}">
+              <fieldset class="nhsuk-fieldset">
+                  <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+                    HPV tested?
+                </legend>
+            
+                <div class="nhsuk-radios nhsuk-radios--inline">
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="yes" name="hpv-tested" type="radio" value="yes" {{ checked("hpv-tested", "Yes") }}>
+                    <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                    Yes
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="no" name="hpv-tested" type="radio" value="no" {{ checked("hpv-tested", "No") }}>
+                    <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                    No
+                    </label>
+                  </div>
+                  
+                </div>
+              </fieldset>
+            
             </div>
 
             <div class="nhsuk-form-group">

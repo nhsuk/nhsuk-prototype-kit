@@ -43,20 +43,20 @@
 {% endif %}
 
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
-  <div class="nhsuk-grid-column-one-half">
+  <div class="nhsuk-grid-column-two-thirds">
     <h1 class="nhsuk-heading-l">Patient summary</h1>
     <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-0">
       <span class="nhsuk-u-visually-hidden">A new test result has been added</span>
       <h3 class="nhsuk-heading-s">A new test result has been added</h3>
     </div>
-    <span class="nhsuk-tag__highlight nhsuk-tag-large nhsuk-u-margin-bottom-2">RECALL IN 3 MONTHS</span>
+
     <dl class="nhsuk-summary-list nhsuk-u-margin-top-4">
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
           Next test due date
         </dt>
         <dd class="nhsuk-summary-list__value">
-        09-April-2020
+        20-Jan-2020
         </dd>
         <dd class="nhsuk-summary-list__actions">
           {% if data.role == 'csas' %}
@@ -175,12 +175,12 @@
               <tbody class="nhsuk-table__body nhsuk-body-">
                 <tr class="nhsuk-table__row">
                   <td class="nhsuk-table__cell fixed-side">20-Jan-2020</td>
-                  <td class="nhsuk-table__cell">Private</td>
-                  <td class="nhsuk-table__cell">HPV Negative</td>
+                  <td class="nhsuk-table__cell">NHS</td>
+                  <td class="nhsuk-table__cell">HPV Positive</td>
                   <td class="nhsuk-table__cell">Inadequate</td>
                   <td class="nhsuk-table__cell">Early repeat</td>
                   <td class="nhsuk-table__cell">3 months</td>
-                  <td class="nhsuk-table__cell">Nuffield Hospital Leeds</td>
+                  <td class="nhsuk-table__cell">Gateshead</td>
                   <td class="nhsuk-table__cell">505007200042</td>
                   {% if data.role != 'sampleTaker' %}
                     <td class="nhsuk-table__cell">1212</td>
