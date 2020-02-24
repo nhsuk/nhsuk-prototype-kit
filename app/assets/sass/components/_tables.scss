@@ -1,4 +1,13 @@
 //
+
+// TABLE PAGINATION AND LOAD more
+
+.table-foot{
+  display: flex;
+  justify-content: space-between;
+}
+
+
 .nhsuk-table--no-border {
   tr, td {
     border: 0
