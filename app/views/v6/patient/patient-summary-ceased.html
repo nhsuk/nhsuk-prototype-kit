@@ -45,12 +45,15 @@
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-three-quarters">
     <h1 class="nhsuk-heading-l">Patient summary</h1>
-    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--info nhsuk-u-margin-top-0">
+    <p>{{ data['alreadyCeased'] }}</p>
+    {% if data['alreadyCeased'] == undefined %}
+    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--info nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4">
       <span class="nhsuk-u-visually-hidden">The next test due date and status have been updated</span>
       <h3 class="nhsuk-heading-s">The next test due date and status have been updated</h3>
     </div>
+    {% endif %}
     <span class="nhsuk-tag nhsuk-tag--orange">{{ data['status'] or 'ceased' }} - {{ data['reason'] or 'No cervix' }}</span>
-    <dl class="nhsuk-summary-list nhsuk-u-margin-top-4">
+    <dl class="nhsuk-summary-list nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
           Next test due date
@@ -60,7 +63,7 @@
         </dd>
         <dd class="nhsuk-summary-list__actions">
           {% if data.role == 'csas' %}
-            <a class="nhsuk-button nhsuk-button--ers" href="change-due-date/enter-reason-reinstate">Reinstate</a> 
+            <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2" href="change-due-date/enter-reason-reinstate">Reinstate</a> 
           {% endif %}
         </dd>
       </div>

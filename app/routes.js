@@ -214,6 +214,7 @@ router.post("/search-v6/", function(req, res) {
     req.session.data["status"] = "ceased";
     req.session.data["reason"] = "no cervix";
     req.session.data["address"] = "19 Polly Fall Close, Bradford, BD10 3RT";
+    req.session.data["alreadyCeased"] = true;
     res.redirect("/v6/patient/patient-summary");
   }
 

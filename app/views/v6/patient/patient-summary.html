@@ -48,7 +48,7 @@
     {% if data.status == 'ceased' %}
       <span class="nhsuk-tag nhsuk-tag--orange">{{ data['status'] or 'ceased' }} - {{ data['reason'] or 'No cervix' }}</span>
     {% endif %}
-    <dl class="nhsuk-summary-list nhsuk-u-margin-top-4">
+    <dl class="nhsuk-summary-list nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
           Next test due date:
@@ -59,9 +59,9 @@
         <dd class="nhsuk-summary-list__actions">
           {% if data.role == 'csas' %}
             {% if data.status == 'ceased' %}
-              <a class="nhsuk-button nhsuk-button--ers" href="change-due-date/enter-reason-reinstate">Reinstate</a>
+              <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2" href="change-due-date/enter-reason-reinstate">Reinstate</a>
             {% else %}
-              <a class="nhsuk-button nhsuk-button--ers" href="change-due-date/enter-reason">Change date</a>
+              <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2" href="change-due-date/enter-reason">Change date</a>
             {% endif %}
           {% endif %}
         </dd>
@@ -136,7 +136,7 @@
     <h2 id="testresults" class="nhsuk-heading-l">Test results</h2>
 
     {% if data.role == 'csas' %}
-    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="add-test-result/add-result">Add result</a>
+    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4" href="add-test-result/add-result">Add result</a>
     {% endif %}
 
     <div class="nhsuk-scrollable-pane">

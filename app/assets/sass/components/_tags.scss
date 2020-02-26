@@ -1,6 +1,6 @@
 // TAGS / BADGES
-.nhsuk-tag {
 
+.nhsuk-tag {
   background-color: $color_nhsuk-white;
   display: inline-block;
   font-family: Frutiger, sans-serif;
@@ -9,34 +9,33 @@
   font-weight: 400;
   border-width: 1px;
   border-style: solid;
-
-
 }
-.nhsuk-tag-large{
-  padding:16px;
+
+.nhsuk-tag-large {
+  padding: 16px;
   font-weight: 700;
   border-width: 4px;
   font-size: 24px;
 }
 
-.nhsuk-tag__success{
-    @extend .nhsuk-tag;
+.nhsuk-tag__success {
+  @extend .nhsuk-tag;
   border-color: $color_nhsuk-green;
   color: $color_nhsuk-green;
 }
 
-.nhsuk-tag__warning{
-    @extend .nhsuk-tag;
+.nhsuk-tag__warning {
+  @extend .nhsuk-tag;
   border-color: $color_nhsuk-red;
   color: $color_nhsuk-red;
 }
-.nhsuk-tag__default{
+.nhsuk-tag__default {
   @extend .nhsuk-tag;
   color: $color_nhsuk-grey-1;
-  border-color:$color_nhsuk-grey-1;
+  border-color: $color_nhsuk-grey-1;
 }
-.nhsuk-tag__highlight{
+.nhsuk-tag__highlight {
   @extend .nhsuk-tag;
-    color: $color_nhsuk-blue;
-    border-color: $color_nhsuk-blue;
+  color: $color_nhsuk-blue;
+  border-color: $color_nhsuk-blue;
 }

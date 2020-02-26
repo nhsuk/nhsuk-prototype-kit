@@ -80,11 +80,9 @@
             {{ data['address'] or '20 Thornhill Street, Pudsey, LS15 6FD' }}
         </dd>
         <dd class="nhsuk-summary-list__actions">
-            <a href="#">
               {% if data.role == 'csas' %}
-                <span class="nhsuk-tag__warning">FP69</span>
+                <span class="nhsuk-tag__warning" style="border: 1px solid #da291c; background-color: #fff; color: #da291c">FP69</span>
               {% endif %}
-            </a>
         </dd>   
       </div>
     </dl>
