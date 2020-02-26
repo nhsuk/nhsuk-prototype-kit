@@ -4,6 +4,10 @@
 
 // Here lies all things fudged and broken
 
+.hidden{
+  display: none;
+}
+
 .nhsuk-width-container-fluid, .nhsuk-width-container, .nhsuk-header__navigation {
     max-width: 1280px;
 }
