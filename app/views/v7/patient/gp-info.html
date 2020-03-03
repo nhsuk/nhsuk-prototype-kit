@@ -1,0 +1,71 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "true"
+  })
+}}
+{% endblock %}
+
+{% block patientBanner %}
+  {% include '../components/patient-banner.html' %}
+{% endblock %}
+
+{% block content %}
+
+<nav class="nhsuk-sub-navigation">
+  <ul class="nhsuk-sub-navigation__list">
+    <li class="nhsuk-sub-navigation__item"><a href="patient-summary" class="nhsuk-sub-navigation__link">Patient Summary</a></li>
+    <li class="nhsuk-sub-navigation__item"><a href="history" class="nhsuk-sub-navigation__link">History</a></li>
+    <li class="nhsuk-sub-navigation__item"><a href="gp-info" class="nhsuk-sub-navigation__link" aria-current="page">GP Information</a></li>
+    {% if data.role == 'csas' %}
+      <li class="nhsuk-sub-navigation__item"><a href="additional-info" class="nhsuk-sub-navigation__link">Additional Information</a></li>
+    {% endif %}
+  </ul>
+</nav>
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-full">
+    <h1 class="nhsuk-heading-l">GP Information</h1>
+
+    {{ summaryList({
+    rows: [
+    {
+      key: { text: "Practice Code" },
+      value: { text: "K81052" }
+    },
+    {
+      key: { text: "Practice Name" },
+      value: { text: "Lambourn Surgery" }
+    },
+    {
+      key: { text: "Practice Address" },
+      value: { html: "<p>Bockhampton Road</p><p>Lambourn</p><p>Hungerford</p><p>Berkshire</p><p>RG17 8PS</p>" }
+    },
+    {
+      key: { text: "Practice Number" },
+      value: { text: "01488 71715" }
+    }
+    
+  ]
+  }) }}
+
+  <p><a href="">View all GP's at this practice</a></p>
+  </div>
+</div>
+
+{% endblock %}

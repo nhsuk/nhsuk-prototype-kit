@@ -1,0 +1,111 @@
+<!-- Use this page as the index for your project -->
+
+<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
+
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - change the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title inside the pageTitle block -->
+{% block pageTitle %}
+  V7
+{% endblock %}
+
+<!-- Breadcrumb goes inside the beforeContent block -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- Your page content goes inside the content block -->
+<!-- More info and code for the page layout can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+    <h1 class="nhsuk-heading-l">V7</h1>
+    <p>--</p>
+    <a class="nhsuk-button" href="/v7/login/smartcard">Start</a>
+
+      <div class="nhsuk-grid-row nhsuk-panel-group">
+        <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item">
+          <div class="nhsuk-panel">
+            <h3 class="nhsuk-heading-xl">-</h3>
+            <p>Roles involved</p>
+          </div>
+        </div>
+
+          <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item">
+            <div class="nhsuk-panel">
+              <h3 class="nhsuk-heading-xl">-</h3>
+              <p>Users involved</p>
+            </div>
+          </div>
+          <div class="nhsuk-grid-column-one-third nhsuk-panel-group__item">
+            <div class="nhsuk-panel">
+              <h3 class="nhsuk-heading-xl">-</h3>
+              <p>Mins of user testing</p>
+            </div>
+          </div>
+        </div>
+  
+    <!--<h2>User Journey - to add</h2>
+        <ul>
+          <li><a href="">JIRA Epic</a></li>
+          <li><a href="">Confluence</a></li>
+        </ul>
+        -->
+
+        <h3>What's Changed</h3>
+        <ul>
+          <li>--</li>
+        </ul>
+        <h3>User testing (0)</h3>
+        <ul>
+          <li>link to any confluence stuff</li>
+        </ul>
+        <h3>Design Challenges (0)</h3>
+        <ul>
+          <li>To add</li>
+        </ul>
+        {{ button({
+          "text": "Start",
+          "href": "/v7/login/smartcard"
+        }) }}
+
+        <h2 class="nhsuk-heading-l">Quick Links</h2>
+        <ul>
+          <li><a href="v7/patient/add-test-result/add-result">add test result</a></li>
+          <li><a href="v7/patient/change-due-date/enter-reason">change recall</a></li>
+          <li><a href="v7/worklists/worklists-a">worklist</a></li>
+          <li><a href="v7/patient/patient-summary">patient summary</a></li>
+        </ul>
+        <h3>scenarios</h3>
+        <ul>
+          <li><a href="">new test added</a></li>
+          <li><a href="">recall Changed</a></li>
+          <li><a href="">routine</a></li>
+        </ul>
+
+
+
+      <details class="nhsuk-details nhsuk-expander version-list">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Error messages
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <h4 class="nhsuk-heading-s nhsuk-u-margin-top-5">Add Title</h4>
+          <ul>
+            <li><a href="">Add error</a></li>
+          </ul>
+
+        </div>
+      </details>
+   
+    </div>
+  </div>
+{% endblock %}

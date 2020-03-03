@@ -1,0 +1,227 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+  <script type="text/javascript" src="/js/action-menu.js"></script>
+  <script type="text/javascript" src="/js/sort.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "true"
+  })
+}}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="nhsuk-grid-row nhsuk-u-margin-bottom-0">
+  <div class="nhsuk-grid-column-two-thirds">
+  {{ backLink({
+    "href": "../patient-summary",
+    "text": "Go back to patient summary"
+  }) }}
+
+
+
+              <form action="/v7/patient/patient-summary" method="post" class="form">
+
+
+                    <div class="nhsuk-form-group">
+
+                      <fieldset class="nhsuk-fieldset">
+                        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                          <h1 class="nhsuk-fieldset__heading">
+                            Choose a reason for reinstating
+                          </h1>
+                        </legend>
+                    
+                        <div class="nhsuk-radios">
+                          <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+                            <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                              Ceased in error
+                            </label>
+                          </div>
+                          <div class="nhsuk-radios__item">
+                            <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
+                            <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                              Patient requested return
+                            </label>
+                          </div>
+                        </div>
+                      </fieldset>
+                    
+                    </div>
+                    </div>
+                  </div>
+                  <div class="nhsuk-grid-row">
+                    <div class="nhsuk-grid-column-one-half">
+
+                    
+
+                    <div class="nhsuk-panel nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4">
+                      <h3>Last test result</h3>
+                                <p><strong>Test date:</strong> 01-Apr-2017</p>
+                            <p><strong>Result:</strong> (X0A) No cytology result, HPV negative, routine recall</p>
+                    </div>
+                   <!-- <h3 class="nhsuk-heading-s">Last test result</h3>
+                     <div class="nhsuk-scrollable-pane">
+                      <div class="nhsuk-scrollable-pane__wrapper">
+                          <div id="table-scroll" class="table-scroll">
+                            <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+                              <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table">
+                  
+                                TABLE START 
+                                <thead class="nhsuk-table__head">
+                                  <tr class="nhsuk-table__row">
+                  
+                                    <th class="nhsuk-table__header fixed-side" scope="col">
+                                      Test Date
+                                    </th>
+                  
+                                    <th class="nhsuk-table__header fixed-side" scope="col">
+                                      Test type
+                                    </th>
+                  
+                                    <th class="nhsuk-table__header fixed-side" scope="col">
+                                      HPV infection
+                                    </th>
+                  
+                                    <th class="nhsuk-table__header fixed-side"  scope="col">
+                                      Cytology result
+                                    </th>
+                  
+                                    <th class="nhsuk-table__header fixed-side" scope="col">
+                                      Action
+                                    </th>
+                  
+                  
+                                    <th class="nhsuk-table__header fixed-side" scope="col">
+                                      Repeat
+                                    </th>
+                  
+                                    <th class="nhsuk-table__header fixed-side" scope="col">
+                                      Screening lab
+                                    </th>
+                  
+                                    <th class="nhsuk-table__header fixed-side" scope="col">
+                                      Sample taker code
+                                    </th>
+                  
+                                    {% if data.role != 'sampleTaker' %}
+                                      <th class="nhsuk-table__header fixed-side" scope="col">
+                                        Slide no
+                                      </th>
+                                    {% endif %}
+                  
+                  
+                                  </tr>
+                                </thead>
+                  
+                  
+                                <tbody class="nhsuk-table__body nhsuk-body-">
+                                  <tr class="nhsuk-table__row">
+                                  <td class="nhsuk-table__cell fixed-side">01-Apr-2017</td>
+                                  <td class="nhsuk-table__cell">NHS</td>
+                                  <td class="nhsuk-table__cell">HPV Negative</td>
+                                  <td class="nhsuk-table__cell">No cytology result</td>
+                                  <td class="nhsuk-table__cell">Routine</td>
+                                  <td class="nhsuk-table__cell">36 months</td>
+                                  <td class="nhsuk-table__cell">Leeds General Infirmary</td>
+                                  <td class="nhsuk-table__cell">505007200042</td>
+                                  {% if data.role != 'sampleTaker' %}
+                                    <td class="nhsuk-table__cell">1323</td>
+                                  {% endif %}
+                  
+                                </tr>
+                                </tbody>
+                                </table>
+                                </div>
+                                </div>
+                                </div>
+                                </div> -->
+                              </div>
+                            </div>
+
+                  <div class="nhsuk-grid-row">
+                    <div class="nhsuk-grid-column-two-thirds">
+                      <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
+                        <div class="nhsuk-form-group">
+                          <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
+                            <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+                              Next test due date
+                            </legend>
+                            <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
+                              You must enter a date
+                            </span>
+                            <div class="nhsuk-date-input" id="dob-from">
+                              <div class="nhsuk-date-input__item">
+                                <div class="nhsuk-form-group">
+                                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
+                                    Day
+                                  </label>
+                                <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="day" name="day" type="number" pattern="[0-9]*" value="day" required="">                                </div>
+                              </div>
+                              <div class="nhsuk-date-input__item">
+                                <div class="nhsuk-form-group">
+                                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
+                                    Month
+                                  </label>
+                                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="month" type="number" pattern="[0-9]*" value="month">
+                                </div>
+                              </div>
+                              <div class="nhsuk-date-input__item">
+                                <div class="nhsuk-form-group">
+                                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
+                                    Year
+                                  </label>
+                                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="year" type="number" pattern="[0-9]*" value="">
+                                </div>
+                              </div>
+                            </div>
+                            <input type="hidden" id="ntdd" name="ntdd" value="19 01 2021">
+                          </fieldset>
+                        </div>
+
+</div>
+
+
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label" for="example">
+                  CRM number
+                  </label>
+                <input class="nhsuk-input nhsuk-input--width-10" type="number" name="crm" value="crm">
+              </div>
+
+
+
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label" for="example">
+                   Comments (optional)
+                  </label>
+                  <span class="nhsuk-hint" id="example-hint">
+                    Do not include clinical information at  this point.
+                  </span>
+                  <textarea class="nhsuk-textarea" id="example" name="details" rows="5" aria-describedby="example-hint" value="details"></textarea>
+                </div>
+                  <button class="nhsuk-button--ers">Continue</button>
+            </form>
+
+            </div>
+
+
+
+
+{% endblock %}
