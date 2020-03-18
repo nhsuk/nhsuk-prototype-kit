@@ -1,5 +1,9 @@
 # NHS.UK prototype kit Changelog
 
+## 3.0.9 - 18th March 2020
+
+- Update package dependencies to latest versions
+
 ## 3.0.8 - 17th February 2020
 
 :wrench: **Fixes**
