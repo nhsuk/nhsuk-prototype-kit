@@ -32,34 +32,40 @@ NHS Cervical Screening
         "href": "../patient-summary",
         "text": "Go back to patient summary"
       }) }}
-<div class="nhsuk-form-group">
+      <form action="/v7/patient/hmr101/choose" method="post">
 
-    <fieldset class="nhsuk-fieldset">
-      <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-        <h1 class="nhsuk-fieldset__heading">
-          Choose a way to create a HMR101 form
-        </h1>
-      </legend>
-  
-      <div class="nhsuk-radios">
-        <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
-          <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-            Fill in details on the system <strong>(recommended)</strong>
-          </label>
-        </div>
-        <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
-          <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-            Create blank form 
-          </label>
-        </div>
-      </div>
-    </fieldset>
-    <div class="nhsuk-u-margin-top-4">
-    <a class="nhsuk-button--ers" href="step-1">Continue</a>
-  </div>
-  </div>
+        {% call fieldset({
+          legend: {
+            text: "Choose a role to login with",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        {{ radios({
+          "idPrefix": "choose",
+          "name": "choose",
+          "items": [
+            {
+              "value": "system",
+              "text": "Fill in details on the system (recommended)"
+            },
+            {
+              "value": "print",
+              "text": "Create blank form"
+            }
+            
+          ]
+        }) }}
+
+        {% endcall %}
+
+        {{ button({
+          "text": "Continue"
+        }) }}
+
+      </form>
+
 </div>
 </div>
  
