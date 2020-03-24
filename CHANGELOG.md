@@ -1,5 +1,12 @@
 # NHS.UK prototype kit Changelog
 
+## 3.0.10 - 25th March 2020
+
+:wrench: **Fixes**
+
+- Install latest version of NHS.UK frontend (3.0.4)
+- Update package dependencies to latest versions
+
 ## 3.0.9 - 18th March 2020
 
 - Update package dependencies to latest versions

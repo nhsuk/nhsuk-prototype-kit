@@ -15,47 +15,6 @@
   background-color: $color_nhsuk-grey-5;
 }
 
-// Header adjustment
-//
-// Fix for service header with a short name
-.nhsuk-header__link--service-short-name {
-  -ms-flex-align: center;
-  align-items: center;
-  display: flex;
-  margin-bottom: 0;
-}
-
-.nhsuk-header__service-name {
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 0;
-}
-
-// Button
-//
-// Tweaked button spacing
-.nhsuk-button {
-  margin-top: nhsuk-spacing(2);
-
-  @include mq($from: desktop) {
-    padding: nhsuk-spacing(2) nhsuk-spacing(3);
-  }
-}
-
-// Footer
-//
-// A modifier to have the footer links in 3 columns
-@include mq($from: desktop) {
-  .nhsuk-footer__list--three-columns{
-    -webkit-column-count: 3;
-    -moz-column-count: 3;
-    column-count: 3;
-    -webkit-column-gap: nhsuk-spacing(4);
-    -moz-column-gap: nhsuk-spacing(4);
-    column-gap: nhsuk-spacing(4);
-  }
-}
-
 // ==========================================================================
 // PROTOTYPE SPECIFIC STYLES
 // ==========================================================================
