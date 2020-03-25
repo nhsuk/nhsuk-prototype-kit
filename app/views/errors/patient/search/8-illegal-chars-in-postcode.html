@@ -19,12 +19,11 @@
   </h2>
   <div class="nhsuk-error-summary__body">
     <p>
-      A last name has not been entered
+      Illegal characters entered in the postcode field
     </p>
     <ul class="nhsuk-list nhsuk-error-summary__list">
       <li>
-        <a href="#example-error-1">Enter a last name</a>
-      
+        <a href="#example-error-1">Edit Date of birth</a>
       </li>
       <li>
       </li>
@@ -74,7 +73,9 @@
         <input class="nhsuk-input nhsuk-input--width-20" id="last-name-advanced" name="last-name" type="text">
       </div>
       
-
+<div class="nhsuk-form-group nhsuk-form-group--error">
+   <fieldset class="nhsuk-fieldset" aria-describedby="dob-day-error-hint dob-day-error-error" role="group">
+   
       <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
         <div class="nhsuk-form-group">
           <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
@@ -87,34 +88,38 @@
             <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
               You must enter a date
             </span>
-            <div class="nhsuk-date-input" id="dob-from">
-              <div class="nhsuk-date-input__item">
-                <div class="nhsuk-form-group">
-                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
-                    Day
-                  </label>
-                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="dob-day-from" name="dob-day-from" type="number" pattern="[0-9]*">
-                </div>
-              </div>
-              <div class="nhsuk-date-input__item">
-                <div class="nhsuk-form-group">
-                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
-                    Month
-                  </label>
-                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="dob-month-from" name="dob-month-from" type="number" pattern="[0-9]*">
-                </div>
-              </div>
-              <div class="nhsuk-date-input__item">
-                <div class="nhsuk-form-group">
-                  <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
-                    Year
-                  </label>
-                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="dob-year-from" name="dob-year-from" type="number" pattern="[0-9]*">
-                </div>
-              </div>
-            </div>
-          </fieldset>
+                <span class="nhsuk-error-message" id="dob-day-error-error">
+      <span class="nhsuk-u-visually-hidden">Error:</span> Date of birth must displayed with numbers
+    </span>
+
+    <div class="nhsuk-date-input" id="dob-day-error">
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-error-day">
+            Day
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-input--error" id="dob-day-error-day" name="dob-day-error-day" type="number" value="15" pattern="[0-9]*">
         </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-error-month">
+            Month
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-input--error" id="dob-day-error-month" name="dob-day-error-month" type="number" value="3" pattern="[0-9]*">
+        </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-error-year">
+            Year
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4 nhsuk-input--error" id="dob-day-error-year" name="dob-day-error-year" type="number" value="2084" pattern="[0-9]*">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+ </div>
 
       </div>
       <div class="nhsuk-form-group" id="nhsuk-form-group-postcode-advanced">
