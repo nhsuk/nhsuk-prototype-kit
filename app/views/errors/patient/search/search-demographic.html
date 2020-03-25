@@ -13,6 +13,23 @@
 {% endblock %}
 
 {% block content %}
+<div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+  <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+    There is a problem
+  </h2>
+  <div class="nhsuk-error-summary__body">
+    <p>
+      A last name has not been entered
+    </p>
+    <ul class="nhsuk-list nhsuk-error-summary__list">
+      <li>
+        <a href="#example-error-1">Enter a last name</a>
+      </li>
+      <li>
+      </li>
+    </ul>
+  </div>
+</div>
 <div class="nhsuk-grid-row">
 <div class="nhsuk-grid-column-full">
   <form id="searchform" action="search-results" method="post" name="search-form">
