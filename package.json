@@ -9,7 +9,8 @@
     "start": "node app.js",
     "test": "",
     "prewatch": "gulp build",
-    "watch": "gulp"
+    "watch": "gulp",
+    "static": "gulp static"
   },
   "author": "https://github.com/nhsuk/",
   "license": "MIT",
@@ -28,6 +29,7 @@
     "gulp-clean": "^0.4.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-nodemon": "^2.5.0",
+    "gulp-nunjucks-render": "^2.2.3",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "keypather": "^3.0.0",

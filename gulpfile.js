@@ -7,6 +7,7 @@ const browserSync = require('browser-sync');
 const clean = require('gulp-clean');
 const sass = require('gulp-sass');
 const nodemon = require('gulp-nodemon');
+const nunjucksRender = require('gulp-nunjucks-render');
 
 // Local dependencies
 const config = require('./app/config');
@@ -102,6 +103,21 @@ function startBrowserSync(done){
   gulp.watch("public/**/*.*").on("change", reload);
 }
 
+function buildStaticPages() {
+  return gulp.src([
+    'app/views/**/*.html',
+    '!app/views/includes/*.html',
+  ])
+  .pipe(nunjucksRender({
+    path: [
+      'app/views/',
+      'docs/views/',
+      'node_modules/nhsuk-frontend/packages/components'
+    ]
+  }))
+  .pipe(gulp.dest('public'));
+};
+
 // Watch for changes within assets/
 function watch() {
   gulp.watch('app/assets/sass/**/*.scss', compileStyles);
@@ -119,3 +135,4 @@ exports.cleanPublic = cleanPublic;
 
 gulp.task('build', gulp.series(cleanPublic, compileStyles, compileScripts, compileAssets));
 gulp.task('default', gulp.series(startNodemon, startBrowserSync, watch));
+gulp.task('static', gulp.series(cleanPublic, compileStyles, compileScripts, compileAssets, buildStaticPages));
