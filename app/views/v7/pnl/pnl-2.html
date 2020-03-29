@@ -1,0 +1,264 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+  <h1 class="nhsuk-heading-l">Prior Notification List</h1>
+  <!--
+  <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4">
+      <span class="nhsuk-u-visually-hidden">A new test result has been added</span>
+      <h3 class="nhsuk-heading-s">Jane Smith has been deferred until <strong>21-10-2020</strong> due to </strong>pregnancy</strong></h3>
+    </div>
+    -->
+
+  <div class="nhsuk-table-responsive">
+    <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable">
+
+      <!-- TABLE START -->
+      <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">NHS No</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">Name</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">Age</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">Status</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">Next test due date</button>
+          </th>
+          <th class="nhsuk-table__header">
+            Action
+          </th>
+         
+        </tr>
+        
+      </thead>
+        <tbody class="nhsuk-table__body">
+
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            569 986 5128
+          </td>
+          <td class="nhsuk-table__cell">
+            Arisha Stephens
+          </td>
+          <td class="nhsuk-table__cell">
+            50
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+          </td>
+          <td class="nhsuk-table__cell">
+            12-10-2020
+          </td>
+          <td class="nhsuk-table__cell">
+            <a href="">Cease</a> - <a href="">Defer</a>
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            376 037 0373
+          </td>
+          <td class="nhsuk-table__cell">
+            Angelica Davey
+          </td>
+          <td class="nhsuk-table__cell">
+            40
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+          </td>
+          <td class="nhsuk-table__cell">
+            12-10-2020
+          </td>
+          <td class="nhsuk-table__cell">
+            <a href="">Cease</a> - <a href="">Defer</a>
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            933 404 3202
+          </td>
+          <td class="nhsuk-table__cell">
+            Corinne Choi
+          </td>
+          <td class="nhsuk-table__cell">
+            34
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+          </td>
+          <td class="nhsuk-table__cell">
+            12-10-2020
+          </td>
+          <td class="nhsuk-table__cell">
+            <a href="">Cease</a> - <a href="">Defer</a>
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            537 698 6721
+          </td>
+          <td class="nhsuk-table__cell">
+            Yazmin Noble
+          </td>
+          <td class="nhsuk-table__cell">
+            47
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+          </td>
+          <td class="nhsuk-table__cell">
+            12-10-2020
+          </td>
+          <td class="nhsuk-table__cell">
+            <a href="">Cease</a> - <a href="">Defer</a>
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            460 891 3182
+          </td>
+          <td class="nhsuk-table__cell">
+            Elly Arellano
+          </td>
+          <td class="nhsuk-table__cell">
+            28
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+          </td>
+          <td class="nhsuk-table__cell">
+            12-10-2020
+          </td>
+          <td class="nhsuk-table__cell">
+            <a href="">Cease</a> - <a href="">Defer</a>
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            246 122 7527
+          </td>
+          <td class="nhsuk-table__cell">
+            Melinda Mathis
+          </td>
+          <td class="nhsuk-table__cell">
+            36
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+          </td>
+          <td class="nhsuk-table__cell">
+            13-10-2020
+          </td>
+          <td class="nhsuk-table__cell">
+            <a href="">Cease</a> - <a href="">Defer</a>
+          </td>
+        </tr>
+        <!--
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <strong><a href="worklists-result-nhs-no">115 565 5079</strong></a>
+          </td>
+          <td class="nhsuk-table__cell">
+            Anna-Marie Lane
+          </td>
+          <td class="nhsuk-table__cell">
+            41
+          </td>
+          <td class="nhsuk-table__cell">
+            Early Repeat
+          </td>
+          <td class="nhsuk-table__cell">
+            13-10-2020
+          </td>
+        </tr>
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <strong><a href="worklists-result-nhs-no">477 835 5679</strong></a>
+          </td>
+          <td class="nhsuk-table__cell">
+            Roseanna Paine
+          </td>
+          <td class="nhsuk-table__cell">
+            45
+          </td>
+          <td class="nhsuk-table__cell">
+            Early Repeat
+          </td>
+          <td class="nhsuk-table__cell">
+            13-10-2020
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <strong><a href="worklists-result-nhs-no">704 119 6070</strong></a>
+          </td>
+          <td class="nhsuk-table__cell">
+            Lilly-Ann Duke
+          </td>
+          <td class="nhsuk-table__cell">
+            56
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+          </td>
+          <td class="nhsuk-table__cell">
+            14-10-2020
+          </td>
+        </tr>
+        
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            <strong><a href="worklists-result-nhs-no">430 584 5466</strong></a>
+          </td>
+          <td class="nhsuk-table__cell">
+            Kerrie Donaldson
+          </td>
+          <td class="nhsuk-table__cell">
+            49
+          </td>
+          <td class="nhsuk-table__cell">
+            Early Repeat
+          </td>
+          <td class="nhsuk-table__cell">
+            14-10-2020
+          </td>
+        </tr>
+        -->
+            
+        </tbody>   
+      </table>
+      </div>
+
+      {{ pagination({
+        "nextUrl": "/section/symptoms",
+        "nextPage": "Page 2 of 10"
+      }) }}     
+
+  </div>
+  </div>
+{% endblock %}
