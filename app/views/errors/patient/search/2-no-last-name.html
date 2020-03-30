@@ -52,7 +52,7 @@
     </div>
     <!--<div class="nhsuk-form-group">-->
       <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-one-half">
+      <div class="nhsuk-grid-row-one-half">
         <form action="search-results" method="post">
         <fieldset class="nhsuk-fieldset">
       <div class="nhsuk-form-group" id="nhsuk-form-group-first-name-advanced">
@@ -64,16 +64,29 @@
         </span>
         <input class="nhsuk-input nhsuk-input--width-20" id="first-name-advanced" name="first-name" type="text">
       </div>
-      <div id="nhsuk-form-group-last-name-advanced" class="nhsuk-form-group">
-        <label class="nhsuk-label nhsuk-label__strong" for="last-name-advanced">
-          Last name
-        </label>
-        <span id="advanced-last-name-error-error" class="nhsuk-error-message" style="display: none">
-          You must enter a last name
-        </span>
-        <input class="nhsuk-input nhsuk-input--width-20" id="last-name-advanced" name="last-name" type="text">
+    
+      <div class="nhsuk-form-group nhsuk-form-group--error">
+  <fieldset class="nhsuk-fieldset" aria-describedby="dob-day-error-hint dob-day-error-error" role="group">
+<div class="nhsuk-grid-row-one-half">
+          <div class="nhsuk-date-input__item">
+           
+            <label class="nhsuk-label nhsuk-label__strong">
+              Last name
+            </label>
+             <span class="nhsuk-error-message" id="new-email-no-input-error">
+              <span class="nhsuk-u-visually-hidden">Error:</span> Enter a last name
+            </span>
+
+            <input id="searchfield" class="nhsuk-input nhsuk-input--error" type="number" inputmode="numeric" name="searchnhs" value="">
+          </div>
+        </div>
       </div>
+    
       
+      
+  </fieldset>
+
+</div>
 
       <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
         <div class="nhsuk-form-group">
@@ -144,5 +157,14 @@
 </div>
 
 </div>
+
+
+
+
+
+
+
+
+
 
 {% endblock %}
