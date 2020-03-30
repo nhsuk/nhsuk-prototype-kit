@@ -19,11 +19,11 @@
   </h2>
   <div class="nhsuk-error-summary__body">
     <p>
-      A last name has not been entered
+     Date of Birth should be greater than year 1900
     </p>
     <ul class="nhsuk-list nhsuk-error-summary__list">
       <li>
-        <a href="#example-error-1">Enter a last name</a>
+        <a href="#dob-day-error-error">Enter valid birth year</a>
       
       </li>
       <li>
@@ -76,7 +76,10 @@
       
 
       <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
-        <div class="nhsuk-form-group">
+        <div class="nhsuk-form-group nhsuk-form-group--error">
+        <span class="nhsuk-error-message" id="dob-day-error-error">
+           <span class="nhsuk-u-visually-hidden">Error:</span> Enter valid birth year
+        </span>
           <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
             <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
               Date of birth
@@ -109,7 +112,7 @@
                   <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
                     Year
                   </label>
-                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="dob-year-from" name="dob-year-from" type="number" pattern="[0-9]*">
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4 nhsuk-input--error" id="dob-year-from" name="dob-year-from" type="number" pattern="[0-9]*">
                 </div>
               </div>
             </div>

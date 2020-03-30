@@ -18,14 +18,12 @@
     There is a problem
   </h2>
   <div class="nhsuk-error-summary__body">
-    <p>
-      A  date of birth has not been entered
-    </p>
+    <p>A date of birth has not been entered</p>
+
     <ul class="nhsuk-list nhsuk-error-summary__list">
       <li>
-        <a href="#example-error-1">Enter a date of birth</a>
-      
-      </li>
+        <a href="#dob-day-error-error">Enter a date of birth</a>
+    
       <li>
       </li>
     </ul>
@@ -52,40 +50,45 @@
     </div>
     <!--<div class="nhsuk-form-group">-->
       <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-row-one-half">
-        <form action="search-results" method="post">
-        <fieldset class="nhsuk-fieldset">
-      <div class="nhsuk-form-group" id="nhsuk-form-group-first-name-advanced">
-        <label class="nhsuk-label nhsuk-label__strong" for="first-name-advanced">
-          First name (optional)
+        <div class="nhsuk-grid-column-one-half">
+            <form action="search-results" method="post">
+              <fieldset class="nhsuk-fieldset">
+                 <div class="nhsuk-form-group" id="nhsuk-form-group-first-name-advanced">
+                    <label class="nhsuk-label nhsuk-label__strong" for="first-name-advanced">
+                     First name (optional)
+                     </label>
+                     <span id="advanced-first-name-error-error" class="nhsuk-error-message" style="display: none">
+                     You must enter a first name
+                      </span>
+                      <input class="nhsuk-input nhsuk-input--width-20" id="first-name-advanced" name="first-name" type="text">
+                     </div>
+                   <div class="nhsuk-grid-row">
+                 <div class="nhsuk-grid-column-one-half">
+               <form action="search-results" method="post">
+              <fieldset class="nhsuk-fieldset">
+            <div class="nhsuk-form-group" id="nhsuk-form-group-first-name-advanced">
+          <label class="nhsuk-label nhsuk-label__strong" for="first-name-advanced">
+            Last name
         </label>
-        <span id="advanced-first-name-error-error" class="nhsuk-error-message" style="display: none">
-          You must enter a first name
-        </span>
-        <input class="nhsuk-input nhsuk-input--width-20" id="first-name-advanced" name="first-name" type="text">
-      </div>
-      <div id="nhsuk-form-group-last-name-advanced" class="nhsuk-form-group">
-        <label class="nhsuk-label nhsuk-label__strong" for="last-name-advanced">
-          Last name
-        </label>
-        <span id="advanced-last-name-error-error" class="nhsuk-error-message" style="display: none">
-          You must enter a last name
-        </span>
-        <input class="nhsuk-input nhsuk-input--width-20" id="last-name-advanced" name="last-name" type="text">
-      </div>
+       <span id="advanced-first-name-error-error" class="nhsuk-error-message" style="display: none">
+        You must enter a first name
+       </span>
+      <input class="nhsuk-input nhsuk-input--width-20" id="first-name-advanced" name="first-name" type="text">
+     </div>
+   </div>
+</div>
       
-
-<div class="nhsuk-form-group nhsuk-form-group--error">
+ 
+      <div class="nhsuk-form-group nhsuk-form-group--error">
   <fieldset class="nhsuk-fieldset" aria-describedby="dob-day-error-hint dob-day-error-error" role="group">
-    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-   
-    </legend>
+ <label class="nhsuk-label nhsuk-label__strong" for="address-postcode">
+              Date of Birth
     <span class="nhsuk-hint" id="dob-day-error-hint">
       For example, 31 3 1980
     </span>
 
     <span class="nhsuk-error-message" id="dob-day-error-error">
-      <span class="nhsuk-u-visually-hidden">Error:</span> Date of birth must be in the past
+      <span class="nhsuk-u-visually-hidden">Error:</span> Enter a date of birth
     </span>
 
     <div class="nhsuk-date-input" id="dob-day-error">
@@ -94,7 +97,7 @@
           <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-error-day">
             Day
           </label>
-          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-input--error" id="dob-day-error-day" name="dob-day-error-day" "pattern="[0-9]*">
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-input--error" id="dob-day-error-day" name="dob-day-error-day" type="number" pattern="[0-9]*">
         </div>
       </div>
       <div class="nhsuk-date-input__item">
@@ -102,7 +105,7 @@
           <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-error-month">
             Month
           </label>
-          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-input--error" id="dob-day-error-month" name="dob-day-error-month" pattern="[0-9]*">
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-input--error" id="dob-day-error-month" name="dob-day-error-month" type="number" pattern="[0-9]*">
         </div>
       </div>
       <div class="nhsuk-date-input__item">
@@ -110,15 +113,14 @@
           <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-error-year">
             Year
           </label>
-          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4 nhsuk-input--error" id="dob-day-error-year" name="dob-day-error-year" pattern="[0-9]*">
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4 nhsuk-input--error" id="dob-day-error-year" name="dob-day-error-year" type="number" pattern="[0-9]*">
         </div>
       </div>
     </div>
   </fieldset>
 
 </div>
-
-      </div>
+  
       <div class="nhsuk-form-group" id="nhsuk-form-group-postcode-advanced">
             <label class="nhsuk-label nhsuk-label__strong" for="address-postcode">
               Postcode (optional)
