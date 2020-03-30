@@ -41,6 +41,11 @@
     margin: 0 auto;
     }
 }
+<<<<<<< HEAD
+.nhsuk-label__strong {
+    font-weight: 600;
+}
+=======
 
 
 /* ---------------------------- */
@@ -186,7 +191,7 @@
 
   tbody {
     tr {
-      background-color: white;
+      //background-color: white;
 
       td {
         vertical-align: middle;
@@ -205,6 +210,7 @@
   .detailsRow {
     td {
       vertical-align: top;
+      background-color: white;
     }
   }
 
@@ -309,3 +315,4 @@
 /* ---------------------------- */
 /* -- TABLE STUFF FROM SCRA --- */
 /* ---------------------------- */
+>>>>>>> 207ed7211460d7d55c0a8f6efb45bb3e8131be27
