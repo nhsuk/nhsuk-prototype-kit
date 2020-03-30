@@ -22,11 +22,11 @@
   
   <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4">
     <span class="nhsuk-u-visually-hidden">List of non-responders</span>
-    <h3 class="nhsuk-heading-s">The following participants have not responded to a screening invite. Their recall is due to be reset</h3>
+    <h3 class="nhsuk-heading-s">The following participants have not responded to a screening invite.</h3>
   </div>
 
   {{ details({
-  "text": "What do I need to do",
+  "text": "What is a non responder",
   "HTML": "
   <p>We need a reminder sending to the participants. This can be using:</p>
     <ul>
@@ -35,7 +35,6 @@
         <li>verbally</li>
         <li>over the phone</li>
     </ul>
-    <p>If we don't get a test result in time then the participant will not be eligible for the current screening episode and we will recalcuate their next test due date.</p>
   "
   }) }}  
   </div>
@@ -59,7 +58,10 @@
             <button onclick="sortTable()" type="button" data-index="0">Age</button>
           </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            <button onclick="sortTable()" type="button" data-index="0">Test result due by</button>
+            <button onclick="sortTable()" type="button" data-index="0">Status</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">Final</button>
           </th>
         </tr>
         
@@ -77,7 +79,10 @@
             50
           </td>
           <td class="nhsuk-table__cell">
-            14-04-2020
+            Routine
+          </td>
+          <td class="nhsuk-table__cell">
+            Yes
           </td>
         </tr>
         <tr class="nhsuk-table__row">
@@ -91,7 +96,10 @@
             40
           </td>
           <td class="nhsuk-table__cell">
-            14-04-2020
+            Early repeat
+          </td>
+          <td class="nhsuk-table__cell">
+            -
           </td>
         </tr>
         <tr class="nhsuk-table__row">
@@ -105,7 +113,10 @@
             34
           </td>
           <td class="nhsuk-table__cell">
-            14-04-2020
+            Early repeat
+          </td>
+          <td class="nhsuk-table__cell">
+            -
           </td>
         </tr>
         <tr class="nhsuk-table__row">
@@ -119,7 +130,10 @@
             47
           </td>
           <td class="nhsuk-table__cell">
-            14-04-2020
+            Suspended
+          </td>
+          <td class="nhsuk-table__cell">
+            -
           </td>
         </tr>
         <tr class="nhsuk-table__row">
@@ -133,7 +147,10 @@
             28
           </td>
           <td class="nhsuk-table__cell">
-            14-04-2020
+            Suspended
+          </td>
+          <td class="nhsuk-table__cell">
+            -
           </td>
         </tr>
         <tr class="nhsuk-table__row">
@@ -147,7 +164,10 @@
             36
           </td>
          <td class="nhsuk-table__cell">
-            14-04-2020
+            Suspended
+          </td>
+          <td class="nhsuk-table__cell">
+            -
           </td>
         </tr>
         </tbody>   
