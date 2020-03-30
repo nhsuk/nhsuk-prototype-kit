@@ -19,14 +19,11 @@
   </h2>
   <div class="nhsuk-error-summary__body">
     <p>
-      A last name has not been entered
+      Incorrect characters in postcode
     </p>
     <ul class="nhsuk-list nhsuk-error-summary__list">
       <li>
-        <a href="#example-error-1">Enter a last name</a>
-      
-      </li>
-      <li>
+        <a href="#nhsuk-form-group-postcode-advanced">Enter a postcode, like AA11 1AA </a>
       </li>
     </ul>
   </div>
@@ -117,14 +114,18 @@
         </div>
 
       </div>
-      <div class="nhsuk-form-group" id="nhsuk-form-group-postcode-advanced">
+      <div class="nhsuk-form-group nhsuk-form-group--error" id="nhsuk-form-group-postcode-advanced">
+         <span class="nhsuk-error-message" id="dob-day-error-error">
+           <span class="nhsuk-u-visually-hidden">Error:</span> Enter a postcode, like AA11 1AA 
+         </span>
+
             <label class="nhsuk-label nhsuk-label__strong" for="address-postcode">
               Postcode (optional)
             </label>
             <span id="advanced-postcode-error-error" class="nhsuk-error-message" style="display: none">
               You must enter a postcode
             </span>
-            <input class="nhsuk-input nhsuk-input--width-10" id="address-postcode" name="address-postcode" type="text">
+            <input class="nhsuk-input nhsuk-input--width-10 nhsuk-input--error" id="address-postcode" name="address-postcode" type="text">
           </div>
 
         </fieldset>

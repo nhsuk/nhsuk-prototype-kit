@@ -22,13 +22,21 @@
 }}
 {% endblock %}
 
+{% block patientBanner %}
+  {% include '../components/patient-banner.html' %}
+{% endblock %}
+
 {% block content %}
+
+
+
+
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
   {{ backLink({
     "href": "../patient-summary",
-    "text": "Go back to patient summary"
+    "text": "Go back to prior notification list"
   }) }}
 
 
@@ -41,28 +49,20 @@
     "name": "reason",
     "items": [
       {
+        "value": "Age",
+        "text": "3 months (12-5-20)"
+      },
+      {
         "value": "No cervix",
-        "text": "No cervix"
-      },
-      {
-        "value": "Cease - Patient choice",
-        "text": "Patient choice"
-      },
-      {
-        "value": "Mental capacity act",
-        "text": "Mental capacity act"
+        "text": "6 months (12-8-20)"
       },
       {
         "value": "Receiving radiotherapy",
-        "text": "Receiving radiotherapy"
+        "text": "9 months (12-11-20)"
       },
       {
-        "value": "Aged over 65",
-        "text": "Aged over 65"
-      },
-      {
-        "value": "other reason",
-        "text": "Other reason"
+        "value": "Receiving radiotherapy",
+        "text": "12 months (12-2-21)"
       }
     ]
     }) }}
@@ -76,36 +76,32 @@
     "name": "reason",
     "items": [
       {
-        "value": "Pregnancy",
-        "text": "Pregnancy"
+        "value": "Age",
+        "text": "in 3 months (12-05-20)"
       },
       {
-        "value": "Defer - patient choice",
-        "text": "Patient choice"
+        "value": "No cervix",
+        "text": "in 6 months (12-08-20)"
       },
       {
-        "value": "Undergoing treatment",
-        "text": "Undergoing treatment"
+        "value": "Receiving radiotherapy",
+        "text": "in 9 months (12-11-20)"
       },
       {
-        "value": "Recent test",
-        "text": "Recent test"
-      },
-      {
-        "value": "Under care of colposcopy",
-        "text": "Under care of colposcopy"
-      },
-      {
-        "value": "other reason",
-        "text": "Other reason"
-      }
+        "value": "Receiving radiotherapy",
+        "text": "in 12 months (12-02-21)"
+      } 
     ]
   }) }}
   <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
+<div class="nhsuk-inset-text">
+  <span class="nhsuk-u-visually-hidden">Information: </span>
+  <p>Next test due date must be between 3-12 months</p>
+</div>
                           <div class="nhsuk-form-group">
                             <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
-                              <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
-                                Test date
+                              <legend class="nhsuk-fieldset__legend nhsuk-label__strong nhsuk-fieldset__legend--m">
+                                Choose the next test due date
                               </legend>
                               <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
                                 You must enter a date
@@ -179,23 +175,15 @@
 
                 <div class="nhsuk-form-group">
                   <label class="nhsuk-label" for="example">
-                  CRM
-                  </label>
-                <input class="nhsuk-input nhsuk-input--width-10" type="number" name="crm" value="crm">
-              </div>
-
-
-
-                <div class="nhsuk-form-group">
-                  <label class="nhsuk-label" for="example">
-                    Comments
+                    Detail
                   </label>
                   <span class="nhsuk-hint" id="example-hint">
                     Do not include clinical information at  this point.
                   </span>
                   <textarea class="nhsuk-textarea" id="example" name="details" rows="5" aria-describedby="example-hint" value="details"></textarea>
                 </div>
-                  <button class="nhsuk-button--ers">Continue</button>
+                  <button class="nhsuk-button--ers">Submit</button>
+                  <p><a href="">Exit without saving</a></p>
             </form>
 
             </div>

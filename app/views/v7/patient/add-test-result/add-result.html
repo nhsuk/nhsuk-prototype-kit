@@ -279,6 +279,15 @@ function customSuggest (query, syncResults) {
               </label>
               <input class="nhsuk-input nhsuk-input--width-20" id="case-number" name="case-number" type="number" value="{{ data['case-number'] }}">
             </div>
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="example">
+                Comments 
+              </label>
+              <span class="nhsuk-hint" id="example-hint">
+               Do not enter any clinical information here
+              </span>
+              <textarea class="nhsuk-textarea" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
+            </div>
 
           </fieldset>
           <button class="nhsuk-button--ers">Continue</button>

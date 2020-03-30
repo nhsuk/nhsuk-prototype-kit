@@ -19,11 +19,11 @@
   </h2>
   <div class="nhsuk-error-summary__body">
     <p>
-      A last name has not been entered
+      The postcode does not exist
     </p>
     <ul class="nhsuk-list nhsuk-error-summary__list">
       <li>
-        <a href="#example-error-1">Enter a last name</a>
+        <a href="#example-error-1">Enter a postcode, like AA1 1AA</a>
       
       </li>
       <li>
@@ -116,25 +116,29 @@
           </fieldset>
         </div>
 
-      </div>
-      <div class="nhsuk-form-group" id="nhsuk-form-group-postcode-advanced">
-            <label class="nhsuk-label nhsuk-label__strong" for="address-postcode">
+             <div class="nhsuk-form-group nhsuk-form-group--error">
+  <fieldset class="nhsuk-fieldset" aria-describedby="dob-day-error-hint dob-day-error-error" role="group">
+<div class="nhsuk-grid-row-one-half">
+          <div class="nhsuk-date-input__item">
+           
+            <label class="nhsuk-label nhsuk-label__strong">
               Postcode (optional)
             </label>
-            <span id="advanced-postcode-error-error" class="nhsuk-error-message" style="display: none">
-              You must enter a postcode
+             <span class="nhsuk-error-message" id="new-email-no-input-error">
+              <span class="nhsuk-u-visually-hidden">Error:</span> Enter a postcode
             </span>
-            <input class="nhsuk-input nhsuk-input--width-10" id="address-postcode" name="address-postcode" type="text">
-          </div>
 
-        </fieldset>
+            <input id="searchfield" class="nhsuk-input nhsuk-input--error" type="number" inputmode="numeric" name="searchnhs" value="">
+          </div>
+        </div>
+      </div>
         <!--<button class="nhsuk-button">Search</button>-->
       <!--</form>-->
 
       </div>
     </div>
     <div class="nhsuk-form-group">
-      <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-row-one-half">
         <div class="nhsuk-grid-column-full">
           <button class="nhsuk-button nhsuk-button--ers" type="submit">Search</button>
         </div>
