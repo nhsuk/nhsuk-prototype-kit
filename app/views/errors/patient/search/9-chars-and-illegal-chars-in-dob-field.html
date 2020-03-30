@@ -76,7 +76,10 @@
       
 
       <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
-        <div class="nhsuk-form-group">
+        <div class="nhsuk-form-group nhsuk-form-group--error">
+        <span class="nhsuk-error-message" id="dob-day-error-error">
+           <span class="nhsuk-u-visually-hidden">Error:</span> Date of Birth must be made of numbers 
+        </span>
           <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
             <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
               Date of birth
@@ -93,7 +96,7 @@
                   <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
                     Day
                   </label>
-                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="dob-day-from" name="dob-day-from" type="number" pattern="[0-9]*">
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2 nhsuk-input--error" id="dob-day-from" name="dob-day-from" type="number" pattern="[0-9]*">
                 </div>
               </div>
               <div class="nhsuk-date-input__item">
@@ -101,7 +104,7 @@
                   <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
                     Month
                   </label>
-                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="dob-month-from" name="dob-month-from" type="number" pattern="[0-9]*">
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2 nhsuk-input--error" id="dob-month-from" name="dob-month-from" type="number" pattern="[0-9]*">
                 </div>
               </div>
               <div class="nhsuk-date-input__item">
@@ -109,7 +112,7 @@
                   <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
                     Year
                   </label>
-                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="dob-year-from" name="dob-year-from" type="number" pattern="[0-9]*">
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4 nhsuk-input--error" id="dob-year-from" name="dob-year-from" type="number" pattern="[0-9]*">
                 </div>
               </div>
             </div>
