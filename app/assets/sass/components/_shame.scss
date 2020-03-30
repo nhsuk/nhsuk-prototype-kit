@@ -41,3 +41,271 @@
     margin: 0 auto;
     }
 }
+
+
+/* ---------------------------- */
+/* -- BUTTON STUFF FROM SCRA -- */
+/* ---------------------------- */
+.expanderButton[aria-expanded="false"] {
+  background: url("data:image/svg+xml,%3Csvg class='nhsuk-icon nhsuk-icon__plus' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'%3E%3Ccircle cx='12' cy='12' r='10' fill='%23005eb8'%3E%3C/circle%3E%3Cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M12 8v8M8 12h8'%3E%3C/path%3E%3C/svg%3E%0A") left -2px center no-repeat;
+  background-size: 32px 32px;
+  color: #005eb8;
+  cursor: pointer;
+  display: inline-block;
+  padding: 20px 8px 8px 0px;
+  position: relative;
+  margin-left: 25%;
+}
+
+.expanderButton[aria-expanded="true"] {
+  background: url("data:image/svg+xml,%3Csvg class='nhsuk-icon nhsuk-icon__minus' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true'%3E%3Ccircle cx='12' cy='12' r='10' fill='%23ffffff'%3E%3C/circle%3E%3Cpath fill='none' stroke='%23005eb8' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M8 12h8'%3E%3C/path%3E%3C/svg%3E%0A") left -2px center no-repeat;
+  background-size: 32px 32px;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  padding: 20px 8px 8px 0px;
+  position: relative;
+  margin-left: 25%;
+}
+/* ---------------------------- */
+/* -- BUTTON STUFF FROM SCRA -- */
+/* ---------------------------- */
+
+
+
+/* ---------------------------- */
+/* -- TABLE STUFF FROM SCRA --- */
+/* ---------------------------- */
+.responsive-table {
+  $mobile: 641px;
+  width: 100%;
+
+  thead {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    @media (min-width: $mobile) {
+      clip: auto;
+      display: table-header-group;
+      height: auto;
+      overflow: auto;
+      position: relative;
+      width: auto;
+    }
+  }
+
+  tbody {
+    @media (min-width: $mobile) {
+      display: table-row-group;
+    }
+
+    td {
+      display: block; // For browsers that don't support flexbox
+      display: flex;
+      justify-content: space-between;
+      //vertical-align: middle;
+      @media (min-width: $mobile) {
+        display: table-cell;
+      }
+    }
+
+    .table-heading {
+      font-weight: 700;
+      text-align: left;
+      padding-right: 1em;
+      padding-left: 1em;
+      display: block;
+      @media (min-width: $mobile) {
+        display: none;
+      }
+    }
+
+    tr {
+      margin-bottom: 1em;
+      display: block;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+      @media (min-width: $mobile) {
+        display: table-row;
+      }
+
+      th {
+        text-align: right;
+        @media (min-width: $mobile) {
+          text-align: left;
+        }
+      }
+
+      td {
+        min-width: 1px;
+        text-align: right;
+        vertical-align: text-top;
+        @media (min-width: $mobile) {
+          text-align: left;
+        }
+
+        &.numeric {
+          text-align: left;
+          @media (min-width: $mobile) {
+            text-align: right;
+          }
+        }
+      }
+    }
+
+    .total {
+      @media (max-width: $mobile) {
+        display: block;
+      }
+    }
+  }
+}
+
+
+.bna-table td, th {
+  //font-size: 14px;
+  //line-height: 1.71429;
+  //margin-top: 0;
+  margin-bottom: 16px;
+  @media (min-width: 641px) {
+    //font-size: 16px;
+    //font-size: 1rem;
+    //line-height: 1.5;
+  }
+}
+
+.bna-table {
+
+  margin-bottom: 32px;
+
+  tbody {
+    tr {
+      background-color: white;
+
+      td {
+        vertical-align: middle;
+
+        button {
+          background-color: transparent;
+          border: none;
+          padding: 0.25em 0.5em 0.25em 0.25em;
+          width: 100%;
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  .detailsRow {
+    td {
+      vertical-align: top;
+    }
+  }
+
+  .detailsTable {
+    margin-bottom: 0;
+
+    td {
+      border-bottom: none;
+      padding-top: 4px;
+      padding-bottom: 4px;
+    }
+
+    .detailsTableLabel {
+      text-align: right;
+      font-weight: 600;
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .detailsTableRight {
+    td {
+      text-align: left;
+    }
+  }
+
+  .nhsuk-checkboxes--small .nhsuk-checkboxes__label::before {
+    top: -5px;
+    width: 24px;
+    height: 24px;
+    margin-left: 12px;
+  }
+
+  .nhsuk-checkboxes--small .nhsuk-checkboxes__label::after {
+    top: 3px;
+    left: 18px;
+  }
+
+  .nhsuk-action-link {
+    margin-bottom: 0;
+  }
+
+  .nhsuk-icon__arrow-right-circle {
+    height: 24px;
+    top: 0;
+  }
+
+  .nhsuk-icon__arrow-right-circle--red {
+    fill: $color_nhsuk-red;
+  }
+
+  .nhsuk-icon__arrow-right-circle--yellow {
+    fill: #ffb81c;
+  }
+
+  .nhsuk-action-link__link {
+    padding-left: 30px;
+    line-height: 0;
+  }
+
+  .nhsuk-action-link__text {
+    //font-size: 14px;
+    //line-height: 1.71429;
+    @media (min-width: 40.0625em) {
+      //font-size: 16px;
+      //font-size: 1rem;
+      line-height: 1.5;
+    }
+  }
+
+  .expandedRow {
+    background-color: #005eb8;
+    color: #fff;
+    a {
+      color: #fff;
+    }
+    a:focus {
+      color: #231f20;
+      svg {
+        fill: #231f20;
+      }
+    }
+    svg {
+      fill: #fff;
+      circle {
+        stroke: none;
+        fill: none;
+      }
+    }
+    label::after {
+      color: #231f20;
+    }
+
+  }
+}
+
+.td-unavailable {
+  color: $color_nhsuk-grey-1;
+}
+/* ---------------------------- */
+/* -- TABLE STUFF FROM SCRA --- */
+/* ---------------------------- */

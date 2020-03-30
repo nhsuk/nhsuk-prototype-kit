@@ -1,0 +1,178 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+  <script type="text/javascript" src="/js/action-menu.js"></script>
+  <script type="text/javascript" src="/js/sort.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "true"
+  })
+}}
+{% endblock %}
+
+{% block patientBanner %}
+  {% include '../components/patient-banner.html' %}
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+  {{ backLink({
+    "href": "../patient-summary",
+    "text": "Go back to prior notification list"
+  }) }}
+
+
+  <form action="/v7/patient/change-due-date/change" method="post" class="form">
+
+    {% set CeaseReasons %}
+    {% include 'radios/macro.njk' %}
+    {{ radios({
+    "idPrefix": "cease",
+    "name": "reason",
+    "items": [
+      {
+        "value": "Age",
+        "text": "Due to age"
+      },
+      {
+        "value": "No cervix",
+        "text": "No cervix"
+      },
+      {
+        "value": "Receiving radiotherapy",
+        "text": "Radiotherapy"
+      }
+    ]
+    }) }}
+
+    {% endset %}
+
+    {% set DeferReasons %}
+    {% include 'radios/macro.njk' %}
+    {{ radios({
+    "idPrefix": "defer",
+    "name": "reason",
+    "items": [
+      {
+        "value": "Pregnancy",
+        "text": "Pregnancy"
+      },
+      {
+        "value": "Under care of colposcopy",
+        "text": "Colposcopy under care"
+      },
+      {
+        "value": "Undergoing treatment",
+        "text": "Under treatment"
+      }
+    ]
+  }) }}
+  <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
+                          <div class="nhsuk-form-group">
+                            <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
+                              <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+                                Enter the next test due date
+                              </legend>
+                              <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
+                                You must enter a date
+                              </span>
+                              <div class="nhsuk-date-input" id="dob-from">
+                                <div class="nhsuk-date-input__item">
+                                  <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
+                                      Day
+                                    </label>
+                                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="day" name="day" type="number" pattern="[0-9]*" value="day">                                </div>
+                                </div>
+                                <div class="nhsuk-date-input__item">
+                                  <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
+                                      Month
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="month" type="number" pattern="[0-9]*" value="month">
+                                  </div>
+                                </div>
+                                <div class="nhsuk-date-input__item">
+                                  <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
+                                      Year
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="year" type="number" pattern="[0-9]*" value="">
+                                  </div>
+                                </div>
+                              </div>
+                              <input type="hidden" id="ntdd" name="ntdd" value="19 01 2021">
+                            </fieldset>
+                          </div>
+
+  </div>
+
+{% endset %}
+
+
+
+
+
+              {{ conditionalRadios({
+          "idPrefix": "gov",
+          "name": "gov",
+          "fieldset": {
+            "legend": {
+              "text": "Choose a reason to change the next test due date",
+              "isPageHeading": true,
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "items": [
+          {
+            "value": "cease",
+            "text": "Cease",
+            "conditional": {
+            html: CeaseReasons
+            }
+          },
+            {
+              "value": "defer",
+              "text": "Defer",
+              "conditional": {
+              html: DeferReasons
+              }
+            }
+
+
+          ]
+        }) }}
+
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label" for="example">
+                    Detail
+                  </label>
+                  <span class="nhsuk-hint" id="example-hint">
+                    Do not include clinical information at  this point.
+                  </span>
+                  <textarea class="nhsuk-textarea" id="example" name="details" rows="5" aria-describedby="example-hint" value="details"></textarea>
+                </div>
+                  <button class="nhsuk-button--ers">Submit</button>
+                  <p><a href="">Exit without saving</a></p>
+            </form>
+
+            </div>
+{% endblock %}
