@@ -1,0 +1,138 @@
+// =========================================================
+// Small checkboxes
+// =========================================================
+
+$nhsuk-touch-target-size: 44px;
+$nhsuk-checkboxes-size: 40px;
+$nhsuk-small-checkboxes-size: 24px;
+$nhsuk-checkboxes-label-padding-left-right: nhsuk-spacing(3);
+
+$nhsuk-hover-width: 8px;
+$nhsuk-checkbox-hover-color: $color_nhsuk-grey-3;
+
+
+.nhsuk-checkboxes--small {
+
+  $input-offset: ($nhsuk-touch-target-size - $nhsuk-small-checkboxes-size) / 2;
+  $label-offset: $nhsuk-touch-target-size - $input-offset;
+
+  .nhsuk-checkboxes__item {
+    @include clearfix;
+    min-height: 0;
+    margin-bottom: 0;
+    padding-left: $label-offset;
+    float: left;
+  }
+
+  // Shift the touch target into the left margin so that the visible edge of
+  // the control is aligned
+  //
+  //   ┆What colors do you like?
+  //  ┌┆───┐
+  //  │┆[] │ Purple
+  //  └┆▲──┘
+  //  ▲┆└─ Check box pseudo element, aligned with margin
+  //  └─── Touch target (invisible input), shifted into the margin
+  .nhsuk-checkboxes__input {
+    left: $input-offset * -1;
+  }
+
+  .ie8 .nhsuk-checkboxes__input {
+    margin-left: $nhsuk-small-checkboxes-size * -1;
+  }
+
+  // Adjust the size and position of the label.
+  //
+  // Unlike larger checkboxes, we also have to float the label in order to
+  // 'shrink' it, preventing the hover state from kicking in across the full
+  // width of the parent element.
+  .nhsuk-checkboxes__label {
+    margin-top: -2px;
+    margin-bottom: 0;
+    padding: 11px nhsuk-spacing(3) 9px 1px;
+    float: left;
+
+    @include mq($from: tablet) {
+      padding: 9px nhsuk-spacing(3) 7px 1px;
+    }
+  }
+
+  // [ ] Check box
+  //
+  // Reduce the size of the check box [1], vertically center it within the
+  // touch target [2]
+  .nhsuk-checkboxes__label::before {
+    top: $input-offset - $nhsuk-border-width-form-element; // 2
+    width: $nhsuk-small-checkboxes-size; // 1
+    height: $nhsuk-small-checkboxes-size; // 1
+  }
+
+  // ✔ Check mark
+  //
+  // Reduce the size of the check mark and re-align within the checkbox
+  .nhsuk-checkboxes__label::after {
+    top: 16px;
+    left: 6px;
+    width: 12px;
+    height: 6px;
+    border-width: 0 0 3px 3px;
+  }
+
+  // Fix position of hint with small checkboxes
+  //
+  // Do not use hints with small checkboxes – because they're within the input
+  // wrapper they trigger the hover state, but clicking them doesn't actually
+  // activate the control.
+  //
+  // (If you do use them, they won't look completely broken... but seriously,
+  // don't use them)
+  .nhsuk-checkboxes__hint {
+    padding: 0;
+    clear: both;
+  }
+
+  // Align conditional reveals with small checkboxes
+  .nhsuk-checkboxes__conditional {
+    $margin-left: ($nhsuk-small-checkboxes-size / 2) - ($conditional-border-width / 2);
+    margin-left: $margin-left;
+    padding-left: $label-offset - ($margin-left + $conditional-border-width);
+    clear: both;
+  }
+
+  // Hover state for small checkboxes.
+  //
+  // We use a hover state for small checkboxes because the touch target size
+  // is so much larger than their visible size, and so we need to provide
+  // feedback to the user as to which checkbox they will select when their
+  // cursor is outside of the visible area.
+  .nhsuk-checkboxes__item:hover .nhsuk-checkboxes__input:not(:disabled) + .nhsuk-checkboxes__label::before {
+    box-shadow: 0 0 0 $nhsuk-hover-width $nhsuk-checkbox-hover-color;
+  }
+
+  // Because we've overridden the border-shadow provided by the focus state,
+  // we need to redefine that too.
+  //
+  // We use two box shadows, one that restores the original focus state [1]
+  // and another that then applies the hover state [2].
+  .nhsuk-checkboxes__item:hover .nhsuk-checkboxes__input:focus + .nhsuk-checkboxes__label::before {
+    // sass-lint:disable indentation
+    box-shadow: 0 0 0 $nhsuk-focus-width $nhsuk-focus-color, // 1
+                0 0 0 $nhsuk-hover-width $nhsuk-checkbox-hover-color; // 2
+  }
+
+  // For devices that explicitly don't support hover, don't provide a hover
+  // state (e.g. on touch devices like iOS).
+  //
+  // We can't use `@media (hover: hover)` because we wouldn't get the hover
+  // state in browsers that don't support `@media (hover)` (like Internet
+  // Explorer) – so we have to 'undo' the hover state instead.
+  @media (hover: none), (pointer: coarse) {
+    .nhsuk-checkboxes__item:hover .nhsuk-checkboxes__input:not(:disabled) + .nhsuk-checkboxes__label::before {
+      box-shadow: initial;
+    }
+
+    .nhsuk-checkboxes__item:hover .nhsuk-checkboxes__input:focus + .nhsuk-checkboxes__label::before {
+      box-shadow: 0 0 0 $nhsuk-focus-width $nhsuk-focus-color;
+    }
+  }
+}

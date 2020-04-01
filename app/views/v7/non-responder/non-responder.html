@@ -1,0 +1,184 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+  <h1 class="nhsuk-heading-l">Non-responder list</h1>
+  
+  <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4">
+    <span class="nhsuk-u-visually-hidden">List of non-responders</span>
+    <h3 class="nhsuk-heading-s">The following participants have not responded to a screening invite.</h3>
+  </div>
+
+  {{ details({
+  "text": "What do i need to do",
+  "HTML": "
+  <p>We need a reminder sending to the participants. This can be using:</p>
+    <ul>
+        <li>text message</li>
+        <li>letter (templates are available)</li>
+        <li>verbally</li>
+        <li>over the phone</li>
+    </ul>
+  "
+  }) }}  
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+  <div class="nhsuk-table-responsive">
+    <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable">
+
+      <!-- TABLE START -->
+      <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">NHS No</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">Name</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">Age</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">Status</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">Final</button>
+          </th>
+        </tr>
+        
+      </thead>
+        <tbody class="nhsuk-table__body">
+
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            569 986 5128
+          </td>
+          <td class="nhsuk-table__cell">
+            Arisha Stephens
+          </td>
+          <td class="nhsuk-table__cell">
+            50
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+          </td>
+          <td class="nhsuk-table__cell">
+            Yes
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            376 037 0373
+          </td>
+          <td class="nhsuk-table__cell">
+            Angelica Davey
+          </td>
+          <td class="nhsuk-table__cell">
+            40
+          </td>
+          <td class="nhsuk-table__cell">
+            Early repeat
+          </td>
+          <td class="nhsuk-table__cell">
+            -
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            933 404 3202
+          </td>
+          <td class="nhsuk-table__cell">
+            Corinne Choi
+          </td>
+          <td class="nhsuk-table__cell">
+            34
+          </td>
+          <td class="nhsuk-table__cell">
+            Early repeat
+          </td>
+          <td class="nhsuk-table__cell">
+            -
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            537 698 6721
+          </td>
+          <td class="nhsuk-table__cell">
+            Yazmin Noble
+          </td>
+          <td class="nhsuk-table__cell">
+            47
+          </td>
+          <td class="nhsuk-table__cell">
+            Suspended
+          </td>
+          <td class="nhsuk-table__cell">
+            -
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            460 891 3182
+          </td>
+          <td class="nhsuk-table__cell">
+            Elly Arellano
+          </td>
+          <td class="nhsuk-table__cell">
+            28
+          </td>
+          <td class="nhsuk-table__cell">
+            Suspended
+          </td>
+          <td class="nhsuk-table__cell">
+            -
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            246 122 7527
+          </td>
+          <td class="nhsuk-table__cell">
+            Melinda Mathis
+          </td>
+          <td class="nhsuk-table__cell">
+            36
+          </td>
+         <td class="nhsuk-table__cell">
+            Suspended
+          </td>
+          <td class="nhsuk-table__cell">
+            -
+          </td>
+        </tr>
+        </tbody>   
+      </table>
+      </div>
+
+      {{ pagination({
+        "nextUrl": "/section/symptoms",
+        "nextPage": "Page 2 of 10"
+      }) }}     
+
+  </div>
+  </div>
+{% endblock %}

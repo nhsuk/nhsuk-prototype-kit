@@ -48,6 +48,15 @@ router.post("/csass/add-test-result/v1/change", function(req, res) {
     res.redirect("/archive/csass/add-test-result/v1/cease");
   }
 });
+router.post("/*/hmr101/choose", function(req, res) {
+  var reason = req.session.data["choose"];
+  console.log(reason);
+  if (reason == "print") {
+    res.redirect("/v7/patient/hmr101/preview");
+  } else {
+    res.redirect("/v7/patient/hmr101/step-1");
+  }
+});
 
 router.post("/*/change-due-date", function(req, res) {
   if (req.session.data["recall"] == "defer") {

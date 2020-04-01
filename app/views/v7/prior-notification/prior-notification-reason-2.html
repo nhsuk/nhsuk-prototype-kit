@@ -22,82 +22,62 @@
 }}
 {% endblock %}
 
+{% block patientBanner %}
+  {% include '../components/patient-banner.html' %}
+{% endblock %}
+
 {% block content %}
+
+
+
+
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
   {{ backLink({
     "href": "../patient-summary",
-    "text": "Go back to patient summary"
+    "text": "Go back to prior notification list"
   }) }}
 
 
   <form action="/v7/patient/change-due-date/change" method="post" class="form">
 
-    {% set CeaseReasons %}
-    {% include 'radios/macro.njk' %}
-    {{ radios({
-    "idPrefix": "cease",
-    "name": "reason",
-    "items": [
-      {
-        "value": "No cervix",
-        "text": "No cervix"
-      },
-      {
-        "value": "Mental capacity act",
-        "text": "Mental capacity act"
-      },
-      {
-        "value": "Receiving radiotherapy",
-        "text": "Receiving radiotherapy"
-      },
-      {
-        "value": "Aged over 65",
-        "text": "Aged over 65"
-      },
-      {
-        "value": "other reason",
-        "text": "Other reason"
-      }
-    ]
-    }) }}
+  {{ radios({
+  "idPrefix": "example",
+  "name": "example",
+  "fieldset": {
+    "legend": {
+      "text": "Choose a reason to defer the next test due date",
+      "classes": "nhsuk-fieldset__legend--l",
+      "isPageHeading": true
+    }
+  },
+  "items": [
+    {
+      "value": "yes",
+      "text": "Recent test"
+    },
+    {
+      "value": "no",
+      "text": "Pregnancy"
+    },
+    {
+      "value": "no",
+      "text": "Under care of colposcopy"
+    },
+    {
+      "value": "no",
+      "text": "Under treatment"
+    }
+  ]
+}) }}
 
-    {% endset %}
-
-    {% set DeferReasons %}
-    {% include 'radios/macro.njk' %}
-    {{ radios({
-    "idPrefix": "defer",
-    "name": "reason",
-    "items": [
-      {
-        "value": "Pregnancy",
-        "text": "Pregnancy"
-      },
-      {
-        "value": "Undergoing treatment",
-        "text": "Undergoing treatment"
-      },
-      {
-        "value": "Recent test",
-        "text": "Recent test"
-      },
-      {
-        "value": "Under care of colposcopy",
-        "text": "Under care of colposcopy"
-      },
-      {
-        "value": "other reason",
-        "text": "Other reason"
-      }
-    ]
-  }) }}
+<!--
   <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
                           <div class="nhsuk-form-group">
                             <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
                               <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
-                                Test date
+                                Enter the next test due date
                               </legend>
                               <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
                                 You must enter a date
@@ -133,61 +113,22 @@
 
   </div>
 
-{% endset %}
+-->
 
-
-
-
-
-              {{ conditionalRadios({
-          "idPrefix": "gov",
-          "name": "gov",
-          "fieldset": {
-            "legend": {
-              "text": "Choose a reason to change the next test due date",
-              "isPageHeading": true,
-              "classes": "nhsuk-fieldset__legend--m"
-            }
-          },
-          "items": [
-          {
-            "value": "cease",
-            "text": "Cease",
-            "conditional": {
-            html: CeaseReasons
-            }
-          },
-            {
-              "value": "defer",
-              "text": "Defer",
-              "conditional": {
-              html: DeferReasons
-              }
-            }
-
-
-          ]
-        }) }}
-
-                <div class="nhsuk-form-group">
-                  <label class="nhsuk-label" for="example">
-                  CRM
-                  </label>
-                <input class="nhsuk-input nhsuk-input--width-10" type="number" name="crm" value="crm">
-              </div>
 
 
 
                 <div class="nhsuk-form-group">
                   <label class="nhsuk-label" for="example">
-                    Comments
+                    Detail
                   </label>
                   <span class="nhsuk-hint" id="example-hint">
                     Do not include clinical information at  this point.
                   </span>
-                  <textarea class="nhsuk-textarea" id="example" name="details" rows="5" aria-describedby="example-hint" value="details"></textarea>
+                  <textarea class="nhsuk-textarea" id="example" name="details" rows="3" aria-describedby="example-hint" value="details"></textarea>
                 </div>
-                  <button class="nhsuk-button--ers">Continue</button>
+                  <button class="nhsuk-button--ers">Submit</button>
+                  <p><a href="">Exit without saving</a></p>
             </form>
 
             </div>

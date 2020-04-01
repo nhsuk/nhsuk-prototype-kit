@@ -1,0 +1,162 @@
+{% set CeaseReasons %}
+    {% include 'radios/macro.njk' %}
+    {{ radios({
+    "idPrefix": "cease",
+    "name": "reason",
+    "items": [
+      {
+        "value": "due to age",
+        "text": "due to age"
+      },
+      {
+        "value": "no cervix",
+        "text": "no cervix"
+      },
+      {
+        "value": "receiving radiotherapy",
+        "text": "receiving radiotherapy"
+      }
+    ]
+    }) }}
+{% endset %}
+
+{% set DeferReasons %}
+    {% include 'radios/macro.njk' %}
+    {{ radios({
+    "idPrefix": "defer",
+    "name": "reason",
+    "items": [
+      {
+        "value": "recent test",
+        "text": "recent test"
+      },
+      {
+        "value": "pregnancy",
+        "text": "pregnancy"
+      },
+      {
+        "value": "Under care of colposcopy",
+        "text": "Under care of colposcopy"
+      },
+      {
+        "value": "Undergoing treatment",
+        "text": "Undergoing treatment"
+      }
+    ]
+}) }}
+  <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
+    <div class="nhsuk-form-group">
+      <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
+        <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+          Test date
+        </legend>
+        <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
+          You must enter a date
+        </span>
+        <div class="nhsuk-date-input" id="dob-from">
+          <div class="nhsuk-date-input__item">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
+                Day
+              </label>
+            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="day" name="day" type="number" pattern="[0-9]*" value="day">                                </div>
+          </div>
+          <div class="nhsuk-date-input__item">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
+                Month
+              </label>
+              <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="month" type="number" pattern="[0-9]*" value="month">
+            </div>
+          </div>
+          <div class="nhsuk-date-input__item">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
+                Year
+              </label>
+              <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="year" type="number" pattern="[0-9]*" value="">
+            </div>
+          </div>
+        </div>
+        <input type="hidden" id="ntdd" name="ntdd" value="19 01 2021">
+      </fieldset>
+    </div>
+  </div>
+{% endset %}
+
+
+<div class="nhsuk-grid-row">
+                <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                  {{ summaryList({
+                    rows: [
+                      {
+                        key: {
+                        text: "Next test due date"
+                      },
+                      value: {
+                      text: "12-12-2010"
+                      }
+                    },
+                    {
+                      key: {
+                        text: "Last test result date"
+                      },
+                      value: {
+                        text: "12-12-2010"
+                      }
+                    },
+                    {
+                      key: {
+                        text: "Last test result"
+                      },
+                      value: {
+                        html: "(XOA) No cytology, HPV negative, routine recall"
+                      }
+                    }
+                    ]
+                  }) }}
+
+                  {{ conditionalRadios({
+                    "idPrefix": "gov",
+                    "name": "gov",
+                    "fieldset": {
+                      "legend": {
+                        "text": "Choose a reason",
+                        "isPageHeading": true,
+                        "classes": "nhsuk-fieldset__legend--m"
+                      }
+                    },
+                    "items": [
+                    {
+                      "value": "invite",
+                      "text": "invite to screening"
+                    },
+                    {
+                      "value": "cease",
+                      "text": "cease",
+                      "conditional": {
+                        html: CeaseReasons
+                      }
+                    },
+                    {
+                        "value": "defer",
+                        "text": "defer",
+                        "conditional": {
+                          html: DeferReasons
+                        }
+                      }
+                    ]
+                   }) }}
+
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="example">
+                      Comments
+                    </label>
+                    <span class="nhsuk-hint" id="example-hint">Do not include clinical information at  this point.</span>
+                    <textarea class="nhsuk-textarea" id="example" name="details" rows="5" aria-describedby="example-hint" value="details"></textarea>
+                  </div>
+
+                  <a href="" class="nhsuk-button nhsuk-button--ers">Submit</a>
+                  <p><a href="">Close without saving</a></p>
+                </div>
+              </div>         
