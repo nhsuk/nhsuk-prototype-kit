@@ -54,7 +54,7 @@ router.post("/*/hmr101/choose", function(req, res) {
   if (reason == "print") {
     res.redirect("/v7/patient/hmr101/preview");
   } else {
-    res.redirect("/v7/patient/hmr101/step-1");
+    res.redirect("/v7/patient/hmr101/code");
   }
 });
 
