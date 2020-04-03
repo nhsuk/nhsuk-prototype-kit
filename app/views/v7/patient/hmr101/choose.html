@@ -30,7 +30,7 @@ NHS Cervical Screening
 <div class="nhsuk-grid-column-full">
     {{ backLink({
         "href": "../patient-summary",
-        "text": "Go back to patient summary"
+        "text": "Go back to enter patient summary"
       }) }}
       <form action="/v7/patient/hmr101/choose" method="post">
 
@@ -48,25 +48,26 @@ NHS Cervical Screening
           "items": [
             {
               "value": "system",
-              "text": "Fill in details on the system (recommended)"
+              "text": "Start a new form (recommended)"
             },
             {
               "value": "print",
-              "text": "Create blank form"
+              "text": "Preview and print the form"
             }
-            
+
           ]
         }) }}
 
         {% endcall %}
 
         {{ button({
-          "text": "Continue"
+          "text": "Continue",
+          classes: "nhsuk-button--ers"
         }) }}
 
       </form>
 
 </div>
 </div>
- 
+
 {% endblock %}
