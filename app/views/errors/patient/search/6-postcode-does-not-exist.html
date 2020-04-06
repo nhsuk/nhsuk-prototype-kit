@@ -18,12 +18,9 @@
     There is a problem
   </h2>
   <div class="nhsuk-error-summary__body">
-    <p>
-      The postcode does not exist.
-    </p>
     <ul class="nhsuk-list nhsuk-error-summary__list">
       <li>
-        <a href="#new-email-no-input-error">Enter a postcode, like AA1 1AA</a>
+        <a href="#new-email-no-input-error">Check you've entered a real postcode</a>
       
       </li>
       <li>
@@ -116,7 +113,7 @@
           </fieldset>
         </div>
 
-             <div class="nhsuk-form-group nhsuk-form-group--error">
+              <div class="nhsuk-form-group nhsuk-form-group--error">
   <fieldset class="nhsuk-fieldset" aria-describedby="dob-day-error-hint dob-day-error-error" role="group">
 <div class="nhsuk-grid-row-one-half">
           <div class="nhsuk-date-input__item">
@@ -124,9 +121,13 @@
             <label class="nhsuk-label nhsuk-label__strong">
               Postcode (optional)
             </label>
-             <span class="nhsuk-error-message" id="new-email-no-input-error">
-              <span class="nhsuk-u-visually-hidden">Error:</span> Enter a postcode, like AA11 1AA
+             <span class="nhsuk-hint">
+              For example, AA11 1AA
             </span>
+             <span class="nhsuk-error-message" id="new-email-no-input-error">
+              <span class="nhsuk-u-visually-hidden">Error:</span> Check you've entered a real postcode
+            </span>
+
 
             <input id="searchfield" class="nhsuk-input nhsuk-input--error" type="number" inputmode="numeric" name="searchnhs" value="">
           </div>

@@ -18,11 +18,10 @@
     There is a problem
   </h2>
   <div class="nhsuk-error-summary__body">
-    <p>You need to enter a real date of birth.</p>
 
     <ul class="nhsuk-list nhsuk-error-summary__list">
       <li>
-        <a href="#dob-day-error-error">Enter a date of birth</a>
+        <a href="#dob-day-error-error">Enter a date of birth in the correct format</a>
      
       
       </li>
@@ -50,7 +49,7 @@
     </div>
     <!--<div class="nhsuk-form-group">-->
       <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-one-half">
+      <div class="nhsuk-grid-column-full">
         <form action="search-results" method="post">
         <fieldset class="nhsuk-fieldset">
       <div class="nhsuk-form-group" id="nhsuk-form-group-first-name-advanced">
@@ -76,15 +75,16 @@
 
 <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
 <div class="nhsuk-form-group nhsuk-form-group--error">
-<span class="nhsuk-error-message" id="dob-day-error-error">
-<span class="nhsuk-u-visually-hidden">Error:</span> Enter a date of birth
-</span>
+
 <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
 <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
 Date of birth
 </legend>
 <span class="nhsuk-hint">
 For example, 31 3 1980
+</span>
+<span class="nhsuk-error-message" id="dob-day-error-error">
+<span class="nhsuk-u-visually-hidden">Error:</span> Enter a date of birth in the correct format
 </span>
 <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
 You must enter a date
