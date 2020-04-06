@@ -18,12 +18,9 @@
     There is a problem
   </h2>
   <div class="nhsuk-error-summary__body">
-    <p>
-      Incorrect characters in postcode
-    </p>
     <ul class="nhsuk-list nhsuk-error-summary__list">
       <li>
-        <a href="#nhsuk-form-group-postcode-advanced">Enter a postcode, like AA11 1AA </a>
+        <a href="#nhsuk-form-group-postcode-advanced">Enter a postcode in the correct format </a>
       </li>
     </ul>
   </div>
@@ -115,13 +112,15 @@
 
       </div>
       <div class="nhsuk-form-group nhsuk-form-group--error" id="nhsuk-form-group-postcode-advanced">
-         <span class="nhsuk-error-message" id="dob-day-error-error">
-           <span class="nhsuk-u-visually-hidden">Error:</span> Enter a postcode, like AA11 1AA 
-         </span>
-
             <label class="nhsuk-label nhsuk-label__strong" for="address-postcode">
               Postcode (optional)
             </label>
+            <span class="nhsuk-hint">
+              For example, AA11 1AA
+            </span>
+            <span class="nhsuk-error-message" id="dob-day-error-error">
+           <span class="nhsuk-u-visually-hidden">Error:</span> Enter a postcode in the correct format
+         </span>
             <span id="advanced-postcode-error-error" class="nhsuk-error-message" style="display: none">
               You must enter a postcode
             </span>

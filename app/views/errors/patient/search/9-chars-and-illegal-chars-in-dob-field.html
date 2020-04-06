@@ -18,12 +18,9 @@
     There is a problem
   </h2>
   <div class="nhsuk-error-summary__body">
-    <p>
-      Illegal characters in date of birth feild
-    </p>
     <ul class="nhsuk-list nhsuk-error-summary__list">
       <li>
-        <a href="#dob-day-error-error">Date of Birth must be made of numbers</a>
+        <a href="#dob-day-error-error">Enter date of birth in the correct format</a>
       
       </li>
       <li>
@@ -77,9 +74,6 @@
 
       <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
         <div class="nhsuk-form-group nhsuk-form-group--error">
-        <span class="nhsuk-error-message" id="dob-day-error-error">
-           <span class="nhsuk-u-visually-hidden">Error:</span> Date of Birth must be made of numbers 
-        </span>
           <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
             <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
               Date of birth
@@ -87,6 +81,9 @@
             <span class="nhsuk-hint">
               For example, 31 3 1980
             </span>
+            <span class="nhsuk-error-message" id="dob-day-error-error">
+           <span class="nhsuk-u-visually-hidden">Error:</span> Enter date of birth in the correct format 
+        </span>
             <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
               You must enter a date
             </span>
