@@ -18,12 +18,9 @@
     There is a problem
   </h2>
   <div class="nhsuk-error-summary__body">
-    <p>
-     Date of Birth should be greater than year 1900
-    </p>
     <ul class="nhsuk-list nhsuk-error-summary__list">
       <li>
-        <a href="#dob-day-error-error">Enter valid birth year</a>
+        <a href="#nhsuk-form-group-dob-advanced">Enter a date of birth in the correct format</a>
       
       </li>
       <li>
@@ -77,9 +74,6 @@
 
       <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
         <div class="nhsuk-form-group nhsuk-form-group--error">
-        <span class="nhsuk-error-message" id="dob-day-error-error">
-           <span class="nhsuk-u-visually-hidden">Error:</span> Enter valid birth year
-        </span>
           <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
             <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
               Date of birth
@@ -87,6 +81,9 @@
             <span class="nhsuk-hint">
               For example, 31 3 1980
             </span>
+            <span class="nhsuk-error-message" id="dob-day-error-error">
+           <span class="nhsuk-u-visually-hidden">Error:</span> Enter a date of birth in the correct format
+        </span>
             <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
               You must enter a date
             </span>
@@ -96,7 +93,7 @@
                   <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
                     Day
                   </label>
-                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="dob-day-from" name="dob-day-from" type="number" pattern="[0-9]*">
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2 nhsuk-input--error" id="dob-day-from" name="dob-day-from" type="number" pattern="[0-9]*">
                 </div>
               </div>
               <div class="nhsuk-date-input__item">
@@ -104,7 +101,7 @@
                   <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
                     Month
                   </label>
-                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="dob-month-from" name="dob-month-from" type="number" pattern="[0-9]*">
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2 nhsuk-input--error" id="dob-month-from" name="dob-month-from" type="number" pattern="[0-9]*">
                 </div>
               </div>
               <div class="nhsuk-date-input__item">
