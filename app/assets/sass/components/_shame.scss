@@ -4,6 +4,42 @@
 
 // Here lies all things fudged and broken
 
+// Feel free to use the code below <3
+// Add border top/right/left/bottom colors for more variations.
+
+.nhsuk-loader__container{
+  display: flex;
+  justify-content: center;
+
+  text-align: center;
+
+
+}
+.nhsuk-loader {
+	pointer-events: none;
+	width: 2.5em;
+	height: 2.5em;
+	border: 0.4em solid transparent;
+	border-color: #eee;
+	border-top-color: #3E67EC;
+	border-radius: 50%;
+	animation: loadingspin 1s linear infinite;
+  display: flex;
+  justify-content: center;
+
+}
+
+@keyframes loadingspin {
+	100% {
+			transform: rotate(360deg)
+	}
+}
+
+
+///////////////////////////////////////////////////////////////
+
+
+
 .hidden{
   display: none;
 }
