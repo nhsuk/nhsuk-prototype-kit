@@ -35,7 +35,7 @@ NHS Cervical Screening
   <div class="nhsuk-grid-column-one-half">
 
         <span class="nhsuk-hint">
-          Step 2 of 4
+          Step 2 of 3
         </span>
         <h1 class="nhsuk-heading-l">Enter sample details</h1>
         <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
@@ -53,7 +53,7 @@ NHS Cervical Screening
                     <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
                       Day
                     </label>
-                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="day" name="day" type="number" pattern="[0-9]*" value="{{ data['day'] }}">
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="day" name="day" type="number" pattern="[0-9]*" value="15">
                   </div>
                 </div>
                 <div class="nhsuk-date-input__item">
@@ -61,7 +61,7 @@ NHS Cervical Screening
                     <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
                       Month
                     </label>
-                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="month" type="number" pattern="[0-9]*" value="{{ data['month'] }}">
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="month" type="number" pattern="[0-9]*" value="3">
                   </div>
                 </div>
                 <div class="nhsuk-date-input__item">
@@ -69,7 +69,7 @@ NHS Cervical Screening
                     <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
                       Year
                     </label>
-                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="year" type="number" pattern="[0-9]*" value="{{ data['year'] }}">
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="year" type="number" pattern="[0-9]*" value="1995">
                   </div>
                 </div>
               </div>
@@ -114,7 +114,12 @@ NHS Cervical Screening
                        GUM Clinic
                       </label>
                     </div>
-
+                  <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="patient-private" name="cancel-reason" type="radio">
+                      <label class="nhsuk-label nhsuk-radios__label" for="patient-private">
+                       Self-sampling
+                      </label>
+                    </div>
                 </div>
 
 
@@ -227,7 +232,7 @@ NHS Cervical Screening
                   <div class="nhsuk-radios__item">
                     <input class="nhsuk-radios__input" id="patient-ill" name="cancel-reason" type="radio">
                     <label class="nhsuk-label nhsuk-radios__label nhsuk-radios__label--s" for="patient-ill">
-                     Cervical scrape
+                     Liquid-based cytology
                     </label>
                   </div>
                   <div class="nhsuk-radios__item">
@@ -240,19 +245,32 @@ NHS Cervical Screening
 
                 </div>
 
+<div class="nhsuk-form-group">
 
-          </form>
+  <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+
+    </legend>
+
+
+    <div class="nhsuk-checkboxes">
+
+      <div class="nhsuk-checkboxes__item">
+        <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+        <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
+          Cervix has been fully seen
+        </label>
+      </div>
+
+
+
+    </div>
+  </fieldset>
+
+</div>
 
           <a class="nhsuk-button--ers nhsuk-u-margin-top-6" href="step-3">Continue</a>
       
-
-
-          </div>
-
-
-
-
-        </div>
 
 
 {% endblock %}
