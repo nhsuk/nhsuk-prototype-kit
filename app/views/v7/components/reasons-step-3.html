@@ -1,0 +1,48 @@
+<div class="nhsuk-back-link">
+  <a id="back-step-2" class="nhsuk-back-link__link" href="#">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back</a>
+</div>
+
+
+{{ radios({
+  "idPrefix": "pnl-length",
+  "name": "pnl-length",
+  "fieldset": {
+    "legend": {
+      "text": "How long do you want to defer the patient?",
+      "classes": "nhsuk-fieldset__legend--m",
+      "isPageHeading": true
+    }
+  },
+  "items": [
+    {
+      "value": "yes",
+      "text": "3 months (3rd april 2020)"
+    },
+    {
+      "value": "yes",
+      "text": "6 months (3rd July 2020)"
+    },
+    {
+      "value": "no",
+      "text": "9 months (3rd Oct 2020)"
+    },
+    {
+      "value": "no",
+      "text": "12 months (3rd Jan 2021)"
+    }
+  ]
+}) }}
+
+<div class="nhsuk-form-group">
+  <label class="nhsuk-label" for="example">
+     Comments
+  </label>
+  <span class="nhsuk-hint" id="example-hint">Do not include clinical information at  this point.</span>
+  <textarea class="nhsuk-textarea" id="example" name="details" rows="5" aria-describedby="example-hint" value="details"></textarea>
+ </div>
+
+<a id="step-4" href="" class="nhsuk-button nhsuk-button--ers">Continue</a>
