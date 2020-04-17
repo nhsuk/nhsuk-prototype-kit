@@ -35,7 +35,7 @@
 {% from 'select/macro.njk' import select %}
 {% from 'summary-list/macro.njk' import summaryList %}
 {% from 'textarea/macro.njk' import textarea %}
-    
+
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="ie8" lang="en"><![endif]--><!--[if IE 9]><html class="ie9" lang="en"><![endif]--><!--[if gt IE 9]><!--><html lang="en" style="{{ html_style }}"><!--<![endif]-->
   <head>
@@ -99,12 +99,10 @@
       {% endblock %}
 
       {% block footer %}
-        {{ footer({
-          "showLogo": "false"
-        })}}
+        {{ footer() }}
       {% endblock %}
 
     {% block bodyEnd %}{% endblock %}
-    
+
   </body>
 </html>
