@@ -12,7 +12,6 @@
 
 {% block content %}
 
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-6">
   <h1 class="nhsuk-heading-l">Prior Notification List</h1>
@@ -76,7 +75,15 @@
     <table id="sortable" class="nhsuk-table-clickable bna-table nhsuk-u-margin-top-0">
       <thead class="nhsuk-table__head">
         <tr class="nhsuk-table__row">
-          <th class="nhsuk-table__header">Select</th>
+          <th class="nhsuk-table__header"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select All</span>
+            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="selectAll" name="select" type="checkbox" value="hmrc">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectAll">
+                </label>
+              </div>
+            </div>
+          </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
             <button onclick="sortTable()" type="button" data-index="0">NHS No</button>
           </th>
@@ -362,8 +369,33 @@
     $('.expanderButton[aria-expanded="true"]').closest('tr').addClass('expandedRow');
     $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
 
+
+    
+  
+
   }
+
+  var selectAll = document.getElementById("selectAll");
+  var checkBoxes = document.querySelectorAll('.nhsuk-checkboxes__input');
+
+  selectAll.addEventListener('change', function() {
+    if(this.checked) {
+        for (i = 1; i < checkBoxes.length; i++) {
+          console.log(checkBoxes[i]);
+          checkBoxes[i].checked = true;
+        } 
+    } else {
+        console.log('nah')
+        for (i = 1; i < checkBoxes.length; i++) {
+          console.log(checkBoxes[i]);
+          checkBoxes[i].checked = false;
+        } 
+    }
+  })
+
 </script>
+
+
 
 <script>
   // Script for the view selected button
