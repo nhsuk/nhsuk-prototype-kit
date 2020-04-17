@@ -1,0 +1,152 @@
+{% extends "layout-v2.html" %}
+
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-6">
+  <h1 class="nhsuk-heading-l">Check the patients you're about to invite for testing</h1>
+  
+  <div class="nhsuk-table-responsive">
+  <table class="nhsuk-table">
+    <caption class="nhsuk-table__caption">Skin symptoms and possible causes</caption>
+    <thead class="nhsuk-table__head">
+      <tr class="nhsuk-table__row">
+        <th class="nhsuk-table__header" scope="col">NHS No</th>
+        <th class="nhsuk-table__header" scope="col">Name</th>
+        <th class="nhsuk-table__header" scope="col">Age</th>
+        <th class="nhsuk-table__header" scope="col">Status</th>
+        <th class="nhsuk-table__header" scope="col">Next test due date</th>
+      </tr>
+    </thead>
+    <tbody class="nhsuk-table__body">
+      <tr class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">569 986 5128</td>
+        <td class="nhsuk-table__cell ">Arisha Stephens</td>
+        <td class="nhsuk-table__cell ">50</td>
+        <td class="nhsuk-table__cell ">Routine</td>
+        <td class="nhsuk-table__cell ">12-10-2020</td>
+      </tr>
+      <tr class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">376 037 0373</td>
+        <td class="nhsuk-table__cell ">Angelica Davey</td>
+        <td class="nhsuk-table__cell ">40</td>
+        <td class="nhsuk-table__cell ">Routine</td>
+        <td class="nhsuk-table__cell ">12-10-2020</td>
+      </tr>
+      <tr class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">933 404 3202</td>
+        <td class="nhsuk-table__cell ">Corinne Choi</td>
+        <td class="nhsuk-table__cell ">34</td>
+        <td class="nhsuk-table__cell ">Routine</td>
+        <td class="nhsuk-table__cell ">12-10-2020</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      <h2 class="nhsuk-fieldset__heading">
+        Is this list correct?
+      </h2>
+    </legend>
+
+    <div class="nhsuk-radios">
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+          Yes, send invites
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          No, go back to prior notification list and change
+        </label>
+      </div>
+    </div>
+  </fieldset>
+
+</div>
+  <br>
+  <button class="nhsuk-button" type="submit">
+  Continue
+</button>
+
+  </div>
+</div>
+{% endblock %}
+
+
+
+{% block pageScripts %}
+<script>
+  function toggle(btnID, eIDs) {
+    // Feed the list of ids as a selector
+    var theRows = document.querySelectorAll(eIDs);
+    // Get the button that triggered this
+    var theButton = document.getElementById(btnID);
+    // If the button is not expanded...
+    if (theButton.getAttribute("aria-expanded") == "false") {
+      // Loop through the rows and show them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("shown");
+        theRows[i].classList.remove("hidden");
+      }
+      // Now set the button to expanded
+      theButton.setAttribute("aria-expanded", "true");
+      // Otherwise button is not expanded...
+    } else {
+      // Loop through the rows and hide them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("hidden");
+        theRows[i].classList.remove("shown");
+      }
+      // Now set the button to collapsed
+      theButton.setAttribute("aria-expanded", "false");
+    }
+    $('.expanderButton[aria-expanded="true"]').closest('tr').addClass('expandedRow');
+    $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
+
+  }
+</script>
+
+<script>
+  // Script for the view selected button
+
+  /*
+  $(".nhsuk-checkboxes__input").change(function() {
+      if ($("input:checkbox:checked").length > 0)
+      {
+        $(".disable-able").removeClass("nhsuk-button--disabled").removeClass("nhsuk-button--secondary").addClass("nhsuk-button--blue");
+        $("#view-selected-link").attr("href", "./birth-notification");
+
+        if ($("input:checkbox:checked").length > 1)
+        {
+          $("#view-selected-link").attr("href", "./birth-notification-multiple-1-of-3");
+        }
+
+      }
+      else
+      {
+        $(".disable-able ").addClass("nhsuk-button--disabled").addClass("nhsuk-button--secondary").removeClass("nhsuk-button--blue");
+      }
+
+
+  });
+  */
+</script>
+{% endblock %}
