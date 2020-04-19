@@ -1,0 +1,120 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+
+{% block patientBanner %}
+  {% include '../components/patient-banner.html' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-2">
+
+  {{ backLink({
+  "href": "prior-notification-5-defer-length",
+  "text": "Back to step 3 - How long do you want to defer the patient for?"
+  }) }}
+
+  <span class="nhsuk-hint">Step 4 of 4</span>
+
+  {{ summaryList({
+  rows: [
+    {
+      key: {
+        text: "Action"
+      },
+      value: {
+        text: "Defer"
+      },
+      actions: {
+        items: [
+          {
+            href: "prior-notification-5-action",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Defer Reason"
+      },
+      value: {
+        text: "Pregnancy"
+      },
+      actions: {
+        items: [
+          {
+            href: "prior-notification-5-defer-reason",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Defer Length"
+      },
+      value: {
+        html: "6 months"
+      },
+      actions: {
+        items: [
+          {
+            href: "prior-notification-5-defer-length",
+            text: "Change",
+            visuallyHiddenText: "change defer length"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Next test due date"
+      },
+      value: {
+        html: "3rd July 2020"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "",
+            visuallyHiddenText: "contact details"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Comment"
+      },
+      value: {
+        html: '<p>blah blah blah</p>'
+      },
+      actions: {
+        items: [
+          {
+            href: "prior-notification-5-defer-length",
+            text: "Change",
+            visuallyHiddenText: "contact details"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+
+  <a href="prior-notification-5-confirmation" class="nhsuk-button nhsuk-button--ers">Submit</a>
+  <p><a href="">Exit without saving</a>   -   <a href="">Skip this patient</a></p>
+  </div>
+</div>
+
+{% endblock %}

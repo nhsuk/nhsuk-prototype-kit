@@ -1,0 +1,74 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+
+{% block patientBanner %}
+  {% include '../components/patient-banner.html' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-2">
+
+  {{ backLink({
+  "href": "prior-notification-5",
+  "text": "Back to Prior Notification"
+  }) }}
+
+  <span class="nhsuk-hint">Step 1 of 4</span>
+
+  {% call fieldset({
+  legend: {
+    "text": "Choose an action for this screening episode",
+    "classes": "nhsuk-fieldset__legend--l",
+    "isPageHeading": true
+  }
+  }) %}
+  {{ hint({
+    "html": "<details class='nhsuk-details'>
+    <summary class='nhsuk-details__summary'>
+      <span class='nhsuk-details__summary-text'>
+        View previous test results
+      </span>
+    </summary>
+    <div class='nhsuk-details__text'>
+      <div class='nhsuk-panel nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4'>
+        <h3>Last test result</h3>
+        <p><strong>Test date:</strong> 01-Apr-2017</p>
+        <p><strong>Result:</strong> (X0A) No cytology result, HPV negative, routine recall</p>
+      </div>
+    </div>
+  </details>"
+  }) }}
+  {{ radios({
+    "idPrefix": "example-hints",
+    "name": "pnl-action",
+    "items": [
+      {
+        "value": "yes",
+        "text": "Invite the patient"
+      },
+      {
+        "value": "yes",
+        "text": "Defer the patient"
+      },
+      {
+        "value": "no",
+        "text": "Cease the patient"
+      }
+    ]
+}) }}
+{% endcall %}
+
+
+
+  <a href="prior-notification-5-defer-reason" class="nhsuk-button nhsuk-button--ers">Continue</a>
+  <p><a href="">Exit without saving</a>   -   <a href="">Skip this patient</a></p>
+  </div>
+</div>
+
+{% endblock %}
