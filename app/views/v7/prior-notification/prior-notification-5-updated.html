@@ -1,0 +1,85 @@
+{% extends "layout-v2.html" %}
+
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-2">
+  <h1 class="nhsuk-heading-l">Prior Notification List</h1>
+  
+  <p>The Prior Notification is a list of all the patients who are soon to be eligible for their next screening test.</p>
+
+  
+  </div>
+</div>
+
+
+
+  <div class="nhsuk-grid-row nhsuk-panel-group">
+  <div class="nhsuk-grid-column-one-half nhsuk-panel-group__item">
+    <div class="nhsuk-panel">
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-0"><span class="nhsuk-heading-xl">20</span>Patients need reviewing</h2>
+    </div>
+  </div>
+  
+</div>
+
+  <a href="prior-notification-5-action" type="button" class="nhsuk-button nhsuk-button--ers">Review next patient</a>
+
+  <details class="nhsuk-details">
+    <summary class="nhsuk-details__summary">
+      <span class="nhsuk-details__summary-text">
+        How does the Prior Notification work?
+      </span>
+    </summary>
+    <div class="nhsuk-details__text">
+      <p>The prior notification is a list of eligible particiapants who are due to be screened under your practice based on the following criteria:</p>
+      <ul>
+        <li>age</li>
+        <li>last test</li>
+        <li>registered as having a cervix</li>
+      </ul>
+
+      {{ list({
+        "title": "Reasons available on the prior notification",
+        "type": "tick",
+        "items": [
+          {
+            "item": "age, no cervix, radiotherapy"
+          },
+          {
+            "item": "pregnancy ..."
+          }
+        ]
+      }) }}
+
+      {{ list({
+        "title": "Reasons not available on the prior notification",
+        "type": "cross",
+        "items": [
+          {
+            "item": "mental capacity act"
+          },
+          {
+            "item": "another reason"
+          },
+          {
+            "item": "another reason"
+          }
+        ]
+      }) }}
+
+    </div>
+  </details>
+  </div>
+</div>
+{% endblock %}

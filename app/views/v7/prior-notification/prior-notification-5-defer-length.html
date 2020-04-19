@@ -20,6 +20,8 @@
   }) }}
 
   <span class="nhsuk-hint">Step 3 of 4</span>
+
+  <form action="prior-notification-5-review" method="post">
   
   {% call fieldset({
   legend: {
@@ -49,19 +51,19 @@
     "name": "pnl-defer-length",
     "items": [
       {
-        "value": "yes",
+        "value": "3 Months",
         "text": "3 Months (01 07 2020)"
       },
       {
-        "value": "yes",
+        "value": "6 Months",
         "text": "6 Months (01 10 2020)"
       },
       {
-        "value": "no",
+        "value": "9 Months",
         "text": "9 Months (01 01 2021)"
       },
       {
-        "value": "no",
+        "value": "12 Months",
         "text": "12 Months (01 04 2021)"
       }
     ]
@@ -69,16 +71,19 @@
 {% endcall %}
 
 <div class="nhsuk-form-group">
-  <label class="nhsuk-label" for="example">
+  <label class="nhsuk-label" for="pnl-comments">
      Comments
   </label>
   <span class="nhsuk-hint" id="example-hint">Do not include clinical information at  this point.</span>
-  <textarea class="nhsuk-textarea" id="example" name="details" rows="5" aria-describedby="example-hint" value="details"></textarea>
+  <textarea class="nhsuk-textarea" id="example" name="pnl-comments" rows="5" aria-describedby="example-hint" value="pnl-comments"></textarea>
  </div>
 
 
 
-  <a href="prior-notification-5-review" class="nhsuk-button nhsuk-button--ers">Continue</a>
+  <button class="nhsuk-button nhsuk-button--ers">Continue</button>
+
+  </form>
+
   <p><a href="">Exit without saving</a>   -   <a href="">Skip this patient</a></p>
   </div>
 </div>

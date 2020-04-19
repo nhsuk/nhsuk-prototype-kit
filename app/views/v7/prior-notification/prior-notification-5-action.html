@@ -21,6 +21,8 @@
 
   <span class="nhsuk-hint">Step 1 of 4</span>
 
+  <form action="prior-notification-5-defer-reason" method="post">
+
   {% call fieldset({
   legend: {
     "text": "Choose an action for this screening episode",
@@ -49,24 +51,25 @@
     "name": "pnl-action",
     "items": [
       {
-        "value": "yes",
+        "value": "Invited",
         "text": "Invite the patient"
       },
       {
-        "value": "yes",
+        "value": "Deferred",
         "text": "Defer the patient"
       },
       {
-        "value": "no",
+        "value": "Ceased",
         "text": "Cease the patient"
       }
     ]
-}) }}
-{% endcall %}
+  }) }}
+  {% endcall %}
 
 
 
-  <a href="prior-notification-5-defer-reason" class="nhsuk-button nhsuk-button--ers">Continue</a>
+  <button class="nhsuk-button nhsuk-button--ers">Continue</button>
+  </form>
   <p><a href="">Exit without saving</a>   -   <a href="">Skip this patient</a></p>
   </div>
 </div>

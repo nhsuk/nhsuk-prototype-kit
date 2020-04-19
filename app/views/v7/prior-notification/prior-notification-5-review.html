@@ -28,7 +28,7 @@
         text: "Action"
       },
       value: {
-        text: "Defer"
+        text: data['pnl-action'] or 'Defer'
       },
       actions: {
         items: [
@@ -45,7 +45,7 @@
         text: "Defer Reason"
       },
       value: {
-        text: "Pregnancy"
+        text: data['pnl-defer-reason'] or 'Pregnancy'
       },
       actions: {
         items: [
@@ -62,7 +62,7 @@
         text: "Defer Length"
       },
       value: {
-        html: "6 months"
+        html: data['pnl-defer-length'] or '6 Months'
       },
       actions: {
         items: [
@@ -79,7 +79,7 @@
         text: "Next test due date"
       },
       value: {
-        html: "3rd July 2020"
+        html: data['pnl-defer-ntdd'] or '01 10 2020'
       },
       actions: {
         items: [
@@ -96,7 +96,7 @@
         text: "Comment"
       },
       value: {
-        html: '<p>blah blah blah</p>'
+        html: data['pnl-comments'] or ''
       },
       actions: {
         items: [

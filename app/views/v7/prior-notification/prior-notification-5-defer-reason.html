@@ -20,6 +20,8 @@
   }) }}
 
   <span class="nhsuk-hint">Step 2 of 4</span>
+  
+  <form action="prior-notification-5-defer-length" method="post">
 
   {% call fieldset({
   legend: {
@@ -49,19 +51,19 @@
     "name": "pnl-defer-reason",
     "items": [
       {
-        "value": "yes",
+        "value": "Pregnancy",
         "text": "Pregnancy"
       },
       {
-        "value": "yes",
+        "value": "Recent test",
         "text": "Recent test"
       },
       {
-        "value": "no",
+        "value": "Under care of colposcopy",
         "text": "Under care of colposcopy"
       },
       {
-        "value": "no",
+        "value": "Undergoing treatment relevant to screening",
         "text": "Undergoing treatment relevant to screening"
       }
     ]
@@ -70,7 +72,10 @@
 
 
 
-  <a href="prior-notification-5-defer-length" class="nhsuk-button nhsuk-button--ers">Continue</a>
+  <button class="nhsuk-button nhsuk-button--ers">Continue</button>
+
+  </form>
+
   <p><a href="">Exit without saving</a>   -   <a href="">Skip this patient</a></p>
   </div>
 </div>
