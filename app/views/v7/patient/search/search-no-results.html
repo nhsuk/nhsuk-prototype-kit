@@ -1,0 +1,40 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+    <script type="text/javascript" src="/js/reveal.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <h1 class="nhsuk-heading-l">Search results</h1>
+    <p>
+      <span class="number-of-results">
+        <h3 class="nhsuk-heading-xs">We couldn't find any results for patients with last name Smith, date of birth 04-June-1988.</h3>
+        <p>You can <a href="search">refine your search</a> to find a match or <a href="search-demographic">search  again</a>.</p>
+        
+      </span>
+    </p>
+    
+
+
+                  </tbody>
+          </table>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

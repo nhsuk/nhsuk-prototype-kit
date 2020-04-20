@@ -71,7 +71,7 @@
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
-  <a href="prior-notification-4-check" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2">Invite selected</a>
+  <button class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2">Invite selected</button>
     <table id="sortable" class="nhsuk-table-clickable bna-table nhsuk-u-margin-top-0">
       <thead class="nhsuk-table__head">
         <tr class="nhsuk-table__row">
@@ -109,13 +109,13 @@
 
         <tr class="nhsuk-table__row">
           <td role="gridcell"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select</span>
-            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
+           <!-- <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
               <div class="nhsuk-checkboxes__item">
                 <input class="nhsuk-checkboxes__input" id="selectRow1" name="select" type="checkbox" value="hmrc">
                 <label class="nhsuk-label nhsuk-checkboxes__label" for="selectRow1">
                 </label>
               </div>
-            </div>
+            </div>-->
           </td>
           <td class="nhsuk-table__cell">
             569 986 5128
@@ -127,13 +127,13 @@
             50
           </td>
           <td class="nhsuk-table__cell">
-            Routine
+            <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">deferred</span>
           </td>
           <td class="nhsuk-table__cell">
-            12-10-2020
+            <!--12-10-2020-->
           </td>
           <td class="nhsuk-table__cell">
-            <button class="expanderButton" type="button" id="btnRow1" aria-expanded="false" onclick="toggle(this.id,'#detailsRow1');" aria-controls="detailsRow1" aria-label="More details for" aria-labelledby="btnRow1 nameRow1"></button>
+            <!--<button class="expanderButton" type="button" id="btnRow1" aria-expanded="false" onclick="toggle(this.id,'#detailsRow1');" aria-controls="detailsRow1" aria-label="More details for" aria-labelledby="btnRow1 nameRow1"></button>-->
           </td>
         </tr>
 
@@ -386,7 +386,78 @@
     $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
   }
 
-   /* SELECT ALL */
+
+  function hideAllPages() {
+    document.getElementById("reasons-step-0").style.display = "none";
+    document.getElementById("reasons-step-1").style.display = "none";
+    document.getElementById("reasons-step-2").style.display = "none";
+    document.getElementById("reasons-step-3").style.display = "none";
+    document.getElementById("reasons-step-4").style.display = "none";
+    document.getElementById("reasons-step-5").style.display = "none";
+  }
+
+  document.getElementById("step-2").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-2").style.display = "block";
+    document.getElementById("pnl-reason-1").focus();
+  })
+
+  document.getElementById("back-step-1").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-1").style.display = "block";
+  })
+
+  document.getElementById("step-3").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-3").style.display = "block";
+    document.getElementById("pnl-length-1").focus();
+  })
+
+  document.getElementById("back-step-2").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-2").style.display = "block";
+  })
+
+  document.getElementById("step-4").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-4").style.display = "block";
+  })
+
+  document.getElementById("back-step-3").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-3").style.display = "block";
+  })
+
+  document.getElementById("step-5").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-5").style.display = "block";
+    document.querySelector(".expandedRow").focus();
+  })
+
+  document.getElementById("step-done").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-2").style.display = "block";
+    console.log('ready to submit')
+  })
+
+
+  
+
+  /* SELECT ALL */
   var selectAll = document.getElementById("selectAll");
   var checkBoxes = document.querySelectorAll('.nhsuk-checkboxes__input');
 
@@ -404,88 +475,6 @@
         } 
     }
   })
-
-  function scrollPos() { 
-    var elemPos = document.getElementById("detailsRow1");
-    var elemScroll = elemPos.getBoundingClientRect().top - (elemPos.offsetTop / 2);
-    window.scrollBy(0, (elemScroll));
-  }
-
-  function hideAllPages() {
-    document.getElementById("reasons-step-0").style.display = "none";
-    document.getElementById("reasons-step-1").style.display = "none";
-    document.getElementById("reasons-step-2").style.display = "none";
-    document.getElementById("reasons-step-3").style.display = "none";
-    document.getElementById("reasons-step-4").style.display = "none";
-    document.getElementById("reasons-step-5").style.display = "none";
-  }
-
-  // there's definitely a better way to do this but it's 18:05 on a friday
-  document.getElementById("step-2").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-2").style.display = "block";
-    scrollPos();
-  })
-
-  document.getElementById("back-step-1").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-1").style.display = "block";
-  })
-
-  document.getElementById("step-3").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-3").style.display = "block";
-    scrollPos();
-  })
-
-  document.getElementById("back-step-2").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-2").style.display = "block";
-  })
-
-  document.getElementById("step-4").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-4").style.display = "block";
-    scrollPos();
-  })
-
-  document.getElementById("back-step-3").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-3").style.display = "block";
-  })
-
-  document.getElementById("step-5").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-5").style.display = "block";
-    scrollPos();
-  })
-
-  document.getElementById("step-done").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-2").style.display = "block";
-    console.log('ready to submit')
-  })
-
-  
-
-
-  
-
- 
 
 </script>
 
