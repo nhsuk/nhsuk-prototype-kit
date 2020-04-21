@@ -133,20 +133,14 @@ router.post("/*/patient/search/search", function(req, res) {
   res.redirect("/" + getVersion(req) + "/patient/patient-summary");
 });
 
-//prior-notification-4-check
 router.post("/prior-notification-4-check", function (req,res) {
-var invite = req.session.data["pnl-invite"]
-console.log(invite)
-console.log("this is working")
+  var invite = req.session.data["pnl-invite"];
 
-if (invite == "yes") {
-  console.log("invite the patient")
-  res.redirect("/v7/prior-notification/prior-notification-4-confirmation")
-} else {
-  console.log("dont invite the user")
-  res.redirect("/v7/prior-notification/prior-notification-4")
-}
-
+  if (invite == "yes") {
+    res.redirect("/v7/prior-notification/prior-notification-4-confirmation")
+  } else {
+    res.redirect("/v7/prior-notification/prior-notification-4")
+  }
 });
 
 module.exports = router;
