@@ -1,0 +1,110 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+  <script type="text/javascript" src="/js/action-menu.js"></script>
+  <script type="text/javascript" src="/js/sort.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "true"
+  })
+}}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+  {{ backLink({
+    "href": "../patient-summary",
+    "text": "Go back to patient summary"
+  }) }}
+
+
+  <form action="/v7/patient/change-due-date/change" method="post" class="form">
+
+    {% set CeaseReasons %}
+    {% include 'radios/macro.njk' %}
+    {% include 'hint/macro.njk' %}
+
+    {{ radios({
+    "idPrefix": "Yes",
+    "name": "reason",
+    "items": [
+      
+    ]
+    }) }}
+
+    {% endset %}
+
+    {% set DeferReasons %}
+    {% include 'radios/macro.njk' %}
+    {{ radios({
+    "idPrefix": "No",
+    "name": "reason",
+    "items": [
+      
+
+
+    ]
+  }) }}
+<div class="nhsuk-form-group">
+  <label class="nhsuk-label" for="input-width-10">
+    Enter correct code 
+  </label>
+  <input class="nhsuk-input nhsuk-input--width-10" id="input-width-10" name="test-width-10" type="text">
+</div>
+
+{% endset %}
+
+
+
+
+
+              {{ conditionalRadios({
+          "idPrefix": "gov",
+          "name": "gov",
+          "fieldset": {
+            "legend": {
+              "text": "Confirm your sample taker code",
+              "isPageHeading": true,
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+
+          "items": [
+          {
+            "value": "cease",
+            "text": "Yes",
+            "conditional": {
+            html: CeaseReasons
+            }
+          },
+            {
+              "value": "defer",
+              "text": "No",
+              "conditional": {
+              html: DeferReasons
+              }
+            }
+
+
+          ]
+        }) }}
+        <a class="nhsuk-button--ers nhsuk-u-margin-top-4" href="step-1">Continue</a>
+
+            </form>
+
+            </div>
+{% endblock %}
