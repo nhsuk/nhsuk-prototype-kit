@@ -1,10 +1,11 @@
 
 // ==========================================================================
-// COMPONENTS / BUTTONS
+// COMPONENTS / SMALL BUTTONS
 // ==========================================================================
 
 
-.nhsuk-button--ers{
+.nhsuk-button--small{
+  @extend .nhsuk-button;
   @extend .nhsuk-button;
   padding-bottom: nhsuk-spacing(2);
     padding-left: nhsuk-spacing(3);
@@ -48,47 +49,3 @@ cursor: pointer;}
   overflow: hidden;
   display: inline-block;
 }
-
-.nhsuk-upload-button-container input[type=file] {
-  font-size: 5em;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  cursor: pointer;
-}
-// comment out changes
-.dropbtn {
-  background-color: $color_nhsuk-green;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown a:hover {background-color: #ddd;}

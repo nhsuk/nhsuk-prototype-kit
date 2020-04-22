@@ -54,7 +54,7 @@
     </tbody>
   </table>
 </div>
-
+<form action="/prior-notification-4-check" method="post">
   <div class="nhsuk-form-group">
 
   <fieldset class="nhsuk-fieldset">
@@ -66,13 +66,13 @@
 
     <div class="nhsuk-radios">
       <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+        <input class="nhsuk-radios__input" id="example-1" name="pnl-invite" type="radio" value="yes">
         <label class="nhsuk-label nhsuk-radios__label" for="example-1">
           Yes, send invites
         </label>
       </div>
       <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
+        <input class="nhsuk-radios__input" id="example-2" name="pnl-invite" type="radio" value="no">
         <label class="nhsuk-label nhsuk-radios__label" for="example-2">
           No, go back to prior notification list and change
         </label>
@@ -82,10 +82,10 @@
 
 </div>
   <br>
-  <a href="prior-notification-4-confirmation" class="nhsuk-button">
+  <button type="submit" class="nhsuk-button">
   Continue
-</a>
-
+</button>
+</form>
   </div>
 </div>
 {% endblock %}

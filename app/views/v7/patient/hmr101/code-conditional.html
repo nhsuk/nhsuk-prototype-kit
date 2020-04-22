@@ -33,35 +33,42 @@
 
 
   <form action="/v7/patient/change-due-date/change" method="post" class="form">
+    <h1 class="nhsuk-heading-l">Confirm your sample taker code</h1>
+    <p class="nhsuk-body-l">Your sample taker code is 20202020</p>
 
-    {% set CeaseReasons %}
+
+
+    {% set Yes %}
     {% include 'radios/macro.njk' %}
-    {% include 'hint/macro.njk' %}
+
+
+
 
     {{ radios({
     "idPrefix": "Yes",
     "name": "reason",
     "items": [
-      
+
     ]
     }) }}
 
     {% endset %}
 
-    {% set DeferReasons %}
+    {% set No %}
     {% include 'radios/macro.njk' %}
+
     {{ radios({
     "idPrefix": "No",
     "name": "reason",
     "items": [
-      
+
 
 
     ]
   }) }}
 <div class="nhsuk-form-group">
   <label class="nhsuk-label" for="input-width-10">
-    Enter correct code 
+    Enter correct code
   </label>
   <input class="nhsuk-input nhsuk-input--width-10" id="input-width-10" name="test-width-10" type="text">
 </div>
@@ -75,27 +82,23 @@
               {{ conditionalRadios({
           "idPrefix": "gov",
           "name": "gov",
-          "fieldset": {
-            "legend": {
-              "text": "Confirm your sample taker code",
-              "isPageHeading": true,
-              "classes": "nhsuk-fieldset__legend--m"
-            }
-          },
+
+
+
 
           "items": [
           {
             "value": "cease",
-            "text": "Yes",
+            "text": "Yes, this is correct",
             "conditional": {
-            html: CeaseReasons
+            html: Yes
             }
           },
             {
               "value": "defer",
-              "text": "No",
+              "text": "No, thats incorrect",
               "conditional": {
-              html: DeferReasons
+              html: No
               }
             }
 
