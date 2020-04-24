@@ -1,5 +1,12 @@
 # NHS.UK prototype kit Changelog
 
+## 3.1.0 - 24th April 2020
+
+:new: **New features**
+
+- Install NHS.UK frontend v3.1.0 which includes conditional Checkboxes and Radios
+- Update package dependencies to latest versions
+
 ## 3.0.10 - 25th March 2020
 
 :wrench: **Fixes**
