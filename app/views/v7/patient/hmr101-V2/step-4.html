@@ -1,0 +1,113 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "true"
+  })
+}}
+{% endblock %}
+
+{% block patientBanner %}
+  {% include '../../components/patient-banner.html' %}
+{% endblock %}
+
+{% block content %}
+
+{{ backLink({
+  "href": "step-3",
+  "text": "Go back to step 3"
+}) }}
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-two-thirds">
+
+        <span class="nhsuk-hint">
+          Step 4 of 4
+        </span>
+
+
+        <div class="nhsuk-form-group">
+
+          <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      <h1 class="nhsuk-fieldset__heading">
+        Confirm the labratory details
+      </h1>
+    </legend>
+
+    <p class="nhsuk-body-l">Manchester - 20202020</p>
+
+
+
+
+            <div class="nhsuk-checkboxes">
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="option-1">
+                This is correct
+                </label>
+              </div>
+
+
+            </div>
+          </fieldset>
+
+        </div>
+
+
+
+
+        <!--
+
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="select-1">
+            Labratory
+          </label>
+          <select class="nhsuk-select" id="select-1" name="select-1">
+            <option value="1">London</option>
+            <option value="2" selected>Gateshead</option>
+            <option value="3">Manchester</option>
+            <option value="4">Berkshire</option>
+            <option value="5">Southmead (Bristol)</option>
+            <option value="6">Derby</option>
+            <option value="7">Norwich</option>
+            <option value="8">Wolverhampton</option>
+
+          </select>
+        </div>
+        <div class="nhsuk-form-group">
+        <label class="nhsuk-label" for="example">
+          Lab national code
+        </label>
+-->
+
+<a class="nhsuk-button--ers nhsuk-u-margin-top-4" href="preview">Create form</a>
+      </div>
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+{% endblock %}

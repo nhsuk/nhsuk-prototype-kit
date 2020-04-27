@@ -1,0 +1,73 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "true"
+  })
+}}
+{% endblock %}
+
+{% block patientBanner %}
+  {% include '../../components/patient-banner.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+<div class="nhsuk-grid-column-full">
+    {{ backLink({
+        "href": "../patient-summary",
+        "text": "Go back to enter patient summary"
+      }) }}
+      <form action="/v7/patient/hmr101/choose" method="post">
+
+        {% call fieldset({
+          legend: {
+            text: "Choose a way to create a HMR101 form",
+            classes: "nhsuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        {{ radios({
+          "idPrefix": "choose",
+          "name": "choose",
+          "items": [
+            {
+              "value": "system",
+              "text": "Start a new form (recommended)"
+            },
+            {
+              "value": "print",
+              "text": "Preview and print the form"
+            }
+
+          ]
+        }) }}
+
+        {% endcall %}
+
+        {{ button({
+          "text": "Continue",
+          classes: "nhsuk-button--ers"
+        }) }}
+
+      </form>
+
+</div>
+</div>
+
+{% endblock %}
