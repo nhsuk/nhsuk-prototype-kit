@@ -1,0 +1,406 @@
+{% extends "layout-v2.html" %}
+
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-6">
+  <h1 class="nhsuk-heading-l">Prior Notification List</h1>
+  
+  <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4">
+    <span class="nhsuk-u-visually-hidden">Prior notification list</span>
+    <h3 class="nhsuk-heading-s">The following participants are available for screening. Verify whether they are eligible for the current screening episode or if they need ceasing or deferring.</h3>
+  </div>
+
+  <details class="nhsuk-details">
+    <summary class="nhsuk-details__summary">
+      <span class="nhsuk-details__summary-text">
+        What is the prior notification list
+      </span>
+    </summary>
+    <div class="nhsuk-details__text">
+      <p>The prior notification is a list of eligible particiapants who are due to be screened under your practice based on the following criteria:</p>
+      <ul>
+        <li>age</li>
+        <li>last test</li>
+        <li>registered as having a cervix</li>
+      </ul>
+
+      {{ list({
+        "title": "Reasons available on the prior notification",
+        "type": "tick",
+        "items": [
+          {
+            "item": "age, no cervix, radiotherapy"
+          },
+          {
+            "item": "pregnancy ..."
+          }
+        ]
+      }) }}
+
+      {{ list({
+        "title": "Reasons not available on the prior notification",
+        "type": "cross",
+        "items": [
+          {
+            "item": "mental capacity act"
+          },
+          {
+            "item": "another reason"
+          },
+          {
+            "item": "another reason"
+          }
+        ]
+      }) }}
+
+    </div>
+  </details>
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+  <a href="prior-notification-4-check" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2">Invite selected</a>
+    <table id="sortable" class="nhsuk-table-clickable bna-table nhsuk-u-margin-top-0">
+      <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+          <th class="nhsuk-table__header"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select All</span>
+            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="selectAll" name="select" type="checkbox" value="hmrc">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectAll">
+                </label>
+              </div>
+            </div>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">NHS No</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">Name</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">Age</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">Status</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">Next test due date</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            View more
+          </th>
+        </tr>
+        
+      </thead>
+        <tbody class="nhsuk-table__body">
+
+
+        <tr class="nhsuk-table__row">
+          <td role="gridcell"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select</span>
+            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="selectRow1" name="select" type="checkbox" value="hmrc">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectRow1">
+                </label>
+              </div>
+            </div>
+          </td>
+          <td class="nhsuk-table__cell">
+            537 698 6721
+          </td>
+          <td class="nhsuk-table__cell">
+            Yazmin Noble
+          </td>
+          <td class="nhsuk-table__cell">
+            47
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+          </td>
+          <td class="nhsuk-table__cell">
+            12-10-2020
+          </td>
+          <td class="nhsuk-table__cell">
+            <button class="expanderButton" type="button" id="btnRow1" aria-expanded="false" onclick="toggle(this.id,'#detailsRow1');" aria-controls="detailsRow1" aria-label="More details for" aria-labelledby="btnRow1 nameRow1"></button>
+          </td>
+        </tr>
+
+        <tr id="detailsRow1" class="hidden detailsRow">
+          <td colspan="7">
+            <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
+
+                <div id="reasons-step-1">{% include '../components/reasons-step-1.html' %}</div>
+
+                <div id="reasons-step-2" style="display: none">{% include '../components/reasons-step-2.html' %}</div>
+
+                <div id="reasons-step-3" style="display: none">{% include '../components/reasons-step-3.html' %}</div>
+
+                <div id="reasons-step-4" style="display: none">{% include '../components/reasons-step-4.html' %}</div>
+
+                <div id="reasons-step-5" style="display: none">{% include '../components/reasons-step-5.html' %}</div>
+          </td>
+        </tr>
+
+        <tr class="nhsuk-table__row">
+          <td role="gridcell"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select</span>
+            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="selectRow5" name="select" type="checkbox" value="hmrc">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectRow5">
+                </label>
+              </div>
+            </div>
+          </td>
+          <td class="nhsuk-table__cell">
+            460 891 3182
+          </td>
+          <td class="nhsuk-table__cell">
+            Elly Arellano
+          </td>
+          <td class="nhsuk-table__cell">
+            28
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+          </td>
+          <td class="nhsuk-table__cell">
+            12-10-2020
+          </td>
+          <td class="nhsuk-table__cell">
+            <button class="expanderButton" type="button" id="btnRow5" aria-expanded="false" onclick="toggle(this.id,'#detailsRow5');" aria-controls="detailsRow1" aria-label="More details for" aria-labelledby="btnRow5 nameRow5"></button>
+          </td>
+        </tr>
+
+        <tr id="detailsRow5" class="hidden detailsRow">
+          <td colspan="7">
+            {% include '../components/reasons.html' %}
+          </td>
+        </tr>
+
+        <tr class="nhsuk-table__row">
+          <td role="gridcell"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select</span>
+            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="selectRow6" name="select" type="checkbox" value="hmrc">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectRow6">
+                </label>
+              </div>
+            </div>
+          </td>
+          <td class="nhsuk-table__cell">
+            246 122 7527
+          </td>
+          <td class="nhsuk-table__cell">
+            Melinda Mathis
+          </td>
+          <td class="nhsuk-table__cell">
+            36
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+          </td>
+          <td class="nhsuk-table__cell">
+            13-10-2020
+          </td>
+          <td class="nhsuk-table__cell">
+            <button class="expanderButton" type="button" id="btnRow6" aria-expanded="false" onclick="toggle(this.id,'#detailsRow6');" aria-controls="detailsRow1" aria-label="More details for" aria-labelledby="btnRow6 nameRow6"></button>
+          </td>
+        </tr>
+
+        <tr id="detailsRow6" class="hidden detailsRow">
+          <td colspan="7">
+            {% include '../components/reasons.html' %}
+          </td>
+        </tr>
+            
+        </tbody>   
+      </table>
+
+      {{ pagination({
+        "nextUrl": "/section/symptoms",
+        "nextPage": "Page 2 of 10"
+      }) }}    
+
+      </div>
+
+      
+
+
+  </div>
+{% endblock %}
+
+
+{% block pageScripts %}
+<script>
+  function toggle(btnID, eIDs) {
+    // Feed the list of ids as a selector
+    var theRows = document.querySelectorAll(eIDs);
+    // Get the button that triggered this
+    var theButton = document.getElementById(btnID);
+    // If the button is not expanded...
+    if (theButton.getAttribute("aria-expanded") == "false") {
+      // Loop through the rows and show them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("shown");
+        theRows[i].classList.remove("hidden");
+      }
+      // Now set the button to expanded
+      theButton.setAttribute("aria-expanded", "true");
+      // Otherwise button is not expanded...
+    } else {
+      // Loop through the rows and hide them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("hidden");
+        theRows[i].classList.remove("shown");
+      }
+      // Now set the button to collapsed
+      theButton.setAttribute("aria-expanded", "false");
+    }
+    $('.expanderButton[aria-expanded="true"]').closest('tr').addClass('expandedRow');
+    $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
+  }
+
+   /* SELECT ALL */
+  var selectAll = document.getElementById("selectAll");
+  var checkBoxes = document.querySelectorAll('.nhsuk-checkboxes__input');
+
+  selectAll.addEventListener('change', function() {
+    if(this.checked) {
+        for (i = 1; i < checkBoxes.length; i++) {
+          console.log(checkBoxes[i]);
+          checkBoxes[i].checked = true;
+        } 
+    } else {
+        console.log('nah')
+        for (i = 1; i < checkBoxes.length; i++) {
+          console.log(checkBoxes[i]);
+          checkBoxes[i].checked = false;
+        } 
+    }
+  })
+
+  function scrollPos() { 
+    var elemPos = document.getElementById("detailsRow1");
+    var elemScroll = elemPos.getBoundingClientRect().top - (elemPos.offsetTop / 2);
+    window.scrollBy(0, (elemScroll));
+  }
+
+  function hideAllPages() {
+    document.getElementById("reasons-step-0").style.display = "none";
+    document.getElementById("reasons-step-1").style.display = "none";
+    document.getElementById("reasons-step-2").style.display = "none";
+    document.getElementById("reasons-step-3").style.display = "none";
+    document.getElementById("reasons-step-4").style.display = "none";
+    document.getElementById("reasons-step-5").style.display = "none";
+  }
+
+  // there's definitely a better way to do this but it's 18:05 on a friday
+  document.getElementById("step-2").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-2").style.display = "block";
+    scrollPos();
+  })
+
+  document.getElementById("back-step-1").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-1").style.display = "block";
+  })
+
+  document.getElementById("step-3").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-3").style.display = "block";
+    scrollPos();
+  })
+
+  document.getElementById("back-step-2").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-2").style.display = "block";
+  })
+
+  document.getElementById("step-4").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-4").style.display = "block";
+    scrollPos();
+  })
+
+  document.getElementById("back-step-3").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-3").style.display = "block";
+  })
+
+  document.getElementById("step-5").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-5").style.display = "block";
+    scrollPos();
+  })
+
+  document.getElementById("step-done").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-2").style.display = "block";
+    console.log('ready to submit')
+  })
+
+  
+
+
+  
+
+ 
+
+</script>
+
+
+
+<script>
+  // Script for the view selected button
+
+  /*
+  $(".nhsuk-checkboxes__input").change(function() {
+      if ($("input:checkbox:checked").length > 0)
+      {
+        $(".disable-able").removeClass("nhsuk-button--disabled").removeClass("nhsuk-button--secondary").addClass("nhsuk-button--blue");
+        $("#view-selected-link").attr("href", "./birth-notification");
+
+        if ($("input:checkbox:checked").length > 1)
+        {
+          $("#view-selected-link").attr("href", "./birth-notification-multiple-1-of-3");
+        }
+
+      }
+      else
+      {
+        $(".disable-able ").addClass("nhsuk-button--disabled").addClass("nhsuk-button--secondary").removeClass("nhsuk-button--blue");
+      }
+
+
+  });
+  */
+</script>
+{% endblock %}

@@ -1,0 +1,67 @@
+<h2 id="testresults" class="nhsuk-heading-l">HPV Vaccinations</h2>
+{% if data.role == 'csas' %}
+    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" role name="button" href="add-test-result/add-result">Add result</a>
+{% endif %}
+
+<div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-2">
+    <span class="nhsuk-u-visually-hidden">HPV Vaccination information</span>
+    <h3 class="nhsuk-heading-s">All HPV Vaccinations have been given</h3>
+</div>
+
+<div class="nhsuk-scrollable-pane__wrapper">
+    <div id="table-scroll" class="table-scroll">
+        <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+            <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table">
+
+              <!-- TABLE START -->
+              <thead class="nhsuk-table__head">
+                <tr class="nhsuk-table__row">
+                  <th scope="col">Vaccination Date</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Batch</th>
+                  <th scope="col">Given by</th>
+
+                  {% if data.role == 'csas' %}
+                  <th scope="col">Action</th>
+                  {% endif %}
+                </tr>
+              </thead>
+
+
+              <tbody class="nhsuk-table__body nhsuk-body-">
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">01-Apr-2019</td>
+                  <td class="nhsuk-table__cell">Gardasil</td>
+                  <td class="nhsuk-table__cell">AB12345</td>
+                  <td class="nhsuk-table__cell">Alan Davies</td>
+
+                  {% if data.role == 'csas' %}
+                  <td class="nhsuk-table__cell"><a href="">Edit</a></td>
+                  {% endif %}
+
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">01-Apr-2015</td>
+                  <td class="nhsuk-table__cell">Cervarix</td>
+                  <td class="nhsuk-table__cell">AHPVTRHF123BB</td>
+                  <td class="nhsuk-table__cell">Julie Williams</td>
+
+                  {% if data.role == 'csas' %}
+                  <td class="nhsuk-table__cell"><a href="">Edit</a></td>
+                  {% endif %}
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">01-Apr-2011</td>
+                  <td class="nhsuk-table__cell">Cervarix</td>
+                  <td class="nhsuk-table__cell">AHPVLHUY123AA</td>
+                  <td class="nhsuk-table__cell">Julie Williams</td>
+
+                  {% if data.role == 'csas' %}
+                  <td class="nhsuk-table__cell"><a href="">Edit</a></td>
+                  {% endif %}
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>

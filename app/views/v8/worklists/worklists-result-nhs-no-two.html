@@ -1,0 +1,119 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+  {{ backLink({
+    "href": "worklists",
+    "text": "Back to Results"
+  }) }}
+  <h1 class="nhsuk-heading-l">Manually resolve a demographic mismatch - 2 of 2</h1>
+  <h2 class="nhsuk-heading-m">Choose a record to manually resolve the mismatch error</h2>
+ 
+</div>
+</div>
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-0 nhsuk-padding-top-0">
+    <div class="nhsuk-grid-column-full">
+
+  <div class="nhsuk-table-responsive">
+    <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable">
+
+      <!-- TABLE START -->
+      <thead class="nhsuk-table__head">
+       
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">Lab details</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">System details</button>
+          </th>
+          
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+
+          </th>
+        
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body" style="border-bottom: 0px;">
+
+        <tr class="nhsuk-table__row">
+          
+          <td class="nhsuk-table__cell" style="border-right: 1px solid #d8dde0; border-bottom: none;">
+            <strong>NHS number:</strong> Unknown<br>
+            <strong>Name:</strong> Yasmin Adams <br>
+            <strong>DOB:</strong> 11-Nov-1987
+            <br>
+            <strong>Address:</strong> 31 Circle Row, <br>Leeds <br>
+            <strong>Postcode:</strong> LS15 4DL
+          </td>
+          <td class="nhsuk-table__cell" style="border-bottom: none;" >
+            <strong>NHS number:</strong><mark>129 420 5191</mark> <br>
+            <strong>Name:</strong> Yasmin Adams<br>
+             <strong>DOB:</strong> 11-Nov-1987
+            <br>
+            <strong>Address:</strong> 31 Circle Row,<br> Leeds<br> 
+            <strong> Postcode:</strong> LS15 4DL
+          </td>
+         
+          <td class="nhsuk-table__cell multiple-choice--hod" style="border-bottom: none;">
+            <div class="nhsuk-checkboxes__item">
+              <input type="checkbox" class="nhsuk-checkboxes__input jsCheckbox" id="radio-1">
+              <label class="nhsuk-label nhsuk-checkboxes__label" for="radio-1">
+                &nbsp;
+              </label>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="nhsuk-table__row">
+          
+            <td class="nhsuk-table__cell" style="border-right: 1px solid #d8dde0; border-bottom: none;">
+              
+            </td>
+            <td class="nhsuk-table__cell" style="border-bottom: none;">
+              <strong>NHS number:</strong><mark> 672 940 2491</mark><br>
+              <strong>Name:</strong> Yasmin<mark>e</mark> Adams <br>
+              <strong>DOB:</strong><mark> 27-May-1991</mark>
+              <br>
+              <strong>Address:</strong> <mark>The Courtyard, West Park Road</mark><br>Leeds <br>
+              <strong>Postcode:</strong> LS<mark>7 8KJ</mark>
+            </td>
+            
+            <td class="nhsuk-table__cell multiple-choice--hod">
+              <div class="nhsuk-checkboxes__item">
+                <input type="checkbox" class="nhsuk-checkboxes__input jsCheckbox" id="radio-1">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="radio-1">
+                  &nbsp;
+                </label>
+              </div>
+            </td>
+          </tr>
+          
+        </tbody>
+
+
+
+      </table>
+      </div>
+      <a class="nhsuk-button--ers" href="worklists-demographic-completed">Save and get next result</a><br>
+      <a class="nhsuk-button nhsuk-button--ers_secondary" href="worklists">Save and exit</a><br>
+      <p><a href="">Skip this result</a></p>
+    </div>
+</div>
+
+  {% endblock %}

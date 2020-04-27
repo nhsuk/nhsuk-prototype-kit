@@ -1,0 +1,187 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+  <script type="text/javascript" src="/js/action-menu.js"></script>
+  <script type="text/javascript" src="/js/sort.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "true"
+  })
+}}
+{% endblock %}
+
+{% block patientBanner %}
+  {% include '../components/patient-banner.html' %}
+{% endblock %}
+
+
+{% block content %}
+  {% if data.role != 'sampleTaker' %}
+  <nav class="nhsuk-sub-navigation">
+    <ul class="nhsuk-sub-navigation__list">
+      <li class="nhsuk-sub-navigation__item"><a href="patient-summary" class="nhsuk-sub-navigation__link" aria-current="page">Patient Summary</a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="history" class="nhsuk-sub-navigation__link">History</a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="gp-info" class="nhsuk-sub-navigation__link">GP Information</a></li>
+      {% if data.role == 'csas' %}
+        <li class="nhsuk-sub-navigation__item"><a href="additional-info" class="nhsuk-sub-navigation__link">Additional Information</a></li>
+      {% endif %}
+      <!--<li class="nhsuk-sub-navigation__item" style="float: right; font-size: 14px">role: {{ data.role }}</li>-->
+    </ul>
+  </nav>
+{% endif %}
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-three-quarters">
+    <h1 class="nhsuk-heading-l">Patient summary</h1>
+    <p>{{ data['alreadyCeased'] }}</p>
+    {% if data['alreadyCeased'] == undefined %}
+    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--info nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4">
+      <span class="nhsuk-u-visually-hidden">The next test due date and status have been updated</span>
+      <h3 class="nhsuk-heading-s">The next test due date and status have been updated</h3>
+    </div>
+    {% endif %}
+    <span class="nhsuk-tag nhsuk-tag--orange">{{ data['status'] or 'ceased' }} - {{ data['reason'] or 'No cervix' }}</span>
+    <dl class="nhsuk-summary-list nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Next test due date
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          Not applicable
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          {% if data.role == 'csas' %}
+            <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2" href="change-due-date/enter-reason-reinstate">Reinstate</a> 
+          {% endif %}
+        </dd>
+      </div>
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Address
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          20 Thornhill Street <br> Pudsey, LS15 6FD
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          {% if data.role == 'csas' %}
+            <span class="nhsuk-tag nhsuk-tag--red">FP69</span>
+          {% endif %}
+        </dd>
+      </div>
+    </dl>
+    {% if data.role != 'sampleTaker' %}
+      {{ details({
+      "text": "View previous addresses",
+      "HTML": "
+
+      <h4>Address History</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Moved in</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>07 2017</td>
+          <td>20 Thornhill Street, Pudsey, LS15 6FD</td>
+        </tr>
+        <tr>
+          <td>03 2013</td>
+          <td>29 Jubilee Close, Bradford, BD19 3WE</td>
+        </tr>
+        <tr>
+          <td>01 2011</td>
+          <td>1 High Street, Bradford, BD13 5TY</td>
+        </tr>
+      </table>
+      "
+      }) }}
+    {% endif %}
+  </div>
+</div>
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-heading-menu__actions">
+      <h2 id="testresults" class="nhsuk-heading-l">Test results</h2>
+      <a class="nhsuk-button--ers_secondary" role name="button" href="add-test-result/add-result">Add result</a>
+    </div>
+    <div class="nhsuk-scrollable-pane">
+      <div class="nhsuk-scrollable-pane__wrapper">
+        <div id="table-scroll" class="table-scroll">
+          <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+            <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table">
+
+              <!-- TABLE START -->
+              <thead class="nhsuk-table__head">
+                <tr class="nhsuk-table__row">
+                  <th class="nhsuk-table__header" scope="col">Test Date</th>
+                  <th class="nhsuk-table__header" scope="col">Test type</th>
+                  <th class="nhsuk-table__header" scope="col">HPV infection</th>
+                  <th class="nhsuk-table__header"  scope="col">Cytology result</th>
+                  <th class="nhsuk-table__header" scope="col">Action</th>
+                  <th class="nhsuk-table__header" scope="col">Repeat</th>
+                  <th class="nhsuk-table__header" scope="col">Screening lab</th>
+                  <th class="nhsuk-table__header" scope="col">Sample taker code</th>
+                  {% if data.role != 'sampleTaker' %}
+                    <th class="nhsuk-table__header" scope="col">Slide no</th>
+                  {% endif %}
+                </tr>
+              </thead>
+              <tbody class="nhsuk-table__body nhsuk-body-">
+                <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__cell fixed-side">01-Apr-2017</td>
+                <td class="nhsuk-table__cell">NHS</td>
+                <td class="nhsuk-table__cell">HPV Negative</td>
+                <td class="nhsuk-table__cell">No cytology result</td>
+                <td class="nhsuk-table__cell">Routine</td>
+                <td class="nhsuk-table__cell">36 months</td>
+                <td class="nhsuk-table__cell">Leeds General Infirmary</td>
+                <td class="nhsuk-table__cell">505007200042</td>
+                {% if data.role != 'sampleTaker' %}
+                  <td class="nhsuk-table__cell">1323</td>
+                {% endif %}
+
+              </tr>
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__cell fixed-side">10-Apr-2014</td>
+                <td class="nhsuk-table__cell">NHS</td>
+                <td class="nhsuk-table__cell">HPV Negative</td>
+                <td class="nhsuk-table__cell">No cytology result</td>
+                <td class="nhsuk-table__cell">Routine</td>
+                <td class="nhsuk-table__cell">36 months</td>
+                <td class="nhsuk-table__cell">Leeds General Infirmary</td>
+                <td class="nhsuk-table__cell">505007200042</td>
+                {% if data.role != 'sampleTaker' %}
+                  <td class="nhsuk-table__cell">1323</td>
+                {% endif %}
+
+              </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include '../components/hpv-results.html' %}
+  
+  </div>
+</div>
+
+{% endblock %}

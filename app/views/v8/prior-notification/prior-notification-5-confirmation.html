@@ -1,0 +1,31 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+
+{% block patientBanner %}
+  {% include '../components/patient-banner.html' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-2">
+
+    <h1 class="nhsuk-heading-l">Patient Prior Notification updated</h1>
+
+    <p>Jane Smith has is due to be deferred from this screening episode on 1st may 2020</p>
+
+    <p>Estimated next test due date: 01 10 2020</p>
+
+    <a href="prior-notification-5-action" class="nhsuk-button nhsuk-button--ers">Review next patient</a>
+    <p><a href="prior-notification-5-updated">Return to the Prior Notification</a></p>
+
+
+
+  </div>
+</div>
+
+{% endblock %}

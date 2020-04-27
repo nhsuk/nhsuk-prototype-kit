@@ -52,9 +52,9 @@ router.post("/*/hmr101/choose", function(req, res) {
   var reason = req.session.data["choose"];
   console.log(reason);
   if (reason == "print") {
-    res.redirect("/v7/patient/hmr101/preview");
+    res.redirect("/" + getVersion(req) + "/patient/hmr101/preview");
   } else {
-    res.redirect("/v7/patient/hmr101/code-conditional");
+    res.redirect("/" + getVersion(req) + "/patient/hmr101/code");
   }
 });
 
@@ -133,13 +133,19 @@ router.post("/*/patient/search/search", function(req, res) {
   res.redirect("/" + getVersion(req) + "/patient/patient-summary");
 });
 
-router.post("/prior-notification-4-check", function (req,res) {
+router.post("/*/prior-notification-4-check", function (req, res) {
   var invite = req.session.data["pnl-invite"];
 
   if (invite == "yes") {
-    res.redirect("/v7/prior-notification/prior-notification-4-confirmation")
+    res.redirect(
+      "/" +
+        getVersion(req) +
+        "/prior-notification/prior-notification-4-confirmation"
+    );
   } else {
-    res.redirect("/v7/prior-notification/prior-notification-4")
+    res.redirect(
+      "/" + getVersion(req) + "/prior-notification/prior-notification-4"
+    );
   }
 });
 

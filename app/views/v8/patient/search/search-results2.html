@@ -1,0 +1,93 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <h1 class="nhsuk-heading-l">Search results</h1>
+    <p>
+      <span class="number-of-results">
+        <h3 class="nhsuk-heading-xs">We found <b>10</b> results for patients with last name Smith, date of birth 04-June-1988</h3>
+        <p>If this isn't the patient you're looking for you can <a href="search-demographic">search  again</a>.</p>
+      </span>
+    </p>
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        <div class="search-results-container">
+          <table id="search-results-table" class="responsive-table" role="grid">
+                  <caption class="heading-medium">Search results</caption>
+                  <thead>
+                    <tr role="row">
+                      <th scope="col" class="name-results-th">Name</th>
+                      <th scope="col" class="gender-results-th">Gender</th>
+                      <th scope="col" class="dob-results-th">Date of birth</th>
+                      <th scope="col" class="address-results-th">Address</th>
+                      <th scope="col" class="nhs-no-results-th">NHS Number</th>
+                    </tr>
+                  </thead>
+                  <tbody class="patient-results">
+                    <tr role="row" class="patient-search-result">
+                      <td role="gridcell"><span><a href="../patient-summary" class="name-results-td">Jane Smith</a></span></td>
+                      <td role="gridcell"><span class="gender-results-td">Female</span></td>
+                      <td role="gridcell"><span class="dob-results-td">04-June-1988</span></td>
+                      <td role="gridcell"><span class="address-results-td">55 Troy Place,&nbsp;<span class="patient-pob-td">Sutton</span>,&nbsp;<span class="postcode-results-td">X56
+                            3TG</span></span></td>
+                      <td role="gridcell"><span class="nhs-no-results-td">955 509 7296</span></td>
+                    </tr>
+                    <tr role="row" class="patient-search-result">
+                      <td role="gridcell"><span><a href="../patient-summary" class="name-results-td">Jane Smith</a></span></td>
+                      <td role="gridcell"><span class="gender-results-td">Female</span></td>
+                      <td role="gridcell"><span class="dob-results-td">04-June-1988</span></td>
+                      <td role="gridcell"><span class="address-results-td">55 Troy Place,&nbsp;<span class="patient-pob-td">Sutton</span>,&nbsp;<span class="postcode-results-td">X56
+                            3TG</span></span></td>
+                      <td role="gridcell"><span class="nhs-no-results-td">955 509 7296</span></td>
+                    </tr>
+                    <tr role="row" class="patient-search-result">
+                      <td role="gridcell"><span><a href="../patient-summary" class="name-results-td">Jane Smith</a></span></td>
+                      <td role="gridcell"><span class="gender-results-td">Female</span></td>
+                      <td role="gridcell"><span class="dob-results-td">04-June-1988</span></td>
+                      <td role="gridcell"><span class="address-results-td">55 Troy Place,&nbsp;<span class="patient-pob-td">Sutton</span>,&nbsp;<span class="postcode-results-td">X56
+                            3TG</span></span></td>
+                      <td role="gridcell"><span class="nhs-no-results-td">955 509 7296</span></td>
+                    </tr>
+                    <tr role="row" class="patient-search-result">
+                      <td role="gridcell"><span><a href="../patient-summary" class="name-results-td">Jane Smith</a></span></td>
+                      <td role="gridcell"><span class="gender-results-td">Female</span></td>
+                      <td role="gridcell"><span class="dob-results-td">04-June-1988</span></td>
+                      <td role="gridcell"><span class="address-results-td">55 Troy Place,&nbsp;<span class="patient-pob-td">Sutton</span>,&nbsp;<span class="postcode-results-td">X56
+                            3TG</span></span></td>
+                      <td role="gridcell"><span class="nhs-no-results-td">955 509 7296</span></td>
+                    </tr>
+                    <tr role="row" class="patient-search-result">
+                      <td role="gridcell"><span><a href="../patient-summary" class="name-results-td">Jane Smith</a></span></td>
+                      <td role="gridcell"><span class="gender-results-td">Female</span></td>
+                      <td role="gridcell"><span class="dob-results-td">04-June-1988</span></td>
+                      <td role="gridcell"><span class="address-results-td">55 Troy Place,&nbsp;<span class="patient-pob-td">Sutton</span>,&nbsp;<span class="postcode-results-td">X56
+                            3TG</span></span></td>
+                      <td role="gridcell"><span class="nhs-no-results-td">955 509 7296</span></td>
+                    </tr>
+                  </tbody>
+          </table>
+          <button type="button" name="button">Show 5 more</button>
+          <div class="table-foot">
+            <span class="load-more"></span>
+            <span class="results-count">Showing 1 of 1 results</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
