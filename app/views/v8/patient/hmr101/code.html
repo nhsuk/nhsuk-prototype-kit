@@ -1,0 +1,92 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "true"
+  })
+}}
+{% endblock %}
+
+{% block patientBanner %}
+  {% include '../../components/patient-banner.html' %}
+{% endblock %}
+
+{% block content %}
+{{ backLink({
+  "href": "choose",
+  "text": "Go back to choose"
+}) }}
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-one-half">
+
+
+
+
+
+
+        <div class="nhsuk-form-group">
+
+          <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      <h1 class="nhsuk-fieldset__heading">
+        Confirm your sample taker code
+      </h1>
+    </legend>
+
+    <p class="nhsuk-body-l">Your sample taker code is <strong>220976</strong></p>
+
+
+
+
+
+
+
+            <div class="nhsuk-checkboxes">
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="option-1">
+                This is correct
+                </label>
+              </div>
+
+  <fieldset class="nhsuk-fieldset">
+  <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+  </legend>
+<p class="nhsuk-body-l"> <strong>or</strong></p>
+
+  <div class="nhsuk-form-group">
+    <label class="nhsuk-label" for="address-postcode">
+      Enter  correct code
+    </label>
+    <input class="nhsuk-input nhsuk-input--width-10" id="address-postcode" name="address-postcode" type="text">
+  </div>
+
+            </div>
+          </fieldset>
+
+        </div>
+        <a class="nhsuk-button--ers nhsuk-u-margin-top-4" href="step-1">Continue</a>
+
+
+
+        </div>
+        </div>
+
+{% endblock %}

@@ -1,0 +1,164 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+
+{% block patientBanner %}
+  {% include '../components/patient-banner.html' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-2">
+
+  {{ backLink({
+  "href": "prior-notification-5-defer-length",
+  "text": "Back to step 3 - How long do you want to defer the patient for?"
+  }) }}
+
+  <span class="nhsuk-hint">Step 3 of 3</span>
+  
+  <details class="nhsuk-details nhsuk-expander">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            View more information about the patient
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Status
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                Routine
+              </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Next test due date
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                1st May 2020
+              </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Last test result Date
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                1st May 2017
+              </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Last test result
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                (X0A) No cytology result, HPV negative, routine recall
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </details>
+
+  {{ summaryList({
+  rows: [
+    {
+      key: {
+        text: "Action"
+      },
+      value: {
+        text: data['pnl-action'] or 'Defer'
+      },
+      actions: {
+        items: [
+          {
+            href: "prior-notification-5-action",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Defer Reason"
+      },
+      value: {
+        text: data['pnl-defer-reason'] or 'Pregnancy'
+      },
+      actions: {
+        items: [
+          {
+            href: "prior-notification-5-defer-reason",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Defer Length"
+      },
+      value: {
+        html: data['pnl-defer-length'] or '6 Months'
+      },
+      actions: {
+        items: [
+          {
+            href: "prior-notification-5-defer-length",
+            text: "Change",
+            visuallyHiddenText: "change defer length"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Next test due date"
+      },
+      value: {
+        html: data['pnl-defer-ntdd'] or '01 10 2020'
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "",
+            visuallyHiddenText: "contact details"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Comment"
+      },
+      value: {
+        html: data['pnl-comments'] or ''
+      },
+      actions: {
+        items: [
+          {
+            href: "prior-notification-5-defer-length",
+            text: "Change",
+            visuallyHiddenText: "contact details"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+
+  <a href="prior-notification-5-confirmation" class="nhsuk-button nhsuk-button--ers">Submit</a>
+  <p><a href="">Exit without saving</a>   -   <a href="">Skip this patient</a></p>
+  </div>
+</div>
+
+{% endblock %}
