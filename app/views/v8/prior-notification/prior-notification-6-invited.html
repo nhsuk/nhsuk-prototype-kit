@@ -94,7 +94,7 @@
             <button onclick="sortTable()" type="button" data-index="0">Age</button>
           </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            <button onclick="sortTable()" type="button" data-index="0">Status</button>
+            <button onclick="sortTable()" type="button" data-index="0">Recall Type</button>
           </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
             <button onclick="sortTable()" type="button" data-index="0">Next test due date</button>
@@ -131,7 +131,7 @@
             Routine
           </td>
           <td class="nhsuk-table__cell">
-            12 Sep 2020
+            {{ "2" | returnDate("months") }}
           </td>
           <td class="nhsuk-table__cell">
             <button class="expanderButton" type="button" id="btnRow1" aria-expanded="false" onclick="toggle(this.id,'#detailsRow1');" aria-controls="detailsRow1" aria-label="More details for" aria-labelledby="btnRow1 nameRow1"></button>
@@ -177,7 +177,7 @@
             Routine
           </td>
           <td class="nhsuk-table__cell">
-            12 Sep 2020
+            {{ "2" | returnDate("months") }}
           </td>
           <td class="nhsuk-table__cell">
             <button class="expanderButton" type="button" id="btnRow5" aria-expanded="false" onclick="toggle(this.id,'#detailsRow5');" aria-controls="detailsRow1" aria-label="More details for" aria-labelledby="btnRow5 nameRow5"></button>
@@ -213,7 +213,7 @@
             Routine
           </td>
           <td class="nhsuk-table__cell">
-            13 Sep 2020
+            {{ "2" | returnDate("months") }}
           </td>
           <td class="nhsuk-table__cell">
             <button class="expanderButton" type="button" id="btnRow6" aria-expanded="false" onclick="toggle(this.id,'#detailsRow6');" aria-controls="detailsRow1" aria-label="More details for" aria-labelledby="btnRow6 nameRow6"></button>

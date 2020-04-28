@@ -30,8 +30,8 @@ module.exports = function (env) {
     }
   }
 
-  filters.returnDate = function (months, type) {
-      return moment().add(months, type).format("dddd D MMMM YYYY");
+  filters.returnDate = function (amount, type) {
+      return moment().add(amount, type).format("D MMMM YYYY");
   }
   // {{ "2" | returnDate("years") }}
 

@@ -72,6 +72,8 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
   <button class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2">Invite selected</button>
+  <a href="prior-notification-6-deferred" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2 nhsuk-button nhsuk-button--secondary">View deferred</a>
+  
     <table id="sortable" class="nhsuk-table-clickable bna-table nhsuk-u-margin-top-0">
       <thead class="nhsuk-table__head">
         <tr class="nhsuk-table__row">
@@ -94,10 +96,10 @@
             <button onclick="sortTable()" type="button" data-index="0">Age</button>
           </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            <button onclick="sortTable()" type="button" data-index="0">Status</button>
+            <button onclick="sortTable()" type="button" data-index="0">Recall Type</button>
           </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            <button onclick="sortTable()" type="button" data-index="0">Next test due date</button>
+            <button onclick="sortTable()" type="button" data-index="0">Action by</button>
           </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
             View more
@@ -127,7 +129,7 @@
             <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">deferred</span>
           </td>
           <td class="nhsuk-table__cell">
-            12-10-2020
+            
           </td>
           <td class="nhsuk-table__cell">
           </td>
@@ -162,7 +164,7 @@
             Routine
           </td>
           <td class="nhsuk-table__cell">
-            12-10-2020
+            {{ "1" | returnDate("months") }}
           </td>
           <td class="nhsuk-table__cell">
             <button class="expanderButton" type="button" id="btnRow5" aria-expanded="false" onclick="toggle(this.id,'#detailsRow5');" aria-controls="detailsRow1" aria-label="More details for" aria-labelledby="btnRow5 nameRow5"></button>
@@ -198,7 +200,7 @@
             Routine
           </td>
           <td class="nhsuk-table__cell">
-            13-10-2020
+            {{ "1" | returnDate("months") }}
           </td>
           <td class="nhsuk-table__cell">
             <button class="expanderButton" type="button" id="btnRow6" aria-expanded="false" onclick="toggle(this.id,'#detailsRow6');" aria-controls="detailsRow1" aria-label="More details for" aria-labelledby="btnRow6 nameRow6"></button>
