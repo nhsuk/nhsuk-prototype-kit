@@ -16,7 +16,44 @@
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
-    <h1 class="nhsuk-heading-l">Header</h1>
+    {% from 'radios/macro.njk' import radios %}
+    <form action="example-2" method="post">
+     {{ radios({
+      "idPrefix": "age",
+      "name": "age",
+      "fieldset": {
+        "legend": {
+          "text": "Are you 18 or over?",
+          "classes": "nhsuk-fieldset__legend--l",
+          "isPageHeading": true
+        }
+      },
+      "items": [
+        {
+          "value": "yes",
+          "text": "Yes"
+        },
+        {
+          "value": "no",
+          "text": "No"
+        }
+      ]
+      }) }}
+
+     
+  {{ input({
+    "label": {
+    "text": "What is your first name?"
+     },
+     "id": "first name",
+    "name": "firstname"
+  }) }}
+
+     {{ button({
+    "text": "Continue"
+    }) }}
+</form>
+
   </div>
 </div>
 

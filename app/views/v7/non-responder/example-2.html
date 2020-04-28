@@ -1,0 +1,70 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+<h1> Your age</h1>
+
+    {% if data.age == 'no' %}
+    {{ insetText({
+      "HTML": "This user is under 18 - CAUTION"
+    }) }}
+    {% endif %}
+
+{{ summaryList({
+  rows: [
+    {
+      key: {
+        text: "Over 18"
+      },
+      value: {
+        text: data['age']
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "First name"
+      },
+      value: {
+        text: data['firstname'] or 'Alice'
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    }
+  
+  ]
+}) }}
+  </div>
+</div>
+
+{% endblock %}

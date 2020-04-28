@@ -1,0 +1,279 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "true"
+  })
+}}
+{% endblock %}
+
+{% block patientBanner %}
+  {% include '../../components/patient-banner.html' %}
+{% endblock %}
+
+{% block content %}
+
+{{ backLink({
+  "href": "step-1",
+  "text": "Go back to step 1"
+}) }}
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-one-half">
+
+        <span class="nhsuk-hint">
+          Step 2 of 3
+        </span>
+        <h1 class="nhsuk-heading-l">Enter sample details</h1>
+        <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
+          <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
+              <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+                Test date
+              </legend>
+              <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
+                You must enter a date
+              </span>
+              <div class="nhsuk-date-input" id="dob-from">
+                <div class="nhsuk-date-input__item">
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
+                      Day
+                    </label>
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="day" name="day" type="number" pattern="[0-9]*" value="15">
+                  </div>
+                </div>
+                <div class="nhsuk-date-input__item">
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
+                      Month
+                    </label>
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="month" type="number" pattern="[0-9]*" value="3">
+                  </div>
+                </div>
+                <div class="nhsuk-date-input__item">
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
+                      Year
+                    </label>
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="year" type="number" pattern="[0-9]*" value="1995">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+        </div>
+
+
+        </div>
+        </div>
+        <div class="nhsuk-grid-row nhsuk-u-margin-top-0">
+          <div class="nhsuk-grid-column-one-half">
+            <legend class="nhsuk-fieldset__legend nhsuk-label__strong nhsuk-u-margin-top-4">
+              Source of the sample
+            </legend>
+
+          </div>
+        </div>
+        <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-third">
+
+
+          <form name="radio-buttons">
+
+              <div class="multiple-choice--hod nhsuk-radios">
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="patient-ill" name="cancel-reason" type="radio">
+                    <label class="nhsuk-label nhsuk-radios__label nhsuk-radios__label--s" for="patient-ill">
+                      GP
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="patient-holiday" name="cancel-reason" type="radio">
+                    <label class="nhsuk-label nhsuk-radios__label" for="patient-holiday">
+                      NHS Community Clinic
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="patient-private" name="cancel-reason" type="radio">
+                      <label class="nhsuk-label nhsuk-radios__label" for="patient-private">
+                       GUM Clinic
+                      </label>
+                    </div>
+                  <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="patient-private" name="cancel-reason" type="radio">
+                      <label class="nhsuk-label nhsuk-radios__label" for="patient-private">
+                       Self-sampling
+                      </label>
+                    </div>
+                </div>
+
+
+          </form>
+        </div>
+        <div class="nhsuk-grid-column-one-third">
+          <form name="radio-buttons">
+              <div class="multiple-choice--hod nhsuk-radios">
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="patient-ill" name="cancel-reason" type="radio">
+                    <label class="nhsuk-label nhsuk-radios__label nhsuk-radios__label--s" for="patient-ill">
+                      NHS Colposcopy
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="patient-holiday" name="cancel-reason" type="radio">
+                    <label class="nhsuk-label nhsuk-radios__label" for="patient-holiday">
+                      Private
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="patient-private" name="cancel-reason" type="radio">
+                      <label class="nhsuk-label nhsuk-radios__label" for="patient-private">
+                       Other
+                      </label>
+                    </div>
+
+                </div>
+
+
+          </form>
+        </div>
+        </div>
+        <div class="nhsuk-grid-row nhsuk-u-margin-top-2">
+          <div class="nhsuk-grid-column-one-half">
+            <legend class="nhsuk-fieldset__legend nhsuk-label__strong nhsuk-u-margin-top-4">
+              Reason for sample
+            </legend>
+
+          </div>
+        </div>
+        <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-third">
+
+
+          <form name="radio-buttons">
+
+              <div class="multiple-choice--hod nhsuk-radios">
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="patient-ill" name="cancel-reason" type="radio">
+                    <label class="nhsuk-label nhsuk-radios__label nhsuk-radios__label--s" for="patient-ill">
+                     Routine call
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="patient-holiday" name="cancel-reason" type="radio">
+                    <label class="nhsuk-label nhsuk-radios__label" for="patient-holiday">
+                      Routine recall
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="patient-private" name="cancel-reason" type="radio">
+                      <label class="nhsuk-label nhsuk-radios__label" for="patient-private">
+                       Previous inadequate test
+                      </label>
+                    </div>
+
+                </div>
+
+
+          </form>
+        </div>
+        <div class="nhsuk-grid-column-one-third">
+          <form name="radio-buttons">
+              <div class="multiple-choice--hod nhsuk-radios">
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="patient-ill" name="cancel-reason" type="radio">
+                    <label class="nhsuk-label nhsuk-radios__label nhsuk-radios__label--s" for="patient-ill">
+                      Opportunistic
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="patient-holiday" name="cancel-reason" type="radio">
+                    <label class="nhsuk-label nhsuk-radios__label" for="patient-holiday">
+                     Follow up treatment
+                    </label>
+                  </div>
+                  
+                  <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="patient-private" name="cancel-reason" type="radio">
+                      <label class="nhsuk-label nhsuk-radios__label" for="patient-private">
+                       Other
+                      </label>
+                    </div>
+
+                </div>
+
+
+          </form>
+        </div>
+        </div>
+        <div class="nhsuk-grid-row nhsuk-u-margin-top-2">
+          <div class="nhsuk-grid-column-one-half">
+            <legend class="nhsuk-fieldset__legend nhsuk-label__strong nhsuk-u-margin-top-4">
+              Specimen type
+            </legend>
+
+
+            <form name="radio-buttons">
+              <div class="multiple-choice--hod nhsuk-radios">
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="patient-ill" name="cancel-reason" type="radio">
+                    <label class="nhsuk-label nhsuk-radios__label nhsuk-radios__label--s" for="patient-ill">
+                     Liquid-based cytology
+                    </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="patient-holiday" name="cancel-reason" type="radio">
+                    <label class="nhsuk-label nhsuk-radios__label" for="patient-holiday">
+                     Other
+                    </label>
+                  </div>
+
+    </legend>
+            <legend class="nhsuk-fieldset__legend nhsuk-label__strong nhsuk-u-margin-top-4">
+              Cervix view 
+            </legend>
+
+    <div class="nhsuk-checkboxes">
+
+      <div class="nhsuk-checkboxes__item">
+        <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+        <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
+          Cervix has been fully seen
+        </label>
+      </div>
+
+                </div>
+
+<div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+
+
+
+
+    </div>
+  </fieldset>
+
+</div>
+
+          <a class="nhsuk-button--ers nhsuk-u-margin-top-6" href="step-3">Continue</a>
+      
+
+
+{% endblock %}
