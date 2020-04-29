@@ -52,20 +52,20 @@ NHS Cervical Screening
     }
   }) %}
 
-    {{ input({
-      label: {
-        "html": 'Building and street <span class="nhsuk-u-visually-hidden">line 1 of 2</span>'
-      },
-      "id": "address-line-1",
-      "name": "address-line-1"
-    }) }}
 
     {{ input({
       label: {
-        "html": '<span class="nhsuk-u-visually-hidden">Building and street line 2 of 2</span>'
+        "text": "Building and street"
       },
-      "id": "address-line-2",
-      "name": "address-line-2"
+      "classes": "nhsuk-u-width-two-thirds",
+      "id": "building-street",
+      "name": "building-street"
+    }) }}
+
+    {{ input({
+      "classes": "nhsuk-u-width-two-thirds",
+      "id": "building-street",
+      "name": "building-street"
     }) }}
 
     {{ input({

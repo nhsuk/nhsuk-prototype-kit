@@ -26,22 +26,26 @@ NHS Cervical Screening
 {% endblock %}
 
 {% block content %}
+{{ backLink({
+  "href": "choose",
+  "text": "Go back to choose"
+}) }}
+
+
+
+
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
 <div class="nhsuk-grid-column-full">
-    {{ backLink({
-        "href": "../patient-summary",
-        "text": "Go back to enter patient summary"
-      }) }}
-      <form action="/v7/patient/hmr101/choose" method="post">
+   
+      <form action="/v8/patient/hmr101/episode-address" method="post">
 
-     {% call fieldset({
+        {% call fieldset({
           legend: {
-            text: "Choose a way to create a HMR101 form",
+            text: "What is the episode address?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
-
 
         {{ radios({
           "idPrefix": "choose",
@@ -49,11 +53,15 @@ NHS Cervical Screening
           "items": [
             {
               "value": "system",
-              "text": "Start a new form (recommended)"
+              "text": "Use registered address"
             },
             {
-              "value": "print",
-              "text": "Preview and print the form"
+              "value": "New",
+              "text": "Enter a new address"
+            },
+            {
+              "value": "GP address",
+              "text": "Use GP address"
             }
 
           ]
@@ -70,5 +78,10 @@ NHS Cervical Screening
 
 </div>
 </div>
+
+
+
+
+       
 
 {% endblock %}
