@@ -15,57 +15,13 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-6">
   <h1 class="nhsuk-heading-l">Prior Notification List</h1>
-  
-  <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4">
-    <span class="nhsuk-u-visually-hidden">Prior notification list</span>
-    <h3 class="nhsuk-heading-s">The following participants are available for screening. Verify whether they are eligible for the current screening episode or if they need ceasing or deferring.</h3>
-  </div>
+  <h3 class="nhsuk-heading-s">The following participants need reviewing as their next screening episode is due</h3>
+  <p>The following reasons are <strong>not</strong> part of the Prior Notification and require a form to be submitted</p>
+  <ul>
+    <li><a href="" >Mental capacity act form</a></li>
+    <li><a href="" >Informed patients choice form</a></li>
+  </ul>
 
-  <details class="nhsuk-details">
-    <summary class="nhsuk-details__summary">
-      <span class="nhsuk-details__summary-text">
-        What is the prior notification list
-      </span>
-    </summary>
-    <div class="nhsuk-details__text">
-      <p>The prior notification is a list of eligible particiapants who are due to be screened under your practice based on the following criteria:</p>
-      <ul>
-        <li>age</li>
-        <li>last test</li>
-        <li>registered as having a cervix</li>
-      </ul>
-
-      {{ list({
-        "title": "Reasons available on the prior notification",
-        "type": "tick",
-        "items": [
-          {
-            "item": "age, no cervix, radiotherapy"
-          },
-          {
-            "item": "pregnancy ..."
-          }
-        ]
-      }) }}
-
-      {{ list({
-        "title": "Reasons not available on the prior notification",
-        "type": "cross",
-        "items": [
-          {
-            "item": "mental capacity act"
-          },
-          {
-            "item": "another reason"
-          },
-          {
-            "item": "another reason"
-          }
-        ]
-      }) }}
-
-    </div>
-  </details>
   </div>
 </div>
 
