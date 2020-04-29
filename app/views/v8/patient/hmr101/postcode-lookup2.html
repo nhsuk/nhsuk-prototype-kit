@@ -1,0 +1,95 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "true"
+  })
+}}
+{% endblock %}
+
+{% block patientBanner %}
+  {% include '../../components/patient-banner.html' %}
+{% endblock %}
+
+{% block content %}
+{{ backLink({
+  "href": "choose",
+  "text": "Go back to choose"
+}) }}
+
+
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-one-half">
+
+<div class="nhsuk-form-group"> 
+ <h1 class="nhsuk-fieldset__heading">
+                    Add an episode address
+                  </h1>
+
+  <div class="nhsuk-form-group">
+    <label class="nhsuk-label" for="address-postcode">
+      Postcode
+    </label>
+    <input class="nhsuk-input nhsuk-input--width-10" id="address-postcode" name="address-postcode" type="text" value="LS4 2RP">
+  </div>
+
+
+
+<div class="nhsuk-form-group">
+<div class="nhsuk-grid-row nhsuk-u-margin-top-6">
+  <div class="nhsuk-grid-column-one-half">
+
+  <select class="nhsuk-select" id="sort" name="sort">
+    <option value="updated" selected>Select address</option>
+    <option value="views">LS4 2RP, 1 Haddon Place, Brandon, Leeds</option>
+    <option value="comments">LS4 2RP, 2 Haddon Place, Brandon, Leeds</option>
+    <option value="views">LS4 2RP, 3 Haddon Place, Brandon, Leeds</option>
+    <option value="comments">LS4 2RP, 4 Haddon Place, Brandon, Leeds</option>
+    <option value="views">LS4 2RP, 5 Haddon Place, Brandon, Leeds</option>
+    <option value="comments">LS4 2RP, 6 Haddon Place, Brandon, Leeds</option>
+    <option value="views">LS4 2RP, 7 Haddon Place, Brandon, Leeds</option>
+    <option value="comments">LS4 2RP, 4 Haddon Place, Brandon, Leeds</option>
+    <option value="views">LS4 2RP, 8 Haddon Place, Brandon, Leeds</option>
+    <option value="comments">LS4 2RP, 9 Haddon Place, Brandon, Leeds</option>
+    <option value="views">LS4 2RP, 10 Haddon Place, Brandon, Leeds</option>
+    <option value="comments">LS4 2RP, 11 Haddon Place, Brandon, Leeds</option>
+  </select>
+</div>
+</div>
+
+
+
+        </div>
+        <a class="nhsuk-button--ers nhsuk-u-margin-top-4" href="step-1">Continue</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        </div>
+
+{% endblock %}
