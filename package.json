@@ -27,13 +27,13 @@
     "gulp-babel": "^8.0.0",
     "gulp-clean": "^0.4.0",
     "gulp-clean-css": "^4.2.0",
-    "gulp-nodemon": "^2.4.2",
+    "gulp-nodemon": "^2.5.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "keypather": "^3.0.0",
     "moment": "2.24.0",
     "nhsuk-frontend": "^2.3.2",
-    "nunjucks": "^3.2.0",
+    "nunjucks": "^3.2.1",
     "path": "^0.12.7"
   },
   "devDependencies": {}

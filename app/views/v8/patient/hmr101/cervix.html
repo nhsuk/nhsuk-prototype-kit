@@ -27,41 +27,36 @@ NHS Cervical Screening
 
 {% block content %}
 {{ backLink({
-  "href": "code",
-  "text": "Go back to enter code"
+  "href": "choose",
+  "text": "Go back to choose"
 }) }}
-
 
 
 
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
 <div class="nhsuk-grid-column-full">
    
-      <form action="/v8/patient/hmr101/episode-address" method="post">
+      <form action="/v8/patient/hmr101/cervix" method="post">
 
         {% call fieldset({
           legend: {
-            text: "Confirm the episode address",
+            text: "Has the cervix been fully seen?",
             classes: "nhsuk-fieldset__legend--l",
             isPageHeading: true
           }
         }) %}
 
-        {{ radios({
-          "idPrefix": "choose",
-          "name": "choose",
+        {{ checkboxes({
+          "idPrefix": "cervix",
+          "name": "cervix",
           "items": [
             {
-              "value": "registered",
-              "text": "Use registered address"
+              "value": "yes-cervix",
+              "text": "Yes"
             },
             {
-              "value": "new",
-              "text": "Enter a new address"
-            },
-            {
-              "value": "GP-address",
-              "text": "Use GP address"
+              "value": "no-cervix",
+              "text": "No"
             }
 
           ]
@@ -69,7 +64,6 @@ NHS Cervical Screening
 
         {% endcall %}
 
-<p><a href="step-1">Skip this step</a></p>
         {{ button({
           "text": "Continue",
           classes: "nhsuk-button--ers"
@@ -78,12 +72,7 @@ NHS Cervical Screening
       </form>
 
 </div>
-</div
+</div>
 
-
-
-
-
-       
 
 {% endblock %}
