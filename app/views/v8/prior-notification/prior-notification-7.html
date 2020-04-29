@@ -16,8 +16,9 @@
   <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-2">
   <h1 class="nhsuk-heading-l">Prior Notification List</h1>
   
-  <p>The Prior Notification is a list of all the patients who are soon to be eligible for their next screening test.</p>
-  
+  <p>The Prior Notification is ordered by those due their screening soonest, then by the recall type <strong>inadequete, repeat advised</strong> and then <strong>routine</strong></p>
+  <strong>10</strong> patients need reviewing in the next 7 days</br>
+  <strong>3</strong> patients need reviewing today</p>
   </div>
 </div>
 
@@ -26,59 +27,23 @@
   <div class="nhsuk-grid-row nhsuk-panel-group">
   <div class="nhsuk-grid-column-one-half nhsuk-panel-group__item">
     <div class="nhsuk-panel">
-      <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-0"><span class="nhsuk-heading-xl">21</span>Patients need reviewing</h2>
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-0"><span class="nhsuk-heading-xl">3</span>Patients need reviewing today</h2>
     </div>
   </div>
-  
+  <div class="nhsuk-grid-column-one-half nhsuk-panel-group__item">
+    <div class="nhsuk-panel">
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-0"><span class="nhsuk-heading-xl">10</span>Patients need reviewing this week</h2>
+    </div>
+  </div>
 </div>
 
   <a href="prior-notification-7-action" type="button" class="nhsuk-button nhsuk-button--ers">Review next patient</a>
 
-  <details class="nhsuk-details">
-    <summary class="nhsuk-details__summary">
-      <span class="nhsuk-details__summary-text">
-        How does the Prior Notification work?
-      </span>
-    </summary>
-    <div class="nhsuk-details__text">
-      <p>The prior notification is a list of eligible particiapants who are due to be screened under your practice based on the following criteria:</p>
-      <ul>
-        <li>age</li>
-        <li>last test</li>
-        <li>registered as having a cervix</li>
-      </ul>
-
-      {{ list({
-        "title": "Reasons available on the prior notification",
-        "type": "tick",
-        "items": [
-          {
-            "item": "age, no cervix, radiotherapy"
-          },
-          {
-            "item": "pregnancy ..."
-          }
-        ]
-      }) }}
-
-      {{ list({
-        "title": "Reasons not available on the prior notification",
-        "type": "cross",
-        "items": [
-          {
-            "item": "mental capacity act"
-          },
-          {
-            "item": "another reason"
-          },
-          {
-            "item": "another reason"
-          }
-        ]
-      }) }}
-
-    </div>
-  </details>
+ <p>The following reasons are <strong>not</strong> part of the Prior Notification and require a form to be submitted</p>
+  <ul>
+    <li><a href="" >Mental capacity act form</a></li>
+    <li><a href="" >Informed patients choice form</a></li>
+  </ul>
   </div>
 </div>
 {% endblock %}
