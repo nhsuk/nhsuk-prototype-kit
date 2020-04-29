@@ -6,36 +6,24 @@
     Go back</a>
 </div>
 
-
-{{ radios({
-  "idPrefix": "pnl-length",
-  "name": "pnl-length",
-  "fieldset": {
-    "legend": {
-      "text": "How long do you want to defer the patient?",
-      "classes": "nhsuk-fieldset__legend--m",
-      "isPageHeading": true
-    }
-  },
-  "items": [
-    {
-      "value": "yes",
-      "text": "3 months (3rd april 2020)"
-    },
-    {
-      "value": "yes",
-      "text": "6 months (3rd July 2020)"
-    },
-    {
-      "value": "no",
-      "text": "9 months (3rd Oct 2020)"
-    },
-    {
-      "value": "no",
-      "text": "12 months (3rd Jan 2021)"
-    }
-  ]
+<h1 class="nhsuk-fieldset__legend--m">How long do you want to defer the patient for?</h1>
+{{ insetText({
+  "HTML":  "<p>You can defer the patient for a minimum of 3 months and a maximum of 12 after the estimated date of delivery on 1st Jun 2020 (in 1 month)</p>",
+  "classes": "nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-4"
 }) }}
+
+{{ input({
+  "label": {
+    "text": "Number of months to defer",
+    "isPageHeading": false
+  },
+  "id": "deferlength",
+  "name": "defer-length",
+  "classes": "nhsuk-input--width-2"
+}) }}
+
+<!--<p>Projected next test due date: 10 months (3rd april 2021)</p>-->
+
 
 <div class="nhsuk-form-group">
   <label class="nhsuk-label" for="example">

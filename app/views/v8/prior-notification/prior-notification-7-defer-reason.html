@@ -15,13 +15,13 @@
   <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-2">
 
   {{ backLink({
-  "href": "prior-notification-5-action",
+  "href": "prior-notification-7-action",
   "text": "Back to step 1 - Choose an action for this screening episode"
   }) }}
 
   <span class="nhsuk-hint">Step 1 of 3</span>
   
-  <form action="prior-notification-5-defer-length" method="post">
+  <form action="prior-notification-7-defer-length" method="post">
 
   {% call fieldset({
   legend: {
@@ -33,14 +33,14 @@
   {{ hint({
     "html": 
     '
-      <details class="nhsuk-details nhsuk-expander">
+      <details class="nhsuk-details nhsuk-summary-list--no-border">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
             View more information about the patient
           </span>
         </summary>
         <div class="nhsuk-details__text">
-          <dl class="nhsuk-summary-list">
+          <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-2">
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
                 Status
@@ -54,37 +54,86 @@
                 Next test due date
               </dt>
               <dd class="nhsuk-summary-list__value">
-                1st May 2020
+                28 Jun 2020 (in 2 months)
               </dd>
             </div>
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Last test result Date
+                Last test date
               </dt>
               <dd class="nhsuk-summary-list__value">
-                1st May 2017
+                28 May 2017 (3 years ago)
               </dd>
             </div>
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Last test result
+                Last test
               </dt>
               <dd class="nhsuk-summary-list__value">
                 (X0A) No cytology result, HPV negative, routine recall
               </dd>
             </div>
           </dl>
+          <p><a href="../patient/patient-summary">View full patient information</a></p>
         </div>
       </details>'
   }) }}
- 
-  {{ radios({
+
+  {% set PregnancyQuestion %}
+    {% include 'radios/macro.njk' %}
+    
+  <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
+    <div class="nhsuk-form-group">
+      <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
+        <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+          Estimated date of delivery
+        </legend>
+        <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
+          You must enter a date
+        </span>
+        <div class="nhsuk-date-input" id="edd-from">
+          <div class="nhsuk-date-input__item">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-date-input__label" for="edd-day">
+                Day
+              </label>
+            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="day" name="edd-day" type="number" pattern="[0-9]*" value="day">                                </div>
+          </div>
+          <div class="nhsuk-date-input__item">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-date-input__label" for="edd-month">
+                Month
+              </label>
+              <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="edd-month" type="number" pattern="[0-9]*" value="month">
+            </div>
+          </div>
+          <div class="nhsuk-date-input__item">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-date-input__label" for="edd-year">
+                Year
+              </label>
+              <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="edd-year" type="number" pattern="[0-9]*" value="year">
+            </div>
+          </div>
+        </div>
+        <input type="hidden" id="ntdd" name="ntdd" value="19 01 2021">
+      </fieldset>
+    </div>
+
+  </div>
+
+{% endset %}
+
+  {{ conditionalRadios({
     "idPrefix": "example-hints",
     "name": "pnl-defer-reason",
     "items": [
       {
         "value": "Pregnancy",
-        "text": "Pregnancy"
+        "text": "Pregnancy",
+        "conditional": {
+        html: PregnancyQuestion
+        }
       },
       {
         "value": "Recent test",

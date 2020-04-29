@@ -7,6 +7,48 @@ module.exports = function (env) {
    */
   var filters = {}
 
+  var moment = require('moment');
+
+  // Filter to print out dates in NHS App format
+  //
+  // Accepts numbers and strings.
+  // Strings for "today" and "tomorrow"
+  // Numbers like 5 will return a day 5 days away
+  //
+  // Usage in your templates:
+  //
+  // {{ "today" | returnDate }}
+  // {{ "tomorrow" | returnDate }}
+  // {{ 5 | returnDate }}
+  filters.returnDate = function (date) {
+    if (date == "today") {
+      return moment().format("dddd D MMMM YYYY");
+    } else if (date == "tomorrow") {
+      return moment().add(1, 'days').format("dddd D MMMM YYYY");
+    } else {
+      return moment().add(date, 'days').format("dddd D MMMM YYYY");
+    }
+  }
+
+  filters.returnDate = function (amount, type) {
+      return moment().add(amount, type).format("D MMMM YYYY");
+  }
+  // {{ "2" | returnDate("years") }}
+
+/*
+  filters.returnPastDate = function (date) {
+    return moment().subtract(date, 'days').format("dddd D MMMM YYYY");
+  }
+
+  filters.returnTime = function (date) {
+    if (date == "now") {
+      return moment().format("h:mm a");
+    }
+    if (date == "30MinAgo") {
+      return moment().subtract(30, 'minutes').format("h:mm a");
+    }
+*/
+
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:
@@ -43,3 +85,55 @@ module.exports = function (env) {
   ------------------------------------------------------------------ */
   return filters
 }
+
+
+
+//    const formatTime = (dateTime) => moment(dateTime)
+//      .format('h.mma')
+//      .replace('.00', '')
+//      .replace('12am', 'midnight')
+//      .replace('12pm', 'midday');
+//    
+//    let date = new Date();
+//    
+//    describe("formatTime function", () => {
+//      beforeEach(function () {
+//        date = new Date();
+//      });
+//    
+//      it('uses "." as time separator', () => {
+//        date.setHours(10)
+//        date.setMinutes(30);
+//        expect(formatTime(date)).toEqual('10.30am');
+//      });
+//    
+//      it('uses lowercase am/pm with no spaces rather than 24hr clock', () => {
+//        date.setHours(22)
+//        date.setMinutes(00);
+//        expect(formatTime(date)).toEqual('10pm');
+//      });
+//    
+//      it('hides any "0"s before hours', () => {
+//        date.setHours(9);
+//        date.setMinutes(30);
+//        expect(formatTime(date)).toEqual('9.30am');
+//      });
+//    
+//      it('hides minutes if they are "00"', () => {
+//        date.setHours(9);
+//        date.setMinutes(00);
+//        expect(formatTime(date)).toEqual('9am');
+//      });
+//    
+//      it('displays midnight rather than 00:00pm', () => {
+//        date.setHours(00);
+//        date.setMinutes(00)
+//        expect(formatTime(date)).toEqual('midnight');
+//      });
+//    
+//      it('displays midday rather than 12:00pm', () => {
+//        date.setHours(12)
+//        date.setMinutes(00);
+//        expect(formatTime(date)).toEqual('midday');
+//      });
+//    });

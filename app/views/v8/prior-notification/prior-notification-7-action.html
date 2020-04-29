@@ -15,13 +15,13 @@
   <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-2">
 
   {{ backLink({
-  "href": "prior-notification-5",
+  "href": "prior-notification-7",
   "text": "Back to Prior Notification"
   }) }}
 
   {% from "summary-list/macro.njk" import summaryList %}
   
-  <form action="prior-notification-5-defer-reason" method="post">
+  <form action="prior-notification-7-defer-reason" method="post">
 
   {% call fieldset({
   legend: {
@@ -33,14 +33,14 @@
   {{ hint({
     "html": 
     '
-      <details class="nhsuk-details nhsuk-expander">
+      <details class="nhsuk-details nhsuk-summary-list--no-border">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
             View more information about the patient
           </span>
         </summary>
         <div class="nhsuk-details__text">
-          <dl class="nhsuk-summary-list">
+          <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-2">
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
                 Status
@@ -54,26 +54,27 @@
                 Next test due date
               </dt>
               <dd class="nhsuk-summary-list__value">
-                1st May 2020
+                28 Jun 2020 (in 2 months)
               </dd>
             </div>
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Last test result Date
+                Last test date
               </dt>
               <dd class="nhsuk-summary-list__value">
-                1st May 2017
+                28 Jun 2017 (3 years ago)
               </dd>
             </div>
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                Last test result
+                Last test
               </dt>
               <dd class="nhsuk-summary-list__value">
                 (X0A) No cytology result, HPV negative, routine recall
               </dd>
             </div>
           </dl>
+          <p><a href="../patient/patient-summary">View full patient information</a></p>
         </div>
       </details>'
   }) }}

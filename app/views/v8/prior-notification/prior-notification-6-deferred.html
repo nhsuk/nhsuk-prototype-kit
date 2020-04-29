@@ -12,78 +12,33 @@
 
 {% block content %}
 
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-6">
-  <h1 class="nhsuk-heading-l">Prior Notification List</h1>
-  
-  <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4">
-    <span class="nhsuk-u-visually-hidden">Prior notification list</span>
-    <h3 class="nhsuk-heading-s">The following participants are available for screening. Verify whether they are eligible for the current screening episode or if they need ceasing or deferring.</h3>
-  </div>
-
-  <details class="nhsuk-details">
-    <summary class="nhsuk-details__summary">
-      <span class="nhsuk-details__summary-text">
-        What is the prior notification list
-      </span>
-    </summary>
-    <div class="nhsuk-details__text">
-      <p>The prior notification is a list of eligible particiapants who are due to be screened under your practice based on the following criteria:</p>
-      <ul>
-        <li>age</li>
-        <li>last test</li>
-        <li>registered as having a cervix</li>
-      </ul>
-
-      {{ list({
-        "title": "Reasons available on the prior notification",
-        "type": "tick",
-        "items": [
-          {
-            "item": "age, no cervix, radiotherapy"
-          },
-          {
-            "item": "pregnancy ..."
-          }
-        ]
-      }) }}
-
-      {{ list({
-        "title": "Reasons not available on the prior notification",
-        "type": "cross",
-        "items": [
-          {
-            "item": "mental capacity act"
-          },
-          {
-            "item": "another reason"
-          },
-          {
-            "item": "another reason"
-          }
-        ]
-      }) }}
-
-    </div>
-  </details>
-  </div>
+<div class="nhsuk-back-link">
+  <a class="nhsuk-back-link__link" href="prior-notification-6">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back to Prior Notification List</a>
 </div>
 
 <div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-6">
+  <h1 class="nhsuk-heading-l">Patients deferred from screening</h1>
+  
+  <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4">
+    <span class="nhsuk-u-visually-hidden">Prior notification list</span>
+    <h3 class="nhsuk-heading-s">The following participants have been taken off the prior notifiocation list and deferred. Paitients will remain on this list until their deferred date has past .</h3>
+  </div>
+  <br>
+
+ 
+
+<div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
-  <a href="prior-notification-4-check" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2">Invite selected</a>
+
     <table id="sortable" class="nhsuk-table-clickable bna-table nhsuk-u-margin-top-0">
       <thead class="nhsuk-table__head">
         <tr class="nhsuk-table__row">
-          <th class="nhsuk-table__header"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select All</span>
-            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="selectAll" name="select" type="checkbox" value="hmrc">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectAll">
-                </label>
-              </div>
-            </div>
-          </th>
+          
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
             <button onclick="sortTable()" type="button" data-index="0">NHS No</button>
           </th>
@@ -99,25 +54,15 @@
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
             <button onclick="sortTable()" type="button" data-index="0">Next test due date</button>
           </th>
-          <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            View more
-          </th>
-        </tr>
+          
         
       </thead>
         <tbody class="nhsuk-table__body">
 
+        
+    
 
-        <tr class="nhsuk-table__row">
-          <td role="gridcell"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select</span>
-            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="selectRow1" name="select" type="checkbox" value="hmrc">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectRow1">
-                </label>
-              </div>
-            </div>
-          </td>
+       
           <td class="nhsuk-table__cell">
             537 698 6721
           </td>
@@ -128,42 +73,21 @@
             47
           </td>
           <td class="nhsuk-table__cell">
-            Routine
+            <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">deferred</span>
           </td>
           <td class="nhsuk-table__cell">
-            12-10-2020
-          </td>
-          <td class="nhsuk-table__cell">
-            <button class="expanderButton" type="button" id="btnRow1" aria-expanded="false" onclick="toggle(this.id,'#detailsRow1');" aria-controls="detailsRow1" aria-label="More details for" aria-labelledby="btnRow1 nameRow1"></button>
+            12 Sep 2020
           </td>
         </tr>
 
-        <tr id="detailsRow1" class="hidden detailsRow">
+        <tr id="detailsRow4" class="hidden detailsRow">
           <td colspan="7">
-            <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
-
-                <div id="reasons-step-1">{% include '../components/reasons-step-1.html' %}</div>
-
-                <div id="reasons-step-2" style="display: none">{% include '../components/reasons-step-2.html' %}</div>
-
-                <div id="reasons-step-3" style="display: none">{% include '../components/reasons-step-3.html' %}</div>
-
-                <div id="reasons-step-4" style="display: none">{% include '../components/reasons-step-4.html' %}</div>
-
-                <div id="reasons-step-5" style="display: none">{% include '../components/reasons-step-5.html' %}</div>
+            {% include '../components/reasons.html' %}
           </td>
         </tr>
 
         <tr class="nhsuk-table__row">
-          <td role="gridcell"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select</span>
-            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="selectRow5" name="select" type="checkbox" value="hmrc">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectRow5">
-                </label>
-              </div>
-            </div>
-          </td>
+          
           <td class="nhsuk-table__cell">
             460 891 3182
           </td>
@@ -174,13 +98,10 @@
             28
           </td>
           <td class="nhsuk-table__cell">
-            Routine
+           <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">deferred</span>
           </td>
           <td class="nhsuk-table__cell">
-            12-10-2020
-          </td>
-          <td class="nhsuk-table__cell">
-            <button class="expanderButton" type="button" id="btnRow5" aria-expanded="false" onclick="toggle(this.id,'#detailsRow5');" aria-controls="detailsRow1" aria-label="More details for" aria-labelledby="btnRow5 nameRow5"></button>
+            12 Sep 2020
           </td>
         </tr>
 
@@ -191,15 +112,7 @@
         </tr>
 
         <tr class="nhsuk-table__row">
-          <td role="gridcell"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select</span>
-            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="selectRow6" name="select" type="checkbox" value="hmrc">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectRow6">
-                </label>
-              </div>
-            </div>
-          </td>
+          
           <td class="nhsuk-table__cell">
             246 122 7527
           </td>
@@ -210,13 +123,10 @@
             36
           </td>
           <td class="nhsuk-table__cell">
-            Routine
+           <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">deferred</span>
           </td>
           <td class="nhsuk-table__cell">
-            13-10-2020
-          </td>
-          <td class="nhsuk-table__cell">
-            <button class="expanderButton" type="button" id="btnRow6" aria-expanded="false" onclick="toggle(this.id,'#detailsRow6');" aria-controls="detailsRow1" aria-label="More details for" aria-labelledby="btnRow6 nameRow6"></button>
+            13 Sep 2020
           </td>
         </tr>
 
@@ -273,7 +183,78 @@
     $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
   }
 
-   /* SELECT ALL */
+
+  function hideAllPages() {
+    document.getElementById("reasons-step-0").style.display = "none";
+    document.getElementById("reasons-step-1").style.display = "none";
+    document.getElementById("reasons-step-2").style.display = "none";
+    document.getElementById("reasons-step-3").style.display = "none";
+    document.getElementById("reasons-step-4").style.display = "none";
+    document.getElementById("reasons-step-5").style.display = "none";
+  }
+
+  document.getElementById("step-2").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-2").style.display = "block";
+    document.getElementById("pnl-reason-1").focus();
+  })
+
+  document.getElementById("back-step-1").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-1").style.display = "block";
+  })
+
+  document.getElementById("step-3").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-3").style.display = "block";
+    document.getElementById("pnl-length-1").focus();
+  })
+
+  document.getElementById("back-step-2").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-2").style.display = "block";
+  })
+
+  document.getElementById("step-4").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-4").style.display = "block";
+  })
+
+  document.getElementById("back-step-3").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-3").style.display = "block";
+  })
+
+  document.getElementById("step-5").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-5").style.display = "block";
+    document.querySelector(".expandedRow").focus();
+  })
+
+  document.getElementById("step-done").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-2").style.display = "block";
+    console.log('ready to submit')
+  })
+
+
+  
+
+  /* SELECT ALL */
   var selectAll = document.getElementById("selectAll");
   var checkBoxes = document.querySelectorAll('.nhsuk-checkboxes__input');
 
@@ -291,88 +272,6 @@
         } 
     }
   })
-
-  function scrollPos() { 
-    var elemPos = document.getElementById("detailsRow1");
-    var elemScroll = elemPos.getBoundingClientRect().top - (elemPos.offsetTop / 2);
-    window.scrollBy(0, (elemScroll));
-  }
-
-  function hideAllPages() {
-    document.getElementById("reasons-step-0").style.display = "none";
-    document.getElementById("reasons-step-1").style.display = "none";
-    document.getElementById("reasons-step-2").style.display = "none";
-    document.getElementById("reasons-step-3").style.display = "none";
-    document.getElementById("reasons-step-4").style.display = "none";
-    document.getElementById("reasons-step-5").style.display = "none";
-  }
-
-  // there's definitely a better way to do this but it's 18:05 on a friday
-  document.getElementById("step-2").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-2").style.display = "block";
-    scrollPos();
-  })
-
-  document.getElementById("back-step-1").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-1").style.display = "block";
-  })
-
-  document.getElementById("step-3").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-3").style.display = "block";
-    scrollPos();
-  })
-
-  document.getElementById("back-step-2").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-2").style.display = "block";
-  })
-
-  document.getElementById("step-4").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-4").style.display = "block";
-    scrollPos();
-  })
-
-  document.getElementById("back-step-3").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-3").style.display = "block";
-  })
-
-  document.getElementById("step-5").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-5").style.display = "block";
-    scrollPos();
-  })
-
-  document.getElementById("step-done").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-2").style.display = "block";
-    console.log('ready to submit')
-  })
-
-  
-
-
-  
-
- 
 
 </script>
 
