@@ -16,7 +16,34 @@
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
-    <h1 class="nhsuk-heading-l">Header</h1>
+
+<form action="/v8/non-responder/example" method="post">
+   {{ radios({
+     "idPrefix": "example",
+     "name": "age",
+     "fieldset": {
+       "legend": {
+         "text": "Are you 18 or over?",
+         "classes": "nhsuk-fieldset__legend--l",
+         "isPageHeading": true
+       }
+     },
+     "items": [
+       {
+         "value": "yes",
+         "text": "Yes"
+       },
+       {
+         "value": "no",
+         "text": "No"
+       }
+     ]
+   }) }}
+   
+   {{ button({
+     "text": "Save and continue"
+   }) }}
+</form>
   </div>
 </div>
 
