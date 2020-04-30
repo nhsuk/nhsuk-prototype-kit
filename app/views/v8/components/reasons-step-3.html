@@ -8,13 +8,14 @@
 
 <h1 class="nhsuk-fieldset__legend--m">How long do you want to defer the patient for?</h1>
 {{ insetText({
-  "HTML":  "<p>You can defer the patient for a minimum of 3 months and a maximum of 12 after the estimated date of delivery on 1st Jun 2020 (in 1 month)</p>",
-  "classes": "nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-4"
-}) }}
+    "HTML":  "<p>Minimum deferral is 3 months after date of delivery</br>
+    Maximum deferral can not exceed 12 months</p>",
+    "classes": "nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-4"
+  }) }}
 
 {{ input({
   "label": {
-    "text": "Number of months to defer",
+    "text": "Months to defer after the date of delivery",
     "isPageHeading": false
   },
   "id": "deferlength",
