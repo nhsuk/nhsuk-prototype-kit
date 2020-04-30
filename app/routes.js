@@ -185,4 +185,36 @@ router.post("/*/prior-notification-6-check", function (req, res) {
   }
 });
 
+
+
+
+
+
+
+
+
+// v8/non-responder/example"
+router.post("/v8/non-responder/example", function (req, res) {
+  console.log ('checking age!!')
+var age = req.session.data['age'];
+
+if (age == 'yes') {
+  res.redirect("/v8/non-responder/yes");
+}
+
+if (age == 'no') {
+  res.redirect("/v8/non-responder/no");
+}
+  //  default action if nothing selected
+
+
+})
+
+
+
+
+
+
+
+
 module.exports = router;
