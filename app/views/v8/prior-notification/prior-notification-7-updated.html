@@ -17,8 +17,8 @@
   <h1 class="nhsuk-heading-l">Prior Notification List</h1>
 
   <p>The Prior Notification is ordered by those due their screening soonest, then by the recall type <strong>inadequete, repeat advised</strong> and then <strong>routine</strong></p>
-  <strong>9</strong> patients need reviewing in the next 7 days</br>
-  <strong>2</strong> patients need reviewing today</p>
+  <strong>2</strong> patients need reviewing by tomorrow</br>
+  <strong>9</strong> patients need reviewing by {{ "28" | returnDate('days') }}</p>
   
   </div>
 </div>
@@ -28,12 +28,12 @@
   <div class="nhsuk-grid-row nhsuk-panel-group">
   <div class="nhsuk-grid-column-one-half nhsuk-panel-group__item">
     <div class="nhsuk-panel">
-      <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-0"><span class="nhsuk-heading-xl">2</span>Patients need reviewing today</h2>
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-0"><span class="nhsuk-heading-xl">2</span>Patients need reviewing tomorrow</h2>
     </div>
   </div>
   <div class="nhsuk-grid-column-one-half nhsuk-panel-group__item">
     <div class="nhsuk-panel">
-      <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-0"><span class="nhsuk-heading-xl">9</span>Patients need reviewing this week</h2>
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-0"><span class="nhsuk-heading-xl">9</span>Patients need reviewing by {{ "28" | returnDate('days') }}</h2>
     </div>
   </div>
 
