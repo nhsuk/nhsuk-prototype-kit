@@ -27,62 +27,83 @@ NHS Cervical Screening
 
 {% block content %}
 {{ backLink({
-  "href": "code",
-  "text": "Go back to enter code"
+  "href": "confirm-address",
+  "text": "Go back to confirm address"
 }) }}
 
-
-
-
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
-<div class="nhsuk-grid-column-full">
-   
-      <form action="/v8/patient/hmr101/episode-address" method="post">
+  <div class="nhsuk-grid-column-one-half">
+        <div class="nhsuk-form-group">
+        
 
-        {% call fieldset({
-          legend: {
-            text: "Confirm the episode address",
-            classes: "nhsuk-fieldset__legend--l",
-            isPageHeading: true
-          }
-        }) %}
+  {% call fieldset({
+    legend: {
+      "text": "Add an episode address",
+      "classes": "nhsuk-fieldset__legend--l",
+      "isPageHeading": true
+    }
+  }) %}
 
-        {{ radios({
-          "idPrefix": "choose",
-          "name": "choose",
-          "items": [
-            {
-              "value": "registered",
-              "text": "Use registered address"
-            },
-            {
-              "value": "new",
-              "text": "Enter a new address"
-            },
-            {
-              "value": "GP-address",
-              "text": "Use GP address"
-            }
+       <p> Add an episode address if the patient needs their results to be sent to a different address.</p>
 
-          ]
-        }) }}
+    {{ input({
+      label: {
+        "text": "Building and street"
+      },
+      "classes": "nhsuk-u-width-one-thirds",
+      "id": "building-street",
+      "name": "building-street"
+    }) }}
 
-        {% endcall %}
+    {{ input({
+      "classes": "nhsuk-u-width-one-thirds",
+      "id": "building-street",
+      "name": "building-street"
+    }) }}
 
-        {{ button({
-          "text": "Continue",
-          classes: "nhsuk-button--ers"
-        }) }}
+    {{ input({
+      label: {
+        "text": "Town or city"
+      },
+      "classes": "nhsuk-u-width-two-thirds",
+      "id": "address-town",
+      "name": "address-town"
+    }) }}
 
-      </form>
+    {{ input({
+      label: {
+        "text": "County"
+      },
+      "classes": "nhsuk-u-width-two-thirds",
+      "id": "address-county",
+      "name": "address-county"
+    }) }}
 
-</div>
-</div
+    {{ input({
+      label: {
+        "text": "Postcode"
+      },
+      "classes": "nhsuk-input--width-10",
+      "id": "address-postcode",
+      "name": "address-postcode"
+    }) }}
 
+  {% endcall %}
 
+        </div>
+        <a class="nhsuk-button--ers nhsuk-u-margin-top-4" href="step-1">Continue</a>
 
+     
+        
+        <div class="nhsuk-form-group">
+         
+          
+          
+        </div>
+        </div>
+        </div>
 
-
-       
+        </div>
+        </div>
 
 {% endblock %}

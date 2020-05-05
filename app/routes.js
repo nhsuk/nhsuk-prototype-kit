@@ -54,7 +54,7 @@ router.post("/*/hmr101/choose", function(req, res) {
   if (reason == "print") {
     res.redirect("/" + getVersion(req) + "/patient/hmr101/preview");
   } else {
-    res.redirect("/" + getVersion(req) + "/patient/hmr101/cervix");
+    res.redirect("/" + getVersion(req) + "/patient/hmr101/confirm-address");
   }
 });
 
@@ -65,6 +65,18 @@ router.post("/*/hmr101/episode-address", function(req, res) {
     res.redirect("/" + getVersion(req) + "/patient/hmr101/postcode-lookup");
   } else {
     res.redirect("/" + getVersion(req) + "/patient/hmr101/step-1");
+  }
+});
+
+router.post("/v8/patient/hmr101/confirm-address", function(req, res) {
+  var reason = req.session.data["confirm-address"];
+  console.log(reason);
+  if (reason == "yes") {
+    res.redirect("/" + getVersion(req) + "/v8/patient/hmr101/step-1");
+  }
+
+  if (reason == "no") {
+      res.redirect("/" + getVersion(req) + "/v8/patient/hmr101/episode-address");
   }
 });
 
