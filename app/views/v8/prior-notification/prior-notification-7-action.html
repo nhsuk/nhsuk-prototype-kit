@@ -23,6 +23,12 @@
   
   <form action="prior-notification-7-defer-reason" method="post">
 
+  {% set htmlIWantToShow %}
+ <p>Whaotasentenrjt</p>
+ <h2>sdljfnseijfjs</h2>
+ {{ 'today' | returnDate }}
+{% endset %}
+
   {% call fieldset({
   legend: {
     "text": "Choose an action for this screening episode",
@@ -31,52 +37,7 @@
   }
   }) %}
   {{ hint({
-    "html": 
-    '
-      <details class="nhsuk-details nhsuk-summary-list--no-border">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            View more information about the patient
-          </span>
-        </summary>
-        <div class="nhsuk-details__text">
-          <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-2">
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Status
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                Routine
-              </dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Next test due date
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                28 Jun 2020 (in 2 months)
-              </dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Last test date
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                28 Jun 2017 (3 years ago)
-              </dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Last test
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                (X0A) No cytology result, HPV negative, routine recall
-              </dd>
-            </div>
-          </dl>
-          <p><a href="../patient/patient-summary">View full patient information</a></p>
-        </div>
-      </details>'
+    "html": htmlIWantToShow
   }) }}
  
   {{ radios({

@@ -48,13 +48,18 @@ router.post("/csass/add-test-result/v1/change", function(req, res) {
     res.redirect("/archive/csass/add-test-result/v1/cease");
   }
 });
+
 router.post("/*/hmr101/choose", function(req, res) {
   var reason = req.session.data["choose"];
   console.log(reason);
   if (reason == "print") {
     res.redirect("/" + getVersion(req) + "/patient/hmr101/preview");
   } else {
-    res.redirect("/" + getVersion(req) + "/patient/hmr101/confirm-address");
+    if (getVersion(req) == 'v8') {
+      res.redirect("/" + getVersion(req) + "/patient/hmr101/confirm-address");
+    } else {
+      res.redirect("/" + getVersion(req) + "/patient/hmr101/step-1");
+    }
   }
 });
 
@@ -68,15 +73,17 @@ router.post("/*/hmr101/episode-address", function(req, res) {
   }
 });
 
-router.post("/v8/patient/hmr101/confirm-address", function(req, res) {
-  var reason = req.session.data["confirm-address"];
-  console.log(reason);
-  if (reason == "yes") {
-    res.redirect("/" + getVersion(req) + "/v8/patient/hmr101/step-1");
+router.post("/*/hmr101/confirm-address", function (req, res) {
+  console.log('working')
+  var confirmAddress = req.session.data["confirmAddress"];
+  
+  console.log("check reason: " + confirmAddress);
+  if (confirmAddress == "yes") {
+    res.redirect("/" + getVersion(req) + "/patient/hmr101/step-1");
   }
 
-  if (reason == "no") {
-      res.redirect("/" + getVersion(req) + "/v8/patient/hmr101/episode-address");
+  if (confirmAddress == "no") {
+      res.redirect("/" + getVersion(req) + "/patient/hmr101/episode-address");
   }
 });
 
