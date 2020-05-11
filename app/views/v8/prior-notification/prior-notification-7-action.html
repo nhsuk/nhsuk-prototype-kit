@@ -23,12 +23,6 @@
   
   <form action="prior-notification-7-defer-reason" method="post">
 
-  {% set htmlIWantToShow %}
- <p>Whaotasentenrjt</p>
- <h2>sdljfnseijfjs</h2>
- {{ 'today' | returnDate }}
-{% endset %}
-
   {% call fieldset({
   legend: {
     "text": "Choose an action for this screening episode",
@@ -36,9 +30,7 @@
     "isPageHeading": true
   }
   }) %}
-  {{ hint({
-    "html": htmlIWantToShow
-  }) }}
+  
  
   {{ radios({
     "idPrefix": "example-hints",
