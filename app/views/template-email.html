@@ -1,0 +1,67 @@
+{% from 'header/macro.njk' import header %}
+{% from 'footer/macro.njk' import footer %}
+{% from 'skip-link/macro.njk' import skipLink %}
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="ie8" lang="en"><![endif]--><!--[if IE 9]><html class="ie9" lang="en"><![endif]--><!--[if gt IE 9]><!--><html lang="en" style="{{ html_style }}"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+
+    <title>{% block pageTitle %}Email from NHS login{% endblock %}</title>
+
+    <link href="https://www.nhs.uk/" rel="preconnect">
+    <link href="https://assets.nhs.uk/" rel="preconnect" crossorigin>
+
+    <link type="font/woff2" href="https://assets.nhs.uk/fonts/FrutigerLTW01-55Roman.woff2" rel="preload" as="font" crossorigin>
+    <link type="font/woff2" href="https://assets.nhs.uk/fonts/FrutigerLTW01-65Bold.woff2" rel="preload" as="font" crossorigin>
+
+    {% block headCSS %}
+      <link href="/css/main.css" rel="stylesheet">
+    {% endblock %}
+
+    <script src="/nhsuk-frontend/nhsuk.min.js" defer></script>
+
+    {% block headIcons %}
+      <!--[if IE]><link href="/nhsuk-frontend/assets/favicons/favicon.ico" rel="shortcut icon"><![endif]-->
+      <link href="/nhsuk-frontend/assets/favicons/apple-touch-icon.png" rel="apple-touch-icon">
+      <link href="/nhsuk-frontend/assets/favicons/favicon.png" rel="icon">
+    {% endblock %}
+  </head>
+
+  <body class="{{ bodyClasses }}">
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+    {% block bodyStart %}{% endblock %}
+
+      {% block skipLink %}
+        {{ skipLink({
+          href: '#maincontent',
+          text: 'Skip to main content'
+        }) }}
+      {% endblock %}
+      <div class="page-section email-width">
+      {% block header %}
+        {{ header({}) }}
+      {% endblock %}
+
+      {% block beforeContent %}{% endblock %}
+
+      {% block main %}
+        <div class="nhsuk-width-container">
+          <main class="nhsuk-main-wrapper {{ mainClasses }}" id="maincontent" role="main">
+            {% block content %}{% endblock %}
+          </main>
+        </div>
+      {% endblock %}
+
+      {% block footer %}
+        {{ footer({
+          "showLogo": "false"
+        })}}
+      {% endblock %}
+    </div>
+
+    {% block bodyEnd %}{% endblock %}
+</html>
