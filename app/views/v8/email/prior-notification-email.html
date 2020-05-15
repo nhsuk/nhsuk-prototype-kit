@@ -1,0 +1,25 @@
+{% extends '../../layout-email.html' %}
+
+{% block pageTitle %}
+  Prior notification email
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1 class="nhsuk-fieldset__legend--l">10 Patients are due to be invited to screening</h1>
+      <ul>
+        <li>There are <strong>10</strong> patients that need reviewing this week</li>
+        <li>There are <strong>42</strong> patients in total that need reviewing</li>
+      </ul>
+
+      <p>Patients that are not reviewed or actioned will be invited to be screened on their next test due date.</p>
+      
+      <p><a href="#">View patients due to be invited to screening</a></p>
+
+      <p><a href="">Contact us</a> if you do not review patients or you are forwarded this message by another person.</p>
+    </div>
+  </div>
+
+{% endblock %}
