@@ -26,10 +26,7 @@ NHS Cervical Screening
 {% endblock %}
 
 {% block content %}
-{{ backLink({
-  "href": "confirm-address",
-  "text": "Go back to confirm address"
-}) }}
+
 
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-one-half">
@@ -44,19 +41,25 @@ NHS Cervical Screening
     }
   }) %}
 
-       <p> Add an episode address if the patient needs their results to be sent to a different address.</p>
-
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-u--width-10">
+        <p>Add an episode address if the patient needs their results to be sent to a different address.</p>
+    </div>
+  </div>
+</div>
+  
     {{ input({
       label: {
         "text": "Building and street"
       },
-      "classes": "nhsuk-u-width-one-thirds",
+      "classes": "nhsuk-input nhsuk-input--width-20",
       "id": "building-street",
       "name": "building-street"
     }) }}
 
     {{ input({
-      "classes": "nhsuk-u-width-one-thirds",
+      "classes": "nhsuk-input nhsuk-input--width-20",
       "id": "building-street",
       "name": "building-street"
     }) }}
@@ -65,7 +68,7 @@ NHS Cervical Screening
       label: {
         "text": "Town or city"
       },
-      "classes": "nhsuk-u-width-two-thirds",
+      "classes": "nhsuk-input nhsuk-input--width-20",
       "id": "address-town",
       "name": "address-town"
     }) }}
@@ -74,7 +77,7 @@ NHS Cervical Screening
       label: {
         "text": "County"
       },
-      "classes": "nhsuk-u-width-two-thirds",
+      "classes": "nhsuk-input nhsuk-input--width-20",
       "id": "address-county",
       "name": "address-county"
     }) }}
