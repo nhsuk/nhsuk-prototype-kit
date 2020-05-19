@@ -12,15 +12,6 @@
     padding-top: nhsuk-spacing(2);
   @include nhsuk-font($size: 19, $weight: normal, $line-height: 1);
 }
-#nhsuk-button--close{
-  position: absolute;
-  background-color: #fff;
-  border:1px solid #425563;
-  padding: 4px;
-  font-size: 16px;
-  border-radius: 4px;
-  text-decoration: none;
-}
 
 .nhsuk-button--ers_secondary {
   @extend .nhsuk-button--ers;

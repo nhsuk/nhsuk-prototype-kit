@@ -25,6 +25,7 @@ nav.patient-info{
   .patient-info-container {
     width: 100%;
     position: relative;
+    display: flex;
   }
 
   ul{
@@ -86,6 +87,23 @@ ul {
 }
 
 }
+#nhsuk-button--close{
+  display: inline-flex;
+  background-color: #fff;
+  border:1px solid #425563;
+  padding: 4px;
+  font-size: 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  vertical-align: baseline;
+
+  .nhsuk-icon{
+    width: 20px;
+    height: 20px;
+
+  }
+}
+
 
 .nhsuk-close{
   position: absolute;

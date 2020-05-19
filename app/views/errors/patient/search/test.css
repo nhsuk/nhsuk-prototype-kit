@@ -400,8 +400,8 @@ caption {
  * For IE8 support, alternate styling is applied to the components using icons.
  */
 .nhsuk-icon {
-  height: 34px;
-  width: 34px; }
+  height: 22px;
+  width: 22px; }
 
 .nhsuk-icon__search {
   fill: #005eb8; }
