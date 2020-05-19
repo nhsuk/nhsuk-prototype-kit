@@ -1,0 +1,85 @@
+{% extends "layout-v2.html" %}
+
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header-2.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    {{ backLink({
+      "href": "prior-notification-8",
+      "text": "Back to notifications"
+    }) }}
+    <h1 class="nhsuk-heading-l">Manage who receives notifications</h1>
+    <p>Listed below are all the notifications which are sent.
+    <ul>
+      <li>If you currently receive notifications but need to stop them or</li>
+      <li>If you need to start receiving notifications</li>
+    </ul>
+    <p>you will need to <a href="">submit a support request</a></p>
+
+    <div class="nhsuk-panel-with-label"> 
+      <h3 class="nhsuk-panel-with-label__label">Patients due to be invited</h3> 
+      <div class="nhsuk-table-responsive nhsuk-u-margin-top-0">
+        <table class="nhsuk-table">
+          <caption class="nhsuk-table__caption">Skin symptoms and possible causes</caption>
+          <thead class="nhsuk-table__head">
+            <tr class="nhsuk-table__row">
+              <th class="nhsuk-table__header" scope="col">Name</th>
+              <th class="nhsuk-table__header" scope="col">Email</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">Angela Woodall</td>
+              <td class="nhsuk-table__cell ">angela.woodhall@nhs.net</td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">Clarks Medical Practice</td>
+              <td class="nhsuk-table__cell ">admin.clarks@nhs.net</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="nhsuk-panel-with-label"> 
+      <h3 class="nhsuk-panel-with-label__label">Patients who have not responded</h3> 
+      <div class="nhsuk-table-responsive nhsuk-u-margin-top-0">
+        <table class="nhsuk-table">
+          <caption class="nhsuk-table__caption">Skin symptoms and possible causes</caption>
+          <thead class="nhsuk-table__head">
+            <tr class="nhsuk-table__row">
+              <th class="nhsuk-table__header" scope="col">Name</th>
+              <th class="nhsuk-table__header" scope="col">Email</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">Angela Woodall</td>
+              <td class="nhsuk-table__cell ">angela.woodhall@nhs.net</td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">Clarks Medical Practice</td>
+              <td class="nhsuk-table__cell ">admin.clarks@nhs.net</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+      
+{% endblock %}
+
