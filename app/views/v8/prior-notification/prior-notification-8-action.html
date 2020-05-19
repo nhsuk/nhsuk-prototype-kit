@@ -1,0 +1,63 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+
+{% block patientBanner %}
+  {% include '../components/patient-banner.html' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-2">
+
+  {{ backLink({
+  "href": "prior-notification-7",
+  "text": "Back to Prior Notification"
+  }) }}
+
+  {% from "summary-list/macro.njk" import summaryList %}
+  
+  <form action="prior-notification-7-defer-reason" method="post">
+
+  {% call fieldset({
+  legend: {
+    "text": "Choose an action for this screening episode",
+    "classes": "nhsuk-fieldset__legend--l",
+    "isPageHeading": true
+  }
+  }) %}
+  
+ 
+  {{ radios({
+    "idPrefix": "example-hints",
+    "name": "pnl-action",
+    "items": [
+      {
+        "value": "Invited",
+        "text": "Invite the patient"
+      },
+      {
+        "value": "Deferred",
+        "text": "Defer the patient"
+      },
+      {
+        "value": "Ceased",
+        "text": "Cease the patient"
+      }
+    ]
+  }) }}
+  {% endcall %}
+
+
+
+  <button class="nhsuk-button nhsuk-button--ers">Continue</button>
+  </form>
+  <p><a href="">Exit without saving</a>   -   <a href="">Skip this patient</a></p>
+  </div>
+</div>
+
+{% endblock %}
