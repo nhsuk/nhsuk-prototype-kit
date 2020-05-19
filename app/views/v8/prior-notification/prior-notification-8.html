@@ -37,9 +37,9 @@
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
-  <a href="prior-notification-6-check" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2">Invite selected</a>
-  <a href="prior-notification-6-deferred" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2 nhsuk-button nhsuk-button--secondary">Defer selected</a>
-  <a href="prior-notification-6-deferred" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2 nhsuk-button nhsuk-button--secondary">Cease selected</a>
+  <a href="prior-notification-8-check" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2">Invite selected</a>
+  <a href="prior-notification-8-deferred" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2 nhsuk-button nhsuk-button--secondary">Defer selected</a>
+  <a href="prior-notification-8-deferred" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2 nhsuk-button nhsuk-button--secondary">Cease selected</a>
     <table id="sortable" class="nhsuk-table-clickable bna-table nhsuk-u-margin-top-0">
       <thead class="nhsuk-table__head">
         <tr class="nhsuk-table__row">
@@ -64,9 +64,9 @@
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
             <button onclick="sortTable()" type="button" data-index="0">Due</button>
           </th>
-          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+          <!--<th class="nhsuk-table__header" aria-sort="none" scope="col">
             Actions
-          </th>
+          </th>-->
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
             View More
           </th>
@@ -101,28 +101,24 @@
             5
             <span class="nhsuk-table__cell--hint">Days</span>
           </td>
-          <td class="nhsuk-table__cell">
-           <!-- <select class="nhsuk-select">
-              <option>Invite the patient</option>
-              <option>Defer the patient</option>
-              <option>Cease the patient</option>
-            </select> 
-            <a href="" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0">Continue</a>-->
+          <!--<td class="nhsuk-table__cell">
             <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="">Invite</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Defer</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
-          </td>
+          </td>-->
           <td class="nhsuk-table__cell">
             <button class="expanderButton" type="button" id="btnRow1" aria-expanded="false" onclick="toggle(this.id,'#detailsRow1');" aria-controls="detailsRow1" aria-label="More details for" aria-labelledby="btnRow1 nameRow1"></button>
           </td>
         </tr>
 
         <tr id="detailsRow1" class="hidden detailsRow">
-          <td colspan="7">
+          <td colspan="6">
             <div class="nhsuk-grid-row">
               <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
                 <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
                 <!--<a href="" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers__secondary nhsuk-u-margin-bottom-0">Invite</a>
                 <a href="" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0">Defer</a>
                 <a href="" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0">Cease</a>-->
+                <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="">Invite</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Defer</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
+
               </div>
             </div>
           </td>
@@ -154,16 +150,16 @@
             5
             <span class="nhsuk-table__cell--hint">Days</span>
           </td>
-          <td class="nhsuk-table__cell">
+          <!--<td class="nhsuk-table__cell">
             <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="">Invite</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Defer</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
-          </td>
+          </td>-->
           <td class="nhsuk-table__cell">
             <button class="expanderButton" type="button" id="btnRow2" aria-expanded="false" onclick="toggle(this.id,'#detailsRow2');" aria-controls="detailsRow2" aria-label="More details for" aria-labelledby="btnRow2 nameRow2"></button>
           </td>
         </tr>
 
         <tr id="detailsRow2" class="hidden detailsRow">
-           <td colspan="7">
+           <td colspan="6">
             <div class="nhsuk-grid-row">
               <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
                 <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
@@ -198,9 +194,9 @@
             5
             <span class="nhsuk-table__cell--hint">Days</span>
           </td>
-          <td class="nhsuk-table__cell">
+          <!--<td class="nhsuk-table__cell">
             <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="">Invite</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Defer</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
-          </td>
+          </td>-->
           <td class="nhsuk-table__cell">
             <button class="expanderButton" type="button" id="btnRow3" aria-expanded="false" onclick="toggle(this.id,'#detailsRow3');" aria-controls="detailsRow3" aria-label="More details for" aria-labelledby="btnRow3 nameRow3"></button>
           </td>
@@ -242,16 +238,16 @@
             5
             <span class="nhsuk-table__cell--hint">Days</span>
           </td>
-          <td class="nhsuk-table__cell">
+          <!--<td class="nhsuk-table__cell">
             <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="">Invite</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Defer</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
-          </td>
+          </td>-->
           <td class="nhsuk-table__cell">
             <button class="expanderButton" type="button" id="btnRow4" aria-expanded="false" onclick="toggle(this.id,'#detailsRow4');" aria-controls="detailsRow4" aria-label="More details for" aria-labelledby="btnRow4 nameRow4"></button>
           </td>
         </tr>
 
         <tr id="detailsRow4" class="hidden detailsRow">
-           <td colspan="7">
+           <td colspan="6">
             <div class="nhsuk-grid-row">
               <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
                 <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
@@ -286,16 +282,16 @@
             5
             <span class="nhsuk-table__cell--hint">Days</span>
           </td>
-          <td class="nhsuk-table__cell">
+          <!--<td class="nhsuk-table__cell">
             <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="">Invite</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Defer</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
-          </td>
+          </td>-->
           <td class="nhsuk-table__cell">
             <button class="expanderButton" type="button" id="btnRow5" aria-expanded="false" onclick="toggle(this.id,'#detailsRow5');" aria-controls="detailsRow5" aria-label="More details for" aria-labelledby="btnRow5 nameRow5"></button>
           </td>
         </tr>
 
         <tr id="detailsRow5" class="hidden detailsRow">
-           <td colspan="7">
+           <td colspan="6">
             <div class="nhsuk-grid-row">
               <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
                 <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
@@ -330,16 +326,16 @@
             5
             <span class="nhsuk-table__cell--hint">Days</span>
           </td>
-          <td class="nhsuk-table__cell">
+          <!--<td class="nhsuk-table__cell">
             <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="">Invite</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Defer</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
-          </td>
+          </td>-->
           <td class="nhsuk-table__cell">
             <button class="expanderButton" type="button" id="btnRow6" aria-expanded="false" onclick="toggle(this.id,'#detailsRow6');" aria-controls="detailsRow6" aria-label="More details for" aria-labelledby="btnRow6 nameRow6"></button>
           </td>
         </tr>
 
         <tr id="detailsRow6" class="hidden detailsRow">
-           <td colspan="7">
+           <td colspan="6">
             <div class="nhsuk-grid-row">
               <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
                 <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
