@@ -11,25 +11,31 @@
 
 
 {% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <nav class="nhsuk-sub-navigation nhsuk-u-padding-bottom-6">
+      <h1 class="nhsuk-heading-l">Notifications</h1>
+      <ul class="nhsuk-sub-navigation__list">
+        <li class="nhsuk-sub-navigation__item"><a href="#" class="nhsuk-sub-navigation__link" aria-current="page">Patients due to be invited<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">6</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="search-demographic" class="nhsuk-sub-navigation__link">Patients who have not responded<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2"> 8</span> </a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-6">
-  <h1 class="nhsuk-heading-l">Prior Notification List</h1>
-  <h3 class="nhsuk-heading-s">The following participants need reviewing as their next screening episode is due</h3>
-  <p>The following reasons are <strong>not</strong> part of the Prior Notification and require a form to be submitted</p>
-  <ul>
-    <li><a href="" >Mental capacity act form</a></li>
-    <li><a href="" >Informed patients choice form</a></li>
-  </ul>
-
+  <h2 class="nhsuk-heading-m">Patients due to be invited</h2>
+  <p>The following patients need reviewing as they are due to be invited for screening.</p>
+  <p>If you do not take any action then patients will be invited to screening.</p>
   </div>
 </div>
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
-  <a href="prior-notification-6-check" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2">Invite selected</a>
-  <a href="prior-notification-6-deferred" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2 nhsuk-button nhsuk-button--secondary">Defer selected</a>
-  <a href="prior-notification-6-deferred" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2 nhsuk-button nhsuk-button--secondary">Cease selected</a>
+  <a href="prior-notification-8-check" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2">Invite selected</a>
+  <a href="prior-notification-8-defer-reason" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2 nhsuk-button nhsuk-button--secondary">Defer selected</a>
+  <a href="prior-notification-8-cease-reason" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2 nhsuk-button nhsuk-button--secondary">Cease selected</a>
     <table id="sortable" class="nhsuk-table-clickable bna-table nhsuk-u-margin-top-0">
       <thead class="nhsuk-table__head">
         <tr class="nhsuk-table__row">
@@ -54,9 +60,9 @@
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
             <button onclick="sortTable()" type="button" data-index="0">Due</button>
           </th>
-          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+          <!--<th class="nhsuk-table__header" aria-sort="none" scope="col">
             Actions
-          </th>
+          </th>-->
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
             View More
           </th>
@@ -81,7 +87,7 @@
           </td>
           <td class="nhsuk-table__cell">
             50
-            <span class="nhsuk-table__cell--hint">{{ "50" | returnDate("years") }}</span>
+            <span class="nhsuk-table__cell--hint">{{ "50" | returnPastDate("years") }}</span>
           </td>
           <td class="nhsuk-table__cell">
             Routine
@@ -91,27 +97,11 @@
             5
             <span class="nhsuk-table__cell--hint">Days</span>
           </td>
+          <!--<td class="nhsuk-table__cell">
+            <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="">Invite</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Defer</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
+          </td>-->
           <td class="nhsuk-table__cell">
-            <!--<label for="cars">Choose an action and reason:</label>-->
-            <select class="nhsuk-select">
-              <option>Invite the patient</option>
-              
-                <option>Defer the patient</option>
-                <option>Cease the patient</option>
-                <!--<option>Undercare of colposcopy</option>
-                <option>Undergoing relevant treatment</option>
-             
-                <option>No cervix</option>
-                <option>Due to age</option>
-                <option>Undergoing radiotherapy 1</option>-->
-            
-            </select> 
-            <a href="" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0">Continue</a>
-            
-            <!--<button class="expanderButton" type="button" id="btnRow1" aria-expanded="false" onclick="toggle(this.id,'#detailsRow1');" aria-controls="detailsRow1" aria-label="More details for" aria-labelledby="btnRow1 nameRow1"></button>-->
-          </td>
-          <td class="nhsuk-table__cell">
-            <a href="">View more</a>
+            <button class="expanderButton" type="button" id="btnRow1" aria-expanded="false" onclick="toggle(this.id,'#detailsRow1');" aria-controls="detailsRow1" aria-label="More details for" aria-labelledby="btnRow1 nameRow1"></button>
           </td>
         </tr>
 
@@ -123,6 +113,8 @@
                 <!--<a href="" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers__secondary nhsuk-u-margin-bottom-0">Invite</a>
                 <a href="" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0">Defer</a>
                 <a href="" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0">Cease</a>-->
+                <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="">Invite</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Defer</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
+
               </div>
             </div>
           </td>
@@ -144,7 +136,7 @@
           </td>
           <td class="nhsuk-table__cell">
             40
-            <span class="nhsuk-table__cell--hint">{{ "40" | returnDate("years") }}</span>
+            <span class="nhsuk-table__cell--hint">{{ "40" | returnPastDate("years") }}</span>
           </td>
           <td class="nhsuk-table__cell">
             Routine
@@ -154,8 +146,11 @@
             5
             <span class="nhsuk-table__cell--hint">Days</span>
           </td>
+          <!--<td class="nhsuk-table__cell">
+            <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="">Invite</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Defer</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
+          </td>-->
           <td class="nhsuk-table__cell">
-            <a href="">Invite</a> <a href="">Defer</a> <a href="">Cease</a> <a href="">View more</a> <button class="expanderButton" type="button" id="btnRow2" aria-expanded="false" onclick="toggle(this.id,'#detailsRow2');" aria-controls="detailsRow2" aria-label="More details for" aria-labelledby="btnRow2 nameRow2"></button>
+            <button class="expanderButton" type="button" id="btnRow2" aria-expanded="false" onclick="toggle(this.id,'#detailsRow2');" aria-controls="detailsRow2" aria-label="More details for" aria-labelledby="btnRow2 nameRow2"></button>
           </td>
         </tr>
 
@@ -185,7 +180,7 @@
           </td>
           <td class="nhsuk-table__cell">
             34
-            <span class="nhsuk-table__cell--hint">{{ "34" | returnDate("years") }}</span>
+            <span class="nhsuk-table__cell--hint">{{ "34" | returnPastDate("years") }}</span>
           </td>
           <td class="nhsuk-table__cell">
             Routine
@@ -195,8 +190,11 @@
             5
             <span class="nhsuk-table__cell--hint">Days</span>
           </td>
+          <!--<td class="nhsuk-table__cell">
+            <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="">Invite</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Defer</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
+          </td>-->
           <td class="nhsuk-table__cell">
-            <a href="">Invite</a> <a href="">Defer</a> <a href="">Cease</a> <a href="">View more</a> <button class="expanderButton" type="button" id="btnRow3" aria-expanded="false" onclick="toggle(this.id,'#detailsRow3');" aria-controls="detailsRow3" aria-label="More details for" aria-labelledby="btnRow3 nameRow3"></button>
+            <button class="expanderButton" type="button" id="btnRow3" aria-expanded="false" onclick="toggle(this.id,'#detailsRow3');" aria-controls="detailsRow3" aria-label="More details for" aria-labelledby="btnRow3 nameRow3"></button>
           </td>
         </tr>
 
@@ -226,7 +224,7 @@
           </td>
           <td class="nhsuk-table__cell">
             47
-            <span class="nhsuk-table__cell--hint">{{ "47" | returnDate("years") }}</span>
+            <span class="nhsuk-table__cell--hint">{{ "47" | returnPastDate("years") }}</span>
           </td>
           <td class="nhsuk-table__cell">
             Routine
@@ -236,8 +234,11 @@
             5
             <span class="nhsuk-table__cell--hint">Days</span>
           </td>
+          <!--<td class="nhsuk-table__cell">
+            <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="">Invite</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Defer</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
+          </td>-->
           <td class="nhsuk-table__cell">
-            <a href="">Invite</a> <a href="">Defer</a> <a href="">Cease</a> <a href="">View more</a> <button class="expanderButton" type="button" id="btnRow4" aria-expanded="false" onclick="toggle(this.id,'#detailsRow4');" aria-controls="detailsRow4" aria-label="More details for" aria-labelledby="btnRow4 nameRow4"></button>
+            <button class="expanderButton" type="button" id="btnRow4" aria-expanded="false" onclick="toggle(this.id,'#detailsRow4');" aria-controls="detailsRow4" aria-label="More details for" aria-labelledby="btnRow4 nameRow4"></button>
           </td>
         </tr>
 
@@ -267,7 +268,7 @@
           </td>
           <td class="nhsuk-table__cell">
             28
-            <span class="nhsuk-table__cell--hint">{{ "28" | returnDate("years") }}</span>
+            <span class="nhsuk-table__cell--hint">{{ "28" | returnPastDate("years") }}</span>
           </td>
           <td class="nhsuk-table__cell">
             Routine
@@ -277,8 +278,11 @@
             5
             <span class="nhsuk-table__cell--hint">Days</span>
           </td>
+          <!--<td class="nhsuk-table__cell">
+            <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="">Invite</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Defer</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
+          </td>-->
           <td class="nhsuk-table__cell">
-            <a href="">Invite</a> <a href="">Defer</a> <a href="">Cease</a> <a href="">View more</a> <button class="expanderButton" type="button" id="btnRow5" aria-expanded="false" onclick="toggle(this.id,'#detailsRow5');" aria-controls="detailsRow5" aria-label="More details for" aria-labelledby="btnRow5 nameRow5"></button>
+            <button class="expanderButton" type="button" id="btnRow5" aria-expanded="false" onclick="toggle(this.id,'#detailsRow5');" aria-controls="detailsRow5" aria-label="More details for" aria-labelledby="btnRow5 nameRow5"></button>
           </td>
         </tr>
 
@@ -308,7 +312,7 @@
           </td>
           <td class="nhsuk-table__cell">
             36
-            <span class="nhsuk-table__cell--hint">{{ "36" | returnDate("years") }}</span>
+            <span class="nhsuk-table__cell--hint">{{ "36" | returnPastDate("years") }}</span>
           </td>
           <td class="nhsuk-table__cell">
             Routine
@@ -318,8 +322,11 @@
             5
             <span class="nhsuk-table__cell--hint">Days</span>
           </td>
+          <!--<td class="nhsuk-table__cell">
+            <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="">Invite</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Defer</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
+          </td>-->
           <td class="nhsuk-table__cell">
-            <a href="">Invite</a> <a href="">Defer</a> <a href="">Cease</a> <a href="">View more</a> <button class="expanderButton" type="button" id="btnRow6" aria-expanded="false" onclick="toggle(this.id,'#detailsRow6');" aria-controls="detailsRow6" aria-label="More details for" aria-labelledby="btnRow6 nameRow6"></button>
+            <button class="expanderButton" type="button" id="btnRow6" aria-expanded="false" onclick="toggle(this.id,'#detailsRow6');" aria-controls="detailsRow6" aria-label="More details for" aria-labelledby="btnRow6 nameRow6"></button>
           </td>
         </tr>
 
@@ -336,10 +343,7 @@
         </tbody>   
       </table>
 
-      {{ pagination({
-        "nextUrl": "/section/symptoms",
-        "nextPage": "Page 2 of 10"
-      }) }}    
+      
 
       </div>
 

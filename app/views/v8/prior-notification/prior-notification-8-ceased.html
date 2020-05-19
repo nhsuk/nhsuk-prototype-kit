@@ -15,8 +15,15 @@
   <div class="nhsuk-grid-column-full">
     <nav class="nhsuk-sub-navigation nhsuk-u-padding-bottom-6">
       <h1 class="nhsuk-heading-l">Notifications</h1>
+<mark>need to do a better version of this update notification</mark>
+{{ insetText({
+  "HTML": "<h2>Successfully updated</h2>
+  <p>1 patient has been ceased from the screening programme</p>",
+  "classes": "nhsuk-inset-text--success"
+}) }}
+
       <ul class="nhsuk-sub-navigation__list">
-        <li class="nhsuk-sub-navigation__item"><a href="#" class="nhsuk-sub-navigation__link" aria-current="page">Patients due to be invited<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">3</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="#" class="nhsuk-sub-navigation__link" aria-current="page">Patients due to be invited<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">2</span></a></li>
         <li class="nhsuk-sub-navigation__item"><a href="search-demographic" class="nhsuk-sub-navigation__link">Patients who have not responded<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2"> 8</span> </a></li>
       </ul>
     </nav>
@@ -30,6 +37,7 @@
     <p>If you do not take any action then patients will be invited to screening.</p>
   </div>
 </div>
+
 
 
 <div class="nhsuk-grid-row">
@@ -61,61 +69,13 @@
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
             <button onclick="sortTable()" type="button" data-index="0">Due</button>
           </th>
-          <!--<th class="nhsuk-table__header" aria-sort="none" scope="col">
-            Actions
-          </th>-->
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            View More
+            View more
           </th>
         </tr>
         
       </thead>
         <tbody class="nhsuk-table__body">
-
-
-        <tr class="nhsuk-table__row">
-          <td role="gridcell"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select</span>
-            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
-              <div class="nhsuk-checkboxes__item">
-                <input class="nhsuk-checkboxes__input" id="selectRow4" name="select" type="checkbox" value="hmrc">
-                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectRow4">
-                </label>
-              </div>
-            </div>
-          </td>
-          <td class="nhsuk-table__cell">
-            Yazmin Noble
-            <span class="nhsuk-table__cell--hint">NHS No: 537 698 6721</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            47
-            <span class="nhsuk-table__cell--hint">{{ "47" | returnPastDate("years") }}</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            Routine
-            <span class="nhsuk-table__cell--hint">Recall</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            5
-            <span class="nhsuk-table__cell--hint">Days</span>
-          </td>
-          <!--<td class="nhsuk-table__cell">
-            <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="">Invite</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Defer</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
-          </td>-->
-          <td class="nhsuk-table__cell">
-            <button class="expanderButton" type="button" id="btnRow4" aria-expanded="false" onclick="toggle(this.id,'#detailsRow4');" aria-controls="detailsRow4" aria-label="More details for" aria-labelledby="btnRow4 nameRow4"></button>
-          </td>
-        </tr>
-
-        <tr id="detailsRow4" class="hidden detailsRow">
-           <td colspan="6">
-            <div class="nhsuk-grid-row">
-              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
-                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
-              </div>
-            </div>
-          </td>
-        </tr>
 
         <tr class="nhsuk-table__row">
           <td role="gridcell"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select</span>
@@ -144,7 +104,7 @@
             <span class="nhsuk-table__cell--hint">Days</span>
           </td>
           <!--<td class="nhsuk-table__cell">
-            <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="">Invite</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Defer</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
+            <a clss="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="">Invite</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Defer</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
           </td>-->
           <td class="nhsuk-table__cell">
             <button class="expanderButton" type="button" id="btnRow5" aria-expanded="false" onclick="toggle(this.id,'#detailsRow5');" aria-controls="detailsRow5" aria-label="More details for" aria-labelledby="btnRow5 nameRow5"></button>
@@ -209,7 +169,6 @@
       </table>
 
 
-
       </div>
 
       
@@ -249,7 +208,78 @@
     $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
   }
 
-   /* SELECT ALL */
+
+  function hideAllPages() {
+    document.getElementById("reasons-step-0").style.display = "none";
+    document.getElementById("reasons-step-1").style.display = "none";
+    document.getElementById("reasons-step-2").style.display = "none";
+    document.getElementById("reasons-step-3").style.display = "none";
+    document.getElementById("reasons-step-4").style.display = "none";
+    document.getElementById("reasons-step-5").style.display = "none";
+  }
+
+  document.getElementById("step-2").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-2").style.display = "block";
+    document.getElementById("pnl-reason-1").focus();
+  })
+
+  document.getElementById("back-step-1").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-1").style.display = "block";
+  })
+
+  document.getElementById("step-3").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-3").style.display = "block";
+    document.getElementById("pnl-length-1").focus();
+  })
+
+  document.getElementById("back-step-2").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-2").style.display = "block";
+  })
+
+  document.getElementById("step-4").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-4").style.display = "block";
+  })
+
+  document.getElementById("back-step-3").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-3").style.display = "block";
+  })
+
+  document.getElementById("step-5").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-5").style.display = "block";
+    document.querySelector(".expandedRow").focus();
+  })
+
+  document.getElementById("step-done").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-2").style.display = "block";
+    console.log('ready to submit')
+  })
+
+
+  
+
+  /* SELECT ALL */
   var selectAll = document.getElementById("selectAll");
   var checkBoxes = document.querySelectorAll('.nhsuk-checkboxes__input');
 
@@ -267,88 +297,6 @@
         } 
     }
   })
-
-  function scrollPos() { 
-    var elemPos = document.getElementById("detailsRow1");
-    var elemScroll = elemPos.getBoundingClientRect().top - (elemPos.offsetTop / 2);
-    window.scrollBy(0, (elemScroll));
-  }
-
-  function hideAllPages() {
-    document.getElementById("reasons-step-0").style.display = "none";
-    document.getElementById("reasons-step-1").style.display = "none";
-    document.getElementById("reasons-step-2").style.display = "none";
-    document.getElementById("reasons-step-3").style.display = "none";
-    document.getElementById("reasons-step-4").style.display = "none";
-    document.getElementById("reasons-step-5").style.display = "none";
-  }
-
-  // there's definitely a better way to do this but it's 18:05 on a friday
-  document.getElementById("step-2").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-2").style.display = "block";
-    scrollPos();
-  })
-
-  document.getElementById("back-step-1").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-1").style.display = "block";
-  })
-
-  document.getElementById("step-3").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-3").style.display = "block";
-    scrollPos();
-  })
-
-  document.getElementById("back-step-2").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-2").style.display = "block";
-  })
-
-  document.getElementById("step-4").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-4").style.display = "block";
-    scrollPos();
-  })
-
-  document.getElementById("back-step-3").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-3").style.display = "block";
-  })
-
-  document.getElementById("step-5").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-5").style.display = "block";
-    scrollPos();
-  })
-
-  document.getElementById("step-done").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-2").style.display = "block";
-    console.log('ready to submit')
-  })
-
-  
-
-
-  
-
- 
 
 </script>
 

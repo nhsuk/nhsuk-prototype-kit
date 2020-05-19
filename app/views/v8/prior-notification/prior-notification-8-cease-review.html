@@ -15,12 +15,12 @@
   <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-2">
 
   {{ backLink({
-  "href": "prior-notification-7-defer-length",
-  "text": "Back to step 3 - How long do you want to defer the patient for?"
+  "href": "prior-notification-8-cease-confirm",
+  "text": "Back to step 2 - Confirm ceasing"
   }) }}
 
   <span class="nhsuk-hint">Step 3 of 3</span>
-  <h1 class="nhsuk-fieldset__legend--m">Review patient screening particpation</h1>
+  <h1 class="nhsuk-fieldset__legend--m">Review patient screening participation</h1>
   <details class="nhsuk-details nhsuk-summary-list--no-border">
         <summary class="nhsuk-details__summary">
           <span class="nhsuk-details__summary-text">
@@ -73,7 +73,7 @@
         text: "Action"
       },
       value: {
-        text: data['pnl-action'] or 'Defer'
+        text: data['pnl-action'] or 'Cease'
       },
       actions: {
         items: [
@@ -87,10 +87,10 @@
     },
     {
       key: {
-        text: "Defer reason"
+        text: "Cease reason"
       },
       value: {
-        text: data['pnl-defer-reason'] or 'Pregnancy'
+        text: data['pnl-defer-reason'] or 'No cervix'
       },
       actions: {
         items: [
@@ -98,57 +98,6 @@
             href: "prior-notification-7-defer-reason",
             text: "Change",
             visuallyHiddenText: "date of birth"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Estimated date of delivery"
-      },
-      value: {
-        text: '1 Jun 2020'
-      },
-      actions: {
-        items: [
-          {
-            href: "prior-notification-7-defer-reason",
-            text: "Change",
-            visuallyHiddenText: "date of birth"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Defer length"
-      },
-      value: {
-        html: data['defer-length'] or '3 Months'
-      },
-      actions: {
-        items: [
-          {
-            href: "prior-notification-7-defer-length",
-            text: "Change",
-            visuallyHiddenText: "change defer length"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Next test due date"
-      },
-      value: {
-        html: '1 Sep 2020'
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "",
-            visuallyHiddenText: "contact details"
           }
         ]
       }
