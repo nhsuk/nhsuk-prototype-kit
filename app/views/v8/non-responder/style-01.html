@@ -13,12 +13,32 @@
 {% endblock %}
 
 {% block content %}
+
+<style>
+.danger {
+  border-left-color: red;
+  background-color: pink;
+}
+</style>
+
 <!-- change the colour of the inset text -->
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
 
     <!-- change the colour of the inset text -->
-    <div class="nhsuk-inset-text">
+    <div class="nhsuk-inset-text" style="border-left-color: red; background-color: pink;" > 
+      <span class="nhsuk-u-visually-hidden">Information: </span>
+      <p>You can report any suspected side effect to the <a href="https://yellowcard.mhra.gov.uk/" title="External website">UK safety scheme</a>.</p>
+    </div>
+
+    <!-- change the colour of the inset text -->
+    <div class="nhsuk-inset-text danger">
+      <span class="nhsuk-u-visually-hidden">Information: </span>
+      <p>You can report any suspected side effect to the <a href="https://yellowcard.mhra.gov.uk/" title="External website">UK safety scheme</a>.</p>
+    </div>
+
+    <!-- change the colour of the inset text -->
+    <div class="nhsuk-inset-text nhsuk-inset-text--danger">
       <span class="nhsuk-u-visually-hidden">Information: </span>
       <p>You can report any suspected side effect to the <a href="https://yellowcard.mhra.gov.uk/" title="External website">UK safety scheme</a>.</p>
     </div>
