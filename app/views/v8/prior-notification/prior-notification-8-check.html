@@ -22,34 +22,66 @@
     <caption class="nhsuk-table__caption">Skin symptoms and possible causes</caption>
     <thead class="nhsuk-table__head">
       <tr class="nhsuk-table__row">
-        <th class="nhsuk-table__header" scope="col">NHS No</th>
         <th class="nhsuk-table__header" scope="col">Name</th>
         <th class="nhsuk-table__header" scope="col">Age</th>
         <th class="nhsuk-table__header" scope="col">Status</th>
-        <th class="nhsuk-table__header" scope="col">Next test due date</th>
+        <th class="nhsuk-table__header" scope="col">Next test due date in</th>
       </tr>
     </thead>
     <tbody class="nhsuk-table__body">
       <tr class="nhsuk-table__row">
-        <td class="nhsuk-table__cell">569 986 5128</td>
-        <td class="nhsuk-table__cell ">Arisha Stephens</td>
-        <td class="nhsuk-table__cell ">50</td>
-        <td class="nhsuk-table__cell ">Routine</td>
-        <td class="nhsuk-table__cell ">{{ "1" | returnDate("months") }}</td>
+        <td class="nhsuk-table__cell ">
+          Arisha Stephens
+          <span class="nhsuk-table__cell--hint">NHS No: 569 986 5128</span>
+        </td>
+        <td class="nhsuk-table__cell ">
+          50
+          <span class="nhsuk-table__cell--hint">{{ "50" | returnPastDate("years") }}</span>
+        </td>
+        <td class="nhsuk-table__cell ">
+          Routine
+          <span class="nhsuk-table__cell--hint">Recall</span>
+        </td>
+        <td class="nhsuk-table__cell ">
+          1 Month
+          <span class="nhsuk-table__cell--hint">{{ "1" | returnDate("months") }}</span>
+        </td>
       </tr>
       <tr class="nhsuk-table__row">
-        <td class="nhsuk-table__cell">376 037 0373</td>
-        <td class="nhsuk-table__cell ">Angelica Davey</td>
-        <td class="nhsuk-table__cell ">40</td>
-        <td class="nhsuk-table__cell ">Routine</td>
-        <td class="nhsuk-table__cell ">{{ "1" | returnDate("months") }}</td>
+        <td class="nhsuk-table__cell ">
+          Angelica Davey
+          <span class="nhsuk-table__cell--hint">NHS No: 376 037 0373</span>
+        </td>
+        <td class="nhsuk-table__cell ">
+          40
+          <span class="nhsuk-table__cell--hint">{{ "40" | returnPastDate("years") }}</span>
+        </td>
+        <td class="nhsuk-table__cell ">
+          Routine
+          <span class="nhsuk-table__cell--hint">Recall</span>
+        </td>
+         <td class="nhsuk-table__cell ">
+          1 Month
+          <span class="nhsuk-table__cell--hint">{{ "1" | returnDate("months") }}</span>
+        </td>
       </tr>
       <tr class="nhsuk-table__row">
-        <td class="nhsuk-table__cell">933 404 3202</td>
-        <td class="nhsuk-table__cell ">Corinne Choi</td>
-        <td class="nhsuk-table__cell ">34</td>
-        <td class="nhsuk-table__cell ">Routine</td>
-        <td class="nhsuk-table__cell ">{{ "1" | returnDate("months") }}</td>
+        <td class="nhsuk-table__cell ">
+          Corinne Choi
+          <span class="nhsuk-table__cell--hint">NHS No: 933 404 3202</span>
+        </td>
+        <td class="nhsuk-table__cell ">
+          34
+          <span class="nhsuk-table__cell--hint">{{ "34" | returnPastDate("years") }}</span>
+        </td>
+        <td class="nhsuk-table__cell ">
+          Routine
+          <span class="nhsuk-table__cell--hint">Recall</span>
+        </td>
+         <td class="nhsuk-table__cell ">
+          1 Month
+          <span class="nhsuk-table__cell--hint">{{ "1" | returnDate("months") }}</span>
+        </td>
       </tr>
     </tbody>
   </table>
