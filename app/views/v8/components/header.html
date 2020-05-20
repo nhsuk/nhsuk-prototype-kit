@@ -20,6 +20,7 @@
 }}
 
 {% elif data.role == 'admin' %}
+
 {{ header({
     "service": {
       "name": "Cervical Screening",
@@ -34,11 +35,7 @@
       },
       {
         'url' : '/v8/prior-notification/prior-notification-8',
-        'label' : 'Prior Notification'
-      },
-      {
-        'url' : '/v8/non-responder/non-responder',
-        'label' : 'Non-responder'
+        'label' : 'Notifications'
       }
     ]
   })
