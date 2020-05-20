@@ -1,6 +1,5 @@
 {% extends "layout-v2.html" %}
 
-
 {% block pageTitle %}
   NHS Cervical Screening
 {% endblock %}
@@ -19,121 +18,13 @@
   "text": "Back to step 3 - How long do you want to defer the patient for?"
   }) }}
 
-  {% include '../components/patient-info2.html' %}
+  <div class="nhsuk-panel-with-label">
+    {% include '../components/patient-info2.html' %}
 
-  <span class="nhsuk-hint">Step 3 of 3</span>
-  <h1 class="nhsuk-fieldset__legend--m">Review patient screening particpation</h1>
+    <span class="nhsuk-hint">Step 3 of 3</span>
+    {% include '../components/patient-defer-review.html' %}
+  </div>
 
-  {{ summaryList({
-  rows: [
-    {
-      key: {
-        text: "Action"
-      },
-      value: {
-        text: data['pnl-action'] or 'Defer'
-      },
-      actions: {
-        items: [
-          {
-            href: "prior-notification-7-action",
-            text: "Change",
-            visuallyHiddenText: "name"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Defer reason"
-      },
-      value: {
-        text: data['pnl-defer-reason'] or 'Pregnancy'
-      },
-      actions: {
-        items: [
-          {
-            href: "prior-notification-7-defer-reason",
-            text: "Change",
-            visuallyHiddenText: "date of birth"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Estimated date of delivery"
-      },
-      value: {
-        text: '1 Jun 2020'
-      },
-      actions: {
-        items: [
-          {
-            href: "prior-notification-7-defer-reason",
-            text: "Change",
-            visuallyHiddenText: "date of birth"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Defer length"
-      },
-      value: {
-        html: data['defer-length'] or '3 Months'
-      },
-      actions: {
-        items: [
-          {
-            href: "prior-notification-7-defer-length",
-            text: "Change",
-            visuallyHiddenText: "change defer length"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Next test due date"
-      },
-      value: {
-        html: '1 Sep 2020'
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "",
-            visuallyHiddenText: "contact details"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Comment"
-      },
-      value: {
-        html: data['pnl-comments'] or ''
-      },
-      actions: {
-        items: [
-          {
-            href: "prior-notification-7-defer-length",
-            text: "Change",
-            visuallyHiddenText: "contact details"
-          }
-        ]
-      }
-    }
-  ]
-}) }}
-
-
-  <a href="prior-notification-8-deferred" class="nhsuk-button nhsuk-button--ers">Submit</a>
-  <p><a href="">Exit without saving</a>   -   <a href="">Skip this patient</a></p>
   </div>
 </div>
 
