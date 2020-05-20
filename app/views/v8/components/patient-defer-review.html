@@ -1,4 +1,4 @@
-  <h1 class="nhsuk-fieldset__legend--m">Review patient screening particpation</h1>
+  <h1 class="nhsuk-fieldset__legend--m">Review patient screening participation</h1>
 
   {{ summaryList({
   rows: [
@@ -41,7 +41,7 @@
         text: "Estimated date of delivery"
       },
       value: {
-        text: '1 Jun 2020'
+        text: "1" | returnDate("months") + " (in 1 months)"
       },
       actions: {
         items: [
@@ -75,7 +75,7 @@
         text: "Next test due date"
       },
       value: {
-        html: '1 Sep 2020'
+        html: "4" | returnDate("months") + " (in 4 months)"
       },
       actions: {
         items: [
