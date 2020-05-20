@@ -24,26 +24,33 @@
   <span class="nhsuk-hint">Step 2 of 3</span>
 
   <h1 class="nhsuk-fieldset__legend--m">How long do you want to defer the patient for?</h1>
-  {% if data['pnl-defer-reason'] ==  'Pregnancy' %}
-    {{ insetText({
-      "HTML":  "<p>Minimum deferral is 3 months after date of delivery</br>
-      Maximum deferral can not exceed 12 months</p>",
-      "classes": "nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-4"
-    }) }}
 
-  {% else %}
-    {{ insetText({
-      "HTML":  "<p>Minimum deferral is X months</br>
-      Maximum deferral can not exceed X months</p>",
-      "classes": "nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-4"
-    }) }}
-  {% endif %}
+  {% set pnlDeferInfo %}
+    {% if data['pnl-defer-reason'] ==  'Pregnancy' %}
+      <p>Minimum deferral is 3 months after date of delivery</br>Maximum deferral can not exceed 12 months</p>
+    {% else %}
+      <p>Minimum deferral is X months</br>Maximum deferral can not exceed X months</p>
+    {% endif %}
+  {% endset %}
 
-  <form action="prior-notification-8-review" method="post">
+  {{ insetText({
+    "HTML":  pnlDeferInfo,
+    "classes": "nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-4"
+  }) }}
+
+  <form action="prior-notification-8-defer-review" method="post">
+
+  {% set pnlDeferLabel %}
+    {% if data['pnl-defer-reason'] ==  'Pregnancy' %}
+      Months to defer after the date of delivery
+    {% else %}
+      Months to defer
+    {% endif %}
+  {% endset %}
 
   {{ input({
     "label": {
-      "text": "Months to defer after the date of delivery",
+      "text": pnlDeferLabel,
       "isPageHeading": false
     },
     "id": "deferlength",

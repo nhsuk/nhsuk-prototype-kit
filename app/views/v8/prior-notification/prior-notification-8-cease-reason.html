@@ -1,23 +1,26 @@
-{% extends "layout-v2-patient.html" %}
+{% extends "layout-v2.html" %}
+
 
 {% block pageTitle %}
   NHS Cervical Screening
 {% endblock %}
 
-
-{% block patientBanner %}
-  {% include '../components/patient-banner.html' %}
+{% block header %}
+  {% include '../components/header-2.html' %}
 {% endblock %}
+
 
 {% block content %}
 
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-one-half nhsuk-u-margin-bottom-2">
+  <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-2">
 
   {{ backLink({
   "href": "prior-notification-8",
   "text": "Back to patients due to be invited"
   }) }}
+  
+  {% include '../components/patient-info-cease.html' %}
 
   <span class="nhsuk-hint">Step 1 of 3</span>
   

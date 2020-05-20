@@ -11,37 +11,52 @@
 
 
 {% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <nav class="nhsuk-sub-navigation nhsuk-u-padding-bottom-6">
+      <h1 class="nhsuk-heading-l">Notifications</h1>
+<mark>need to do a better version of this update notification</mark>
+{{ insetText({
+  "HTML": "<h2>Successfully updated</h2>
+  <p>1 patient has been deferred from the screening programme</p>",
+  "classes": "nhsuk-inset-text--success"
+}) }}
 
-<div class="nhsuk-back-link">
-  <a class="nhsuk-back-link__link" href="prior-notification-6">
-    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
-    </svg>
-    Go back to Prior Notification List</a>
+      <ul class="nhsuk-sub-navigation__list">
+        <li class="nhsuk-sub-navigation__item"><a href="#" class="nhsuk-sub-navigation__link" aria-current="page">Patients due to be invited<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">2</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="search-demographic" class="nhsuk-sub-navigation__link">Patients who have not responded<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2"> 8</span> </a></li>
+      </ul>
+    </nav>
+  </div>
 </div>
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-6">
-  <h1 class="nhsuk-heading-l">Patients deferred from screening</h1>
-  
-  <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-4">
-    <span class="nhsuk-u-visually-hidden">Prior notification list</span>
-    <h3 class="nhsuk-heading-s">The following participants have been taken off the prior notification list and deferred. Patients will remain on this list until their deferred date has past.</h3>
+  <h2 class="nhsuk-heading-m">Patients due to be invited</h2>
+  <p>The following patients need reviewing as they are due to be invited for screening. If you do not take any action then patients will be invited to screening.</p>
+  <p><a href="prior-notification-8-manage">Manage who receives notifications</a></p>
+  <p><a href="prior-notification-8-forms">Find out how to cease patients because of <strong>mental capacity</strong> or <strong>patient choice</strong>?</a></p>
   </div>
-  <br>
 </div>
 
- 
+
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
-
+    <a href="prior-notification-8-check" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2">Invite selected</a>
+    <a href="prior-notification-8-defer-reason" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2 nhsuk-button nhsuk-button--secondary">Defer selected</a>
+    <a href="prior-notification-8-cease-reason" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2 nhsuk-button nhsuk-button--secondary">Cease selected</a>
     <table id="sortable" class="nhsuk-table-clickable bna-table nhsuk-u-margin-top-0">
       <thead class="nhsuk-table__head">
         <tr class="nhsuk-table__row">
-          
-          <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            <button onclick="sortTable()" type="button" data-index="0">NHS No</button>
+          <th class="nhsuk-table__header"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select All</span>
+            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="selectAll" name="select" type="checkbox" value="hmrc">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectAll">
+                </label>
+              </div>
+            </div>
           </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
             <button onclick="sortTable()" type="button" data-index="0">Name</button>
@@ -53,109 +68,107 @@
             <button onclick="sortTable()" type="button" data-index="0">Status</button>
           </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            <button onclick="sortTable()" type="button" data-index="0">Date deferred</button>
+            <button onclick="sortTable()" type="button" data-index="0">Due</button>
           </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            <button onclick="sortTable()" type="button" data-index="0">Defer length</button>
+            View more
           </th>
-          
+        </tr>
         
       </thead>
         <tbody class="nhsuk-table__body">
 
-        
-    
-
-       
-          <td class="nhsuk-table__cell">
-            537 698 6721
-          </td>
-          <td class="nhsuk-table__cell">
-            Yazmin Noble
-          </td>
-          <td class="nhsuk-table__cell">
-            47
-          </td>
-          <td class="nhsuk-table__cell">
-            <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">deferred - pregnancy</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            {{ "4" | returnDate("months") }}
-          </td>
-          <td class="nhsuk-table__cell">
-            4 months
-          </td>
-        </tr>
-
-        <tr id="detailsRow4" class="hidden detailsRow">
-          <td colspan="7">
-            {% include '../components/reasons.html' %}
-          </td>
-        </tr>
-
         <tr class="nhsuk-table__row">
-          
-          <td class="nhsuk-table__cell">
-            460 891 3182
+          <td role="gridcell"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select</span>
+            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="selectRow5" name="select" type="checkbox" value="hmrc">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectRow5">
+                </label>
+              </div>
+            </div>
           </td>
           <td class="nhsuk-table__cell">
             Elly Arellano
+            <span class="nhsuk-table__cell--hint">NHS No: 460 891 3182</span>
           </td>
           <td class="nhsuk-table__cell">
             28
+            <span class="nhsuk-table__cell--hint">{{ "28" | returnPastDate("years") }}</span>
           </td>
           <td class="nhsuk-table__cell">
-           <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">deferred - pregnancy</span>
+            Routine
+            <span class="nhsuk-table__cell--hint">Recall</span>
           </td>
           <td class="nhsuk-table__cell">
-            {{ "12" | returnDate("months") }}
+            5
+            <span class="nhsuk-table__cell--hint">Days</span>
           </td>
+          <!--<td class="nhsuk-table__cell">
+            <a clss="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="">Invite</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Defer</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
+          </td>-->
           <td class="nhsuk-table__cell">
-            12 months
+            <button class="expanderButton" type="button" id="btnRow5" aria-expanded="false" onclick="toggle(this.id,'#detailsRow5');" aria-controls="detailsRow5" aria-label="More details for" aria-labelledby="btnRow5 nameRow5"></button>
           </td>
         </tr>
 
         <tr id="detailsRow5" class="hidden detailsRow">
-          <td colspan="7">
-            {% include '../components/reasons.html' %}
+           <td colspan="6">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
+              </div>
+            </div>
           </td>
         </tr>
 
         <tr class="nhsuk-table__row">
-          
-          <td class="nhsuk-table__cell">
-            246 122 7527
+          <td role="gridcell"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select</span>
+            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="selectRow6" name="select" type="checkbox" value="hmrc">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectRow6">
+                </label>
+              </div>
+            </div>
           </td>
           <td class="nhsuk-table__cell">
             Melinda Mathis
+            <span class="nhsuk-table__cell--hint">NHS No: 246 122 7527</span>
           </td>
           <td class="nhsuk-table__cell">
             36
+            <span class="nhsuk-table__cell--hint">{{ "36" | returnPastDate("years") }}</span>
           </td>
           <td class="nhsuk-table__cell">
-           <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">deferred - colposcopy</span>
+            Routine
+            <span class="nhsuk-table__cell--hint">Recall</span>
           </td>
           <td class="nhsuk-table__cell">
-            {{ "8" | returnDate("months") }}
+            5
+            <span class="nhsuk-table__cell--hint">Days</span>
           </td>
+          <!--<td class="nhsuk-table__cell">
+            <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-0" href="">Invite</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Defer</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
+          </td>-->
           <td class="nhsuk-table__cell">
-            8 months
+            <button class="expanderButton" type="button" id="btnRow6" aria-expanded="false" onclick="toggle(this.id,'#detailsRow6');" aria-controls="detailsRow6" aria-label="More details for" aria-labelledby="btnRow6 nameRow6"></button>
           </td>
         </tr>
 
         <tr id="detailsRow6" class="hidden detailsRow">
-          <td colspan="7">
-            {% include '../components/reasons.html' %}
+           <td colspan="6">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
+              </div>
+            </div>
           </td>
         </tr>
             
         </tbody>   
       </table>
 
-      {{ pagination({
-        "nextUrl": "/section/symptoms",
-        "nextPage": "Page 2 of 10"
-      }) }}    
 
       </div>
 

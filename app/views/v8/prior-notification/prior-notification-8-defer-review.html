@@ -1,12 +1,12 @@
-{% extends "layout-v2-patient.html" %}
+{% extends "layout-v2.html" %}
+
 
 {% block pageTitle %}
   NHS Cervical Screening
 {% endblock %}
 
-
-{% block patientBanner %}
-  {% include '../components/patient-banner.html' %}
+{% block header %}
+  {% include '../components/header-2.html' %}
 {% endblock %}
 
 {% block content %}
@@ -19,52 +19,10 @@
   "text": "Back to step 3 - How long do you want to defer the patient for?"
   }) }}
 
+  {% include '../components/patient-info2.html' %}
+
   <span class="nhsuk-hint">Step 3 of 3</span>
   <h1 class="nhsuk-fieldset__legend--m">Review patient screening particpation</h1>
-  <details class="nhsuk-details nhsuk-summary-list--no-border">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            View more information about the patient
-          </span>
-        </summary>
-        <div class="nhsuk-details__text">
-          <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-2">
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Status
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                Routine
-              </dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Next test due date
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                28 Jun 2020 (in 2 months)
-              </dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Last test date
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                28 Jun 2017 (3 years ago)
-              </dd>
-            </div>
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Last test
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                (X0A) No cytology result, HPV negative, routine recall
-              </dd>
-            </div>
-          </dl>
-          <p><a href="../patient/patient-summary">View full patient information</a></p>
-        </div>
-      </details>
 
   {{ summaryList({
   rows: [
@@ -174,7 +132,7 @@
 }) }}
 
 
-  <a href="prior-notification-8-ceased" class="nhsuk-button nhsuk-button--ers">Submit</a>
+  <a href="prior-notification-8-deferred" class="nhsuk-button nhsuk-button--ers">Submit</a>
   <p><a href="">Exit without saving</a>   -   <a href="">Skip this patient</a></p>
   </div>
 </div>
