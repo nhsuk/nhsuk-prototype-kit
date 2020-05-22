@@ -29,12 +29,12 @@
 
 <div class="nhsuk-grid-row ">
     <div class="nhsuk-grid-column-one-half">
-      <div class="nhsuk-panel">
-      <h3 class="nhsuk-label__label">Lab details
+      <div class="nhsuk-panel-with-label ">
+      <h2 class="nhsuk-label__label nhsuk-u-padding-top-3">Lab details
           
           
 {{ summaryList({
-  classes: 'nhsuk-summary-list--no-border',
+  classes: 'nhsuk-summary-list--no-border nhsuk-u-padding-top-3',
   rows: [
     {
       key: {
@@ -78,12 +78,12 @@
 
 <div class="nhsuk-grid-row ">
     <div class="nhsuk-grid-column-one-half">
-    
-      <div class="nhsuk-panel  nhsuk-u-margin-bottom-2">
-          <h3 class="nhsuk-label__label nhsuk-u-margin-bottom-2">System details
-
+      <div class="nhsuk-panel-with-label ">
+      <h2 class="nhsuk-label__label nhsuk-u-padding-top-3">System details
+          
+          
 {{ summaryList({
-  classes: 'nhsuk-summary-list--no-border',
+  classes: 'nhsuk-summary-list--no-border nhsuk-u-padding-top-3',
   rows: [
     {
       key: {
@@ -120,10 +120,11 @@
   ]
 }) }}
 
-        </div>
       </div>
-    </div>
-    </div>
+        
+            </div>
+            </div>
+            </div>
     
 
 
@@ -134,7 +135,7 @@
   "fieldset": {
     "legend": {
       "text": "How do you want to resolve this mismatch?",
-      "classes": "nhsuk-fieldset__legend nhsuk-label__strong nhsuk-u-padding-top-6",
+      "classes": "nhsuk-fieldset__legend nhsuk-label__strong nhsuk-u-padding-top-3",
       "isPageHeading": true
     }
   },
@@ -150,15 +151,18 @@
   ]
 }) }}
 
+
+<span class=“highlight”>address line 1</span>
+
            <div class="nhsuk-form-group">
                 <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-3" for="example">
                   Comments
                 </label>
-                <span class="nhsuk-hint" "nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+                <span class="nhsuk-hint" "highlight" "nhsuk-u-padding-top-3" id="example-hint" for="one-half">
                   Enter a reason for choosing this option
                 </span>
                 <textarea class="nhsuk-textarea nhsuk-u-width-one-half" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
-                 <span class="nhsuk-hint" "nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+                 <span class="nhsuk-hint" "highlight" "nhsuk-u-padding-top-3" id="example-hint" for="one-half">
                   You have 200 characters remaining 
                 </span>
               </div>
