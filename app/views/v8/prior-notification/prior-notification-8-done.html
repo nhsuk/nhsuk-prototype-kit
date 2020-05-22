@@ -26,6 +26,12 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-6">
     <h2 class="nhsuk-heading-m">Patients due to be invited</h2>
+
+    {{ insetText({
+    "HTML": "<p>1 patient has been ceased from the screening programme</p>",
+    "classes": "nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success"
+  }) }}
+
     {{ panel({
       "HTML": "<h2>Completed <svg style='vertical-align: text-top' class='nhsuk-icon nhsuk-icon__tick' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 21' fill='none' aria-hidden='true'>
         <path stroke-width='4' stroke-linecap='round' d='M18.4 7.8l-8.5 8.4L5.6 12'></path>
