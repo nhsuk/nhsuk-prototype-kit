@@ -32,48 +32,51 @@
       <div class="nhsuk-panel-with-label ">
       <h2 class="nhsuk-label__label nhsuk-u-padding-top-3">Lab details
           
-          
-{{ summaryList({
-  classes: 'nhsuk-summary-list--no-border nhsuk-u-padding-top-3',
-  rows: [
-    {
-      key: {
-        text: "Name"
-      },
-      value: {
-        text: "Karen Francis"
-      }
-    },
-    {
-      key: {
-        text: "Date of birth"
-      },
-      value: {
-        text: "15 March 1984"
-      }
-    },
-    {
-      key: {
-        text: "Address"
-      },
-      value: {
-        html: "73 Roman Rd<br>Leeds<br> LS2 5ZN"
-      }
-    },
-    {
-      key: {
-        text: "NHS number"
-      },
-      value: {
-        html: '<p>07700 900362</p>'
-      }
-    }
-  ]
-}) }}
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
-      </div>
-        
-            </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Jane Smith
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Date of birth
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      01-01-1970
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Contact information
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      20 Thornhill Street<br>Pudsey<br> LS28 7ED
+    </dd>
+</div>
+     <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      NHS number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      
+    </dd>
+
+  </div>
+
+  </div>
+
+</dl>
+</div>
+
 
 
 <div class="nhsuk-grid-row ">
@@ -81,51 +84,52 @@
       <div class="nhsuk-panel-with-label ">
       <h2 class="nhsuk-label__label nhsuk-u-padding-top-3">System details
           
-          
-{{ summaryList({
-  classes: 'nhsuk-summary-list--no-border nhsuk-u-padding-top-3',
-  rows: [
-    {
-      key: {
-        text: "Name"
-      },
-      value: {
-        text: "Karen Francis"
-      }
-    },
-    {
-      key: {
-        text: "Date of birth"
-      },
-      value: {
-        text: "15 March 1984"
-      }
-    },
-    {
-      key: {
-        text: "Address"
-      },
-      value: {
-        html: "73 Roman Rd<br>Leeds<br> LS2 5ZN"
-      }
-    },
-    {
-      key: {
-        text: "NHS number"
-      },
-      value: {
-        html: '<p>07700 900362</p>'
-      }
-    }
-  ]
-}) }}
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
-      </div>
-        
-            </div>
-            </div>
-            </div>
-    
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Jane <span class="highlight"> Louise </span> Smith
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Date of birth
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      01-01-1970
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Contact information
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      20 Thornhill Street<br>Pudsey<br> LS28 7ED
+    </dd>
+</div>
+     <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      NHS number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      <span class="highlight"> 234 567 8901 </span>
+    </dd>
+
+  </div>
+
+  </div>
+
+</dl>
+</div>
+</div>
+</div>
 
 
 {{ radios({
@@ -151,8 +155,6 @@
   ]
 }) }}
 
-
-<span class=“highlight”>address line 1</span>
 
            <div class="nhsuk-form-group">
                 <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-3" for="example">
