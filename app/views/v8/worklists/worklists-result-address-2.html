@@ -17,14 +17,11 @@
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
-  {{ backLink({
-    "href": "worklists",
-    "text": "Back to Results"
-  }) }}
-  <h1 class="nhsuk-heading-l nhsuk-u-padding-top-6 ">Manually resolve  address mismatch</h1>
+
+  <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manually resolve  address mismatch</h1>
 
 {{ hint({
-   classes: 'nhsuk-hint nhsuk-u-padding-bottom-4',
+   classes: 'nhsuk-hint',
   text: "Match 1 of 10"
 }) }}
 </div>
@@ -32,58 +29,10 @@
 
 <div class="nhsuk-grid-row ">
     <div class="nhsuk-grid-column-one-half">
-<h3 class="nhsuk-label__label nhsuk-u-margin-bottom-2">Lab details
-      <div class="nhsuk-panel nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-2">
-  
-{{ summaryList({
-  classes: 'nhsuk-summary-list--no-border',
-  rows: [
-    {
-      key: {
-        text: "Name"
-      },
-      value: {
-        text: "Karen Francis"
-      }
-    },
-    {
-      key: {
-        text: "Date of birth"
-      },
-      value: {
-        text: "15 March 1984"
-      }
-    },
-    {
-      key: {
-        text: "Contact information"
-      },
-      value: {
-        html: "73 Roman Rd<br>Leeds<br> LS2 5ZN"
-      }
-    },
-    {
-      key: {
-        text: "Contact details"
-      },
-      value: {
-        html: '<p>07700 900362</p><p>karen.francis@example.com</p>'
-      }
-    }
-  ]
-}) }}
-
-      </div>
-        
-            </div>
-
-
-<div class="nhsuk-grid-row ">
-    <div class="nhsuk-grid-column-one-half">
-    <h3 class="nhsuk-label__label nhsuk-u-margin-bottom-2">System details
-    
-      <div class="nhsuk-panel nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-2">
-      
+      <div class="nhsuk-panel">
+      <h3 class="nhsuk-label__label">Lab details
+          
+          
 {{ summaryList({
   classes: 'nhsuk-summary-list--no-border',
   rows: [
@@ -116,11 +65,61 @@
         text: "NHS number"
       },
       value: {
-        html: '<p>07700 900362</p><p>karen.francis@example.com</p>'
+        html: '<p>07700 900362</p>'
       }
     }
   ]
 }) }}
+
+      </div>
+        
+            </div>
+
+
+<div class="nhsuk-grid-row ">
+    <div class="nhsuk-grid-column-one-half">
+    
+      <div class="nhsuk-panel  nhsuk-u-margin-bottom-2">
+          <h3 class="nhsuk-label__label nhsuk-u-margin-bottom-2">System details
+
+{{ summaryList({
+  classes: 'nhsuk-summary-list--no-border',
+  rows: [
+    {
+      key: {
+        text: "Name"
+      },
+      value: {
+        text: "Karen Francis"
+      }
+    },
+    {
+      key: {
+        text: "Date of birth"
+      },
+      value: {
+        text: "15 March 1984"
+      }
+    },
+    {
+      key: {
+        text: "Address"
+      },
+      value: {
+        html: "73 Roman Rd<br>Leeds<br> LS2 5ZN"
+      }
+    },
+    {
+      key: {
+        text: "NHS number"
+      },
+      value: {
+        html: '<p>07700 900362</p>'
+      }
+    }
+  ]
+}) }}
+
         </div>
       </div>
     </div>
@@ -155,10 +154,13 @@
                 <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-3" for="example">
                   Comments
                 </label>
-                <span class="nhsuk-hint" "nhsuk-u-padding-top-3" id="example-hint">
+                <span class="nhsuk-hint" "nhsuk-u-padding-top-3" id="example-hint" for="one-half">
                   Enter a reason for choosing this option
                 </span>
-                <textarea class="nhsuk-textarea" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
+                <textarea class="nhsuk-textarea nhsuk-u-width-one-half" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
+                 <span class="nhsuk-hint" "nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+                  You have 200 characters remaining 
+                </span>
               </div>
 
     <a href="" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and get next</a>
