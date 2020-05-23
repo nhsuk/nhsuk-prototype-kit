@@ -43,3 +43,10 @@ exports.matchRoutes = function (req, res, next) {
 
   renderPath(path, res, next)
 }
+
+exports.matchRoutesRefererPath = function (req, res) {
+  const escapeRegExp = req.get('origin').replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1');
+  const refererPath = req.get('referer').replace(new RegExp(escapeRegExp, 'g'), '');;
+  
+  res.redirect(refererPath);
+}
