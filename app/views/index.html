@@ -24,41 +24,54 @@
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      {% if errorsList.length %} 
-        {{ errorSummary({
-          "titleText": "There is a problem",
-          "descriptionText": "Describe the errors and how to correct them",
-          "errorList": errorsList
-        }) }}
-      {% endif %}
 
-      <form action="/step-2" method="post">
-        {{ input({
-          "label": {
-            "text": "Name"
-          },
-          "id": "name",
-          "name": "name",
-          "value": data.name,
-          "errorMessage": {
-            "text": errorsObj.name
-          } if errorsObj.name
-        }) }}
-        {{ input({
-          "label": {
-            "text": "Email"
-          },
-          "id": "email",
-          "name": "email",
-          "value": data.email,
-          "errorMessage": {
-            "text": errorsObj.email
-          } if errorsObj.email
-        }) }}
-        {{ button({
-          "text": "Submit"
-        }) }}
-      </form>
+      <!-- Change the page title here -->
+      <h1>
+        NHS.UK prototype kit
+        <span class="nhsuk-caption-xl nhsuk-caption--bottom">Version {{version}}</span>
+      </h1>
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
+
+      <p class="nhsuk-lede-text">
+        This kit lets you rapidly create HTML prototypes of NHS services.
+      </p>
+
+      <hr>
+
+      <h2>
+        About this page
+      </h2>
+
+      <p>
+        Use this page as the index for your project.
+      </p>
+      
+      <p>
+        You'll find the code for this page at <strong>/app/views/index.html</strong>.
+      </p>
+
+      <p>
+        There is also an <a href="/page-example">example page</a>, which contains a selection of NHS.UK frontend styles and components.
+      </p>
+
+      <hr>
+
+      <h2>
+        Documentation
+      </h2>
+
+      <ul>
+        <li>
+          Get started with <a href="/docs">how to guides and page templates</a>
+        </li>
+        <li>
+          Copy and paste styles and components from the <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a>
+        </li>
+      </ul>
+
+      <!-- End of content -->
 
     </div>
   </div>
