@@ -1,11 +1,11 @@
-const { check } = require('express-validator');
+const { body } = require('express-validator');
 
-// Add rules for validation here, docs at: https://github.com/validatorjs/validator.js#validators
+// Validation library guidance: https://github.com/validatorjs/validator.js#validators
 module.exports = [
-  check('docsExampleName')
+  body('docsExampleName')
     .not().isEmpty()
     .withMessage('Name a required field'),
-  check('docsExampleEmail')
+  body('docsExampleEmail')
     .isEmail()
     .withMessage('Please enter a valid email address')
 ];
