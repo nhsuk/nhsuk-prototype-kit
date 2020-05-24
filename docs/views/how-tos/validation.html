@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  How to validate inputs - NHS.UK prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "how-tos/includes/breadcrumb.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <h1>How to validate inputs</h1>
+
+      <p class="nhsuk-lede-text">You can validate inputs so the original page is rendered complete with errors if your validation does not pass.</p>
+
+      <p><a href="/examples/validation">You can see an example here</a></p>
+
+      <p>The code for the example can be found in:</p>
+
+      <pre class="app-pre"><code class="app-code">/documentation_validation_rules.js<br>docs/views/examples/validation</code></pre>
+
+      {% include "how-tos/includes/back-button.html" %}
+
+    </div>
+  </div>
+{% endblock %}

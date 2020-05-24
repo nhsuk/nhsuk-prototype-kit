@@ -24,11 +24,31 @@
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      <h1>Form data</h1>
-      <h2>Name:</h2>
-      <p>{{ data.name | title }}</p>
-      <h2>Email</h2>
-      <p>{{ data.email }}</p>
+      {% if errorsList.length %} 
+        {{ errorSummary({
+          "titleText": "There is a problem",
+          "descriptionText": "Describe the errors and how to correct them",
+          "errorList": errorsList
+        }) }}
+      {% endif %}
+
+      <form action="/examples/validation/complete" method="post">
+        {{ input({
+          "label": {
+            "text": "Email"
+          },
+          "id": "docsExampleEmail",
+          "name": "docsExampleEmail",
+          "value": data.docsExampleEmail,
+          "errorMessage": {
+            "text": errorsObj.docsExampleEmail
+          } if errorsObj.docsExampleEmail
+        }) }}
+        {{ button({
+          "text": "Submit"
+        }) }}
+      </form>
+
     </div>
   </div>
 {% endblock %}
