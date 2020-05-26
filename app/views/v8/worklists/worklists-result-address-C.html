@@ -22,71 +22,24 @@
 
 {{ hint({
    classes: 'nhsuk-hint',
-  text: "Manchester - Mismatch 1 of 34"
+  text: "Match 1 of 10"
 }) }}
 </div>
 </div>
 
 <div class="nhsuk-grid-row ">
     <div class="nhsuk-grid-column-one-half">
-      <div class="nhsuk-panel-with-label ">
-      <h2 class="nhsuk-label__label nhsuk-u-padding-top-3">Lab details
+     <div class="nhsuk-panel-with-label nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-4">
+        <h2 class="nhsuk-panel-with-label__label">System details 
+  <span style= color:white; </span></h3>
           
-<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-0 nhsuk-summary-list--no-border">
 
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Name
+      <dt class="nhsuk-summary-list__key">
+      <h3>Match 1</h3>
     </dt>
-    <dd class="nhsuk-summary-list__value">
-      Jane Smith
-    </dd>
 
-  </div>
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Date of birth
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      01-01-1970
-    </dd>
-
-  </div>
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Contact information
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      20 Thornhill Street<br>Pudsey<br> LS28 7ED
-    </dd>
-</div>
-     <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      NHS number
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      
-    </dd>
-
-  </div>
-
-  </div>
-
-</dl>
-</div>
-
-
-
-<div class="nhsuk-grid-row ">
-    <div class="nhsuk-grid-column-one-half">
-      <div class="nhsuk-panel-with-label ">
-      <h2 class="nhsuk-label__label nhsuk-u-padding-top-3">System details
-          
-<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
-
-  <div class="nhsuk-summary-list__row">
+ <div class="nhsuk-summary-list__row nhsuk-u-padding-top-4">
     <dt class="nhsuk-summary-list__key">
       Name
     </dt>
@@ -121,6 +74,106 @@
     <dd class="nhsuk-summary-list__value">
       <span class="highlight"> 234 567 8901 </span>
     </dd>
+  </div>
+
+<br>
+ <div class="nhsuk-summary-list__row nhsuk-u-padding-top-8">
+    <dt class="nhsuk-summary-list__key">
+      Match 2
+    </dt>
+ 
+
+  </div>
+
+ <div class="nhsuk-summary-list__row nhsuk-u-padding-top-4">
+    <dt class="nhsuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Jane <span class="highlight"> Louise </span> Smith
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Date of birth
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      01-01-1970
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Contact information
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      20 Thornhill Street<br>Pudsey<br> LS28 7ED
+    </dd>
+</div>
+     <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      NHS number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      <span class="highlight"> 234 567 8901 </span>
+    </dd>
+  </div>
+
+</dl>
+</div>
+
+</dl>
+</div>
+
+
+
+
+
+<div class="nhsuk-grid-row ">
+    <div class="nhsuk-grid-column-one-half">
+     <div class="nhsuk-panel-with-label nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-4">
+        <h2 class="nhsuk-panel-with-label__label">Lab details
+  <span style= color:white; </span></h3>
+          
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-0 nhsuk-summary-list--no-border">
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Jane Smith
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Date of birth
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      01-01-1970
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Contact information
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      20 Thornhill Street<br>Pudsey<br> LS28 7ED
+    </dd>
+</div>
+     <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      NHS number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+
 
   </div>
 
@@ -130,6 +183,7 @@
 </div>
 </div>
 </div>
+
 
 
 {{ radios({
@@ -150,7 +204,15 @@
     },
     {
       "value": "System",
-      "text": "Use system details"
+      "text": "Use system details 1"
+    },
+        {
+      "value": "System",
+      "text": "Use system details 2"
+    },
+        {
+      "value": "System",
+      "text": "Use system details 3"
     }
   ]
 }) }}
@@ -169,7 +231,7 @@
                 </span>
               </div>
 
-    <a href="worklists-result-address-A2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and get next</a>
+    <a href="" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and get next</a>
 
 
 
