@@ -1,0 +1,49 @@
+<h1 class="nhsuk-fieldset__legend--m">How long do you want to defer the patient for?</h1>
+
+  {% set pnlDeferInfo %}
+    {% if data['pnl-defer-reason'] ==  'Pregnancy' %}
+      <p>Minimum deferral is 3 months after date of delivery</br>Maximum deferral can not exceed 12 months</p>
+    {% else %}
+      <p>Minimum deferral is X months</br>Maximum deferral can not exceed X months</p>
+    {% endif %}
+  {% endset %}
+
+  {{ insetText({
+    "HTML":  pnlDeferInfo,
+    "classes": "nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-4"
+  }) }}
+
+  <form action="prior-notification-8-defer-review" method="post">
+
+  {% set pnlDeferLabel %}
+    {% if data['pnl-defer-reason'] ==  'Pregnancy' %}
+      Months to defer after the date of delivery
+    {% else %}
+      Months to defer
+    {% endif %}
+  {% endset %}
+
+  {{ input({
+    "label": {
+      "text": pnlDeferLabel,
+      "isPageHeading": false
+    },
+    "id": "deferlength",
+    "name": "defer-length",
+    "classes": "nhsuk-input--width-2",
+    "type": "number"
+  }) }}
+
+  <div class="nhsuk-form-group">
+    <label class="nhsuk-label" for="pnl-comments">
+      Comments
+    </label>
+    <span class="nhsuk-hint" id="example-hint">Do not include clinical information at  this point.</span>
+    <textarea class="nhsuk-textarea" id="example" name="pnl-comments" rows="5" aria-describedby="example-hint" value="pnl-comments"></textarea>
+ </div>
+
+
+
+  <button class="nhsuk-button nhsuk-button--ers">Continue</button>
+
+  </form>

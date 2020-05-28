@@ -1,0 +1,18 @@
+<nav style="border-bottom:4px solid #425563" class="nhsuk-breadcrumb patient-info" aria-label="PatientBanner">
+  <div class="nhsuk-width-container patient-info-container">
+    <ul role="navigation">
+
+      <li><a style="color:white" href="#">{{ data['lastName'] or 'Smith' }}, {{ data['firstName'] or 'Jane' }} ({{ data['title'] or 'Mrs'}})</a></li>
+      <li>{{ data['dob'] or '30 years (4 June 1988)' }}</li>
+      <li><strong>Address: </strong> {{ data['address'] or '20 Thornhill Street, Pudsey, LS15 6FD' }}</li>
+      <li><span><strong>NHS No: </strong> {{ data['nhsNumber'] or '123 456 7890' }}</span></li>
+    </ul>
+   <!-- <a id="nhsuk-button--close" href="/v8/patient/search/search">
+
+        <svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+        </svg>
+        Close
+    </a>-->
+  </div>
+</nav>

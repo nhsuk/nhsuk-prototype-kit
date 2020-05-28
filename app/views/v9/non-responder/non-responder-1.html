@@ -1,0 +1,464 @@
+{% extends "layout-v2.html" %}
+
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header-2.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <nav class="nhsuk-sub-navigation nhsuk-u-padding-bottom-6">
+      <h1 class="nhsuk-heading-l">Notifications</h1>
+      <ul class="nhsuk-sub-navigation__list">
+        <li class="nhsuk-sub-navigation__item"><a href="../prior-notification/prior-notification-8" class="nhsuk-sub-navigation__link">Patients due to be invited<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">5</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="" class="nhsuk-sub-navigation__link" aria-current="page">Patients who have not responded<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2"> 6</span> </a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-6">
+    <h2 class="nhsuk-heading-m">Patients who have not responded</h2>
+    <p>The following patients need reviewing as they have not responded to 2 invitations to be screened.</p>
+    <p>They have missed their screening and will be invited again based on their recall status.</p>
+    <p><strong>Patients will be removed from this list after 8 weeks.</strong></p>
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+  <a href="../prior-notification/prior-notification-8-cease-reason" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2 nhsuk-button nhsuk-button--secondary">Cease selected</a>
+    <table id="sortable" class="nhsuk-table-clickable bna-table nhsuk-u-margin-top-0">
+      <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+          <th class="nhsuk-table__header"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select All</span>
+            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="selectAll" name="select" type="checkbox" value="hmrc">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectAll">
+                </label>
+              </div>
+            </div>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">Name</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">Age</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <button onclick="sortTable()" type="button" data-index="0">Status</button>
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            View More
+          </th>
+        </tr>
+        
+      </thead>
+        <tbody class="nhsuk-table__body">
+
+        <tr class="nhsuk-table__row">
+          <td role="gridcell"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select</span>
+            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="selectRow1" name="select" type="checkbox" value="hmrc">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectRow1">
+                </label>
+              </div>
+            </div>
+          </td>
+          <td class="nhsuk-table__cell">
+            Arisha Stephens
+            <span class="nhsuk-table__cell--hint">NHS No: 569 986 5128</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            50
+            <!--<span class="nhsuk-table__cell--hint">{{ "50" | returnPastDate("years") }}</span>-->
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+            <span class="nhsuk-table__cell--hint">Recall</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            <button class="expanderButton" type="button" id="btnRow1" aria-expanded="false" onclick="toggle(this.id,'#detailsRow1');" aria-controls="detailsRow1" aria-label="More details for" aria-labelledby="btnRow1 nameRow1"></button>
+          </td>
+        </tr>
+
+        <tr id="detailsRow1" class="hidden detailsRow">
+          <td colspan="5">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
+                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        
+        <tr class="nhsuk-table__row">
+          <td role="gridcell"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select</span>
+            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="selectRow2" name="select" type="checkbox" value="hmrc">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectRow2">
+                </label>
+              </div>
+            </div>
+          </td>
+          <td class="nhsuk-table__cell">
+            Angelica Davey
+            <span class="nhsuk-table__cell--hint">NHS No: 376 037 0373</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            40
+            <!--<span class="nhsuk-table__cell--hint">{{ "40" | returnPastDate("years") }}</span>-->
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+            <span class="nhsuk-table__cell--hint">Recall</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            <button class="expanderButton" type="button" id="btnRow2" aria-expanded="false" onclick="toggle(this.id,'#detailsRow2');" aria-controls="detailsRow2" aria-label="More details for" aria-labelledby="btnRow2 nameRow2"></button>
+          </td>
+        </tr>
+
+        <tr id="detailsRow2" class="hidden detailsRow">
+           <td colspan="5">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="nhsuk-table__row">
+          <td role="gridcell"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select</span>
+            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="selectRow3" name="select" type="checkbox" value="hmrc">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectRow3">
+                </label>
+              </div>
+            </div>
+          </td>
+          <td class="nhsuk-table__cell">
+            Corinne Choi
+            <span class="nhsuk-table__cell--hint">NHS No: 933 404 3202</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            34
+            <!--<span class="nhsuk-table__cell--hint">{{ "34" | returnPastDate("years") }}</span>-->
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+            <span class="nhsuk-table__cell--hint">Recall</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            <button class="expanderButton" type="button" id="btnRow3" aria-expanded="false" onclick="toggle(this.id,'#detailsRow3');" aria-controls="detailsRow3" aria-label="More details for" aria-labelledby="btnRow3 nameRow3"></button>
+          </td>
+        </tr>
+
+        <tr id="detailsRow3" class="hidden detailsRow">
+           <td colspan="5">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="nhsuk-table__row">
+          <td role="gridcell"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select</span>
+            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="selectRow4" name="select" type="checkbox" value="hmrc">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectRow4">
+                </label>
+              </div>
+            </div>
+          </td>
+          <td class="nhsuk-table__cell">
+            Yazmin Noble
+            <span class="nhsuk-table__cell--hint">NHS No: 537 698 6721</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            47
+            <!--<span class="nhsuk-table__cell--hint">{{ "47" | returnPastDate("years") }}</span>-->
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+            <span class="nhsuk-table__cell--hint">Recall</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            <button class="expanderButton" type="button" id="btnRow4" aria-expanded="false" onclick="toggle(this.id,'#detailsRow4');" aria-controls="detailsRow4" aria-label="More details for" aria-labelledby="btnRow4 nameRow4"></button>
+          </td>
+        </tr>
+
+        <tr id="detailsRow4" class="hidden detailsRow">
+           <td colspan="5">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="nhsuk-table__row">
+          <td role="gridcell"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select</span>
+            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="selectRow5" name="select" type="checkbox" value="hmrc">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectRow5">
+                </label>
+              </div>
+            </div>
+          </td>
+          <td class="nhsuk-table__cell">
+            Elly Arellano
+            <span class="nhsuk-table__cell--hint">NHS No: 460 891 3182</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            28
+            <!--<span class="nhsuk-table__cell--hint">{{ "28" | returnPastDate("years") }}</span>-->
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+            <span class="nhsuk-table__cell--hint">Recall</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            <button class="expanderButton" type="button" id="btnRow5" aria-expanded="false" onclick="toggle(this.id,'#detailsRow5');" aria-controls="detailsRow5" aria-label="More details for" aria-labelledby="btnRow5 nameRow5"></button>
+          </td>
+        </tr>
+
+        <tr id="detailsRow5" class="hidden detailsRow">
+           <td colspan="5">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="nhsuk-table__row">
+          <td role="gridcell"><span class="table-heading nhsuk-u-visually hidden" aria-hidden="true">Select</span>
+            <div class="nhsuk-checkboxes nhsuk-checkboxes--small">
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="selectRow6" name="select" type="checkbox" value="hmrc">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="selectRow6">
+                </label>
+              </div>
+            </div>
+          </td>
+          <td class="nhsuk-table__cell">
+            Melinda Mathis
+            <span class="nhsuk-table__cell--hint">NHS No: 246 122 7527</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            36
+            <!--<span class="nhsuk-table__cell--hint">{{ "36" | returnPastDate("years") }}</span>-->
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+            <span class="nhsuk-table__cell--hint">Recall</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            <button class="expanderButton" type="button" id="btnRow6" aria-expanded="false" onclick="toggle(this.id,'#detailsRow6');" aria-controls="detailsRow6" aria-label="More details for" aria-labelledby="btnRow6 nameRow6"></button>
+          </td>
+        </tr>
+
+        <tr id="detailsRow6" class="hidden detailsRow">
+           <td colspan="5">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+            
+        </tbody>   
+      </table>
+
+      
+
+      </div>
+
+      
+
+
+  </div>
+{% endblock %}
+
+
+{% block pageScripts %}
+<script>
+  function toggle(btnID, eIDs) {
+    // Feed the list of ids as a selector
+    var theRows = document.querySelectorAll(eIDs);
+    // Get the button that triggered this
+    var theButton = document.getElementById(btnID);
+    // If the button is not expanded...
+    if (theButton.getAttribute("aria-expanded") == "false") {
+      // Loop through the rows and show them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("shown");
+        theRows[i].classList.remove("hidden");
+      }
+      // Now set the button to expanded
+      theButton.setAttribute("aria-expanded", "true");
+      // Otherwise button is not expanded...
+    } else {
+      // Loop through the rows and hide them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("hidden");
+        theRows[i].classList.remove("shown");
+      }
+      // Now set the button to collapsed
+      theButton.setAttribute("aria-expanded", "false");
+    }
+    $('.expanderButton[aria-expanded="true"]').closest('tr').addClass('expandedRow');
+    $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
+  }
+
+   /* SELECT ALL */
+  var selectAll = document.getElementById("selectAll");
+  var checkBoxes = document.querySelectorAll('.nhsuk-checkboxes__input');
+
+  selectAll.addEventListener('change', function() {
+    if(this.checked) {
+        for (i = 1; i < checkBoxes.length; i++) {
+          console.log(checkBoxes[i]);
+          checkBoxes[i].checked = true;
+        } 
+    } else {
+        console.log('nah')
+        for (i = 1; i < checkBoxes.length; i++) {
+          console.log(checkBoxes[i]);
+          checkBoxes[i].checked = false;
+        } 
+    }
+  })
+
+  function scrollPos() { 
+    var elemPos = document.getElementById("detailsRow1");
+    var elemScroll = elemPos.getBoundingClientRect().top - (elemPos.offsetTop / 2);
+    window.scrollBy(0, (elemScroll));
+  }
+
+  function hideAllPages() {
+    document.getElementById("reasons-step-0").style.display = "none";
+    document.getElementById("reasons-step-1").style.display = "none";
+    document.getElementById("reasons-step-2").style.display = "none";
+    document.getElementById("reasons-step-3").style.display = "none";
+    document.getElementById("reasons-step-4").style.display = "none";
+    document.getElementById("reasons-step-5").style.display = "none";
+  }
+
+  // there's definitely a better way to do this but it's 18:05 on a friday
+  document.getElementById("step-2").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-2").style.display = "block";
+    scrollPos();
+  })
+
+  document.getElementById("back-step-1").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-1").style.display = "block";
+  })
+
+  document.getElementById("step-3").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-3").style.display = "block";
+    scrollPos();
+  })
+
+  document.getElementById("back-step-2").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-2").style.display = "block";
+  })
+
+  document.getElementById("step-4").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-4").style.display = "block";
+    scrollPos();
+  })
+
+  document.getElementById("back-step-3").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-3").style.display = "block";
+  })
+
+  document.getElementById("step-5").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-5").style.display = "block";
+    scrollPos();
+  })
+
+  document.getElementById("step-done").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-2").style.display = "block";
+    console.log('ready to submit')
+  })
+
+  
+
+
+  
+
+ 
+
+</script>
+
+
+
+<script>
+  // Script for the view selected button
+
+  /*
+  $(".nhsuk-checkboxes__input").change(function() {
+      if ($("input:checkbox:checked").length > 0)
+      {
+        $(".disable-able").removeClass("nhsuk-button--disabled").removeClass("nhsuk-button--secondary").addClass("nhsuk-button--blue");
+        $("#view-selected-link").attr("href", "./birth-notification");
+
+        if ($("input:checkbox:checked").length > 1)
+        {
+          $("#view-selected-link").attr("href", "./birth-notification-multiple-1-of-3");
+        }
+
+      }
+      else
+      {
+        $(".disable-able ").addClass("nhsuk-button--disabled").addClass("nhsuk-button--secondary").removeClass("nhsuk-button--blue");
+      }
+
+
+  });
+  */
+</script>
+{% endblock %}

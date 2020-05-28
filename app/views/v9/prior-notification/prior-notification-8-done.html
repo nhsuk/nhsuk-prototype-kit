@@ -1,0 +1,196 @@
+{% extends "layout-v2.html" %}
+
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header-2.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <nav class="nhsuk-sub-navigation nhsuk-u-padding-bottom-6">
+      <h1 class="nhsuk-heading-l">Notifications</h1>
+      <ul class="nhsuk-sub-navigation__list">
+        <li class="nhsuk-sub-navigation__item"><a href="" class="nhsuk-sub-navigation__link" aria-current="page">Patients due to be invited<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">0</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="../non-responder/non-responder-1" class="nhsuk-sub-navigation__link">Patients who have not responded<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2"> 6</span> </a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-6">
+    <h2 class="nhsuk-heading-m">Patients due to be invited</h2>
+
+    {{ insetText({
+    "HTML": "<p>1 patient has been ceased from the screening programme</p>",
+    "classes": "nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success"
+  }) }}
+
+    {{ panel({
+      "HTML": "<h2>Completed <svg style='vertical-align: text-top' class='nhsuk-icon nhsuk-icon__tick' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 21' fill='none' aria-hidden='true'>
+        <path stroke-width='4' stroke-linecap='round' d='M18.4 7.8l-8.5 8.4L5.6 12'></path>
+      </svg></h2>
+      <p>There are no more patients that need reviewing.</p>"
+    }) }}
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block pageScripts %}
+<script>
+  function toggle(btnID, eIDs) {
+    // Feed the list of ids as a selector
+    var theRows = document.querySelectorAll(eIDs);
+    // Get the button that triggered this
+    var theButton = document.getElementById(btnID);
+    // If the button is not expanded...
+    if (theButton.getAttribute("aria-expanded") == "false") {
+      // Loop through the rows and show them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("shown");
+        theRows[i].classList.remove("hidden");
+      }
+      // Now set the button to expanded
+      theButton.setAttribute("aria-expanded", "true");
+      // Otherwise button is not expanded...
+    } else {
+      // Loop through the rows and hide them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("hidden");
+        theRows[i].classList.remove("shown");
+      }
+      // Now set the button to collapsed
+      theButton.setAttribute("aria-expanded", "false");
+    }
+    $('.expanderButton[aria-expanded="true"]').closest('tr').addClass('expandedRow');
+    $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
+  }
+
+
+  function hideAllPages() {
+    document.getElementById("reasons-step-0").style.display = "none";
+    document.getElementById("reasons-step-1").style.display = "none";
+    document.getElementById("reasons-step-2").style.display = "none";
+    document.getElementById("reasons-step-3").style.display = "none";
+    document.getElementById("reasons-step-4").style.display = "none";
+    document.getElementById("reasons-step-5").style.display = "none";
+  }
+
+  document.getElementById("step-2").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-2").style.display = "block";
+    document.getElementById("pnl-reason-1").focus();
+  })
+
+  document.getElementById("back-step-1").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-1").style.display = "block";
+  })
+
+  document.getElementById("step-3").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-3").style.display = "block";
+    document.getElementById("pnl-length-1").focus();
+  })
+
+  document.getElementById("back-step-2").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-2").style.display = "block";
+  })
+
+  document.getElementById("step-4").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-4").style.display = "block";
+  })
+
+  document.getElementById("back-step-3").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-0").style.display = "block";
+    document.getElementById("reasons-step-3").style.display = "block";
+  })
+
+  document.getElementById("step-5").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-5").style.display = "block";
+    document.querySelector(".expandedRow").focus();
+  })
+
+  document.getElementById("step-done").addEventListener('click', function(e) {
+    e.preventDefault();
+    hideAllPages();
+    document.getElementById("reasons-step-2").style.display = "block";
+    console.log('ready to submit')
+  })
+
+
+  
+
+  /* SELECT ALL */
+  var selectAll = document.getElementById("selectAll");
+  var checkBoxes = document.querySelectorAll('.nhsuk-checkboxes__input');
+
+  selectAll.addEventListener('change', function() {
+    if(this.checked) {
+        for (i = 1; i < checkBoxes.length; i++) {
+          console.log(checkBoxes[i]);
+          checkBoxes[i].checked = true;
+        } 
+    } else {
+        console.log('nah')
+        for (i = 1; i < checkBoxes.length; i++) {
+          console.log(checkBoxes[i]);
+          checkBoxes[i].checked = false;
+        } 
+    }
+  })
+
+</script>
+
+
+
+<script>
+  // Script for the view selected button
+
+  /*
+  $(".nhsuk-checkboxes__input").change(function() {
+      if ($("input:checkbox:checked").length > 0)
+      {
+        $(".disable-able").removeClass("nhsuk-button--disabled").removeClass("nhsuk-button--secondary").addClass("nhsuk-button--blue");
+        $("#view-selected-link").attr("href", "./birth-notification");
+
+        if ($("input:checkbox:checked").length > 1)
+        {
+          $("#view-selected-link").attr("href", "./birth-notification-multiple-1-of-3");
+        }
+
+      }
+      else
+      {
+        $(".disable-able ").addClass("nhsuk-button--disabled").addClass("nhsuk-button--secondary").removeClass("nhsuk-button--blue");
+      }
+
+
+  });
+  */
+</script>
+{% endblock %}

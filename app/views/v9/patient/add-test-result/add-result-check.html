@@ -1,0 +1,219 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+  <script type="text/javascript" src="/js/action-menu.js"></script>
+  <script type="text/javascript" src="/js/sort.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "true"
+  })
+}}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+  {{ backLink({
+    "href": "add-result",
+    "text": "Go back to add a result"
+  }) }}
+
+            <form action="../patient-summary-added-test" method="post">
+              <fieldset class="nhsuk-fieldset">
+                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+                  <h1 class="nhsuk-fieldset__heading">
+                    Check the test result
+                  </h1>
+                </legend>
+
+                <dl class="nhsuk-summary-list">
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                    Slide number
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['slide-number'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"> name</span>
+                      </a>
+                    </dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        National code
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {{ data['nat-code'] }}
+
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"></span>
+                      </a>
+                    </dd>
+                  </div>
+               
+
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                    Test  date
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['day'] }} {{ data['month'] }} {{ data['year'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"> name</span>
+                      </a>
+                    </dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Source code
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {{ data['source'] }}
+
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"></span>
+                      </a>
+                    </dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Sender code
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {{ data['sample-taker'] }}
+
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"></span>
+                      </a>
+                    </dd>
+                  </div>
+               
+
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                    Test type
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['test-type'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"> contact preference</span>
+                      </a>
+                    </dd>
+                  </div>
+
+                  <!--<div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      HPV infection
+
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                       {{ data['infection'] }}
+
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"></span>
+                      </a>
+                    </dd>
+                  </div>-->
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Cytology result
+
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                       {{ data['result'] }}
+
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"></span>
+                      </a>
+                    </dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        Primary source code
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {{ data['primary-source'] }}
+
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"></span>
+                      </a>
+                    </dd>
+                  </div>
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                   HPV tested?
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      {{ data['hpv-tested'] }}
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"> value</span>
+                      </a>
+                    </dd>
+                  </div>
+              
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                        CRM case  number
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                        {{ data['case-number'] }}
+
+                    </dd>
+                    <dd class="nhsuk-summary-list__actions">
+                      <a href="">
+                        Change<span class="nhsuk-u-visually-hidden"></span>
+                      </a>
+                    </dd>
+                  </div>
+
+                </dl>
+
+
+
+
+
+
+
+              </fieldset>
+              <button class="nhsuk-button--ers"> Continue</button>
+            </form>
+
+  </div>
+</div>
+
+{% endblock %}

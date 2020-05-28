@@ -1,0 +1,34 @@
+
+  <form action="prior-notification-8-cease-confirm" method="post">
+
+  {% call fieldset({
+  legend: {
+    "text": "Choose a reason to cease the patient",
+    "classes": "nhsuk-fieldset__legend--l",
+    "isPageHeading": true
+  }
+  }) %}
+
+  {{ radios({
+    "idPrefix": "example-hints",
+    "name": "pnl-defer-reason",
+    "items": [
+      {
+        "value": "No cervix",
+        "text": "No cervix"
+      },
+      {
+        "value": "Due to age",
+        "text": "Due to age"
+      },
+      {
+        "value": "Referred to colposcopy",
+        "text": "Referred to colposcopy"
+      }
+    ]
+}) }}
+{% endcall %}
+
+  <button class="nhsuk-button nhsuk-button--ers">Continue</button>
+
+  </form>

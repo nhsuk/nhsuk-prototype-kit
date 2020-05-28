@@ -1,0 +1,29 @@
+{% extends "layout-v2.html" %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header-2.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-2">
+
+    {{ backLink({
+    "href": "prior-notification-7-defer-reason",
+    "text": "Back to step 2 - Choose a reason to defer the patient"
+    }) }}
+
+    <div class="nhsuk-panel-with-label">
+      {% include '../components/patient-yazmin.html' %}
+
+      <span class="nhsuk-hint">Step 2 of 3</span>
+      {% include '../components/patient-defer-length.html' %}
+    </div>
+
+  </div>
+</div>
+{% endblock %}

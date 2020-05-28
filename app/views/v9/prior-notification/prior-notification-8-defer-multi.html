@@ -1,0 +1,129 @@
+{% extends "layout-v2.html" %}
+
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header-2.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-6">
+  <div class="nhsuk-back-link">
+  <a class="nhsuk-back-link__link" href="prior-notification-8-ceased">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back to Prior Notification List</a>
+</div>
+  <h1 class="nhsuk-heading-l">Patients to be deferred</h1>
+  
+  <div class="nhsuk-table-responsive">
+  <table class="nhsuk-table">
+    <caption class="nhsuk-table__caption">Skin symptoms and possible causes</caption>
+    <thead class="nhsuk-table__head">
+      <tr class="nhsuk-table__row">
+        <th class="nhsuk-table__header" scope="col">NHS No</th>
+        <th class="nhsuk-table__header" scope="col">Name</th>
+        <th class="nhsuk-table__header" scope="col">Age</th>
+        <th class="nhsuk-table__header" scope="col">Recall type</th>
+        <th class="nhsuk-table__header" scope="col">Deferred</th>
+      </tr>
+    </thead>
+    <tbody class="nhsuk-table__body">
+      <tr class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">569 986 5128</td>
+        <td class="nhsuk-table__cell ">Arisha Stephens</td>
+        <td class="nhsuk-table__cell ">50</td>
+        <td class="nhsuk-table__cell ">Routine</td>
+        <td class="nhsuk-table__cell ">Not completed</td>
+      </tr>
+      <tr class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">376 037 0373</td>
+        <td class="nhsuk-table__cell ">Angelica Davey</td>
+        <td class="nhsuk-table__cell ">40</td>
+        <td class="nhsuk-table__cell ">Routine</td>
+        <td class="nhsuk-table__cell ">Not completed</td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <br>
+  <p> Work through each patient and state reason for deferral. </p>
+ 
+  <button type="submit" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2">
+  Start  
+</button> 
+<button type="submit" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2 nhsuk-button nhsuk-button--secondary">
+  Cancel  
+</button>
+
+</div>
+{% endblock %}
+
+
+
+{% block pageScripts %}
+<script>
+  function toggle(btnID, eIDs) {
+    // Feed the list of ids as a selector
+    var theRows = document.querySelectorAll(eIDs);
+    // Get the button that triggered this
+    var theButton = document.getElementById(btnID);
+    // If the button is not expanded...
+    if (theButton.getAttribute("aria-expanded") == "false") {
+      // Loop through the rows and show them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("shown");
+        theRows[i].classList.remove("hidden");
+      }
+      // Now set the button to expanded
+      theButton.setAttribute("aria-expanded", "true");
+      // Otherwise button is not expanded...
+    } else {
+      // Loop through the rows and hide them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("hidden");
+        theRows[i].classList.remove("shown");
+      }
+      // Now set the button to collapsed
+      theButton.setAttribute("aria-expanded", "false");
+    }
+    $('.expanderButton[aria-expanded="true"]').closest('tr').addClass('expandedRow');
+    $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
+
+  }
+</script>
+
+<script>
+  // Script for the view selected button
+
+  /*
+  $(".nhsuk-checkboxes__input").change(function() {
+      if ($("input:checkbox:checked").length > 0)
+      {
+        $(".disable-able").removeClass("nhsuk-button--disabled").removeClass("nhsuk-button--secondary").addClass("nhsuk-button--blue");
+        $("#view-selected-link").attr("href", "./birth-notification");
+
+        if ($("input:checkbox:checked").length > 1)
+        {
+          $("#view-selected-link").attr("href", "./birth-notification-multiple-1-of-3");
+        }
+
+      }
+      else
+      {
+        $(".disable-able ").addClass("nhsuk-button--disabled").addClass("nhsuk-button--secondary").removeClass("nhsuk-button--blue");
+      }
+
+
+  });
+  */
+</script>
+{% endblock %}

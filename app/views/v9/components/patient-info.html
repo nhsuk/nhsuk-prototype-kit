@@ -1,0 +1,74 @@
+ <table id="sortable" class="nhsuk-table-clickable bna-table nhsuk-u-margin-top-0">
+      
+        <tbody class="nhsuk-table__body">
+
+
+        <tr class="nhsuk-table__row expandedRow">
+          
+          <td class="nhsuk-table__cell">
+            Yazmin Noble
+            <span class="nhsuk-table__cell--hint">NHS No: 537 698 6721</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            47
+            <span class="nhsuk-table__cell--hint">{{ "47" | returnPastDate("years") }}</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+            <span class="nhsuk-table__cell--hint">Recall</span>
+          </td>
+         
+          
+        </tr>
+
+        <tr id="detailsRow4" class="detailsRow">
+           <td colspan="3">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-full nhsuk-u-margin-left-3">
+                {{ summaryList({
+    classes: 'nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2',
+    rows: [
+      {
+        key: {
+        text: "Next test due date"
+      },
+      value: {
+      text:  "2" | returnDate("months") + " (in 2 months)"
+      }
+    },
+    {
+      key: {
+        text: "Last test date"
+      },
+      value: {
+        text: "3" | returnPastDate("years") + " (3 years ago)"
+      }
+    },
+    {
+      key: {
+        text: "Last test"
+      },
+      value: {
+        html: "(XOA) No cytology, HPV negative, routine recall"
+      }
+    }
+  ]
+}) }}
+<p class="nhsuk-u-margin-bottom-3"><a href="../patient/patient-summary">View full patient information</a></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        
+
+        
+
+   
+
+       
+            
+        </tbody>   
+      </table>
+
+

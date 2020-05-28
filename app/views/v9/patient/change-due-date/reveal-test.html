@@ -1,0 +1,155 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+  <script type="text/javascript" src="/js/action-menu.js"></script>
+  <script type="text/javascript" src="/js/sort.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "true"
+  })
+}}
+{% endblock %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+  {{ backLink({
+    "href": "../patient-summary",
+    "text": "Go back to patient summary"
+  }) }}
+<p>ajajaj</p>
+
+  <form action="/v8/patient/change-due-date/change" method="post" class="form">
+
+
+    {% from 'radios/macro.njk' import radios %}
+
+{{ radios({
+  "idPrefix": "reveal-test",
+  "name": "reveal-test",
+  "fieldset": {
+    "legend": {
+      "text": "Is this your sample code?",
+      "classes": "nhsuk-fieldset__legend--l",
+      "isPageHeading": true
+    }
+  },
+  "items": [
+    {
+      "value": "yes",
+      "text": "Yes"
+    },
+    {
+      "value": "no",
+      "text": "No"
+    }
+  ]
+}) }}
+
+<!-- end example -->
+
+
+    {% set DeferReasons %}
+    {% include 'radios/macro.njk' %}
+    {{ radios({
+    "idPrefix": "defer",
+    "name": "No",
+
+}}
+  <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
+                          <div class="nhsuk-form-group">
+                            <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
+                              <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+                                Number
+                              </legend>
+
+                              <div class="nhsuk-date-input" id="dob-from">
+
+
+                                <div class="nhsuk-date-input__item">
+                                  <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
+                                      Number
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="year" type="number" pattern="[0-9]*" value="">
+                                  </div>
+                                </div>
+                              </div>
+                              <input type="hidden" id="number" name="number" value="">
+                            </fieldset>
+                          </div>
+
+  </div>
+
+{% endset %}
+
+
+
+
+
+              {{ conditionalRadios({
+          "idPrefix": "gov",
+          "name": "gov",
+          "fieldset": {
+            "legend": {
+              "text": "Choose a reason to change the next test due date",
+              "isPageHeading": true,
+              "classes": "nhsuk-fieldset__legend--m"
+            }
+          },
+          "items": [
+          {
+            "value": "cease",
+            "text": "Cease",
+            "conditional": {
+            html: CeaseReasons
+            }
+          },
+            {
+              "value": "defer",
+              "text": "Defer",
+              "conditional": {
+              html: DeferReasons
+              }
+            }
+
+
+          ]
+        }) }}
+
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label" for="example">
+                  CRM
+                  </label>
+                <input class="nhsuk-input nhsuk-input--width-10" type="number" name="crm" value="crm">
+              </div>
+
+
+
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label" for="example">
+                    Comments
+                  </label>
+                  <span class="nhsuk-hint" id="example-hint">
+                    Do not include clinical information at  this point.
+                  </span>
+                  <textarea class="nhsuk-textarea" id="example" name="details" rows="5" aria-describedby="example-hint" value="details"></textarea>
+                </div>
+                  <button class="nhsuk-button--ers">Continue</button>
+            </form>
+
+            </div>
+{% endblock %}
