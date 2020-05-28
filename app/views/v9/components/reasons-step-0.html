@@ -6,7 +6,7 @@
         text: "Next test due date"
       },
       value: {
-      text:  "2" | returnDate("months") + " (in 2 months)"
+      text: patient.next_test_due_date | returnDateFormat + " " + patient.next_test_due_date | returnTimeDiff
       }
     },
     {
@@ -14,7 +14,7 @@
         text: "Last test date"
       },
       value: {
-        text: "3" | returnPastDate("years") + " (3 years ago)"
+        text:  patient.results.result_date | returnDateFormat + " " + patient.results.result_date | returnTimeDiff
       }
     },
     {
@@ -22,7 +22,7 @@
         text: "Last test"
       },
       value: {
-        html: "(XOA) No cytology, HPV negative, routine recall"
+        html: "(" + patient.results.result_code + patient.results.infection_code + patient.results.action_code + ") " + patient.results.result + ", " + patient.results.infection_result + ", " + patient.results.action
       }
     }
   ]

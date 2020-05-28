@@ -13,17 +13,17 @@
   <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-2">
 
     {{ backLink({
-    "href": "prior-notification-7-defer-reason",
-    "text": "Back to step 2 - Choose a reason to defer the patient"
+    "href": "prior-notification-8",
+    "text": "Back to patients due to be invited"
     }) }}
-
+    
     <div class="nhsuk-panel-with-label">
-      {% include '../components/patient-yazmin.html' %}
-
-      <span class="nhsuk-hint">Step 2 of 3</span>
-      {% include '../components/patient-defer-length.html' %}
+      {% include '../components/pnl-patient.html' %}
+      <span class="nhsuk-hint">Step 1 of 3</span>
+      {% include '../components/patient-cease-reason.html' %}
     </div>
 
   </div>
 </div>
+
 {% endblock %}
