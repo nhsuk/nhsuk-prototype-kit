@@ -59,6 +59,16 @@ router.get("/*/get-prior-notifications-cease-reason*", function (req, res) {
 
     res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-9-cease-reason")
 })
+
+router.get("/*/get-prior-notifications-invite*", function (req, res) {
+    const params = new URLSearchParams(req.query);
+    const nhsNumber = params.get('nhsNumber')
+
+    var pnlPatient = patient.getPatient(nhsNumber);
+    req.session.data["pnl_patient"] = pnlPatient;
+
+    res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-9-invite")
+})
     
 
 
