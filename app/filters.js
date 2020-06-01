@@ -34,6 +34,11 @@ module.exports = function (env) {
       return moment().add(amount, type).format("D-MMM-YYYY");
   }
 
+  filters.returnInviteDate = function (ntdd) {
+    console.log(ntdd)
+    return moment(ntdd).subtract(6, "weeks").format("D-MMM-YYYY");
+  }
+
   filters.returnPastDate = function (amount, type) {
     return moment().subtract(amount, type).format("D-MMM-YYYY");
   }
@@ -72,7 +77,7 @@ module.exports = function (env) {
       if (days < 7) {
         return "(in " + days + " days)"
       }
-      if (weeks < 7) {
+      if (weeks < 11) {
         return "(in " + weeks + " weeks)"
       }
       if (months < 7) {
@@ -87,7 +92,7 @@ module.exports = function (env) {
       if (days < 7) {
         return "(" + days + " days ago)"
       }
-      if (weeks < 7) {
+      if (weeks < 11) {
         return "(" + weeks + " weeks ago)"
       }
       if (months < 7) {
@@ -95,6 +100,10 @@ module.exports = function (env) {
       }
       return "(" + years + " years ago)"
     }
+  }
+
+  filters.removeBrackets = function (text) {
+    return text.replace(/[()]/g, ''); 
   }
 
   filters.returnDateFormat = function (date_of_birth) {
