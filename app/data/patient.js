@@ -2,6 +2,8 @@
 const results = require('./result.js');
 var moment = require('moment');
 
+const moment = require('moment');
+
 const patients = [
     {
         "address": {
@@ -33,7 +35,7 @@ const patients = [
             },
             "value": "NF|9991023867|19581028|1|20190313|L|S564|C86003||||MISS|DEPETRIS|CURRY||52 HOLLY MEWS|TOWNSVILLE||||LS20 8QF"
         },
-        "next_test_due_date": "2020-07-11",
+        "next_test_due_date": moment().add(10, "weeks"),
         "nhs_number": "9991023867",
         "participant_id": "5f03f444-8452-4e4f-8f24-03d30fefed55",
         "pnl": true,
