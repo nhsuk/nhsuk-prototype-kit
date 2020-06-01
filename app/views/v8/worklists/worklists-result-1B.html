@@ -1,0 +1,345 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+  <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manually resolve  address mismatch</h1>
+
+{{ hint({
+   classes: 'nhsuk-hint',
+  text: "Manchester - Mismatch 1 of 34"
+}) }}
+</div>
+</div>
+
+<br>
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-panel-with-label"> 
+      <h3 class="nhsuk-panel-with-label__label">Lab details</h3> 
+          
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Jane Smith
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Date of birth
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      01-01-1970
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Contact information
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      20 Thornhill Street<br>Pudsey<br> LS28 7ED
+    </dd>
+</div>
+     <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      NHS number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      
+    </dd>
+
+  </div>
+
+  </div>
+
+</dl>
+</div>
+
+    <div class="nhsuk-grid-column-one-half">
+         <div class="nhsuk-panel-with-label"> 
+      <h3 class="nhsuk-panel-with-label__label">System details 1</h3>
+          
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Jane <span class="highlight"> Louise </span> Smith
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Date of birth
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      01-01-1970
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Contact information
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      20 Thornhill Street<br>Pudsey<br> LS28 7ED
+    </dd>
+</div>
+     <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      NHS number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      <span class="highlight"> 234 567 8901 </span>
+    </dd>
+
+  </div>
+
+  </div>
+
+</dl>
+
+
+</div>
+</div>
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-half nhsuk-u-padding-top-8" style="height:10px;"> 
+<div class="nhsuk-form-group nhsuk-margin-u-top-4"
+  <fieldset class="nhsuk-fieldset">
+
+
+    <div class="nhsuk-radios">
+
+
+
+
+
+
+    </div>
+  </fieldset>
+
+</div>
+</div>
+
+<div class="nhsuk-grid-column-one-half">
+         <div class="nhsuk-panel-with-label"> 
+      <h3 class="nhsuk-panel-with-label__label">System details 2</h3>
+          
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Jane <span class="highlight"> Louise </span> Smith
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Date of birth
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      01-01-1970
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Contact information
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      20 Thornhill Street<br>Pudsey<br> LS28 7ED
+    </dd>
+</div>
+     <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      NHS number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      <span class="highlight"> 234 567 8901 </span>
+    </dd>
+
+  </div>
+
+  </div>
+
+</dl>
+</div>
+</div>
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-half" style="height:10px;"> 
+
+
+</div>
+
+<div class="nhsuk-grid-column-one-half">
+         <div class="nhsuk-panel-with-label"> 
+      <h3 class="nhsuk-panel-with-label__label">System details 3</h3>
+          
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Jane <span class="highlight"> Louise </span> Smith
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Date of birth
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      01-01-1970
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Contact information
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      20 Thornhill Street<br>Pudsey<br> LS28 7ED
+    </dd>
+</div>
+     <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      NHS number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      <span class="highlight"> 234 567 8901 </span>
+    </dd>
+
+  </div>
+
+  </div>
+
+</dl>
+</div>
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-half"
+<div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      <h1 class=" nhsuk-fieldset__legend nhsuk-label__strong">
+        How do you want to resolve this mismatch?
+      </h1>
+    </legend>
+
+    <div class="nhsuk-radios">
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+          Use lab details
+        </label>
+      </div>
+      <p> or</p>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          Use system details 1
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          Use system details 2
+        </label>
+      </div>
+            <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          Use system details 3
+        </label>
+      </div>
+    </div>
+  </fieldset>
+
+</div>
+ 
+
+
+
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full"
+           <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-8" for="example">
+                  Comments
+                </label>
+                <span class="nhsuk-hint" "highlight" "nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+                  Enter a reason for choosing this option
+                </span>
+                <textarea class="nhsuk-textarea nhsuk-u-width-one-half" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
+                 <span class="nhsuk-hint" "highlight" "nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+                  You have 200 characters remaining 
+                </span>
+              </div>
+            
+    </div>
+    <a href="worklists-result-1B" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and get next</a>
+
+</div>
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {% endblock %}
