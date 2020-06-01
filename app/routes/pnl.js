@@ -69,7 +69,16 @@ router.get("/*/get-prior-notifications-invite*", function (req, res) {
     res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-9-invite")
 })
     
+router.get("/*/prior-notification/prior-notification-9-invited", function (req, res) {
 
+    var nhsnumber = req.session.data['pnl_patient']['nhs_number'];
+
+    patient.deferPatient(req.session.data['pnl_patient']['nhs_number'])
+
+    req.session.data["pnl_update_msg"] = "Patient has been Invited"
+    req.session.data["pnl_update_msg_show"] = 1;
+    res.redirect("/" + getVersion(req) + "/get-prior-notifications")
+})
 
 router.get("/*/prior-notification/prior-notification-9-deferred", function (req, res) {
 
