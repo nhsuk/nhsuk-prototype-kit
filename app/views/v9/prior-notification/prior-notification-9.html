@@ -92,7 +92,7 @@
           </td>
           <td class="nhsuk-table__cell">
             {{ data.pnl_patient.next_test_due_date | returnInviteDate }} 
-             <span class="nhsuk-table__cell--hint">{{ (((data.pnl_patient.next_test_due_date | returnInviteDate) | returnTimeDiff) | removeBrackets) | capitalize }} </span>
+             <span class="nhsuk-table__cell--hint">{{ ((( patient.next_test_due_date | returnInviteDate) | returnTimeDiff) | removeBrackets) | capitalize }} </span>
           </td>
           <td>
             <a href="/v9/get-prior-notifications-invite?nhsNumber={{ patient.nhs_number }}">Invite</a>
