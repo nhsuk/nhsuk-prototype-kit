@@ -472,11 +472,11 @@ module.exports.getPatients = function () {
 
     //console.log(patients)
 
-    patients.sort(function (a, b) {
-       if (a.result.action_code == "A")
+    //patients.sort(function (a, b) {
+       //if (a.result.action_code == "A")
         
-        return moment(a.next_test_due_date) - moment(b.next_test_due_date)
-    });
+    //    return moment(a.next_test_due_date) - moment(b.next_test_due_date)
+    //});
 
     patients.sort(function (a, b) { return moment(a.next_test_due_date) - moment(b.next_test_due_date) });
 
