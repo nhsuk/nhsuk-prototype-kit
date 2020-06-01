@@ -17,7 +17,6 @@ router.get("/*/get-prior-notifications", function (req, res) {
     if ((req.session.data["pnl_update_msg_show"] >= 1) ) {
 
         // the message has been set to show
-
         if (req.session.data["pnl_update_msg_show"] >= 2) {
             // the message has already been shown, remove the message and reset the counter
             req.session.data["pnl_update_msg"] = ""
@@ -30,9 +29,9 @@ router.get("/*/get-prior-notifications", function (req, res) {
 
     console.log(req.session.data["pnl_update_msg_show"])
     
-        req.session.data["patients"] = patient.getPatients();
-        var patients = patient.getPatients();
-        req.session.data["patients"] = patients;
+    req.session.data["patients"] = patient.getPatients();
+    var patients = patient.getPatients();
+    req.session.data["patients"] = patients;
     console.log(patients);
 
     res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-9")
@@ -121,5 +120,14 @@ router.post("/*/prior-notification-8-check", function (req, res) {
         );
     }
 });
+
+router.get("/*/reset-patient-data", function (req, res) {
+    console.log("reset request")
+    //console.log(req)
+    patient.resetPatients(req);
+    req.session.data["pnl_update_msg"] = ""
+    req.session.data["pnl_update_msg_show"] = 0;
+    res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-9")
+})
 
 module.exports = router;
