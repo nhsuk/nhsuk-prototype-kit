@@ -1,0 +1,43 @@
+  <h1 class="nhsuk-fieldset__legend--m">Review patient screening participation</h1>
+
+  {{ summaryList({
+  rows: [
+    {
+      key: {
+        text: "Action"
+      },
+      value: {
+        text: data['pnl-action'] or 'Invite'
+      },
+      actions: {
+        items: [
+          {
+            href: "prior-notification-7-action",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Next test due date"
+      },
+      value: {
+        html: "2" | returnDate("months") + " (in 2 months)"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "",
+            visuallyHiddenText: "contact details"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+
+  <a href="/v9/prior-notification/prior-notification-9-deferred" class="nhsuk-button nhsuk-button--ers">Submit</a>
