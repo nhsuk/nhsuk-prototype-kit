@@ -488,3 +488,18 @@ module.exports.ceasePatient = function (nhsNumber, reason) {
 
     //console.log(patient);
 };
+
+module.exports.resetPatients = function(req) {
+    console.log("--RESETTING PATIENTS--");
+    patients.forEach(function (patient) {
+        patient.pnl = true;
+        patient.pnl_action = ""
+    })
+
+    req.session.data["patients"] = patients;
+    
+
+
+   // console.log(patients);
+
+}
