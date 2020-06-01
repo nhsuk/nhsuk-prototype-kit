@@ -42,7 +42,7 @@
   </div>
 </div>
 
-
+{# {% if data['patients'].length >= 1  %} #}
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     <table id="sortable" class="nhsuk-table-clickable bna-table nhsuk-u-margin-top-0">
@@ -78,33 +78,33 @@
 
           <tr class="nhsuk-table__row">
 
-          <td class="nhsuk-table__cell">
-          {{ patient.first_name | capitalize }} {{ patient.last_name | capitalize }} 
-            <span class="nhsuk-table__cell--hint">NHS No: {{ patient.nhs_number | formatNHSNumber }}</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            {{ patient.date_of_birth | returnAge }}
-            <span class="nhsuk-table__cell--hint">{{ patient.date_of_birth  | returnDateFormat }}</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            {{ patient.results.action }}
-            <span class="nhsuk-table__cell--hint">Recall</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            3
-            <span class="nhsuk-table__cell--hint">Weeks</span>
-          </td>
-          <td>
-            <a href="/v9/get-prior-notifications-invite?nhsNumber={{ patient.nhs_number }}">Invite</a>
+            <td class="nhsuk-table__cell">
+            {{ patient.first_name | capitalize }} {{ patient.last_name | capitalize }} 
+              <span class="nhsuk-table__cell--hint">NHS No: {{ patient.nhs_number | formatNHSNumber }}</span>
+            </td>
+            <td class="nhsuk-table__cell">
+              {{ patient.date_of_birth | returnAge }}
+              <span class="nhsuk-table__cell--hint">{{ patient.date_of_birth  | returnDateFormat }}</span>
+            </td>
+            <td class="nhsuk-table__cell">
+              {{ patient.results.action }}
+              <span class="nhsuk-table__cell--hint">Recall</span>
+            </td>
+            <td class="nhsuk-table__cell">
+              3
+              <span class="nhsuk-table__cell--hint">Weeks</span>
+            </td>
+            <td>
+              <a href="/v9/get-prior-notifications-invite?nhsNumber={{ patient.nhs_number }}">Invite</a>
 
-            <a href="/v9/get-prior-notifications-defer-reason?nhsNumber={{ patient.nhs_number }}">Defer</a>
-            
-            <a href="/v9/get-prior-notifications-cease-reason?nhsNumber={{ patient.nhs_number }}">Cease</a>
-          </td>
-          <td class="nhsuk-table__cell">
-            <button class="expanderButton" type="button" id="{{ buttonId }}" aria-expanded="false" onclick="toggle(this.id,'#{{ detailsId }}');" aria-controls="{{ detailsId }}" aria-label="More details for" aria-labelledby="{{ buttonId }} {{ NameId }}"></button>
-          </td>
-        </tr>
+              <a href="/v9/get-prior-notifications-defer-reason?nhsNumber={{ patient.nhs_number }}">Defer</a>
+
+              <a href="/v9/get-prior-notifications-cease-reason?nhsNumber={{ patient.nhs_number }}">Cease</a>
+            </td>
+            <td class="nhsuk-table__cell">
+              <button class="expanderButton" type="button" id="{{ buttonId }}" aria-expanded="false" onclick="toggle(this.id,'#{{ detailsId }}');" aria-controls="{{ detailsId }}" aria-label="More details for" aria-labelledby="{{ buttonId }} {{ NameId }}"></button>
+            </td>
+          </tr>
 
         <tr id="{{ detailsId }}" class="hidden detailsRow">
           <td colspan="6">
@@ -118,7 +118,7 @@
         {% endfor %}
         </tbody>   
       </table>
-      </div>
+  </div>
   </div>
   <p><a href="/v9/reset-patient-data/">Reset patient data</a></p>
 {% endblock %}
