@@ -55,16 +55,13 @@
   </div>
 
 {% endset %}
-  {{ conditionalRadios({
+  {{ radios({
     "idPrefix": "example-hints",
     "name": "pnl-defer-reason",
     "items": [
       {
         "value": "Pregnancy",
-        "text": "Pregnancy",
-        "conditional": {
-        html: PregnancyQuestion
-        }
+        "text": "Pregnancy"
       },
       {
         "value": "Recent test",
