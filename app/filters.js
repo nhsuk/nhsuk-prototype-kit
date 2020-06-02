@@ -74,7 +74,7 @@ module.exports = function (env) {
 
     // well this turned pretty crap
     if (days > 0) {
-      if (days < 7) {
+      if (days < 14) {
         return "(in " + days + " days)"
       }
       if (weeks < 11) {
@@ -89,7 +89,7 @@ module.exports = function (env) {
       weeks *= -1
       months *= -1
       years *= -1
-      if (days < 7) {
+      if (days < 14) {
         return "(" + days + " days ago)"
       }
       if (weeks < 11) {

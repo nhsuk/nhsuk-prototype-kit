@@ -1,6 +1,9 @@
 var moment = require('moment');
 
-//moment().subtract(3, "month").format("YYYY-MM-DD ")
+// Action Codes
+// A - routine
+// R - Repeat Advised
+// S - Suspended
 
 const results = [
     {
