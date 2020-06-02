@@ -1,6 +1,5 @@
 // the data
 const results = require('./result.js');
-
 const moment = require('moment');
 
 const patients = [
@@ -72,6 +71,7 @@ const patients = [
             "received": "2020-05-28T16:30:20.619",
             "value": "SUN|9100001694|19491223|F|19900530|D1|S4365|L83665|D|20150422||Ms|Cunningham|Judith|May||14 Huntley Place|South Zeal|EXETER|Devon|EX2 5SE"
         },
+        "next_test_due_date": moment().add(10, "weeks"),
         "nhs_number": "9100001694",
         "participant_id": "239ca055-3160-47c2-a8c0-f91558c72e6c",
         "pnl": true,
@@ -108,7 +108,7 @@ const patients = [
             "received": "2020-05-28T16:29:56.482",
             "value": "SOP|9100001384|19520801|F|20090407|D1|D876|L83665|D|20120608|||Jeffery|Pepita|||15 Clovelly Road|Moretonhampstead|EXETER|Devon|EX2 5SE"
         },
-        "next_test_due_date": "2004-05-12",
+        "next_test_due_date": moment().add(10, "weeks"),
         "nhs_number": "9100001384",
         "participant_id": "28f4390a-4a47-4318-8705-8e0ef69f3ffe",
         "pnl": true,
@@ -144,6 +144,7 @@ const patients = [
             "received": "2020-05-28T16:30:24.215",
             "value": "LL|9100002801|19280625|F|20060523|D1|J792|L83665|D|20130617|||Hitchings|Veronica|||47 Ashburnham Road|Livermead|EXETER|Devon|EX2 5SE"
         },
+        "next_test_due_date": moment().add(9, "weeks"),
         "nhs_number": "9100002801",
         "participant_id": "8d0243e8-2ef0-4d4d-be8c-06be86138bfc",
         "pnl": true,
@@ -180,6 +181,7 @@ const patients = [
             "received": "2020-05-28T16:29:08.642",
             "value": "LNJ|9100001899|19540519|F|19920925|D1|PL713B|L83665|R|20180815|DYF|Ms|Evans|Annie|May||4 Alexandra Terrace|Berry Pomeroy|EXETER|Devon|EX2 5SE"
         },
+        "next_test_due_date": moment().add(9, "weeks"),
         "nhs_number": "9100001899",
         "participant_id": "ff2cf9de-98ae-49ae-819d-0018d009f619",
         "pnl": true,
@@ -216,7 +218,7 @@ const patients = [
             "received": "2020-05-28T16:30:01.760",
             "value": "LD|9100001287|19810209|F|20101012|D1|V32|L83665|R|20141223|NI|Miss|Grewcock|Muriel|||69 Speedwell Crescent|Southway|EXETER|Devon|EX2 5SE"
         },
-        "next_test_due_date": "2017-03-09",
+        "next_test_due_date": moment().add(8, "weeks"),
         "nhs_number": "9100001287",
         "participant_id": "1490e402-80a4-4b31-890f-bc28d3850a06",
         "pnl": true,
@@ -253,6 +255,7 @@ const patients = [
             "received": "2020-05-28T16:29:49.831",
             "value": "LL|9100002798|19220611|F|20130919|D1|N1306|L83665|D|20150311|||Parr|Tanya|||17 Belmont Road|Buckland|EXETER|Devon|EX2 5SE"
         },
+        "next_test_due_date": moment().add(10, "weeks"),
         "nhs_number": "9100002798",
         "participant_id": "527087fc-4372-4949-b50e-e1b3b9f3e15a",
         "pnl": true,
@@ -288,7 +291,7 @@ const patients = [
             "received": "2020-05-28T16:30:21.028",
             "value": "LNE|9100001929|19541006|F|20111102|D1|0978|L83665|D|20120711||Ms|Brazier|Brenda|||36 Widewell Road|Whitleigh|EXETER|Devon|EX2 5SE"
         },
-        "next_test_due_date": "2006-08-17",
+        "next_test_due_date": moment().add(7, "weeks"),
         "nhs_number": "9100001929",
         "participant_id": "ffb1226a-1849-46d8-8c1e-f273e8417f27",
         "pnl": true,
@@ -326,7 +329,7 @@ const patients = [
             "received": "2020-05-28T16:29:10.249",
             "value": "LL|9100001740|19510918|F|20010510|D1|W896|L83665|R|20040504|SCT||Golding|Jennifer||Flat 5|Leigh Road|Hawkchurch|EXETER|Devon|EX2 5SE"
         },
-        "next_test_due_date": "2006-03-12",
+        "next_test_due_date": moment().add(8, "weeks"),
         "nhs_number": "9100001740",
         "participant_id": "b5a5bf31-5484-4ce2-8ad5-f1c1e0ac5086",
         "pnl": true,
@@ -469,7 +472,17 @@ module.exports.getPatients = function () {
         patients[i]['results'] = allResults.find((result) => result.nhs_number == patients[i]['nhs_number']); // results.getResults()[i];
     }
 
+    //patients.sort(function(a, b)
+
     //console.log(patients)
+
+    //patients.sort(function (a, b) {
+       //if (a.result.action_code == "A")
+        
+    //    return moment(a.next_test_due_date) - moment(b.next_test_due_date)
+    //});
+
+    patients.sort(function (a, b) { return moment(a.next_test_due_date) - moment(b.next_test_due_date) });
 
     return patients.filter(patient => patient.pnl == true);
 };
