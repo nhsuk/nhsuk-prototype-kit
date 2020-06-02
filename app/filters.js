@@ -80,7 +80,7 @@ module.exports = function (env) {
       if (weeks < 11) {
         return "(in " + weeks + " weeks)"
       }
-      if (months < 7) {
+      if (months < 23) {
         return "(in " + months + " months)"
       }
       return "(in " + years + " years)"
@@ -95,7 +95,7 @@ module.exports = function (env) {
       if (weeks < 11) {
         return "(" + weeks + " weeks ago)"
       }
-      if (months < 7) {
+      if (months < 23) {
         return "(" + months + " months ago)"
       }
       return "(" + years + " years ago)"
