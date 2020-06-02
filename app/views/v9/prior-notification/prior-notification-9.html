@@ -91,7 +91,7 @@
             <span class="nhsuk-table__cell--hint">Recall</span>
           </td>
           <td class="nhsuk-table__cell">
-            {{ data.pnl_patient.next_test_due_date | returnInviteDate }} 
+            {{ patient.next_test_due_date | returnInviteDate }} 
              <span class="nhsuk-table__cell--hint">{{ ((( patient.next_test_due_date | returnInviteDate) | returnTimeDiff) | removeBrackets) | capitalize }} </span>
           </td>
           <td>
