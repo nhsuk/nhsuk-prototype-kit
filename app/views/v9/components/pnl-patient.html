@@ -31,7 +31,7 @@
         text: "Last test"
       },
       value: {
-        html: "(" + data.pnl_patient.results.result_code + data.pnl_patient.results.infection_code + data.pnl_patient.results.action_code + ") " + data.pnl_patient.results.result + ", " + data.pnl_patient.results.infection_result + ", " + data.pnl_patient.results.action
+        html: "(" + (data.pnl_patient.results.result_code or "-" ) + (data.pnl_patient.results.infection_code or "-") + (data.pnl_patient.results.action_code or "-") + ") " + (data.pnl_patient.results.result or "-") + ", " + (data.pnl_patient.results.infection_result or "-") + ", " + (data.pnl_patient.results.action or "-")
       }
     }
   ]
