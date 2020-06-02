@@ -22,7 +22,7 @@
 
 {{ hint({
    classes: 'nhsuk-hint',
-  text: "Manchester - Mismatch 3 of 34"
+  text: "Manchester - Manual match 3 of 34"
 }) }}
 </div>
 </div>
@@ -84,17 +84,26 @@
 <div class="nhsuk-grid-row ">
     <div class="nhsuk-grid-column-one-half">
      <div class="nhsuk-panel-with-label nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-4">
-        <h2 class="nhsuk-panel-with-label__label">System details
+        <h2 class="nhsuk-panel-with-label__label">System details: 2 of 3
   <span style= color:white; </span></h3>
           
 <dl class="nhsuk-summary-list nhsuk-u-padding-top-0 nhsuk-summary-list--no-border">
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Match
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      91%
+    </dd>
 
+  </div>
  <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">
       Name
     </dt>
     <dd class="nhsuk-summary-list__value">
-      Zoe <span class="highlight"> Alice </span> Ross
+      Zoe <span class="highlight"> Smith </span> 
     </dd>
 
   </div>
@@ -114,7 +123,7 @@
       Contact information
     </dt>
     <dd class="nhsuk-summary-list__value">
-            89 Glodd<span class="highlight">a</span>eth Street <br>Manchester<br> MC4 8JR
+            89 <span class="highlight">Cookridge</span> Street <br>Manchester<br> MC4 8JR
 
     </dd>
 </div>
@@ -130,11 +139,12 @@
   </div>
 
   </div>
-
+<a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4" href="B">Next result</a>
 </dl>
 </div>
 </div>
 </div>
+
 
 
 {{ radios({
@@ -173,6 +183,7 @@
                   You have 200 characters remaining 
                 </span>
               </div>
+
 
     <a href="worklists-result-1B-right-aligned" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and get next</a>
 

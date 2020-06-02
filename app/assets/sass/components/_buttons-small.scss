@@ -48,3 +48,11 @@ cursor: pointer;}
   overflow: hidden;
   display: inline-block;
 }
+    .nhsuk-blue {
+      @extend .nhsuk-button--ers;
+      background-color: #005eb8;
+      box-shadow: 0 4px 0 #232e35; }
+      .nhsuk-button--ers_secondary:hover, .nhsuk-button--ers_secondary:focus {
+        background-color: #384854; }
+      .nhsuk-button--ers_secondary.nhsuk-button--ers_disabled {
+        background-color: #425563; }

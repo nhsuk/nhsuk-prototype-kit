@@ -383,7 +383,7 @@
 /* ---------------------------- */
 
 /* ---------------------------- */
-/* -- FOCUS STATE  --- */
+/* -- MANAGING RESULTS  --- */
 /* ---------------------------- */
 
 .highlight {
@@ -424,8 +424,19 @@
         .nhsuk-panel-with-label {
           border: 1px solid #212b32;
           page-break-inside: avoid; } }
-/* ---------------------------- */
-/* -- FOCUS STATE  --- */
-/* ---------------------------- */
 
+          .nhsuk-blue {
+            @extend .nhsuk-button--ers;
+            background-color: #005eb8;
+            box-shadow: 0 4px 0 #003087;
+            float: right }
+            .nhsuk-button--ers_secondary:hover, .nhsuk-button--ers_secondary:focus {
+              background-color: #0072CE; }
+            .nhsuk-button--ers_secondary.nhsuk-button--ers_disabled {
+              background-color: #003087; }
+            
+          
+          
+/* ----MANAGING RESULTS  --- */
+/* ---------------------------- */
 

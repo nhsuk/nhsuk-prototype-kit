@@ -1,0 +1,252 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+  <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manually resolve  address mismatch</h1>
+
+{{ hint({
+   classes: 'nhsuk-hint',
+  text: "Manchester - Manual match 3 of 34"
+}) }}
+</div>
+</div>
+
+<div class="nhsuk-grid-row ">
+    <div class="nhsuk-grid-column-one-half">
+     <div class="nhsuk-panel-with-label nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-4">
+        <h2 class="nhsuk-panel-with-label__label">Lab details
+  <span style= color:white; </span></h3>
+          
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-0 nhsuk-summary-list--no-border">
+
+ <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Zoe Ross
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Date of birth
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      31-08-1971
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Contact information
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+            89 Gloddeth Street <br>Manchester<br> MC4 8JR
+
+    </dd>
+</div>
+     <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      NHS number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      
+    </dd>
+
+  </div>
+
+  </div>
+
+</dl>
+</div>
+
+
+
+<div class="nhsuk-grid-row ">
+    <div class="nhsuk-grid-column-one-half">
+     <div class="nhsuk-panel-with-label nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-4">
+        <h2 class="nhsuk-panel-with-label__label">System details: 1 of 3
+  <span style= color:white; </span></h3>
+          
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-0 nhsuk-summary-list--no-border">
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Match
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      91%
+    </dd>
+
+  </div>
+ <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Zoe <span class="highlight"> Alice </span> Ross
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Date of birth
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      31-08-1971
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Contact information
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+            89 Glodd<span class="highlight">a</span>eth Street <br>Manchester<br> MC4 8JR
+
+    </dd>
+</div>
+     <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      NHS number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      <span class="highlight"> 345 678 9012 </span>
+    </dd>
+
+
+  </div>
+
+  </div>
+<a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-blue nhsuk-u-margin-bottom-4" href="B2">Next result</a>
+</dl>
+</div>
+</div>
+</div>
+
+
+
+<div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      <h1 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-3">
+        Do you want to resolve this match?
+      </h1>
+    </legend>
+
+    <span class="nhsuk-hint" id="contact-hint">
+      Select one option
+    </span>
+
+    <div class="nhsuk-radios nhsuk-radios--conditional">
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="contact-1" name="contact" type="radio" value="email" aria-controls="conditional-contact-1" aria-expanded="false">
+        <label class="nhsuk-label nhsuk-radios__label" for="contact-1">
+          Yes
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
+
+    <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+          Use lab details
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          Use system details
+        </label>
+      </div>
+
+      </div>
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" aria-controls="conditional-contact-2" aria-expanded="false">
+        <label class="nhsuk-label nhsuk-radios__label" for="contact-2">
+          No
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-2">
+
+
+    <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+          Send back to labs
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          Send to GP
+        </label>
+      </div>
+
+      </div>
+
+
+    </div>
+  </fieldset>
+
+</div>
+
+
+
+           <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-3" for="example">
+                  Comments
+                </label>
+                <span class="nhsuk-hint" "highlight" "nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+                  Enter a reason for choosing this option
+                </span>
+                <textarea class="nhsuk-textarea nhsuk-u-width-one-half" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
+                 <span class="nhsuk-hint" "highlight" "nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+                  You have 200 characters remaining 
+                </span>
+              </div>
+
+
+    <a href="worklists-result-1B-right-aligned" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and get next</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {% endblock %}
