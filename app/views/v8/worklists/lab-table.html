@@ -22,7 +22,7 @@
 
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-full">
-  <h1 class="nhsuk-heading-l">Results worklist</h1>
+  <h1 class="nhsuk-heading-l">Manchester</h1>
  <p> The following results show all the mismatches between the lab and system patient details.
  <br>
   Please compare the patient details provided by the labs against those held on the system.</p>
@@ -34,16 +34,13 @@
                     <thead class="nhsuk-table__head">
                       <tr class="nhsuk-table__row">
                         <th class="nhsuk-table__header" aria-sort="none" scope="col">
-                          <button onclick="sortTable()" type="button" data-index="0">Labs</button>
+                          <button onclick="sortTable()" type="button" data-index="0">Transfer no</button>
                         </th>
                         <th class="nhsuk-table__header" aria-sort="none" scope="col">
-                          <button onclick="sortTable()" type="button" data-index="0">Date</button>
+                          <button onclick="sortTable()" type="button" data-index="0">Transfer date</button>
                         </th>
                         <th class="nhsuk-table__header" aria-sort="none" scope="col">
-                          <button onclick="sortTable()" type="button" data-index="0">No of Results</button>
-                        </th>
-                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
-                          <button onclick="sortTable()" type="button" data-index="0">Mismatched results</button>
+                          <button onclick="sortTable()" type="button" data-index="0">Manual matches</button>
                         </th>
                         <th class="nhsuk-table__header" aria-sort="none" scope="col">
                         <button onclick="sortTable()" type="button" data-index="0">Status</button>
@@ -57,130 +54,136 @@
 
                       <tr class="nhsuk-table__row">
                         <td class="nhsuk-table__cell">
-                          <strong><a href="A">Gateshead</strong></a>
+                          03368
                         </td>
                         <td class="nhsuk-table__cell">
-                          06 02 2020
+                          06-02-2020
                         </td>
                         <td class="nhsuk-table__cell">
-                          991
+                          91
                         </td>
-                        <td class="nhsuk-table__cell">
-                          2
-                        </td>
-
                         <td class="nhsuk-table__cell multiple-choice--hod">
                           <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
                         </td>
+                          <td class="nhsuk-table__cell"> 
+                       <a class="nhsuk-button--ers nhsuk-button--secondary" href="A">Start matching</a>
+                        </td>
                       </tr>
+
                                     <tr class="nhsuk-table__row">
                                     <td class="nhsuk-table__cell">
-                                      <strong><a href="B">Manchester</strong></a>
+                                      03369
                                     </td>
                                     <td class="nhsuk-table__cell">
-                                      06 02 2020
+                                      06-02-2020
                                     </td>
                                     <td class="nhsuk-table__cell">
-                                      678
+                                      78
                                     </td>
-                                    <td class="nhsuk-table__cell">
-                                      54
-                                    </td>
-
                                     <td class="nhsuk-table__cell multiple-choice--hod">
                                       <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
                                     </td>
+                                    <td class="nhsuk-table__cell"> 
+                                    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>
+                                     </td>
                                   </tr>
+                                  
+                      
+                             
                                               <tr class="nhsuk-table__row">
                                                 <td class="nhsuk-table__cell">
-                                                  <strong><a href="">Derby</strong></a>
+                                                  03370
                                                 </td>
                                                 <td class="nhsuk-table__cell">
-                                                  06 02 2020
+                                                  06-02-2020
                                                 </td>
                                                 <td class="nhsuk-table__cell">
-                                                  789
+                                                  89
                                                 </td>
-                                                <td class="nhsuk-table__cell">
-                                                  17
-                                                </td>
+                                      
                                                 <td class="nhsuk-table__cell multiple-choice--hod">
                                                   <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
                                                 </td>
+                                                <td class="nhsuk-table__cell"> 
+                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>
+                                                 </td>
                                               </tr>
+                                            
                                                           <tr class="nhsuk-table__row">
                                                       <td class="nhsuk-table__cell">
-                                                        <strong><a href="">Bristol</strong></a>
+                                                        03371
                                                       </td>
                                                       <td class="nhsuk-table__cell">
-                                                        06 02 2020
+                                                        06-02-2020
                                                       </td>
                                                       <td class="nhsuk-table__cell">
-                                                        652
+                                                        52
                                                       </td>
-                                                      <td class="nhsuk-table__cell">
-                                                        38
-                                                      </td>
-                                                     
+                                                
                                                       <td class="nhsuk-table__cell multiple-choice--hod">
-                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
+                                                        <span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">with lab</span>
                                                       </td>
+                                                      <td class="nhsuk-table__cell"> 
+                                                <!-- <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>-->
+                                                 </td>
                                                     </tr>
 
                                                              <tr class="nhsuk-table__row">
                                                       <td class="nhsuk-table__cell">
-                                                        <strong><a href="">Berkshire</strong></a>
+                                                        03372
                                                       </td>
                                                       <td class="nhsuk-table__cell">
-                                                        06 02 2020
+                                                        06-02-2020
                                                       </td>
                                                       <td class="nhsuk-table__cell">
-                                                        431
+                                                        31
                                                       </td>
-                                                      <td class="nhsuk-table__cell">
-                                                        29
-                                                      </td>
+                                                   
                                                      
                                                       <td class="nhsuk-table__cell multiple-choice--hod">
                                                         <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
                                                       </td>
+                                                      <td class="nhsuk-table__cell"> 
+                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="B">Start matching</a>
+                                                 </td>
                                                     </tr>
                                                                       <tr class="nhsuk-table__row">
                                                       <td class="nhsuk-table__cell">
-                                                        <strong><a href="">Norwich</strong></a>
+                                                        03373
                                                       </td>
                                                       <td class="nhsuk-table__cell">
-                                                        06 02 2020
+                                                        06-02-2020
                                                       </td>
                                                       <td class="nhsuk-table__cell">
-                                                        753
+                                                        53
                                                       </td>
-                                                      <td class="nhsuk-table__cell">
-                                                        56
-                                                      </td>
+                                                 
                                                      
                                                       <td class="nhsuk-table__cell multiple-choice--hod">
-                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
+                                                        <span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">with lab</span>
                                                       </td>
+                                                      <td class="nhsuk-table__cell"> 
+                                                 </td>
                                                     </tr>
 
                                                       <tr class="nhsuk-table__row">
                                                       <td class="nhsuk-table__cell">
-                                                        <strong><a href="">Wolverhampton</strong></a>
+                                                        03374
                                                       </td>
                                                       <td class="nhsuk-table__cell">
-                                                        06 02 2020
+                                                        06-02-2020
                                                       </td>
                                                       <td class="nhsuk-table__cell">
-                                                        372
+                                                        72
                                                       </td>
-                                                      <td class="nhsuk-table__cell">
-                                                        37
-                                                      </td>
+                                                  
                                                      
                                                       <td class="nhsuk-table__cell multiple-choice--hod">
                                                         <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
                                                       </td>
+                                                      <td class="nhsuk-table__cell"> 
+                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>
+                                                 </td>
                                                     </tr>
                                                        </tbody>   
                     </table>
