@@ -406,20 +406,34 @@
       padding: 24px;
       background-color: #ffffff;
       color: #212b32;
-      padding-top: 0 !important; }
-      @media (min-width: 40.0625em) {
-        .nhsuk-panel-with-label {
-          margin-bottom: 48px; } }
-      @media (min-width: 40.0625em) {
-        .nhsuk-panel-with-label {
-          margin-top: 0px; } }
-      @media (min-width: 40.0625em) {
-        .nhsuk-panel-with-label {
-          padding: 32px; } }
-      @media print {
-        .nhsuk-panel-with-label {
-          border: 1px solid #212b32;
-          page-break-inside: avoid; } }
+      padding-top: 0 !important;
+    }
+
+    /* sorry, had to comment out as it was overriding the default settings for the component */
+    /* might be best to add a new class on top of the one below class="nhsuk-panel-with-label nhsuk-panel-with-label--modifier"
+    /*
+    @media (min-width: 40.0625em) {
+      .nhsuk-panel-with-label {
+        margin-bottom: 48px; 
+      } 
+    }
+    @media (min-width: 40.0625em) {
+      .nhsuk-panel-with-label {
+        margin-top: 0px; 
+      }
+    }
+    @media (min-width: 40.0625em) {
+      .nhsuk-panel-with-label {
+        padding: 32px;
+      }
+    }
+    @media print {
+      .nhsuk-panel-with-label {
+        border: 1px solid #212b32;
+        page-break-inside: avoid; 
+      } 
+    }
+    */
 
           .nhsuk-blue {
             @extend .nhsuk-button--ers;
