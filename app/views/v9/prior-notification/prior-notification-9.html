@@ -41,6 +41,19 @@
   </div>
 </div>
 
+{% if data['patients'] == null %} 
+<meta http-equiv="refresh" content="2" />
+  <div class="styleguide-example">
+    <div class="nhsuk-loader__container">
+      <h1 class="nhsuk-heading-l">Loading patients</h1>
+    </div>
+    <div class="nhsuk-loader__container">
+      <div class="nhsuk-loader">
+      </div>
+    </div>
+  </div>
+{% else %}
+
 {% if data['patients'].length >= 1 %} 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
@@ -127,7 +140,11 @@
       "classes" : "nhsuk-u-margin-top-0"
     }) }}
 {% endif %}
+
 <p><a href="/v9/reset-patient-data/">Reset patient data</a></p>
+
+{% endif %}
+
 {% endblock %}
 
 
