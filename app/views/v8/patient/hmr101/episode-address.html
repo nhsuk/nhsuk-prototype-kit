@@ -1,6 +1,13 @@
 {% extends "layout-v2-patient.html" %}
 
 {% block pageScripts %}
+function validateForm() {
+  var x = document.forms["myForm"]["fname"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+}
 <script type="text/javascript" src="/js/search.js"></script>
 <script type="text/javascript" src="/js/auto.js"></script>
 {% endblock %}
@@ -26,6 +33,10 @@ NHS Cervical Screening
 {% endblock %}
 
 {% block content %}
+{{ backLink({
+  "href": "confirm-address",
+  "text": "Go back to correct address"
+}) }}
 
 
   {% call fieldset({
@@ -45,7 +56,7 @@ NHS Cervical Screening
     </div>
   </div>
 </div>
-  
+
     {{ input({
       label: {
         "text": "Building and street"
@@ -90,15 +101,15 @@ NHS Cervical Screening
 
   {% endcall %}
         <div class="nhsuk-form-group">
-        
+
         <a class="nhsuk-button--ers nhsuk-u-margin-top-4" href="step-1">Continue</a>
 
-     </div> 
-        
+     </div>
 
-         
-          
-          
+
+
+
+
         </div>
         </div>
         </div>
