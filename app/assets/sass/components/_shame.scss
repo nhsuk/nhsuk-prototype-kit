@@ -383,15 +383,60 @@
 /* ---------------------------- */
 
 /* ---------------------------- */
-/* -- FOCUS STATE  --- */
+/* -- MANAGING RESULTS  --- */
 /* ---------------------------- */
 
-.highlight
-{background-color: #FFF2D3;
- border-bottom:3px solid #FFBF47}
+.highlight {
+ background-color: #FFF2D3;
+ border-bottom:3px solid #FFBF47;
+}
 
-/* ---------------------------- */
-/* -- FOCUS STATE  --- */
-/* ---------------------------- */
+.nhsuk-button--ers_reject {
+  @extend .nhsuk-button--ers;
+  background-color: #d5281b;
+  box-shadow: 0 4px 0 #7C2855; }
+  .nhsuk-button--ers_secondary:hover, .nhsuk-button--ers_secondary:focus {
+    background-color: #7C2855; }
+  .nhsuk-button--ers_secondary.nhsuk-button--ers_disabled {
+    background-color: #d5281b; }
 
+    .nhsuk-panel-with-label-no-margin {
+      margin-bottom: 40px;
+      margin-top: 0px;
+      padding: 24px;
+      background-color: #ffffff;
+      color: #212b32;
+      padding-top: 0 !important; }
+      .nhsuk-panel-with-label > *:first-child {
+        margin-top: 0; }
+      .nhsuk-panel-with-label > *:last-child {
+        margin-bottom: 0; }
+      @media (min-width: 40.0625em) {
+        .nhsuk-panel-with-label {
+          margin-bottom: 48px; } }
+      @media (min-width: 40.0625em) {
+        .nhsuk-panel-with-label {
+          margin-top: 0px; } }
+      @media (min-width: 40.0625em) {
+        .nhsuk-panel-with-label {
+          padding: 32px; } }
+      @media print {
+        .nhsuk-panel-with-label {
+          border: 1px solid #212b32;
+          page-break-inside: avoid; } }
+
+          .nhsuk-blue {
+            @extend .nhsuk-button--ers;
+            background-color: #005eb8;
+            box-shadow: 0 4px 0 #003087;
+            float: right }
+            .nhsuk-button--ers_secondary:hover, .nhsuk-button--ers_secondary:focus {
+              background-color: #0072CE; }
+            .nhsuk-button--ers_secondary.nhsuk-button--ers_disabled {
+              background-color: #003087; }
+            
+          
+          
+/* ----MANAGING RESULTS  --- */
+/* ---------------------------- */
 

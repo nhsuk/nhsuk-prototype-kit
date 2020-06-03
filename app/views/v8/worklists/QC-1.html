@@ -15,10 +15,11 @@
 
 {% block content %}
 
+
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
-  <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manually resolve  address mismatch</h1>
+  <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review match</h1>
 
 {{ hint({
    classes: 'nhsuk-hint',
@@ -28,9 +29,9 @@
 </div>
 
 <div class="nhsuk-grid-row ">
-    <div class="nhsuk-grid-column-one-half">
-      <div class="nhsuk-panel-with-label ">
-      <h2 class="nhsuk-label__label nhsuk-u-padding-top-3">Lab details
+    <div class="nhsuk-grid-column-one-half nhsuk-u-padding-top-6">
+   <div class="nhsuk-panel-with-label"> 
+      <h3 class="nhsuk-panel-with-label__label">System details</h3> 
           
 <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
@@ -78,11 +79,10 @@
 </div>
 
 
-
-<div class="nhsuk-grid-row ">
-    <div class="nhsuk-grid-column-one-half">
-      <div class="nhsuk-panel-with-label ">
-      <h2 class="nhsuk-label__label nhsuk-u-padding-top-3">System details
+<div class="nhsuk-grid-row solid">
+     <div class="nhsuk-grid-column-one-half nhsuk-u-padding-top-6">
+   <div class="nhsuk-panel-with-label"> 
+      <h3 class="nhsuk-panel-with-label__label">System details</h3> 
           
 <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
@@ -132,28 +132,37 @@
 </div>
 
 
-{{ radios({
-  "idPrefix": "example",
-  "name": "example",
-  "classes": "nhsuk-radios- -u-paddingnhsuk-top-3",
-  "fieldset": {
-    "legend": {
-      "text": "How do you want to resolve this mismatch?",
-      "classes": "nhsuk-fieldset__legend nhsuk-label__strong nhsuk-u-padding-top-3",
-      "isPageHeading": true
-    }
-  },
-  "items": [
-    {
-      "value": "Lab",
-      "text": "Use lab details"
-    },
-    {
-      "value": "System",
-      "text": "Use system details"
-    }
-  ]
-}) }}
+
+
+<div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend nhsuk-label__strong nhsuk-u-padding-top-3">
+      <h1 class="nhsuk-fieldset__heading">
+        How do you want to resolve this mismatch?
+      </h1>
+    </legend>
+
+    <div class="nhsuk-radios">
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+          Use lab details
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input checked" id="example-2" name="example" type="radio" checked="checked" value="no">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          Use system details
+        </label>
+      </div>
+
+    </div>
+  </fieldset>
+
+</div>
 
 
            <div class="nhsuk-form-group">
@@ -163,13 +172,23 @@
                 <span class="nhsuk-hint" "highlight" "nhsuk-u-padding-top-3" id="example-hint" for="one-half">
                   Enter a reason for choosing this option
                 </span>
-                <textarea class="nhsuk-textarea nhsuk-u-width-one-half" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
+                <textarea class="nhsuk-textarea nhsuk-u-width-one-half" id="example" name="example" rows="5" aria-describedby="example-hint"> All match apart from NHS no and middle name which are missing from the lab results.</textarea>
                  <span class="nhsuk-hint" "highlight" "nhsuk-u-padding-top-3" id="example-hint" for="one-half">
                   You have 200 characters remaining 
                 </span>
               </div>
 
-    <a href="worklists-result-address-A2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and get next</a>
+
+
+ <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-one-quarter">
+        <a href="QC-worklists-result-3" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Accept match</a>
+      </div>
+      <div class="nhsuk-grid-column-one-quarter">
+      <a class=“nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4” href=“add-test-result/add-result”>Send back to lab</a>
+      </div>
+    </div>
+  </div>
 
 
 

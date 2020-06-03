@@ -23,9 +23,9 @@
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-full">
   <h1 class="nhsuk-heading-l">Results worklist</h1>
- <p> The following results show all the mismatches between the lab and system patient details.
+ <p> The screening officer has resolved these patient detail mistmatches. 
  <br>
-  Please compare the patient details provided by the labs against those held on the system.</p>
+  Please review the matches to accept or reject them.</p>
 
    <div class="nhsuk-table-responsive">
                   <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable">
@@ -40,14 +40,18 @@
                           <button onclick="sortTable()" type="button" data-index="0">Date</button>
                         </th>
                         <th class="nhsuk-table__header" aria-sort="none" scope="col">
-                          <button onclick="sortTable()" type="button" data-index="0">No of Results</button>
+                          <button onclick="sortTable()" type="button" data-index="0">No of results</button>
                         </th>
                         <th class="nhsuk-table__header" aria-sort="none" scope="col">
                           <button onclick="sortTable()" type="button" data-index="0">Mismatched results</button>
                         </th>
                         <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                        <button onclick="sortTable()" type="button" data-index="0">Screening officer</button>
+                        </th>
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
                         <button onclick="sortTable()" type="button" data-index="0">Status</button>
                         </th>
+
                         <th class="nhsuk-table_header"></th>
                        
                       </tr>
@@ -57,7 +61,7 @@
 
                       <tr class="nhsuk-table__row">
                         <td class="nhsuk-table__cell">
-                          <strong><a href="A">Gateshead</strong></a>
+                          <strong><a href="worklists-result-address">Gateshead</strong></a>
                         </td>
                         <td class="nhsuk-table__cell">
                           06 02 2020
@@ -68,14 +72,17 @@
                         <td class="nhsuk-table__cell">
                           2
                         </td>
+                                                <td class="nhsuk-table__cell">
+                          2314
+                        </td>
 
                         <td class="nhsuk-table__cell multiple-choice--hod">
-                          <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
+                                      <span class="nhsuk-tag nhsuk-tag--yellow nhsuk-u-margin-bottom-2">Ready for review</span>
                         </td>
                       </tr>
                                     <tr class="nhsuk-table__row">
                                     <td class="nhsuk-table__cell">
-                                      <strong><a href="B">Manchester</strong></a>
+                                      <strong><a href="QC-worklists-result-1">Manchester</strong></a>
                                     </td>
                                     <td class="nhsuk-table__cell">
                                       06 02 2020
@@ -86,9 +93,12 @@
                                     <td class="nhsuk-table__cell">
                                       54
                                     </td>
+                                     <td class="nhsuk-table__cell">
+                                     4231
+                                        </td>
 
                                     <td class="nhsuk-table__cell multiple-choice--hod">
-                                      <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
+                                       <span class="nhsuk-tag nhsuk-tag--yellow nhsuk-u-margin-bottom-2">Ready for review</span>
                                     </td>
                                   </tr>
                                               <tr class="nhsuk-table__row">
@@ -104,8 +114,11 @@
                                                 <td class="nhsuk-table__cell">
                                                   17
                                                 </td>
+                                                 <td class="nhsuk-table__cell">
+                                                 1234
+                                                </td>
                                                 <td class="nhsuk-table__cell multiple-choice--hod">
-                                                  <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
+                                                    <span class="nhsuk-tag nhsuk-tag--yellow nhsuk-u-margin-bottom-2">Ready for review</span>
                                                 </td>
                                               </tr>
                                                           <tr class="nhsuk-table__row">
@@ -121,9 +134,11 @@
                                                       <td class="nhsuk-table__cell">
                                                         38
                                                       </td>
-                                                     
+                                                      <td class="nhsuk-table__cell">
+                                                         1230
+                                                            </td>
                                                       <td class="nhsuk-table__cell multiple-choice--hod">
-                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
+                                                        <span class="nhsuk-tag nhsuk-tag--yellow nhsuk-u-margin-bottom-2">Ready for review</span>
                                                       </td>
                                                     </tr>
 
@@ -140,9 +155,12 @@
                                                       <td class="nhsuk-table__cell">
                                                         29
                                                       </td>
+                                                       <td class="nhsuk-table__cell">
+                                                         2301
+                                                            </td>
                                                      
                                                       <td class="nhsuk-table__cell multiple-choice--hod">
-                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
+                                                        <span class="nhsuk-tag nhsuk-tag--yellow nhsuk-u-margin-bottom-2">Ready for review</span>
                                                       </td>
                                                     </tr>
                                                                       <tr class="nhsuk-table__row">
@@ -158,9 +176,11 @@
                                                       <td class="nhsuk-table__cell">
                                                         56
                                                       </td>
-                                                     
+                                                      <td class="nhsuk-table__cell">
+                                                         1230
+                                                            </td>
                                                       <td class="nhsuk-table__cell multiple-choice--hod">
-                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
+                                                        <span class="nhsuk-tag nhsuk-tag--yellow nhsuk-u-margin-bottom-2">Ready for review</span>
                                                       </td>
                                                     </tr>
 
@@ -177,9 +197,11 @@
                                                       <td class="nhsuk-table__cell">
                                                         37
                                                       </td>
-                                                     
+                                                      <td class="nhsuk-table__cell">
+                                                         0123
+                                                            </td>
                                                       <td class="nhsuk-table__cell multiple-choice--hod">
-                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
+                                                    <span class="nhsuk-tag nhsuk-tag--yellow nhsuk-u-margin-bottom-2">Ready for review</span>
                                                       </td>
                                                     </tr>
                                                        </tbody>   

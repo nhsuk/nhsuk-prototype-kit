@@ -18,29 +18,28 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
-  <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manually resolve  address mismatch</h1>
+  <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review match</h1>
 
 {{ hint({
    classes: 'nhsuk-hint',
-  text: "Match 1 of 10"
+  text: "Manchester - Mismatch 2 of 34"
 }) }}
 </div>
 </div>
 
 <div class="nhsuk-grid-row ">
-    <div class="nhsuk-grid-column-one-half">
-     <div class="nhsuk-panel-with-label nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-4">
-        <h2 class="nhsuk-panel-with-label__label">Lab details
-  <span style= color:white; </span></h3>
+    <div class="nhsuk-grid-column-one-half nhsuk-u-padding-top-6">
+   <div class="nhsuk-panel-with-label"> 
+      <h3 class="nhsuk-panel-with-label__label">System details</h3> 
           
-<dl class="nhsuk-summary-list nhsuk-u-padding-top-0 nhsuk-summary-list--no-border">
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">
       Name
     </dt>
     <dd class="nhsuk-summary-list__value">
-      Jane Smith
+      Sally Johnson
     </dd>
 
   </div>
@@ -50,7 +49,7 @@
       Date of birth
     </dt>
     <dd class="nhsuk-summary-list__value">
-      01-01-1970
+      02-01-1990
     </dd>
 
   </div>
@@ -60,7 +59,7 @@
       Contact information
     </dt>
     <dd class="nhsuk-summary-list__value">
-      20 Thornhill Street<br>Pudsey<br> LS28 7ED
+      53 Yew Tree Road <br>Darlington<br> DL1 2DA
     </dd>
 </div>
      <div class="nhsuk-summary-list__row">
@@ -81,19 +80,18 @@
 
 
 <div class="nhsuk-grid-row ">
-    <div class="nhsuk-grid-column-one-half">
-     <div class="nhsuk-panel-with-label nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-4">
-        <h2 class="nhsuk-panel-with-label__label">System details
-  <span style= color:white; </span></h3>
+    <div class="nhsuk-grid-column-one-half nhsuk-u-padding-top-6">
+   <div class="nhsuk-panel-with-label"> 
+      <h3 class="nhsuk-panel-with-label__label">System details</h3> 
           
-<dl class="nhsuk-summary-list nhsuk-u-padding-top-0 nhsuk-summary-list--no-border">
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
- <div class="nhsuk-summary-list__row">
+  <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">
       Name
     </dt>
     <dd class="nhsuk-summary-list__value">
-      Jane <span class="highlight"> Louise </span> Smith
+      Sally <span class="highlight"> Maria </span> Johnson
     </dd>
 
   </div>
@@ -103,7 +101,7 @@
       Date of birth
     </dt>
     <dd class="nhsuk-summary-list__value">
-      01-01-1970
+      02-<span class="highlight">10</span>-1990
     </dd>
 
   </div>
@@ -113,7 +111,8 @@
       Contact information
     </dt>
     <dd class="nhsuk-summary-list__value">
-      20 Thornhill Street<br>Pudsey<br> LS28 7ED
+      53 Yew Tree Road <br>Darlington<br> DL1 2DA
+
     </dd>
 </div>
      <div class="nhsuk-summary-list__row">
@@ -123,7 +122,6 @@
     <dd class="nhsuk-summary-list__value">
       <span class="highlight"> 234 567 8901 </span>
     </dd>
-
 
   </div>
 
@@ -135,28 +133,35 @@
 </div>
 
 
-{{ radios({
-  "idPrefix": "example",
-  "name": "example",
-  "classes": "nhsuk-radios- -u-paddingnhsuk-top-3",
-  "fieldset": {
-    "legend": {
-      "text": "How do you want to resolve this mismatch?",
-      "classes": "nhsuk-fieldset__legend nhsuk-label__strong nhsuk-u-padding-top-3",
-      "isPageHeading": true
-    }
-  },
-  "items": [
-    {
-      "value": "Lab",
-      "text": "Use lab details"
-    },
-    {
-      "value": "System",
-      "text": "Use system details"
-    }
-  ]
-}) }}
+<div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend nhsuk-label__strong nhsuk-u-padding-top-3">
+      <h1 class="nhsuk-fieldset__heading">
+        How do you want to resolve this mismatch?
+      </h1>
+    </legend>
+
+    <div class="nhsuk-radios">
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+          Use lab details
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input checked" id="example-2" name="example" type="radio" checked="checked" value="no">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          Use system details
+        </label>
+      </div>
+
+    </div>
+  </fieldset>
+
+</div>
 
 
            <div class="nhsuk-form-group">
@@ -166,21 +171,23 @@
                 <span class="nhsuk-hint" "highlight" "nhsuk-u-padding-top-3" id="example-hint" for="one-half">
                   Enter a reason for choosing this option
                 </span>
-                <textarea class="nhsuk-textarea nhsuk-u-width-one-half" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
+                <textarea class="nhsuk-textarea nhsuk-u-width-one-half" id="example" name="example" rows="5" aria-describedby="example-hint">Suspected typo in month of lab details '01' should be '10'.</textarea>
                  <span class="nhsuk-hint" "highlight" "nhsuk-u-padding-top-3" id="example-hint" for="one-half">
                   You have 200 characters remaining 
                 </span>
               </div>
 
-    <a href="" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and get next</a>
 
 
-
-
-
-
-
-
+ <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-one-quarter">
+        <a href="QC-worklists-result-3" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Accept match</a>
+      </div>
+      <div class="nhsuk-grid-column-one-quarter">
+        <a href="QC-worklists-result-3" class="nhsuk-button nhsuk-button--ers_reject nhsuk-u-margin-top-3">Send back to labs</a>
+      </div>
+    </div>
+  </div>
 
 
 
