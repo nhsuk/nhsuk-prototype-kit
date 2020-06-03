@@ -9,9 +9,15 @@
   }
   }) %}
 
+  {% if ( data.pnl_patient.date_of_birth | returnAge) > 55 %}
+  patient is really really old
+  {% else %}
+  patient not really old
+  {% endif %}
+
   {{ radios({
     "idPrefix": "example-hints",
-    "name": "pnl-defer-reason",
+    "name": "pnl-cease-reason",
     "items": [
       {
         "value": "No cervix",

@@ -9,7 +9,7 @@ const patients = [
             "address_line_2": "TOWNSVILLE",
             "postcode": "LS20 8QF"
         },
-        "date_of_birth": "1968-10-28",
+        "date_of_birth": "1958-10-28",
         "date_of_birth_and_initial": "1958-10-28D",
         "date_of_birth_and_initial_and_postcode": "1958-10-28DLS208QF",
         "first_name": "CURRY",
@@ -93,7 +93,7 @@ const patients = [
             "address_line_5": "Devon",
             "postcode": "EX2 5SE"
         },
-        "date_of_birth": "1962-08-01",
+        "date_of_birth": "1955-08-01",
         "date_of_birth_and_initial": "1952-08-01J",
         "date_of_birth_and_initial_and_postcode": "1952-08-01JEX25SE",
         "first_name": "Pepita",
@@ -240,7 +240,7 @@ const patients = [
             "address_line_5": "Devon",
             "postcode": "EX2 5SE"
         },
-        "date_of_birth": "1962-06-11",
+        "date_of_birth": "1992-06-11",
         "date_of_birth_and_initial": "1922-06-11P",
         "date_of_birth_and_initial_and_postcode": "1922-06-11PEX25SE",
         "first_name": "Tanya",
