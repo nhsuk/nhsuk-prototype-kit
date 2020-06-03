@@ -214,31 +214,6 @@ router.post("/*/prior-notification-6-check", function (req, res) {
 });
 
 
-// router.post("/*/prior-notification-8-check", function (req, res) {
-//   var invite = req.session.data["pnl-invite"];
-// 
-//   if (invite == "yes") {
-//     res.redirect(
-//       "/" +
-//       getVersion(req) +
-//       "/prior-notification/prior-notification-8-confirmation"
-//     );
-//   } else {
-//     res.redirect(
-//       "/" + getVersion(req) + "/prior-notification/prior-notification-8"
-//     );
-//   }
-// });
-
-
-
-
-
-
-
-
-
-
 // v8/non-responder/example"
 router.post("/v8/non-responder/example", function (req, res) {
   console.log ('checking age!!')
