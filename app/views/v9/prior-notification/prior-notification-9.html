@@ -24,11 +24,11 @@
   </div>
 </div>
 
-{% set pnlMsg = "<p>Update:" + data.pnl_update_msg  + " </p>"  %}
+{% set pnlMsg = "<p>Update: " + data.pnl_update_msg  + " </p>"  %}
 {% if (data['pnl_update_msg_show'] > 1) %}
     {{ insetText({
   "HTML": pnlMsg,
-  "classes": "nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success"
+  "classes": "nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-0"
 }) }}
 {% endif %}
 
@@ -37,8 +37,7 @@
   <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-6">
   <h2 class="nhsuk-heading-m">Patients due to be invited</h2>
   <p>The following patients need reviewing as they are due to be invited for screening. If you do not take any action then patients will be invited to be screened.</p>
-  <!--<p><a href="prior-notification-8-manage">Manage who receives notifications</a></p>-->
-  <p><a href="prior-notification-8-forms">Find out how to cease patients because of <strong>mental capacity</strong> or <strong>patient choice</strong>?</a></p>
+  <p><a href="prior-notification-9-forms">Find out how to cease patients because of <strong>mental capacity</strong> or <strong>patient choice</strong>?</a></p>
   </div>
 </div>
 
@@ -87,7 +86,11 @@
             <span class="nhsuk-table__cell--hint">{{ patient.date_of_birth  | returnDateFormat }}</span>
           </td>
           <td class="nhsuk-table__cell">
-            {{ patient.results.action }}
+            {% if patient.results == null %} 
+              Called
+            {% else %}
+              {{ patient.results.action }}
+            {% endif %}
             <span class="nhsuk-table__cell--hint">Recall</span>
           </td>
           <td class="nhsuk-table__cell">

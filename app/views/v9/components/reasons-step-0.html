@@ -1,3 +1,11 @@
+{% if patient.results == null %} 
+  {% set result = "no results" %}
+  {% set resultDate = "no results" %} 
+{% else %}
+  {% set result = "(" + (patient.results.result_code or "-" ) + (patient.results.infection_code or "-") + (patient.results.action_code or "-") + ") " + (patient.results.result or "-") + ", " + (patient.results.infection_result or "-") + ", " + (patient.results.action or "-") %}
+  {% set resultDate = (patient.results.result_date | returnDateFormat or "-") + " " + (patient.results.result_date | returnTimeDiff or "-") %}
+{% endif %}
+
 {{ summaryList({
     classes: 'nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2',
     rows: [
@@ -14,7 +22,7 @@
         text: "Last test date"
       },
       value: {
-        text:  (patient.results.result_date | returnDateFormat or "-") + " " + (patient.results.result_date | returnTimeDiff or "-")
+        text: resultDate
       }
     },
     {
@@ -22,7 +30,7 @@
         text: "Last test"
       },
       value: {
-        html: "(" + (patient.results.result_code or "-" ) + (patient.results.infection_code or "-") + (patient.results.action_code or "-") + ") " + (patient.results.result or "-") + ", " + (patient.results.infection_result or "-") + ", " + (patient.results.action or "-")
+        text:  result
       }
     }
   ]
