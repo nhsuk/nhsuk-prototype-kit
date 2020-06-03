@@ -34,14 +34,14 @@
 
 
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-6">
+  <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-4">
   <h2 class="nhsuk-heading-m">Patients due to be invited</h2>
   <p>The following patients need reviewing as they are due to be invited for screening. If you do not take any action then patients will be invited to be screened.</p>
   <p><a href="prior-notification-9-forms">Find out how to cease patients because of <strong>mental capacity</strong> or <strong>patient choice</strong>?</a></p>
   </div>
 </div>
 
-{# {% if data['patients'].length >= 1  %} #}
+{% if data['patients'].length >= 1 %} 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     <table id="sortable" class="nhsuk-table-clickable bna-table nhsuk-u-margin-top-0">
@@ -67,16 +67,13 @@
           </th>
         </tr>
       </thead>
-        <tbody class="nhsuk-table__body">
-
+      <tbody class="nhsuk-table__body">
         {% for patient in data['patients'] %}
           {% set rowId =  "selectRow" + loop.index %}
           {% set detailsId =  "detailsRow" + loop.index %}
           {% set buttonId =  "btnRow" + loop.index %}
           {% set NameId =  "nameRow1" + loop.index %}
-
           <tr class="nhsuk-table__row">
-
           <td class="nhsuk-table__cell">
           {{ patient.first_name | capitalize }} {{ patient.last_name | capitalize }} 
             <span class="nhsuk-table__cell--hint">NHS No: {{ patient.nhs_number | formatNHSNumber }}</span>
@@ -99,16 +96,14 @@
           </td>
           <td>
             <a href="/v9/get-prior-notifications-invite?nhsNumber={{ patient.nhs_number }}">Invite</a>
+            <a href="/v9/get-prior-notifications-defer-reason?nhsNumber={{ patient.nhs_number }}" style="margin-left:4px; margin-right:4px;">Defer</a>
 
-            <a href="/v9/get-prior-notifications-defer-reason?nhsNumber={{ patient.nhs_number }}">Defer</a>
-            
             <a href="/v9/get-prior-notifications-cease-reason?nhsNumber={{ patient.nhs_number }}">Cease</a>
           </td>
           <td class="nhsuk-table__cell">
             <button class="expanderButton" type="button" id="{{ buttonId }}" aria-expanded="false" onclick="toggle(this.id,'#{{ detailsId }}');" aria-controls="{{ detailsId }}" aria-label="More details for" aria-labelledby="{{ buttonId }} {{ NameId }}"></button>
           </td>
         </tr>
-
         <tr id="{{ detailsId }}" class="hidden detailsRow">
           <td colspan="6">
             <div class="nhsuk-grid-row">
@@ -119,11 +114,20 @@
           </td>
         </tr>
         {% endfor %}
-        </tbody>   
-      </table>
+      </tbody>   
+    </table>
   </div>
-  </div>
-  <p><a href="/v9/reset-patient-data/">Reset patient data</a></p>
+</div>
+{% else %}
+  {{ panel({
+      "HTML": "<h2>Completed <svg style='vertical-align: text-top' class='nhsuk-icon nhsuk-icon__tick' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 21' fill='none' aria-hidden='true'>
+        <path stroke-width='4' stroke-linecap='round' d='M18.4 7.8l-8.5 8.4L5.6 12'></path>
+      </svg></h2>
+      <p>There are no more patients that need reviewing.</p>",
+      "classes" : "nhsuk-u-margin-top-0"
+    }) }}
+{% endif %}
+<p><a href="/v9/reset-patient-data/">Reset patient data</a></p>
 {% endblock %}
 
 
@@ -156,135 +160,6 @@
     $('.expanderButton[aria-expanded="true"]').closest('tr').addClass('expandedRow');
     $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
   }
-
-   /* SELECT ALL */
-  var selectAll = document.getElementById("selectAll");
-  var checkBoxes = document.querySelectorAll('.nhsuk-checkboxes__input');
-
-  selectAll.addEventListener('change', function() {
-    if(this.checked) {
-        for (i = 1; i < checkBoxes.length; i++) {
-          console.log(checkBoxes[i]);
-          checkBoxes[i].checked = true;
-        } 
-    } else {
-        console.log('nah')
-        for (i = 1; i < checkBoxes.length; i++) {
-          console.log(checkBoxes[i]);
-          checkBoxes[i].checked = false;
-        } 
-    }
-  })
-
-  function scrollPos() { 
-    var elemPos = document.getElementById("detailsRow1");
-    var elemScroll = elemPos.getBoundingClientRect().top - (elemPos.offsetTop / 2);
-    window.scrollBy(0, (elemScroll));
-  }
-
-  function hideAllPages() {
-    document.getElementById("reasons-step-0").style.display = "none";
-    document.getElementById("reasons-step-1").style.display = "none";
-    document.getElementById("reasons-step-2").style.display = "none";
-    document.getElementById("reasons-step-3").style.display = "none";
-    document.getElementById("reasons-step-4").style.display = "none";
-    document.getElementById("reasons-step-5").style.display = "none";
-  }
-
-  // there's definitely a better way to do this but it's 18:05 on a friday
-  document.getElementById("step-2").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-2").style.display = "block";
-    scrollPos();
-  })
-
-  document.getElementById("back-step-1").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-1").style.display = "block";
-  })
-
-  document.getElementById("step-3").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-3").style.display = "block";
-    scrollPos();
-  })
-
-  document.getElementById("back-step-2").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-2").style.display = "block";
-  })
-
-  document.getElementById("step-4").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-4").style.display = "block";
-    scrollPos();
-  })
-
-  document.getElementById("back-step-3").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-0").style.display = "block";
-    document.getElementById("reasons-step-3").style.display = "block";
-  })
-
-  document.getElementById("step-5").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-5").style.display = "block";
-    scrollPos();
-  })
-
-  document.getElementById("step-done").addEventListener('click', function(e) {
-    e.preventDefault();
-    hideAllPages();
-    document.getElementById("reasons-step-2").style.display = "block";
-    console.log('ready to submit')
-  })
-
-  
-
-
-  
-
- 
-
 </script>
 
-
-
-<script>
-  // Script for the view selected button
-
-  /*
-  $(".nhsuk-checkboxes__input").change(function() {
-      if ($("input:checkbox:checked").length > 0)
-      {
-        $(".disable-able").removeClass("nhsuk-button--disabled").removeClass("nhsuk-button--secondary").addClass("nhsuk-button--blue");
-        $("#view-selected-link").attr("href", "./birth-notification");
-
-        if ($("input:checkbox:checked").length > 1)
-        {
-          $("#view-selected-link").attr("href", "./birth-notification-multiple-1-of-3");
-        }
-
-      }
-      else
-      {
-        $(".disable-able ").addClass("nhsuk-button--disabled").addClass("nhsuk-button--secondary").removeClass("nhsuk-button--blue");
-      }
-
-
-  });
-  */
-</script>
 {% endblock %}

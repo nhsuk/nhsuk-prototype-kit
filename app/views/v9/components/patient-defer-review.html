@@ -1,4 +1,8 @@
-  <h1 class="nhsuk-fieldset__legend--m">Review patient screening participation</h1>
+<h1 class="nhsuk-fieldset__legend--m">Review patient screening participation</h1>
+
+{% if data['pnl-defer-reason'] == "Pregnancy" %}
+
+{% set estimatedDateOfDelivery = data['edd-year'] + "-" + data['edd-month'] + "-" + data['edd-day'] %}
 
   {{ summaryList({
   rows: [
@@ -12,7 +16,7 @@
       actions: {
         items: [
           {
-            href: "prior-notification-7-action",
+            href: "prior-notification-9-action",
             text: "Change",
             visuallyHiddenText: "name"
           }
@@ -29,7 +33,7 @@
       actions: {
         items: [
           {
-            href: "prior-notification-7-defer-reason",
+            href: "prior-notification-9-defer-reason",
             text: "Change",
             visuallyHiddenText: "date of birth"
           }
@@ -41,12 +45,12 @@
         text: "Estimated date of delivery"
       },
       value: {
-        text: "1" | returnDate("months") + " (in 1 months)"
+        text:  estimatedDateOfDelivery | returnDateFormat + ' ' + estimatedDateOfDelivery | returnTimeDiff
       },
       actions: {
         items: [
           {
-            href: "prior-notification-7-defer-reason",
+            href: "prior-notification-9-defer-reason",
             text: "Change",
             visuallyHiddenText: "date of birth"
           }
@@ -63,7 +67,7 @@
       actions: {
         items: [
           {
-            href: "prior-notification-7-defer-length",
+            href: "prior-notification-9-defer-length",
             text: "Change",
             visuallyHiddenText: "change defer length"
           }
@@ -72,10 +76,10 @@
     },
     {
       key: {
-        text: "Next test due date"
+        text: "Calculated next test due date"
       },
       value: {
-        html: "4" | returnDate("months") + " (in 4 months)"
+        html: data['defer-length'] | returnDate('months', estimatedDateOfDelivery ) + ' ' +  (data['defer-length'] | returnDate('months', estimatedDateOfDelivery )) | returnTimeDiff
       },
       actions: {
         items: [
@@ -86,19 +90,77 @@
           }
         ]
       }
-    },
+    }
+  ]
+}) }}
+
+{% else %}
+
+{{ summaryList({
+  rows: [
     {
       key: {
-        text: "Comment"
+        text: "Action"
       },
       value: {
-        html: data['pnl-comments'] or ''
+        text: data['pnl-action'] or 'Defer'
       },
       actions: {
         items: [
           {
-            href: "prior-notification-7-defer-length",
+            href: "prior-notification-9-action",
             text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Defer reason"
+      },
+      value: {
+        text: data['pnl-defer-reason'] or 'Pregnancy'
+      },
+      actions: {
+        items: [
+          {
+            href: "prior-notification-9-defer-reason",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Defer length"
+      },
+      value: {
+        html: data['defer-length'] or '3 Months'
+      },
+      actions: {
+        items: [
+          {
+            href: "prior-notification-9-defer-length",
+            text: "Change",
+            visuallyHiddenText: "change defer length"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Calculated next test due date"
+      },
+      value: {
+        html: data['defer-length'] | returnDate('months') + ' ' +  (data['defer-length'] | returnDate('months' )) | returnTimeDiff
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "",
             visuallyHiddenText: "contact details"
           }
         ]
@@ -106,6 +168,10 @@
     }
   ]
 }) }}
+
+{% endif %}
+
+  
 
 
   <a href="/v9/prior-notification/prior-notification-9-deferred" class="nhsuk-button nhsuk-button--ers">Submit</a>

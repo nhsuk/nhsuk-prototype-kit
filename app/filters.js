@@ -34,6 +34,10 @@ module.exports = function (env) {
       return moment().add(amount, type).format("D-MMM-YYYY");
   }
 
+  filters.returnDate = function (amount, type, date) {
+    return moment(date).add(amount, type).format("D-MMM-YYYY");
+  }
+
   filters.returnInviteDate = function (ntdd) {
     console.log(ntdd)
     return moment(ntdd).subtract(6, "weeks").format("D-MMM-YYYY");
@@ -106,8 +110,8 @@ module.exports = function (env) {
     return text.replace(/[()]/g, ''); 
   }
 
-  filters.returnDateFormat = function (date_of_birth) {
-    return moment(date_of_birth).format("D-MMM-YYYY");
+  filters.returnDateFormat = function (date) {
+    return moment(date).format("D-MMM-YYYY");
   }
   
   filters.formatNHSNumber = function (nhs_number) {
