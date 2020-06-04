@@ -1,46 +1,72 @@
-// Use express validator depencency
+const customRules = require('../app/validation-rules');
+const docsRules = require('../docs/documentation_validation_rules');
+
 const { validationResult } = require('express-validator');
-const validationRules = require('../app/validation-rules');
-const docsValidationRules = require('../docs/documentation_validation_rules');
-const { matchRoutesRefererPath } = require('./auto-routing');
 
-const rules = [...validationRules, ...docsValidationRules];
+// Default object to be passed to every request object
+const defaultErrorState = {
+  hasErrors: false,
+  errorList: [],
+  errors: {}
+};
 
-module.exports = [rules, (req, res, next) => {
-  // Reset any previous errors
-  req.session.errors = {};
-  // Only run validation on POST requests
+// Build object of rules merged from custom and docs
+const rules = {
+  ...customRules,
+  ...docsRules
+}
+
+// Middleware to apply rules to passed request object
+const applyRules = async (req, _, next) => {
+  // Run validation on POST requests
   if (req.method === 'POST') {
-    // Get array of all keys in the request body 
-    const errorsToValidate = Object.keys(req.body);
-    // Set errors to session for use in Nunjucks templates
-    const nhsErrors = validationResult(req).array().reduce((obj, { param, msg }) => {
-      // Only return errors for inputs on this page 
-      if (errorsToValidate.includes(param)) {
-        return {
-          // Array of objects with href and text properties
-          errorsList: [...obj.errorsList, {
-            href: `#${param}`,
-            text: msg
-          }],
-          // Object of errors with { param , msg }
-          errorsObj: {
-            ...obj.errorsObj,
-            [param]: msg
-          }
-        }
-      }
-      return obj;
-    }, {
-      // Set default empty arrays and objects
-      errorsList: [],
-      errorsObj: {}
-    });
-    if (nhsErrors.errorsList.length) {
-      req.session.errors = nhsErrors;
-      // Redirect back to referer route
-      return matchRoutesRefererPath(req, res, next);
-    }
+    // Retrieve rules based on URL
+    const ruleSet = rules[req.originalUrl] || [];
+    // Run rules async... this allows us to run the rules async within a 
+    // single middleware rather than inline for each route in the route
+    await Promise.all(ruleSet.map(async rule => {
+      await rule.run(req);
+    }));
   }
   return next();
-}];
+}
+
+// Transform error data for use in nhsuk-frontend templates
+const transformErrors = (req, _, next) => {
+  // Set errors to session for use in Nunjucks templates
+  req.session.errors = validationResult(req).array().reduce(({ errorList, errors }, { param, msg }) => ({
+    // Set error flag to true
+    hasErrors: true,
+    // Array of objects with href and text properties
+    errorList: [
+      ...errorList,
+      {
+        href: `#${param}`,
+        text: msg
+      }
+    ],
+    // Object of errors with { param , msg }
+    errors: {
+      ...errors,
+      [param]: msg
+    }
+  }), defaultErrorState);
+
+  return next();
+}
+
+// Redirect request back to referer URL for less jarring URL change
+const redirectToReferer = (req, res, next) => {
+  if (req.session.errors.hasErrors) {
+     // Retrieve referer path from request object
+    const { pathname } = new URL(req.get('referer'));
+    return res.redirect(pathname);
+  }
+
+  return next();
+}
+
+// Middleware to apply rules, make them available in templates and handle routing
+const validation = [applyRules, transformErrors, redirectToReferer];
+
+module.exports = validation;
