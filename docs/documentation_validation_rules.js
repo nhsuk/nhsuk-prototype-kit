@@ -5,11 +5,11 @@ module.exports = {
   '/examples/validation/email': [
     body('docsExampleName')
       .not().isEmpty()
-      .withMessage('Name a required field')
+      .withMessage('Enter your name')
   ],
   '/examples/validation/complete': [
     body('docsExampleEmail')
         .isEmail()
-        .withMessage('Please enter a valid email address')
+        .withMessage('Enter a valid email address')
   ]
 };

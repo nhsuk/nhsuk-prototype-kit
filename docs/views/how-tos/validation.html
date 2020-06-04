@@ -15,22 +15,30 @@
 
       <h1>How to validate inputs</h1>
 
-      <p class="nhsuk-lede-text">Add validation to a form within a prototype to satisfy guidance in the service manual for 
-      <a href="https://service-manual.nhs.uk/design-system/components/error-summary">error summaries</a>
-      and <a href="https://service-manual.nhs.uk/design-system/components/error-message">error messages</a></p>
+      <p class="nhsuk-lede-text">You may want to add validation to a form within a prototype.</p>
 
       <h2>Implementation</h2>
 
       <h3>Add rules</h3>
-      <p>Add a new rule to the <code>app/validation-rules.js</code> file. <code>/my-route</code> should be replaced with the
-      action value of the form you are validating. 
-      <code>fieldName</code> should be replaced with the name value of the input you want to validate. Different validators are documented within 
-      <a href="https://github.com/validatorjs/validator.js#validators" target="_blank">express-validatior documentation</a>.</p>
+      <p>Add a new rule to the <code>app/validation-rules.js</code> file.</p> 
+
       <pre class="app-pre"><code class="app-code">'/my-route': [
   body('fieldName')
     .not().isEmpty()
     .withMessage('This a required field')
 ]</code></pre>
+
+      <p>You need to replace the:</p>
+      <ul>
+        <li><code>/my-route</code> with the action value of the form you are validating</li>
+        <li><code>fieldName</code> with the name value of the input you want to validate</li>
+      </ul> 
+
+      <p>[add example here]</p>
+
+      <div class="nhsuk-inset-text">
+        <p>Different validators are documented within <a href="https://github.com/validatorjs/validator.js#validators" target="_blank">express-validatior documentation</a>.</p>
+      </div>
 
       <h3>Update the page title</h3>
       <p>Use the <code>hasErrors</code> variable to conditionally add "Error: " to the start of you page title.</p>
