@@ -7,6 +7,11 @@
 @import 'components/related-nav';
 @import 'components/tag';
 
+// Overrides auto reload div background colour
+#hc_extension_bkgnd {
+  background-color: $color_nhsuk-grey-4 !important;
+}
+
 ///////////////////////////////////////////
 // Add your custom CSS/Sass styles below... 
 ///////////////////////////////////////////

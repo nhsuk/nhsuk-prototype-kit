@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  {{ "Error: " if hasErrors }} Example - form validation
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      {% if hasErrors %} 
+        {{ errorSummary({
+          "titleText": "There is a problem",
+          "descriptionText": "Describe the errors and how to correct them",
+          "errorList": errorList
+        }) }}
+      {% endif %}
+
+      <form action="/examples/validation/complete" method="post">
+        
+        {{ input({
+          "label": {
+            "text": "Email",
+            "classes": "nhsuk-label--l nhsuk-u-margin-bottom-3",
+            "isPageHeading": true
+          },
+          "id": "docsExampleEmail",
+          "name": "docsExampleEmail",
+          "value": data.docsExampleEmail,
+          "errorMessage": {
+            "text": errors.docsExampleEmail
+          } if errors.docsExampleEmail
+        })}}
+        
+        {{ button({
+          "text": "Submit"
+        })}}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

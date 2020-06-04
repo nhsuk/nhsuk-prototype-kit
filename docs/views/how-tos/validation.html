@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  How to validate inputs - NHS.UK prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "how-tos/includes/breadcrumb.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-three-quarters">
+
+      <h1>How to validate inputs</h1>
+
+      <p class="nhsuk-lede-text">You may want to add validation to a form within a prototype.</p>
+
+      <h2>Implementation</h2>
+
+      <h3>Add rules</h3>
+      <p>Add a new rule to the <code>app/validation-rules.js</code> file.</p> 
+
+      <pre class="app-pre"><code class="app-code">'/my-route': [
+  body('fieldName')
+    .not().isEmpty()
+    .withMessage('This a required field')
+]</code></pre>
+
+      <p>You need to replace the:</p>
+      <ul>
+        <li><code>/my-route</code> with the action value of the form you are validating</li>
+        <li><code>fieldName</code> with the name value of the input you want to validate</li>
+      </ul> 
+
+      <p>[add example here]</p>
+
+      <div class="nhsuk-inset-text">
+        <p>Different validators are documented within <a href="https://github.com/validatorjs/validator.js#validators" target="_blank">express-validatior documentation</a>.</p>
+      </div>
+
+      <h3>Update the page title</h3>
+      <p>Use the <code>hasErrors</code> variable to conditionally add "Error: " to the start of you page title.</p>
+      <pre class="app-pre"><code class="app-code">{{ '{% block pageTitle %}
+  {{ "Error: " if hasErrors }} My page title
+{% endblock %}' | escape }}</code></pre>
+
+      <h3>Add an error summary</h3>
+      <p>Use the <code>hasErrors</code> variable to conditionally show the error summary component. Then pass the <code>errorList</code> variable which
+      is an array of objects with <code>href</code> and <code>text</code> properties to the error summary component.</p>
+      <pre class="app-pre"><code class="app-code">{{ '{% if hasErrors %} 
+  {{ errorSummary({
+    "titleText": "There is a problem",
+    "errorList": errorList
+  }) }}
+{% endif %}' | escape }}</code></pre>
+
+      <h3>Add an error message to your inputs</h3>
+      <p>Error messages are a conditional property of all our form element components. The text for the error comes from the <code>error</code> object. 
+      You can display an error by using <code>errors.fieldName</code>. You can make the error message display conditonally buy adding 
+      <code>if errors.fieldName</code> to the end of the property.</p>
+      <pre class="app-pre"><code class="app-code">{{ '{{ input({
+  "label": {
+    "text": "Name"
+  },
+  "id": "fieldName",
+  "name": "fieldName",
+  "errorMessage": {
+    "text": errors.fieldName
+  } if errors.fieldName
+})}}' | escape }}</code></pre>
+
+      <h3>Add browser JavaScript</h3>
+      <p>Add some progressively enhanced JavaScript to <code>app/assets/javascript/main.js</code> to focus the error summary on page load. This also handles the click to focus input
+      functionality for error summary links without adding the anchor to the URL. JavaScript is testing in modern browsers and IE9+.</p>
+      <p><i>This may become part of the prototype kit or frontend library in the future.</i><p>
+      <pre class="app-pre"><code class="app-code">{{ "
+document.addEventListener('DOMContentLoaded', function () {
+  var summary = document.querySelector('.nhsuk-error-summary');
+  if (summary) {
+    summary.focus();
+    var summaryLinks = document.querySelectorAll('.nhsuk-error-summary__list a');
+    for (var i = 0; i < summaryLinks.length; i++) {
+      summaryLinks[i].addEventListener('click', function (event) {
+        event.preventDefault();
+        var input = document.querySelector(event.target.hash);
+        if (input) input.focus();
+      });
+    };
+  };
+});
+" | escape }}</code></pre>
+
+      <h2>Example</h2>
+
+      <p><a href="/examples/validation">You can see an example here</a></p>
+
+      <p>The code for the example can be found in:</p>
+
+      <pre class="app-pre"><code class="app-code">/documentation_validation_rules.js<br>docs/views/examples/validation</code></pre>
+
+      {% include "how-tos/includes/back-button.html" %}
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %} 
+  Example - form validation
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>Form data</h1>
+
+      <dl class="nhsuk-summary-list">
+        
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            <p>{{ data.docsExampleName | title }}</p>
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="/examples/validation/index">
+              Change<span class="nhsuk-u-visually-hidden"> name</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Email
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {{ data.docsExampleEmail }}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+            <a href="/examples/validation/email">
+              Change<span class="nhsuk-u-visually-hidden"> email</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
+    
+    </div>
+  </div>
+{% endblock %}
