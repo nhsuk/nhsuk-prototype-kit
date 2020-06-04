@@ -208,7 +208,7 @@ const patients = [
         "first_name": "Muriel",
         "gender": "2",
         "is_ceased": false,
-        "last_name": "Grewcock",
+        "last_name": "Smith",
         "migrated_1C_data": {
             "received": "2020-05-28T16:33:37.276",
             "value": "LD|9100001287|20170309|N|H|0|N||||||D1|20101012"
