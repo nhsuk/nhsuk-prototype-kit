@@ -412,14 +412,15 @@
     /* sorry, had to comment out as it was overriding the default settings for the component */
     /* might be best to add a new class on top of the one below class="nhsuk-panel-with-label nhsuk-panel-with-label--modifier"
     /*
+    <!-- WELL HOW BLOODY RUDE ARE YOU, HONESTLY ....;-P
     @media (min-width: 40.0625em) {
       .nhsuk-panel-with-label {
-        margin-bottom: 48px; 
-      } 
+        margin-bottom: 48px;
+      }
     }
     @media (min-width: 40.0625em) {
       .nhsuk-panel-with-label {
-        margin-top: 0px; 
+        margin-top: 0px;
       }
     }
     @media (min-width: 40.0625em) {
@@ -430,8 +431,8 @@
     @media print {
       .nhsuk-panel-with-label {
         border: 1px solid #212b32;
-        page-break-inside: avoid; 
-      } 
+        page-break-inside: avoid;
+      }
     }
     */
 
@@ -444,7 +445,7 @@
               background-color: #0072CE; }
             .nhsuk-button--ers_secondary.nhsuk-button--ers_disabled {
               background-color: #003087; }
-            
+
               .nhsuk-right {
                 @extend .nhsuk-button--ers;
                 background-color: #425563;
@@ -453,9 +454,7 @@
                 .nhsuk-button--ers_secondary:hover, .nhsuk-button--ers_secondary:focus {
                   background-color: #384854; }
                 .nhsuk-button--ers_secondary.nhsuk-button--ers_disabled {
-                  background-color: #425563; }         
-  
-          
+                  background-color: #425563; }
+
 /* ----MANAGING RESULTS  --- */
 /* ---------------------------- */
-
