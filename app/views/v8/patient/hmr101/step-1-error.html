@@ -38,19 +38,26 @@ NHS Cervical Screening
         <h1 class="nhsuk-heading-l">Enter patient details</h1>
 
         <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
-          <div class="nhsuk-form-group nhsuk-form-group--error">
+          <div class="nhsuk-form-group">
+
+</div>
+          <div class="nhsuk-form-group">
             <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
+
               <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
                 LMP (1st day)
               </legend>
-            
+              <span class="nhsuk-error-message">
+                <span class="nhsuk-u-visually-hidden">Error:</span> You must confirm the first day of last menstrual period
+              </span>
+
               <div class="nhsuk-date-input" id="dob-from">
                 <div class="nhsuk-date-input__item">
                   <div class="nhsuk-form-group">
                     <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
                       Day
                     </label>
-                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="day" name="day" type="number" pattern="[0-9]*" value="{{ data['day'] }}">
+                    <input class="nhsuk-input nhsuk-input--error nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="day" name="day" type="number" pattern="[0-9]*" value="{{ data['day'] }}">
                   </div>
                 </div>
                 <div class="nhsuk-date-input__item">
@@ -58,7 +65,7 @@ NHS Cervical Screening
                     <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
                       Month
                     </label>
-                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="month" type="number" pattern="[0-9]*" value="{{ data['month'] }}">
+                    <input class="nhsuk-input nhsuk-input--error nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="month" type="number" pattern="[0-9]*" value="{{ data['month'] }}">
                   </div>
                 </div>
                 <div class="nhsuk-date-input__item">
@@ -74,7 +81,7 @@ NHS Cervical Screening
           </div>
 
         </div>
-        <div class="nhsuk-form-group nhsuk-form-group--error">
+        <div class="nhsuk-form-group">
 
           <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
             <label class="nhsuk-label nhsuk-label__strong" for="example">
