@@ -9,9 +9,10 @@
   }
   }) %}
 
+  {% if ( data.pnl_patient.date_of_birth | returnAge) > 60 %}
   {{ radios({
     "idPrefix": "example-hints",
-    "name": "pnl-defer-reason",
+    "name": "pnl-cease-reason",
     "items": [
       {
         "value": "No cervix",
@@ -26,7 +27,23 @@
         "text": "Referred to colposcopy"
       }
     ]
-}) }}
+  }) }}
+  {% else %}
+  {{ radios({
+    "idPrefix": "example-hints",
+    "name": "pnl-cease-reason",
+    "items": [
+      {
+        "value": "No cervix",
+        "text": "No cervix"
+      },
+      {
+        "value": "Referred to colposcopy",
+        "text": "Referred to colposcopy"
+      }
+    ]
+  }) }}
+  {% endif %}
 {% endcall %}
 
   <button class="nhsuk-button nhsuk-button--ers">Continue</button>

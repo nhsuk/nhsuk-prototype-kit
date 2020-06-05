@@ -8,6 +8,15 @@
       },
       value: {
         text: data['pnl-action'] or 'Cease'
+      },
+      actions: {
+        items: [
+          {
+            href: "",
+            text: "",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
       }
     },
     {
@@ -15,7 +24,7 @@
         text: "Cease reason"
       },
       value: {
-        text: data['pnl-defer-reason'] or 'No cervix'
+        text: data['pnl-cease-reason'] or 'No cervix'
       },
       actions: {
         items: [

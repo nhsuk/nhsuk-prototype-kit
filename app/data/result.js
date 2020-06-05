@@ -230,13 +230,6 @@ const results = [
     }
 ]
 
-//
-//function getNTDD() {
-//    return moment(); //moment().subtract(3, "month").format("YYYY-MM-DD");
-//}
-
-
 module.exports.getResults = function () {
-    console.log('---getting all results---')
     return results;
 }
