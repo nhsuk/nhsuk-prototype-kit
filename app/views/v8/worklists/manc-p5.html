@@ -18,11 +18,16 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
-  <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manually resolve  address mismatch</h1>
+    {{ backLink({
+      "href": "manc-table",
+      "text": "Go back to Manchester results"
+    }) }}
+
+  <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Resolve this manual match</h1>
 
 {{ hint({
    classes: 'nhsuk-hint',
-  text: "Manchester - Mismatch 1 of 34"
+  text: "Manchester - Manual match 5 of 6"
 }) }}
 </div>
 </div>
@@ -31,9 +36,9 @@
 
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-one-half">
-    <div class="nhsuk-panel-with-label"> 
-      <h3 class="nhsuk-panel-with-label__label">Lab details</h3> 
-          
+    <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">Lab details</h3>
+
 <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
   <div class="nhsuk-summary-list__row">
@@ -41,7 +46,7 @@
       Name
     </dt>
     <dd class="nhsuk-summary-list__value">
-      Jane Smith
+      Nessa Jenkins
     </dd>
 
   </div>
@@ -51,7 +56,7 @@
       Date of birth
     </dt>
     <dd class="nhsuk-summary-list__value">
-      01-01-1970
+      03-07-1987
     </dd>
 
   </div>
@@ -61,7 +66,7 @@
       Contact information
     </dt>
     <dd class="nhsuk-summary-list__value">
-      20 Thornhill Street<br>Pudsey<br> LS28 7ED
+      Hill House<br>Sampford<br> SB10 2RH
     </dd>
 </div>
 
@@ -72,9 +77,9 @@
 </div>
 
     <div class="nhsuk-grid-column-one-half">
-         <div class="nhsuk-panel-with-label"> 
+         <div class="nhsuk-panel-with-label">
       <h3 class="nhsuk-panel-with-label__label">System details</h3>
-          
+
 <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
 
@@ -84,7 +89,7 @@
       Name
     </dt>
     <dd class="nhsuk-summary-list__value">
-      Jane <span class="highlight"> Louise </span> Smith
+      Nessa Jenkins
     </dd>
 
   </div>
@@ -94,7 +99,7 @@
       Date of birth
     </dt>
     <dd class="nhsuk-summary-list__value">
-      01-01-1970
+      03-<span class="highlight">09</span>-1987
     </dd>
 
   </div>
@@ -104,15 +109,15 @@
       Contact information
     </dt>
     <dd class="nhsuk-summary-list__value">
-      20 Thornhill Street<br>Pudsey<br> LS28 7ED
+      Hill House<br>Sampford<br> <span class="highlight"> Islington</span> <br /> SB10 2RH
     </dd>
-</div>
+  </div>
      <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">
       NHS number
     </dt>
     <dd class="nhsuk-summary-list__value">
-      <span class="highlight"> 234 567 8901 </span>
+      <span class="highlight"> 567 890 1234  </span>
     </dd>
 
   </div>
@@ -121,7 +126,7 @@
       Match
     </dt>
     <dd class="nhsuk-summary-list__value">
-      93%
+      84%
     </dd>
 
   </div>
@@ -219,12 +224,12 @@
                 </span>
                 <textarea class="nhsuk-textarea nhsuk-u-width-one-half" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
                  <span class="nhsuk-hint" "highlight" "nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-                  You have 200 characters remaining 
+                  You have 200 characters remaining
                 </span>
               </div>
-            
+
     </div>
-    <a href="A2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and get next</a>
+    <a href="manc-p6" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and get next</a>
 
 </div>
 
