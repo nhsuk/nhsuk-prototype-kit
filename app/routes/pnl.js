@@ -7,7 +7,17 @@ function getVersion(a) {
     return a.url.substring(1, 3) || "v1";
 }
 
-router.get("/*/get-prior-notifications", function (req, res) {
+function getPNLVersion(a) {
+    var url = a.url;
+    //console.log(url)
+    //console.log("last index of: " + url.lastIndexOf('-'));
+    //console.log("url length: " + url.length)
+
+    //console.log("substrong: " + url.substring((url.lastIndexOf('-') + 1), url.length))
+    return url.substring((url.lastIndexOf('-') + 1), url.length) || "10" //a.url.substring(1, 3) || "v1";
+}
+
+router.get("/*/get-prior-notifications*", function (req, res) {
 
     if ((req.session.data["pnl_update_msg_show"] >= 1) ) {
 
@@ -22,7 +32,9 @@ router.get("/*/get-prior-notifications", function (req, res) {
     req.session.data["patients"] = patient.getPatients();
     var patients = patient.getPatients();
     req.session.data["patients"] = patients;
-    res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-9")
+
+    //getPNLVersion(req);
+    res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-" + getPNLVersion(req))
 });
 
 router.get("/*/get-prior-notifications-defer-reason*", function (req, res) {
