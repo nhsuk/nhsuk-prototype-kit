@@ -34,6 +34,7 @@ const patients = [
         },
         "next_test_due_date": moment().add(8, "weeks"),
         "nhs_number": "9991023867",
+        "nrl": true,
         "participant_id": "5f03f444-8452-4e4f-8f24-03d30fefed55",
         "pnl": true,
         "pnl_action": "",
@@ -72,6 +73,7 @@ const patients = [
         },
         "next_test_due_date": moment().add(10, "weeks"),
         "nhs_number": "9100001694",
+        "nrl": true,
         "participant_id": "239ca055-3160-47c2-a8c0-f91558c72e6c",
         "pnl": true,
         "pnl_action": "",
@@ -109,6 +111,7 @@ const patients = [
         },
         "next_test_due_date": moment().add(8, "weeks"),
         "nhs_number": "9100001384",
+        "nrl": true,
         "participant_id": "28f4390a-4a47-4318-8705-8e0ef69f3ffe",
         "pnl": true,
         "pnl_action": "",
@@ -145,6 +148,7 @@ const patients = [
         },
         "next_test_due_date": moment().add(10, "weeks"),
         "nhs_number": "9100002801",
+        "nrl": true,
         "participant_id": "8d0243e8-2ef0-4d4d-be8c-06be86138bfc",
         "pnl": true,
         "pnl_action": "",
@@ -182,6 +186,7 @@ const patients = [
         },
         "next_test_due_date": moment().add(8, "weeks"),
         "nhs_number": "9100001899",
+        "nrl": true,
         "participant_id": "ff2cf9de-98ae-49ae-819d-0018d009f619",
         "pnl": true,
         "pnl_action": "",
@@ -219,6 +224,7 @@ const patients = [
         },
         "next_test_due_date": moment().add(10, "weeks"),
         "nhs_number": "9100001287",
+        "nrl": true,
         "participant_id": "1490e402-80a4-4b31-890f-bc28d3850a06",
         "pnl": true,
         "pnl_action": "",
@@ -256,6 +262,7 @@ const patients = [
         },
         "next_test_due_date": moment().add(8, "weeks"),
         "nhs_number": "9100002798",
+        "nrl": true,
         "participant_id": "527087fc-4372-4949-b50e-e1b3b9f3e15a",
         "pnl": true,
         "pnl_action": "",
@@ -292,6 +299,7 @@ const patients = [
         },
         "next_test_due_date": moment().add(10, "weeks"),
         "nhs_number": "9100001929",
+        "nrl": true,
         "participant_id": "ffb1226a-1849-46d8-8c1e-f273e8417f27",
         "pnl": true,
         "pnl_action": "",
@@ -330,6 +338,7 @@ const patients = [
         },
         "next_test_due_date": moment().add(10, "weeks"),
         "nhs_number": "9100001740",
+        "nrl": true,
         "participant_id": "b5a5bf31-5484-4ce2-8ad5-f1c1e0ac5086",
         "pnl": true,
         "pnl_action": "",
@@ -355,7 +364,7 @@ module.exports.getPatient = function (nhsNumber) {
 };
 
 
-module.exports.getPatients = function () {
+module.exports.getPatients = function (notificationType) {
     var allResults = results.getResults();
 
     for (i = 0; i < patients.length; i++) {
@@ -383,9 +392,18 @@ module.exports.getPatients = function () {
             return (aNTDD < bNTDD) ? -1 : 1;
         }
     }
-   
+
     patients.sort(compare);
-    return patients.filter(patient => patient.pnl == true);
+
+    if (notificationType == "pnl") {
+        return patients.filter(patient => patient.pnl == true);
+    }
+
+    if (notificationType == "nrl") {
+        return patients.filter(patient => patient.nrl == true);
+    }
+
+    return patients;
 };
 
 module.exports.deferPatient = function (nhsNumber, reason, length) {
