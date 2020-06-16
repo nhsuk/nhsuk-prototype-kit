@@ -94,20 +94,23 @@ router.get("/*/prior-notification/prior-notification-invited-*", function (req, 
     res.redirect("/" + getVersion(req) + "/get-prior-notifications-" + version )
 })
 
-router.get("/*/prior-notification/prior-notification-9-deferred", function (req, res) {
+router.get("/*/prior-notification/prior-notification-deferred-*", function (req, res) {
     console.log("DEFER SUBMITTED");
     patient.deferPatient(req.session.data['pnl_patient']['nhs_number'])
+    //const version = params.get('pnlversion');
+    const version = req.session.data["pnlversion"];
     req.session.data["pnl_update_msg"] = "Patient has been deferred"
     req.session.data["pnl_update_msg_show"] = 1;
-    res.redirect("/" + getVersion(req) + "/get-prior-notifications-" + getVersion(req).substring(1))
+    res.redirect("/" + getVersion(req) + "/get-prior-notifications-" + version)
 })
 
-router.get("/*/prior-notification/prior-notification-9-ceased", function (req, res) {
+router.get("/*/prior-notification/prior-notification-ceased-*", function (req, res) {
     console.log("CEASE SUBMITTED");
     patient.ceasePatient(req.session.data['pnl_patient']['nhs_number'])
+    const version = req.session.data["pnlversion"];
     req.session.data["pnl_update_msg"] = "Patient has been ceased"
     req.session.data["pnl_update_msg_show"] = 1;
-    res.redirect("/" + getVersion(req) + "/get-prior-notifications-" + getVersion(req).substring(1))
+    res.redirect("/" + getVersion(req) + "/get-prior-notifications-" + version)
 })
 
 
@@ -129,11 +132,11 @@ router.post("/*/patient-cease-confirm", function (req, res) {
     }
 });
 
-router.get("/*/reset-patient-data", function (req, res) {
+router.get("/*/reset-patient-data-*", function (req, res) {
     patient.resetPatients(req);
     req.session.data["pnl_update_msg"] = ""
     req.session.data["pnl_update_msg_show"] = 0;
-    res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-9")
+    res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-" + getNotificationVersion(req))
 })
 
 module.exports = router;

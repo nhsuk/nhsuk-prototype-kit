@@ -13,7 +13,7 @@
     "classes": "nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-4"
   }) }}
 
-  <form action="prior-notification-9-defer-review" method="post">
+  <form action="prior-notification-{{ data.pnlversion }}-defer-review" method="post">
 
   {% if data['pnl-defer-reason'] ==  'Pregnancy' %}
         <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group nhsuk-u-margin-bottom-6">
