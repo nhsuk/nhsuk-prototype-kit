@@ -171,7 +171,10 @@
 
 {% endif %}
 
-  
+  {% if data.role == 'csas' %}
+  <a href="/v9/patient/patient-summary-deferred" class="nhsuk-button nhsuk-button--ers">Submit</a>
+{% else %}
+  <a href="/v9/prior-notification/prior-notification-deferred-{{ data.pnlversion }}" class="nhsuk-button nhsuk-button--ers">Submit</a>{% endif %}
+ 
 
 
-  <a href="/v9/prior-notification/prior-notification-deferred-{{ data.pnlversion }}" class="nhsuk-button nhsuk-button--ers">Submit</a>

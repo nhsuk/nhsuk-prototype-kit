@@ -125,10 +125,11 @@ router.post("/*/prior-notification-8-check", function (req, res) {
 
 router.post("/*/patient-cease-confirm", function (req, res) {
     var cease = req.session.data["pnl-cease"];
+    const version = req.session.data["pnlversion"];
     if (cease == "yes") {
-        res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-9-cease-review")     
+        res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-" + version + "-cease-review")     
     } else {
-        res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-9");
+        res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-" + version);
     }
 });
 
@@ -138,5 +139,24 @@ router.get("/*/reset-patient-data-*", function (req, res) {
     req.session.data["pnl_update_msg_show"] = 0;
     res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-" + getNotificationVersion(req))
 })
+
+/* CSAS FUNCTIONS */
+
+router.get("/*/patient/change-due-date/choose-action*", function (req, res) {
+    console.log("CSAS CEASE AND DEFER");
+    const action = req.session.data["ceasedefer"];
+    console.log("action: " + action)
+    if (action == 'cease') {
+        res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-10-cease-reason")
+    }
+
+    if (action == 'defer') {
+        res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-10-defer-reason")
+    }
+
+    res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-10-defer-reason")
+
+})
+
 
 module.exports = router;
