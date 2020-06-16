@@ -1,5 +1,7 @@
 <h1 class="nhsuk-fieldset__legend--m">Review patient screening participation</h1>
 
+{% set nextTestDueDate = data['ntdd-year'] + "-" + data['ntdd-month'] + "-" + data['ntdd-day'] %}
+
 {% if data['pnl-defer-reason'] == "Pregnancy" %}
 
 {% set estimatedDateOfDelivery = data['edd-year'] + "-" + data['edd-month'] + "-" + data['edd-day'] %}
@@ -90,6 +92,23 @@
           }
         ]
       }
+    },
+    {
+      key: {
+        text: "Next test due date"
+      },
+      value: {
+        html: nextTestDueDate | returnDateFormat + ' ' + nextTestDueDate | returnTimeDiff
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "",
+            visuallyHiddenText: "contact details"
+          }
+        ]
+      }
     }
   ]
 }) }}
@@ -155,6 +174,23 @@
       },
       value: {
         html: data['defer-length'] | returnDate('months') + ' ' +  (data['defer-length'] | returnDate('months' )) | returnTimeDiff
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "",
+            visuallyHiddenText: "contact details"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Next test due date"
+      },
+      value: {
+        html: nextTestDueDate | returnDateFormat + ' ' + nextTestDueDate | returnTimeDiff
       },
       actions: {
         items: [
