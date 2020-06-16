@@ -1,0 +1,227 @@
+
+
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-width-container">
+  <main class="nhsuk-main-wrapper" id="maincontent">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-">
+        <h1 class="nhsuk-heading-l">Results </h1>
+      </div>
+
+      <span class="nhsuk-hint nhsuk-margin-bottom-4">
+        Select a lab to view the batches of results sent through and manually match if required.
+      </span>
+
+
+      <div class="nhsuk-grid-row">
+
+        <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-panel nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-3">
+            <h3 class="nhsuk-panel__label"><a href="gates-table">Gateshead</a></h3>
+
+            <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  No of results
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  991
+                </dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Manual matches
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  2
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-panel nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-3">
+            <h3 class="nhsuk-panel__label"><a href="manc">Manchester</a></h3>
+
+            <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  No of results
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  678
+                </dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Manual matches
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  54
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+
+        <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-panel nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-3">
+            <h3 class="nhsuk-panel__label"><a href="derby-table">Derby</a></h3>
+
+            <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  No of results
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  789
+                </dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Manual matches
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  17
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+
+
+        <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-panel nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-3">
+            <h3 class="nhsuk-panel__label"><a href="bristol-table">Bristol</a></h3>
+
+            <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  No of results
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  652
+                </dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Manual matches
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  38
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+
+
+        <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-panel nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-3">
+            <h3 class="nhsuk-panel__label"><a href="berkshire-table">Berkshire</a></h3>
+
+            <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  No of results
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  431
+                </dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Manual matches
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  29
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+
+        <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-panel nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-3">
+            <h3 class="nhsuk-panel__label"><a href="norwich-table">Norwich</a></h3>
+
+            <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  No of results
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  753
+                </dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Manual matches
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  56
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+
+        <div class="nhsuk-grid-column-one-third ">
+          <div class="nhsuk-panel nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-3">
+            <h3 class="nhsuk-panel__label"><a href="wolver-table">Wolverhampton</a></h3>
+
+            <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  No of results
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  372
+                </dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Manual matches
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  37
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+  </main>
+</div>
+
+
+
+{% endblock %}
