@@ -10,7 +10,7 @@
     padding-left: nhsuk-spacing(3);
     padding-right: nhsuk-spacing(3);
     padding-top: nhsuk-spacing(2);
-    margin-bottom: 0;
+    //margin-bottom: 0; // style police strikes again nhsuk-u-margin-bottom-0 sorts this out
   @include nhsuk-font($size: 19, $weight: normal, $line-height: 1);
 }
 

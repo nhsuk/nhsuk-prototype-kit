@@ -229,12 +229,28 @@
 
   margin-bottom: 32px;
 
+  th {
+        &:first-child {
+          padding-left:16px;
+        }
+      }
+      
   tbody {
     tr {
       //background-color: white;
 
+      th {
+        &:first-child {
+          padding-left:16px;
+        }
+      }
       td {
         vertical-align: middle;
+
+        &:first-child {
+          padding-left:16px;
+        }
+        
 
         button {
           background-color: transparent;

@@ -7,6 +7,11 @@ module.exports = config => (req, res, next) => {
     req.session.data["role"] = "csas";
   }
 
+  // default to version 10 of the PNL flow
+  if (req.session.data["pnlversion"] == undefined) {
+    req.session.data["pnlversion"] = "10";
+  }
+
   // load the basic data for PNL
   if (req.session.data["patients"] == undefined) {
     req.session.data["patients"] = patient.getPatients();

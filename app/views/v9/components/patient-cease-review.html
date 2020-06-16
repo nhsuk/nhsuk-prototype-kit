@@ -39,6 +39,9 @@
   ]
 }) }}
 
-
-  <a href="/v9/prior-notification/prior-notification-9-ceased" class="nhsuk-button nhsuk-button--ers">Submit</a>
+{% if data.role == 'csas' %}
+  <a href="/v9/patient/patient-summary-ceased" class="nhsuk-button nhsuk-button--ers">Submit</a>
+{% else %}
+  <a href="/v9/prior-notification/prior-notification-ceased-{{ data.pnlversion }}" class="nhsuk-button nhsuk-button--ers">Submit</a>
+{% endif %}
  
