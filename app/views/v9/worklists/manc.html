@@ -1,0 +1,221 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+{{ backLink({
+  "href": "results",
+  "text": "Go back to results"
+}) }}
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-full">
+  <h1 class="nhsuk-heading-l">Manchester</h1>
+ <p> The following results show all the mismatches between the lab and system patient details.
+ <br>
+  Please compare the patient details provided by the labs against those held on the system.</p>
+
+   <div class="nhsuk-table-responsive">
+                  <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable">
+
+                    <!-- TABLE START -->
+                    <thead class="nhsuk-table__head">
+                      <tr class="nhsuk-table__row">
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">Area</button>
+                        </th>
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">Transfer no</button>
+                        </th>
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">Transfer date</button>
+                        </th>
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">Manual matches</button>
+                        </th>
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                        <button onclick="sortTable()" type="button" data-index="0">Status</button>
+                        </th>
+                        <th class="nhsuk-table_header"></th>
+
+                      </tr>
+
+                    </thead>
+                      <tbody class="nhsuk-table__body">
+
+                      <tr class="nhsuk-table__row">
+                         <td class="nhsuk-table__cell">
+                          AREA
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          03368
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          06-02-2020
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          6
+                        </td>
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <span class="nhsuk-tag nhsuk-tag--green nhsuk-u-margin-bottom-2">Not started</span>
+                        </td>
+                          <td class="nhsuk-table__cell">
+                       <a class="nhsuk-button--ers nhsuk-button--secondary" href="manc-p1">Start matching</a>
+                        </td>
+                      </tr>
+
+                                    <tr class="nhsuk-table__row">
+                                    <td class="nhsuk-table__cell">
+                                    AREA
+                                    </td>
+                                    <td class="nhsuk-table__cell">
+                                      03369
+                                    </td>
+                                    <td class="nhsuk-table__cell">
+                                      06-02-2020
+                                    </td>
+                                    <td class="nhsuk-table__cell">
+                                      78
+                                    </td>
+                                    <td class="nhsuk-table__cell multiple-choice--hod">
+                                      <span class="nhsuk-tag nhsuk-tag--green nhsuk-u-margin-bottom-2">Not started</span>
+                                    </td>
+                                    <td class="nhsuk-table__cell">
+                                    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="manc-p1">Start matching</a>
+                                     </td>
+                                  </tr>
+
+
+
+                                              <tr class="nhsuk-table__row">
+                                              <td class="nhsuk-table__cell">
+                                                 AREA
+                                                 </td>
+                                                <td class="nhsuk-table__cell">
+                                                  03370
+                                                </td>
+                                                <td class="nhsuk-table__cell">
+                                                  06-02-2020
+                                                </td>
+                                                <td class="nhsuk-table__cell">
+                                                  89
+                                                </td>
+
+                                                <td class="nhsuk-table__cell multiple-choice--hod">
+                                                  <span class="nhsuk-tag nhsuk-tag--orange nhsuk-u-margin-bottom-2">With officer</span>
+                                                </td>
+                                                <td class="nhsuk-table__cell">
+                                                 </td>
+                                              </tr>
+
+                                                          <tr class="nhsuk-table__row">
+                                                          <td class="nhsuk-table__cell">
+                                                           AREA
+                                                          </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        03371
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        06-02-2020
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        52
+                                                      </td>
+
+                                                      <td class="nhsuk-table__cell multiple-choice--hod">
+                                                        <span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">file error</span>
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                <!-- <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>-->
+                                                 </td>
+                                                    </tr>
+
+                                                             <tr class="nhsuk-table__row">
+                                                             <td class="nhsuk-table__cell">
+                                                            AREA
+                                                           </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        03372
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        06-02-2020
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        31
+                                                      </td>
+
+
+                                                      <td class="nhsuk-table__cell multiple-choice--hod">
+                                                        <span class="nhsuk-tag nhsuk-tag--green nhsuk-u-margin-bottom-2">Not started</span>
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="B">Start matching</a>
+                                                 </td>
+                                                    </tr>
+                                                                      <tr class="nhsuk-table__row">
+                                                                      <td class="nhsuk-table__cell">
+                                                                     AREA
+                                                                    </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        03373
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        06-02-2020
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        53
+                                                      </td>
+
+
+                                                      <td class="nhsuk-table__cell multiple-choice--hod">
+                                                        <span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">file error</span>
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                 </td>
+                                                    </tr>
+
+                                                      <tr class="nhsuk-table__row">
+                                                      <td class="nhsuk-table__cell">
+                                                       AREA
+                                                       </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        03374
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        06-02-2020
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        72
+                                                      </td>
+
+
+                                                      <td class="nhsuk-table__cell multiple-choice--hod">
+                                                        <span class="nhsuk-tag nhsuk-tag--green nhsuk-u-margin-bottom-2">Not started</span>
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>
+                                                 </td>
+                                                    </tr>
+                                                       </tbody>
+                    </table>
+                    </div>
+
+
+
+
+
+  </div>
+  </div>
+{% endblock %}

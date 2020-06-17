@@ -1,0 +1,34 @@
+{% extends 'layout-v2.html' %}
+
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+    <h2>Before you continue</h2>
+              <p class="nhsuk-body nhsuk-u-font-weight-bold">You should only access the records of individuals who you have a care relationship with.</p>
+              <p> If you choose to look at other records, you are acting unprofessionally and could be held accountable. All activity in the cervical screening system is audited. </p>
+        <div class="nhsuk-panel">
+         <div class="nhsuk-checkboxes">
+      <div class="nhsuk-checkboxes__item">
+        <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+        <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1"> I have read and understand the above statement. </label>
+       
+      </div>
+      </div>
+     </div>
+    </div>
+   </div>
+    <a class="nhsuk-button nhsuk-button--ers" href="security-code" type="submit">
+        Continue
+      </a>
+</div>
+    
+
+
+
+
+{% endblock %}
