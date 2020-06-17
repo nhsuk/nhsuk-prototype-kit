@@ -12,11 +12,19 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
 
+  {% if data.role == 'csas' %}
     {{ backLink({
-    "href": "prior-notification-10",
-    "text": "Back to patients due to be invited",
-    "classes" : "nhsuk-u-margin-bottom-4"
+      "href": "../patient/change-due-date/enter-action-1",
+      "text": "Back to choose a reason",
+      "classes" : "nhsuk-u-margin-bottom-4"
     }) }}
+  {% else %}
+    {{ backLink({
+      "href": "prior-notification-10",
+      "text": "Back to patients due to be invited",
+      "classes" : "nhsuk-u-margin-bottom-4"
+    }) }}
+  {% endif %}
     
     <div class="nhsuk-panel-with-label">
       {% include '../components/pnl-patient.html' %}
