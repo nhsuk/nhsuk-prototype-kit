@@ -1,4 +1,5 @@
 
+
 const gpInfo = [
 {
     "active": false,
@@ -12,4 +13,14 @@ const gpInfo = [
     "name": "IRELAND WOOD SURGERY",
     "organisation_code": "B86044",
     "type": "PRESCRIBING COST CENTRE"
-}]
+    }]
+
+module.exports = function () {
+    console.log('getting gp info')
+}
+
+module.exports.getGPInfo = function () {
+    var gpAddress = gpInfo[0];
+    console.log(gpAddress);
+    return gpAddress;
+};

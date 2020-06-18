@@ -1,4 +1,5 @@
 const patient = require('./data/patient.js');
+const gpInfo = require('./data/gp-info.js');
 
 
 module.exports = config => (req, res, next) => {
@@ -26,6 +27,12 @@ module.exports = config => (req, res, next) => {
   if (req.session.data["patientSummary"] == undefined) {
     req.session.data["patientSummary"] = patient.getPatient(9991023867);
   }
+
+  if (req.session.data["gpinfo"] == undefined) {
+    req.session.data["gpinfo"] = gpInfo.getGPInfo();
+  }
+
+  
 
   next();
 };
