@@ -34,11 +34,6 @@
       <li class="nhsuk-sub-navigation__item"><a href="patient-summary" class="nhsuk-sub-navigation__link" aria-current="page">Patient Summary</a></li>
       <li class="nhsuk-sub-navigation__item"><a href="history" class="nhsuk-sub-navigation__link">History</a></li>
       <li class="nhsuk-sub-navigation__item"><a href="gp-info" class="nhsuk-sub-navigation__link">GP Information</a></li>
-      <!--{% if data.role == 'csas' %}
-      <li class="nhsuk-sub-navigation__item"><a href="additional-info" class="nhsuk-sub-navigation__link">Additional Information</a></li>
-      {% endif %}-->
-
-      <!--<li class="nhsuk-sub-navigation__item" style="float: right; font-size: 14px">role: {{ data.role }}</li>-->
     </ul>
   </nav>
 {% endif %}
@@ -46,8 +41,17 @@
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-three-quarters">
     <h1 class="nhsuk-heading-l">Patient summary</h1>
-    {% if data.status == 'ceased' %}
-      <span class="nhsuk-tag nhsuk-tag--orange">{{ data['status'] or 'ceased' }} - {{ data['reason'] or 'No cervix' }}</span>
+
+      {% set pnlMsg = "<p>Update: " + data.pnl_update_msg  + " </p>"  %}
+      {% if (data['pnl_update_msg_show'] > 1) %}
+        {{ insetText({
+          "HTML": pnlMsg,
+          "classes": "nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-0"
+        }) }}
+      {% endif %}
+
+    {% if data.patientSummary.pnl_action == 'Ceased' %}
+      <span class="nhsuk-tag nhsuk-tag--orange">{{ data.patientSummary.pnl_action }} - {{ data.patientSummary.pnl_reason }}</span>
     {% endif %}
     <dl class="nhsuk-summary-list nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
       <div class="nhsuk-summary-list__row">
@@ -55,14 +59,18 @@
           Next test due date:
         </dt>
         <dd class="nhsuk-summary-list__value">
-          {{ data['ntdd'] or '20-Jan-2020' }}
+          {% if data.patientSummary.pnl_action == 'Ceased' %}
+            -
+          {% else %}
+            {{ data.patientSummary.next_test_due_date | returnDateFormat or '20-Jan-2020' }}
+          {% endif %}
         </dd>
         <dd class="nhsuk-summary-list__actions">
           {% if data.role == 'csas' %}
-            {% if data.status == 'ceased' %}
-              <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2" href="change-due-date/enter-reason-reinstate">Reinstate</a>
+            {% if data.patientSummary.pnl_action == 'Ceased' %}
+              <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2" href="change-due-date/enter-reinstate-1?nhsNumber={{ data.patientSummary.nhs_number}}">Reinstate</a>
             {% else %}
-              <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2" href="change-due-date/enter-action-1?pnlversion=10">Change date</a>
+              <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2" href="/v9/start-csas-cease-defer?pnlversion=10&nhsNumber={{ data.patientSummary.nhs_number}}">Change date</a>
             {% endif %}
           {% endif %}
         </dd>
@@ -73,7 +81,11 @@
             Invited date:
           </dt>
           <dd class="nhsuk-summary-list__value">
-            09-Nov-2019
+            {% if data.patientSummary.pnl_action == 'Ceased' %}
+              -
+            {% else %}
+              09-Nov-2019
+            {% endif %}
           </dd>
           <dd class="nhsuk-summary-list__actions">
           </dd>
@@ -150,7 +162,7 @@
               <thead class="nhsuk-table__head">
                 <tr class="nhsuk-table__row">
                   <th class="nhsuk-table__header" scope="col">Test Date</th>
-                  <th class="nhsuk-table__header" scope="col">Test type</th>
+                  <!--<th class="nhsuk-table__header" scope="col">Test type</th>-->
                   <th class="nhsuk-table__header" scope="col">HPV infection</th>
                   <th class="nhsuk-table__header"  scope="col">Cytology result</th>
                   <th class="nhsuk-table__header" scope="col">Action</th>
@@ -163,6 +175,99 @@
                 </tr>
               </thead>
               <tbody class="nhsuk-table__body nhsuk-body-">
+
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">
+                    {{ data.patientSummary.results.result_date | returnDateFormat or '01-Apr-2017' }}
+                    <span class="nhsuk-table__cell--hint">Private Test</span>
+                  </td>
+                  <!--<td class="nhsuk-table__cell">NHS</td>-->
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.infection_code or '-' }}
+                    <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.infection_result or 'No HPV Data' }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.result_code or '2' }}
+                    <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.result or 'Negative' }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.action_code or 'A' }}
+                    <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.action or 'Routine' }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.recall_months or '60' }}
+                    <span class="nhsuk-table__cell--hint">Months</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.sending_lab }}
+                    <span class="nhsuk-table__cell--hint">Leeds General Infirmary</span>
+                  </td>
+                  <td class="nhsuk-table__cell">{{ data.patientSummary.results.sender_code or '676567' }}</td>
+                  {% if data.role != 'sampleTaker' %}
+                    <td class="nhsuk-table__cell">{{ data.patientSummary.results.slide_number or '70406000' }}</td>
+                  {% endif %}
+                </tr>
+
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">
+                    {{ data.patientSummary.results.result_date | returnDateFormat or '01-Apr-2017' }}
+                    <span class="nhsuk-table__cell--hint">NHS Test</span>
+                  </td>
+                  <!--<td class="nhsuk-table__cell">NHS</td>-->
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.infection_result or 'No HPV Data' }}
+                    <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.infection_code or '-' }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.result or 'Negative' }}
+                    <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.result_code or '2' }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.action or 'Routine' }}
+                    <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.action_code or 'A' }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.recall_months or '60' }}
+                    <span class="nhsuk-table__cell--hint">Months</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.sending_lab }}
+                    <span class="nhsuk-table__cell--hint">Leeds General Infirmary</span>
+                  </td>
+                  <td class="nhsuk-table__cell">{{ data.patientSummary.results.sender_code or '676567' }}</td>
+                  {% if data.role != 'sampleTaker' %}
+                    <td class="nhsuk-table__cell">{{ data.patientSummary.results.slide_number or '70406000' }}</td>
+                  {% endif %}
+                </tr>
+
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">
+                    {{ data.patientSummary.results.result_date | returnDateFormat or '01-Apr-2017' }}
+                    <span class="nhsuk-table__cell--hint">Abroad Test</span>
+                  </td>
+                  <!--<td class="nhsuk-table__cell">NHS</td>-->
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.infection_result or 'No HPV Data' }}
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.result or 'Negative' }}
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.action or 'Routine' }}
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.recall_months or '60' }} months</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    Leeds General Infirmary
+                  </td>
+                  <td class="nhsuk-table__cell">{{ data.patientSummary.results.sender_code or '676567' }}</td>
+                  {% if data.role != 'sampleTaker' %}
+                    <td class="nhsuk-table__cell">{{ data.patientSummary.results.slide_number or '70406000' }}</td>
+                  {% endif %}
+                </tr>
+
+<!--
                 <tr class="nhsuk-table__row">
                 <td class="nhsuk-table__cell fixed-side">01-Apr-2017</td>
                 <td class="nhsuk-table__cell">NHS</td>
@@ -191,7 +296,7 @@
                 {% endif %}
 
               </tr>
-
+-->
 
               </tbody>
             </table>

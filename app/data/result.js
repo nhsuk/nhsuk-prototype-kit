@@ -42,7 +42,7 @@ const results = [
         "slide_number": "70406000",
         "sort_key": "RESULT#1972-05-18#2020-05-28T12:53:39.328",
         "source_code": "N",
-        "test_date": "1972-05-18"
+        "test_date": moment().subtract(96, "weeks")
     },
     {
         "action": "Routine",
@@ -63,7 +63,7 @@ const results = [
         "slide_number": "89007139",
         "sort_key": "RESULT#1989-05-23#2020-05-28T16:35:45.890",
         "source_code": "G",
-        "test_date": "1989-05-23"
+        "test_date": moment().subtract(146, "weeks")
     },
     {
         "action": "Routine",
@@ -84,7 +84,7 @@ const results = [
         "slide_number": "89007139",
         "sort_key": "RESULT#1989-05-23#2020-05-28T16:35:49.207",
         "source_code": "G",
-        "test_date": "1989-05-23"
+        "test_date": moment().subtract(146, "weeks")
     },
     {
         "action": "Routine",
@@ -109,7 +109,7 @@ const results = [
         "slide_number": "0154590C",
         "sort_key": "RESULT#2001-12-18#2020-05-28T16:35:45.306",
         "source_code": "X",
-        "test_date": "2001-12-18"
+        "test_date": moment().subtract(146, "weeks")
     },
     {
         "action": "Routine",
@@ -137,7 +137,7 @@ const results = [
         "slide_number": "88011206",
         "sort_key": "RESULT#1988-06-22#2020-05-28T16:35:45.883",
         "source_code": "X",
-        "test_date": "1988-06-22"
+        "test_date": moment().subtract(148, "weeks")
     },
     {
         "action": "Routine",
@@ -165,7 +165,7 @@ const results = [
         "slide_number": "88011206",
         "sort_key": "RESULT#1988-06-22#2020-05-28T16:35:49.199",
         "source_code": "X",
-        "test_date": "1988-06-22"
+        "test_date": moment().subtract(146, "weeks")
     },
     {
         "action": "Routine",
@@ -186,7 +186,7 @@ const results = [
         "slide_number": "91003184",
         "sort_key": "RESULT#1991-04-04#2020-05-28T16:35:45.864",
         "source_code": "N",
-        "test_date": "1991-04-04"
+        "test_date": moment().subtract(146, "weeks")
     },
     {
         "action": "Routine",
@@ -207,7 +207,7 @@ const results = [
         "slide_number": "92023780",
         "sort_key": "RESULT#1992-11-04#2020-05-28T16:35:45.700",
         "source_code": "N",
-        "test_date": "1992-11-04"
+        "test_date": moment().subtract(146, "weeks")
     },
     {
         "action": "Repeat advised",
@@ -226,7 +226,7 @@ const results = [
         "slide_number": "88034800",
         "sort_key": "RESULT#1988-07-20#2020-05-28T16:35:45.829",
         "source_code": "X",
-        "test_date": "1988-07-20"
+        "test_date": moment().subtract(94, "weeks")
     }
 ]
 

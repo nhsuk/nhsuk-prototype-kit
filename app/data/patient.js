@@ -1,6 +1,18 @@
 const results = require('./result.js');
 const moment = require('moment');
 
+/*
+9991023867
+9100001694
+9100001384
+9100002801
+9100001899
+9100001287
+9100002798
+9100001929
+9100001740
+*/
+
 const patients = [
     {
         "address": {
@@ -357,9 +369,16 @@ module.exports = function () {
 }
 
 module.exports.getPatient = function (nhsNumber) {
-    var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
-    try { console.log(patient.first_name + " " + patient.last_name + " NHS Number: " + patient.nhs_number); }
-    catch (err) { console.log('patient not found') }
+    if (nhsNumber == '') {
+        var patient = patients[0];
+    } else {
+        var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
+        try { console.log(patient.first_name + " " + patient.last_name + " NHS Number: " + patient.nhs_number); }
+        catch (err) { console.log('patient not found') }
+    }
+    //var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
+    //try { console.log(patient.first_name + " " + patient.last_name + " NHS Number: " + patient.nhs_number); }
+    //catch (err) { console.log('patient not found') }
     return patient;
 };
 
@@ -410,12 +429,29 @@ module.exports.deferPatient = function (nhsNumber, reason, length) {
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
     patient.pnl = false;
     patient.pnl_action = "Deferred";
+    patient.pnl_reason = reason || '';
+    //console.log("action: " + action)
+    console.log("reason: " + reason)
 };
 
 module.exports.ceasePatient = function (nhsNumber, reason) {
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
     patient.pnl = false;
     patient.pnl_action = "Ceased";
+    patient.pnl_reason = reason || '';
+    //console.log("action: " + action)
+    console.log("reason: " + reason)
+    //console.log(patient)
+};
+
+module.exports.reinstatePatient = function (nhsNumber) {
+    var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
+    patient.pnl = true;
+    patient.pnl_action = "";
+    //patient.pnl_reason = reason || '';
+    //console.log("action: " + action)
+    //console.log("reason: " + reason)
+    //console.log(patient)
 };
 
 module.exports.resetPatients = function(req) {

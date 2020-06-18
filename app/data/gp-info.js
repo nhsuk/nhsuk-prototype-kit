@@ -1,3 +1,5 @@
+
+const gpInfo = [
 {
     "active": false,
     "address": {
@@ -10,4 +12,4 @@
     "name": "IRELAND WOOD SURGERY",
     "organisation_code": "B86044",
     "type": "PRESCRIBING COST CENTRE"
-}
+}]

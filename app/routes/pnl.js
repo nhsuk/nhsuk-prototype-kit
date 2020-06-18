@@ -96,21 +96,56 @@ router.get("/*/prior-notification/prior-notification-invited-*", function (req, 
 
 router.get("/*/prior-notification/prior-notification-deferred-*", function (req, res) {
     console.log("DEFER SUBMITTED");
-    patient.deferPatient(req.session.data['pnl_patient']['nhs_number'])
-    //const version = params.get('pnlversion');
+    const reason = req.session.data['pnl-defer-reason'];
+    const nhsNumber = req.session.data['pnl_patient']['nhs_number'];
+    patient.deferPatient(nhsNumber, reason)
+    
     const version = req.session.data["pnlversion"];
     req.session.data["pnl_update_msg"] = "Patient has been deferred"
     req.session.data["pnl_update_msg_show"] = 1;
-    res.redirect("/" + getVersion(req) + "/get-prior-notifications-" + version)
+
+    if (req.session.data['role'] == 'csas') {
+        if ((req.session.data["pnl_update_msg_show"] >= 1)) {
+            if (req.session.data["pnl_update_msg_show"] >= 2) {
+                req.session.data["pnl_update_msg"] = ""
+                req.session.data["pnl_update_msg_show"] = 0;
+            }
+            req.session.data["pnl_update_msg_show"]++;
+        }
+        const patientSummary = patient.getPatient(nhsNumber);
+        req.session.data['patientSummary'] = patientSummary;
+        //console.log(patientSummary)
+        res.redirect("/" + getVersion(req) + "/patient/patient-summary")
+    } else {
+        res.redirect("/" + getVersion(req) + "/get-prior-notifications-" + version)
+    }
+    
 })
 
 router.get("/*/prior-notification/prior-notification-ceased-*", function (req, res) {
     console.log("CEASE SUBMITTED");
-    patient.ceasePatient(req.session.data['pnl_patient']['nhs_number'])
+    const reason = req.session.data['pnl-cease-reason'];
+    const nhsNumber = req.session.data['pnl_patient']['nhs_number'];
+    patient.ceasePatient(nhsNumber, reason)
     const version = req.session.data["pnlversion"];
     req.session.data["pnl_update_msg"] = "Patient has been ceased"
     req.session.data["pnl_update_msg_show"] = 1;
-    res.redirect("/" + getVersion(req) + "/get-prior-notifications-" + version)
+
+    if (req.session.data['role'] == 'csas') {
+        if ((req.session.data["pnl_update_msg_show"] >= 1)) {
+            if (req.session.data["pnl_update_msg_show"] >= 2) {
+                req.session.data["pnl_update_msg"] = ""
+                req.session.data["pnl_update_msg_show"] = 0;
+            }
+            req.session.data["pnl_update_msg_show"]++;
+        }
+        const patientSummary = patient.getPatient(nhsNumber);
+        req.session.data['patientSummary'] = patientSummary;
+        //console.log(patientSummary)
+        res.redirect("/" + getVersion(req) + "/patient/patient-summary")
+    } else {
+        res.redirect("/" + getVersion(req) + "/get-prior-notifications-" + version)
+    }    
 })
 
 
@@ -155,8 +190,44 @@ router.get("/*/patient/change-due-date/choose-action*", function (req, res) {
     }
 
     res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-10-defer-reason")
-
 })
 
+router.get("/*/start-csas-cease-defer*", function (req, res) {
+    console.log("CSAS CEASE AND DEFER");
+    const params = new URLSearchParams(req.query);
+    const nhsNumber = params.get('nhsNumber');
+    const version = params.get('pnlversion');
+    req.session.data["pnlversion"] = version;
+    var pnlPatient = patient.getPatient(nhsNumber);
+    req.session.data["pnl_patient"] = pnlPatient;
+    res.redirect("/" + getVersion(req) + "/patient/change-due-date/enter-action-1")
+})
+
+
+router.get("/*/patient/patient-reinstated*", function (req, res) {
+    console.log("REINSTATED SUBMITTED");
+    //const reason = req.session.data['pnl-cease-reason'];
+    const nhsNumber = req.session.data['pnl_patient']['nhs_number'];
+    patient.reinstatePatient(nhsNumber);
+    //const version = req.session.data["pnlversion"];
+    req.session.data["pnl_update_msg"] = "Patient has been reinstated"
+    req.session.data["pnl_update_msg_show"] = 1;
+
+    
+    if ((req.session.data["pnl_update_msg_show"] >= 1)) {
+        if (req.session.data["pnl_update_msg_show"] >= 2) {
+            req.session.data["pnl_update_msg"] = ""
+            req.session.data["pnl_update_msg_show"] = 0;
+        }
+        req.session.data["pnl_update_msg_show"]++;
+    }
+        
+    const patientSummary = patient.getPatient(nhsNumber);
+    req.session.data['patientSummary'] = patientSummary;
+    //console.log(patientSummary)
+    res.redirect("/" + getVersion(req) + "/patient/patient-summary")
+    
+})
+//patient - reinstated
 
 module.exports = router;
