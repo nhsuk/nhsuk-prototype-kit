@@ -1,216 +1,76 @@
 <h1 class="nhsuk-fieldset__legend--m">Review patient screening participation</h1>
 
-{% set nextTestDueDate = data['ntdd-year'] + "-" + data['ntdd-month'] + "-" + data['ntdd-day'] %}
+<dl class="nhsuk-summary-list">
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Action</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['pnl-action'] or 'Defer' }}</dd>
+    {% if data.role == 'csas' %}
+      <dd class="nhsuk-summary-list__actions"><a href="../patient/change-due-date/enter-action-1">Change<span class="nhsuk-u-visually-hidden"> Action</span></a></dd>
+    {% else %}
+      <dd class="nhsuk-summary-list__actions"></dd>
+    {% endif %}
+  </div>
 
-{% if data['pnl-defer-reason'] == "Pregnancy" %}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Defer reason</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['pnl-defer-reason'] or 'Pregnancy' }}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="prior-notification-{{ data.pnlversion }}-defer-reason">Change<span class="nhsuk-u-visually-hidden"> Defer reason</span></a></dd>
+  </div>
 
-{% set estimatedDateOfDelivery = data['edd-year'] + "-" + data['edd-month'] + "-" + data['edd-day'] %}
+  {% if data['pnl-defer-reason'] == "Pregnancy" and data['edd-year'] != '' %}
+    {% set estimatedDateOfDelivery = data['edd-year'] + "-" + data['edd-month'] + "-" + data['edd-day'] %}
+    
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Estimated date of delivery</dt>
+      <dd class="nhsuk-summary-list__value">{{ estimatedDateOfDelivery | returnDateFormat + ' ' + estimatedDateOfDelivery | returnTimeDiff }}</dd>
+      <dd class="nhsuk-summary-list__actions"><a href="prior-notification-{{ data.pnlversion }}-defer-reason">Change<span class="nhsuk-u-visually-hidden"> Estimated date of delivery</span></a></dd>
+    </div>
+  {% endif %}
 
-  {{ summaryList({
-  rows: [
-    {
-      key: {
-        text: "Action"
-      },
-      value: {
-        text: data['pnl-action'] or 'Defer'
-      },
-      actions: {
-        items: [
-          {
-            href: "prior-notification-9-action",
-            text: "Change",
-            visuallyHiddenText: "name"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Defer reason"
-      },
-      value: {
-        text: data['pnl-defer-reason'] or 'Pregnancy'
-      },
-      actions: {
-        items: [
-          {
-            href: "prior-notification-9-defer-reason",
-            text: "Change",
-            visuallyHiddenText: "date of birth"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Estimated date of delivery"
-      },
-      value: {
-        text:  estimatedDateOfDelivery | returnDateFormat + ' ' + estimatedDateOfDelivery | returnTimeDiff
-      },
-      actions: {
-        items: [
-          {
-            href: "prior-notification-9-defer-reason",
-            text: "Change",
-            visuallyHiddenText: "date of birth"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Defer length"
-      },
-      value: {
-        html: data['defer-length'] or '3 Months'
-      },
-      actions: {
-        items: [
-          {
-            href: "prior-notification-9-defer-length",
-            text: "Change",
-            visuallyHiddenText: "change defer length"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Calculated next test due date"
-      },
-      value: {
-        html: data['defer-length'] | returnDate('months', estimatedDateOfDelivery ) + ' ' +  (data['defer-length'] | returnDate('months', estimatedDateOfDelivery )) | returnTimeDiff
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "",
-            visuallyHiddenText: "contact details"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Next test due date"
-      },
-      value: {
-        html: nextTestDueDate | returnDateFormat + ' ' + nextTestDueDate | returnTimeDiff
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "",
-            visuallyHiddenText: "contact details"
-          }
-        ]
-      }
-    }
-  ]
-}) }}
+  {% if data['defer-length'] != '' %}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Defer length</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['defer-length'] or '3 Months' }}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="prior-notification-{{ data.pnlversion }}-defer-length">Change<span class="nhsuk-u-visually-hidden"> Defer length</span></a></dd>
+  </div>
 
-{% else %}
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Calculated next test due date</dt>
+      <dd class="nhsuk-summary-list__value">{{ data['defer-length'] | returnDate('months', estimatedDateOfDelivery ) + ' ' +  (data['defer-length'] | returnDate('months', estimatedDateOfDelivery )) | returnTimeDiff }}</dd>
+      <dd class="nhsuk-summary-list__actions"><a href="prior-notification-{{ data.pnlversion }}-defer-length">Change<span class="nhsuk-u-visually-hidden"> Calculated next test due date</span></a></dd>
+    </div>
+  {% endif %}
 
-{{ summaryList({
-  rows: [
-    {
-      key: {
-        text: "Action"
-      },
-      value: {
-        text: data['pnl-action'] or 'Defer'
-      },
-      actions: {
-        items: [
-          {
-            href: "",
-            text: "",
-            visuallyHiddenText: "name"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Defer reason"
-      },
-      value: {
-        text: data['pnl-defer-reason'] or 'Pregnancy'
-      },
-      actions: {
-        items: [
-          {
-            href: "prior-notification-9-defer-reason",
-            text: "Change",
-            visuallyHiddenText: "date of birth"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Defer length"
-      },
-      value: {
-        html: data['defer-length'] or '3 Months'
-      },
-      actions: {
-        items: [
-          {
-            href: "prior-notification-9-defer-length",
-            text: "Change",
-            visuallyHiddenText: "change defer length"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Calculated next test due date"
-      },
-      value: {
-        html: data['defer-length'] | returnDate('months') + ' ' +  (data['defer-length'] | returnDate('months' )) | returnTimeDiff
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "",
-            visuallyHiddenText: "contact details"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Next test due date"
-      },
-      value: {
-        html: nextTestDueDate | returnDateFormat + ' ' + nextTestDueDate | returnTimeDiff
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "",
-            visuallyHiddenText: "contact details"
-          }
-        ]
-      }
-    }
-  ]
-}) }}
+  {% if data['role'] == 'csas' %}
+    {% if data['ntdd-year'] != '' %}
+      {% set nextTestDueDate = data['ntdd-year'] + "-" + data['ntdd-month'] + "-" + data['ntdd-day'] %}
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Next test due date</dt>
+        <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat + ' ' + nextTestDueDate | returnTimeDiff }}</dd>
+        <dd class="nhsuk-summary-list__actions"><a href="prior-notification-{{ data.pnlversion }}-defer-length">Change<span class="nhsuk-u-visually-hidden"> Next test due date</span></a></dd>
+      </div>
+    {% endif %}
 
-{% endif %}
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">CRM</dt>
+      <dd class="nhsuk-summary-list__value">{{ data['crm'] or '' }}</dd>
+      <dd class="nhsuk-summary-list__actions"><a href="patient/change-due-date/enter-action-1">Change<span class="nhsuk-u-visually-hidden"> CRM</span></a></dd>
+    </div>
 
-  {% if data.role == 'csas' %}
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Comments</dt>
+      <dd class="nhsuk-summary-list__value">{{  data['comments'] or '' }}</dd>
+      <dd class="nhsuk-summary-list__actions"><a href="patient/change-due-date/enter-action-1">Change<span class="nhsuk-u-visually-hidden"> Comments</span></a></dd>
+    </div>
+  {% endif %}
+</dl>
+
+
+{% if data.role == 'csas' %}
   <a href="/v9/patient/patient-summary-deferred" class="nhsuk-button nhsuk-button--ers">Submit</a>
 {% else %}
-  <a href="/v9/prior-notification/prior-notification-deferred-{{ data.pnlversion }}" class="nhsuk-button nhsuk-button--ers">Submit</a>{% endif %}
+  <a href="/v9/prior-notification/prior-notification-deferred-{{ data.pnlversion }}" class="nhsuk-button nhsuk-button--ers">Submit</a>
+ {% endif %}
  
 
 
