@@ -7,6 +7,7 @@
 
 <script>
 function myFunction() {
+  console.log ("hello")
   // Declare variables
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myInput");
@@ -29,19 +30,6 @@ function myFunction() {
   }
 }
 
-      $("#mySelect").on("change", function(){
-        var opt = $(this).val();
-       $("tbody > tr").each(function(){ ... });
-          var tr = $(this);
-	  tr.show();
-          if (! tr.hasClass(opt)){
-            tr.hide();
-          }
-	  if (opt == "zero"){
-            tr.show();
-          }
-        });
-      });
 
 
 
@@ -73,7 +61,7 @@ function myFunction() {
 
 
 <div class="flex-container">
-   <div><label class="nhsuk-label"> Filter by area </label><input type="text" class="nhsuk-input" id="myInput" onkeyup="myFunction()" ></div>
+   <div><label class="nhsuk-label"> Filter by area </label><input type="text" class="nhsuk-input" id="myInput" onkeyup="myFunction()"></div>
        <div class="nhsuk-form-group">
   <label class="nhsuk-label nhsuk-u-margin-left-6" for="sort">
     Filter by status
@@ -130,7 +118,7 @@ function myFunction() {
 
                         </td>
                         <td class="nhsuk-table__cell multiple-choice--hod">
-                          <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2 nhsuk-u-margin-right-4" value="not-started" >Not started</span>
+                          <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2 nhsuk-u-margin-right-4" value="not-started">Not started</span>
                         </td>
                         <td class="nhsuk-table__cell">
                           03368
