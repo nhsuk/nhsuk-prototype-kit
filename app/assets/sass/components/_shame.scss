@@ -473,5 +473,15 @@
                 .nhsuk-button--ers_secondary.nhsuk-button--ers_disabled {
                   background-color: #425563; }
 
+.flex-container {
+display: flex;
+flex-direction: row;
+}
+                  
+.flex-container > div {
+ margin: 0px;
+padding: 0px;
+ }
+
 /* ----MANAGING RESULTS  --- */
 /* ---------------------------- */
