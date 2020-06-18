@@ -22,8 +22,10 @@ module.exports = config => (req, res, next) => {
     req.session.data["pnl_patient"] = patient.getPatient(9991023867);
   }
 
-
-
+  // load the basic data for someone selected as part of the Patient Summary
+  if (req.session.data["patientSummary"] == undefined) {
+    req.session.data["patientSummary"] = patient.getPatient(9991023867);
+  }
 
   next();
 };
