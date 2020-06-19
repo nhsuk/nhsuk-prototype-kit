@@ -1,6 +1,7 @@
 $(document).ready(function() {
    $(".toggleitbutton").click(function () {
    $(".toggleitpanel").toggle();
+   e.preventDefault();
   });
 
  });
