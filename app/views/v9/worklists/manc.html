@@ -4,7 +4,7 @@
 
 <script>
 function myFunction() {
-  console.log ("hello")
+  console.log 
   // Declare variables
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myInput");
@@ -15,36 +15,16 @@ function myFunction() {
   // Loop through all table rows, and hide those who don't match the search query
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
-
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
-        if (! tr.childen()[1].children()[0].text() == opt){
       } else {
         tr[i].style.display = "none";
       }
     }
   }
 }
-
-
-$("#mySelect").on("change", function(){
-  console.log ("yoyo")
-  var opt = $(this).val();
-  $("tbody > tr").each(function(){
-    var tr = $(this);
-	tr.show();
-    if (! tr.childen()[1].children()[0].text()){
-      tr.hide();
-    }
-	else if (opt == "zero") {
-      tr.show();
-    }
-  });
-});
-
-
 </script>
 
 {% endblock %}
@@ -70,22 +50,10 @@ $("#mySelect").on("change", function(){
  <p> The following results show the manual matches between the lab and system patient details.
  <br>
   Compare the patient details provided by the labs against those held on the system.</p>
-  <div class="dropdown">
-    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-    <div id="myDropdown" class="dropdown-content">
-      <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-      <a href="#about">About</a>
-      <a href="#base">Base</a>
-      <a href="#blog">Blog</a>
-      <a href="#contact">Contact</a>
-      <a href="#custom">Custom</a>
-      <a href="#support">Support</a>
-      <a href="#tools">Tools</a>
-    </div>
-  </div>
+
 
 <div class="flex-container nhsuk-u-margin-bottom-4">
-   <div><label class="nhsuk-label"> Filter by area </label><input type="text" class="nhsuk-input" id="myInput" onkeyup="myFunction()"></div>
+   <div><label class="nhsuk-label"> Filter by area </label><input class="nhsuk-input" type="text" id="myInput" onkeyup="myFunction()"></div>
        <div class="nhsuk-form-group">
   <label class="nhsuk-label nhsuk-u-margin-left-6" for="sort">
     Filter by status
@@ -311,7 +279,7 @@ $("#mySelect").on("change", function(){
                                                         06-02-2020
                                                       </td>
                                                       <td class="nhsuk-table__cell">
-                                                        72
+                                                        54
                                                       </td>
 
                                                       <td class="nhsuk-table__cell">
@@ -334,7 +302,7 @@ $("#mySelect").on("change", function(){
                                                         06-02-2020
                                                       </td>
                                                       <td class="nhsuk-table__cell">
-                                                        72
+                                                        28
                                                       </td>
                                                       <td class="nhsuk-table__cell">
                                                 <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>
@@ -356,7 +324,7 @@ $("#mySelect").on("change", function(){
                                                         06-02-2020
                                                       </td>
                                                       <td class="nhsuk-table__cell">
-                                                        72
+                                                        63
                                                       </td>
 
                                                       <td class="nhsuk-table__cell">
@@ -379,7 +347,7 @@ $("#mySelect").on("change", function(){
                                                         06-02-2020
                                                       </td>
                                                       <td class="nhsuk-table__cell">
-                                                        72
+                                                        93
                                                       </td>
                                                       <td class="nhsuk-table__cell">
                                                 <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>
@@ -400,7 +368,7 @@ $("#mySelect").on("change", function(){
                                                         06-02-2020
                                                       </td>
                                                       <td class="nhsuk-table__cell">
-                                                        72
+                                                        83
                                                       </td>
                                                       <td class="nhsuk-table__cell">
                                                 <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>
@@ -421,7 +389,7 @@ $("#mySelect").on("change", function(){
                                                         06-02-2020
                                                       </td>
                                                       <td class="nhsuk-table__cell">
-                                                        72
+                                                        53
                                                       </td>
                                                       <td class="nhsuk-table__cell">
                                                 <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>

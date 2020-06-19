@@ -7,6 +7,7 @@
 
 <script>
 function myFunction() {
+  console.log 
   // Declare variables
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myInput");
@@ -17,7 +18,6 @@ function myFunction() {
   // Loop through all table rows, and hide those who don't match the search query
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
-    
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -28,6 +28,7 @@ function myFunction() {
     }
   }
 }
+</script>
 
 
 
@@ -61,7 +62,7 @@ function myFunction() {
 
 
 <div class="flex-container">
-   <div><label class="nhsuk-label"> Filter by area </label><input type="text" class="nhsuk-input" id="myInput" onkeyup="myFunction()" ></div>
+   <div><label class="nhsuk-label"> Filter by area </label><input class="nhsuk-input" type="text" id="myInput" onkeyup="myFunction()"></div>
        <div class="nhsuk-form-group">
   <label class="nhsuk-label nhsuk-u-margin-left-6" for="sort">
     Filter by status
