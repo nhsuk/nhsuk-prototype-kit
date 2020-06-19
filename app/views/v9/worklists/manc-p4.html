@@ -1,8 +1,15 @@
 {% extends "layout-v2.html" %}
 
 {% block pageScripts %}
-  <script type="text/javascript" src="/js/search.js"></script>
-  <script type="text/javascript" src="/js/auto.js"></script>
+<script>
+  function openRightMenu() {
+    document.getElementById("rightMenu").style.display = "block";
+  }
+
+  function closeRightMenu() {
+    document.getElementById("rightMenu").style.display = "none";
+  }
+</script>
 {% endblock %}
 {% block pageTitle %}
   NHS Cervical Screening
@@ -14,6 +21,65 @@
 
 
 {% block content %}
+<div class="nhsuk-sidebar-hidden" id="rightMenu">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <a style="float:right;cursor:pointer" class="" onclick="closeRightMenu()" class="">Close this window
+
+      <!--  <svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+  </svg> -->
+
+</a>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+
+      <h3>Patient summary</h3>
+      <dl class="nhsuk-summary-list">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Next test due date
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            20-June-2020
+          </dd>
+
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Invited date
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            09-Nov-2020
+          </dd>
+
+        </div>
+      </dl>
+
+      <div class="nhsuk-panel nhsuk-promo">
+
+        <h3>Previous episode addresses</h3>
+        <p> 20 Thornhill Street
+          <br>
+          Pudsey
+          <br>
+          LS28 7ED</p>
+
+        <p>16 Chessington Drive
+          <br>
+          Leeds
+          <br>LS14 6KK</p>
+      </div>
+      <a href="#">View full summary</a>
+    </div>
+  </div>
+</div>
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
@@ -27,10 +93,11 @@
 
 {{ hint({
    classes: 'nhsuk-hint',
-  text: "Viewing - match 1 of 4 matches to resolve"
+  text: "Viewing - match 4 of 4 matches to resolve"
 }) }}
 </div>
 </div>
+
 
 <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-one-half">
@@ -76,10 +143,13 @@
     </dd>
 
   </div>
+  </dl>
+  <a class="nhsuk-button nhsuk-button--ers_secondary" href="#" onclick="openRightMenu()">View participant</a>
+
 
   </div>
 
-</dl>
+
 </div>
 
     <div class="nhsuk-grid-column-one-half">

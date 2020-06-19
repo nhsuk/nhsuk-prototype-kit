@@ -1,9 +1,6 @@
 {% extends "layout-v2.html" %}
 
 {% block pageScripts %}
-  <script type="text/javascript" src="/js/search.js"></script>
-  <script type="text/javascript" src="/js/auto.js"></script>
-<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script> 
 
 <script>
 function myFunction() {
@@ -18,7 +15,7 @@ function myFunction() {
   // Loop through all table rows, and hide those who don't match the search query
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
-    
+
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -34,7 +31,7 @@ function myFunction() {
 
 
 </script>
-  
+
 {% endblock %}
 {% block pageTitle %}
   NHS Cervical Screening
@@ -58,9 +55,21 @@ function myFunction() {
  <p> The following results show the manual matches between the lab and system patient details.
  <br>
   Compare the patient details provided by the labs against those held on the system.</p>
+  <div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+    <div id="myDropdown" class="dropdown-content">
+      <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+      <a href="#about">About</a>
+      <a href="#base">Base</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+      <a href="#custom">Custom</a>
+      <a href="#support">Support</a>
+      <a href="#tools">Tools</a>
+    </div>
+  </div>
 
-
-<div class="flex-container">
+<div class="flex-container nhsuk-u-margin-bottom-4">
    <div><label class="nhsuk-label"> Filter by area </label><input type="text" class="nhsuk-input" id="myInput" onkeyup="myFunction()"></div>
        <div class="nhsuk-form-group">
   <label class="nhsuk-label nhsuk-u-margin-left-6" for="sort">
@@ -103,7 +112,7 @@ function myFunction() {
                         <th class="nhsuk-table__header" aria-sort="none" scope="col">
                           <button onclick="sortTable()" type="button" data-index="0">Manual matches</button>
                         </th>
-                        
+
                         <th class="nhsuk-table_header"></th>
 
                       </tr>
@@ -129,7 +138,7 @@ function myFunction() {
                         <td class="nhsuk-table__cell">
                           6
                         </td>
-                      
+
                           <td class="nhsuk-table__cell">
                        <a class="nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-right-6" value="with-officer" href="manc-p1">Start matching</a>
                         </td>
@@ -152,7 +161,7 @@ function myFunction() {
                                     <td class="nhsuk-table__cell">
                                       78
                                     </td>
-                                   
+
                                     <td class="nhsuk-table__cell">
                                     <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="manc-p1">Start matching</a>
                                      </td>
@@ -178,7 +187,7 @@ function myFunction() {
                                                   89
                                                 </td>
 
-                                               
+
                                                 <td class="nhsuk-table__cell">
                                                  </td>
                                               </tr>
@@ -245,7 +254,7 @@ function myFunction() {
                                                       <td class="nhsuk-table__cell">
                                                         53
                                                       </td>
-                                                     
+
                                                       <td class="nhsuk-table__cell">
                                                  </td>
                                                     </tr>
@@ -289,7 +298,7 @@ function myFunction() {
                                                       <td class="nhsuk-table__cell">
                                                         72
                                                       </td>
-                                                     
+
                                                       <td class="nhsuk-table__cell">
                                                 <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>
                                                  </td>
@@ -334,7 +343,7 @@ function myFunction() {
                                                       <td class="nhsuk-table__cell">
                                                         72
                                                       </td>
-                                              
+
                                                       <td class="nhsuk-table__cell">
                                                 <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>
                                                  </td>
