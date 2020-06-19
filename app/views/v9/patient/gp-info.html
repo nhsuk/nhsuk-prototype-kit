@@ -36,6 +36,14 @@ NHS Cervical Screening
   </ul>
 </nav>
 
+{% set address %}
+  <p>{{ data.gpinfo.address_line_1 or 'IVESON APPROACH' }}</p>
+  <p>{{ data.gpinfo.address_line_3 or 'LEEDS' }}</p>
+  <p>{{ data.gpinfo.address_line_4 or 'WEST YORKSHIRE' }}</p>
+  <p>{{ data.gpinfo.address_line_5 or 'ENGLAND' }}</p>
+  <p>{{ data.gpinfo.postcode or 'LS16 6FR' }}</p>
+{% endset %}
+
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-full">
     <h1 class="nhsuk-heading-l">GP Information</h1>
@@ -44,26 +52,18 @@ NHS Cervical Screening
     rows: [
     {
       key: { text: "Practice Code" },
-      value: { text: "K81052" }
+      value: { text: data.gpinfo.organisation_code or 'B86044' }
     },
     {
       key: { text: "Practice Name" },
-      value: { text: "Lambourn Surgery" }
+      value: { text: data.gpinfo.name or "IRELAND WOOD SURGERY" }
     },
     {
       key: { text: "Practice Address" },
-      value: { html: "<p>Bockhampton Road</p><p>Lambourn</p><p>Hungerford</p><p>Berkshire</p><p>RG17 8PS</p>" }
-    },
-    {
-      key: { text: "Practice Number" },
-      value: { text: "01488 71715" }
+      value: { html: address }
     }
-    
   ]
   }) }}
-
-  <p><a href="">View all GP's at this practice</a></p>
   </div>
 </div>
-
 {% endblock %}

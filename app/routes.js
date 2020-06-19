@@ -2,6 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const patient = require('./data/patient.js');
+const gpInfo = require('./data/gp-info.js');
 
 /* ---------------------------------------- */
 /* ----------------ROUTES------------------ */

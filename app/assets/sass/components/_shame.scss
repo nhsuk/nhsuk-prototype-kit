@@ -4,8 +4,25 @@
 
 // Here lies all things fudged and broken
 
+.nhsuk-sidebar-hidden{
+  display:none;
+  height: 100%;
+  width: 400px;
+  background-color: $color_nhsuk-grey-5;
+  padding: 16px;
+  right: 0;
+  top: 0;
+  position: fixed;
+  border-left: 3px solid #4c6272;
+  z-index: 10;
+  animation: animateright 0.4s;
+  
+}
+
 // Feel free to use the code below <3
 // Add border top/right/left/bottom colors for more variations.
+
+
 
 .nhsuk-loader__container{
   display: flex;
@@ -234,7 +251,7 @@
           padding-left:16px;
         }
       }
-      
+
   tbody {
     tr {
       //background-color: white;
@@ -250,7 +267,7 @@
         &:first-child {
           padding-left:16px;
         }
-        
+
 
         button {
           background-color: transparent;
@@ -477,7 +494,7 @@
 display: flex;
 flex-direction: row;
 }
-                  
+
 .flex-container > div {
  margin: 0px;
 padding: 0px;

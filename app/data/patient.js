@@ -430,7 +430,6 @@ module.exports.deferPatient = function (nhsNumber, reason, length) {
     patient.pnl = false;
     patient.pnl_action = "Deferred";
     patient.pnl_reason = reason || '';
-    //console.log("action: " + action)
     console.log("reason: " + reason)
 };
 
@@ -439,19 +438,13 @@ module.exports.ceasePatient = function (nhsNumber, reason) {
     patient.pnl = false;
     patient.pnl_action = "Ceased";
     patient.pnl_reason = reason || '';
-    //console.log("action: " + action)
     console.log("reason: " + reason)
-    //console.log(patient)
 };
 
 module.exports.reinstatePatient = function (nhsNumber) {
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
     patient.pnl = true;
     patient.pnl_action = "";
-    //patient.pnl_reason = reason || '';
-    //console.log("action: " + action)
-    //console.log("reason: " + reason)
-    //console.log(patient)
 };
 
 module.exports.resetPatients = function(req) {
