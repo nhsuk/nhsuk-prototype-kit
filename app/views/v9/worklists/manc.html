@@ -23,6 +23,7 @@ function myFunction() {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
+        if (! tr.childen()[1].children()[0].text() == opt){
       } else {
         tr[i].style.display = "none";
       }
@@ -31,6 +32,20 @@ function myFunction() {
 }
 
 
+$("#mySelect").on("change", function(){
+  console.log ("yoyo")
+  var opt = $(this).val();
+  $("tbody > tr").each(function(){
+    var tr = $(this);
+	tr.show();
+    if (! tr.childen()[1].children()[0].text()){
+      tr.hide();
+    }
+	else if (opt == "zero") {
+      tr.show();
+    }
+  });
+});
 
 
 </script>
