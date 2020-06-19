@@ -1,15 +1,20 @@
 {% extends "layout-v2.html" %}
 
 {% block pageScripts %}
+  <script type="text/javascript" src="/js/reveal.js"></script>
 
 <script>
-  function openRightMenu() {
-    document.getElementById("rightMenu").style.display = "block";
-  }
+
 
   function closeRightMenu() {
-    document.getElementById("rightMenu").style.display = "none";
+    document.getElementByClass("nhsuk-sidebar-hidden").style.display = "none";
   }
+  $(document).ready(function() {
+     $(".sidebarbttn").click(function () {
+     $(".nhsuk-sidebar-hidden").toggle();
+    });
+
+   });
 </script>
 {% endblock %}
 {% block pageTitle %}
@@ -25,7 +30,7 @@ NHS Cervical Screening
 <div class="nhsuk-sidebar-hidden" id="rightMenu">
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
-      <a style="float:right;cursor:pointer" class="" onclick="closeRightMenu()" class="">Close this window
+      <a style="float:right;cursor:pointer" class="sidebarbttn">Close this window
 
       <!--  <svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
     <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
@@ -204,7 +209,7 @@ NHS Cervical Screening
 
         </div>
       </dl>
-      <a class="nhsuk-button nhsuk-button--ers_secondary" href="#" onclick="openRightMenu()">View participant</a>
+      <a class="nhsuk-button nhsuk-button--ers_secondary sidebarbttn" href="#">View participant</a>
 
     </div>
 
@@ -218,33 +223,34 @@ NHS Cervical Screening
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
     <h2 class="nhsuk-heading-s">Previous comments</h2>
-    <div class="nhsuk-promo">
-      <a class="nhsuk-promo__link-wrapper" href="/design-system">
-        <div class="nhsuk-promo__content">
-          <p class="nhsuk-promo__description nhsuk-body-s nhsuk-u-margin-bottom-2">By Jon Simpson</p>
-          <h3 class="nhsuk-promo__heading nhsuk-heading-xs">15-05-2020 at 9:33am</h3>
+    <details class="nhsuk-details nhsuk-expander version-list" role="group" nhsuk-polyfilled="false" id="nhsuk-details0">
+        <summary class="nhsuk-details__summary" role="button" aria-controls="" aria-expanded="false" tabindex="0">
+          <p class="nhsuk-body-s nhsuk-u-margin-bottom-2">By Kate Blimey</p>
+          <span class="nhsuk-details__summary-text">
+            15-05-2020 at 9:22am
+
+          </span>
+        </summary>
+        <div class="nhsuk-details__text" id="details-content-a336ea47-0b6c-49a4-b189-7c8d7ef16df4" aria-hidden="true">
+        <p>Perhaps do a seperate postcode check</p>
 
         </div>
-      </a>
-    </div>
-    <div class="nhsuk-promo">
-      <a class="nhsuk-promo__link-wrapper" href="/design-system">
-        <div class="nhsuk-promo__content">
-          <p class="nhsuk-promo__description nhsuk-body-s nhsuk-u-margin-bottom-2">By Kate Blimey</p>
-          <h3 class="nhsuk-promo__heading nhsuk-heading-xs">15-05-2020 at 9:22am</h3>
+      </details>
 
-        </div>
-      </a>
-    </div>
-    <div class="nhsuk-promo">
-      <a class="nhsuk-promo__link-wrapper" href="/design-system">
-        <div class="nhsuk-promo__content">
-          <p class="nhsuk-promo__description nhsuk-body-s nhsuk-u-margin-bottom-2">By Jon Simpson</p>
-          <h3 class="nhsuk-promo__heading nhsuk-heading-xs">15-05-2020 at 9:01am</h3>
+      <details class="nhsuk-details nhsuk-expander version-list" role="group" nhsuk-polyfilled="false" id="nhsuk-details0">
+          <summary class="nhsuk-details__summary" role="button" aria-controls="" aria-expanded="false" tabindex="0">
+            <p class="nhsuk-body-s nhsuk-u-margin-bottom-2">By Kate Blimey</p>
+            <span class="nhsuk-details__summary-text">
+              15-05-2020 at 9:01am
 
-        </div>
-      </a>
-    </div>
+            </span>
+          </summary>
+          <div class="nhsuk-details__text" id="details-content-a336ea47-0b6c-49a4-b189-7c8d7ef16df4" aria-hidden="true">
+          <p>Unable to find lab information on patient history/summary</p>
+
+          </div>
+        </details>
+
   </div>
 </div>
 
