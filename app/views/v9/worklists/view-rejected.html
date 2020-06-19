@@ -1,0 +1,80 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    {{ backLink({
+      "href": "manc-confirmation",
+      "text": "Go back to confirmation"
+    }) }}
+
+  <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Resolved matches</h1>
+
+
+        <span class="nhsuk-hint nhsuk-margin-bottom-4">
+          Please review the manual matches for this batch of results.
+        </span>
+        <div class="nhsuk-scrollable-pane">
+              <div class="nhsuk-scrollable-pane__wrapper">
+                <div id="table-scroll" class="table-scroll">
+                  <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+                    <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table">
+                      <thead class="nhsuk-table__head">
+                        <tr class="nhsuk-table__row">
+                          <th class="nhsuk-table__header" scope="col">Patient name</th>
+                          <th class="nhsuk-table__header" scope="col">DOB</th>
+                          <th class="nhsuk-table__header" scope="col">NHS number</th>
+                          <th class="nhsuk-table__header" scope="col">Address used</th>
+                        </tr>
+                      </thead>
+                      <tbody class="nhsuk-table__body nhsuk-body-">
+                        <tr class="nhsuk-table__row">
+                          <td class="nhsuk-table__cell">Remi Jones</td>
+                          <td class="nhsuk-table__cell">01-06-1990</td>
+                          <td class="nhsuk-table__cell">883 843 8901</td>
+                          <td class="nhsuk-table__cell">Lab details</td>
+                         
+                        </tr>
+                      </tbody>
+
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+<a href="cumbria-p1" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Change rejected match</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {% endblock %}

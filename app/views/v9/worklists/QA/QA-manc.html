@@ -1,6 +1,9 @@
 {% extends "layout-v2.html" %}
 
 {% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script> 
 
 <script>
 function myFunction() {
@@ -27,6 +30,12 @@ function myFunction() {
 }
 </script>
 
+
+
+
+
+</script>
+  
 {% endblock %}
 {% block pageTitle %}
   NHS Cervical Screening
@@ -46,13 +55,13 @@ function myFunction() {
 
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-full">
-  <h1 class="nhsuk-heading-l">Manchester</h1>
- <p> The following results show the manual matches between the lab and system patient details.
+  <h1 class="nhsuk-heading-l">Quality Control: Manchester</h1>
+ <p> The following results show  the manual matches between the lab and system patient details.
  <br>
-  Compare the patient details provided by the labs against those held on the system.</p>
-  
+  Review the matches made by the screening officers and approve or reject accordingly.</p>
 
-<div class="flex-container nhsuk-u-margin-bottom-4">
+
+<div class="flex-container">
    <div><label class="nhsuk-label"> Filter by area </label><input class="nhsuk-input" type="text" id="myInput" onkeyup="myFunction()"></div>
        <div class="nhsuk-form-group">
   <label class="nhsuk-label nhsuk-u-margin-left-6" for="sort">
@@ -60,9 +69,8 @@ function myFunction() {
   </label>
   <select class="nhsuk-select nhsuk-u-margin-left-6" id="mySelect" name="sort">
     <option value="zero">Show all</option>
-    <option value="not-started">Not started</option>
+    <option value="not-started">Ready for review</option>
     <option value="with-officer" selected>With officer</option>
-    <option value="with-qc">With quality control</option>
     <option value="file-error">File error</option>
   </select>
 </div>
@@ -95,7 +103,7 @@ function myFunction() {
                         <th class="nhsuk-table__header" aria-sort="none" scope="col">
                           <button onclick="sortTable()" type="button" data-index="0">Manual matches</button>
                         </th>
-
+                        
                         <th class="nhsuk-table_header"></th>
 
                       </tr>
@@ -110,7 +118,7 @@ function myFunction() {
 
                         </td>
                         <td class="nhsuk-table__cell multiple-choice--hod">
-                          <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2 nhsuk-u-margin-right-4" value="not-started">Not started</span>
+                          <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2 nhsuk-u-margin-right-4" value="not-started" >ready for review</span>
                         </td>
                         <td class="nhsuk-table__cell">
                           03368
@@ -119,11 +127,11 @@ function myFunction() {
                           06-02-2020
                         </td>
                         <td class="nhsuk-table__cell">
-                          4
+                          6
                         </td>
-
+                      
                           <td class="nhsuk-table__cell">
-                       <a class="nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-right-6" value="with-officer" href="manc-p1">Start matching</a>
+                       <a class="nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-right-6" value="with-officer" href="manc-p1-QA">Start reviewing</a>
                         </td>
                       </tr>
 
@@ -133,7 +141,7 @@ function myFunction() {
                                     <span class="nhsuk-table__cell--hint">Area code: CU</span>
                                     </td>
                                      <td class="nhsuk-table__cell multiple-choice--hod">
-                                      <span class="nhsuk-tag nhsuk-tag--red">QC Rejected</span>
+                          <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2 nhsuk-u-margin-right-4" value="not-started" >ready for review</span>
                                     </td>
                                     <td class="nhsuk-table__cell">
                                       03369
@@ -142,11 +150,11 @@ function myFunction() {
                                       06-02-2020
                                     </td>
                                     <td class="nhsuk-table__cell">
-                                      1
+                                      78
                                     </td>
-
+                                   
                                     <td class="nhsuk-table__cell">
-                                    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="view-rejected">Start matching</a>
+                                    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="manc-p1">Start reviewing</a>
                                      </td>
                                   </tr>
 
@@ -170,7 +178,7 @@ function myFunction() {
                                                   89
                                                 </td>
 
-
+                                               
                                                 <td class="nhsuk-table__cell">
                                                  </td>
                                               </tr>
@@ -205,7 +213,8 @@ function myFunction() {
                                                             <span class="nhsuk-table__cell--hint">Area code: LA</span>
                                                            </td>
                                                               <td class="nhsuk-table__cell multiple-choice--hod">
-                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
+                                                               <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2 nhsuk-u-margin-right-4" value="not-started" >ready for review</span>
+
                                                       </td>
                                                       <td class="nhsuk-table__cell">
                                                         03372
@@ -217,7 +226,7 @@ function myFunction() {
                                                         31
                                                       </td>
                                                       <td class="nhsuk-table__cell">
-                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="B">Start matching</a>
+                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="B">Start reviewing</a>
                                                  </td>
                                                     </tr>
                                                                       <tr class="nhsuk-table__row">
@@ -237,7 +246,7 @@ function myFunction() {
                                                       <td class="nhsuk-table__cell">
                                                         53
                                                       </td>
-
+                                                     
                                                       <td class="nhsuk-table__cell">
                                                  </td>
                                                     </tr>
@@ -248,7 +257,8 @@ function myFunction() {
                                                        <span class="nhsuk-table__cell--hint">Area code: MAN</span>
                                                        </td>
                                                        <td class="nhsuk-table__cell multiple-choice--hod">
-                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
+                                                         <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2 nhsuk-u-margin-right-4" value="not-started" >ready for review</span>
+
                                                       </td>
                                                       <td class="nhsuk-table__cell">
                                                         03374
@@ -260,7 +270,7 @@ function myFunction() {
                                                         72
                                                       </td>
                                                       <td class="nhsuk-table__cell">
-                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>
+                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start reviewing</a>
                                                  </td>
                                                     </tr>
 
@@ -270,7 +280,8 @@ function myFunction() {
                                                        <span class="nhsuk-table__cell--hint">Area code: ROC</span>
                                                        </td>
                                                         <td class="nhsuk-table__cell multiple-choice--hod">
-                                                        <span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">with QC</span>
+                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2 nhsuk-u-margin-right-4" value="not-started" >ready for review</span>
+
                                                       </td>
                                                       <td class="nhsuk-table__cell">
                                                         03375
@@ -281,8 +292,9 @@ function myFunction() {
                                                       <td class="nhsuk-table__cell">
                                                         54
                                                       </td>
-
+                                                     
                                                       <td class="nhsuk-table__cell">
+                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start reviewing</a>
                                                  </td>
                                                     </tr>
 
@@ -292,7 +304,7 @@ function myFunction() {
                                                        <span class="nhsuk-table__cell--hint">Area code: SLF</span>
                                                        </td>
                                                         <td class="nhsuk-table__cell multiple-choice--hod">
-                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
+                                                        <span class="nhsuk-tag nhsuk-tag--orange nhsuk-u-margin-bottom-2">with officer</span>
                                                       </td>
                                                       <td class="nhsuk-table__cell">
                                                         03376
@@ -304,7 +316,7 @@ function myFunction() {
                                                         28
                                                       </td>
                                                       <td class="nhsuk-table__cell">
-                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>
+                                              
                                                  </td>
                                                     </tr>
 
@@ -314,7 +326,7 @@ function myFunction() {
                                                        <span class="nhsuk-table__cell--hint">Area code: SOP</span>
                                                        </td>
                                                            <td class="nhsuk-table__cell multiple-choice--hod">
-                                                        <span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">With QC</span>
+                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">ready for review</span>
                                                       </td>
                                                       <td class="nhsuk-table__cell">
                                                         03377
@@ -325,8 +337,9 @@ function myFunction() {
                                                       <td class="nhsuk-table__cell">
                                                         63
                                                       </td>
-
+                                              
                                                       <td class="nhsuk-table__cell">
+                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start reviewing</a>
                                                  </td>
                                                     </tr>
 
@@ -336,7 +349,7 @@ function myFunction() {
                                                        <span class="nhsuk-table__cell--hint">Area code: SPT</span>
                                                        </td>
                                                         <td class="nhsuk-table__cell multiple-choice--hod">
-                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
+                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">ready for review</span>
                                                       </td>
                                                       <td class="nhsuk-table__cell">
                                                         03378
@@ -348,7 +361,7 @@ function myFunction() {
                                                         93
                                                       </td>
                                                       <td class="nhsuk-table__cell">
-                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>
+                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start reviewing</a>
                                                  </td>
                                                     </tr>
           <tr class="nhsuk-table__row">
@@ -357,7 +370,7 @@ function myFunction() {
                                                        <span class="nhsuk-table__cell--hint">Area code: STL</span>
                                                        </td>
                                                           <td class="nhsuk-table__cell multiple-choice--hod">
-                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
+                                                        <span class="nhsuk-tag nhsuk-tag--orange nhsuk-u-margin-bottom-2">with officer</span>
                                                       </td>
                                                       <td class="nhsuk-table__cell">
                                                         03379
@@ -369,7 +382,7 @@ function myFunction() {
                                                         83
                                                       </td>
                                                       <td class="nhsuk-table__cell">
-                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>
+                                               
                                                  </td>
                                                     </tr>
                                                               <tr class="nhsuk-table__row">
@@ -378,7 +391,7 @@ function myFunction() {
                                                        <span class="nhsuk-table__cell--hint">Area code: WIG</span>
                                                        </td>
                                                           <td class="nhsuk-table__cell multiple-choice--hod">
-                                                        <span class="nhsuk-tag nhsuk-tag--orange nhsuk-u-margin-bottom-2">With officer</span>
+                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">ready for review</span>
                                                       </td>
                                                       <td class="nhsuk-table__cell">
                                                         03380
@@ -390,6 +403,7 @@ function myFunction() {
                                                         53
                                                       </td>
                                                       <td class="nhsuk-table__cell">
+                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start reviewing</a>
                                                  </td>
                                                     </tr>
                                                        </tbody>

@@ -89,7 +89,7 @@ NHS Cervical Screening
       "text": "Go back to Manchester results"
     }) }}
 
-    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester</h1>
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Tameside & Oldham</h1>
 
     {{ hint({
    classes: 'nhsuk-hint',
@@ -277,7 +277,7 @@ NHS Cervical Screening
       <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
         <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
           <h1 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong">
-            How do you want to action this result
+            How do you want to action this result?
           </h1>
         </legend>
         <div class="nhsuk-radios__item">
@@ -288,7 +288,7 @@ NHS Cervical Screening
         </div>
 
         <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
+          <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" checked aria-controls="system" aria-expanded="false">
           <label class="nhsuk-label nhsuk-radios__label" for="system">
             Use system details
           </label>
@@ -318,7 +318,11 @@ NHS Cervical Screening
 
 
     </div>
-    <a href="manc-p2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and next</a>
+    <div class="flex-container">
+    <a href="manc-p2-QA" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Accept and next</a>
+    <a href="manc-p2-QA" class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Reject and next</a>
+
+    </div>
 
   </div>
 
