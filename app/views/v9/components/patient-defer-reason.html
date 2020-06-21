@@ -1,90 +1,53 @@
 <form action="prior-notification-{{ data.pnlversion }}-defer-length" method="post">
 
-  {% call fieldset({
-  legend: {
-    "text": "Choose a reason to defer the patient",
-    "classes": "nhsuk-fieldset__legend--l",
-    "isPageHeading": true
-  }
-  }) %}
-  
-  {% set PregnancyQuestion %}
-    {% include 'radios/macro.njk' %}
-    
-  <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
-    <div class="nhsuk-form-group">
-      <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
-        <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
-          Estimated date of delivery
-        </legend>
-        <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
-          You must enter a date
-        </span>
-        <span class="nhsuk-hint" id="example-hint">
-          Date can be in the past if the due date has passed
-        </span>
-        <div class="nhsuk-date-input" id="edd-from">
-          <div class="nhsuk-date-input__item">
-            <div class="nhsuk-form-group">
-              <label class="nhsuk-label nhsuk-date-input__label" for="edd-day">
-                Day
-              </label>
-            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="day" name="edd-day" type="number" pattern="[0-9]*" value="day">                                </div>
-          </div>
-          <div class="nhsuk-date-input__item">
-            <div class="nhsuk-form-group">
-              <label class="nhsuk-label nhsuk-date-input__label" for="edd-month">
-                Month
-              </label>
-              <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="edd-month" type="number" pattern="[0-9]*" value="month">
-            </div>
-          </div>
-          <div class="nhsuk-date-input__item">
-            <div class="nhsuk-form-group">
-              <label class="nhsuk-label nhsuk-date-input__label" for="edd-year">
-                Year
-              </label>
-              <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="edd-year" type="number" pattern="[0-9]*" value="year">
-            </div>
-          </div>
+<div class="nhsuk-form-group">
+  <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      Choose a reason to defer the patient
+    </legend>
+    <div class="nhsuk-radios">
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-1" name="pnl-defer-reason" type="radio" value="Pregnancy">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+        Pregnancy
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Recent test" checked>
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+        Recent test
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Under care of colposcopy" checked>
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+        Under care of colposcopy
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Undergoing treatment relevant to screening" checked>
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+        Undergoing treatment relevant to screening
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Discharge from colposcopy" checked>
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+        Discharge from colposcopy
+        </label>
+      </div>
+      {% if data.role == 'csas' %}
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Patient wishes to defer" checked>
+          <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          Patient wishes to defer
+          </label>
         </div>
-        <input type="hidden" id="ntdd" name="ntdd" value="19 01 2021">
-      </fieldset>
+      {% endif %}
     </div>
+  </fieldset>
+</div>
 
-  </div>
-
-{% endset %}
-  {{ radios({
-    "idPrefix": "example-hints",
-    "name": "pnl-defer-reason",
-    "items": [
-      {
-        "value": "Pregnancy",
-        "text": "Pregnancy"
-      },
-      {
-        "value": "Recent test",
-        "text": "Recent test"
-      },
-      {
-        "value": "Under care of colposcopy",
-        "text": "Under care of colposcopy"
-      },
-      {
-        "value": "Undergoing treatment relevant to screening",
-        "text": "Undergoing treatment relevant to screening"
-      },
-      {
-        "value": "Discharge from colposcopy",
-        "text": "Discharge from colposcopy"
-      }
-    ]
-}) }}
-{% endcall %}
-
-
-
-  <button class="nhsuk-button nhsuk-button--ers">Continue</button>
+ <button class="nhsuk-button nhsuk-button--ers">Continue</button>
 
   </form>

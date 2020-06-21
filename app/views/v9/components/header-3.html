@@ -1,4 +1,28 @@
-
+{% if data.role == 'csas' %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "true",
+    "showSearch": "true",
+    "primaryLinks": [
+      {
+        "url"  : "/v9/patient/search/search",
+        "label" : "Patient"
+      },
+      {
+        'url' : '/v9/worklists/worklists',
+        'label' : 'Results'
+      },
+      {
+        'url'  : '',
+        'label' : 'Reports'
+      }
+    ]
+  })
+}}
+{% else %}
 {{ header({
     "service": {
       "name": "Cervical Screening",
@@ -18,3 +42,4 @@
     ]
   })
 }}
+{% endif %}
