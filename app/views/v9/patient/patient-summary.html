@@ -162,7 +162,6 @@
               <thead class="nhsuk-table__head">
                 <tr class="nhsuk-table__row">
                   <th class="nhsuk-table__header" scope="col">Test Date</th>
-                  <!--<th class="nhsuk-table__header" scope="col">Test type</th>-->
                   <th class="nhsuk-table__header" scope="col">HPV infection</th>
                   <th class="nhsuk-table__header"  scope="col">Cytology result</th>
                   <th class="nhsuk-table__header" scope="col">Action</th>
@@ -175,13 +174,12 @@
                 </tr>
               </thead>
               <tbody class="nhsuk-table__body nhsuk-body-">
-
+              <!-- OPTION B
                 <tr class="nhsuk-table__row">
                   <td class="nhsuk-table__cell fixed-side">
                     {{ data.patientSummary.results.result_date | returnDateFormat or '01-Apr-2017' }}
                     <span class="nhsuk-table__cell--hint">Private Test</span>
                   </td>
-                  <!--<td class="nhsuk-table__cell">NHS</td>-->
                   <td class="nhsuk-table__cell">
                     {{ data.patientSummary.results.infection_code or '-' }}
                     <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.infection_result or 'No HPV Data' }}</span>
@@ -207,13 +205,13 @@
                     <td class="nhsuk-table__cell">{{ data.patientSummary.results.slide_number or '70406000' }}</td>
                   {% endif %}
                 </tr>
+                -->
 
                 <tr class="nhsuk-table__row">
                   <td class="nhsuk-table__cell fixed-side">
                     {{ data.patientSummary.results.result_date | returnDateFormat or '01-Apr-2017' }}
                     <span class="nhsuk-table__cell--hint">NHS Test</span>
                   </td>
-                  <!--<td class="nhsuk-table__cell">NHS</td>-->
                   <td class="nhsuk-table__cell">
                     {{ data.patientSummary.results.infection_result or 'No HPV Data' }}
                     <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.infection_code or '-' }}</span>
@@ -231,7 +229,7 @@
                     <span class="nhsuk-table__cell--hint">Months</span>
                   </td>
                   <td class="nhsuk-table__cell">
-                    {{ data.patientSummary.results.sending_lab }}
+                    {{ data.patientSummary.results.sending_lab or '60450' }}
                     <span class="nhsuk-table__cell--hint">Leeds General Infirmary</span>
                   </td>
                   <td class="nhsuk-table__cell">{{ data.patientSummary.results.sender_code or '676567' }}</td>
@@ -239,13 +237,45 @@
                     <td class="nhsuk-table__cell">{{ data.patientSummary.results.slide_number or '70406000' }}</td>
                   {% endif %}
                 </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">
+                    {{ data.patientSummary.results.result_date | returnPastDate('3', 'years') or '01-Apr-2017'}}
+                    <span class="nhsuk-table__cell--hint">NHS Test</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    No HPV Data
+                    <span class="nhsuk-table__cell--hint">-</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    Negative
+                    <span class="nhsuk-table__cell--hint">2</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    Routine
+                    <span class="nhsuk-table__cell--hint">A</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    60
+                    <span class="nhsuk-table__cell--hint">Months</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    60450
+                    <span class="nhsuk-table__cell--hint">Leeds General Infirmary</span>
+                  </td>
+                  <td class="nhsuk-table__cell">676567</td>
+                  {% if data.role != 'sampleTaker' %}
+                    <td class="nhsuk-table__cell">65408200</td>
+                  {% endif %}
+                </tr>
 
+            
+
+                <!-- OLD STYLE
                 <tr class="nhsuk-table__row">
                   <td class="nhsuk-table__cell fixed-side">
                     {{ data.patientSummary.results.result_date | returnDateFormat or '01-Apr-2017' }}
                     <span class="nhsuk-table__cell--hint">Abroad Test</span>
                   </td>
-                  <!--<td class="nhsuk-table__cell">NHS</td>-->
                   <td class="nhsuk-table__cell">
                     {{ data.patientSummary.results.infection_result or 'No HPV Data' }}
                   </td>
@@ -266,38 +296,7 @@
                     <td class="nhsuk-table__cell">{{ data.patientSummary.results.slide_number or '70406000' }}</td>
                   {% endif %}
                 </tr>
-
-<!--
-                <tr class="nhsuk-table__row">
-                <td class="nhsuk-table__cell fixed-side">01-Apr-2017</td>
-                <td class="nhsuk-table__cell">NHS</td>
-                <td class="nhsuk-table__cell">HPV Negative</td>
-                <td class="nhsuk-table__cell">No cytology result</td>
-                <td class="nhsuk-table__cell">Routine</td>
-                <td class="nhsuk-table__cell">36 months</td>
-                <td class="nhsuk-table__cell">Leeds General Infirmary</td>
-                <td class="nhsuk-table__cell">505007200042</td>
-                {% if data.role != 'sampleTaker' %}
-                  <td class="nhsuk-table__cell">1323</td>
-                {% endif %}
-
-              </tr>
-              <tr class="nhsuk-table__row">
-                <td class="nhsuk-table__cell fixed-side">10-Apr-2014</td>
-                <td class="nhsuk-table__cell">NHS</td>
-                <td class="nhsuk-table__cell">HPV Negative</td>
-                <td class="nhsuk-table__cell">No cytology result</td>
-                <td class="nhsuk-table__cell">Routine</td>
-                <td class="nhsuk-table__cell">36 months</td>
-                <td class="nhsuk-table__cell">Leeds General Infirmary</td>
-                <td class="nhsuk-table__cell">505007200042</td>
-                {% if data.role != 'sampleTaker' %}
-                  <td class="nhsuk-table__cell">1323</td>
-                {% endif %}
-
-              </tr>
--->
-
+                -->
               </tbody>
             </table>
           </div>
@@ -305,9 +304,11 @@
       </div>
 
     </div>
+    
 
     {% include '../components/hpv-results.html' %}
   </div>
+  <p><a href="/v9/reset-patient-data-9">Reset patient data</a></p>
 </div>
 
 {% endblock %}

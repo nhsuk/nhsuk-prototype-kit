@@ -16,11 +16,11 @@ const gpInfo = [
     }]
 
 module.exports = function () {
-    console.log('getting gp info')
+    //console.log('getting gp info')
 }
 
 module.exports.getGPInfo = function () {
     var gpAddress = gpInfo[0];
-    console.log(gpAddress);
+    //console.log(gpAddress);
     return gpAddress;
 };

@@ -388,6 +388,19 @@ module.exports.getPatients = function (notificationType) {
 
     for (i = 0; i < patients.length; i++) {
         patients[i]['results'] = allResults.find((result) => result.nhs_number == patients[i]['nhs_number']);
+
+    //    if (Object.keys(patients[i]['results']) === undefined || Object.keys(patients[i]['results']) === null) {
+    //        console.log('no keys found')
+    //    } else {
+    //        console.log('results found')
+    //    }
+
+       // if (Object.keys(patients[i]['results']) != undefined || Object.keys(patients[i]['results']) != null  ) {
+       //     console.log(Object.keys(patients[i]['results'].length));
+
+        //    console.log("patient: " + patients[i].nhs_number + " No of Results: " + patients[i]['results'].length);
+       // }
+        
     }
     
     function compare(a, b) {
@@ -425,12 +438,45 @@ module.exports.getPatients = function (notificationType) {
     return patients;
 };
 
-module.exports.deferPatient = function (nhsNumber, reason, length) {
+module.exports.deferPatient = function (nhsNumber, reason, length, ntdd, edd, prev) {
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
     patient.pnl = false;
     patient.pnl_action = "Deferred";
     patient.pnl_reason = reason || '';
-    console.log("reason: " + reason)
+    console.log("----------------------------")
+    console.log("  prev: " + moment(patient.next_test_due_date).format("DD-MMM-YYYY"));
+    console.log("length: " + length);
+    console.log("  ntdd: " + ntdd);
+    console.log("   edd: " + edd);
+    console.log("----------------------------")
+    
+
+    console.log("ntdd: " + patient.next_test_due_date);
+
+    // use the estimated date of delivery
+    if (edd) {
+        console.log("edd is not null")
+        patient.next_test_due_date = moment(edd).add(length, 'months').format("DD-MMM-YYYY");
+    }
+
+    // use the next test due date supplied
+    if (ntdd) {
+        console.log("ntdd is not null")
+        patient.next_test_due_date = moment(ntdd).format("DD-MMM-YYYY");
+    }
+
+    // use the existing next test due date
+    if (!ntdd && !edd) {
+        console.log("just move on the date from existing ntdd")
+        patient.next_test_due_date = moment().add(length, 'months').format("DD-MMM-YYYY");
+    }
+
+    //patient.next_test_due_date = moment(req.data.session['']);
+      //  {% set nextTestDueDate = data['ntdd-year'] + "-" + data['ntdd-month'] + "-" + data['ntdd-day'] %}
+       // {% set estimatedDateOfDelivery = data['edd-year'] + "-" + data['edd-month'] + "-" + data['edd-day'] %}
+       // <dd class="nhsuk-summary-list__value">{{ data['defer-length'] | returnDate('months', estimatedDateOfDelivery) + ' ' + (data['defer-length'] | returnDate('months', estimatedDateOfDelivery)) | returnTimeDiff }}</dd>
+
+    //console.log("reason: " + reason)
 };
 
 module.exports.ceasePatient = function (nhsNumber, reason) {
@@ -438,7 +484,7 @@ module.exports.ceasePatient = function (nhsNumber, reason) {
     patient.pnl = false;
     patient.pnl_action = "Ceased";
     patient.pnl_reason = reason || '';
-    console.log("reason: " + reason)
+    //console.log("reason: " + reason)
 };
 
 module.exports.reinstatePatient = function (nhsNumber) {

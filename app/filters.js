@@ -46,6 +46,10 @@ module.exports = function (env) {
   filters.returnPastDate = function (amount, type) {
     return moment().subtract(amount, type).format("D-MMM-YYYY");
   }
+
+  filters.returnPastDate = function (date, amount, type) {
+    return moment(date).subtract(amount, type).format("D-MMM-YYYY");
+  }
   // {{ "2" | returnDate("years") }}
 
 /*
