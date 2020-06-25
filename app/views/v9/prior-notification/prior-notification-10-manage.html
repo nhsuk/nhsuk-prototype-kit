@@ -1,0 +1,92 @@
+{% extends "layout-v2.html" %}
+
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header-3.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <nav class="nhsuk-sub-navigation nhsuk-u-padding-bottom-6">
+      <h1 class="nhsuk-heading-l">Notifications</h1>
+      <ul class="nhsuk-sub-navigation__list">
+        <li class="nhsuk-sub-navigation__item"><a href="/v9/get-prior-notifications-10" class="nhsuk-sub-navigation__link">Patients due to be invited<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">{{ data['patients'].length }}</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="/v9/get-non-responder-notifications-2" class="nhsuk-sub-navigation__link">Patients who have not responded<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2"> 6</span> </a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="" class="nhsuk-sub-navigation__link" aria-current="page">Manage notifications</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+
+    <h1 class="nhsuk-heading-m">Manage who receives notifications</h1>
+    <p>If you currently receive notifications but need to stop them or if you need to start receiving notifications then you will need to <a href="">submit a support request</a></p>
+
+    <div class="nhsuk-panel-with-label"> 
+      <h3 class="nhsuk-panel-with-label__label">Patients due to be invited</h3> 
+      <div class="nhsuk-table-responsive nhsuk-u-margin-top-0">
+        <table class="nhsuk-table">
+          <caption class="nhsuk-table__caption">Skin symptoms and possible causes</caption>
+          <thead class="nhsuk-table__head">
+            <tr class="nhsuk-table__row">
+              <th class="nhsuk-table__header" scope="col">Name</th>
+              <th class="nhsuk-table__header" scope="col">Email</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">Angela Woodall</td>
+              <td class="nhsuk-table__cell ">angela.woodhall@nhs.net</td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">Clarks Medical Practice</td>
+              <td class="nhsuk-table__cell ">admin.clarks@nhs.net</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="nhsuk-panel-with-label"> 
+      <h3 class="nhsuk-panel-with-label__label">Patients who have not responded</h3> 
+      <div class="nhsuk-table-responsive nhsuk-u-margin-top-0">
+        <table class="nhsuk-table">
+          <caption class="nhsuk-table__caption">Skin symptoms and possible causes</caption>
+          <thead class="nhsuk-table__head">
+            <tr class="nhsuk-table__row">
+              <th class="nhsuk-table__header" scope="col">Name</th>
+              <th class="nhsuk-table__header" scope="col">Email</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">Angela Woodall</td>
+              <td class="nhsuk-table__cell ">angela.woodhall@nhs.net</td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">Clarks Medical Practice</td>
+              <td class="nhsuk-table__cell ">admin.clarks@nhs.net</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+      
+{% endblock %}
+

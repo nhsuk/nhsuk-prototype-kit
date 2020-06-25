@@ -1,0 +1,94 @@
+<div class="nhsuk-back-link">
+  <a id="back-step-1" class="nhsuk-back-link__link" href="#">
+    <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+    </svg>
+    Go back</a>
+</div>
+
+    {% set PregnancyQuestion %}
+    {% include 'radios/macro.njk' %}
+    
+  <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
+                          <div class="nhsuk-form-group">
+                            <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
+                              <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+                                Estimated Date of delivery
+                              </legend>
+                              <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
+                                You must enter a date
+                              </span>
+                              <span class="nhsuk-hint" id="example-hint">
+                                Date can be in the past if the due date has passed
+                              </span>
+                              <div class="nhsuk-date-input" id="edd-from">
+                                <div class="nhsuk-date-input__item">
+                                  <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="edd-day">
+                                      Day
+                                    </label>
+                                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="day" name="edd-day" type="number" pattern="[0-9]*" value="day">                                </div>
+                                </div>
+                                <div class="nhsuk-date-input__item">
+                                  <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="edd-month">
+                                      Month
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="edd-month" type="number" pattern="[0-9]*" value="month">
+                                  </div>
+                                </div>
+                                <div class="nhsuk-date-input__item">
+                                  <div class="nhsuk-form-group">
+                                    <label class="nhsuk-label nhsuk-date-input__label" for="edd-year">
+                                      Year
+                                    </label>
+                                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="edd-year" type="number" pattern="[0-9]*" value="year">
+                                  </div>
+                                </div>
+                              </div>
+                              <input type="hidden" id="ntdd" name="ntdd" value="19 01 2021">
+                            </fieldset>
+                          </div>
+
+  </div>
+
+{% endset %}
+
+{{ conditionalRadios({
+  "idPrefix": "pnl-reason",
+  "name": "pnl-reason",
+  "fieldset": {
+    "legend": {
+      "text": "Choose a reason to defer the patient",
+      "classes": "nhsuk-fieldset__legend--m",
+      "isPageHeading": true
+    }
+  },
+  "items": [
+    {
+      "value": "yes",
+      "text": "Pregnancy",
+      "conditional": {
+        html: PregnancyQuestion
+      }
+    },
+    {
+      "value": "yes",
+      "text": "Recent test"
+    },
+    {
+      "value": "no",
+      "text": "Under care of colposcopy"
+    },
+    {
+      "value": "no",
+      "text": "Undergoing treatment relevant to screening"
+    },
+    {
+      "value": "no",
+      "text": "Discharge from colposcopy"
+    }
+  ]
+}) }}
+
+<a id="step-3" href="" class="nhsuk-button nhsuk-button--ers">Continue</a>

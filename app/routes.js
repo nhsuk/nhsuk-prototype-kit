@@ -1,6 +1,16 @@
 // External dependencies
 const express = require("express");
 const router = express.Router();
+const patient = require('./data/patient.js');
+const gpInfo = require('./data/gp-info.js');
+
+/* ---------------------------------------- */
+/* ----------------ROUTES------------------ */
+/* ---------------------------------------- */
+router.use("/", require('./routes/pnl.js'))
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* ---------------------------------------- */
 
 // This cheeky function just grabs the first part of the url after the first forward slash
 // It will return just the 'v1' or 'v5' depending on what is passed to it
@@ -127,47 +137,57 @@ router.post("/search-v2/", function (req, res) {
 router.post("/*/patient/search/search", function(req, res) {
   var nhsNumber = req.session.data["searchnhs"];
 
-  if (nhsNumber == "6170211547") {
-    req.session.data["nhsNumber"] = "617 021 1547";
-    req.session.data["title"] = "Miss";
-    req.session.data["firstName"] = "Josie";
-    req.session.data["lastName"] = "Jackson";
-    req.session.data["dob"] = "29 years (4 June 1991)";
-    req.session.data["ntdd"] = "09 04 2025";
-    req.session.data["reason"] = "";
-    req.session.data["status"] = "ROUTINE";
-    req.session.data["address"] = "19 Polly Fall Close, Bradford, BD10 3RT";
-    res.redirect("/" + getVersion(req) + "/patient/patient-summary");
+  if (getVersion(req) == 'v9') {
+    console.log('try to get the patient out of the database')
+    const patientSummary = patient.getPatient(nhsNumber);
+    req.session.data['patientSummary'] = patientSummary;
+    console.log(patientSummary);
+  }
+  else {
+    if (nhsNumber == "6170211547") {
+      req.session.data["nhsNumber"] = "617 021 1547";
+      req.session.data["title"] = "Miss";
+      req.session.data["firstName"] = "Josie";
+      req.session.data["lastName"] = "Jackson";
+      req.session.data["dob"] = "29 years (4 June 1991)";
+      req.session.data["ntdd"] = "09 04 2025";
+      req.session.data["reason"] = "";
+      req.session.data["status"] = "ROUTINE";
+      req.session.data["address"] = "19 Polly Fall Close, Bradford, BD10 3RT";
+      res.redirect("/" + getVersion(req) + "/patient/patient-summary");
+    }
+
+    // Referred to colposcopy - Recall is 6 months away
+    if (nhsNumber == "7594384164") {
+      req.session.data["nhsNumber"] = "759 438 4164";
+      req.session.data["title"] = "Mrs";
+      req.session.data["firstName"] = "Francesca";
+      req.session.data["lastName"] = "Williams";
+      req.session.data["dob"] = "40 years (15 Dec 1979)";
+      req.session.data["ntdd"] = "09 04 2020";
+      req.session.data["reason"] = "";
+      req.session.data["status"] = "REFERRED TO COLPOSCOPY";
+      req.session.data["address"] = "19 Polly Fall Close, Bradford, BD10 3RT";
+      res.redirect("/" + getVersion(req) + "/patient/patient-summary");
+    }
+
+    // Ceased
+    if (nhsNumber == "3816158897") {
+      req.session.data["nhsNumber"] = "381 615 8897";
+      req.session.data["title"] = "Mrs";
+      req.session.data["firstName"] = "Francesca";
+      req.session.data["lastName"] = "Williams";
+      req.session.data["dob"] = "40 years (15 Dec 1979)";
+      req.session.data["ntdd"] = "09 04 2020";
+      req.session.data["status"] = "ceased";
+      req.session.data["reason"] = "no cervix";
+      req.session.data["address"] = "19 Polly Fall Close, Bradford, BD10 3RT";
+      req.session.data["alreadyCeased"] = true;
+      res.redirect("/" + getVersion(req) + "/patient/patient-summary");
+    }
+
   }
 
-  // Referred to colposcopy - Recall is 6 months away
-  if (nhsNumber == "7594384164") {
-    req.session.data["nhsNumber"] = "759 438 4164";
-    req.session.data["title"] = "Mrs";
-    req.session.data["firstName"] = "Francesca";
-    req.session.data["lastName"] = "Williams";
-    req.session.data["dob"] = "40 years (15 Dec 1979)";
-    req.session.data["ntdd"] = "09 04 2020";
-    req.session.data["reason"] = "";
-    req.session.data["status"] = "REFERRED TO COLPOSCOPY";
-    req.session.data["address"] = "19 Polly Fall Close, Bradford, BD10 3RT";
-    res.redirect("/" + getVersion(req) + "/patient/patient-summary");
-  }
-
-  // Ceased
-  if (nhsNumber == "3816158897") {
-    req.session.data["nhsNumber"] = "381 615 8897";
-    req.session.data["title"] = "Mrs";
-    req.session.data["firstName"] = "Francesca";
-    req.session.data["lastName"] = "Williams";
-    req.session.data["dob"] = "40 years (15 Dec 1979)";
-    req.session.data["ntdd"] = "09 04 2020";
-    req.session.data["status"] = "ceased";
-    req.session.data["reason"] = "no cervix";
-    req.session.data["address"] = "19 Polly Fall Close, Bradford, BD10 3RT";
-    req.session.data["alreadyCeased"] = true;
-    res.redirect("/" + getVersion(req) + "/patient/patient-summary");
-  }
 
   res.redirect("/" + getVersion(req) + "/patient/patient-summary");
 });
@@ -203,29 +223,6 @@ router.post("/*/prior-notification-6-check", function (req, res) {
     );
   }
 });
-
-router.post("/*/prior-notification-8-check", function (req, res) {
-  var invite = req.session.data["pnl-invite"];
-
-  if (invite == "yes") {
-    res.redirect(
-      "/" +
-      getVersion(req) +
-      "/prior-notification/prior-notification-8-confirmation"
-    );
-  } else {
-    res.redirect(
-      "/" + getVersion(req) + "/prior-notification/prior-notification-8"
-    );
-  }
-});
-
-
-
-
-
-
-
 
 
 // v8/non-responder/example"

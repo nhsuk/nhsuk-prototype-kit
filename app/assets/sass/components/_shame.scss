@@ -3,9 +3,47 @@
 // --------------------- //
 
 // Here lies all things fudged and broken
+.patient-dropdown{
+  position: relative;
+  display: inline-block;
+}
+#patient-dropdown-container{
+  display: none;
+  position: absolute;
+  background-color: $color_nhsuk-grey-1;
+  min-width: 400px;
+  left: 0;
+  top:51px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+.patient-dropdown:focus{
+  pointer-events: inherit;
+}
+.patient-dropdown:active #patient-dropdown-container, .patient-dropdown:hover #patient-dropdown-container{
+  display: block;
+}
+.nhsuk-sidebar-hidden{
+  display:none;
+  height: 100%;
+  width: 400px;
+  background-color: $color_nhsuk-grey-5;
+  padding: 16px;
+  right: 0;
+  top: 0;
+  position: fixed;
+  border-left: 3px solid #4c6272;
+  z-index: 10;
+  animation: animateright 0.4s;
+  box-shadow: -6px 8px 6px -6px black;
+
+}
 
 // Feel free to use the code below <3
 // Add border top/right/left/bottom colors for more variations.
+
+
 
 .nhsuk-loader__container{
   display: flex;
@@ -229,12 +267,28 @@
 
   margin-bottom: 32px;
 
+  th {
+        &:first-child {
+          padding-left:16px;
+        }
+      }
+
   tbody {
     tr {
       //background-color: white;
 
+      th {
+        &:first-child {
+          padding-left:16px;
+        }
+      }
       td {
         vertical-align: middle;
+
+        &:first-child {
+          padding-left:16px;
+        }
+
 
         button {
           background-color: transparent;
@@ -383,15 +437,89 @@
 /* ---------------------------- */
 
 /* ---------------------------- */
-/* -- FOCUS STATE  --- */
+/* -- MANAGING RESULTS  --- */
 /* ---------------------------- */
 
-.highlight
-{background-color: #FFF2D3;
- border-bottom:3px solid #FFBF47}
+.highlight {
+ background-color: #FFF2D3;
+ border-bottom:3px solid #FFBF47;
+}
 
+.nhsuk-button--ers_reject {
+  @extend .nhsuk-button--ers;
+  background-color: #d5281b;
+  box-shadow: 0 4px 0 #7C2855; }
+  .nhsuk-button--ers_secondary:hover, .nhsuk-button--ers_secondary:focus {
+    background-color: #7C2855; }
+  .nhsuk-button--ers_secondary.nhsuk-button--ers_disabled {
+    background-color: #d5281b; }
+
+    .nhsuk-panel-no-margin {
+      margin-bottom: 40px;
+      margin-top: 0px;
+      padding: 24px;
+      background-color: #ffffff;
+      color: #212b32;
+      padding-top: 0 !important;
+    }
+
+
+    /* sorry, had to comment out as it was overriding the default settings for the component */
+    /* might be best to add a new class on top of the one below class="nhsuk-panel-with-label nhsuk-panel-with-label--modifier"
+    /*
+    <!-- WELL HOW BLOODY RUDE ARE YOU, HONESTLY ....;-P
+    @media (min-width: 40.0625em) {
+      .nhsuk-panel-with-label {
+        margin-bottom: 48px;
+      }
+    }
+    @media (min-width: 40.0625em) {
+      .nhsuk-panel-with-label {
+        margin-top: 0px;
+      }
+    }
+    @media (min-width: 40.0625em) {
+      .nhsuk-panel-with-label {
+        padding: 32px;
+      }
+    }
+    @media print {
+      .nhsuk-panel-with-label {
+        border: 1px solid #212b32;
+        page-break-inside: avoid;
+      }
+    }
+    */
+
+          .nhsuk-blue {
+            @extend .nhsuk-button--ers;
+            background-color: #005eb8;
+            box-shadow: 0 4px 0 #003087;
+            float: right }
+            .nhsuk-button--ers_secondary:hover, .nhsuk-button--ers_secondary:focus {
+              background-color: #0072CE; }
+            .nhsuk-button--ers_secondary.nhsuk-button--ers_disabled {
+              background-color: #003087; }
+
+              .nhsuk-right {
+                @extend .nhsuk-button--ers;
+                background-color: #425563;
+                box-shadow: 0 4px 0 #232e35;
+                float: right }
+                .nhsuk-button--ers_secondary:hover, .nhsuk-button--ers_secondary:focus {
+                  background-color: #384854; }
+                .nhsuk-button--ers_secondary.nhsuk-button--ers_disabled {
+                  background-color: #425563; }
+
+.flex-container {
+display: flex;
+flex-direction: row;
+}
+
+.flex-container > div {
+ margin: 0px;
+padding: 0px;
+ }
+
+/* ----MANAGING RESULTS  --- */
 /* ---------------------------- */
-/* -- FOCUS STATE  --- */
-/* ---------------------------- */
-
-

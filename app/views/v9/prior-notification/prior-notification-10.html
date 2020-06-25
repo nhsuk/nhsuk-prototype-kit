@@ -1,0 +1,182 @@
+{% extends "layout-v2.html" %}
+
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header-3.html' %}
+{% endblock %}
+
+<!-- force the prototype to build again -->
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <nav class="nhsuk-sub-navigation nhsuk-u-padding-bottom-6">
+      <h1 class="nhsuk-heading-l">Notifications</h1>
+      <ul class="nhsuk-sub-navigation__list">
+        <li class="nhsuk-sub-navigation__item"><a href="" class="nhsuk-sub-navigation__link" aria-current="page">Patients due to be invited<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">{{ data['patients'].length }}</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="/v9/get-non-responder-notifications-2" class="nhsuk-sub-navigation__link">Patients who have not responded<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2"> 6</span> </a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="prior-notification-10-manage" class="nhsuk-sub-navigation__link">Manage notifications</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+{% set pnlMsg = "<p>Update: " + data.pnl_update_msg  + " </p>"  %}
+{% if (data['pnl_update_msg_show'] > 1) %}
+    {{ insetText({
+  "HTML": pnlMsg,
+  "classes": "nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-0"
+}) }}
+{% endif %}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-4">
+  <h2 class="nhsuk-heading-m">Patients due to be invited</h2>
+  <p>The following patients need reviewing as they are due to be invited for screening. If you do not take any action then patients will be invited to be screened.</p>
+  <p><a href="prior-notification-9-forms">Find out how to cease patients because of <strong>mental capacity</strong> or <strong>patient choice</strong>?</a></p>
+  </div>
+</div>
+
+{% if data['patients'] == null %} 
+<meta http-equiv="refresh" content="2" />
+  <div class="styleguide-example">
+    <div class="nhsuk-loader__container">
+      <h1 class="nhsuk-heading-l">Loading patients</h1>
+    </div>
+    <div class="nhsuk-loader__container">
+      <div class="nhsuk-loader">
+      </div>
+    </div>
+  </div>
+{% else %}
+
+{% if data['patients'].length >= 1 %} 
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <table id="sortable" class="nhsuk-table-clickable bna-table nhsuk-u-margin-top-0">
+      <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <!--<button onclick="sortTable()" type="button" data-index="0">-->Name<!--</button>-->
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <!--<button onclick="sortTable()" type="button" data-index="0">-->Age<!--</button>-->
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <!--<button onclick="sortTable()" type="button" data-index="0">-->Status<!--</button>-->
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            <!--<button onclick="sortTable()" type="button" data-index="0">-->Review By<!--</button>-->
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            Actions
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            View More
+          </th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        {% for patient in data['patients'] %}
+          {% set rowId =  "selectRow" + loop.index %}
+          {% set detailsId =  "detailsRow" + loop.index %}
+          {% set buttonId =  "btnRow" + loop.index %}
+          {% set NameId =  "nameRow1" + loop.index %}
+          <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+          {{ patient.first_name | capitalize }} {{ patient.last_name | capitalize }} 
+            <span class="nhsuk-table__cell--hint">NHS No: {{ patient.nhs_number | formatNHSNumber }}</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            {{ patient.date_of_birth | returnAge }}
+            <span class="nhsuk-table__cell--hint">{{ patient.date_of_birth  | returnDateFormat }}</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            {% if patient.results == null %} 
+              Called
+            {% else %}
+              {{ patient.results.action }}
+            {% endif %}
+            <span class="nhsuk-table__cell--hint">Recall</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            {{ patient.next_test_due_date | returnInviteDate }} 
+             <span class="nhsuk-table__cell--hint">{{ ((( patient.next_test_due_date | returnInviteDate) | returnTimeDiff) | removeBrackets) | capitalize }} </span>
+          </td>
+          <td>
+            <a href="/v9/start-prior-notifications-invite?nhsNumber={{ patient.nhs_number }}&pnlversion=10&role=admin">Invite</a>
+            <a href="/v9/start-prior-notifications-defer-reason?nhsNumber={{ patient.nhs_number }}&pnlversion=10&role=admin" style="margin-left:4px; margin-right:4px;">Defer</a>
+
+            <a href="/v9/start-prior-notifications-cease-reason?nhsNumber={{ patient.nhs_number }}&pnlversion=10&role=admin">Cease</a>
+          </td>
+          <td class="nhsuk-table__cell">
+            <button class="expanderButton" type="button" id="{{ buttonId }}" aria-expanded="false" onclick="toggle(this.id,'#{{ detailsId }}');" aria-controls="{{ detailsId }}" aria-label="More details for" aria-labelledby="{{ buttonId }} {{ NameId }}"></button>
+          </td>
+        </tr>
+        <tr id="{{ detailsId }}" class="hidden detailsRow">
+          <td colspan="6">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>   
+    </table>
+  </div>
+</div>
+{% else %}
+  {{ panel({
+      "HTML": "<h2>Completed <svg style='vertical-align: text-top' class='nhsuk-icon nhsuk-icon__tick' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 21' fill='none' aria-hidden='true'>
+        <path stroke-width='4' stroke-linecap='round' d='M18.4 7.8l-8.5 8.4L5.6 12'></path>
+      </svg></h2>
+      <p>There are no more patients that need reviewing.</p>",
+      "classes" : "nhsuk-u-margin-top-0"
+    }) }}
+{% endif %}
+
+<p><a href="/v9/reset-patient-data-10">Reset patient data</a></p>
+
+{% endif %}
+
+{% endblock %}
+
+
+{% block pageScripts %}
+<script>
+  function toggle(btnID, eIDs) {
+    // Feed the list of ids as a selector
+    var theRows = document.querySelectorAll(eIDs);
+    // Get the button that triggered this
+    var theButton = document.getElementById(btnID);
+    // If the button is not expanded...
+    if (theButton.getAttribute("aria-expanded") == "false") {
+      // Loop through the rows and show them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("shown");
+        theRows[i].classList.remove("hidden");
+      }
+      // Now set the button to expanded
+      theButton.setAttribute("aria-expanded", "true");
+      // Otherwise button is not expanded...
+    } else {
+      // Loop through the rows and hide them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("hidden");
+        theRows[i].classList.remove("shown");
+      }
+      // Now set the button to collapsed
+      theButton.setAttribute("aria-expanded", "false");
+    }
+    $('.expanderButton[aria-expanded="true"]').closest('tr').addClass('expandedRow');
+    $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
+  }
+</script>
+
+{% endblock %}

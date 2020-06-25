@@ -14,128 +14,153 @@
 
 
 {% block content %}
+<div class="nhsuk-width-container">
+  <main class="nhsuk-main-wrapper" id="maincontent">
+  <div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-">
+  <h1 class="nhsuk-heading-l">Work area</h1>
+</div>
+
+<span class="nhsuk-hint nhsuk-margin-bottom-4">
+  Select a lab to view the batches of results sent through and manually match if required.
+</span>
 
 
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-full">
-  <h1 class="nhsuk-heading-l">Results</h1>
-  
 
-  <div class="nhsuk-table-responsive">
-    <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable">
+    <div class="nhsuk-grid-column-one-third">
+         <div class="nhsuk-panel nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-3">
 
-      <!-- TABLE START -->
-      <thead class="nhsuk-table__head">
-        <tr class="nhsuk-table__row">
-          <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            <button onclick="sortTable()" type="button" data-index="0">Labs</button>
-          </th>
-          <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            <button onclick="sortTable()" type="button" data-index="0">Date</button>
-          </th>
-          <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            <button onclick="sortTable()" type="button" data-index="0">No of Results</button>
-          </th>
-          <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            <button onclick="sortTable()" type="button" data-index="0">Mismatched results</button>
-          </th>
-          <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            <button onclick="sortTable()" type="button" data-index="0">Mismatched addresses</button>
-          </th>
-          <th class="nhsuk-table_header"></th>
-         
-        </tr>
-        
-      </thead>
-        <tbody class="nhsuk-table__body">
-
-        <tr class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">
-            <strong><a href="worklists-result-nhs-no">Gateshead</strong></a>
-          </td>
-          <td class="nhsuk-table__cell">
-            06 02 2020
-          </td>
-          <td class="nhsuk-table__cell">
-            991
-          </td>
-          <td class="nhsuk-table__cell">
-            2
-          </td>
-          <td class="nhsuk-table__cell">
-            1
-          </td>
-          <td class="nhsuk-table__cell multiple-choice--hod">
-            <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
-          </td>
-        </tr>
-                      <tr class="nhsuk-table__row">
-                      <td class="nhsuk-table__cell">
-                        <strong><a href="">Manchester</strong></a>
-                      </td>
-                      <td class="nhsuk-table__cell">
-                        06 02 2020
-                      </td>
-                      <td class="nhsuk-table__cell">
-                        678
-                      </td>
-                      <td class="nhsuk-table__cell">
-                        20
-                      </td>
-                      <td class="nhsuk-table__cell">
-                        34
-                      </td>
-                      <td class="nhsuk-table__cell multiple-choice--hod">
-                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
-                      </td>
-                    </tr>
-                                <tr class="nhsuk-table__row">
-                                  <td class="nhsuk-table__cell">
-                                    <strong><a href="">Derby</strong></a>
-                                  </td>
-                                  <td class="nhsuk-table__cell">
-                                    06 02 2020
-                                  </td>
-                                  <td class="nhsuk-table__cell">
-                                    789
-                                  </td>
-                                  <td class="nhsuk-table__cell">
-                                    12
-                                  </td>
-                                  <td class="nhsuk-table__cell">
-                                    5
-                                  </td>
-                                  <td class="nhsuk-table__cell multiple-choice--hod">
-                                    <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
-                                  </td>
-                                </tr>
-                                            <tr class="nhsuk-table__row">
-                                        <td class="nhsuk-table__cell">
-                                          <strong><a href="">Bristol</strong></a>
-                                        </td>
-                                        <td class="nhsuk-table__cell">
-                                          06 02 2020
-                                        </td>
-                                        <td class="nhsuk-table__cell">
-                                          652
-                                        </td>
-                                        <td class="nhsuk-table__cell">
-                                          23
-                                        </td>
-                                        <td class="nhsuk-table__cell">
-                                          15
-                                        </td>
-                                        <td class="nhsuk-table__cell multiple-choice--hod">
-                                          <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
-                                        </td>
-                                      </tr>
-                                         </tbody>   
-      </table>
-      </div>
-                    <p style="text-align: center;"><a class="nhsuk-button nhsuk-button--ers_reverse">Load more</a></p>
-                    
+      <div class="nhsuk-action-link">
+  <a class="nhsuk-action-link__link" href="lab-table">
+    <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+    </svg>
+    <span class="nhsuk-action-link__text">Berkshire</span>
+  </a>
+</div>
 
 
-  </div>
-  </div>
-{% endblock %}
+
+</div>
+</div>
+
+    <div class="nhsuk-grid-column-one-third">
+         <div class="nhsuk-panel nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-3">
+           <div class="nhsuk-action-link">
+  <a class="nhsuk-action-link__link" href="lab-table">
+    <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+    </svg>
+    <span class="nhsuk-action-link__text">Bristol</span>
+  </a>
+</div>
+
+</div>
+</div>
+
+
+    <div class="nhsuk-grid-column-one-third">
+         <div class="nhsuk-panel nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-3">
+           <div class="nhsuk-action-link">
+       <a class="nhsuk-action-link__link" href="lab-table">
+         <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+           <path d="M0 0h24v24H0z" fill="none"></path>
+           <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+         </svg>
+         <span class="nhsuk-action-link__text">Derby</span>
+       </a>
+     </div>
+
+</div>
+</div>
+
+
+
+     <div class="nhsuk-grid-column-one-third">
+         <div class="nhsuk-panel nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-3">
+           <div class="nhsuk-action-link">
+  <a class="nhsuk-action-link__link" href="lab-table">
+    <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+    </svg>
+    <span class="nhsuk-action-link__text">Gateshead</span>
+  </a>
+</div>
+
+</div>
+</div>
+
+    <div class="nhsuk-grid-column-one-third">
+         <div class="nhsuk-panel nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-3">
+           <div class="nhsuk-action-link">
+             <a class="nhsuk-action-link__link" href="lab-table">
+               <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                 <path d="M0 0h24v24H0z" fill="none"></path>
+                 <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+               </svg>
+               <span class="nhsuk-action-link__text">London</span>
+             </a>
+           </div>
+
+</div>
+</div>
+
+
+
+    <div class="nhsuk-grid-column-one-third">
+         <div class="nhsuk-panel nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-3">
+           <div class="nhsuk-action-link">
+             <a class="nhsuk-action-link__link" href="manc-table">
+               <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                 <path d="M0 0h24v24H0z" fill="none"></path>
+                 <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+               </svg>
+               <span class="nhsuk-action-link__text">Manchester</span>
+             </a>
+           </div>
+
+</div>
+</div>
+
+
+    <div class="nhsuk-grid-column-one-third">
+         <div class="nhsuk-panel nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-3">
+           <div class="nhsuk-action-link">
+       <a class="nhsuk-action-link__link" href="lab-table">
+         <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+           <path d="M0 0h24v24H0z" fill="none"></path>
+           <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+         </svg>
+         <span class="nhsuk-action-link__text">Norwich</span>
+       </a>
+     </div>
+
+</div>
+</div>
+
+
+    <div class="nhsuk-grid-column-one-third ">
+         <div class="nhsuk-panel nhsuk-u-margin-top-3 nhsuk-u-margin-bottom-3">
+           <div class="nhsuk-action-link">
+       <a class="nhsuk-action-link__link" href="lab-table">
+         <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+           <path d="M0 0h24v24H0z" fill="none"></path>
+           <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+         </svg>
+         <span class="nhsuk-action-link__text">Wolverhampton</span>
+       </a>
+     </div>
+
+</div>
+</div>
+
+  </main>
+</div>
+
+
+
+  {% endblock %}

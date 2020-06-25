@@ -1,0 +1,292 @@
+{% extends "layout-v2.html" %}
+
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header-2.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <nav class="nhsuk-sub-navigation nhsuk-u-padding-bottom-6">
+      <h1 class="nhsuk-heading-l">Notifications</h1>
+      <ul class="nhsuk-sub-navigation__list">
+        <li class="nhsuk-sub-navigation__item"><a href="/v9/get-prior-notifications-9" class="nhsuk-sub-navigation__link">Patients due to be invited<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">{{ data['patients'].length }}</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="" class="nhsuk-sub-navigation__link" aria-current="page">Patients who have not responded<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2"> 6</span> </a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="../prior-notification/prior-notification-9-manage" class="nhsuk-sub-navigation__link">Manage notifications</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-4">
+    <h2 class="nhsuk-heading-m">Patients who have not responded</h2>
+    <p>The following patients need reviewing as they have not responded to 2 invitations to be screened.</p>
+    <p>They have missed their screening and will be invited again based on their recall status.</p>
+    <p><strong>Patients will be removed from this list after 8 weeks.</strong></p>
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <table id="sortable" class="nhsuk-table-clickable bna-table nhsuk-u-margin-top-0">
+      <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            Name
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            Age
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            Status
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            Action
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            View More
+          </th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            Arisha Stephens
+            <span class="nhsuk-table__cell--hint">NHS No: 569 986 5128</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            50
+            <span class="nhsuk-table__cell--hint">{{ "50" | returnPastDate("years") }}</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+            <span class="nhsuk-table__cell--hint">Recall</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            <a href="">Cease</a>
+          </td>
+          <td class="nhsuk-table__cell">
+            <button class="expanderButton" type="button" id="btnRow1" aria-expanded="false" onclick="toggle(this.id,'#detailsRow1');" aria-controls="detailsRow1" aria-label="More details for" aria-labelledby="btnRow1 nameRow1"></button>
+          </td>
+        </tr>
+
+        <tr id="detailsRow1" class="hidden detailsRow">
+          <td colspan="5">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
+                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            Angelica Davey
+            <span class="nhsuk-table__cell--hint">NHS No: 376 037 0373</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            40
+            <span class="nhsuk-table__cell--hint">{{ "40" | returnPastDate("years") }}</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+            <span class="nhsuk-table__cell--hint">Recall</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            <a href="">Cease</a>
+          </td>
+          <td class="nhsuk-table__cell">
+            <button class="expanderButton" type="button" id="btnRow2" aria-expanded="false" onclick="toggle(this.id,'#detailsRow2');" aria-controls="detailsRow2" aria-label="More details for" aria-labelledby="btnRow2 nameRow2"></button>
+          </td>
+        </tr>
+
+        <tr id="detailsRow2" class="hidden detailsRow">
+           <td colspan="5">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            Corinne Choi
+            <span class="nhsuk-table__cell--hint">NHS No: 933 404 3202</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            34
+            <span class="nhsuk-table__cell--hint">{{ "34" | returnPastDate("years") }}</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+            <span class="nhsuk-table__cell--hint">Recall</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            <a href="">Cease</a>
+          </td>
+          <td class="nhsuk-table__cell">
+            <button class="expanderButton" type="button" id="btnRow3" aria-expanded="false" onclick="toggle(this.id,'#detailsRow3');" aria-controls="detailsRow3" aria-label="More details for" aria-labelledby="btnRow3 nameRow3"></button>
+          </td>
+        </tr>
+
+        <tr id="detailsRow3" class="hidden detailsRow">
+           <td colspan="5">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            Yazmin Noble
+            <span class="nhsuk-table__cell--hint">NHS No: 537 698 6721</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            47
+            <span class="nhsuk-table__cell--hint">{{ "47" | returnPastDate("years") }}</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+            <span class="nhsuk-table__cell--hint">Recall</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            <a href="">Cease</a>
+          </td>
+          <td class="nhsuk-table__cell">
+            <button class="expanderButton" type="button" id="btnRow4" aria-expanded="false" onclick="toggle(this.id,'#detailsRow4');" aria-controls="detailsRow4" aria-label="More details for" aria-labelledby="btnRow4 nameRow4"></button>
+          </td>
+        </tr>
+
+        <tr id="detailsRow4" class="hidden detailsRow">
+           <td colspan="5">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            Elly Arellano
+            <span class="nhsuk-table__cell--hint">NHS No: 460 891 3182</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            28
+            <span class="nhsuk-table__cell--hint">{{ "28" | returnPastDate("years") }}</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+            <span class="nhsuk-table__cell--hint">Recall</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            <a href="">Cease</a>
+          </td>
+          <td class="nhsuk-table__cell">
+            <button class="expanderButton" type="button" id="btnRow5" aria-expanded="false" onclick="toggle(this.id,'#detailsRow5');" aria-controls="detailsRow5" aria-label="More details for" aria-labelledby="btnRow5 nameRow5"></button>
+          </td>
+        </tr>
+
+        <tr id="detailsRow5" class="hidden detailsRow">
+           <td colspan="5">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            Melinda Mathis
+            <span class="nhsuk-table__cell--hint">NHS No: 246 122 7527</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            36
+            <span class="nhsuk-table__cell--hint">{{ "36" | returnPastDate("years") }}</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            Routine
+            <span class="nhsuk-table__cell--hint">Recall</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            <a href="">Cease</a>
+          </td>
+          <td class="nhsuk-table__cell">
+            <button class="expanderButton" type="button" id="btnRow6" aria-expanded="false" onclick="toggle(this.id,'#detailsRow6');" aria-controls="detailsRow6" aria-label="More details for" aria-labelledby="btnRow6 nameRow6"></button>
+          </td>
+        </tr>
+
+        <tr id="detailsRow6" class="hidden detailsRow">
+           <td colspan="5">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+            
+      </tbody>   
+    </table>
+
+      
+
+      </div>
+
+      
+
+
+  </div>
+{% endblock %}
+
+
+{% block pageScripts %}
+<script>
+  function toggle(btnID, eIDs) {
+    // Feed the list of ids as a selector
+    var theRows = document.querySelectorAll(eIDs);
+    // Get the button that triggered this
+    var theButton = document.getElementById(btnID);
+    // If the button is not expanded...
+    if (theButton.getAttribute("aria-expanded") == "false") {
+      // Loop through the rows and show them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("shown");
+        theRows[i].classList.remove("hidden");
+      }
+      // Now set the button to expanded
+      theButton.setAttribute("aria-expanded", "true");
+      // Otherwise button is not expanded...
+    } else {
+      // Loop through the rows and hide them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("hidden");
+        theRows[i].classList.remove("shown");
+      }
+      // Now set the button to collapsed
+      theButton.setAttribute("aria-expanded", "false");
+    }
+    $('.expanderButton[aria-expanded="true"]').closest('tr').addClass('expandedRow');
+    $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
+  }
+
+</script>
+
+{% endblock %}

@@ -34,21 +34,16 @@ NHS Cervical Screening
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-one-half">
 
-        
+
         <h1 class="nhsuk-heading-l">Enter patient details</h1>
 
         <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
-          <div class="nhsuk-form-group">
- 
-</div>
-          <div class="nhsuk-form-group">
+          <div class="nhsuk-form-group nhsuk-form-group--error">
             <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
               <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
                 LMP (1st day)
               </legend>
-              <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
-                You must enter a date
-              </span>
+            
               <div class="nhsuk-date-input" id="dob-from">
                 <div class="nhsuk-date-input__item">
                   <div class="nhsuk-form-group">
@@ -79,13 +74,13 @@ NHS Cervical Screening
           </div>
 
         </div>
-        <div class="nhsuk-form-group">
+        <div class="nhsuk-form-group nhsuk-form-group--error">
 
           <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
-            <label class="nhsuk-label" for="example">
+            <label class="nhsuk-label nhsuk-label__strong" for="example">
               Patient's condition
             </label>
-            
+
 
             <span class="nhsuk-hint" id="example-hint">
               Select all options that are relevant to the patient.
@@ -100,7 +95,7 @@ NHS Cervical Screening
                   Pregnancy (first trimester)
                 </label>
               </div>
-              
+
               <div class="nhsuk-checkboxes__item">
                 <input class="nhsuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="phone">
                 <label class="nhsuk-label nhsuk-checkboxes__label" for="option-2">

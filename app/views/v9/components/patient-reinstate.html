@@ -1,0 +1,83 @@
+
+<form action="/v9/patient/patient-reinstated" method="post">
+ 
+
+{{ radios({
+  "idPrefix": "example",
+  "name": "reinstate",
+  "fieldset": {
+    "legend": {
+      "text": "Choose a reason for reinstating",
+      "classes": "nhsuk-fieldset__legend--l",
+      "isPageHeading": "true"
+    }
+  },
+  "items": [
+    {
+      "value": "Ceased in error",
+      "text": "Ceased in error"
+    },
+    {
+      "value": "Patient requested return",
+      "text": "Patient requested return"
+    }
+  ]
+}) }}
+
+<div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
+  <div class="nhsuk-form-group">
+    <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
+      <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+        Next test due date
+      </legend>
+      <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
+        You must enter a date
+      </span>
+      <div class="nhsuk-date-input" id="dob-from">
+        <div class="nhsuk-date-input__item">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
+              Day
+            </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="day" name="day" type="number" pattern="[0-9]*" value="day">                                </div>
+        </div>
+        <div class="nhsuk-date-input__item">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
+              Month
+            </label>
+            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="month" type="number" pattern="[0-9]*" value="month">
+          </div>
+        </div>
+        <div class="nhsuk-date-input__item">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
+              Year
+            </label>
+            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="year" type="number" pattern="[0-9]*" value="">
+          </div>
+        </div>
+      </div>
+      <input type="hidden" id="ntdd" name="ntdd" value="19 01 2021">
+    </fieldset>
+  </div>
+</div>
+
+<div class="nhsuk-form-group">
+  <label class="nhsuk-label" for="example">CRM Number</label>
+  <input class="nhsuk-input nhsuk-input--width-10" type="number" name="crm" value="crm">
+</div>
+
+<div class="nhsuk-form-group">
+  <label class="nhsuk-label" for="example">
+    Comments
+  </label>
+  <span class="nhsuk-hint" id="example-hint">
+    Do not include clinical information at  this point.
+  </span>
+  <textarea class="nhsuk-textarea" id="example" name="comments" rows="5" aria-describedby="example-hint" value="details"></textarea>
+</div>
+
+<button class="nhsuk-button nhsuk-button--ers">Continue</button>
+
+</form>

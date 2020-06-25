@@ -1,0 +1,52 @@
+{% extends "layout-v2.html" %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header-3.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+    {{ backLink({
+    "href": "../patient-summary",
+    "text": "Back to patient summary",
+    "classes" : "nhsuk-u-margin-bottom-4"
+    }) }}
+    
+    <div class="nhsuk-panel-with-label">
+      {% include '../../components/pnl-patient.html' %}
+      {% include '../../components/patient-choose-action.html' %}
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
+
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label" for="example">
+                  CRM
+                  </label>
+                <input class="nhsuk-input nhsuk-input--width-10" type="number" name="crm" value="crm">
+              </div>
+
+
+
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label" for="example">
+                    Comments
+                  </label>
+                  <span class="nhsuk-hint" id="example-hint">
+                    Do not include clinical information at  this point.
+                  </span>
+                  <textarea class="nhsuk-textarea" id="example" name="details" rows="5" aria-describedby="example-hint" value="details"></textarea>
+                </div>
+                  <button class="nhsuk-button--ers">Continue</button>
+            </form>
+
+            </div>

@@ -1,0 +1,30 @@
+{% extends "layout-v2.html" %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header-3.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-2">
+
+  {{ backLink({
+  "href": "prior-notification-10",
+  "text": "Back to Patients due to be invited",
+  "classes" : "nhsuk-u-margin-bottom-4"
+  }) }}
+
+  <div class="nhsuk-panel-with-label">
+    {% include '../components/pnl-patient.html' %}
+
+    {% include '../components/patient-invite-review.html' %}
+  </div>
+
+  </div>
+</div>
+
+{% endblock %}

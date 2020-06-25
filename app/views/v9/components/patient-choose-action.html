@@ -1,0 +1,45 @@
+{% if data.role == 'csas'%}
+  <form action="/v9/patient/change-due-date/choose-action" method="post">
+{% else %}
+  <form action="prior-notification-{{ data.pnlversion }}-defer-length" method="post">
+{% endif %}
+{{ radios({
+  "idPrefix": "example",
+  "name": "ceasedefer",
+  "fieldset": {
+    "legend": {
+      "text": "Choose a reason to change the next test due date",
+      "classes": "nhsuk-fieldset__legend--l",
+      "isPageHeading": "true"
+    }
+  },
+  "items": [
+    {
+      "value": "defer",
+      "text": "Defer"
+    },
+    {
+      "value": "cease",
+      "text": "Cease"
+    }
+  ]
+}) }}
+
+<div class="nhsuk-form-group">
+  <label class="nhsuk-label" for="example">CRM Number</label>
+  <input class="nhsuk-input nhsuk-input--width-10" type="number" name="crm" value="crm">
+</div>
+
+<div class="nhsuk-form-group">
+  <label class="nhsuk-label" for="example">
+    Comments
+  </label>
+  <span class="nhsuk-hint" id="example-hint">
+    Do not include clinical information at  this point.
+  </span>
+  <textarea class="nhsuk-textarea" id="example" name="comments" rows="5" aria-describedby="example-hint" value="details"></textarea>
+</div>
+
+<button class="nhsuk-button nhsuk-button--ers">Continue</button>
+
+</form>

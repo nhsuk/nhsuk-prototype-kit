@@ -34,8 +34,21 @@ module.exports = function (env) {
       return moment().add(amount, type).format("D-MMM-YYYY");
   }
 
+  filters.returnDate = function (amount, type, date) {
+    return moment(date).add(amount, type).format("D-MMM-YYYY");
+  }
+
+  filters.returnInviteDate = function (ntdd) {
+    console.log(ntdd)
+    return moment(ntdd).subtract(6, "weeks").format("D-MMM-YYYY");
+  }
+
   filters.returnPastDate = function (amount, type) {
     return moment().subtract(amount, type).format("D-MMM-YYYY");
+  }
+
+  filters.returnPastDate = function (date, amount, type) {
+    return moment(date).subtract(amount, type).format("D-MMM-YYYY");
   }
   // {{ "2" | returnDate("years") }}
 
@@ -52,6 +65,66 @@ module.exports = function (env) {
       return moment().subtract(30, 'minutes').format("h:mm a");
     }
 */
+  
+  filters.returnAge = function (date_of_birth) {
+    return moment().diff(date_of_birth, 'years');
+  }
+
+  filters.returnTimeDiff = function (date) {
+
+    var a = moment();
+    var b = moment(date);
+    
+    var years = b.diff(a, 'years')
+    var months = b.diff(a, 'months')
+    var weeks = b.diff(a, 'weeks')
+    var days = b.diff(a, 'days')
+
+    // well this turned pretty crap
+    if (days > 0) {
+      if (days < 14) {
+        return "(in " + days + " days)"
+      }
+      if (weeks < 11) {
+        return "(in " + weeks + " weeks)"
+      }
+      if (months < 23) {
+        return "(in " + months + " months)"
+      }
+      return "(in " + years + " years)"
+    } else {
+      days *= -1
+      weeks *= -1
+      months *= -1
+      years *= -1
+      if (days < 14) {
+        return "(" + days + " days ago)"
+      }
+      if (weeks < 11) {
+        return "(" + weeks + " weeks ago)"
+      }
+      if (months < 23) {
+        return "(" + months + " months ago)"
+      }
+      return "(" + years + " years ago)"
+    }
+  }
+
+  filters.removeBrackets = function (text) {
+    return text.replace(/[()]/g, ''); 
+  }
+
+  filters.returnDateFormat = function (date) {
+    return moment(date).format("D-MMM-YYYY");
+  }
+  
+  filters.formatNHSNumber = function (nhs_number) {
+    str = nhs_number.toString();
+    str1 = str.slice(0, 3);
+    str2 = str.slice(3, 6);
+    str3 = str.slice(6, 10);
+    return str1 + " " + str2 + " " + str3;
+  } 
 
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:

@@ -1,0 +1,43 @@
+<!--<div class="nhsuk-panel-with-label">-->
+  <h3 class="nhsuk-panel-with-label__label">Yazmin Noble 
+  <span style= color:white; class="nhsuk-table__cell--hint">NHS No: 537 698 6721</span></h3>
+  
+  <tr id="detailsRow4" class="detailsRow">
+           <td colspan="3">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-full">
+                {{ summaryList({
+    classes: "nhsuk-u-margin-bottom-3",
+    rows: [
+      {
+        key: {
+        text: "Next test due date"
+      },
+      value: {
+      text:  "2" | returnDate("months") + " (in 2 months)"
+      }
+    },
+    {
+      key: {
+        text: "Last test date"
+      },
+      value: {
+        text: "3" | returnPastDate("years") + " (3 years ago)"
+      }
+    },
+    {
+      key: {
+        text: "Last test"
+      },
+      value: {
+        html: "(XOA) No cytology, HPV negative, routine recall"
+      }
+    }
+  ]
+}) }}
+<p class="nhsuk-u-margin-bottom-3"><a href="../patient/patient-summary">View full patient information</a></p>
+              </div>
+            </div>
+          </td>
+        </tr></p>
+<!--</div>-->
