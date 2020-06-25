@@ -50,21 +50,6 @@ module.exports = function (env) {
   filters.returnPastDate = function (date, amount, type) {
     return moment(date).subtract(amount, type).format("D-MMM-YYYY");
   }
-  // {{ "2" | returnDate("years") }}
-
-/*
-  filters.returnPastDate = function (date) {
-    return moment().subtract(date, 'days').format("dddd D MMMM YYYY");
-  }
-
-  filters.returnTime = function (date) {
-    if (date == "now") {
-      return moment().format("h:mm a");
-    }
-    if (date == "30MinAgo") {
-      return moment().subtract(30, 'minutes').format("h:mm a");
-    }
-*/
   
   filters.returnAge = function (date_of_birth) {
     return moment().diff(date_of_birth, 'years');
@@ -107,6 +92,21 @@ module.exports = function (env) {
         return "(" + months + " months ago)"
       }
       return "(" + years + " years ago)"
+    }
+  }
+
+  filters.returnTimeDiffWeeks = function (date) {
+    var a = moment();
+    var b = moment(date);
+
+    var weeks = b.diff(a, 'weeks')
+
+    // well this turned pretty crap
+    if (weeks > 0) {
+      return "(in " + weeks + " week" + (weeks >= 2 ? "s" : "") + ")"
+    } else {
+      weeks *= -1
+      return "(" + weeks + " week" + (weeks >= 2 ? "s" : "") + " ago)"
     }
   }
 

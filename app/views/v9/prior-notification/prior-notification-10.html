@@ -105,7 +105,7 @@
           </td>
           <td class="nhsuk-table__cell">
             {{ patient.next_test_due_date | returnInviteDate }} 
-             <span class="nhsuk-table__cell--hint">{{ ((( patient.next_test_due_date | returnInviteDate) | returnTimeDiff) | removeBrackets) | capitalize }} </span>
+             <span class="nhsuk-table__cell--hint">{{ ((( patient.next_test_due_date | returnInviteDate) | returnTimeDiffWeeks) | removeBrackets) | capitalize }} </span>
           </td>
           <td>
             <a href="/v9/start-prior-notifications-invite?nhsNumber={{ patient.nhs_number }}&pnlversion=10&role=admin">Invite</a>
@@ -121,7 +121,7 @@
           <td colspan="6">
             <div class="nhsuk-grid-row">
               <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
-                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
+                <div id="reasons-step-0">{% include '../components/last-result.html' %}</div>
               </div>
             </div>
           </td>
