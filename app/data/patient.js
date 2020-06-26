@@ -376,9 +376,7 @@ module.exports.getPatient = function (nhsNumber) {
         try { console.log(patient.first_name + " " + patient.last_name + " NHS Number: " + patient.nhs_number); }
         catch (err) { console.log('patient not found') }
     }
-    //var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
-    //try { console.log(patient.first_name + " " + patient.last_name + " NHS Number: " + patient.nhs_number); }
-    //catch (err) { console.log('patient not found') }
+
     return patient;
 };
 
@@ -387,20 +385,7 @@ module.exports.getPatients = function (notificationType) {
     var allResults = results.getResults();
 
     for (i = 0; i < patients.length; i++) {
-        patients[i]['results'] = allResults.find((result) => result.nhs_number == patients[i]['nhs_number']);
-
-    //    if (Object.keys(patients[i]['results']) === undefined || Object.keys(patients[i]['results']) === null) {
-    //        console.log('no keys found')
-    //    } else {
-    //        console.log('results found')
-    //    }
-
-       // if (Object.keys(patients[i]['results']) != undefined || Object.keys(patients[i]['results']) != null  ) {
-       //     console.log(Object.keys(patients[i]['results'].length));
-
-        //    console.log("patient: " + patients[i].nhs_number + " No of Results: " + patients[i]['results'].length);
-       // }
-        
+        patients[i]['results'] = allResults.find((result) => result.nhs_number == patients[i]['nhs_number']);        
     }
     
     function compare(a, b) {
@@ -426,12 +411,14 @@ module.exports.getPatients = function (notificationType) {
     }
 
     patients.sort(compare);
-
+console.log('Notification Type: ' + notificationType)
     if (notificationType == "pnl") {
+        console.log("PRIOR NOTIFICATION")
         return patients.filter(patient => patient.pnl == true);
     }
 
     if (notificationType == "nrl") {
+        console.log("NON RESPONDER")
         return patients.filter(patient => patient.nrl == true);
     }
 
@@ -485,6 +472,12 @@ module.exports.ceasePatient = function (nhsNumber, reason) {
     patient.pnl_action = "Ceased";
     patient.pnl_reason = reason || '';
     //console.log("reason: " + reason)
+};
+
+module.exports.submitPatient = function (nhsNumber) {
+    console.log("PATIENT SUBMITTED")
+    var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
+    patient.nrl = false;
 };
 
 module.exports.reinstatePatient = function (nhsNumber) {

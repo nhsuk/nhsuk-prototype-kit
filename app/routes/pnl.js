@@ -83,6 +83,19 @@ router.get("/*/start-prior-notifications-invite*", function (req, res) {
     req.session.data["pnl_patient"] = pnlPatient;
     res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-" + version + "-invite")
 })
+
+router.get("/*/start-prior-notifications-submit*", function (req, res) {
+    console.log("SUBMITTING PATIENT");
+    const params = new URLSearchParams(req.query);
+    const nhsNumber = params.get('nhsNumber');
+    const PNLversion = params.get('pnlversion');
+    const NRLversion = params.get('nrlversion');
+    req.session.data["pnlversion"] = PNLversion;
+    req.session.data["nrlversion"] = NRLversion;
+    var nrlPatient = patient.getPatient(nhsNumber);
+    req.session.data["pnl_patient"] = nrlPatient;
+    res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-" + PNLversion + "-submit")
+})
     
 router.get("/*/prior-notification/prior-notification-invited-*", function (req, res) {
     //console.log("INVITE SUBMITTED");
@@ -94,6 +107,18 @@ router.get("/*/prior-notification/prior-notification-invited-*", function (req, 
     
     res.redirect("/" + getVersion(req) + "/get-prior-notifications-" + version )
 })
+
+router.get("/*/prior-notification/prior-notification-submitted-*", function (req, res) {
+    //console.log("INVITE SUBMITTED");
+    patient.submitPatient(req.session.data['pnl_patient']['nhs_number'])
+    req.session.data["pnl_update_msg"] = "Patient has been Invited"
+    req.session.data["pnl_update_msg_show"] = 1;
+
+    const version = req.session.data["nrlversion"];
+
+    res.redirect("/" + getVersion(req) + "/get-non-responder-notifications-" + version)
+})
+
 
 router.get("/*/prior-notification/prior-notification-deferred-*", function (req, res) {
     console.log("DEFER SUBMITTED");

@@ -18,6 +18,16 @@ module.exports = config => (req, res, next) => {
     req.session.data["patients"] = patient.getPatients();
   }
 
+  // load the basic data for NRL
+  if (req.session.data["nrl_patients"] == undefined) {
+    req.session.data["nrl_patients"] = patient.getPatients("nrl");
+  }
+
+  //req.session.data["nrl_patients"] = patient.getPatients("nrl");
+  //var patients = patient.getPatients("nrl");
+  //r//eq.session.data["_nrl_patients"] = patients;
+  //res.redirect("/" + getVersion(req) + "/non-responder/non-responder-" + getNotificationVersion(req))
+
   // load the basic data for someone selected as part of the PNL
   if (req.session.data["pnl_patient"] == undefined) {
     req.session.data["pnl_patient"] = patient.getPatient(9991023867);
