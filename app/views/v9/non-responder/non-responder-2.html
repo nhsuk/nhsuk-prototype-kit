@@ -97,13 +97,12 @@
           </td>
           <td class="nhsuk-table__cell">
             {{ patient.next_test_due_date | returnInviteDate }} 
-             <span class="nhsuk-table__cell--hint">{{ ((( patient.next_test_due_date | returnInviteDate) | returnTimeDiff) | removeBrackets) | capitalize }} </span>
+             <span class="nhsuk-table__cell--hint">{{ ((( patient.next_test_due_date | returnInviteDate) | returnTimeDiffWeeks) | removeBrackets) | capitalize }} </span>
           </td>
           <td>
-            <a href="/v9/get-prior-notifications-invite?nhsNumber={{ patient.nhs_number }}">Invite</a>
-            <a href="/v9/get-prior-notifications-defer-reason?nhsNumber={{ patient.nhs_number }}" style="margin-left:4px; margin-right:4px;">Defer</a>
-
-            <a href="/v9/get-prior-notifications-cease-reason?nhsNumber={{ patient.nhs_number }}">Cease</a>
+            <a href="/v9/start-prior-notifications-submit?nhsNumber={{ patient.nhs_number }}&nrlversion=2&pnlversion=10&role=admin">Review</a>
+            <a href="/v9/start-prior-notifications-defer-reason?nhsNumber={{ patient.nhs_number }}&nrlversion=2&pnlversion=10&role=admin" style="margin-left:4px; margin-right:4px;">Defer</a>
+            <a href="/v9/start-prior-notifications-cease-reason?nhsNumber={{ patient.nhs_number }}&nrlversion=2&&pnlversion=10role=admin">Cease</a>
           </td>
           <td class="nhsuk-table__cell">
             <button class="expanderButton" type="button" id="{{ buttonId }}" aria-expanded="false" onclick="toggle(this.id,'#{{ detailsId }}');" aria-controls="{{ detailsId }}" aria-label="More details for" aria-labelledby="{{ buttonId }} {{ NameId }}"></button>
@@ -133,231 +132,19 @@
     }) }}
 {% endif %}
 
-<p><a href="/v9/reset-patient-data/">Reset patient data</a></p>
-
 {% endif %}
 
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-full">
-    <table id="sortable" class="nhsuk-table-clickable bna-table nhsuk-u-margin-top-0">
-      <thead class="nhsuk-table__head">
-        <tr class="nhsuk-table__row">
-          <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            Name
-          </th>
-          <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            Age
-          </th>
-          <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            Status
-          </th>
-          <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            Action
-          </th>
-          <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            View More
-          </th>
-        </tr>
-      </thead>
-      <tbody class="nhsuk-table__body">
-        <tr class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">
-            Arisha Stephens
-            <span class="nhsuk-table__cell--hint">NHS No: 569 986 5128</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            50
-            <span class="nhsuk-table__cell--hint">{{ "50" | returnPastDate("years") }}</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            Routine
-            <span class="nhsuk-table__cell--hint">Recall</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            <a href="">Cease</a>
-          </td>
-          <td class="nhsuk-table__cell">
-            <button class="expanderButton" type="button" id="btnRow1" aria-expanded="false" onclick="toggle(this.id,'#detailsRow1');" aria-controls="detailsRow1" aria-label="More details for" aria-labelledby="btnRow1 nameRow1"></button>
-          </td>
-        </tr>
+{% endblock %}
 
-        <tr id="detailsRow1" class="hidden detailsRow">
-          <td colspan="5">
-            <div class="nhsuk-grid-row">
-              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
-                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
-                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-0" href="">Cease</a>
-              </div>
-            </div>
-          </td>
-        </tr>
-        
-        <tr class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">
-            Angelica Davey
-            <span class="nhsuk-table__cell--hint">NHS No: 376 037 0373</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            40
-            <span class="nhsuk-table__cell--hint">{{ "40" | returnPastDate("years") }}</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            Routine
-            <span class="nhsuk-table__cell--hint">Recall</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            <a href="">Cease</a>
-          </td>
-          <td class="nhsuk-table__cell">
-            <button class="expanderButton" type="button" id="btnRow2" aria-expanded="false" onclick="toggle(this.id,'#detailsRow2');" aria-controls="detailsRow2" aria-label="More details for" aria-labelledby="btnRow2 nameRow2"></button>
-          </td>
-        </tr>
-
-        <tr id="detailsRow2" class="hidden detailsRow">
-           <td colspan="5">
-            <div class="nhsuk-grid-row">
-              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
-                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
-              </div>
-            </div>
-          </td>
-        </tr>
-
-        <tr class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">
-            Corinne Choi
-            <span class="nhsuk-table__cell--hint">NHS No: 933 404 3202</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            34
-            <span class="nhsuk-table__cell--hint">{{ "34" | returnPastDate("years") }}</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            Routine
-            <span class="nhsuk-table__cell--hint">Recall</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            <a href="">Cease</a>
-          </td>
-          <td class="nhsuk-table__cell">
-            <button class="expanderButton" type="button" id="btnRow3" aria-expanded="false" onclick="toggle(this.id,'#detailsRow3');" aria-controls="detailsRow3" aria-label="More details for" aria-labelledby="btnRow3 nameRow3"></button>
-          </td>
-        </tr>
-
-        <tr id="detailsRow3" class="hidden detailsRow">
-           <td colspan="5">
-            <div class="nhsuk-grid-row">
-              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
-                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
-              </div>
-            </div>
-          </td>
-        </tr>
-
-        <tr class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">
-            Yazmin Noble
-            <span class="nhsuk-table__cell--hint">NHS No: 537 698 6721</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            47
-            <span class="nhsuk-table__cell--hint">{{ "47" | returnPastDate("years") }}</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            Routine
-            <span class="nhsuk-table__cell--hint">Recall</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            <a href="">Cease</a>
-          </td>
-          <td class="nhsuk-table__cell">
-            <button class="expanderButton" type="button" id="btnRow4" aria-expanded="false" onclick="toggle(this.id,'#detailsRow4');" aria-controls="detailsRow4" aria-label="More details for" aria-labelledby="btnRow4 nameRow4"></button>
-          </td>
-        </tr>
-
-        <tr id="detailsRow4" class="hidden detailsRow">
-           <td colspan="5">
-            <div class="nhsuk-grid-row">
-              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
-                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
-              </div>
-            </div>
-          </td>
-        </tr>
-
-        <tr class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">
-            Elly Arellano
-            <span class="nhsuk-table__cell--hint">NHS No: 460 891 3182</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            28
-            <span class="nhsuk-table__cell--hint">{{ "28" | returnPastDate("years") }}</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            Routine
-            <span class="nhsuk-table__cell--hint">Recall</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            <a href="">Cease</a>
-          </td>
-          <td class="nhsuk-table__cell">
-            <button class="expanderButton" type="button" id="btnRow5" aria-expanded="false" onclick="toggle(this.id,'#detailsRow5');" aria-controls="detailsRow5" aria-label="More details for" aria-labelledby="btnRow5 nameRow5"></button>
-          </td>
-        </tr>
-
-        <tr id="detailsRow5" class="hidden detailsRow">
-           <td colspan="5">
-            <div class="nhsuk-grid-row">
-              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
-                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
-              </div>
-            </div>
-          </td>
-        </tr>
-
-        <tr class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">
-            Melinda Mathis
-            <span class="nhsuk-table__cell--hint">NHS No: 246 122 7527</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            36
-            <span class="nhsuk-table__cell--hint">{{ "36" | returnPastDate("years") }}</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            Routine
-            <span class="nhsuk-table__cell--hint">Recall</span>
-          </td>
-          <td class="nhsuk-table__cell">
-            <a href="">Cease</a>
-          </td>
-          <td class="nhsuk-table__cell">
-            <button class="expanderButton" type="button" id="btnRow6" aria-expanded="false" onclick="toggle(this.id,'#detailsRow6');" aria-controls="detailsRow6" aria-label="More details for" aria-labelledby="btnRow6 nameRow6"></button>
-          </td>
-        </tr>
-
-        <tr id="detailsRow6" class="hidden detailsRow">
-           <td colspan="5">
-            <div class="nhsuk-grid-row">
-              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
-                <div id="reasons-step-0">{% include '../components/reasons-step-0.html' %}</div>
-              </div>
-            </div>
-          </td>
-        </tr>
-            
-      </tbody>   
-    </table>
-
-      
-
-      </div>
-
-      
-
-
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+      <p><a href="/v9/reset-patient-data-10">Reset patient data</a></p>
+    </div>
   </div>
+</footer>
 {% endblock %}
 
 
