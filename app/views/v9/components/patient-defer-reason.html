@@ -9,9 +9,17 @@
       <div class="nhsuk-radios__item">
         <input class="nhsuk-radios__input" id="example-1" name="pnl-defer-reason" type="radio" value="Pregnancy">
         <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-        Pregnancy
+          Pregnancy
         </label>
       </div>
+      {% if data.pnlversion == '10' %}
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="example-1" name="pnl-defer-reason" type="radio" value="Miscarriage">
+          <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+            Miscarriage
+          </label>
+        </div>
+      {% endif %}
       <div class="nhsuk-radios__item">
         <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Recent test" checked>
         <label class="nhsuk-label nhsuk-radios__label" for="example-2">
