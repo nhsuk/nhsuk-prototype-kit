@@ -27,7 +27,7 @@ router.get("/*/get-non-responder-notifications*", function (req, res) {
     
     req.session.data["nrl_patients"] = patient.getPatients("nrl");
     var patients = patient.getPatients("nrl");
-    req.session.data["_nrl_patients"] = patients;
+    req.session.data["nrl_patients"] = patients;
     res.redirect("/" + getVersion(req) + "/non-responder/non-responder-" + getNotificationVersion(req))
 });
 
@@ -155,9 +155,10 @@ router.get("/*/prior-notification/prior-notification-deferred-*", function (req,
     } 
 
 
-    patient.deferPatient(nhsNumber, reason, length, ntdd, edd, prev)
+    patient.deferPatient(nhsNumber, reason, length, ntdd, edd, prev, req.session.data['returnUrl'])
     
-    const version = req.session.data["pnlversion"];
+    const versionPNL = req.session.data["pnlversion"];
+    const versionNRL = req.session.data["nrlversion"];
     req.session.data["pnl_update_msg"] = "Patient has been deferred"
     req.session.data["pnl_update_msg_show"] = 1;
 
@@ -174,7 +175,14 @@ router.get("/*/prior-notification/prior-notification-deferred-*", function (req,
         //console.log(patientSummary)
         res.redirect("/" + getVersion(req) + "/patient/patient-summary")
     } else {
-        res.redirect("/" + getVersion(req) + "/get-prior-notifications-" + version)
+
+        console.log("return URL: " + req.session.data['returnUrl'])
+        if (req.session.data['returnUrl'] == "nrl") {
+            res.redirect("/" + getVersion(req) + "/get-non-responder-notifications-" + versionNRL)
+        } else {
+            res.redirect("/" + getVersion(req) + "/get-prior-notifications-" + versionPNL)
+        }
+        
     }
     
 })
@@ -183,8 +191,9 @@ router.get("/*/prior-notification/prior-notification-ceased-*", function (req, r
     //console.log("CEASE SUBMITTED");
     const reason = req.session.data['pnl-cease-reason'];
     const nhsNumber = req.session.data['pnl_patient']['nhs_number'];
-    patient.ceasePatient(nhsNumber, reason)
-    const version = req.session.data["pnlversion"];
+    patient.ceasePatient(nhsNumber, reason, req.session.data['returnUrl'])
+    const PNLversion = req.session.data["pnlversion"];
+    const NRLversion = req.session.data["nrlversion"];
     req.session.data["pnl_update_msg"] = "Patient has been ceased"
     req.session.data["pnl_update_msg_show"] = 1;
 
@@ -201,7 +210,12 @@ router.get("/*/prior-notification/prior-notification-ceased-*", function (req, r
         //console.log(patientSummary)
         res.redirect("/" + getVersion(req) + "/patient/patient-summary")
     } else {
-        res.redirect("/" + getVersion(req) + "/get-prior-notifications-" + version)
+        if (req.session.data['returnUrl'] == 'nrl') {
+            res.redirect("/" + getVersion(req) + "/get-non-responder-notifications-" + NRLversion)
+        } else {
+            res.redirect("/" + getVersion(req) + "/get-prior-notifications-" + PNLversion)
+        }
+        
     }    
 })
 

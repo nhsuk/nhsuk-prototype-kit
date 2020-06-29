@@ -424,12 +424,20 @@ console.log('Notification Type: ' + notificationType)
 
     return patients;
 };
-
-module.exports.deferPatient = function (nhsNumber, reason, length, ntdd, edd, prev) {
+//nhsNumber, reason, length, ntdd, edd, prev, req.session.data['returnUrl']
+module.exports.deferPatient = function (nhsNumber, reason, length, ntdd, edd, prev, type) {
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
-    patient.pnl = false;
-    patient.pnl_action = "Deferred";
-    patient.pnl_reason = reason || '';
+
+    if (type == "nrl") {
+        patient.nrl = false;
+        patient.pnl_action = "Deferred";
+        patient.pnl_reason = reason || '';
+    } else {
+        patient.pnl = false;
+        patient.pnl_action = "Deferred";
+        patient.pnl_reason = reason || '';
+    }
+    
     console.log("----------------------------")
     console.log("  prev: " + moment(patient.next_test_due_date).format("DD-MMM-YYYY"));
     console.log("length: " + length);
@@ -466,12 +474,17 @@ module.exports.deferPatient = function (nhsNumber, reason, length, ntdd, edd, pr
     //console.log("reason: " + reason)
 };
 
-module.exports.ceasePatient = function (nhsNumber, reason) {
+module.exports.ceasePatient = function (nhsNumber, reason, type) {
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
-    patient.pnl = false;
-    patient.pnl_action = "Ceased";
-    patient.pnl_reason = reason || '';
-    //console.log("reason: " + reason)
+    if (type == 'nrl') {
+        patient.nrl = false;
+        patient.pnl_action = "Ceased";
+        patient.pnl_reason = reason || '';
+    } else {
+        patient.pnl = false;
+        patient.pnl_action = "Ceased";
+        patient.pnl_reason = reason || '';
+    }
 };
 
 module.exports.submitPatient = function (nhsNumber) {

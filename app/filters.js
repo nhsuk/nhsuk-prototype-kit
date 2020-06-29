@@ -110,6 +110,20 @@ module.exports = function (env) {
     }
   }
 
+  filters.returnTimeDiffDays = function (date) {
+    var a = moment();
+    var b = moment(date);
+
+    var days = b.diff(a, 'days')
+
+    if (days > 0) {
+      return "(in " + days + " day" + (days >= 2 ? "s" : "") + ")"
+    } else {
+      days *= -1
+      return "(" + days + " day" + (days >= 2 ? "s" : "") + " ago)"
+    }
+  }
+
   filters.removeBrackets = function (text) {
     return text.replace(/[()]/g, ''); 
   }
