@@ -95,7 +95,11 @@ ul {
   font-size: 16px;
   border-radius: 4px;
   text-decoration: none;
-  vertical-align: baseline;
+  vertical-align:middle;
+  margin-bottom: 4px;
+  margin-top: 4px;
+  min-width: 80px;
+  padding-top: 8px;
 
   .nhsuk-icon{
     width: 20px;
@@ -104,16 +108,15 @@ ul {
   }
 }
 
-
 .nhsuk-close{
   position: absolute;
-  right:32px;
-  top: 4px;
+  right:16px;
+  top: 6px;
   padding: 8px 0;
 
   .nhsuk-icon__close {
     position: absolute;
-    top: 4px;
+    top: 8px;
     right: -32px;
   }
 }

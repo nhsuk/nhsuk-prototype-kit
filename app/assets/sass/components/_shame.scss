@@ -3,6 +3,16 @@
 // --------------------- //
 
 // Here lies all things fudged and broken
+.nhsuk-button--close{
+  padding: 8px;
+  border:1px solid #425563;
+  margin-top: 8px;
+  vertical-align: bottom;
+  min-width:100px;
+  height: 35px;
+}
+
+
 .patient-dropdown{
   position: relative;
   display: inline-block;
@@ -10,7 +20,7 @@
 #patient-dropdown-container{
   display: none;
   position: absolute;
-  background-color: $color_nhsuk-grey-1;
+  background-color: #425462;
   min-width: 400px;
   left: 0;
   top:51px;
