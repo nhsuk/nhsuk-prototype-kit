@@ -171,9 +171,14 @@ router.get("/*/prior-notification/prior-notification-deferred-*", function (req,
             req.session.data["pnl_update_msg_show"]++;
         }
         const patientSummary = patient.getPatient(nhsNumber);
+        const patVersion = req.session.data["patversion"];
         req.session.data['patientSummary'] = patientSummary;
         //console.log(patientSummary)
-        res.redirect("/" + getVersion(req) + "/patient/patient-summary")
+        if (patVersion >= 2) {
+            res.redirect("/" + getVersion(req) + "/patient/patient-summary-" + patVersion)
+        } else {
+            res.redirect("/" + getVersion(req) + "/patient/patient-summary")
+        }
     } else {
 
         console.log("return URL: " + req.session.data['returnUrl'])
@@ -206,9 +211,14 @@ router.get("/*/prior-notification/prior-notification-ceased-*", function (req, r
             req.session.data["pnl_update_msg_show"]++;
         }
         const patientSummary = patient.getPatient(nhsNumber);
+        const patVersion = req.session.data["patversion"];
         req.session.data['patientSummary'] = patientSummary;
         //console.log(patientSummary)
-        res.redirect("/" + getVersion(req) + "/patient/patient-summary")
+        if (patVersion >= 2) {
+            res.redirect("/" + getVersion(req) + "/patient/patient-summary-" + patVersion)
+        } else {
+            res.redirect("/" + getVersion(req) + "/patient/patient-summary")
+        }
     } else {
         if (req.session.data['returnUrl'] == 'nrl') {
             res.redirect("/" + getVersion(req) + "/get-non-responder-notifications-" + NRLversion)
@@ -292,7 +302,7 @@ router.get("/*/start-csas-cease-defer*", function (req, res) {
 
 
 router.get("/*/patient/patient-reinstated*", function (req, res) {
-    //console.log("REINSTATED SUBMITTED");
+    console.log("REINSTATED SUBMITTED");
     //const reason = req.session.data['pnl-cease-reason'];
     const nhsNumber = req.session.data['pnl_patient']['nhs_number'];
     patient.reinstatePatient(nhsNumber);
@@ -308,9 +318,16 @@ router.get("/*/patient/patient-reinstated*", function (req, res) {
         }
         req.session.data["pnl_update_msg_show"]++;
     }
-        
+
     const patientSummary = patient.getPatient(nhsNumber);
     req.session.data['patientSummary'] = patientSummary;
+    
+    const patVersion = req.session.data["patversion"];
+    if (patVersion >= 2) {
+        res.redirect("/" + getVersion(req) + "/patient/patient-summary-" + patVersion)
+    } else {
+        res.redirect("/" + getVersion(req) + "/patient/patient-summary")
+    }
     //console.log(patientSummary)
     res.redirect("/" + getVersion(req) + "/patient/patient-summary")
     
