@@ -1,0 +1,348 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script>
+  function openRightMenu() {
+    document.getElementById("rightMenu").style.display = "block";
+  }
+
+  function closeRightMenu() {
+    document.getElementById("rightMenu").style.display = "none";
+  }
+</script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-sidebar-hidden" id="rightMenu">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <a style="float:right;cursor:pointer" class="" onclick="closeRightMenu()" class="">Close this window
+
+      <!--  <svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+  </svg> -->
+
+</a>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+
+      <h3>Patient summary</h3>
+      <dl class="nhsuk-summary-list">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Next test due date
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            20-June-2020
+          </dd>
+
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Invited date
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            09-Nov-2020
+          </dd>
+
+        </div>
+      </dl>
+
+      <div class="nhsuk-panel nhsuk-promo">
+
+        <h3>Previous episode addresses</h3>
+        <p> 20 Thornhill Street
+          <br>
+          Pudsey
+          <br>
+          LS28 7ED</p>
+
+        <p>16 Chessington Drive
+          <br>
+          Leeds
+          <br>LS14 6KK</p>
+      </div>
+      <a href="#">View full summary</a>
+    </div>
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    {{ backLink({
+      "href": "manc",
+      "text": "Go back to Manchester results"
+    }) }}
+
+  <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Tameside & Oldham</h1>
+
+{{ hint({
+   classes: 'nhsuk-hint',
+  text: "Viewing - match 4 of 4 matches to resolve"
+}) }}
+</div>
+</div>
+
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">Lab details</h3>
+
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Charlotte Gravill
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Date of birth
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      11-04-1990
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Contact information
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      1 Westfield Place<br>Great Shelford<br> CB22 5JJ
+    </dd>
+</div>
+     <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      NHS number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+
+    </dd>
+
+  </div>
+  </dl>
+  <a class="nhsuk-button nhsuk-button--ers_secondary" href="#" onclick="openRightMenu()">View participant</a>
+
+
+  </div>
+
+
+</div>
+
+    <div class="nhsuk-grid-column-one-half">
+         <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">System details</h3>
+
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Charlotte <span class="highlight">J</span> Gravill
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Date of birth
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      11-04-1990
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Contact information
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      1 Westfield Place<br>Great Shel<span class="highlight">l</span>ford<br> CB22 5JJ
+    </dd>
+</div>
+     <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      NHS number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      <span class="highlight"> 234 567 8901 </span>
+    </dd>
+
+  </div>
+   <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Match
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      93%
+    </dd>
+
+  </div>
+  </dl>
+
+  </div>
+
+
+</div>
+</div>
+
+
+<!-- THE COMMENTS -->
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+    <h2 class="nhsuk-heading-s">Previous comments</h2>
+    <details class="nhsuk-details nhsuk-expander version-list" role="group" nhsuk-polyfilled="false" id="nhsuk-details0">
+        <summary class="nhsuk-details__summary" role="button" aria-controls="" aria-expanded="false" tabindex="0">
+          <p class="nhsuk-body-s nhsuk-u-margin-bottom-2">By Kate Blimey</p>
+          <span class="nhsuk-details__summary-text">
+            15-05-2020 at 9:22am
+
+          </span>
+        </summary>
+        <div class="nhsuk-details__text" id="details-content-a336ea47-0b6c-49a4-b189-7c8d7ef16df4" aria-hidden="true">
+        <p>Perhaps do a seperate postcode check</p>
+
+        </div>
+      </details>
+
+      <details class="nhsuk-details nhsuk-expander version-list" role="group" nhsuk-polyfilled="false" id="nhsuk-details0">
+          <summary class="nhsuk-details__summary" role="button" aria-controls="" aria-expanded="false" tabindex="0">
+            <p class="nhsuk-body-s nhsuk-u-margin-bottom-2">By Kate Blimey</p>
+            <span class="nhsuk-details__summary-text">
+              15-05-2020 at 9:01am
+
+            </span>
+          </summary>
+          <div class="nhsuk-details__text" id="details-content-a336ea47-0b6c-49a4-b189-7c8d7ef16df4" aria-hidden="true">
+          <p>Unable to find lab information on patient history/summary</p>
+
+          </div>
+        </details>
+
+  </div>
+</div>
+
+  <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+             <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-3" for="example">
+                    Comments
+                  </label>
+                  <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+                    Enter comments if needed
+                  </span>
+                  <textarea class="nhsuk-textarea nhsuk-u-width-one-half" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
+                   <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+                    You have 200 characters remaining
+                  </span>
+                </div>
+                <a class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" href="#">Add comment</a>
+
+
+      </div>
+      </div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-half">
+      <!-- OPTIONS -->
+    <div class="nhsuk-form-group">
+
+      <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+          <h1 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong">
+            How do you want to action this result?
+          </h1>
+        </legend>
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="lab" name="how-to-resolve" type="radio" value="lab" aria-controls="lab" aria-expanded="false">
+          <label class="nhsuk-label nhsuk-radios__label" for="lab">
+            Use lab details
+          </label>
+        </div>
+
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" checked aria-controls="system" aria-expanded="false">
+          <label class="nhsuk-label nhsuk-radios__label" for="system">
+            Use system details
+          </label>
+        </div>
+
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="gp" name="how-to-resolve" type="radio" value="gp" aria-controls="gp" aria-expanded="false">
+          <label class="nhsuk-label nhsuk-radios__label" for="gp">
+            Send to GP
+          </label>
+        </div>
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="lab" name="how-to-resolve" type="radio" value="lab" aria-controls="lab" aria-expanded="false">
+          <label class="nhsuk-label nhsuk-radios__label" for="send-back">
+            Send back to lab to resolve
+          </label>
+        </div>
+
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="send-back" name="how-to-resolve" type="radio" value="send-back" aria-controls="send-back" aria-expanded="false">
+          <label class="nhsuk-label nhsuk-radios__label" for="enter-address">
+            Enter a different address
+          </label>
+        </div>
+      </fieldset>
+
+
+
+    </div>
+    <div class="flex-container">
+    <a href="manc-p5-QA" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Accept and next</a>
+    <a href="manc-p5-QA" class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Reject and next</a>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {% endblock %}
