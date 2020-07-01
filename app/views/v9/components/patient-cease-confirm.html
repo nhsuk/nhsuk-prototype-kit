@@ -17,8 +17,13 @@
       <div class="nhsuk-radios__item">
         <input class="nhsuk-radios__input" id="example-2" name="pnl-cease" type="radio" value="no">
         <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-          No, go back to Patients due to be invited 
-          <mark>needs to work for patient summary flow as well</mark>
+          {% if data.returnUrl == "nrl" %}
+            No, go back to Patients who have not responded
+          {% elif data.returnUrl == "pat" %}
+            No, go back to Patient summary
+          {% else %}
+            No, go back to Patients due to be invited 
+          {% endif %}
         </label>
       </div>
     </div>
