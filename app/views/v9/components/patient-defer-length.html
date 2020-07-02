@@ -1,4 +1,6 @@
-<h1 class="nhsuk-fieldset__legend--m">How long do you want to defer the patient for?</h1>
+<h1 class="nhsuk-fieldset__legend--m">
+  How long do you want to {{ "delay" if (data.role == 'csas' and data.patversion == '2') else "defer" }} the patient for?
+</h1>
 
   {% set pnlDeferInfo %}
     {% if data['pnl-defer-reason'] ==  'Pregnancy' %}
@@ -61,10 +63,12 @@
 
   {% set pnlDeferLabel %}
     {% if data['pnl-defer-reason'] ==  'Pregnancy' %}
-      Months to defer after the date of delivery
+      Months to {{ "delay" if (data.role == 'csas' and data.patversion == '2') else "defer" }} after the date of delivery
     {% else %}
-      Months to defer
+      Months to {{ "delay" if (data.role == 'csas' and data.patversion == '2') else "defer" }}
     {% endif %}
+
+    
   {% endset %}
 
   

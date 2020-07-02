@@ -3,11 +3,7 @@
 <div class="nhsuk-form-group">
   <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-      {% if data.role == 'csas' and data.patversion == '2'  %}
-        Choose a reason to delay the patient
-      {% else %}
-        Choose a reason to defer the patient
-      {% endif %}
+      Choose a reason to {{ "delay" if (data.role == 'csas' and data.patversion == '2') else "defer" }} the patient
     </legend>
     <div class="nhsuk-radios">
       <div class="nhsuk-radios__item">

@@ -21,7 +21,7 @@
       <div class="nhsuk-radios__item">
         <input class="nhsuk-radios__input" id="example-1" name="pnl-cease" type="radio" value="yes">
         <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-          Yes, I wish to defer this patient 
+          Yes, I wish to {{ "delay" if (data.role == 'csas' and data.patversion == '2') else "defer" }} this patient 
         </label>
       </div>
       <div class="nhsuk-radios__item">
