@@ -17,17 +17,13 @@
     <dd class="nhsuk-summary-list__actions"><a href="prior-notification-{{ data.pnlversion }}-defer-reason">Change<span class="nhsuk-u-visually-hidden"> Defer reason</span></a></dd>
   </div>
 
-  {% if ((data['pnl-defer-reason'] == "Pregnancy") or (data['pnl-defer-reason'] == "Miscarriage")) and data['edd-year'] != '' %}
+  {% if (data['pnl-defer-reason'] == "Pregnancy") and data['edd-year'] != '' %}
     {% set estimatedDateOfDelivery = data['edd-year'] + "-" + data['edd-month'] + "-" + data['edd-day'] %}
     
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
-        {% if data['pnl-defer-reason'] == "Miscarriage" %}
-          Date of miscarriage
-        {% else %}
-          Estimated date of delivery
-        {% endif %}
-        </dt>
+        Estimated date of delivery
+      </dt>
       <dd class="nhsuk-summary-list__value">{{ estimatedDateOfDelivery | returnDateFormat + ' ' + estimatedDateOfDelivery | returnTimeDiff }}</dd>
       <dd class="nhsuk-summary-list__actions"><a href="prior-notification-{{ data.pnlversion }}-defer-reason">Change<span class="nhsuk-u-visually-hidden"> Estimated date of delivery</span></a></dd>
     </div>

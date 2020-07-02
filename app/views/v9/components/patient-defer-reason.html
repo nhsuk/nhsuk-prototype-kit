@@ -3,7 +3,11 @@
 <div class="nhsuk-form-group">
   <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-      Choose a reason to defer the patient
+      {% if data.role == 'csas' and data.patversion == '2'  %}
+        Choose a reason to delay the patient
+      {% else %}
+        Choose a reason to defer the patient
+      {% endif %}
     </legend>
     <div class="nhsuk-radios">
       <div class="nhsuk-radios__item">
@@ -12,14 +16,6 @@
           Pregnancy
         </label>
       </div>
-      {% if data.pnlversion == '10' %}
-        <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="example-1" name="pnl-defer-reason" type="radio" value="Miscarriage">
-          <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-            Miscarriage
-          </label>
-        </div>
-      {% endif %}
       <div class="nhsuk-radios__item">
         <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Recent test" checked>
         <label class="nhsuk-label nhsuk-radios__label" for="example-2">
