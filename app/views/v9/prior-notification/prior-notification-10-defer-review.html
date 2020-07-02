@@ -22,9 +22,12 @@
 
   <div class="nhsuk-panel-with-label">
     {% include '../components/pnl-patient.html' %}
-
     <span class="nhsuk-hint">Step 3 of 3</span>
-    {% include '../components/patient-defer-review.html' %}
+      {% if (data.role == 'csas' and data.patversion == '2') %}
+        {% include '../components/patient-defer-review-csas.html' %}
+      {% else %}
+        {% include '../components/patient-defer-review.html' %}
+      {% endif %}
   </div>
 
   </div>

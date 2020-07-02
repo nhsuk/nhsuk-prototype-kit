@@ -23,7 +23,11 @@
       {% include '../components/pnl-patient.html' %}
 
       <span class="nhsuk-hint">Step 2 of 3</span>
-      {% include '../components/patient-defer-length.html' %}
+        {% if (data.role == 'csas' and data.patversion == '2') %}
+          {% include '../components/patient-defer-ntdd.html' %}
+        {% else %}
+          {% include '../components/patient-defer-length.html' %}
+        {% endif %}
     </div>
 
   </div>

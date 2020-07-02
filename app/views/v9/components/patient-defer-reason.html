@@ -44,6 +44,14 @@
           </label>
         </div>
       {% endif %}
+      {% if (data.role == 'csas' and data.patversion == '2') %}
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Adminstrative" checked>
+          <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+            Administrative
+          </label>
+        </div>
+      {% endif %}
     </div>
   </fieldset>
 </div>
