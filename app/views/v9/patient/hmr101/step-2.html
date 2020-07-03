@@ -34,7 +34,7 @@ NHS Cervical Screening
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-one-half">
 
-       
+
         <h1 class="nhsuk-heading-l">Enter sample details</h1>
         <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
           <div class="nhsuk-form-group">
@@ -132,12 +132,7 @@ NHS Cervical Screening
                       NHS Colposcopy
                     </label>
                   </div>
-                  <div class="nhsuk-radios__item">
-                    <input class="nhsuk-radios__input" id="patient-holiday" name="cancel-reason" type="radio">
-                    <label class="nhsuk-label nhsuk-radios__label" for="patient-holiday">
-                      Private
-                    </label>
-                  </div>
+
                   <div class="nhsuk-radios__item">
                       <input class="nhsuk-radios__input" id="patient-private" name="cancel-reason" type="radio">
                       <label class="nhsuk-label nhsuk-radios__label" for="patient-private">
@@ -205,18 +200,24 @@ NHS Cervical Screening
                      Follow up treatment
                     </label>
                   </div>
-                  
                   <div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="patient-private" name="cancel-reason" type="radio">
-                      <label class="nhsuk-label nhsuk-radios__label" for="patient-private">
-                       Other
-                      </label>
-                    </div>
+                    <input class="nhsuk-radios__input" id="patient-holiday" name="cancel-reason" type="radio">
+                    <label class="nhsuk-label nhsuk-radios__label" for="patient-holiday">
+                     Other
+                    </label>
+                  </div>
+
+
+
+
+
 
                 </div>
 
 
           </form>
+
+
         </div>
         </div>
         <div class="nhsuk-grid-row nhsuk-u-margin-top-2">
@@ -235,15 +236,22 @@ NHS Cervical Screening
                     </label>
                   </div>
                   <div class="nhsuk-radios__item">
-                    <input class="nhsuk-radios__input" id="patient-holiday" name="cancel-reason" type="radio">
-                    <label class="nhsuk-label nhsuk-radios__label" for="patient-holiday">
-                     Other
+                    <input class="nhsuk-radios__input" id="patient-ill" name="cancel-reason" type="radio">
+                    <label class="nhsuk-label nhsuk-radios__label nhsuk-radios__label--s" for="patient-ill">
+                    Other
                     </label>
                   </div>
+                  <div class="nhsuk-form-group">
+  <label class="nhsuk-label" for="example">
+    Please provide more details if 'other'
+  </label>
+
+  <textarea class="nhsuk-textarea" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
+</div>
 </div>
 
           <a class="nhsuk-button--ers nhsuk-u-margin-top-6" href="step-3">Continue</a>
-      
+
 
 
 {% endblock %}
