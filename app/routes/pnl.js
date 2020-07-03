@@ -100,7 +100,7 @@ router.get("/*/start-prior-notifications-submit*", function (req, res) {
 router.get("/*/prior-notification/prior-notification-invited-*", function (req, res) {
     //console.log("INVITE SUBMITTED");
     patient.deferPatient(req.session.data['pnl_patient']['nhs_number'])
-    req.session.data["pnl_update_msg"] = "Patient has been Invited"
+    req.session.data["pnl_update_msg"] = "Patient is due to be invited"
     req.session.data["pnl_update_msg_show"] = 1;
 
     const version = req.session.data["pnlversion"];

@@ -25,12 +25,23 @@
       </div>
       {% endif %}
 
+      {% if data.pnlversion == "9" %}
       <div class="nhsuk-radios__item">
         <input class="nhsuk-radios__input" id="example-2" name="pnl-cease-reason" type="radio" value="Referred to colposcopy">
         <label class="nhsuk-label nhsuk-radios__label" for="example-2">
           Referred to colposcopy
         </label>
       </div>
+      {% endif %}
+
+      {% if data.pnlversion == "10" %}
+        <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="pnl-cease-reason" type="radio" value="Radiotherapy/stenosis of the cervix">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          Radiotherapy/stenosis of the cervix
+        </label>
+      </div>
+      {% endif %}
 
       {% if data.role == 'csas' %}
         <div class="nhsuk-radios__item">
@@ -48,14 +59,6 @@
         </div>
       {% endif %}
 
-      {% if (data.role == 'csas' and data.patversion == '2') %}
-        <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="example-2" name="pnl-cease-reason" type="radio" value="Adminstrative" checked>
-          <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-            Administrative
-          </label>
-        </div>
-      {% endif %}
 
     </div>
   </fieldset>

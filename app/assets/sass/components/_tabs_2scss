@@ -1,0 +1,69 @@
+
+// ==========================================================================
+// TABS /
+// ==========================================================================
+
+$clr-tab--active: white;
+$clr-tab--inactive: white;
+
+body {
+  font-family: Sans-serif;
+  padding: 20px;
+}
+
+h1, h2 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #ccc;
+}
+
+h2 {
+  font-size: 20px;
+  color: #999
+}
+
+tr {
+  &:nth-child(odd) {
+    background: #efefef;
+  }
+}
+
+td, th {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  color: black;
+  &[data-tabbedTable] {
+    background: $clr-tab--active;
+  }
+}
+
+.tabbedTable-labels {
+  float: left;
+}
+
+label {
+  background: #d8dde0;
+  color: black;
+  padding: 8px 16px;
+  margin-left: 5px;  
+  display: inline-block;
+  cursor: pointer;
+  float: left;  
+  &.tabbedTable-label--active {
+     background: $clr-tab--active;
+     border: 1px solid #666;
+     border-bottom:0;
+  }
+}
+
+.tabbedTable {
+  width: 100%;
+  margin: 0 0 20px 0;
+  border: 1px solid #666;
+  border-top: 0px
+}
