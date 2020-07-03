@@ -1,12 +1,10 @@
-<h1 class="nhsuk-fieldset__legend--m">How long do you want to defer the patient for?</h1>
+<h1 class="nhsuk-fieldset__legend--m">
+  How long do you want to {{ "delay" if (data.role == 'csas' and data.patversion == '2') else "defer" }} the patient for?
+</h1>
 
   {% set pnlDeferInfo %}
-    {% if (data['pnl-defer-reason'] ==  'Pregnancy') or (data['pnl-defer-reason'] ==  'Miscarriage') %}
-      {% if (data.pnlversion == '10') and (data['pnl-defer-reason'] ==  'Miscarriage') %}
-        <p>Minimum deferral is 3 months after date of miscarriage</br>Maximum deferral can not exceed 12 months</p>
-      {% else %}
-        <p>Minimum deferral is 3 months after date of delivery</br>Maximum deferral can not exceed 12 months</p>
-      {% endif %}
+    {% if data['pnl-defer-reason'] ==  'Pregnancy' %}
+      <p>Minimum deferral is 3 months after date of delivery</br>Maximum deferral can not exceed 12 months</p>
     {% else %}
       <p>Minimum deferral is X months</br>Maximum deferral can not exceed X months</p>
     {% endif %}
@@ -22,16 +20,12 @@
  
 
 
-{% if (data['pnl-defer-reason'] ==  'Pregnancy') or (data['pnl-defer-reason'] ==  'Miscarriage') %}
+{% if data['pnl-defer-reason'] ==  'Pregnancy' %}
   <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group nhsuk-u-margin-bottom-6">
     <div class="nhsuk-form-group"> 
       <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
         <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
-          {% if (data.pnlversion == '10') and (data['pnl-defer-reason'] ==  'Miscarriage') %}
-            Date of miscarriage
-          {% else %}
-            Estimated date of delivery
-          {% endif %}
+          Estimated date of delivery
         </legend>
         <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
           You must enter a date
@@ -69,14 +63,12 @@
 
   {% set pnlDeferLabel %}
     {% if data['pnl-defer-reason'] ==  'Pregnancy' %}
-      {% if (data.pnlversion == '10') and (data['pnl-defer-reason'] ==  'Miscarriage') %}
-        Months to defer after the date of miscarriage
-      {% else %}
-        Months to defer after the date of delivery
-      {% endif %}
+      Months to {{ "delay" if (data.role == 'csas' and data.patversion == '2') else "defer" }} after the date of delivery
     {% else %}
-      Months to defer
+      Months to {{ "delay" if (data.role == 'csas' and data.patversion == '2') else "defer" }}
     {% endif %}
+
+    
   {% endset %}
 
   

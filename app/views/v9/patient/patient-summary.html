@@ -68,9 +68,9 @@
         <dd class="nhsuk-summary-list__actions">
           {% if data.role == 'csas' %}
             {% if data.patientSummary.pnl_action == 'Ceased' %}
-              <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2" href="change-due-date/enter-reinstate-1?nhsNumber={{ data.patientSummary.nhs_number}}">Reinstate</a>
+              <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2" href="change-due-date/enter-reinstate-1?nhsNumber={{ data.patientSummary.nhs_number}}&patversion=1">Reinstate</a>
             {% else %}
-              <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2" href="/v9/start-csas-cease-defer?pnlversion=10&nhsNumber={{ data.patientSummary.nhs_number}}">Change date</a>
+              <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-2" href="/v9/start-csas-cease-defer?pnlversion=10&nhsNumber={{ data.patientSummary.nhs_number}}&patversion=1">Change date</a>
             {% endif %}
           {% endif %}
         </dd>

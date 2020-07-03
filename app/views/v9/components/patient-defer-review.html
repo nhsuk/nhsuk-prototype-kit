@@ -12,22 +12,18 @@
   </div>
 
   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Defer reason</dt>
+    <dt class="nhsuk-summary-list__key">{{ "Delay" if (data.role == 'csas' and data.patversion == '2') else "Defer" }} reason</dt>
     <dd class="nhsuk-summary-list__value">{{ data['pnl-defer-reason'] or 'Pregnancy' }}</dd>
     <dd class="nhsuk-summary-list__actions"><a href="prior-notification-{{ data.pnlversion }}-defer-reason">Change<span class="nhsuk-u-visually-hidden"> Defer reason</span></a></dd>
   </div>
 
-  {% if ((data['pnl-defer-reason'] == "Pregnancy") or (data['pnl-defer-reason'] == "Miscarriage")) and data['edd-year'] != '' %}
+  {% if (data['pnl-defer-reason'] == "Pregnancy") and data['edd-year'] != '' %}
     {% set estimatedDateOfDelivery = data['edd-year'] + "-" + data['edd-month'] + "-" + data['edd-day'] %}
     
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">
-        {% if data['pnl-defer-reason'] == "Miscarriage" %}
-          Date of miscarriage
-        {% else %}
-          Estimated date of delivery
-        {% endif %}
-        </dt>
+        Estimated date of delivery
+      </dt>
       <dd class="nhsuk-summary-list__value">{{ estimatedDateOfDelivery | returnDateFormat + ' ' + estimatedDateOfDelivery | returnTimeDiff }}</dd>
       <dd class="nhsuk-summary-list__actions"><a href="prior-notification-{{ data.pnlversion }}-defer-reason">Change<span class="nhsuk-u-visually-hidden"> Estimated date of delivery</span></a></dd>
     </div>
@@ -35,7 +31,7 @@
 
   {% if data['defer-length'] != '' %}
   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Defer length</dt>
+    <dt class="nhsuk-summary-list__key">{{ "Delay" if (data.role == 'csas' and data.patversion == '2') else "Defer" }} length</dt>
     <dd class="nhsuk-summary-list__value">{{ data['defer-length'] or '3 Months' }}</dd>
     <dd class="nhsuk-summary-list__actions"><a href="prior-notification-{{ data.pnlversion }}-defer-length">Change<span class="nhsuk-u-visually-hidden"> Defer length</span></a></dd>
   </div>
@@ -72,7 +68,7 @@
 </dl>
 
 <a href="/v9/prior-notification/prior-notification-deferred-{{ data.pnlversion }}" class="nhsuk-button nhsuk-button--ers">Submit</a>
-
+<p><a href="">Exit without saving</a></p>
  
 
 
