@@ -1,0 +1,533 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+
+<script>
+
+
+
+function myFunction() {
+  console.log
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+
+function openTab (tabName) {
+  var i;
+  var x = document.getElementsByClassName("tab");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  document.getElementById(cityName).style.display = "block";  
+}
+</script>
+
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+{{ backLink({
+  "href": "results",
+  "text": "Go back to results"
+}) }}
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-full">
+  <h1 class="nhsuk-heading-l">Manchester</h1>
+ <p> The following results show the manual matches between the lab and system patient details.
+ <br>
+  Compare the patient details provided by the labs against those held on the system.</p>
+
+
+<div class="flex-container nhsuk-u-margin-bottom-4">
+   <div><label class="nhsuk-label"> Filter by area </label><input class="nhsuk-input" type="text" id="myInput" onkeyup="myFunction()"></div>
+       <div class="nhsuk-form-group">
+  <label class="nhsuk-label nhsuk-u-margin-left-6" for="sort">
+    Filter by status
+  </label>
+  <select class="nhsuk-select nhsuk-u-margin-left-6" id="mySelect" name="sort">
+    <option value="zero">Show all</option>
+    <option value="not-started">Not started</option>
+    <option value="with-officer" selected>With officer</option>
+    <option value="with-qc">With quality control</option>
+    <option value="file-error">File error</option>
+  </select>
+</div>
+</div>
+
+   <!-- TABS -->
+
+
+<section id="tabs" class="project-tab">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav>
+                            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Project Tab 1</a>
+                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Project Tab 2</a>
+                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Project Tab 3</a>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <table class="table" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Project Name</th>
+                                            <th>Employer</th>
+                                            <th>Awards</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><a href="#">Work 1</a></td>
+                                            <td>Doe</td>
+                                            <td>john@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Work 2</a></td>
+                                            <td>Moe</td>
+                                            <td>mary@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Work 3</a></td>
+                                            <td>Dooley</td>
+                                            <td>july@example.com</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <table class="table" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Project Name</th>
+                                            <th>Employer</th>
+                                            <th>Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><a href="#">Work 1</a></td>
+                                            <td>Doe</td>
+                                            <td>john@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Work 2</a></td>
+                                            <td>Moe</td>
+                                            <td>mary@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Work 3</a></td>
+                                            <td>Dooley</td>
+                                            <td>july@example.com</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                <table class="table" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Contest Name</th>
+                                            <th>Date</th>
+                                            <th>Award Position</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><a href="#">Work 1</a></td>
+                                            <td>Doe</td>
+                                            <td>john@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Work 2</a></td>
+                                            <td>Moe</td>
+                                            <td>mary@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#">Work 3</a></td>
+                                            <td>Dooley</td>
+                                            <td>july@example.com</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+   <!-- TABS -->
+
+
+
+
+
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-table-responsive">
+
+                  <table id="myTable" class="nhsuk-table nhsuk-table-clickable">
+
+                    <!-- TABLE START -->
+                    <thead class="nhsuk-table__head">
+                      <tr class="nhsuk-table__row">
+                        <th class="nhsuk-table__header nhsuk-u-margin-bottom-2 nhsuk-u-margin-right-4"  aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">Area</button>
+                        </th>
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                        <button onclick="sortTable()" type="button" data-index="0">Status</button>
+                        </th>
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">Transfer no</button>
+                        </th>
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">Transfer date</button>
+                        </th>
+                        <th class="nhsuk-table__header" aria-sort="none" scope="col">
+                          <button onclick="sortTable()" type="button" data-index="0">Manual matches</button>
+                        </th>
+
+                        <th class="nhsuk-table_header"></th>
+
+                      </tr>
+
+                    </thead>
+                      <tbody class="nhsuk-table__body">
+
+                      <tr class="nhsuk-table__row">
+                         <td class="nhsuk-table__cell">
+                          Tameside & Oldham
+                          <span class="nhsuk-table__cell--hint">Area code: GMK</span>
+
+                        </td>
+                        <td class="nhsuk-table__cell multiple-choice--hod">
+                          <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2 nhsuk-u-margin-right-4" value="not-started">Not started</span>
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          03368
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          06-02-2020
+                        </td>
+                        <td class="nhsuk-table__cell">
+                          4
+                        </td>
+
+                          <td class="nhsuk-table__cell">
+                       <a class="nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-right-6" value="with-officer" href="manc-p1">Start matching</a>
+                        </td>
+                      </tr>
+
+                                    <tr class="nhsuk-table__row">
+                                    <td class="nhsuk-table__cell">
+                                    Cumbria
+                                    <span class="nhsuk-table__cell--hint">Area code: CU</span>
+                                    </td>
+                                     <td class="nhsuk-table__cell multiple-choice--hod">
+                                      <span class="nhsuk-tag nhsuk-tag--red">Checker Renpmjected</span>
+                                      <span class="nhsuk-tag nhsuk-tag--red">Checker Renpmjected</span>
+                                    </td>
+                                    <td class="nhsuk-table__cell">
+                                      03369
+                                    </td>
+                                    <td class="nhsuk-table__cell">
+                                      06-02-2020
+                                    </td>
+                                    <td class="nhsuk-table__cell">
+                                      1
+                                    </td>
+
+                                    <td class="nhsuk-table__cell">
+                                    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="view-rejected">View rejected</a>
+                                     </td>
+                                  </tr>
+
+
+
+                                              <tr class="nhsuk-table__row">
+                                              <td class="nhsuk-table__cell">
+                                                 Wirral
+                                                 <span class="nhsuk-table__cell--hint">Area code: BIK</span>
+                                                 </td>
+                                                  <td class="nhsuk-table__cell multiple-choice--hod">
+                                                  <span class="nhsuk-tag nhsuk-tag--orange nhsuk-u-margin-bottom-2">With officer</span>
+                                                </td>
+                                                <td class="nhsuk-table__cell">
+                                                  03370
+                                                </td>
+                                                <td class="nhsuk-table__cell">
+                                                  06-02-2020
+                                                </td>
+                                                <td class="nhsuk-table__cell">
+                                                  89
+                                                </td>
+
+
+                                                <td class="nhsuk-table__cell">
+                                                 </td>
+                                              </tr>
+
+                                                          <tr class="nhsuk-table__row">
+                                                          <td class="nhsuk-table__cell">
+                                                           Cheshire
+                                                           <span class="nhsuk-table__cell--hint">Area code: CH</span>
+                                                          </td>
+
+                                                      <td class="nhsuk-table__cell multiple-choice--hod">
+                                                        <span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">file error</span>
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        03371
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        06-02-2020
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        52
+                                                      </td>
+
+                                                      <td class="nhsuk-table__cell">
+                                                <!-- <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>-->
+                                                 </td>
+                                                    </tr>
+
+                                                             <tr class="nhsuk-table__row">
+                                                             <td class="nhsuk-table__cell">
+                                                            Lancashire
+                                                            <span class="nhsuk-table__cell--hint">Area code: LA</span>
+                                                           </td>
+                                                              <td class="nhsuk-table__cell multiple-choice--hod">
+                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        03372
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        06-02-2020
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        31
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="B">Start matching</a>
+                                                 </td>
+                                                    </tr>
+                                                                      <tr class="nhsuk-table__row">
+                                                                      <td class="nhsuk-table__cell">
+                                                                     Liverpool
+                                                                     <span class="nhsuk-table__cell--hint">Area code: LIP</span>
+                                                                    </td>
+                                                                     <td class="nhsuk-table__cell multiple-choice--hod">
+                                                        <span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">file error</span>
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        03373
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        06-02-2020
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        53
+                                                      </td>
+
+                                                      <td class="nhsuk-table__cell">
+                                                 </td>
+                                                    </tr>
+
+                                                      <tr class="nhsuk-table__row">
+                                                      <td class="nhsuk-table__cell">
+                                                       Manchester
+                                                       <span class="nhsuk-table__cell--hint">Area code: MAN</span>
+                                                       </td>
+                                                       <td class="nhsuk-table__cell multiple-choice--hod">
+                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        03374
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        06-02-2020
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        72
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>
+                                                 </td>
+                                                    </tr>
+
+                                                              <tr class="nhsuk-table__row">
+                                                      <td class="nhsuk-table__cell">
+                                                       Rochdale
+                                                       <span class="nhsuk-table__cell--hint">Area code: ROC</span>
+                                                       </td>
+                                                        <td class="nhsuk-table__cell multiple-choice--hod">
+                                                        <span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">with QC</span>
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        03375
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        06-02-2020
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        54
+                                                      </td>
+
+                                                      <td class="nhsuk-table__cell">
+                                                 </td>
+                                                    </tr>
+
+          <tr class="nhsuk-table__row">
+                                                      <td class="nhsuk-table__cell">
+                                                       Salford
+                                                       <span class="nhsuk-table__cell--hint">Area code: SLF</span>
+                                                       </td>
+                                                        <td class="nhsuk-table__cell multiple-choice--hod">
+                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        03376
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        06-02-2020
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        28
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>
+                                                 </td>
+                                                    </tr>
+
+          <tr class="nhsuk-table__row">
+                                                      <td class="nhsuk-table__cell">
+                                                       Sefton
+                                                       <span class="nhsuk-table__cell--hint">Area code: SOP</span>
+                                                       </td>
+                                                           <td class="nhsuk-table__cell multiple-choice--hod">
+                                                        <span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">With QC</span>
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        03377
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        06-02-2020
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        63
+                                                      </td>
+
+                                                      <td class="nhsuk-table__cell">
+                                                 </td>
+                                                    </tr>
+
+                                                              <tr class="nhsuk-table__row">
+                                                      <td class="nhsuk-table__cell">
+                                                       Stockport
+                                                       <span class="nhsuk-table__cell--hint">Area code: SPT</span>
+                                                       </td>
+                                                        <td class="nhsuk-table__cell multiple-choice--hod">
+                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        03378
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        06-02-2020
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        93
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>
+                                                 </td>
+                                                    </tr>
+          <tr class="nhsuk-table__row">
+                                                      <td class="nhsuk-table__cell">
+                                                       St Helen's & Knowsley
+                                                       <span class="nhsuk-table__cell--hint">Area code: STL</span>
+                                                       </td>
+                                                          <td class="nhsuk-table__cell multiple-choice--hod">
+                                                        <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span>
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        03379
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        06-02-2020
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        83
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a>
+                                                 </td>
+                                                    </tr>
+                                                              <tr class="nhsuk-table__row">
+                                                      <td class="nhsuk-table__cell">
+                                                       Wigan & Bolton
+                                                       <span class="nhsuk-table__cell--hint">Area code: WIG</span>
+                                                       </td>
+                                                          <td class="nhsuk-table__cell multiple-choice--hod">
+                                                        <span class="nhsuk-tag nhsuk-tag--orange nhsuk-u-margin-bottom-2">With officer</span>
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        03380
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        06-02-2020
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                        53
+                                                      </td>
+                                                      <td class="nhsuk-table__cell">
+                                                 </td>
+                                                    </tr>
+                                                       </tbody>
+                    </table>
+                    </div>
+
+
+
+
+
+  </div>
+  </div>
+{% endblock %}
