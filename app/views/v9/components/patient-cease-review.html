@@ -4,7 +4,7 @@
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Action</dt>
     <dd class="nhsuk-summary-list__value">{{ data['pnl-action'] or 'Cease' }}</dd>
-    {% if data.role == 'csas' %}
+    {% if data.role == 'csas' and data.patversion == '2' %}
       <dd class="nhsuk-summary-list__actions"><a href="../patient/change-due-date/enter-action-1">Change<span class="nhsuk-u-visually-hidden"> Action</span></a></dd>
     {% else %}
       <dd class="nhsuk-summary-list__actions"></dd>
