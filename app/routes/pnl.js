@@ -338,5 +338,7 @@ module.exports = router;
 
 router.get('/*/prior-notification/delete-email', function (req, res) {
     req.session.data['manageEmail'] = null;
+    req.session.data['notificationsPNL'] = null;
+    req.session.data['notificationsNRL'] = null;
     res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-10-manage")
 })

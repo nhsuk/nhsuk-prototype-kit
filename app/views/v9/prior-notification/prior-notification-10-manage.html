@@ -25,7 +25,6 @@
   </div>
 </div>
 
-{{ data.delete }}
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
      <h1 class="nhsuk-heading-l">Manage Emails</h1>
@@ -79,8 +78,12 @@
               <td class="nhsuk-table__cell">{{ data.manageEmail }}</td>
               <td class="nhsuk-table__cell ">
               <ul>
-              <li>{{ data.notificationsPNL }}</li>
-              <li>{{ data.notificationsNRL }}</li>
+              {% if data.notificationsPNL != null %}
+                <li>{{ data.notificationsPNL }}</li>
+              {% endif %}
+              {% if data.notificationsNRL != null %}
+                 <li>{{ data.notificationsNRL }}</li>
+              {% endif %}
               </ul>
               </td>
               <td class="nhsuk-table__cell"><a href="prior-notification-10-edit-email">Edit</a>
