@@ -337,8 +337,6 @@ router.get("/*/patient/patient-reinstated*", function (req, res) {
 module.exports = router;
 
 router.get('/*/prior-notification/delete-email', function (req, res) {
-    console.log('deleting email')
-    console.log("data: " + req.session.data['manageEmail']);
     req.session.data['manageEmail'] = null;
     res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-10-manage")
 })
