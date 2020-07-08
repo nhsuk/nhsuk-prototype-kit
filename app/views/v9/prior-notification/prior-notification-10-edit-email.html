@@ -24,6 +24,8 @@
   <span class="nhsuk-u-visually-hidden">Information: </span> Make sure that the staff members involved in cervical screening tasks are receiving the right notifications.</p>
   <p class="nhsuk-u-margin-bottom-6">
 
+<form action="prior-notification-10-manage" method="post">
+
 <div class="nhsuk-form-group">
   <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
@@ -39,14 +41,14 @@
     <div class="nhsuk-checkboxes">
 
       <div class="nhsuk-checkboxes__item">
-        <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+        <input class="nhsuk-checkboxes__input" id="example-1" name="notificationsPNL" type="checkbox" value="Patients due to be invited"{{ checked("notificationsPNL", "Patients due to be invited") }}>
         <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
           Patients due to be invited
         </label>
       </div>
 
       <div class="nhsuk-checkboxes__item">
-        <input class="nhsuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="phone">
+        <input class="nhsuk-checkboxes__input" id="example-2" name="notificationsNRL" type="checkbox" value="Patients who have not responded"{{ checked("notificationsNRL", "Patients who have not responded") }}>
         <label class="nhsuk-label nhsuk-checkboxes__label" for="example-2">
           Patients who have not responded
         </label>
@@ -60,6 +62,9 @@
 <button class="nhsuk-button nhsuk-button--ers" type="submit">
   Save changes
  </button>  
+
+ </form>
+
  <p><a href="prior-notification-10-manage">Exit without saving</a></p> 
   </div>
 
