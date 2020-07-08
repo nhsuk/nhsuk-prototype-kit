@@ -185,11 +185,16 @@ router.post("/*/patient/search/search", function(req, res) {
       req.session.data["alreadyCeased"] = true;
       res.redirect("/" + getVersion(req) + "/patient/patient-summary");
     }
-
   }
 
+  const patVersion = req.session.data["patversion"];
 
-  res.redirect("/" + getVersion(req) + "/patient/patient-summary");
+  if (patVersion == '2') {
+    res.redirect("/" + getVersion(req) + "/patient/patient-summary-2");
+  } else {
+    res.redirect("/" + getVersion(req) + "/patient/patient-summary");
+  }
+
 });
 
 router.post("/*/prior-notification-4-check", function (req, res) {
