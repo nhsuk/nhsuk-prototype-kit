@@ -1,0 +1,51 @@
+
+{% if data.pnl_patient.results == null %} 
+  {% set resultDate = "no results" %} 
+{% else %}
+  {% set resultWithoutHPV = "(" + (data.pnl_patient.results.result_code or "-" ) + (data.pnl_patient.results.infection_code or "") + (data.pnl_patient.results.action_code or "-") + ") " + (data.pnl_patient.results.result or "-") + ", " +(data.pnl_patient.results.action or "-") %}
+  {% set resultWithHPV = "(" + (data.pnl_patient.results.result_code or "-" ) + (data.pnl_patient.results.infection_code or "") + (data.pnl_patient.results.action_code or "-") + ") " + (data.pnl_patient.results.result or "-") + ", " +(data.pnl_patient.results.infection_result or "") + ", " +(data.pnl_patient.results.action or "-") %}
+  {% set resultDate = (data.pnl_patient.results.result_date | returnDateFormat or "-") + " " + (data.pnl_patient.results.result_date | returnTimeDiff or "-") %}
+{% endif %}
+  
+  <h3 class="nhsuk-panel-with-label__label">{{ data.pnl_patient.first_name | capitalize }} {{ data.pnl_patient.last_name | capitalize }} 
+  <span style= color:white; class="nhsuk-table__cell--hint">NHS No: {{ data.pnl_patient.nhs_number | formatNHSNumber }}</span></h3>
+
+
+<!--
+  <tr id="detailsRow4" class="detailsRow">
+           <td colspan="3">-->
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-full">
+
+ <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-2">
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Next test due date</dt>
+    <dd class="nhsuk-summary-list__value">{{ (data.pnl_patient.next_test_due_date | returnDateFormat or "-") }} {{ (data.pnl_patient.next_test_due_date | returnTimeDiff or "-") }}</dd>
+  </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Last test date</dt>
+    <dd class="nhsuk-summary-list__value">{{ resultDate }}</dd>
+  </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Last test</dt>
+    <dd class="nhsuk-summary-list__value">
+      {% if data.pnl_patient.results.infection_result == undefined %}
+        {{ resultWithoutHPV }}
+          {% if data.pnl_patient.results != null %}
+            <span class="nhsuk-tag nhsuk-tag--orange nhsuk-u-margin-bottom-2">No HPV Data</span>
+          {% else %}
+            no results
+          {% endif %}
+      {% else %}
+        {{ resultWithHPV }}
+      {% endif %}
+    </dd>
+  </div>
+</dl>
+
+
+<p class="nhsuk-u-margin-bottom-6"><a href="../patient/patient-summary">View full patient information</a></p>
+              </div>
+            </div>
+          </td>
+        </tr></p>
