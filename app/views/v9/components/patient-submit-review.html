@@ -1,5 +1,5 @@
   <h1 class="nhsuk-fieldset__legend--m">Review patient screening participation</h1>
-
+{#
   {{ summaryList({
   rows: [
     {
@@ -38,55 +38,9 @@
     }
   ]
 }) }}
-{#
-{{ insetText({
-  "HTML": "<p><strong>You will still need to send a third reminder invitation letter to the patient</strong></p>"
-}) }}
 #}
-<p><strong>You will still need to send a third reminder invitation letter to the patient</strong></p>
-<p>The patient will be invited to be screening on {{ ("3" | returnDate("years", data.pnl_patient.next_test_due_date)) | returnDateFormat }}</p>
 
-{#
-{{ radios({
-  "idPrefix": "example",
-  "name": "example",
-  "fieldset": {
-    "legend": {
-      "text": "Have you have you contacted the patient?",
-      "classes": "nhsuk-fieldset__legend--m"
-    }
-  },
-  "items": [
-    {
-      "value": "yes",
-      "text": "Yes I have sent a third reminder invitation to the patient"
-    },
-    {
-      "value": "no",
-      "text": "No I will sned a third reminder invitation to the patient"
-    }
-  ]
-}) }}
-#}
-{#
-{{ checkboxes({
-  "idPrefix": "nrlsubmit",
-  "name": "Submit",
-  "fieldset": {
-    "legend": {
-      "text": "Have you have you contacted the patient?"
-    }
-  },
-  "items": [
-    {
-      "value": "british",
-      "text": "Yes I have sent a third reminder invitation to the patient"
-    },
-    {
-      "value": "british",
-      "text": "No I will sned a third reminder invitation to the patient"
-    }
-  ]
-}) }}
-#}
+<p><strong>You will still need to send a third reminder invitation letter to the patient</strong></p>
+<p>If the patient does not respond to the third reminder letter then they will be invited for screening on {{ ("3" | returnDate("years", data.pnl_patient.next_test_due_date)) | returnDateFormat }} {{ ("3" | returnDate("years", data.pnl_patient.next_test_due_date) | returnDateFormat) | returnTimeDiff or "" }}</p>
+<p>The patient will be removed from the Patients whop have not responded list</p>
 <a href="/v9/prior-notification/prior-notification-submitted-{{ data.pnlversion or 10 }}" class="nhsuk-button nhsuk-button--ers">Submit</a>
