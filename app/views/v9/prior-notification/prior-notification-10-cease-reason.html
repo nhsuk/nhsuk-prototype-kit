@@ -13,11 +13,20 @@
   <div class="nhsuk-grid-column-three-quarters">
 
   {% if data.role == 'csas' %}
+    {% if data.patversion == "2" %}
+    {{ backLink({
+      "href": "../patient/patient-summary-2",
+      "text": "Back to patient summary",
+      "classes" : "nhsuk-u-margin-bottom-4"
+    }) }}
+    {% else %}
     {{ backLink({
       "href": "../patient/change-due-date/enter-action-1",
       "text": "Back to choose a reason",
       "classes" : "nhsuk-u-margin-bottom-4"
     }) }}
+    {% endif %}
+    
   {% else %}
     {{ backLink({
       "href": "prior-notification-10",
