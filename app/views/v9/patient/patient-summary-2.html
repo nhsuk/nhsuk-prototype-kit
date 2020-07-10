@@ -50,6 +50,10 @@
         }) }}
       {% endif %}
 
+
+    {% if data.patientSummary.pnl_action == 'Deferred' %}
+      <span class="nhsuk-tag nhsuk-tag--blue"><span>patient has been deferred recently</span></span>
+    {% endif %}
     {% if data.patientSummary.pnl_action == 'Ceased' %}
       <span class="nhsuk-tag nhsuk-tag--orange">{{ data.patientSummary.pnl_action }} - {{ data.patientSummary.pnl_reason }}</span>
     {% endif %}
@@ -72,8 +76,8 @@
               <a href="change-due-date/enter-reinstate-2?nhsNumber={{ data.patientSummary.nhs_number}}&role=csas&patversion=2">Reinstate</a>
             {% else %}
               Actions:
-              <a href="/v9/start-prior-notifications-defer-reason?nhsNumber={{ patient.nhs_number }}&pnlversion=10&patversion=2&role=csas&returnUrl=pat">Delay</a>
-              <a href="/v9/start-prior-notifications-cease-reason?nhsNumber={{ patient.nhs_number }}&pnlversion=10&patversion=2&role=csas&returnUrl=pat">Cease</a>
+              <a href="/v9/start-prior-notifications-defer-reason?nhsNumber={{ data.patientSummary.nhs_number }}&pnlversion=10&patversion=2&role=csas&returnUrl=pat">Delay</a>
+              <a href="/v9/start-prior-notifications-cease-reason?nhsNumber={{ data.patientSummary.nhs_number }}&pnlversion=10&patversion=2&role=csas&returnUrl=pat">Cease</a>
             {% endif %}
           {% endif %}
         </dd>

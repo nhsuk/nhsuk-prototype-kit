@@ -3,6 +3,10 @@
 // TABS /
 // ==========================================================================
 
+/* 
+
+JUST COMMENTED OUT FOR NOW, ADD BACK IN WHEN NEEDED
+
 $clr-tab--active: white;
 $clr-tab--inactive: white;
 
@@ -49,7 +53,7 @@ th {
 label {
   background: #d8dde0;
   color: black;
-  padding: 8px 16px;
+  padding: 10px 20px 10px 0;
   margin-left: 5px;  
   display: inline-block;
   cursor: pointer;
@@ -67,3 +71,14 @@ label {
   border: 1px solid #666;
   border-top: 0px
 }
+
+table {
+  width: 100%;
+}
+.ten {
+  width: 10%
+}
+.twenty {
+  width: 20%;
+}
+*/

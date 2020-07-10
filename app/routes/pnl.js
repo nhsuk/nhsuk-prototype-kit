@@ -259,11 +259,15 @@ router.get("/*/reset-patient-data-*", function (req, res) {
     req.session.data["pnl_update_msg"] = ""
     req.session.data["pnl_update_msg_show"] = 0;
     
+
+
     if (req.session.data['role'] == 'csas') {
-        req.session.data['patientSummary']['next_test_due_date'] = req.session.data["store-ntdd"];
+        req.session.data = {}
+        res.redirect('/v9/patient/search/search?role=csas&patversion=2&pnlversion=10')
+        //req.session.data['patientSummary']['next_test_due_date'] = req.session.data["store-ntdd"];
         //req.session.data['']
-        req.session.data["store-ntdd"] = undefined;
-        res.redirect("/" + getVersion(req) + "/patient/patient-summary");
+        //req.session.data["store-ntdd"] = undefined;
+        //res.redirect("/" + getVersion(req) + "/patient/patient-summary");
     } else {
         res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-" + getNotificationVersion(req));
     }
@@ -335,3 +339,8 @@ router.get("/*/patient/patient-reinstated*", function (req, res) {
 //patient - reinstated
 
 module.exports = router;
+
+router.get('/*/prior-notification/delete-email', function (req, res) {
+    req.session.data['manageEmail'] = null;
+    res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-10-manage")
+})
