@@ -502,7 +502,9 @@ module.exports.reinstatePatient = function (nhsNumber) {
 module.exports.resetPatients = function(req) {
     patients.forEach(function (patient) {
         patient.pnl = true;
-        patient.pnl_action = ""
+        patient.pnl_action = "";
+        patient.nrl = true;
     })
-    req.session.data["patients"] = patients;
+    req.session.data['nrl_patients'] = patients;
+    req.session.data['patients'] = patients;
 }

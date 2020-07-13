@@ -4,9 +4,9 @@
     - add custom CSS and JavaScript
 -->
 
-
 <!-- Extends the layout from /docs/views/template.html -->
-{% extends "template.html" %}
+{% include "layout-beta-banner.html" %}
+
 
 <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 {% block headCSS %}
@@ -32,7 +32,11 @@
   }}
 {% endblock %}
 
+
+
 {% block main %}
+
+
 <div class="nhsuk-width-container">
   <main class="nhsuk-main-wrapper" id="maincontent" role="main">
     {% block content %}{% endblock %}
