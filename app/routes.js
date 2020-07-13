@@ -68,7 +68,7 @@ router.post("/*/hmr101/choose", function(req, res) {
     if (getVersion(req) == 'v8') {
       res.redirect("/" + getVersion(req) + "/patient/hmr101/confirm-address");
     } else {
-      res.redirect("/" + getVersion(req) + "/patient/hmr101/step-1");
+      res.redirect("/" + getVersion(req) + "/patient/hmr101/confirm-address");
     }
   }
 });
@@ -86,7 +86,7 @@ router.post("/*/hmr101/episode-address", function(req, res) {
 router.post("/*/hmr101/confirm-address", function (req, res) {
   console.log('working')
   var confirmAddress = req.session.data["confirmAddress"];
-  
+
   console.log("check reason: " + confirmAddress);
   if (confirmAddress == "yes") {
     res.redirect("/" + getVersion(req) + "/patient/hmr101/step-1");
