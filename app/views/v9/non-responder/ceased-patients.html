@@ -9,40 +9,31 @@
   {% include '../components/header-3.html' %}
 {% endblock %}
 
-<!-- force the prototype to build again -->
+
 {% block content %}
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     <nav class="nhsuk-sub-navigation nhsuk-u-padding-bottom-6">
       <h1 class="nhsuk-heading-l">Notifications</h1>
       <ul class="nhsuk-sub-navigation__list">
-        <li class="nhsuk-sub-navigation__item"><a href="" class="nhsuk-sub-navigation__link" aria-current="page">Patients due to be invited<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">{{ data['patients'].length }}</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="/v9/get-prior-notifications-10" class="nhsuk-sub-navigation__link">Patients due to be invited<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">{{ data['patients'].length }}</span></a></li>
         <li class="nhsuk-sub-navigation__item"><a href="/v9/get-non-responder-notifications-2" class="nhsuk-sub-navigation__link">Patients who have not responded<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2"> 6</span> </a></li>
-        <li class="nhsuk-sub-navigation__item"><a href="/v9/get-non-responder-ceased-patients" class="nhsuk-sub-navigation__link">Patients who have been ceased<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2"> 4</span> </a></li>
-        <li class="nhsuk-sub-navigation__item"><a href="prior-notification-10-manage" class="nhsuk-sub-navigation__link">Manage emails</a></li>
+         <li class="nhsuk-sub-navigation__item"><a href="" class="nhsuk-sub-navigation__link" aria-current="page">Patients who have been ceased<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2"> 4</span> </a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="../prior-notification/prior-notification-10-manage" class="nhsuk-sub-navigation__link">Manage emails</a></li>
       </ul>
     </nav>
   </div>
 </div>
 
-{% set pnlMsg = "<p>Update: " + data.pnl_update_msg  + " </p>"  %}
-{% if (data['pnl_update_msg_show'] > 1) %}
-    {{ insetText({
-  "HTML": pnlMsg,
-  "classes": "nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-0"
-}) }}
-{% endif %}
-
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-4">
-  <h2 class="nhsuk-heading-m">Patients due to be invited</h2>
-  <p>The following patients need reviewing as they are due to be invited for screening. If you do not take any action then patients will be invited to be screened.</p>
-  <p><a href="prior-notification-9-forms">Find out how to cease patients because of <strong>mental capacity</strong> or <strong>patient choice</strong>?</a></p>
+    <h2 class="nhsuk-heading-m">Patients who have been ceased</h2>
+    <p>The following patients have been ceased and need reviewing.</p>
+    <p><strong>Patients will be removed from this list? will they, how long to review list?.</strong></p>
   </div>
 </div>
 
-{% if data['patients'] == null %} 
+{% if data['nrl_patients'] == null %} 
 <meta http-equiv="refresh" content="2" />
   <div class="styleguide-example">
     <div class="nhsuk-loader__container">
@@ -55,7 +46,7 @@
   </div>
 {% else %}
 
-{% if data['patients'].length >= 1 %} 
+{% if data['nrl_patients'].length >= 1 %} 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     <table id="sortable" class="nhsuk-table-clickable bna-table nhsuk-u-margin-top-0">
@@ -65,16 +56,16 @@
             <!--<button onclick="sortTable()" type="button" data-index="0">-->Name<!--</button>-->
           </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            <!--<button onclick="sortTable()" type="button" data-index="0">-->Age<!--</button>-->
+            <!--<button onclick="sortTable()" type="button" data-index="0">-->Age?<!--</button>-->
           </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            <!--<button onclick="sortTable()" type="button" data-index="0">-->Status<!--</button>-->
+            <!--<button onclick="sortTable()" type="button" data-index="0">-->Status/cease type<!--</button>-->
           </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            <!--<button onclick="sortTable()" type="button" data-index="0">-->Review By<!--</button>-->
+            <!--<button onclick="sortTable()" type="button" data-index="0">-->Review By?<!--</button>-->
           </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            Actions
+            Review
           </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
             View More
@@ -82,7 +73,7 @@
         </tr>
       </thead>
       <tbody class="nhsuk-table__body">
-        {% for patient in data['patients'] %}
+        {% for patient in data['nrl_patients'] %}
           {% set rowId =  "selectRow" + loop.index %}
           {% set detailsId =  "detailsRow" + loop.index %}
           {% set buttonId =  "btnRow" + loop.index %}
@@ -109,9 +100,9 @@
              <span class="nhsuk-table__cell--hint">{{ ((( patient.next_test_due_date | returnInviteDate) | returnTimeDiffDays) | removeBrackets) | capitalize }} </span>
           </td>
           <td>
-            <a href="/v9/start-prior-notifications-invite?nhsNumber={{ patient.nhs_number }}&pnlversion=10&role=admin&returnUrl=pnl">Invite</a>
-            <a href="/v9/start-prior-notifications-defer-reason?nhsNumber={{ patient.nhs_number }}&pnlversion=10&role=admin&returnUrl=pnl" style="margin-left:4px; margin-right:4px;">Defer</a>
-            <a href="/v9/start-prior-notifications-cease-reason?nhsNumber={{ patient.nhs_number }}&pnlversion=10&role=admin&returnUrl=pnl">Cease</a>
+            <a href="/v9/start-prior-notifications-submit?nhsNumber={{ patient.nhs_number }}&nrlversion=2&pnlversion=10&role=admin&returnUrl=nrl">Review</a>
+            <a href="/v9/start-prior-notifications-defer-reason?nhsNumber={{ patient.nhs_number }}&nrlversion=2&pnlversion=10&role=admin&returnUrl=nrl" style="margin-left:4px; margin-right:4px;">Defer</a>
+            <a href="/v9/start-prior-notifications-cease-reason?nhsNumber={{ patient.nhs_number }}&nrlversion=2&pnlversion=10&role=admin&returnUrl=nrl">Cease</a>
           </td>
           <td class="nhsuk-table__cell">
             <button class="expanderButton" type="button" id="{{ buttonId }}" aria-expanded="false" onclick="toggle(this.id,'#{{ detailsId }}');" aria-controls="{{ detailsId }}" aria-label="More details for" aria-labelledby="{{ buttonId }} {{ NameId }}"></button>
@@ -156,6 +147,7 @@
 </footer>
 {% endblock %}
 
+
 {% block pageScripts %}
 <script>
   function toggle(btnID, eIDs) {
@@ -185,6 +177,7 @@
     $('.expanderButton[aria-expanded="true"]').closest('tr').addClass('expandedRow');
     $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
   }
+
 </script>
 
 {% endblock %}
