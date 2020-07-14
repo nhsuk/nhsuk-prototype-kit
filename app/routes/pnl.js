@@ -5,7 +5,8 @@ const patient = require('../data/patient.js');
 const moment = require('moment');
 
 function getVersion(a) {
-    return a.url.substring(1, 3) || "v1";
+    var secondBracket = a.url.indexOf('/', 1);
+    return a.url.substring(1, secondBracket) || "v1";
 }
 
 function getNotificationVersion(a) {
