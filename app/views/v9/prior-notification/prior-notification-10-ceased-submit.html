@@ -21,7 +21,7 @@
   <div class="nhsuk-panel-with-label">
     {% include '../components/pnl-patient-2.html' %}
 
-    {% include '../components/patient-submit-review.html' %}
+    {% include '../components/patient-submit-review-' +  ((data.pnl_patient.ceased_type | replaceSpacesWithDashes) or 'recently-ceased') + '.html' %}
   </div>
 
   </div>

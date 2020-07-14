@@ -521,10 +521,14 @@ module.exports.ceasePatient = function (nhsNumber, reason, type) {
     }
 };
 
-module.exports.submitPatient = function (nhsNumber) {
+module.exports.submitPatient = function (nhsNumber, type) {
     console.log("PATIENT SUBMITTED")
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
-    patient.nrl = false;
+    if (type == "ceased") {
+        patient.pnl_action = "";
+    } else {
+        patient.nrl = false;
+    }
 };
 
 module.exports.reinstatePatient = function (nhsNumber) {

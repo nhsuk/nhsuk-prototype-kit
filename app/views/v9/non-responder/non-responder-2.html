@@ -25,6 +25,14 @@
   </div>
 </div>
 
+{% set pnlMsg = "<p>Update: " + data.pnl_update_msg  + " </p>"  %}
+{% if (data['pnl_update_msg_show'] > 1) %}
+    {{ insetText({
+  "HTML": pnlMsg,
+  "classes": "nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-0"
+}) }}
+{% endif %}
+
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-4">
     <h2 class="nhsuk-heading-m">Patients who have not responded</h2>

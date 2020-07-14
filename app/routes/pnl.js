@@ -137,7 +137,7 @@ router.get("/*/start-prior-notifications-submit*", function (req, res) {
     req.session.data["ceasedversion"] = ceasedVersion;
     var nrlPatient = patient.getPatient(nhsNumber);
     req.session.data["pnl_patient"] = nrlPatient;
-    if(ceasedVersion == "1"){
+    if (ceasedVersion == "1"){
      res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-" + PNLversion + "-ceased-submit")
     } else {
      res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-" + PNLversion + "-submit")
@@ -158,13 +158,21 @@ router.get("/*/prior-notification/prior-notification-invited-*", function (req, 
 
 router.get("/*/prior-notification/prior-notification-submitted-*", function (req, res) {
     //console.log("INVITE SUBMITTED");
-    patient.submitPatient(req.session.data['pnl_patient']['nhs_number'])
-    req.session.data["pnl_update_msg"] = "Patient has been Invited"
+    const version = req.session.data["nrlversion"];
+    const ceasedVersion = req.session.data["ceasedversion"];
+    const returnUrl = req.session.data["returnUrl"];
+
+    patient.submitPatient(req.session.data['pnl_patient']['nhs_number'], returnUrl)
+    req.session.data["pnl_update_msg"] = "Patient has been reviewed"
     req.session.data["pnl_update_msg_show"] = 1;
 
-    const version = req.session.data["nrlversion"];
+    if (returnUrl == "ceased") {
+        res.redirect("/" + getVersion(req) + "/get-ceased-notifications-" + ceasedVersion)
+    } else {
+        res.redirect("/" + getVersion(req) + "/get-non-responder-notifications-" + version)
+    }
 
-    res.redirect("/" + getVersion(req) + "/get-non-responder-notifications-" + version)
+    
 })
 
 
