@@ -17,7 +17,8 @@ router.use("/", require('./routes/pnl.js'))
 // This means there is no need for duplicate code for each iteration
 // oh and it only works up to to v9
 function getVersion(a) {
-  return a.url.substring(1, 3) || "v1";
+  var secondBracket = a.url.indexOf('/', 1);
+  return a.url.substring(1, secondBracket) || "v1";
 }
 
 router.post("/*/patient/change-due-date/change", function(req, res) {

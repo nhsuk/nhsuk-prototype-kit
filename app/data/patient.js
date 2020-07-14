@@ -45,6 +45,7 @@ const patients = [
             "value": "NF|9991023867|19581028|1|20190313|L|S564|C86003||||MISS|DEPETRIS|CURRY||52 HOLLY MEWS|TOWNSVILLE||||LS20 8QF"
         },
         "next_test_due_date": moment().add(8, "weeks"),
+        "nrl_review_date": moment().add(8, "weeks"),
         "nhs_number": "9991023867",
         "nrl": true,
         "participant_id": "5f03f444-8452-4e4f-8f24-03d30fefed55",
@@ -84,6 +85,7 @@ const patients = [
             "value": "SUN|9100001694|19491223|F|19900530|D1|S4365|L83665|D|20150422||Ms|Cunningham|Judith|May||14 Huntley Place|South Zeal|EXETER|Devon|EX2 5SE"
         },
         "next_test_due_date": moment().add(10, "weeks"),
+        "nrl_review_date": moment().add(4, "weeks"),
         "nhs_number": "9100001694",
         "nrl": true,
         "participant_id": "239ca055-3160-47c2-a8c0-f91558c72e6c",
@@ -122,6 +124,7 @@ const patients = [
             "value": "SOP|9100001384|19520801|F|20090407|D1|D876|L83665|D|20120608|||Jeffery|Pepita|||15 Clovelly Road|Moretonhampstead|EXETER|Devon|EX2 5SE"
         },
         "next_test_due_date": moment().add(8, "weeks"),
+        "nrl_review_date": moment().add(2, "weeks"),
         "nhs_number": "9100001384",
         "nrl": true,
         "participant_id": "28f4390a-4a47-4318-8705-8e0ef69f3ffe",
@@ -159,6 +162,7 @@ const patients = [
             "value": "LL|9100002801|19280625|F|20060523|D1|J792|L83665|D|20130617|||Hitchings|Veronica|||47 Ashburnham Road|Livermead|EXETER|Devon|EX2 5SE"
         },
         "next_test_due_date": moment().add(10, "weeks"),
+        "nrl_review_date": moment().add(4, "weeks"),
         "nhs_number": "9100002801",
         "nrl": true,
         "participant_id": "8d0243e8-2ef0-4d4d-be8c-06be86138bfc",
@@ -197,6 +201,7 @@ const patients = [
             "value": "LNJ|9100001899|19540519|F|19920925|D1|PL713B|L83665|R|20180815|DYF|Ms|Evans|Annie|May||4 Alexandra Terrace|Berry Pomeroy|EXETER|Devon|EX2 5SE"
         },
         "next_test_due_date": moment().add(8, "weeks"),
+        "nrl_review_date": moment().add(1, "weeks"),
         "nhs_number": "9100001899",
         "nrl": true,
         "participant_id": "ff2cf9de-98ae-49ae-819d-0018d009f619",
@@ -235,6 +240,7 @@ const patients = [
             "value": "LD|9100001287|19810209|F|20101012|D1|V32|L83665|R|20141223|NI|Miss|Grewcock|Muriel|||69 Speedwell Crescent|Southway|EXETER|Devon|EX2 5SE"
         },
         "next_test_due_date": moment().add(10, "weeks"),
+        "nrl_review_date": moment().add(3, "weeks"),
         "nhs_number": "9100001287",
         "nrl": true,
         "participant_id": "1490e402-80a4-4b31-890f-bc28d3850a06",
@@ -273,6 +279,7 @@ const patients = [
             "value": "LL|9100002798|19220611|F|20130919|D1|N1306|L83665|D|20150311|||Parr|Tanya|||17 Belmont Road|Buckland|EXETER|Devon|EX2 5SE"
         },
         "next_test_due_date": moment().add(8, "weeks"),
+        "nrl_review_date": moment().add(3, "weeks"),
         "nhs_number": "9100002798",
         "nrl": true,
         "participant_id": "527087fc-4372-4949-b50e-e1b3b9f3e15a",
@@ -310,6 +317,7 @@ const patients = [
             "value": "LNE|9100001929|19541006|F|20111102|D1|0978|L83665|D|20120711||Ms|Brazier|Brenda|||36 Widewell Road|Whitleigh|EXETER|Devon|EX2 5SE"
         },
         "next_test_due_date": moment().add(10, "weeks"),
+        "nrl_review_date": moment().add(1, "weeks"),
         "nhs_number": "9100001929",
         "nrl": true,
         "participant_id": "ffb1226a-1849-46d8-8c1e-f273e8417f27",
@@ -349,6 +357,7 @@ const patients = [
             "value": "LL|9100001740|19510918|F|20010510|D1|W896|L83665|R|20040504|SCT||Golding|Jennifer||Flat 5|Leigh Road|Hawkchurch|EXETER|Devon|EX2 5SE"
         },
         "next_test_due_date": moment().add(10, "weeks"),
+        "nrl_review_date": moment().add(8, "weeks"),
         "nhs_number": "9100001740",
         "nrl": true,
         "participant_id": "b5a5bf31-5484-4ce2-8ad5-f1c1e0ac5086",
@@ -389,8 +398,14 @@ module.exports.getPatients = function (notificationType) {
     }
     
     function compare(a, b) {
-        var aNTDD = moment(a.next_test_due_date).diff(moment(), "days");
-        var bNTDD = moment(b.next_test_due_date).diff(moment(), "days");
+        if (notificationType == "nrl") {
+            var aTime = moment(a.nrl_review_date).diff(moment(), "days");
+            var bTime = moment(b.nrl_review_date).diff(moment(), "days");
+        } else {
+            var aTime = moment(a.next_test_due_date).diff(moment(), "days");
+            var bTime = moment(b.next_test_due_date).diff(moment(), "days");
+        }
+        
         var aStatus = "";
         var bStatus = "";
 
@@ -402,23 +417,25 @@ module.exports.getPatients = function (notificationType) {
             bStatus = b.results.action_code;
         } 
 
-        if (aNTDD == bNTDD) {
+        if (aTime == bTime) {
             return (aStatus > bStatus) ? -1 : (aStatus < bStatus) ? 1 : 0;
         }
         else {
-            return (aNTDD < bNTDD) ? -1 : 1;
+            return (aTime < bTime) ? -1 : 1;
         }
     }
 
-    patients.sort(compare);
-console.log('Notification Type: ' + notificationType)
+    
+    //console.log('Notification Type: ' + notificationType)
     if (notificationType == "pnl") {
         console.log("PRIOR NOTIFICATION")
+        patients.sort(compare);
         return patients.filter(patient => patient.pnl == true);
     }
 
     if (notificationType == "nrl") {
         console.log("NON RESPONDER")
+        patients.sort(compare);
         return patients.filter(patient => patient.nrl == true);
     }
 
