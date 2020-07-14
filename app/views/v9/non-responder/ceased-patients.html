@@ -56,16 +56,19 @@
             <!--<button onclick="sortTable()" type="button" data-index="0">-->Name<!--</button>-->
           </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            <!--<button onclick="sortTable()" type="button" data-index="0">-->Age?<!--</button>-->
+            <!--<button onclick="sortTable()" type="button" data-index="0">-->Age<!--</button>-->
           </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            <!--<button onclick="sortTable()" type="button" data-index="0">-->Status/cease type<!--</button>-->
+            <!--<button onclick="sortTable()" type="button" data-index="0">-->Status<!--</button>-->
           </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            <!--<button onclick="sortTable()" type="button" data-index="0">-->Review By?<!--</button>-->
+            <!--<button onclick="sortTable()" type="button" data-index="0">-->Cease Type<!--</button>-->
           </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
-            Review
+            <!--<button onclick="sortTable()" type="button" data-index="0">-->Review By<!--</button>-->
+          </th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">
+            Action
           </th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">
             View More
@@ -96,13 +99,19 @@
             <span class="nhsuk-table__cell--hint">Recall</span>
           </td>
           <td class="nhsuk-table__cell">
+            {% if patient.results == null %} 
+              Recently Ceased
+            {% else %}
+              {{ patient.results.action }}
+            {% endif %}
+            <span class="nhsuk-table__cell--hint">13-Jul-2020</span>
+          </td>
+          <td class="nhsuk-table__cell">
             {{ patient.next_test_due_date | returnInviteDate }} 
              <span class="nhsuk-table__cell--hint">{{ ((( patient.next_test_due_date | returnInviteDate) | returnTimeDiffDays) | removeBrackets) | capitalize }} </span>
           </td>
           <td>
             <a href="/v9/start-prior-notifications-submit?nhsNumber={{ patient.nhs_number }}&nrlversion=2&pnlversion=10&role=admin&returnUrl=nrl">Review</a>
-            <a href="/v9/start-prior-notifications-defer-reason?nhsNumber={{ patient.nhs_number }}&nrlversion=2&pnlversion=10&role=admin&returnUrl=nrl" style="margin-left:4px; margin-right:4px;">Defer</a>
-            <a href="/v9/start-prior-notifications-cease-reason?nhsNumber={{ patient.nhs_number }}&nrlversion=2&pnlversion=10&role=admin&returnUrl=nrl">Cease</a>
           </td>
           <td class="nhsuk-table__cell">
             <button class="expanderButton" type="button" id="{{ buttonId }}" aria-expanded="false" onclick="toggle(this.id,'#{{ detailsId }}');" aria-controls="{{ detailsId }}" aria-label="More details for" aria-labelledby="{{ buttonId }} {{ NameId }}"></button>
