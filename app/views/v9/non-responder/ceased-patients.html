@@ -34,7 +34,7 @@
 </div>
 
 {% if data['ceased_patients'] == null %} 
-<meta http-equiv="refresh" content="2" />
+<meta http-equiv="refresh" content="2;url=/v9/get-ceased-notifications-1" />
   <div class="styleguide-example">
     <div class="nhsuk-loader__container">
       <h1 class="nhsuk-heading-l">Loading patients</h1>
@@ -76,7 +76,9 @@
         </tr>
       </thead>
       <tbody class="nhsuk-table__body">
+      {% set alternate = cycler("odd", "even") %}
         {% for patient in data['ceased_patients'] %}
+          
           {% set rowId =  "selectRow" + loop.index %}
           {% set detailsId =  "detailsRow" + loop.index %}
           {% set buttonId =  "btnRow" + loop.index %}
@@ -99,12 +101,13 @@
             <span class="nhsuk-table__cell--hint">Recall</span>
           </td>
           <td class="nhsuk-table__cell">
-            {% if patient.results == null %} 
-              Recently Ceased
+          
+            {{ patient.ceased_type }}
+            {% if alternate.next() == "odd" %}
+              <span class="nhsuk-table__cell--hint">Recently registered</span>
             {% else %}
-              {{ patient.results.action }}
+              <span class="nhsuk-table__cell--hint">-</span>
             {% endif %}
-            <span class="nhsuk-table__cell--hint">13-Jul-2020</span>
           </td>
           <td class="nhsuk-table__cell">
             {{ patient.next_test_due_date | returnInviteDate }} 
@@ -118,7 +121,7 @@
           </td>
         </tr>
         <tr id="{{ detailsId }}" class="hidden detailsRow">
-          <td colspan="6">
+          <td colspan="7">
             <div class="nhsuk-grid-row">
               <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
                 <div id="reasons-step-0">{% include '../components/last-result.html' %}</div>
