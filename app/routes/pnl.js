@@ -304,20 +304,21 @@ router.post("/*/patient-cease-confirm", function (req, res) {
 router.get("/*/reset-patient-data-*", function (req, res) {
     console.log("resetting")
     patient.resetPatients(req);
+    const params = new URLSearchParams(req.query);
+    const returnUrl = params.get('returnUrl');
     req.session.data["pnl_update_msg"] = ""
     req.session.data["pnl_update_msg_show"] = 0;
     
-
-
     if (req.session.data['role'] == 'csas') {
         req.session.data = {}
         res.redirect('/v9/patient/search/search?role=csas&patversion=2&pnlversion=10')
-        //req.session.data['patientSummary']['next_test_due_date'] = req.session.data["store-ntdd"];
-        //req.session.data['']
-        //req.session.data["store-ntdd"] = undefined;
-        //res.redirect("/" + getVersion(req) + "/patient/patient-summary");
     } else {
-        res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-" + getNotificationVersion(req));
+        req.session.data = {}
+        if (returnUrl == "ceased") {
+            res.redirect("/" + getVersion(req) + "/get-ceased-notifications-1");
+        } else {
+            res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-" + getNotificationVersion(req));
+        }
     }
     
 })
