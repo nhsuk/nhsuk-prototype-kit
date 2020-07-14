@@ -111,7 +111,7 @@
              <span class="nhsuk-table__cell--hint">{{ ((( patient.next_test_due_date | returnInviteDate) | returnTimeDiffDays) | removeBrackets) | capitalize }} </span>
           </td>
           <td>
-            <a href="/v9/start-prior-notifications-submit?nhsNumber={{ patient.nhs_number }}&nrlversion=2&pnlversion=10&role=admin&returnUrl=nrl">Review</a>
+            <a href="/v9/start-prior-notifications-submit?nhsNumber={{ patient.nhs_number }}&ceasedversion=1&pnlversion=10&role=admin&returnUrl=ceased">Review</a>
           </td>
           <td class="nhsuk-table__cell">
             <button class="expanderButton" type="button" id="{{ buttonId }}" aria-expanded="false" onclick="toggle(this.id,'#{{ detailsId }}');" aria-controls="{{ detailsId }}" aria-label="More details for" aria-labelledby="{{ buttonId }} {{ NameId }}"></button>

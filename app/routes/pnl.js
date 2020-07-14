@@ -91,11 +91,18 @@ router.get("/*/start-prior-notifications-submit*", function (req, res) {
     const nhsNumber = params.get('nhsNumber');
     const PNLversion = params.get('pnlversion');
     const NRLversion = params.get('nrlversion');
+    const ceasedVersion = params.get('ceasedversion');
     req.session.data["pnlversion"] = PNLversion;
     req.session.data["nrlversion"] = NRLversion;
+    req.session.data["ceasedversion"] = ceasedVersion;
     var nrlPatient = patient.getPatient(nhsNumber);
     req.session.data["pnl_patient"] = nrlPatient;
-    res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-" + PNLversion + "-submit")
+    if(ceasedVersion == "1"){
+     res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-" + PNLversion + "-ceased-submit")
+    } else {
+     res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-" + PNLversion + "-submit")
+    }
+    
 })
     
 router.get("/*/prior-notification/prior-notification-invited-*", function (req, res) {
