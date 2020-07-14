@@ -405,6 +405,8 @@ module.exports.getPatients = function (notificationType) {
             var aTime = moment(a.next_test_due_date).diff(moment(), "days");
             var bTime = moment(b.next_test_due_date).diff(moment(), "days");
         }
+        // might need to add sorting for ceased by ceased date
+        // could sort by ceased type / reason
         
         var aStatus = "";
         var bStatus = "";
@@ -431,6 +433,12 @@ module.exports.getPatients = function (notificationType) {
         console.log("PRIOR NOTIFICATION")
         patients.sort(compare);
         return patients.filter(patient => patient.pnl == true);
+    }
+
+    if (notificationType == "ceased") {
+        console.log("CEASED")
+        patients.sort(compare);
+        return patients.filter(patient => patient.pnl_action == "Ceased");
     }
 
     if (notificationType == "nrl") {
