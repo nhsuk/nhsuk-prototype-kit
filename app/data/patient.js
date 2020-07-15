@@ -541,8 +541,15 @@ module.exports.resetPatients = function(req) {
     patients.forEach(function (patient) {
         patient.pnl = true;
         patient.pnl_action = "";
-        patient.nrl = true;
+        patient.nrl = true; 
     })
+
+    patients.forEach(function (patient) {
+        if (patient.nhs_number == "9100001694" || patient.nhs_number == "9100001384" || patient.nhs_number == "9100001740" || patient.nhs_number == "9991023867") {
+            patient.pnl_action = "Ceased";
+        }
+    })
+
     req.session.data['nrl_patients'] = patients;
     req.session.data['patients'] = patients;
 }
