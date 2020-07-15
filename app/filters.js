@@ -137,7 +137,7 @@ module.exports = function (env) {
   }
 
   filters.replaceSpacesWithDashes = function (text) {
-    return text.replace(/\s+/g, "-");
+    return text.replace(/\s+/g, "-").toLowerCase();
   }
   
   filters.formatNHSNumber = function (nhs_number) {
