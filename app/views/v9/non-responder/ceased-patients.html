@@ -37,7 +37,7 @@
   <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-4">
     <h2 class="nhsuk-heading-m">Patients to review</h2>
     <p>The following patients have either been recently ceased, or new to this practice and need reviewing.</p>
-    <p><strong></strong></p>
+        <p><a href="../prior-notification/prior-notification-10-forms">Find out how to reinstate patients?</a></p>
   </div>
 </div>
 
@@ -84,7 +84,6 @@
         </tr>
       </thead>
       <tbody class="nhsuk-table__body">
-      {% set alternate = cycler("odd", "even") %}
         {% for patient in data['ceased_patients'] %}
           
           {% set rowId =  "selectRow" + loop.index %}
@@ -109,13 +108,12 @@
             <span class="nhsuk-table__cell--hint">Recall</span>
           </td>
           <td class="nhsuk-table__cell">
-          
-            {{ patient.ceased_type }}
-            {% if alternate.next() == "odd" %}
-              <span class="nhsuk-table__cell--hint">Recently registered</span>
-            {% else %}
-              <span class="nhsuk-table__cell--hint">-</span>
-            {% endif %}
+            {{ patient.ceased_type }}         
+              {% if (patient.ceased_type == "Abnormal Follow-up") or (patient.ceased_type == "Re-registered ceased") %}
+                <span class="nhsuk-table__cell--hint">New Patient</span>
+              {% else %}
+                <span class="nhsuk-table__cell--hint">-</span>
+              {% endif %}
           </td>
           <td class="nhsuk-table__cell">
             {{ patient.next_test_due_date | returnInviteDate }} 
