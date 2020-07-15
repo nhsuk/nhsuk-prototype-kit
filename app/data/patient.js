@@ -20,7 +20,7 @@ const patients = [
             "address_line_2": "TOWNSVILLE",
             "postcode": "LS20 8QF"
         },
-        "ceased_type": "Re-registered ceased",
+        "ceased_type": "Abnormal Follow-up",
         "date_of_birth": "1958-10-28",
         "date_of_birth_and_initial": "1958-10-28D",
         "date_of_birth_and_initial_and_postcode": "1958-10-28DLS208QF",
@@ -69,7 +69,7 @@ const patients = [
             "address_line_5": "Devon",
             "postcode": "EX2 5SE"
         },
-        "ceased_type": "Abnormal Follow-up",
+        "ceased_type": "Re-registered ceased",
         "date_of_birth": "1979-12-23",
         "date_of_birth_and_initial": "1949-12-23C",
         "date_of_birth_and_initial_and_postcode": "1949-12-23CEX25SE",
@@ -110,7 +110,7 @@ const patients = [
             "address_line_5": "Devon",
             "postcode": "EX2 5SE"
         },
-        "ceased_type": "Abnormal Follow-up",
+        "ceased_type": "Re-registered ceased",
         "date_of_birth": "1955-08-01",
         "date_of_birth_and_initial": "1952-08-01J",
         "date_of_birth_and_initial_and_postcode": "1952-08-01JEX25SE",
@@ -149,7 +149,7 @@ const patients = [
             "address_line_5": "Devon",
             "postcode": "EX2 5SE"
         },
-        "ceased_type": "Re-registered ceased",
+        "ceased_type": "Recently ceased",
         "date_of_birth": "1968-06-25",
         "date_of_birth_and_initial": "1928-06-25H",
         "date_of_birth_and_initial_and_postcode": "1928-06-25HEX25SE",
@@ -229,7 +229,7 @@ const patients = [
             "address_line_5": "Devon",
             "postcode": "EX2 5SE"
         },
-        "ceased_type": "Re-registered ceased",
+        "ceased_type": "Recently ceased",
         "date_of_birth": "1981-02-09",
         "date_of_birth_and_initial": "1981-02-09G",
         "date_of_birth_and_initial_and_postcode": "1981-02-09GEX25SE",
@@ -269,7 +269,7 @@ const patients = [
             "address_line_5": "Devon",
             "postcode": "EX2 5SE"
         },
-        "ceased_type": "Abnormal Follow-up",
+        "ceased_type": "Recently ceased",
         "date_of_birth": "1992-06-11",
         "date_of_birth_and_initial": "1922-06-11P",
         "date_of_birth_and_initial_and_postcode": "1922-06-11PEX25SE",
@@ -308,7 +308,7 @@ const patients = [
             "address_line_5": "Devon",
             "postcode": "EX2 5SE"
         },
-        "ceased_type": "Abnormal Follow-up",
+        "ceased_type": "Recently ceased",
         "date_of_birth": "1964-10-06",
         "date_of_birth_and_initial": "1954-10-06B",
         "date_of_birth_and_initial_and_postcode": "1954-10-06BEX25SE",
@@ -349,7 +349,7 @@ const patients = [
             "address_line_5": "Devon",
             "postcode": "EX2 5SE"
         },
-        "ceased_type": "Re-registered ceased",
+        "ceased_type": "Abnormal Follow-up",
         "date_of_birth": "1961-09-18",
         "date_of_birth_and_initial": "1951-09-18G",
         "date_of_birth_and_initial_and_postcode": "1951-09-18GEX25SE",
