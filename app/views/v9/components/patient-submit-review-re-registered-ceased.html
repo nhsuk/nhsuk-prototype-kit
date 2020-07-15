@@ -1,6 +1,5 @@
-<h1 class="nhsuk-fieldset__legend--m">Review patient screening participation</h1>
-<mark>reregistered ceased</mark>
-<p><strong>You will still need to send a third reminder invitation letter to the patient</strong></p>
-<p>If the patient does not respond to the third reminder letter then they will be invited for screening on {{ ("3" | returnDate("years", data.pnl_patient.next_test_due_date)) | returnDateFormat }} {{ ("3" | returnDate("years", data.pnl_patient.next_test_due_date) | returnDateFormat) | returnTimeDiff or "" }}</p>
-<p>The patient will be removed from the Patients who have not responded list</p>
+<h1 class="nhsuk-fieldset__legend--m">Review patient sscreening participation</h1>
+<p><strong>This patient has been ceased due to (reason).</strong></p>
+<p>Patient has <strong>recently registered</strong> with the GP practice but were <strong>ceased</strong> from the Screening Programme by their previous GP Practice.</p>
+<p>Please submit once the patient has been reviewed.</p>
 <a href="/v9/prior-notification/prior-notification-submitted-{{ data.pnlversion or 10 }}" class="nhsuk-button nhsuk-button--ers">Submit</a>
