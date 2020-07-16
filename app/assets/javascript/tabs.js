@@ -6,3 +6,8 @@ $('nav.nhsuk-tabs li a').click(function() {
   $('.tab').removeClass('active');
   $(target).addClass('active');
 })
+
+function myFunction() {
+  var element = document.getElementByClass(".nhsuk-header__navigation-item");
+  element.classList.add(".nhsuk-header__navigation-item--current");
+}

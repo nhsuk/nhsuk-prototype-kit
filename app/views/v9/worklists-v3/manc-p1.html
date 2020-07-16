@@ -2,10 +2,10 @@
 
 {% block pageScripts %}
   <script type="text/javascript" src="/js/reveal.js"></script>
+  <script type="text/javascript" src="/js/comments.js"></script>
+    <script type="text/javascript" src="/js/date.js"></script>
 
 <script>
-
-
   function closeRightMenu() {
     document.getElementByClass("nhsuk-sidebar-hidden").style.display = "none";
   }
@@ -223,7 +223,9 @@ NHS Cervical Screening
 
 
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-full">
+  <div class="nhsuk-grid-column-one-half">
+
+    <form action="manc-p1" method="post">
     <div class="nhsuk-form-group">
       <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-3" for="example">
         Comments
@@ -231,15 +233,25 @@ NHS Cervical Screening
       <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
         Enter comments if needed
       </span>
-      <textarea class="nhsuk-textarea nhsuk-u-width-one-half" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
+      <textarea class="nhsuk-textarea commentBox" id="comments" value="comments" name="comments" rows="5" aria-describedby="example-hint"></textarea>
       <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-        You have 200 characters remaining
+        You have <span class="counter">100</span> characters remaining
       </span>
     </div>
-    <a class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" href="#">Add comment</a>
+
+    <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
+    </form>
+
+  <!--<p>{{ data['comments']}} {{"today" | returnDate }}</p>-->
+  <ul class="nhsuk-comment-container">
 
 
-  </div>
+			</ul>
+
+
+
+
+</div>
 </div>
 
 <div class="nhsuk-grid-row">
