@@ -3,7 +3,6 @@
 {% block pageScripts %}
   <script type="text/javascript" src="/js/reveal.js"></script>
   <script type="text/javascript" src="/js/comments.js"></script>
-    <script type="text/javascript" src="/js/date.js"></script>
 
 <script>
   function closeRightMenu() {
@@ -16,6 +15,7 @@
 
    });
 </script>
+
 {% endblock %}
 {% block pageTitle %}
 NHS Cervical Screening
@@ -104,7 +104,6 @@ NHS Cervical Screening
 </div>
 
 <br>
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
     <div class="nhsuk-panel-with-label">
@@ -233,23 +232,31 @@ NHS Cervical Screening
       <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
         Enter comments if needed
       </span>
-      <textarea class="nhsuk-textarea commentBox" id="comments" value="comments" name="comments" rows="5" aria-describedby="example-hint"></textarea>
+      <textarea class="nhsuk-textarea commentBox" id="comments" value="comments" name="comments" rows="5" data-length=200></textarea>
       <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-        You have <span class="counter">100</span> characters remaining
+        You have <span class="counter">200</span> characters remaining
       </span>
     </div>
 
     <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
+
+    {% set name = "Jon Simpson" %}
+
+    {% set commentDate = ("today" | returnDate) %}
+
+    <input type="hidden" id="name" name="name" value="{{commentName}}">
+
+      <input type="hidden" name="date" value={{commentDate}}>
+
     </form>
 
-  <!--<p>{{ data['comments']}} {{"today" | returnDate }}</p>-->
-  <ul class="nhsuk-comment-container">
+    <ul class="nhsuk-comment-container">
+      {% if data.comments !=null %}
 
+  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.comments}}</li>
 
-			</ul>
-
-
-
+  {% endif %}
+  			</ul>
 
 </div>
 </div>

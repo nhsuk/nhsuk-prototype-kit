@@ -1,28 +1,34 @@
-$(document).ready(function() {
-	$('button').click(function() {
-		var comment = $('.commentBox').val();
-		$('<li class="nhsuk-panel">').text(comment).prependTo('.nhsuk-comment-container');
-		$('button').attr('disabled', 'true');
-		$('.counter').text('140');
-		$('.commentBox').val('');
-	});
-
-	$('.commentBox').keyup(function() {
-		var commentLength = $(this).val().length;
-		var charLeft =  140 - commentLength;
-		$('.counter').text(charLeft);
-
-		if (commentLength == 0) {
-			$('button').attr('disabled', 'true');
-		}
-		else if (commentLength > 140) {
-			$('button').attr('disabled', 'true');
-		}
-		else {
-			$('button').removeAttr('disabled', 'true');
-		}
-	});
-
-	$('button').attr('disabled', 'true');
-
+$(".commentBox").on("keyup",function(event){
+  checkTextAreaMaxLength(this,event);
 });
+
+/*
+Checks the MaxLength of the Textarea
+-----------------------------------------------------
+@prerequisite:	textBox = textarea dom element
+				e = textarea event
+                length = Max length of characters
+*/
+function checkTextAreaMaxLength(textBox, e) {
+
+    var maxLength = parseInt($(textBox).data("length"));
+
+
+    if (!checkSpecialKeys(e)) {
+        if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
+   }
+  $(".counter").html(maxLength - textBox.value.length);
+
+    return true;
+}
+/*
+Checks if the keyCode pressed is inside special chars
+-------------------------------------------------------
+@prerequisite:	e = e.keyCode object for the key pressed
+*/
+function checkSpecialKeys(e) {
+    if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
+        return false;
+    else
+        return true;
+}
