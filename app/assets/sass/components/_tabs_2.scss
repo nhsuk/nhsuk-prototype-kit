@@ -3,52 +3,8 @@
 // TABS /
 // ==========================================================================
 
-<<<<<<< HEAD
 $clr-tab--active: #0076c8;
 $clr-tab--inactive: black;
-=======
-/* 
-
-JUST COMMENTED OUT FOR NOW, ADD BACK IN WHEN NEEDED
-
-$clr-tab--active: white;
-$clr-tab--inactive: white;
->>>>>>> f95b3a887b8ed425526a7a1228c88431dc71eef9
-
-/*
-body {
-  font-family: Sans-serif;
-  padding: 20px;
-}
-
-h1, h2 {
-  font-size: 30px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  text-align: center;
-  color: #ccc;
-}
-
-h2 {
-  font-size: 20px;
-  color: #999
-}
-*/
-
-/*
-td, th {
-  padding: 12px;
-  text-align: left;
-}
-
-
-th {
-  color: black;
-  &[data-tabbedTable] {
-    background: $clr-tab--active;
-  }
-}
-*/
 
 .tabbedTable-labels {
   float: left;
@@ -59,6 +15,7 @@ th {
     font-size: 18px;
     margin-right: 6px;
     text-decoration: underline;
+    cursor: pointer;
     background: #DFE2E5; 
     position: relative;
     bottom: 14px;
@@ -75,7 +32,7 @@ th {
 
 .tableBorder {
   border-collapse: collapse;
-  border: 1px solid #687784;
+  border-top: 1px solid #687784;
 }
 
 .tabbedTable {
@@ -86,7 +43,7 @@ th {
       }
   }
 
-  .tabbedTable td{
+  .tabbedTable td {
     vertical-align: top;
     padding-top: 16px;
     padding: 10px 20px 10px 20px;
