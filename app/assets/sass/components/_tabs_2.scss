@@ -3,9 +3,10 @@
 // TABS /
 // ==========================================================================
 
-$clr-tab--active: white;
-$clr-tab--inactive: white;
+$clr-tab--active: #0076c8;
+$clr-tab--inactive: black;
 
+/*
 body {
   font-family: Sans-serif;
   padding: 20px;
@@ -23,17 +24,14 @@ h2 {
   font-size: 20px;
   color: #999
 }
+*/
 
-tr {
-  &:nth-child(odd) {
-    background: #efefef;
-  }
-}
-
+/*
 td, th {
   padding: 12px;
   text-align: left;
 }
+
 
 th {
   color: black;
@@ -41,39 +39,47 @@ th {
     background: $clr-tab--active;
   }
 }
+*/
 
 .tabbedTable-labels {
   float: left;
+   label {
+    color: black;
+    padding: 10px 20px 10px 20px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    margin-right: 6px;
+    text-decoration: underline;
+    background: #DFE2E5; 
+    position: relative;
+    bottom: 14px;
+      &.tabbedTable-label--active {
+        border-top: solid 1px #687784;
+        border-left: solid 1px #687784;
+        border-right: solid 1px #687784;
+        background: #F3F5F6;
+        padding: 10px 20px 18px 20px;
+        text-decoration: none;
+  }
+ }
 }
 
-label {
-  background: #d8dde0;
-  color: black;
-  padding: 10px 20px 10px 0;
-  margin-left: 5px;  
-  display: inline-block;
-  cursor: pointer;
-  float: left;  
-  &.tabbedTable-label--active {
-     background: $clr-tab--active;
-     border: 1px solid #666;
-     border-bottom:0;
-  }
+.tableBorder {
+  border-collapse: collapse;
+  border: 1px solid #687784;
 }
 
 .tabbedTable {
-  width: 100%;
-  margin: 0 0 20px 0;
-  border: 1px solid #666;
-  border-top: 0px
-}
+  .ten {
+    width: 10%;  
+    padding: 10px 20px 10px 20px;
+      
+      }
+  }
 
-table {
-  width: 100%;
-}
-.ten {
-  width: 10%
-}
-.twenty {
-  width: 20%;
-}
+  .tabbedTable td{
+    vertical-align: top;
+    padding-top: 16px;
+    padding: 10px 20px 10px 20px;
+
+    }
