@@ -13,6 +13,16 @@ module.exports = config => (req, res, next) => {
     req.session.data["pnlversion"] = "10";
   }
 
+  // default to version 2 of the patient summary
+  if (req.session.data["patversion"] == undefined) {
+    req.session.data["patversion"] = "2";
+  }
+
+  // default to version 2 of the NRL
+  if (req.session.data["nrlversion"] == undefined) {
+    req.session.data["nrlversion"] = "2";
+  }
+
   // load the basic data for PNL
   if (req.session.data["patients"] == undefined) {
     req.session.data["patients"] = patient.getPatients();

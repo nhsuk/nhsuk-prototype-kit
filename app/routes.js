@@ -17,7 +17,8 @@ router.use("/", require('./routes/pnl.js'))
 // This means there is no need for duplicate code for each iteration
 // oh and it only works up to to v9
 function getVersion(a) {
-  return a.url.substring(1, 3) || "v1";
+  var secondBracket = a.url.indexOf('/', 1);
+  return a.url.substring(1, secondBracket) || "v1";
 }
 
 router.post("/*/patient/change-due-date/change", function(req, res) {
@@ -68,7 +69,7 @@ router.post("/*/hmr101/choose", function(req, res) {
     if (getVersion(req) == 'v8') {
       res.redirect("/" + getVersion(req) + "/patient/hmr101/confirm-address");
     } else {
-      res.redirect("/" + getVersion(req) + "/patient/hmr101/step-1");
+      res.redirect("/" + getVersion(req) + "/patient/hmr101/confirm-address");
     }
   }
 });
@@ -86,7 +87,7 @@ router.post("/*/hmr101/episode-address", function(req, res) {
 router.post("/*/hmr101/confirm-address", function (req, res) {
   console.log('working')
   var confirmAddress = req.session.data["confirmAddress"];
-  
+
   console.log("check reason: " + confirmAddress);
   if (confirmAddress == "yes") {
     res.redirect("/" + getVersion(req) + "/patient/hmr101/step-1");
@@ -185,11 +186,16 @@ router.post("/*/patient/search/search", function(req, res) {
       req.session.data["alreadyCeased"] = true;
       res.redirect("/" + getVersion(req) + "/patient/patient-summary");
     }
-
   }
 
+  const patVersion = req.session.data["patversion"];
 
-  res.redirect("/" + getVersion(req) + "/patient/patient-summary");
+  if (patVersion == '2') {
+    res.redirect("/" + getVersion(req) + "/patient/patient-summary-2");
+  } else {
+    res.redirect("/" + getVersion(req) + "/patient/patient-summary");
+  }
+
 });
 
 router.post("/*/prior-notification-4-check", function (req, res) {

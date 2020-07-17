@@ -26,13 +26,13 @@ NHS Cervical Screening
 {% endblock %}
 
 {% block content %}
-<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+<div class="nhsuk-grid-row">
 <div class="nhsuk-grid-column-full">
     {{ backLink({
-        "href": "../patient-summary",
-        "text": "Go back to enter patient summary"
+        "href": "../code",
+        "text": "Go back to enter sample taker code"
       }) }}
-      <form action="/v9/patient/hmr101/code" method="post">
+      <form action="/v9/patient/hmr101/choose" method="post">
 
         {% call fieldset({
           legend: {
@@ -48,11 +48,13 @@ NHS Cervical Screening
           "items": [
             {
               "value": "system",
-              "text": "Start a new form (recommended)"
+              "text": "Start a new form (recommended)",
+              "name": "choose"
             },
             {
               "value": "print",
-              "text": "Preview and print the form"
+              "text": "Preview and print the form",
+              "name": "choose"
             }
 
           ]

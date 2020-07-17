@@ -20,6 +20,7 @@ const patients = [
             "address_line_2": "TOWNSVILLE",
             "postcode": "LS20 8QF"
         },
+        "ceased_type": "Abnormal Follow-up",
         "date_of_birth": "1958-10-28",
         "date_of_birth_and_initial": "1958-10-28D",
         "date_of_birth_and_initial_and_postcode": "1958-10-28DLS208QF",
@@ -45,11 +46,12 @@ const patients = [
             "value": "NF|9991023867|19581028|1|20190313|L|S564|C86003||||MISS|DEPETRIS|CURRY||52 HOLLY MEWS|TOWNSVILLE||||LS20 8QF"
         },
         "next_test_due_date": moment().add(8, "weeks"),
+        "nrl_review_date": moment().add(8, "weeks"),
         "nhs_number": "9991023867",
         "nrl": true,
         "participant_id": "5f03f444-8452-4e4f-8f24-03d30fefed55",
         "pnl": true,
-        "pnl_action": "",
+        "pnl_action": "Ceased",
         "registered_gp_practice_code": "C86003",
         "sanitised_first_name": "CURRY",
         "sanitised_last_name": "DEPETRIS",
@@ -67,6 +69,7 @@ const patients = [
             "address_line_5": "Devon",
             "postcode": "EX2 5SE"
         },
+        "ceased_type": "Re-registered ceased",
         "date_of_birth": "1979-12-23",
         "date_of_birth_and_initial": "1949-12-23C",
         "date_of_birth_and_initial_and_postcode": "1949-12-23CEX25SE",
@@ -84,11 +87,12 @@ const patients = [
             "value": "SUN|9100001694|19491223|F|19900530|D1|S4365|L83665|D|20150422||Ms|Cunningham|Judith|May||14 Huntley Place|South Zeal|EXETER|Devon|EX2 5SE"
         },
         "next_test_due_date": moment().add(10, "weeks"),
+        "nrl_review_date": moment().add(4, "weeks"),
         "nhs_number": "9100001694",
         "nrl": true,
         "participant_id": "239ca055-3160-47c2-a8c0-f91558c72e6c",
         "pnl": true,
-        "pnl_action": "",
+        "pnl_action": "Ceased",
         "registered_gp_practice_code": "L83665",
         "sanitised_first_name": "JUDITH",
         "sanitised_last_name": "CUNNINGHAM",
@@ -106,6 +110,7 @@ const patients = [
             "address_line_5": "Devon",
             "postcode": "EX2 5SE"
         },
+        "ceased_type": "Re-registered ceased",
         "date_of_birth": "1955-08-01",
         "date_of_birth_and_initial": "1952-08-01J",
         "date_of_birth_and_initial_and_postcode": "1952-08-01JEX25SE",
@@ -122,11 +127,12 @@ const patients = [
             "value": "SOP|9100001384|19520801|F|20090407|D1|D876|L83665|D|20120608|||Jeffery|Pepita|||15 Clovelly Road|Moretonhampstead|EXETER|Devon|EX2 5SE"
         },
         "next_test_due_date": moment().add(8, "weeks"),
+        "nrl_review_date": moment().add(2, "weeks"),
         "nhs_number": "9100001384",
         "nrl": true,
         "participant_id": "28f4390a-4a47-4318-8705-8e0ef69f3ffe",
         "pnl": true,
-        "pnl_action": "",
+        "pnl_action": "Ceased",
         "registered_gp_practice_code": "L83665",
         "sanitised_first_name": "PEPITA",
         "sanitised_last_name": "JEFFERY",
@@ -143,6 +149,7 @@ const patients = [
             "address_line_5": "Devon",
             "postcode": "EX2 5SE"
         },
+        "ceased_type": "Recently ceased",
         "date_of_birth": "1968-06-25",
         "date_of_birth_and_initial": "1928-06-25H",
         "date_of_birth_and_initial_and_postcode": "1928-06-25HEX25SE",
@@ -159,6 +166,7 @@ const patients = [
             "value": "LL|9100002801|19280625|F|20060523|D1|J792|L83665|D|20130617|||Hitchings|Veronica|||47 Ashburnham Road|Livermead|EXETER|Devon|EX2 5SE"
         },
         "next_test_due_date": moment().add(10, "weeks"),
+        "nrl_review_date": moment().add(4, "weeks"),
         "nhs_number": "9100002801",
         "nrl": true,
         "participant_id": "8d0243e8-2ef0-4d4d-be8c-06be86138bfc",
@@ -180,6 +188,7 @@ const patients = [
             "address_line_5": "Devon",
             "postcode": "EX2 5SE"
         },
+        "ceased_type": "Recently ceased",
         "date_of_birth": "1974-05-19",
         "date_of_birth_and_initial": "1954-05-19E",
         "date_of_birth_and_initial_and_postcode": "1954-05-19EEX25SE",
@@ -197,6 +206,7 @@ const patients = [
             "value": "LNJ|9100001899|19540519|F|19920925|D1|PL713B|L83665|R|20180815|DYF|Ms|Evans|Annie|May||4 Alexandra Terrace|Berry Pomeroy|EXETER|Devon|EX2 5SE"
         },
         "next_test_due_date": moment().add(8, "weeks"),
+        "nrl_review_date": moment().add(1, "weeks"),
         "nhs_number": "9100001899",
         "nrl": true,
         "participant_id": "ff2cf9de-98ae-49ae-819d-0018d009f619",
@@ -219,6 +229,7 @@ const patients = [
             "address_line_5": "Devon",
             "postcode": "EX2 5SE"
         },
+        "ceased_type": "Recently ceased",
         "date_of_birth": "1981-02-09",
         "date_of_birth_and_initial": "1981-02-09G",
         "date_of_birth_and_initial_and_postcode": "1981-02-09GEX25SE",
@@ -235,6 +246,7 @@ const patients = [
             "value": "LD|9100001287|19810209|F|20101012|D1|V32|L83665|R|20141223|NI|Miss|Grewcock|Muriel|||69 Speedwell Crescent|Southway|EXETER|Devon|EX2 5SE"
         },
         "next_test_due_date": moment().add(10, "weeks"),
+        "nrl_review_date": moment().add(3, "weeks"),
         "nhs_number": "9100001287",
         "nrl": true,
         "participant_id": "1490e402-80a4-4b31-890f-bc28d3850a06",
@@ -257,6 +269,7 @@ const patients = [
             "address_line_5": "Devon",
             "postcode": "EX2 5SE"
         },
+        "ceased_type": "Recently ceased",
         "date_of_birth": "1992-06-11",
         "date_of_birth_and_initial": "1922-06-11P",
         "date_of_birth_and_initial_and_postcode": "1922-06-11PEX25SE",
@@ -273,6 +286,7 @@ const patients = [
             "value": "LL|9100002798|19220611|F|20130919|D1|N1306|L83665|D|20150311|||Parr|Tanya|||17 Belmont Road|Buckland|EXETER|Devon|EX2 5SE"
         },
         "next_test_due_date": moment().add(8, "weeks"),
+        "nrl_review_date": moment().add(3, "weeks"),
         "nhs_number": "9100002798",
         "nrl": true,
         "participant_id": "527087fc-4372-4949-b50e-e1b3b9f3e15a",
@@ -294,6 +308,7 @@ const patients = [
             "address_line_5": "Devon",
             "postcode": "EX2 5SE"
         },
+        "ceased_type": "Recently ceased",
         "date_of_birth": "1964-10-06",
         "date_of_birth_and_initial": "1954-10-06B",
         "date_of_birth_and_initial_and_postcode": "1954-10-06BEX25SE",
@@ -310,6 +325,7 @@ const patients = [
             "value": "LNE|9100001929|19541006|F|20111102|D1|0978|L83665|D|20120711||Ms|Brazier|Brenda|||36 Widewell Road|Whitleigh|EXETER|Devon|EX2 5SE"
         },
         "next_test_due_date": moment().add(10, "weeks"),
+        "nrl_review_date": moment().add(1, "weeks"),
         "nhs_number": "9100001929",
         "nrl": true,
         "participant_id": "ffb1226a-1849-46d8-8c1e-f273e8417f27",
@@ -333,6 +349,7 @@ const patients = [
             "address_line_5": "Devon",
             "postcode": "EX2 5SE"
         },
+        "ceased_type": "Abnormal Follow-up",
         "date_of_birth": "1961-09-18",
         "date_of_birth_and_initial": "1951-09-18G",
         "date_of_birth_and_initial_and_postcode": "1951-09-18GEX25SE",
@@ -349,11 +366,12 @@ const patients = [
             "value": "LL|9100001740|19510918|F|20010510|D1|W896|L83665|R|20040504|SCT||Golding|Jennifer||Flat 5|Leigh Road|Hawkchurch|EXETER|Devon|EX2 5SE"
         },
         "next_test_due_date": moment().add(10, "weeks"),
+        "nrl_review_date": moment().add(8, "weeks"),
         "nhs_number": "9100001740",
         "nrl": true,
         "participant_id": "b5a5bf31-5484-4ce2-8ad5-f1c1e0ac5086",
         "pnl": true,
-        "pnl_action": "",
+        "pnl_action": "Ceased",
         "registered_gp_practice_code": "L83665",
         "sanitised_first_name": "JENNIFER",
         "sanitised_last_name": "GOLDING",
@@ -389,8 +407,16 @@ module.exports.getPatients = function (notificationType) {
     }
     
     function compare(a, b) {
-        var aNTDD = moment(a.next_test_due_date).diff(moment(), "days");
-        var bNTDD = moment(b.next_test_due_date).diff(moment(), "days");
+        if (notificationType == "nrl") {
+            var aTime = moment(a.nrl_review_date).diff(moment(), "days");
+            var bTime = moment(b.nrl_review_date).diff(moment(), "days");
+        } else {
+            var aTime = moment(a.next_test_due_date).diff(moment(), "days");
+            var bTime = moment(b.next_test_due_date).diff(moment(), "days");
+        }
+        // might need to add sorting for ceased by ceased date
+        // could sort by ceased type / reason
+        
         var aStatus = "";
         var bStatus = "";
 
@@ -402,23 +428,31 @@ module.exports.getPatients = function (notificationType) {
             bStatus = b.results.action_code;
         } 
 
-        if (aNTDD == bNTDD) {
+        if (aTime == bTime) {
             return (aStatus > bStatus) ? -1 : (aStatus < bStatus) ? 1 : 0;
         }
         else {
-            return (aNTDD < bNTDD) ? -1 : 1;
+            return (aTime < bTime) ? -1 : 1;
         }
     }
 
-    patients.sort(compare);
-console.log('Notification Type: ' + notificationType)
+    
+    //console.log('Notification Type: ' + notificationType)
     if (notificationType == "pnl") {
         console.log("PRIOR NOTIFICATION")
+        patients.sort(compare);
         return patients.filter(patient => patient.pnl == true);
+    }
+
+    if (notificationType == "ceased") {
+        console.log("CEASED")
+        patients.sort(compare);
+        return patients.filter(patient => patient.pnl_action == "Ceased");
     }
 
     if (notificationType == "nrl") {
         console.log("NON RESPONDER")
+        patients.sort(compare);
         return patients.filter(patient => patient.nrl == true);
     }
 
@@ -487,10 +521,14 @@ module.exports.ceasePatient = function (nhsNumber, reason, type) {
     }
 };
 
-module.exports.submitPatient = function (nhsNumber) {
+module.exports.submitPatient = function (nhsNumber, type) {
     console.log("PATIENT SUBMITTED")
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
-    patient.nrl = false;
+    if (type == "ceased") {
+        patient.pnl_action = "";
+    } else {
+        patient.nrl = false;
+    }
 };
 
 module.exports.reinstatePatient = function (nhsNumber) {
@@ -502,7 +540,16 @@ module.exports.reinstatePatient = function (nhsNumber) {
 module.exports.resetPatients = function(req) {
     patients.forEach(function (patient) {
         patient.pnl = true;
-        patient.pnl_action = ""
+        patient.pnl_action = "";
+        patient.nrl = true; 
     })
-    req.session.data["patients"] = patients;
+
+    patients.forEach(function (patient) {
+        if (patient.nhs_number == "9100001694" || patient.nhs_number == "9100001384" || patient.nhs_number == "9100001740" || patient.nhs_number == "9991023867") {
+            patient.pnl_action = "Ceased";
+        }
+    })
+
+    req.session.data['nrl_patients'] = patients;
+    req.session.data['patients'] = patients;
 }

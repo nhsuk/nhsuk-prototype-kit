@@ -131,6 +131,14 @@ module.exports = function (env) {
   filters.returnDateFormat = function (date) {
     return moment(date).format("D-MMM-YYYY");
   }
+
+  filters.returnDashes = function (date) {
+    return moment(date).format("D-MMM-YYYY");
+  }
+
+  filters.replaceSpacesWithDashes = function (text) {
+    return text.replace(/\s+/g, "-").toLowerCase();
+  }
   
   filters.formatNHSNumber = function (nhs_number) {
     str = nhs_number.toString();

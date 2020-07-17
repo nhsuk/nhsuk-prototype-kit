@@ -9,26 +9,23 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-three-quarters">
+  <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-2">
 
   {{ backLink({
-  "href": "prior-notification-10-cease-reason",
-  "text": "Back to step 1 - Choose a reason to cease the patient",
+  "href": "../non-responder/non-responder-2",
+  "text": "Back to Patients who have not responded",
   "classes" : "nhsuk-u-margin-bottom-4"
   }) }}
 
-    <div class="nhsuk-panel-with-label">
-      {% include '../components/pnl-patient-2.html' %}
+  <div class="nhsuk-panel-with-label">
+    {% include '../components/pnl-patient-2.html' %}
 
-      <span class="nhsuk-hint">Step 2 of 3</span>
-      {% include '../components/patient-defer-confirm.html' %}
-    </div>
-  
+    {% include '../components/patient-submit-review-' +  ((data.pnl_patient.ceased_type | replaceSpacesWithDashes) or 'recently-ceased') + '.html' %}
+  </div>
+
   </div>
 </div>
-
 
 {% endblock %}
 
