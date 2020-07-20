@@ -1,22 +1,28 @@
 {% extends "layout-v2.html" %}
 
 {% block pageScripts %}
-<script>
-  function openRightMenu() {
-    document.getElementById("rightMenu").style.display = "block";
-  }
+  <script type="text/javascript" src="/js/reveal.js"></script>
+  <script type="text/javascript" src="/js/comments.js"></script>
 
+<script>
   function closeRightMenu() {
-    document.getElementById("rightMenu").style.display = "none";
+    document.getElementByClass("nhsuk-sidebar-hidden").style.display = "none";
   }
+  $(document).ready(function() {
+     $(".sidebarbttn").click(function () {
+     $(".nhsuk-sidebar-hidden").toggle();
+    });
+
+   });
 </script>
+
 {% endblock %}
 {% block pageTitle %}
-  NHS Cervical Screening
+NHS Cervical Screening
 {% endblock %}
 
 {% block header %}
-  {% include '../components/header.html' %}
+{% include '../components/header.html' %}
 {% endblock %}
 
 
@@ -24,7 +30,7 @@
 <div class="nhsuk-sidebar-hidden" id="rightMenu">
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
-      <a style="float:right;cursor:pointer" class="" onclick="closeRightMenu()" class="">Close this window
+      <a style="float:right;cursor:pointer" class="sidebarbttn">Close this window
 
       <!--  <svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
     <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
@@ -64,23 +70,53 @@
 
       <div class="nhsuk-panel nhsuk-promo">
 
-        <h3>Previous episode addresses</h3>
-        <p> 20 Thornhill Street
+        <h3>Previously used addresses</h3>
+        <p> 44 Mill Cross Street
           <br>
-          Pudsey
+          Bexley
           <br>
-          LS28 7ED</p>
+         M1AA 3ZF</p>
 
-        <p>16 Chessington Drive
+        <p>19 Morris Drive
           <br>
           Leeds
-          <br>LS14 6KK</p>
+          <br>LS14 7GA</p>
       </div>
+
+<h3>Sample taker information</h3>
+      <dl class="nhsuk-summary-list">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Ireland Wood Surgery
+            <br>
+            Iveson Approach
+            <br>
+            Leeds
+            <br>
+            West Yorkshire
+            <br>
+            LS16 6FR
+          </dd>
+
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Phone number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            +44 1743 739 641
+          </dd>
+
+        </div>
+      </dl>
       <a href="#">View full summary</a>
     </div>
   </div>
 </div>
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
@@ -89,132 +125,137 @@
       "text": "Go back to Manchester results"
     }) }}
 
-    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to process</h1>
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: non-match</h1>
 
-{{ hint({
+    {{ hint({
    classes: 'nhsuk-hint',
-  text: "Viewing - match 4 of 4 matches to resolve"
+  text: "Viewing - match 1 of 4 matches to resolve"
 }) }}
-</div>
+  </div>
 </div>
 
-
+<br>
 <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-one-half">
+  <div class="nhsuk-grid-column-one-half">
     <div class="nhsuk-panel-with-label">
       <h3 class="nhsuk-panel-with-label__label">Lab details</h3>
 
-<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Name
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      Charlotte Gravill
-    </dd>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Lindsay Emery
 
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            04-01-1998
+          </dd>
+
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Contact information
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            3 Standington Street<br>Charlington<br> M8H 1AE
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            NHS number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class=""> 345 678 9012 </span>
+          </dd>
+
+        </div>
+
+      </dl>
+    </div>
   </div>
 
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Date of birth
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      11-04-1990
-    </dd>
-
-  </div>
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Contact information
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      1 Westfield Place<br>Great Shelford<br> CB22 5JJ
-    </dd>
-</div>
-     <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      NHS number
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-
-    </dd>
-
-  </div>
-  </dl>
-
-
-  </div>
-
-
-</div>
-
-    <div class="nhsuk-grid-column-one-half">
-         <div class="nhsuk-panel-with-label">
+  <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-panel-with-label">
       <h3 class="nhsuk-panel-with-label__label">System details</h3>
 
-<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Lindsay Emery
+
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            04-01-1998
+          </dd>
+
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Contact information
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            3 <span class="highlight">Arlington</span> Street<br>Charlington<br> M8H 1AE
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            NHS number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class=""> <span class="highlight"> 456 789 0123 </span> </span>
+          </dd>
+
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Match
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            77%
+          </dd>
+
+        </div>
+      </dl>
+      <a class="nhsuk-button nhsuk-button--ers_secondary sidebarbttn" href="#">View participant</a>
+
+    </div>
 
 
 
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Name
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      Charlotte <span class="highlight">J</span> Gravill
-    </dd>
 
   </div>
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Date of birth
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      11-04-1990
-    </dd>
-
-  </div>
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Contact information
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      1 Westfield Place<br>Great Shel<span class="highlight">l</span>ford<br> CB22 5JJ
-    </dd>
 </div>
-     <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      NHS number
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      <span class="highlight"> 234 567 8901 </span>
-    </dd>
-
-  </div>
-   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Match
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      93%
-    </dd>
-
-  </div>
-  </dl>
-  <a class="nhsuk-button nhsuk-button--ers_secondary" href="#" onclick="openRightMenu()">View participant</a>
-
-  </div>
 
 
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+<ul class="nhsuk-comment-container">
+      
+  <li class="nhsuk-panel"><span class="name">Jon Simpson: Processor</span> <span class="date"><strong>20-Jul-2020</strong></span> Need to contact lab due to different NHS number.</li>
+  			</ul>
 </div>
 </div>
-
-
 
 
 <div class="nhsuk-grid-row">
@@ -257,6 +298,7 @@
 </div>
 </div>
 
+
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
     <!-- OPTIONS -->
@@ -276,7 +318,7 @@
         </div>
 
         <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
+          <input class="nhsuk-radios__input" id="system" name="how-to-resolve"  type="radio" value="system" aria-controls="system" aria-expanded="false">
           <label class="nhsuk-label nhsuk-radios__label" for="system">
             Use system details
           </label>
@@ -289,7 +331,7 @@
           </label>
         </div>
         <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="lab" name="how-to-resolve" type="radio" value="lab" aria-controls="lab" aria-expanded="false">
+          <input class="nhsuk-radios__input" id="lab" name="how-to-resolve" checked="true" type="radio" value="lab" aria-controls="lab" aria-expanded="false">
           <label class="nhsuk-label nhsuk-radios__label" for="send-back">
             Save to lab query list
           </label>
@@ -329,25 +371,14 @@
       </fieldset>
 
 
-          </div>
-          <a href="manc-confirmation" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and continue</a>
 
     </div>
+    <a href="non-match-confirmation" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and continue</a>
 
   </div>
 
+</div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-  {% endblock %}
+{% endblock %}
