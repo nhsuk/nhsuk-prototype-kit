@@ -1,0 +1,152 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="tabbedTable-wrapper"><div class="tabbedTable-labels"><label class="tabbedTable-label tabbedTable-label--active">To process</label><label class="tabbedTable-label">To query</label><label class="tabbedTable-label">To check</label></div><table class="tabbedTable tableBorder nhsuk-u-padding-top-6 tabbedTable-2309">
+
+  <tbody><tr>
+   <th class="ten" data-tabbedtable="To process">Transfer number</th>
+    <th class="ten" data-tabbedtable="To process">Status </th>
+    <th class="ten" data-tabbedtable="To process">Transfer date </th>
+    <th class="ten" data-tabbedtable="To process">Transfer time </th>
+    <th class="ten" data-tabbedtable="To process">To action</th>
+    <th class="ten" data-tabbedtable="To process"></th>
+ 
+    <th class="ten" data-tabbedtable="To query">Transfer number</th>
+    <th class="ten" data-tabbedtable="To query">Status</th>
+    <th class="ten" data-tabbedtable="To query">Transfer date </th>
+    <th class="ten" data-tabbedtable="To query">Transfer time </th>
+    <th class="ten" data-tabbedtable="To query">To action</th>
+    <th class="ten" data-tabbedtable="To query"></th>
+ 
+    <th class="ten" data-tabbedtable="To check">Transfer number</th>
+    <th class="ten" data-tabbedtable="To check">Transfer date </th>
+    <th class="ten" data-tabbedtable="To check">Transfer time </th>
+    <th class="ten" data-tabbedtable="To check">To action </th>
+    <th class="ten" data-tabbedtable="To check"></th>
+ 
+  </tr>
+<tr>
+<!-- TO PROCESS -->
+<td>03368</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span></td> <td>06-02-2020</td> <td>11.22am</td> <td>4</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="manc-p1">Start matching</a></td>
+<!-- TO QUERY -->
+<td>03756</td> <td><span class="nhsuk-tag nhsuk-tag--orange nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>10.53am</td> <td>2</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">View non-match</a></td>
+<!-- TO CHECK -->
+<td>03475</td> <td>04-02-2020</td> <td>9.41am</td> <td>4</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">View matched</a></td>  
+
+
+
+</tr><tr>
+<!-- TO PROCESS -->
+<td>03369</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span></td> <td>06-02-2020</td> <td>5.27pm</td> <td>20</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">Start matching</a>
+<!-- TO QUERY -->
+</td><td>03757</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">File error</span></td> <td>05-02-2020</td> <td>11.26am</td> <td>-</td> <td></td>
+<!-- TO CHECK -->
+<td>03476</td>  <td>04-02-2020</td> <td>8.44am</td> <td>7</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">View matched</a></td>  
+
+
+
+</tr><tr>
+<!-- TO PROCESS -->
+<td>03370</td>  <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">checker rejected</span></td> <td>06-02-2020</td> <td>9.23am</td> <td>2</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">Start matching</a></td>
+<!-- TO QUERY -->
+<td>03758</td> <td><span class="nhsuk-tag nhsuk-tag--orange nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>10.45am</td> <td>1</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">View non-match</a></td>
+<!-- TO CHECK -->
+<td>03477</td>  <td>04-02-2020</td> <td>5.01pm</td> <td>34</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">View matched</a></td> 
+
+
+
+</tr><tr>
+<!-- TO PROCESS -->
+<td>03371</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span></td> <td>06-02-2020</td> <td>9.02am</td> <td>38</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">Start matching</a></td>
+<!-- TO QUERY -->
+<td>03759</td> <td><span class="nhsuk-tag nhsuk-tag--orange nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>10.59am</td> <td>3</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">View non-match</a></td>
+<!-- TO CHECK -->
+<td>03478</td>  <td>04-02-2020</td> <td>11.52am</td> <td>75</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">View matched</a></td>  
+
+
+
+</tr><tr>
+<!-- TO PROCESS -->
+<td>03372</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span></td> <td>06-02-2020</td> <td>8.38am</td> <td>45</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">Start matching</a></td>
+<!-- TO QUERY -->
+<td>03760</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">File error</span></td> <td>05-02-2020</td> <td>9.59am</td> <td>-</td><td></td>
+<!-- TO CHECK -->
+<td>03479</td>  <td>04-02-2020</td> <td>11.27am</td> <td>63</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">View matched</a></td> 
+</tr>
+
+
+
+<tr>
+<!-- TO PROCESS -->
+<td>03372</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span></td> <td>06-02-2020</td> <td>8.38am</td> <td>34</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">Start matching</a></td>
+<!-- TO QUERY -->
+<td>03760</td> <td><span class="nhsuk-tag nhsuk-tag--orange nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>9.59am</td> <td>1</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">View non-match</a></td>
+<!-- TO CHECK -->
+<td>03479</td>  <td>04-02-2020</td> <td>11.27am</td> <td>63</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">View matched</a></td> 
+</tr>
+
+
+
+
+<tr>
+<!-- TO PROCESS -->
+<td>03375</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">checker rejected</span></td> <td>06-02-2020</td> <td>3.34pm</td> <td>1</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">Start matching</a></td>
+<!-- TO QUERY -->
+<td>03762</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">File error</span></td>  <td>05-02-2020</td> <td>8.38am</td> <td>-</td><td></td>
+<!-- TO CHECK -->
+<td>03481</td> <td>04-02-2020</td> <td>9.34am</td> <td>35</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">View matched</a></td> 
+
+
+
+</tr><tr>
+<!-- TO PROCESS -->
+<td>03376</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">checker rejected</span></td> <td>06-02-2020</td> <td>2.09pm</td> <td>2</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">Start matching</a></td>
+<!-- TO QUERY -->
+<td>03763</td> <td><span class="nhsuk-tag nhsuk-tag--orange nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>11.25am</td> <td>2</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">View non-match</a></td>
+<!-- TO CHECK -->
+<td>03482</td>  <td>04-02-2020</td> <td>9.19am</td> <td>93</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">View matched</a></td> 
+
+
+
+</tr><tr>
+<!-- TO PROCESS -->
+<td>03378</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">not started</span></td> <td>06-02-2020</td> <td>8.38am</td> <td>44</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">Start matching</a></td>
+<!-- TO QUERY -->
+<td>03764</td> <td><span class="nhsuk-tag nhsuk-tag--orange nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>9.34am</td> <td>4</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">View non-match</a></td>
+<!-- TO CHECK -->
+<td>03483</td>  <td>04-02-2020</td> <td>2.09pm</td> <td>46</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">View matched</a></td>  
+
+
+</tr><tr>
+<!-- TO PROCESS -->
+<td>03379</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">not started</span></td> <td>06-02-2020</td> <td>11.40am</td> <td>53</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">Start matching</a></td>
+<!-- TO QUERY -->
+<td>03765</td> <td><span class="nhsuk-tag nhsuk-tag--orange nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>8.34am</td> <td>1</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">View non-match</a></td>
+<!-- TO CHECK -->
+<td>03484</td>  <td>04-02-2020</td> <td>9.30am</td> <td>73</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">View matched</a></td>
+
+
+</tr><tr>
+<!-- TO PROCESS -->
+<td>03380</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">checker rejected</span></td> <td>04-02-2020</td> <td>1.20pm</td> <td>1</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">Start matching</a></td>
+<!-- TO QUERY -->
+<td>03766</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">file error</span></td> <td>04-02-2020</td> <td>9.15am</td> <td>-</td><td></td>
+<!-- TO CHECK -->
+<td>03485</td>  <td>04-02-2020</td> <td>10.50am</td> <td>35</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="“./“">View matched</a></td> 
+
+
+</tr></tbody></table></div>
+{% endblock %}
