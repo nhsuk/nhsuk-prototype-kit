@@ -2,10 +2,9 @@
 
 {% block pageScripts %}
   <script type="text/javascript" src="/js/reveal.js"></script>
+  <script type="text/javascript" src="/js/comments.js"></script>
 
 <script>
-
-
   function closeRightMenu() {
     document.getElementByClass("nhsuk-sidebar-hidden").style.display = "none";
   }
@@ -16,6 +15,7 @@
 
    });
 </script>
+
 {% endblock %}
 {% block pageTitle %}
 NHS Cervical Screening
@@ -70,7 +70,7 @@ NHS Cervical Screening
 
       <div class="nhsuk-panel nhsuk-promo">
 
-        <h3>Previous episode addresses</h3>
+        <h3>Previously used addresses</h3>
         <p> 20 Thornhill Street
           <br>
           Pudsey
@@ -82,6 +82,37 @@ NHS Cervical Screening
           Leeds
           <br>LS14 6KK</p>
       </div>
+
+<h3>Sample taker information</h3>
+      <dl class="nhsuk-summary-list">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Ireland Wood Surgery
+            <br>
+            Iveson Approach
+            <br>
+            Leeds
+            <br>
+            West Yorkshire
+            <br>
+            LS16 6FR
+          </dd>
+
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Phone number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            +44 1743 739 641
+          </dd>
+
+        </div>
+      </dl>
       <a href="#">View full summary</a>
     </div>
   </div>
@@ -94,17 +125,16 @@ NHS Cervical Screening
       "text": "Go back to Manchester results"
     }) }}
 
-    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Cumbria</h1>
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to check</h1>
 
     {{ hint({
    classes: 'nhsuk-hint',
-  text: "Viewing - match 1 of 1 matches to resolve"
+  text: "Viewing - match 1 of 4 matches to check"
 }) }}
   </div>
 </div>
 
 <br>
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
     <div class="nhsuk-panel-with-label">
@@ -117,7 +147,7 @@ NHS Cervical Screening
             Name
           </dt>
           <dd class="nhsuk-summary-list__value">
-            Remi Jones	
+            Jane Smith
           </dd>
 
         </div>
@@ -127,7 +157,7 @@ NHS Cervical Screening
             Date of birth
           </dt>
           <dd class="nhsuk-summary-list__value">
-            01-06-1970
+            01-01-1970
           </dd>
 
         </div>
@@ -137,7 +167,7 @@ NHS Cervical Screening
             Contact information
           </dt>
           <dd class="nhsuk-summary-list__value">
-            11 Moble Street<br>Warrick<br> W23 7PB
+            20 Thornhill Street<br>Pudsey<br> LS28 7PB
           </dd>
         </div>
         <div class="nhsuk-summary-list__row">
@@ -145,7 +175,7 @@ NHS Cervical Screening
             NHS number
           </dt>
           <dd class="nhsuk-summary-list__value">
-            <span class=""> 883 843 8901</span>
+            <span class=""> 234 567 8901 </span>
           </dd>
 
         </div>
@@ -167,7 +197,7 @@ NHS Cervical Screening
             Name
           </dt>
           <dd class="nhsuk-summary-list__value">
-            Remi <span class="highlight"> Zoey Jhones </span> 
+            Jane <span class="highlight"> Louise </span> Smith
           </dd>
 
         </div>
@@ -177,7 +207,7 @@ NHS Cervical Screening
             Date of birth
           </dt>
           <dd class="nhsuk-summary-list__value">
-            01-06-1990
+            01-01-1970
           </dd>
 
         </div>
@@ -187,7 +217,7 @@ NHS Cervical Screening
             Contact information
           </dt>
           <dd class="nhsuk-summary-list__value">
-            1<span class="highlight">2</span> Moble Street<br>Warrick<br> W23 7PB
+            20 Thornhill Street<br>Pudsey<br> LS28 <span class="highlight">7ED</span>
           </dd>
         </div>
         <div class="nhsuk-summary-list__row">
@@ -195,7 +225,7 @@ NHS Cervical Screening
             NHS number
           </dt>
           <dd class="nhsuk-summary-list__value">
-            <span class="highlight"> 234 567 8901 </span>
+            <span class=""> 234 567 8901 </span>
           </dd>
 
         </div>
@@ -204,7 +234,7 @@ NHS Cervical Screening
             Match
           </dt>
           <dd class="nhsuk-summary-list__value">
-            62%
+            93%
           </dd>
 
         </div>
@@ -219,43 +249,13 @@ NHS Cervical Screening
   </div>
 </div>
 
-<!-- THE COMMENTS -->
+
+
+
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
-    <h2 class="nhsuk-heading-s">Previous comments</h2>
-        <details class="nhsuk-details nhsuk-expander version-list" role="group" nhsuk-polyfilled="false" id="nhsuk-details0">
-        <summary class="nhsuk-details__summary" role="button" aria-controls="" aria-expanded="false" tabindex="0">
-          <p class="nhsuk-body-s nhsuk-u-margin-bottom-2">SO: Tom Barker</p>
-          <span class="nhsuk-details__summary-text">
-            15-05-2020 at 9:22am
 
-          </span>
-        </summary>
-        <div class="nhsuk-details__text" id="details-content-a336ea47-0b6c-49a4-b189-7c8d7ef16df4" aria-hidden="true">
-        <p>Using the lab details following PDS check.</p>
-
-        </div>
-      </details>
-    <details class="nhsuk-details nhsuk-expander version-list" role="group" nhsuk-polyfilled="false" id="nhsuk-details0">
-        <summary class="nhsuk-details__summary" role="button" aria-controls="" aria-expanded="false" tabindex="0">
-          <p class="nhsuk-body-s nhsuk-u-margin-bottom-2">QC: Lesley Smithers</p>
-          <span class="nhsuk-details__summary-text">
-            15-05-2020 at 11:35am
-
-          </span>
-        </summary>
-        <div class="nhsuk-details__text" id="details-content-a336ea47-0b6c-49a4-b189-7c8d7ef16df4" aria-hidden="true">
-        <p>The NHS number is different, cannot accept lab or system without contacting lab.</p>
-
-        </div>
-      </details>
-
-  </div>
-</div>
-
-
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-full">
+    <form action="manc-p1" method="post">
     <div class="nhsuk-form-group">
       <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-3" for="example">
         Comments
@@ -263,15 +263,33 @@ NHS Cervical Screening
       <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
         Enter comments if needed
       </span>
-      <textarea class="nhsuk-textarea nhsuk-u-width-one-half" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
+      <textarea class="nhsuk-textarea commentBox" id="comments" value="comments" name="comments" rows="5" data-length=200></textarea>
       <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-        You have 200 characters remaining
+        You have <span class="counter">200</span> characters remaining
       </span>
     </div>
-    <a class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" href="#">Add comment</a>
 
+    <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
 
-  </div>
+    {% set name = "Jon Simpson" %}
+
+    {% set commentDate = ("today" | returnDate) %}
+
+    <input type="hidden" id="name" name="name" value="{{commentName}}">
+
+      <input type="hidden" name="date" value={{commentDate}}>
+
+    </form>
+
+    <ul class="nhsuk-comment-container">
+      {% if data.comments !=null %}
+
+  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.comments}}</li>
+
+  {% endif %}
+  			</ul>
+
+</div>
 </div>
 
 <div class="nhsuk-grid-row">
@@ -282,18 +300,18 @@ NHS Cervical Screening
       <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
         <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
           <h1 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong">
-            How do you want to action this result
+            How do you want to action this result?
           </h1>
         </legend>
         <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="lab" name="how-to-resolve" type="radio" value="lab" aria-controls="lab" checked aria-expanded="false">
+          <input class="nhsuk-radios__input" id="lab" name="how-to-resolve" type="radio" value="lab" aria-controls="lab" aria-expanded="false">
           <label class="nhsuk-label nhsuk-radios__label" for="lab">
             Use lab details
           </label>
         </div>
 
         <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
+          <input class="nhsuk-radios__input" id="system" name="how-to-resolve" checked="true" type="radio" value="system" aria-controls="system" aria-expanded="false">
           <label class="nhsuk-label nhsuk-radios__label" for="system">
             Use system details
           </label>
@@ -302,28 +320,53 @@ NHS Cervical Screening
         <div class="nhsuk-radios__item">
           <input class="nhsuk-radios__input" id="gp" name="how-to-resolve" type="radio" value="gp" aria-controls="gp" aria-expanded="false">
           <label class="nhsuk-label nhsuk-radios__label" for="gp">
-            Send to GP
+            Send to sample taker
           </label>
         </div>
         <div class="nhsuk-radios__item">
           <input class="nhsuk-radios__input" id="lab" name="how-to-resolve" type="radio" value="lab" aria-controls="lab" aria-expanded="false">
           <label class="nhsuk-label nhsuk-radios__label" for="send-back">
-            Send back to lab to resolve
+            Save to lab query list
           </label>
         </div>
 
-        <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="send-back" name="how-to-resolve" type="radio" value="send-back" aria-controls="send-back" aria-expanded="false">
-          <label class="nhsuk-label nhsuk-radios__label" for="enter-address">
-            Enter a different address
+            <div class="nhsuk-radios nhsuk-radios--conditional">
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="contact-1" name="how-to-resolve" type="radio" value="address" aria-controls="conditional-contact-1" aria-expanded="false">
+        <label class="nhsuk-label nhsuk-radios__label" for="contact-1">
+          Enter a different address
+        </label>
+      </div>
+
+           <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
+
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="email">
+            Building and street
           </label>
+          <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
+        <label class="nhsuk-label" for="email">
+            Town or city
+          </label>
+          <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
+          <label class="nhsuk-label" for="email">
+            County
+          </label>
+          <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
+          <label class="nhsuk-label" for="email">
+            Postcode
+          </label>
+          <input class="nhsuk-input nhsuk-u-width-two-thirds" id="email" name="email" type="text">
         </div>
+
+      </div>
       </fieldset>
 
 
 
     </div>
-    <a href="cumbria-table-done" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and continue</a>
+    <a href="check-p2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and next</a>
 
   </div>
 

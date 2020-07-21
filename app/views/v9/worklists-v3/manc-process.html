@@ -1,0 +1,110 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+
+<script type="text/javascript">
+
+</script>
+
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+{% block content %}
+
+{{ backLink({
+  "href": "results",
+  "text": "Go back to results"
+}) }}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+ 
+  <h1 class="nhsuk-heading-l">Manchester</h1>
+ <p> The following results show the manual matches between the lab and system patient details.
+ <br>
+  Compare the patient details provided by the labs against those held on the system.</p>
+</div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3  nhsuk-summary-list--no-border">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Phone number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+           +44 1624 937 363
+          </dd>
+
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+           Email address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            manctesting@labs.com
+          </dd>
+
+        </div>
+
+      </dl>
+    </div>
+  </div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <nav class="nhsuk-sub-navigation">
+    <ul class="nhsuk-sub-navigation__list">
+      <li class="nhsuk-sub-navigation__item"><a href="manc-process" class="nhsuk-sub-navigation__link" aria-current="page">To process</a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="manc-query" class="nhsuk-sub-navigation__link">To query</a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="manc-check" class="nhsuk-sub-navigation__link">To check</a></li>
+    </ul>
+  </nav>
+</div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+<table class="nhsuk-u-padding-top-4">
+
+  <tr>
+   <th class="ten"="To process">Transfer number</th>
+    <th class="ten"="To process">Status </th>
+    <th class="ten"="To process">Transfer date </th>
+    <th class="ten"="To process">Transfer time </th>
+    <th class="ten"="To process">To action</th>
+    <th class="ten"="To process"></th>
+<tr>
+
+
+<!-- TO PROCESS -->
+<tr> <td>03368</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span></td> <td>06-02-2020</td> <td>11.22am</td> <td>4</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="manc-p1">Start matching</a></td> </tr>
+<tr> <td>03369</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">with processor</span></td> <td>06-02-2020</td> <td>5.27pm</td> <td>20</td> <td></td> </tr>
+<tr> <td>03370</td>  <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">checker rejected</span></td> <td>06-02-2020</td> <td>9.23am</td> <td>2</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="checker-rejected">Start matching</a></td> 
+<tr> <td>03371</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span></td> <td>06-02-2020</td> <td>9.02am</td> <td>38</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
+<tr> <td>03372</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">with processor</span></td> <td>06-02-2020</td> <td>8.38am</td> <td>45</td><td></td></tr>
+<tr> <td>03372</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Not started</span></td> <td>06-02-2020</td> <td>8.38am</td> <td>34</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
+<tr> <td>03375</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">checker rejected</span></td> <td>06-02-2020</td> <td>3.34pm</td> <td>1</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
+<tr> <td>03376</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">checker rejected</span></td> <td>06-02-2020</td> <td>2.09pm</td> <td>2</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
+<tr> <td>03378</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">not started</span></td> <td>06-02-2020</td> <td>8.38am</td> <td>44</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
+<tr> <td>03380</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">checker rejected</span></td> <td>04-02-2020</td> <td>1.20pm</td> <td>1</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
+<tr> <td>03379</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">not started</span></td> <td>06-02-2020</td> <td>11.40am</td> <td>53</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
+
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

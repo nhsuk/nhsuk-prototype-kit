@@ -3,6 +3,7 @@
 // TABS /
 // ==========================================================================
 
+<<<<<<< HEAD
 
 /*
 
@@ -46,24 +47,34 @@ th {
   }
 }
 */
+=======
+$clr-tab--active: #0076c8;
+$clr-tab--inactive: black;
+>>>>>>> 10d3a59e08d247639f99de26465bb6745cf97ced
 
 .tabbedTable-labels {
   float: left;
    label {
-    color: black;
+    color: 		#212b32;
     padding: 10px 20px 10px 20px;
     margin-bottom: 20px;
-    font-size: 18px;
+    font-size: 19px;
     margin-right: 6px;
     text-decoration: underline;
+<<<<<<< HEAD
     background: #DFE2E5;
+=======
+    font-weight: 600;
+    cursor: pointer;
+    background: #DFE2E5; 
+>>>>>>> 10d3a59e08d247639f99de26465bb6745cf97ced
     position: relative;
     bottom: 14px;
       &.tabbedTable-label--active {
-        border-top: solid 1px #687784;
-        border-left: solid 1px #687784;
-        border-right: solid 1px #687784;
-        background: #F3F5F6;
+        border-top:  1px solid #B3BBC1;
+        border-left: 1px solid #B3BBC1;
+        border-right: 1px solid #B3BBC1;
+        background: #F0F4F5;
         padding: 10px 20px 18px 20px;
         text-decoration: none;
   }
@@ -72,7 +83,7 @@ th {
 
 .tableBorder {
   border-collapse: collapse;
-  border: 1px solid #687784;
+  border-top: 1px solid #B3BBC1;
 }
 
 .tabbedTable {
@@ -83,7 +94,12 @@ th {
       }
   }
 
-  .tabbedTable td{
+  .tabbedTable .ten {
+    width: 10%;
+    padding: 70px 20px 10px 20px;
+}
+
+  .tabbedTable td {
     vertical-align: top;
     padding-top: 16px;
     padding: 10px 20px 10px 20px;
