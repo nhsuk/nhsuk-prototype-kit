@@ -71,22 +71,20 @@ NHS Cervical Screening
       <div class="nhsuk-panel nhsuk-promo">
 
         <h3>Previously used addresses</h3>
-        <p> 20 Thornhill Street
+        <p> 44 Mill Cross Street
           <br>
-          Pudsey
+          Bexley
           <br>
-          LS28 7ED</p>
+         M1AA 3ZF</p>
 
-        <p>16 Chessington Drive
+        <p>19 Morris Drive
           <br>
           Leeds
-          <br>LS14 6KK</p>
+          <br>LS14 7GA</p>
       </div>
 
-
-<div class="nhsuk-panel nhsuk-promo">
 <h3>Sample taker information</h3>
-      <dl class="nhsuk-summary-list--no-border nhsuk-body-m">
+      <dl class="nhsuk-summary-list">
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
@@ -115,12 +113,10 @@ NHS Cervical Screening
 
         </div>
       </dl>
-      </div>
       <a href="#">View full summary</a>
     </div>
   </div>
 </div>
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
@@ -129,15 +125,16 @@ NHS Cervical Screening
       "text": "Go back to Manchester results"
     }) }}
 
-    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to process</h1>
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: checker rejected</h1>
 
     {{ hint({
    classes: 'nhsuk-hint',
-  text: "Match 1 of 4 "
+  text: "Viewing - match 1 of 2 matches to resolve"
 }) }}
   </div>
 </div>
 
+<br>
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
     <div class="nhsuk-panel-with-label">
@@ -150,7 +147,7 @@ NHS Cervical Screening
             Name
           </dt>
           <dd class="nhsuk-summary-list__value">
-            Jane Smith
+            Samantha Rhodes
           </dd>
 
         </div>
@@ -160,7 +157,7 @@ NHS Cervical Screening
             Date of birth
           </dt>
           <dd class="nhsuk-summary-list__value">
-            01-01-1970
+            04-01-1988
           </dd>
 
         </div>
@@ -170,7 +167,7 @@ NHS Cervical Screening
             Contact information
           </dt>
           <dd class="nhsuk-summary-list__value">
-            20 Thornhill Street<br>Pudsey<br> LS28 7PB
+            44 Mill Cross Street<br>Bexley<br> M1AA 3ZF
           </dd>
         </div>
         <div class="nhsuk-summary-list__row">
@@ -178,7 +175,7 @@ NHS Cervical Screening
             NHS number
           </dt>
           <dd class="nhsuk-summary-list__value">
-            <span class=""> 234 567 8901 </span>
+            <span class=""> 345 678 9012 </span>
           </dd>
 
         </div>
@@ -200,7 +197,7 @@ NHS Cervical Screening
             Name
           </dt>
           <dd class="nhsuk-summary-list__value">
-            Jane <span class="highlight"> Louise </span> Smith
+            Samantha Rhodes
           </dd>
 
         </div>
@@ -210,7 +207,7 @@ NHS Cervical Screening
             Date of birth
           </dt>
           <dd class="nhsuk-summary-list__value">
-            01-01-1970
+            04-01-1988
           </dd>
 
         </div>
@@ -220,7 +217,7 @@ NHS Cervical Screening
             Contact information
           </dt>
           <dd class="nhsuk-summary-list__value">
-            20 Thornhill Street<br>Pudsey<br> LS28 <span class="highlight">7ED</span>
+            <span class="highlight"> 48</span> Mill Cross Street<br>Bexley<br> M1AA 3ZF
           </dd>
         </div>
         <div class="nhsuk-summary-list__row">
@@ -228,7 +225,7 @@ NHS Cervical Screening
             NHS number
           </dt>
           <dd class="nhsuk-summary-list__value">
-            <span class=""> 234 567 8901 </span>
+            <span class=""> <span class="highlight"> 456 789 0123 </span> </span>
           </dd>
 
         </div>
@@ -237,7 +234,7 @@ NHS Cervical Screening
             Match
           </dt>
           <dd class="nhsuk-summary-list__value">
-            93%
+            79%
           </dd>
 
         </div>
@@ -254,46 +251,25 @@ NHS Cervical Screening
 
 
 
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+<ul class="nhsuk-comment-container">
+      
+  <li class="nhsuk-panel"><span class="name">Jon Simpson: Processor</span> <span class="date"><strong>20-Jul-2020</strong></span> Used system details as the match % is above 75.</li>
+  			</ul>
+</div>
+</div>
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
-
-    <form action="manc-p1" method="post">
-    <div class="nhsuk-form-group">
-      <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-3" for="example">
-        Comments
-      </label>
-      <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-        Enter comments if needed
-      </span>
-      <textarea class="nhsuk-textarea commentBox" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200></textarea>
-      <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-        You have <span class="counter">200</span> characters remaining
-      </span>
-    </div>
-
-    <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
-
-    {% set name = "Jon Simpson" %}
-
-    {% set commentDate = ("today" | returnDate) %}
-
-    <input type="hidden" id="name" name="name" value="{{commentName}}">
-
-      <input type="hidden" name="date" value={{commentDate}}>
-
-    </form>
-
-    <ul class="nhsuk-comment-container">
-      {% if data.commentsa !=null %}
-
-  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsa}}</li>
-
-  {% endif %}
+<ul class="nhsuk-comment-container">
+      
+  <li class="nhsuk-panel"><span class="name">Sally Baines: Checker</span> <span class="date"><strong>21-Jul-2020</strong></span> Queried with labs and reviewed previousy used address. Lab details should be used as system details represent a different patient with the same name and similar address.  </li>
   			</ul>
+</div>
+</div>
 
-</div>
-</div>
+
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
@@ -314,7 +290,7 @@ NHS Cervical Screening
         </div>
 
         <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
+          <input class="nhsuk-radios__input" id="system" name="how-to-resolve" checked="true" type="radio" value="system" aria-controls="system" aria-expanded="false">
           <label class="nhsuk-label nhsuk-radios__label" for="system">
             Use system details
           </label>
@@ -366,10 +342,49 @@ NHS Cervical Screening
       </div>
       </fieldset>
 
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <form action="checker-rejected" method="post">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-3" for="example">
+        Comments
+      </label>
+      <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+        Enter comments if needed
+      </span>
+      <textarea class="nhsuk-textarea commentBox" id="commentsr1" value="commentsr1" name="commentsr1" rows="5" data-length=200></textarea>
+      <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+        You have <span class="counter">200</span> characters remaining
+      </span>
+    </div>
+
+    <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
+
+    {% set name = "Jon Simpson" %}
+
+    {% set commentDate = ("today" | returnDate) %}
+
+    <input type="hidden" id="name" name="name" value="{{commentName}}">
+
+      <input type="hidden" name="date" value={{commentDate}}>
+
+    </form>
+
+    <ul class="nhsuk-comment-container">
+      {% if data.commentsr1 !=null %}
+
+  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsr1}}</li>
+
+  {% endif %}
+  			</ul>
+
+</div>
+</div>
 
 
     </div>
-    <a href="manc-p2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and next</a>
+    <a href="checker-rejected-2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and next</a>
 
   </div>
 
