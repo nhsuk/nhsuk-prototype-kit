@@ -154,3 +154,10 @@
 .nhsuk-sub-navigation__link[aria-current="page"]:focus:before {
   background-color: #0b0c0c;
 }
+
+//
+PRIMARY NAVIGATION
+//
+.nhsuk-header__navigation-link::selection{
+  border-bottom:4px inset grey !important;
+}
