@@ -83,8 +83,10 @@ NHS Cervical Screening
           <br>LS14 6KK</p>
       </div>
 
+
+<div class="nhsuk-panel nhsuk-promo">
 <h3>Sample taker information</h3>
-      <dl class="nhsuk-summary-list">
+      <dl class="nhsuk-summary-list--no-border nhsuk-body-m">
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
@@ -113,15 +115,17 @@ NHS Cervical Screening
 
         </div>
       </dl>
+      </div>
       <a href="#">View full summary</a>
     </div>
   </div>
 </div>
+
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
     {{ backLink({
-      "href": "manc",
+      "href": "manc-process",
       "text": "Go back to Manchester results"
     }) }}
 
@@ -129,12 +133,11 @@ NHS Cervical Screening
 
     {{ hint({
    classes: 'nhsuk-hint',
-  text: "Viewing - match 1 of 4 matches to resolve"
+  text: "Match 1 of 4 "
 }) }}
   </div>
 </div>
 
-<br>
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
     <div class="nhsuk-panel-with-label">
@@ -263,7 +266,7 @@ NHS Cervical Screening
       <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
         Enter comments if needed
       </span>
-      <textarea class="nhsuk-textarea commentBox" id="comments" value="comments" name="comments" rows="5" data-length=200></textarea>
+      <textarea class="nhsuk-textarea commentBox" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200></textarea>
       <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
         You have <span class="counter">200</span> characters remaining
       </span>
@@ -282,9 +285,9 @@ NHS Cervical Screening
     </form>
 
     <ul class="nhsuk-comment-container">
-      {% if data.comments !=null %}
+      {% if data.commentsa !=null %}
 
-  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.comments}}</li>
+  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsa}}</li>
 
   {% endif %}
   			</ul>

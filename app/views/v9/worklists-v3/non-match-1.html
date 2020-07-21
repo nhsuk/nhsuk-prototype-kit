@@ -83,8 +83,10 @@ NHS Cervical Screening
           <br>LS14 87B</p>
       </div>
 
+
+<div class="nhsuk-panel nhsuk-promo">
 <h3>Sample taker information</h3>
-      <dl class="nhsuk-summary-list">
+      <dl class="nhsuk-summary-list--no-border nhsuk-body-m">
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
@@ -113,6 +115,9 @@ NHS Cervical Screening
 
         </div>
       </dl>
+      </div>
+
+
       <a href="#">View full summary</a>
     </div>
   </div>
@@ -121,141 +126,175 @@ NHS Cervical Screening
   <div class="nhsuk-grid-column-full">
 
     {{ backLink({
-      "href": "manc",
-      "text": "Go back to Manchester results"
+      "href": "manc-query",
+      "text": "Go back to query list"
     }) }}
 
     <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: non-match</h1>
 
     {{ hint({
    classes: 'nhsuk-hint',
-  text: "Viewing - match 1 of 4 matches to resolve"
+  text: "Non-match 1 of 2"
 }) }}
   </div>
 </div>
 
-<br>
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
+  
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3  nhsuk-summary-list--no-border">
+      <h2 class="nhsuk-heading-m"> Lab contact details</h2>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Phone number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+           +44 1624 937 363
+          </dd>
+
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+           Email address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            manctesting@labs.com
+          </dd>
+
+        </div>
+
+      </dl>
+    </div>
+  </div>
+
+
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-half">
     <div class="nhsuk-panel-with-label">
       <h3 class="nhsuk-panel-with-label__label">Lab details</h3>
 
-      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Name
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            Anika Singh
-          </dd>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Claudia Beddis
+    </dd>
 
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Date of birth
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            04-01-1988
-          </dd>
-
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Contact information
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            32 Richmond Avenue<br>Blackrod<br> M1AA 8BN
-          </dd>
-        </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            NHS number
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class=""> 345 678 9012 </span>
-          </dd>
-
-        </div>
-
-      </dl>
-    </div>
   </div>
 
-  <div class="nhsuk-grid-column-one-half">
-    <div class="nhsuk-panel-with-label">
-      <h3 class="nhsuk-panel-with-label__label">System details</h3>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Date of birth
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      19-09-1993
+    </dd>
 
-      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+  </div>
 
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Contact information
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      12 Poplars Close<br>Burwell<br> CB25 0ET
+    </dd>
+</div>
+   <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      NHS number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+     234 567 8901
+    </dd>
 
-
-               <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Name
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            Anika Singh
-          </dd>
-
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Date of birth
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class="highlight">05</span>-01-1988
-          </dd>
-
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Contact information
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class="highlight">39</span> Richmond Avenue<br>Blackrod<br> M1AA 8BN
-          </dd>
-        </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            NHS number
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class="highlight"> 456 789 0123 </span>
-          </dd>
-
-        </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Match
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            76%
-          </dd>
-
-        </div>
-      </dl>
-      <a class="nhsuk-button nhsuk-button--ers_secondary sidebarbttn" href="#">View participant</a>
-
-    </div>
-
-
+  </div>
+  </dl>
 
 
   </div>
+
+
 </div>
 
+    <div class="nhsuk-grid-column-one-half">
+         <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">System details</h3>
+
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Claudia Beddis<span class="highlight">s</span>
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Date of birth
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      19-09-1993
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Contact information
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      12 Poplars Close<br>Burwell<br> CB25 <span class="highlight">BOC</span>
+    </dd>
+</div>
+     <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      NHS number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+     234 567 8901
+    </dd>
+
+  </div>
+   <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Match
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      87%
+    </dd>
+
+  </div>
+
+  </dl>
+  <a class="nhsuk-button nhsuk-button--ers_secondary" href="#" onclick="openRightMenu()">View participant</a>
+
+
+  </div>
+
+
+
+
+</div>
+</div>
 
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
 <ul class="nhsuk-comment-container">
       
-  <li class="nhsuk-panel"><span class="name">Jon Simpson: Processor</span> <span class="date"><strong>20-Jul-2020</strong></span> Need to contact the lab as NHS no is different.</li>
+  <li class="nhsuk-panel"><span class="name">Jon Simpson: Processor</span> <span class="date"><strong>20-Jul-2020</strong></span> Need to contact the labs as the addresses held in lab, system and in previous addresses are different.</li>
   			</ul>
 </div>
 </div>
@@ -272,7 +311,7 @@ NHS Cervical Screening
       <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
         Enter comments if needed
       </span>
-      <textarea class="nhsuk-textarea commentBox" id="comments" value="comments" name="comments" rows="5" data-length=200></textarea>
+      <textarea class="nhsuk-textarea commentBox" id="commentse" value="commentse" name="commentse" rows="5" data-length=200></textarea>
       <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
         You have <span class="counter">200</span> characters remaining
       </span>
@@ -291,15 +330,17 @@ NHS Cervical Screening
     </form>
 
     <ul class="nhsuk-comment-container">
-      {% if data.comments !=null %}
+      {% if data.commentse !=null %}
 
-  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.comments}}</li>
+  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentse}}</li>
 
   {% endif %}
   			</ul>
 
 </div>
 </div>
+
+
 
 
 <div class="nhsuk-grid-row">

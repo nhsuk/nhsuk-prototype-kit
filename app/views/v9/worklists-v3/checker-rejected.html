@@ -121,7 +121,7 @@ NHS Cervical Screening
   <div class="nhsuk-grid-column-full">
 
     {{ backLink({
-      "href": "manc",
+      "href": "manc-process",
       "text": "Go back to Manchester results"
     }) }}
 
@@ -129,7 +129,7 @@ NHS Cervical Screening
 
     {{ hint({
    classes: 'nhsuk-hint',
-  text: "Viewing - match 1 of 4 matches to resolve"
+  text: "Viewing - match 1 of 2 matches to resolve"
 }) }}
   </div>
 </div>
@@ -269,45 +269,6 @@ NHS Cervical Screening
 </div>
 </div>
 
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-one-half">
-
-    <form action="manc-p1" method="post">
-    <div class="nhsuk-form-group">
-      <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-3" for="example">
-        Comments
-      </label>
-      <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-        Enter comments if needed
-      </span>
-      <textarea class="nhsuk-textarea commentBox" id="comments" value="comments" name="comments" rows="5" data-length=200></textarea>
-      <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-        You have <span class="counter">200</span> characters remaining
-      </span>
-    </div>
-
-    <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
-
-    {% set name = "Jon Simpson" %}
-
-    {% set commentDate = ("today" | returnDate) %}
-
-    <input type="hidden" id="name" name="name" value="{{commentName}}">
-
-      <input type="hidden" name="date" value={{commentDate}}>
-
-    </form>
-
-    <ul class="nhsuk-comment-container">
-      {% if data.comments !=null %}
-
-  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.comments}}</li>
-
-  {% endif %}
-  			</ul>
-
-</div>
-</div>
 
 
 <div class="nhsuk-grid-row">
@@ -381,6 +342,45 @@ NHS Cervical Screening
       </div>
       </fieldset>
 
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <form action="manc-p1" method="post">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-3" for="example">
+        Comments
+      </label>
+      <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+        Enter comments if needed
+      </span>
+      <textarea class="nhsuk-textarea commentBox" id="commentsr1" value="commentsr1" name="commentsr1" rows="5" data-length=200></textarea>
+      <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+        You have <span class="counter">200</span> characters remaining
+      </span>
+    </div>
+
+    <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
+
+    {% set name = "Jon Simpson" %}
+
+    {% set commentDate = ("today" | returnDate) %}
+
+    <input type="hidden" id="name" name="name" value="{{commentName}}">
+
+      <input type="hidden" name="date" value={{commentDate}}>
+
+    </form>
+
+    <ul class="nhsuk-comment-container">
+      {% if data.commentsr1 !=null %}
+
+  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsr1}}</li>
+
+  {% endif %}
+  			</ul>
+
+</div>
+</div>
 
 
     </div>

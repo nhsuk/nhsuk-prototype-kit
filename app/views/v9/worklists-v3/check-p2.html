@@ -64,18 +64,53 @@
 
       <div class="nhsuk-panel nhsuk-promo">
 
-        <h3>Previous episode addresses</h3>
-        <p> 20 Thornhill Street
+        <h3>Previously used addresses</h3>
+        <p> 46 Stirling Way
           <br>
-          Pudsey
+          Sutton
           <br>
-          LS28 7ED</p>
+          CB6 2QZ</p>
 
         <p>16 Chessington Drive
           <br>
           Leeds
           <br>LS14 6KK</p>
       </div>
+
+
+<div class="nhsuk-panel nhsuk-promo">
+<h3>Sample taker information</h3>
+      <dl class="nhsuk-summary-list--no-border nhsuk-body-m">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Ireland Wood Surgery
+            <br>
+            Iveson Approach
+            <br>
+            Leeds
+            <br>
+            West Yorkshire
+            <br>
+            LS16 6FR
+          </dd>
+
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Phone number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            +44 1743 739 641
+          </dd>
+
+        </div>
+      </dl>
+      </div>
+
       <a href="#">View full summary</a>
     </div>
   </div>
@@ -85,17 +120,17 @@
   <div class="nhsuk-grid-column-full">
 
     {{ backLink({
-      "href": "manc",
-      "text": "Go back to Manchester results"
+      "href": "check-p1",
+      "text": "Go back to match 1"
     }) }}
 
     <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to check</h1>
 
-{{ hint({
+    {{ hint({
    classes: 'nhsuk-hint',
-  text: "Viewing - match 2 of 4 matches to check"
+  text: "Viewing - match 2 of 2 matches to check"
 }) }}
-</div>
+  </div>
 </div>
 
 <div class="nhsuk-grid-row">
@@ -212,48 +247,6 @@
 
 
 
-
-
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-one-half">
-
-    <form action="manc-p1" method="post">
-    <div class="nhsuk-form-group">
-      <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-3" for="example">
-        Comments
-      </label>
-      <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-        Enter comments if needed
-      </span>
-      <textarea class="nhsuk-textarea commentBox" id="comments" value="comments" name="comments" rows="5" data-length=200></textarea>
-      <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-        You have <span class="counter">200</span> characters remaining
-      </span>
-    </div>
-
-    <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
-
-    {% set name = "Jon Simpson" %}
-
-    {% set commentDate = ("today" | returnDate) %}
-
-    <input type="hidden" id="name" name="name" value="{{commentName}}">
-
-      <input type="hidden" name="date" value={{commentDate}}>
-
-    </form>
-
-    <ul class="nhsuk-comment-container">
-      {% if data.comments !=null %}
-
-  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.comments}}</li>
-
-  {% endif %}
-  			</ul>
-
-</div>
-</div>
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
     <!-- OPTIONS -->
@@ -327,9 +320,51 @@
 
 
 
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
 
-          </div>
-          <a href="check-p3" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and next</a>
+    <form action="manc-p1" method="post">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-3" for="example">
+        Comments
+      </label>
+      <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+        Enter comments if needed
+      </span>
+      <textarea class="nhsuk-textarea commentBox" id="commentsch2" value="commentsch2" name="commentsch2" rows="5" data-length=200></textarea>
+      <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+        You have <span class="counter">200</span> characters remaining
+      </span>
+    </div>
+
+    <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
+
+    {% set name = "Jon Simpson" %}
+
+    {% set commentDate = ("today" | returnDate) %}
+
+    <input type="hidden" id="name" name="name" value="{{commentName}}">
+
+      <input type="hidden" name="date" value={{commentDate}}>
+
+    </form>
+
+    <ul class="nhsuk-comment-container">
+      {% if data.commentsch2 !=null %}
+
+  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsch2}}</li>
+
+  {% endif %}
+  			</ul>
+
+</div>
+</div>
+
+
+
+          
+</div>
+          <a href="checker-confirmation" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and continue</a>
 
     </div>
 

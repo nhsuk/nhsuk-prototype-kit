@@ -64,7 +64,7 @@
 
       <div class="nhsuk-panel nhsuk-promo">
 
-        <h3>Previous episode addresses</h3>
+        <h3>Previously used addresses</h3>
         <p> 20 Thornhill Street
           <br>
           Pudsey
@@ -76,6 +76,45 @@
           Leeds
           <br>LS14 6KK</p>
       </div>
+
+
+
+<div class="nhsuk-panel nhsuk-promo">
+<h3>Sample taker information</h3>
+      <dl class="nhsuk-summary-list--no-border nhsuk-body-m">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Ireland Wood Surgery
+            <br>
+            Iveson Approach
+            <br>
+            Leeds
+            <br>
+            West Yorkshire
+            <br>
+            LS16 6FR
+          </dd>
+
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Phone number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            +44 1743 739 641
+          </dd>
+
+        </div>
+      </dl>
+      </div>
+
+
+
+
       <a href="#">View full summary</a>
     </div>
   </div>
@@ -85,17 +124,17 @@
   <div class="nhsuk-grid-column-full">
 
     {{ backLink({
-      "href": "manc",
-      "text": "Go back to Manchester results"
+      "href": "manc-p3",
+      "text": "Go back to match 3"
     }) }}
 
     <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to process</h1>
 
-{{ hint({
+    {{ hint({
    classes: 'nhsuk-hint',
-  text: "Viewing - match 4 of 4 matches to resolve"
+  text: "Match 4 of 4"
 }) }}
-</div>
+  </div>
 </div>
 
 
@@ -228,7 +267,7 @@
       <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
         Enter comments if needed
       </span>
-      <textarea class="nhsuk-textarea commentBox" id="comments" value="comments" name="comments" rows="5" data-length=200></textarea>
+      <textarea class="nhsuk-textarea commentBox" id="commentsd" value="commentsd" name="commentsd" rows="5" data-length=200></textarea>
       <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
         You have <span class="counter">200</span> characters remaining
       </span>
@@ -247,9 +286,9 @@
     </form>
 
     <ul class="nhsuk-comment-container">
-      {% if data.comments !=null %}
+      {% if data.commentsd !=null %}
 
-  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.comments}}</li>
+  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsd}}</li>
 
   {% endif %}
   			</ul>
