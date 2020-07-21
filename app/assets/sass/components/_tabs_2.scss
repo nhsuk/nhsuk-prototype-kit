@@ -3,8 +3,6 @@
 // TABS /
 // ==========================================================================
 
-<<<<<<< HEAD
-
 /*
 
 JUST COMMENTED OUT FOR NOW, ADD BACK IN WHEN NEEDED
@@ -47,10 +45,9 @@ th {
   }
 }
 */
-=======
+
 $clr-tab--active: #0076c8;
 $clr-tab--inactive: black;
->>>>>>> 10d3a59e08d247639f99de26465bb6745cf97ced
 
 .tabbedTable-labels {
   float: left;
@@ -61,13 +58,7 @@ $clr-tab--inactive: black;
     font-size: 19px;
     margin-right: 6px;
     text-decoration: underline;
-<<<<<<< HEAD
     background: #DFE2E5;
-=======
-    font-weight: 600;
-    cursor: pointer;
-    background: #DFE2E5; 
->>>>>>> 10d3a59e08d247639f99de26465bb6745cf97ced
     position: relative;
     bottom: 14px;
       &.tabbedTable-label--active {
