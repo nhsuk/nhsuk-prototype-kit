@@ -116,30 +116,25 @@ NHS Cervical Screening
         </div>
       </dl>
       </div>
-      </dl>
-
       <a href="#">View full summary</a>
     </div>
   </div>
 </div>
+
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
     {{ backLink({
-      "href": "manc-check",
-      "text": "Go back to Manchester results"
+      "href": "view-processed-system",
+      "text": "Go back to system matches"
     }) }}
 
-    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to check</h1>
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to process</h1>
 
-    {{ hint({
-   classes: 'nhsuk-hint',
-  text: "Viewing - match 1 of 2 matches to check"
-}) }}
+
   </div>
 </div>
 
-<br>
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
     <div class="nhsuk-panel-with-label">
@@ -258,6 +253,7 @@ NHS Cervical Screening
 
 
 
+
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
     <!-- OPTIONS -->
@@ -277,7 +273,7 @@ NHS Cervical Screening
         </div>
 
         <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="system" name="how-to-resolve" checked="true" type="radio" value="system" aria-controls="system" aria-expanded="false">
+          <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
           <label class="nhsuk-label nhsuk-radios__label" for="system">
             Use system details
           </label>
@@ -329,11 +325,10 @@ NHS Cervical Screening
       </div>
       </fieldset>
 
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
-    <form action="check-p1" method="post">
+    <form action="manc-p1" method="post">
     <div class="nhsuk-form-group">
       <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-3" for="example">
         Comments
@@ -341,7 +336,7 @@ NHS Cervical Screening
       <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
         Enter comments if needed
       </span>
-      <textarea class="nhsuk-textarea commentBox" id="commentsch1" value="commentsch1" name="commentsch1" rows="5" data-length=200></textarea>
+      <textarea class="nhsuk-textarea commentBox" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200></textarea>
       <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
         You have <span class="counter">200</span> characters remaining
       </span>
@@ -360,9 +355,9 @@ NHS Cervical Screening
     </form>
 
     <ul class="nhsuk-comment-container">
-      {% if data.commentsch1 !=null %}
+      {% if data.commentsa !=null %}
 
-  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsch1}}</li>
+  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsa}}</li>
 
   {% endif %}
   			</ul>
@@ -371,8 +366,7 @@ NHS Cervical Screening
 </div>
 
     </div>
-    <a href="check-p2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Accept match</a>
-    <a href="check-p2" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Send back to processor</a>
+    <a href="view-processed-system" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and continue</a>
 
   </div>
 
