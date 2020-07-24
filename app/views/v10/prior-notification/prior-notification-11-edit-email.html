@@ -1,0 +1,82 @@
+{% extends "layout-v2.html" %}
+
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header-3.html' %}
+{% endblock %}
+
+{%block content%}
+{{ backLink({
+  "href": "prior-notification-11-manage",
+  "text": "Back to Manage emails",
+  "classes" : "nhsuk-u-margin-bottom-4"
+  }) }}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+     <h1 class="nhsuk-heading-l"> 
+     Recieve notification emails</h1>
+     <p class="nhsuk-u-margin-bottom-6">
+  <span class="nhsuk-u-visually-hidden">Information: </span> Make sure that the staff members involved in cervical screening tasks are receiving the right notifications.</p>
+  <p class="nhsuk-u-margin-bottom-6">
+
+<form action="prior-notification-11-manage" method="post">
+
+<div class="nhsuk-form-group">
+  <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+      <h1 class="nhsuk-fieldset__heading">
+        Which notification emails should user@nhs.net be sent?
+      </h1>
+    </legend>
+
+    <span class="nhsuk-hint" id="example-hint">
+      Select all email notifications that are relevant.
+    </span>
+
+    <div class="nhsuk-checkboxes">
+
+      <div class="nhsuk-checkboxes__item">
+        <input class="nhsuk-checkboxes__input" id="example-1" name="notificationsPNL" type="checkbox" value="Patients due to be invited"{{ checked("notificationsPNL", "Patients due to be invited") }}>
+        <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
+          Patients due to be invited
+        </label>
+      </div>
+
+      <div class="nhsuk-checkboxes__item">
+        <input class="nhsuk-checkboxes__input" id="example-2" name="notificationsNRL" type="checkbox" value="Patients who have not responded"{{ checked("notificationsNRL", "Patients who have not responded") }}>
+        <label class="nhsuk-label nhsuk-checkboxes__label" for="example-2">
+          Patients who have not responded
+        </label>
+      </div>
+
+    </div>
+  </fieldset>
+
+</div>
+<br>
+<button class="nhsuk-button nhsuk-button--ers" type="submit">
+  Save changes
+ </button>  
+
+ </form>
+
+ <p><a href="prior-notification-11-manage">Exit without saving</a></p> 
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+      <p><a href="/v10/reset-patient-data-11">Reset patient data</a></p>
+    </div>
+  </div>
+</footer>
+{% endblock %}

@@ -138,7 +138,7 @@ router.post("/search-v2/", function (req, res) {
 router.post("/*/patient/search/search", function(req, res) {
   var nhsNumber = req.session.data["searchnhs"];
 
-  if (getVersion(req) == 'v9') {
+  if (getVersion(req) == 'v9' || 'v10') {
     console.log('try to get the patient out of the database')
     const patientSummary = patient.getPatient(nhsNumber);
     req.session.data['patientSummary'] = patientSummary;
@@ -190,8 +190,8 @@ router.post("/*/patient/search/search", function(req, res) {
 
   const patVersion = req.session.data["patversion"];
 
-  if (patVersion == '2') {
-    res.redirect("/" + getVersion(req) + "/patient/patient-summary-2");
+  if (patVersion >= '2') {
+    res.redirect("/" + getVersion(req) + "/patient/patient-summary-" + patVersion);
   } else {
     res.redirect("/" + getVersion(req) + "/patient/patient-summary");
   }

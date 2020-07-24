@@ -17,9 +17,9 @@
     <nav class="nhsuk-sub-navigation nhsuk-u-padding-bottom-6">
       <h1 class="nhsuk-heading-l">Notifications</h1>
       <ul class="nhsuk-sub-navigation__list">
-        <li class="nhsuk-sub-navigation__item"><a href="prior-notification-10" class="nhsuk-sub-navigation__link">Patients due to be invited<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">{{ data['patients'].length }}</span></a></li>
-        <li class="nhsuk-sub-navigation__item"><a href="../non-responder/non-responder-2" class="nhsuk-sub-navigation__link">Patients who have not responded<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2"> 6</span> </a></li>
-         <li class="nhsuk-sub-navigation__item"><a href="/v9/non-responder/ceased-patients" class="nhsuk-sub-navigation__link">Patients to review<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2"> 4</span> </a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="prior-notification-11" class="nhsuk-sub-navigation__link">Patients due to be invited<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">{{ data['patients'].length }}</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="../non-responder/non-responder-3" class="nhsuk-sub-navigation__link">Patients who have not responded<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2"> 6</span> </a></li>
+         <li class="nhsuk-sub-navigation__item"><a href="/v10/non-responder/ceased-patients" class="nhsuk-sub-navigation__link">Patients to review<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2"> 4</span> </a></li>
         <li class="nhsuk-sub-navigation__item"><a href="" class="nhsuk-sub-navigation__link" aria-current="page">Manage emails</a></li>
       </ul>
     </nav>
@@ -33,7 +33,7 @@
   <span class="nhsuk-u-visually-hidden">Information: </span> Check who receives notification emails. Staff members involved in cervical screening tasks should receive the appropriate notification emails.</p>
   <p class="nhsuk-u-margin-bottom-6">
 
-     <a class="nhsuk-button nhsuk-button--ers" href="prior-notification-10-add-email" > 
+     <a class="nhsuk-button nhsuk-button--ers" href="prior-notification-11-add-email" > 
   Add email address
   </a> 
   </div>
@@ -60,8 +60,8 @@
               <li>Patients who have not responded</li>
               </ul>
               </td>
-              <td class="nhsuk-table__cell"><a href="prior-notification-10-edit-email">Edit</a>
-              <a href="prior-notification-10-delete-email?pnlversion-10">Remove</a></td>
+              <td class="nhsuk-table__cell"><a href="prior-notification-11-edit-email">Edit</a>
+              <a href="prior-notification-11-delete-email?pnlversion=11">Remove</a></td>
               
             </tr>
             <tr class="nhsuk-table__row">
@@ -71,8 +71,8 @@
               <li>Patients due to be invited</li>
               </ul>
               </td>
-              <td class="nhsuk-table__cell"><a href="prior-notification-10-edit-email">Edit</a>
-              <a href="prior-notification-10-delete-email?pnlversion-10">Remove</a></td>
+              <td class="nhsuk-table__cell"><a href="prior-notification-11-edit-email">Edit</a>
+              <a href="prior-notification-11-delete-email?pnlversion=11">Remove</a></td>
             </tr>
           {% if data.manageEmail != null %}
             <tr class="nhsuk-table__row">
@@ -87,8 +87,8 @@
               {% endif %}
               </ul>
               </td>
-              <td class="nhsuk-table__cell"><a href="prior-notification-10-edit-email">Edit</a>
-              <a href="prior-notification-10-delete-email?pnlversion-10">Remove</a></td>
+              <td class="nhsuk-table__cell"><a href="prior-notification-11-edit-email">Edit</a>
+              <a href="prior-notification-11-delete-email?pnlversion=11">Remove</a></td>
             </tr>
             {% endif %}
 
@@ -108,7 +108,7 @@
   <div class="nhsuk-footer" id="nhsuk-footer">
     <div class="nhsuk-width-container nhsuk-width-container-fluid">
       <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
-      <p><a href="/v9/reset-patient-data-10">Reset patient data</a></p>
+      <p><a href="/v10/reset-patient-data-11">Reset patient data</a></p>
     </div>
   </div>
 </footer>

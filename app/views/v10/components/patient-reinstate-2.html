@@ -1,0 +1,24 @@
+<form action="/v10/patient/patient-reinstated" method="post">
+ 
+<h1 class="nhsuk-fieldset__legend--m">Reinstate the patient</h1>
+
+<p>The next test due date has been recalculated to {{ data.pnl_patient.next_test_due_date | returnDateFormat + " " + data.pnl_patient.next_test_due_date | returnTimeDiff }}</p>
+
+<div class="nhsuk-form-group">
+  <label class="nhsuk-label" for="example">CRM Case Number</label>
+  <input class="nhsuk-input nhsuk-input--width-10" type="number" name="crm" value="crm">
+</div>
+
+<div class="nhsuk-form-group">
+  <label class="nhsuk-label" for="example">
+    Comments
+  </label>
+  <span class="nhsuk-hint" id="example-hint">
+    Do not include clinical information at  this point.
+  </span>
+  <textarea class="nhsuk-textarea" id="example" name="comments" rows="5" aria-describedby="example-hint" value="details"></textarea>
+</div>
+
+<button class="nhsuk-button nhsuk-button--ers">Reinstate patient</button>
+
+</form>

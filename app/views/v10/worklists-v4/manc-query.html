@@ -1,0 +1,116 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+
+<script type="text/javascript">
+
+</script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(3){
+    border-bottom:4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+{% block content %}
+
+{{ backLink({
+  "href": "results",
+  "text": "Go back to results"
+}) }}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+  <h1 class="nhsuk-heading-l">Manchester</h1>
+ <p> The following results show the manual matches between the lab and system patient details.
+ <br>
+  Compare the patient details provided by the labs against those held on the system.</p>
+</div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3  nhsuk-summary-list--no-border">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Phone number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+           +44 1624 937 363
+          </dd>
+
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+           Email address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            manctesting@labs.com
+          </dd>
+
+        </div>
+
+      </dl>
+    </div>
+  </div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <nav class="nhsuk-sub-navigation">
+    <ul class="nhsuk-sub-navigation__list">
+      <li class="nhsuk-sub-navigation__item"><a href="manc-process" class="nhsuk-sub-navigation__link">To process</a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="manc-query" class="nhsuk-sub-navigation__link" aria-current="page">To query</a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="manc-check" class="nhsuk-sub-navigation__link">To check</a></li>
+    </ul>
+  </nav>
+</div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+<table class="nhsuk-u-padding-top-4">
+
+  <tr>
+    <th class="ten"="To query">Transfer number</th>
+    <th class="ten"="To query">Status</th>
+    <th class="ten"="To query">Transfer date </th>
+    <th class="ten"="To query">Transfer time </th>
+    <th class="ten"="To query">To action</th>
+    <th class="ten"="To query"></th>
+  </tr>
+<tr>
+
+
+<!-- TO QUERY -->
+<tr> <td>03368</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>10.53am</td> <td>2</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="non-match-1">View non-match</a></td> </tr>
+<tr> <td>03757</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">File error</span></td> <td>05-02-2020</td> <td>11.26am</td> <td>-</td> <td></td> </tr>
+<tr> <td>03758</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>10.45am</td> <td>1</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
+<tr> <td>03759</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>10.59am</td> <td>3</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
+<tr> <td>03760</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">File error</span></td> <td>05-02-2020</td> <td>9.59am</td> <td>-</td><td></td> </tr>
+<tr> <td>03762</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">File error</span></td>  <td>05-02-2020</td> <td>8.38am</td> <td>-</td><td></td> </tr>
+<tr> <td>03763</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>11.25am</td> <td>2</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
+<tr> <td>03764</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>9.34am</td> <td>4</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
+<tr> <td>03765</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>8.34am</td> <td>1</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
+<tr> <td>03766</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">file error</span></td> <td>04-02-2020</td> <td>9.15am</td> <td>-</td><td></td> </tr>
+
+
+
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

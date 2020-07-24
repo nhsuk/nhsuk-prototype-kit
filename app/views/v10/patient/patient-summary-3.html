@@ -1,0 +1,332 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+  <script type="text/javascript" src="/js/action-menu.js"></script>
+  <script type="text/javascript" src="/js/sort.js"></script>
+    <script type="text/javascript" src="/js/tabs.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "true"
+  })
+}}
+{% endblock %}
+
+{% block patientBanner %}
+  {% include '../components/patient-banner.html' %}
+{% endblock %}
+
+
+{% block content %}
+  {% if data.role != 'sampleTaker' %}
+  <nav class="nhsuk-sub-navigation">
+    <ul class="nhsuk-sub-navigation__list">
+      <li class="nhsuk-sub-navigation__item"><a href="patient-summary" class="nhsuk-sub-navigation__link" aria-current="page">Patient Summary</a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="history" class="nhsuk-sub-navigation__link">History</a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="gp-info" class="nhsuk-sub-navigation__link">GP Information</a></li>
+    </ul>
+  </nav>
+{% endif %}
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-three-quarters">
+    <h1 class="nhsuk-heading-l">Patient summary</h1>
+
+      {% set pnlMsg = "<p>Update: " + data.pnl_update_msg  + " </p>"  %}
+      {% if (data['pnl_update_msg_show'] > 1) %}
+        {{ insetText({
+          "HTML": pnlMsg,
+          "classes": "nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-0"
+        }) }}
+      {% endif %}
+
+
+    {% if data.patientSummary.pnl_action == 'Deferred' %}
+      <span class="nhsuk-tag nhsuk-tag--blue"><span>patient has been deferred recently</span></span>
+    {% endif %}
+    {% if data.patientSummary.pnl_action == 'Ceased' %}
+      <span class="nhsuk-tag nhsuk-tag--orange">{{ data.patientSummary.pnl_action }} - {{ data.patientSummary.pnl_reason }}</span>
+    {% endif %}
+    <dl class="nhsuk-summary-list nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Next test due date:
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          {% if data.patientSummary.pnl_action == 'Ceased' %}
+            -
+          {% else %}
+            {{ data.patientSummary.next_test_due_date | returnDateFormat or '20-Jan-2020' }}
+          {% endif %}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          {% if data.role == 'csas' %}
+            {% if data.patientSummary.pnl_action == 'Ceased' %}
+              Actions:
+              <a href="change-due-date/enter-reinstate-2?nhsNumber={{ data.patientSummary.nhs_number}}&role=csas&patversion=3">Reinstate</a>
+            {% else %}
+              Actions:
+              <a href="/v10/start-prior-notifications-defer-reason?nhsNumber={{ data.patientSummary.nhs_number }}&pnlversion=11&patversion=3&role=csas&returnUrl=pat">Delay</a>
+              <a href="/v10/start-prior-notifications-cease-reason?nhsNumber={{ data.patientSummary.nhs_number }}&pnlversion=11&patversion=3&role=csas&returnUrl=pat">Cease</a>
+            {% endif %}
+          {% endif %}
+        </dd>
+      </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Invited date:
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            {% if data.patientSummary.pnl_action == 'Ceased' %}
+              -
+            {% else %}
+              09-Nov-2019
+            {% endif %}
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+          </dd>
+        </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Address:
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+            {{ data['address'] or '20 Thornhill Street, Pudsey, LS15 6FD' }}
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+            <a href="#">
+              {% if data.role == 'csas' %}
+                <span class="nhsuk-tag nhsuk-tag--red">FP69</span>
+              {% endif %}
+            </a>
+        </dd>
+      </div>
+    </dl>
+    {% if data.role != 'sampleTaker' %}
+      {{ details({
+      "text": "View previous addresses",
+      "HTML": "
+
+      <h4>Address History</h4>
+      <table>
+      <thead>
+      <tr>
+        <th>Moved in</th>
+        <th>Address</th>
+      </tr>
+      </thead>
+      <tr>
+      <td>07 2017</td>
+      <td>20 Thornhill Street, Pudsey, LS15 6FD</td>
+      </tr>
+      <tr>
+      <td>03 2013</td>
+      <td>29 Jubilee Close, Bradford, BD19 3WE</td>
+      </tr>
+      <tr>
+      <td>01 2011</td>
+      <td>1 High Street, Bradford, BD13 5TY</td>
+      </tr>
+      </table>"
+      }) }}
+    {% endif %}
+
+    {% if data.role == 'sampleTaker' %}
+
+    {% include '../components/hmr101.html' %}
+
+    {% endif %}
+  </div>
+</div>
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-full">
+    <h2 id="testresults" class="nhsuk-heading-l">Test results</h2>
+
+    {% if data.role == 'csas' %}
+    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4" href="add-test-result/add-result">Add result</a>
+    {% endif %}
+
+    <div class="nhsuk-scrollable-pane">
+    <div class="nhsuk-scrollable-pane__wrapper">
+        <div id="table-scroll" class="table-scroll">
+          <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+            <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table">
+
+              <!-- TABLE START -->
+              <thead class="nhsuk-table__head">
+                <tr class="nhsuk-table__row">
+                  <th class="nhsuk-table__header" scope="col">Test Date</th>
+                  <th class="nhsuk-table__header" scope="col">HPV infection</th>
+                  <th class="nhsuk-table__header"  scope="col">Cytology result</th>
+                  <th class="nhsuk-table__header" scope="col">Action</th>
+                  <th class="nhsuk-table__header" scope="col">Repeat</th>
+                  <th class="nhsuk-table__header" scope="col">Screening lab</th>
+                  <th class="nhsuk-table__header" scope="col">Sample taker code</th>
+                  {% if data.role != 'sampleTaker' %}
+                    <th class="nhsuk-table__header" scope="col">Slide no</th>
+                  {% endif %}
+                </tr>
+              </thead>
+              <tbody class="nhsuk-table__body nhsuk-body-">
+              <!-- OPTION B
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">
+                    {{ data.patientSummary.results.result_date | returnDateFormat or '01-Apr-2017' }}
+                    <span class="nhsuk-table__cell--hint">Private Test</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.infection_code or '-' }}
+                    <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.infection_result or 'No HPV Data' }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.result_code or '2' }}
+                    <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.result or 'Negative' }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.action_code or 'A' }}
+                    <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.action or 'Routine' }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.recall_months or '60' }}
+                    <span class="nhsuk-table__cell--hint">Months</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.sending_lab }}
+                    <span class="nhsuk-table__cell--hint">Leeds General Infirmary</span>
+                  </td>
+                  <td class="nhsuk-table__cell">{{ data.patientSummary.results.sender_code or '676567' }}</td>
+                  {% if data.role != 'sampleTaker' %}
+                    <td class="nhsuk-table__cell">{{ data.patientSummary.results.slide_number or '70406000' }}</td>
+                  {% endif %}
+                </tr>
+                -->
+
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">
+                    {{ data.patientSummary.results.result_date | returnDateFormat or '01-Apr-2017' }}
+                    <span class="nhsuk-table__cell--hint">NHS Test</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.infection_result or 'No HPV Data' }}
+                    <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.infection_code or '-' }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.result or 'Negative' }}
+                    <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.result_code or '2' }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.action or 'Routine' }}
+                    <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.action_code or 'A' }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.recall_months or '60' }}
+                    <span class="nhsuk-table__cell--hint">Months</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.sending_lab or '60450' }}
+                    <span class="nhsuk-table__cell--hint">Leeds General Infirmary</span>
+                  </td>
+                  <td class="nhsuk-table__cell">{{ data.patientSummary.results.sender_code or '676567' }}</td>
+                  {% if data.role != 'sampleTaker' %}
+                    <td class="nhsuk-table__cell">{{ data.patientSummary.results.slide_number or '70406000' }}</td>
+                  {% endif %}
+                </tr>
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">
+                    {{ data.patientSummary.results.result_date | returnPastDate('3', 'years') or '01-Apr-2017'}}
+                    <span class="nhsuk-table__cell--hint">NHS Test</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    No HPV Data
+                    <span class="nhsuk-table__cell--hint">-</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    Negative
+                    <span class="nhsuk-table__cell--hint">2</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    Routine
+                    <span class="nhsuk-table__cell--hint">A</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    60
+                    <span class="nhsuk-table__cell--hint">Months</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    60450
+                    <span class="nhsuk-table__cell--hint">Leeds General Infirmary</span>
+                  </td>
+                  <td class="nhsuk-table__cell">676567</td>
+                  {% if data.role != 'sampleTaker' %}
+                    <td class="nhsuk-table__cell">65408200</td>
+                  {% endif %}
+                </tr>
+
+
+
+                <!-- OLD STYLE
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">
+                    {{ data.patientSummary.results.result_date | returnDateFormat or '01-Apr-2017' }}
+                    <span class="nhsuk-table__cell--hint">Abroad Test</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.infection_result or 'No HPV Data' }}
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.result or 'Negative' }}
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.action or 'Routine' }}
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.recall_months or '60' }} months</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    Leeds General Infirmary
+                  </td>
+                  <td class="nhsuk-table__cell">{{ data.patientSummary.results.sender_code or '676567' }}</td>
+                  {% if data.role != 'sampleTaker' %}
+                    <td class="nhsuk-table__cell">{{ data.patientSummary.results.slide_number or '70406000' }}</td>
+                  {% endif %}
+                </tr>
+                -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    {% include '../components/hpv-results.html' %}
+  </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+      <p><a href="/v9/reset-patient-data-9">Reset patient data</a></p>
+    </div>
+  </div>
+</footer>
+{% endblock %}

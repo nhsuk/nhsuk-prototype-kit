@@ -1,0 +1,29 @@
+<h1 class="nhsuk-fieldset__legend--m">Review patient screening participation</h1>
+
+<dl class="nhsuk-summary-list">
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Action</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['pnl-action'] or 'Cease' }}</dd>
+    <dd class="nhsuk-summary-list__actions"></dd>
+  </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Cease reason</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['pnl-cease-reason'] or 'No cervix' }}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="prior-notification-{{ data.pnlversion }}-cease-reason">Change<span class="nhsuk-u-visually-hidden"> Cease reason</span></a></dd>
+  </div>
+  {% if data.role == 'csas' %}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">CRM</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['crm'] or '123456789' }}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="../patient/change-due-date/enter-action-1">Change<span class="nhsuk-u-visually-hidden"> CRM</span></a></dd>
+  </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Comments</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['comments'] or '' }}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="../patient/change-due-date/enter-action-1">Change<span class="nhsuk-u-visually-hidden"> Comments</span></a></dd>
+  </div>
+  {% endif %}
+</dl>
+
+<a href="/v10/prior-notification/prior-notification-ceased-{{ data.pnlversion }}" class="nhsuk-button nhsuk-button--ers">Submit</a>
+<p><a href="">Exit without saving</a></p>

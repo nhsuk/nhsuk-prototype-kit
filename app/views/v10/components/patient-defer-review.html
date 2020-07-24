@@ -1,0 +1,70 @@
+<h1 class="nhsuk-fieldset__legend--m">Review patient screening participation</h1>
+
+<dl class="nhsuk-summary-list">
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Action</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['pnl-action'] or 'Defer' }}</dd>
+    <dd class="nhsuk-summary-list__actions"></dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">{{ "Delay" if (data.role == 'csas') else "Defer" }} reason</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['pnl-defer-reason'] or 'Pregnancy' }}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="prior-notification-{{ data.pnlversion }}-defer-reason">Change<span class="nhsuk-u-visually-hidden"> Defer reason</span></a></dd>
+  </div>
+
+  {% if (data['pnl-defer-reason'] == "Pregnancy") and data['edd-year'] != '' %}
+    {% set estimatedDateOfDelivery = data['edd-year'] + "-" + data['edd-month'] + "-" + data['edd-day'] %}
+    
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">
+        Estimated date of delivery
+      </dt>
+      <dd class="nhsuk-summary-list__value">{{ estimatedDateOfDelivery | returnDateFormat + ' ' + estimatedDateOfDelivery | returnTimeDiff }}</dd>
+      <dd class="nhsuk-summary-list__actions"><a href="prior-notification-{{ data.pnlversion }}-defer-reason">Change<span class="nhsuk-u-visually-hidden"> Estimated date of delivery</span></a></dd>
+    </div>
+  {% endif %}
+
+  {% if data['defer-length'] != '' %}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">{{ "Delay" if (data.role == 'csas') else "Defer" }} length</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['defer-length'] or '3 Months' }}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="prior-notification-{{ data.pnlversion }}-defer-length">Change<span class="nhsuk-u-visually-hidden"> Defer length</span></a></dd>
+  </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Calculated next test due date</dt>
+      <dd class="nhsuk-summary-list__value">{{ data['defer-length'] | returnDate('months', estimatedDateOfDelivery ) + ' ' +  (data['defer-length'] | returnDate('months', estimatedDateOfDelivery )) | returnTimeDiff }}</dd>
+      <dd class="nhsuk-summary-list__actions"><a href="prior-notification-{{ data.pnlversion }}-defer-length">Change<span class="nhsuk-u-visually-hidden"> Calculated next test due date</span></a></dd>
+    </div>
+  {% endif %}
+
+  {% if data['role'] == 'csas' %}
+    {% if data['ntdd-year'] != '' %}
+      {% set nextTestDueDate = data['ntdd-year'] + "-" + data['ntdd-month'] + "-" + data['ntdd-day'] %}
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Next test due date</dt>
+        <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat + ' ' + nextTestDueDate | returnTimeDiff }}</dd>
+        <dd class="nhsuk-summary-list__actions"><a href="prior-notification-{{ data.pnlversion }}-defer-length">Change<span class="nhsuk-u-visually-hidden"> Next test due date</span></a></dd>
+      </div>
+    {% endif %}
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">CRM</dt>
+      <dd class="nhsuk-summary-list__value">{{ data['crm'] or '' }}</dd>
+      <dd class="nhsuk-summary-list__actions"><a href="patient/change-due-date/enter-action-1">Change<span class="nhsuk-u-visually-hidden"> CRM</span></a></dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Comments</dt>
+      <dd class="nhsuk-summary-list__value">{{  data['comments'] or '' }}</dd>
+      <dd class="nhsuk-summary-list__actions"><a href="patient/change-due-date/enter-action-1">Change<span class="nhsuk-u-visually-hidden"> Comments</span></a></dd>
+    </div>
+  {% endif %}
+</dl>
+
+<a href="/v10/prior-notification/prior-notification-deferred-{{ data.pnlversion }}" class="nhsuk-button nhsuk-button--ers">Submit</a>
+<p><a href="">Exit without saving</a></p>
+ 
+
+

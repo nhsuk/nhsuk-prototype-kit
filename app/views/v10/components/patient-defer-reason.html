@@ -1,0 +1,64 @@
+{% if data.pnl_patient.nhs_number == "9991023867" %}
+  <form action="prior-notification-{{ data.pnlversion }}-defer-confirm" method="post">
+{% else %}
+  <form action="prior-notification-{{ data.pnlversion }}-defer-length" method="post">
+{% endif %}
+
+<div class="nhsuk-form-group">
+  <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      Choose a reason to {{ "delay" if (data.role == 'csas' and data.patversion == '2') else "defer" }} the patient
+    </legend>
+    <div class="nhsuk-radios">
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-1" name="pnl-defer-reason" type="radio" value="Pregnancy">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+          Pregnancy
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Recent test" checked>
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+        Recent test
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Under care of colposcopy" checked>
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+        Under care of colposcopy
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Undergoing treatment relevant to screening" checked>
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+        Undergoing treatment relevant to screening
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Discharge from colposcopy" checked>
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+        Discharge from colposcopy
+        </label>
+      </div>
+      {% if data.role == 'csas' %}
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Patient wishes to defer" checked>
+          <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          Patient wishes to defer
+          </label>
+        </div>
+
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Adminstrative" checked>
+          <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+            Administrative
+          </label>
+        </div>
+      {% endif %}
+    </div>
+  </fieldset>
+</div>
+
+ <button class="nhsuk-button nhsuk-button--ers">Continue</button>
+
+</form>

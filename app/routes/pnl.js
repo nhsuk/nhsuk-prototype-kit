@@ -229,23 +229,20 @@ router.get("/*/prior-notification/prior-notification-deferred-*", function (req,
         const patientSummary = patient.getPatient(nhsNumber);
         const patVersion = req.session.data["patversion"];
         req.session.data['patientSummary'] = patientSummary;
-        //console.log(patientSummary)
+        console.log("pat version: " + patVersion)
         if (patVersion >= 2) {
             res.redirect("/" + getVersion(req) + "/patient/patient-summary-" + patVersion)
         } else {
             res.redirect("/" + getVersion(req) + "/patient/patient-summary")
         }
     } else {
-
         console.log("return URL: " + req.session.data['returnUrl'])
         if (req.session.data['returnUrl'] == "nrl") {
             res.redirect("/" + getVersion(req) + "/get-non-responder-notifications-" + versionNRL)
         } else {
             res.redirect("/" + getVersion(req) + "/get-prior-notifications-" + versionPNL)
         }
-        
     }
-    
 })
 
 router.get("/*/prior-notification/prior-notification-ceased-*", function (req, res) {
@@ -398,8 +395,10 @@ router.get("/*/patient/patient-reinstated*", function (req, res) {
 module.exports = router;
 
 router.get('/*/prior-notification/delete-email', function (req, res) {
+    //const params = new URLSearchParams(req.query);
+    const version = req.session.data['pnlversion'];
     req.session.data['manageEmail'] = null;
     req.session.data['notificationsPNL'] = null;
     req.session.data['notificationsNRL'] = null;
-    res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-10-manage")
+    res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-" + version + "-manage")
 })
