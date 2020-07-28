@@ -42,10 +42,109 @@
   {% endif %}
 
     <div class="nhsuk-panel-with-label">
-      {% include '../../v10/components/pnl-patient-2.html' %}
+        
+  
+
+  
+  <h3 class="nhsuk-panel-with-label__label">Curry Depetris 
+  <span style="color:white;" class="nhsuk-table__cell--hint">NHS No: 999 102 3867</span></h3>
+
+
+<!--
+  <tr id="detailsRow4" class="detailsRow">
+           <td colspan="3">-->
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-full">
+
+ <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-2">
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Next test due date</dt>
+    <dd class="nhsuk-summary-list__value">22-Sep-2020 (in 7 weeks)</dd>
+  </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Last test date</dt>
+    <dd class="nhsuk-summary-list__value">25-Sep-2018 (22 months ago)</dd>
+  </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Last test</dt>
+    <dd class="nhsuk-summary-list__value">
+      
+        (39S) Low-grade dyskaryosis, HPV positive, Suspended
+      
+    </dd>
+  </div>
+</dl>
+
+
+<p class="nhsuk-u-margin-bottom-6"><a href="../patient/patient-summary">View full patient information</a></p>
+              </div>
+            </div>
+          
+        <p></p>
 
       <span class="nhsuk-hint">Step 1 of 3</span>
-      {% include '../../v10/components/patient-defer-reason.html' %}
+      
+  <form action="prior-notification-10-defer-confirm" method="post">
+
+
+<div class="nhsuk-form-group">
+  <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      Choose a reason to delay the patient
+    </legend>
+    <div class="nhsuk-radios">
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-1" name="pnl-defer-reason" type="radio" value="Pregnancy">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+          Pregnancy
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Recent test" checked="">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+        Recent test
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Under care of colposcopy" checked="">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+        Under care of colposcopy
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Undergoing treatment relevant to screening" checked="">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+        Undergoing treatment relevant to screening
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Discharge from colposcopy" checked="">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+        Discharge from colposcopy
+        </label>
+      </div>
+      
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Patient wishes to defer" checked="">
+          <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          Patient wishes to defer
+          </label>
+        </div>
+
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Adminstrative" checked="">
+          <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+            Administrative
+          </label>
+        </div>
+      
+    </div>
+  </fieldset>
+</div>
+
+ <button class="nhsuk-button nhsuk-button--ers">Continue</button>
+
+</form>
     </div>
 
   </div>
