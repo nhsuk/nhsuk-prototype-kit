@@ -41,6 +41,19 @@
     </div>
   {% endif %}
 
+  <div class="nhsuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1">
+  <h2 class="nhsuk-error-summary__title" id="error-summary-title">
+    There is a problem
+  </h2>
+  <div class="nhsuk-error-summary__body">
+    <ul class="nhsuk-list nhsuk-error-summary__list">
+      <li>
+        <a href="#contact-error">Select a reason to defer the patient</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
     <div class="nhsuk-panel-with-label">
         
   
@@ -87,11 +100,14 @@
   <form action="prior-notification-10-defer-confirm" method="post">
 
 
-<div class="nhsuk-form-group">
+<div class="nhsuk-form-group nhsuk-form-group--error">
   <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-      Choose a reason to delay the patient
+      <h1 class="nhsuk-fieldset__heading">Choose a reason to defer the patient</h1>
     </legend>
+    <span class="nhsuk-error-message" id="contact-error">
+      <span class="nhsuk-u-visually-hidden">Error:</span> Select a reason to defer the patient 
+    </span>
     <div class="nhsuk-radios">
       <div class="nhsuk-radios__item">
         <input class="nhsuk-radios__input" id="example-1" name="pnl-defer-reason" type="radio" value="Pregnancy">
@@ -124,19 +140,6 @@
         </label>
       </div>
       
-        <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Patient wishes to defer" checked="">
-          <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-          Patient wishes to defer
-          </label>
-        </div>
-
-        <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="example-2" name="pnl-defer-reason" type="radio" value="Adminstrative" checked="">
-          <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-            Administrative
-          </label>
-        </div>
       
     </div>
   </fieldset>
