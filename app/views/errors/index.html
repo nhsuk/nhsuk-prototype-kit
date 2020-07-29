@@ -75,54 +75,13 @@
       <hr>
 
       <h2>Prior Notification and Non Responder</h2>
-
-      <h3>Notification List</h3>
-      <ul>
-        <li><a href="">Error on page load</a></li>
-      </ul>
-
-      <hr>
-
-      <h3>Manage Emails <mark>to review</mark></h3>
-      <ul>
-        <li><a href=""></a></li>
-      </ul>
-
-      <hr>
-
-      <h3>Action Reason</h3>
+      <h3>Sample pages - <a href="https://nhsd-confluence.digital.nhs.uk/display/CSP/Errors">Confluence errors page</a></h3>
       <div class="nhsuk-table-responsive">
         <table class="nhsuk-table">
           <caption class="nhsuk-table__caption">Skin symptoms and possible causes</caption>
           <thead class="nhsuk-table__head">
             <tr class="nhsuk-table__row">
               <th class="nhsuk-table__header" scope="col">page</th>
-              <th class="nhsuk-table__header" scope="col">error</th>
-              <th class="nhsuk-table__header" scope="col">error message and summary link</th>
-            </tr>
-          </thead>
-          <tbody class="nhsuk-table__body">
-            <tr class="nhsuk-table__row">
-              <td class="nhsuk-table__cell">Defer reason</td>
-              <td class="nhsuk-table__cell "><a href="errors/defer/no-reason-selected">No reason selected</a></td>
-              <td class="nhsuk-table__cell ">You need to select a reason to defer the patient</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <ul>
-        <li><a href="">Last results failed to load</a></li>
-      </ul>
-
-      <hr>
-
-      <h3>Defer Length</h3>
-
-      <div class="nhsuk-table-responsive">
-        <table class="nhsuk-table">
-          <caption class="nhsuk-table__caption"></caption>
-          <thead class="nhsuk-table__head">
-            <tr class="nhsuk-table__row">
               <th class="nhsuk-table__header" scope="col">field</th>
               <th class="nhsuk-table__header" scope="col">error</th>
               <th class="nhsuk-table__header" scope="col">error message and summary link</th>
@@ -130,144 +89,39 @@
           </thead>
           <tbody class="nhsuk-table__body">
             <tr class="nhsuk-table__row">
-              <th class="nhsuk-table__header" scope="col">defer length</th>
+              <td class="nhsuk-table__cell">Defer reason</td>
+              <td class="nhsuk-table__cell">Choose a reason to defer the patient</td>
+              <td class="nhsuk-table__cell "><a href="errors/defer/no-reason-selected">No reason selected</a></td>
+              <td class="nhsuk-table__cell ">You need to select a reason to defer the patient</td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__header" scope="col">Defer Length</td>
+              <td class="nhsuk-table__cell">Enter defer length</td>
               <td class="nhsuk-table__cell "><a href="errors/defer/user-enters-over-max-defer-length">User entered over max amount for deferal Length</a></td>
               <td class="nhsuk-table__cell ">The maximum amount you can defer for [reason] is [x] months</td>
             </tr>
             <tr class="nhsuk-table__row">
-              <th class="nhsuk-table__header" scope="col">defer length</th>
-              <td class="nhsuk-table__cell ">User entered under min amount for deferal Length</td>
-              <td class="nhsuk-table__cell ">The minimum amount you can defer for [reason] is [x] months</td>
-            </tr>
-            <tr class="nhsuk-table__row">
-              <th class="nhsuk-table__header" scope="col">EDD</th>
-              <td class="nhsuk-table__cell ">User entered only year for EDD</td>
-              <td class="nhsuk-table__cell ">Estimated date of delivery must include a month and a year</td>
-            </tr>
-            <tr class="nhsuk-table__row">
-              <th class="nhsuk-table__header" scope="col">EDD</th>
-              <td class="nhsuk-table__cell ">User entered an EDD that was not valid</td>
-              <td class="nhsuk-table__cell ">Estimated date of delivery must be a real date</td>
-            </tr>
-            <tr class="nhsuk-table__row">
-              <th class="nhsuk-table__header" scope="col">EDD</th>
+              <td class="nhsuk-table__header" scope="col">Defer Length</td>
+              <td class="nhsuk-table__cell">Enter estimated date of delivery</td>
               <td class="nhsuk-table__cell "><a href="errors/defer/user-enters-only-month">User entered only month for EDD</a></td>
               <td class="nhsuk-table__cell ">Estimated date of delivery must include a month and a year</td>
             </tr>
             <tr class="nhsuk-table__row">
-              <th class="nhsuk-table__header" scope="col">EDD</th>
-              <td class="nhsuk-table__cell ">User entered only day for EDD</td>
-              <td class="nhsuk-table__cell ">Estimated date of delivery must include a month and a year</td>
-            </tr>
-            <tr class="nhsuk-table__row">
-              <th class="nhsuk-table__header" scope="col">EDD</th>
-              <td class="nhsuk-table__cell ">User entered only year and day for EDD</td>
-              <td class="nhsuk-table__cell ">Estimated date of delivery must include a month and a year</td>
-            </tr>
-            <tr class="nhsuk-table__row">
-              <th class="nhsuk-table__header" scope="col">EDD</th>
-              <td class="nhsuk-table__cell ">User entered only day and month for EDD</td>
-              <td class="nhsuk-table__cell ">Estimated date of delivery must include a month and a year</td>
-            </tr>
-            <tr class="nhsuk-table__row">
-              <th class="nhsuk-table__header" scope="col">EDD / defer length</th>
+              <td class="nhsuk-table__header" scope="col">Defer Length</td>
+              <td class="nhsuk-table__header" scope="col">EDD / defer length</td>
               <td class="nhsuk-table__cell "><a href="errors/defer/user-enters-edd-and-length-that-exceeds">User enters EDD and defer length that exceeds guidance</a></td>
               <td class="nhsuk-table__cell ">The calculated next test due date exceeds the maximum [12] months after estimated date of delivery<ul><li>Check the estimated date of delivery is correct</li><li>Check the defer length is correct</li></ul></td>
             </tr>
             <tr class="nhsuk-table__row">
-              <th class="nhsuk-table__header" scope="col">EDD / defer length</th>
-              <td class="nhsuk-table__cell ">User entered partial EDD and invalid deferal length</td>
-              <td class="nhsuk-table__cell "><ul><li>Estimated date of delivery must include a month and a year</li><li>The [maximum / minimum] amount you can defer for [reason] is [x] months</li></ul></td>
-            </tr>
-            <tr class="nhsuk-table__row">
-              <th class="nhsuk-table__header" scope="col">EDD / defer length</th>
-              <td class="nhsuk-table__cell ">User enters no value for both fields <mark>do we need to show using todays date on review</mark></td>
-              <td class="nhsuk-table__cell "><ul><li>Enter defer length</li></ul></td>
-            </tr>
-            <tr class="nhsuk-table__row">
-              <th class="nhsuk-table__header" scope="col">EDD / defer length</th>
-              <td class="nhsuk-table__cell ">Calculated NTDD is in the past<mark>does this person need inviting instead</mark></td>
-              <td class="nhsuk-table__cell "><ul><li>Enter estimated date of delivery</li><li>Enter defer length</li></ul></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <hr>
-
-      <h3>Yes / No confirm</h3>
-      <div class="nhsuk-table-responsive">
-        <table class="nhsuk-table">
-          <caption class="nhsuk-table__caption"></caption>
-          <thead class="nhsuk-table__head">
-            <tr class="nhsuk-table__row">
-              <th class="nhsuk-table__header" scope="col">page</th>
-              <th class="nhsuk-table__header" scope="col">error</th>
-              <th class="nhsuk-table__header" scope="col">error message and summary link</th>
-            </tr>
-          </thead>
-          <tbody class="nhsuk-table__body">
-            <tr class="nhsuk-table__row">
-              <td class="nhsuk-table__cell">Defer multiple confirm</td>
-              <td class="nhsuk-table__cell "><a href="">No reason selected</a></td>
-              <td class="nhsuk-table__cell ">Select yes if the patient needs deferring.</td>
-            </tr>
-            <tr class="nhsuk-table__row">
-              <td class="nhsuk-table__cell">Cease confirm</td>
-              <td class="nhsuk-table__cell ">No reason selected</td>
-              <td class="nhsuk-table__cell ">Select yes if the patient needs ceasing.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <hr>
-
-      <h3>Action Review</h3>
-      <div class="nhsuk-table-responsive">
-        <table class="nhsuk-table">
-          <caption class="nhsuk-table__caption"></caption>
-          <thead class="nhsuk-table__head">
-            <tr class="nhsuk-table__row">
-              <th class="nhsuk-table__header" scope="col">page</th>
-              <th class="nhsuk-table__header" scope="col">error</th>
-              <th class="nhsuk-table__header" scope="col">error message and summary link</th>
-            </tr>
-          </thead>
-          <tbody class="nhsuk-table__body">
-            <tr class="nhsuk-table__row">
-              <td class="nhsuk-table__cell">Defer review</td>
-              <td class="nhsuk-table__cell "><a href="">Generic error</a></td>
-              <td class="nhsuk-table__cell ">h1 - Sorry, there is a problem deferring this patient<br>p - The patient may have been actioned already, please try again</td>
-            </tr>
-            <tr class="nhsuk-table__row">
-              <td class="nhsuk-table__cell">Defer review</td>
+              <td class="nhsuk-table__cell">Defer Submit</td>
+              <td class="nhsuk-table__cell">-</td>
               <td class="nhsuk-table__cell "><a href="errors/defer/unable-to-defer">Patient already actioned</a></td>
               <td class="nhsuk-table__cell ">h1 - Sorry, there is a problem deferring this patient<br>p - The patient has already been [action] for [reason]</td>
             </tr>
-            <tr class="nhsuk-table__row">
-              <td class="nhsuk-table__cell">Cease review</td>
-              <td class="nhsuk-table__cell ">Generic error</td>
-              <td class="nhsuk-table__cell ">h1 - Sorry, there is a problem ceasing this patient<br>p - The patient may have been actioned already, please try again</td>
-            </tr>
-            <tr class="nhsuk-table__row">
-              <td class="nhsuk-table__cell">Cease review</td>
-              <td class="nhsuk-table__cell ">Patient already actioned</td>
-              <td class="nhsuk-table__cell ">h1 - Sorry, there is a problem ceasing this patient<br>p - The patient has already been [action] for [reason]</td>
-            </tr>
-            <tr class="nhsuk-table__row">
-              <td class="nhsuk-table__cell">Invite review</td>
-              <td class="nhsuk-table__cell ">Generic error</td>
-              <td class="nhsuk-table__cell ">h1 - Sorry, there is a problem inviting this patient<br>p - The patient may have been actioned already, please try again</td>
-            </tr>
-            <tr class="nhsuk-table__row">
-              <td class="nhsuk-table__cell">Invite review</td>
-              <td class="nhsuk-table__cell ">Patient already actioned</td>
-              <td class="nhsuk-table__cell ">h1 - Sorry, there is a problem inviting this patient<br>p - The patient has already been [action] for [reason]</td>
-            </tr>
           </tbody>
         </table>
       </div>
+      
     </div>
   </div>
 {% endblock %}
