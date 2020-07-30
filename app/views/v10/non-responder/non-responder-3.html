@@ -105,7 +105,7 @@
             <span class="nhsuk-table__cell--hint">Recall</span>
           </td>
           <td class="nhsuk-table__cell">
-            {{ patient.nrl_review_date | returnDateFormat }} 
+            {{ patient.nrl_review_date | returnNumericDateFormat }} 
              <span class="nhsuk-table__cell--hint">{{ ((( patient.nrl_review_date | returnDateFormat) | returnTimeDiffDays) | removeBrackets) | capitalize }} </span>
           </td>
           <td>
