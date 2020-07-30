@@ -1,0 +1,87 @@
+{% extends "layout-v2.html" %}
+
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../../v10/components/header-3.html' %}
+{% endblock %}
+
+<!-- force the prototype to build again -->
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <nav class="nhsuk-sub-navigation nhsuk-u-padding-bottom-6">
+      <h1 class="nhsuk-heading-l">Notifications</h1>
+      <ul class="nhsuk-sub-navigation__list">
+        <li class="nhsuk-sub-navigation__item"><a href="" class="nhsuk-sub-navigation__link" aria-current="page">Patients due to be invited<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">-</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="/v10/get-non-responder-notifications-3" class="nhsuk-sub-navigation__link">Patients who have not responded<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">9</span> </a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="/v10/get-ceased-notifications-1" class="nhsuk-sub-navigation__link">Patients to review<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">0</span> </a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="prior-notification-11-manage" class="nhsuk-sub-navigation__link">Manage emails</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-4">
+  <h2 class="nhsuk-heading-m">Patients due to be invited</h2>
+  <p>The following patients need reviewing as they are due to be invited for screening. If you do not take any action then patients will be invited to be screened.</p>
+  <p><a href="prior-notification-11-forms">Find out how to action patients because of <strong>mental capacity</strong> or <strong>patient choice</strong>?</a></p>
+  </div>
+</div>
+
+  {{ panel({
+      "HTML": "<h2>Sorry, there is a problem getting the patients due to be invited list.</h2><p><a href=''>Try reloading the page</a></p>
+      <p>If the problem persists then <a href=''>contact the help desk<a/></p>",
+      "classes" : "nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-0"
+      }) }}
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+      <p><a href="/v10/reset-patient-data-11">Reset patient data</a></p>
+    </div>
+  </div>
+</footer>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  function toggle(btnID, eIDs) {
+    // Feed the list of ids as a selector
+    var theRows = document.querySelectorAll(eIDs);
+    // Get the button that triggered this
+    var theButton = document.getElementById(btnID);
+    // If the button is not expanded...
+    if (theButton.getAttribute("aria-expanded") == "false") {
+      // Loop through the rows and show them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("shown");
+        theRows[i].classList.remove("hidden");
+      }
+      // Now set the button to expanded
+      theButton.setAttribute("aria-expanded", "true");
+      // Otherwise button is not expanded...
+    } else {
+      // Loop through the rows and hide them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("hidden");
+        theRows[i].classList.remove("shown");
+      }
+      // Now set the button to collapsed
+      theButton.setAttribute("aria-expanded", "false");
+    }
+    $('.expanderButton[aria-expanded="true"]').closest('tr').addClass('expandedRow');
+    $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
+  }
+</script>
+
+{% endblock %}
