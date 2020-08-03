@@ -43,6 +43,11 @@ module.exports = function (env) {
     return moment(ntdd).subtract(6, "weeks").format("D-MMM-YYYY");
   }
 
+  filters.returnInviteDateFormat = function (ntdd) {
+    console.log(ntdd)
+    return moment(ntdd).subtract(6, "weeks").format("DD-MM-YYYY");
+  }
+
   filters.returnPastDate = function (amount, type) {
     return moment().subtract(amount, type).format("D-MMM-YYYY");
   }
@@ -130,6 +135,10 @@ module.exports = function (env) {
 
   filters.returnDateFormat = function (date) {
     return moment(date).format("D-MMM-YYYY");
+  }
+
+  filters.returnNumericDateFormat = function (date) {
+    return moment(date).format("DD-MM-YYYY");
   }
 
   filters.returnDashes = function (date) {

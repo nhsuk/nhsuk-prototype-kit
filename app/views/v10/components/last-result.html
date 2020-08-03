@@ -1,8 +1,7 @@
 {% if patient.results == null %} 
   {% set resultDate = "no results" %} 
 {% else %}
-  {% set resultWithoutHPV = "(" + (patient.results.result_code or "-" ) + (patient.results.infection_code or "") + (patient.results.action_code or "-") + ") " + (patient.results.result or "-") + ", " +(patient.results.action or "-") %}
-  {% set resultWithHPV = "(" + (patient.results.result_code or "-" ) + (patient.results.infection_code or "") + (patient.results.action_code or "-") + ") " + (patient.results.result or "-") + ", " +(patient.results.infection_result or "") + ", " +(patient.results.action or "-") %}
+  {% set result = "(" + (patient.results.result_code or "-" ) + (patient.results.infection_code or "") + (patient.results.action_code or "-") + ") " + (patient.results.result or "-") + ", " +(patient.results.infection_result or "No HPV data") + ", " +(patient.results.action or "-") %}
   {% set resultDate = (patient.results.result_date | returnDateFormat or "-") + " " + (patient.results.result_date | returnTimeDiff or "-") %}
 {% endif %}
 
@@ -18,16 +17,13 @@
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Last test</dt>
     <dd class="nhsuk-summary-list__value">
-      {% if patient.results.infection_result == undefined %}
-        {{ resultWithoutHPV }}
+      
           {% if patient.results != null %}
-            <span class="nhsuk-tag nhsuk-tag--orange nhsuk-u-margin-bottom-2">No HPV Data</span>
+            {{ result }}
           {% else %}
             no results
           {% endif %}
-      {% else %}
-        {{ resultWithHPV }}
-      {% endif %}
+      
     </dd>
   </div>
 </dl>
