@@ -2,7 +2,9 @@
 
 {% block pageScripts %}
 
-<script type="text/javascript">
+<script src="/js/results-filter.js">
+</script>
+
 
 </script>
 <style type="text/css" media="screen">
@@ -35,34 +37,65 @@
   Compare the patient details provided by the labs against those held on the system.</p>
 </div>
 </div>
-
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-one-half">
-      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3  nhsuk-summary-list--no-border">
+  <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">Lab contact details</h3>
 
-        <div class="nhsuk-summary-list__row">
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+                <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-            Phone number
+            Lab lead
           </dt>
-          <dd class="nhsuk-summary-list__value">
-           +44 1624 937 363
+         <dd class="nhsuk-summary-list__value">
+          (+44) 1624 937 662 
           </dd>
-
+          <dd class="nhsuk-summary-list__value">
+          <a href=mailto:susan.prince@nhs.net?subject="Query">susan.prince@nhs.net</a> 
         </div>
 
-        <div class="nhsuk-summary-list__row">
+    </dd>
+                <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-           Email address
+            Lab assistant
           </dt>
           <dd class="nhsuk-summary-list__value">
-            manctesting@labs.com
+          (+44) 1624 937 363 
           </dd>
-
+          <dd class="nhsuk-summary-list__value">
+                    <a href=mailto:ian.mcdaid@nhs.net?subject="Query">ian.mcdaid@nhs.net</a> 
+          </dd>
         </div>
+
+    </dd>
+                    <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Lab technician
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+          (+44) 1624 363 937 
+          </dd>
+          <dd class="nhsuk-summary-list__value">
+          <a href=mailto:sarah.jenkins@nhs.net?subject="Query">sarah.jenkins@nhs.net</a> 
+          </dd>
+        </div>
+
+    </dd>
 
       </dl>
     </div>
   </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full ">
+   <label class="nhsuk-label" for="width-20">
+    Filter table
+  </label>
+<input type="search" class="nhsuk-input light-table-filter  nhsuk-input--width-20" for="input-width-20" data-table="order-table"  />
+</div>
+</div>
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">

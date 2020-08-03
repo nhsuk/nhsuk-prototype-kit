@@ -70,7 +70,7 @@ NHS Cervical Screening
 
       <div class="nhsuk-panel nhsuk-promo">
 
-        <h3>Previously used addresses</h3>
+        <h3>Previous letters sent to:</h3>
         <p> 20 Thornhill Street
           <br>
           Pudsey
@@ -123,6 +123,7 @@ NHS Cervical Screening
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
+<a href="manc-process-saved" class="filterFloat">Save and eixt</a>
 
     {{ backLink({
       "href": "manc-process",
@@ -232,15 +233,6 @@ NHS Cervical Screening
           </dd>
 
         </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Match
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            93%
-          </dd>
-
-        </div>
       </dl>
       <a class="nhsuk-button nhsuk-button--ers_secondary sidebarbttn" href="#">View participant</a>
 
@@ -288,14 +280,9 @@ NHS Cervical Screening
             Send to GP
           </label>
         </div>
-        <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="lab" name="how-to-resolve" type="radio" value="lab" aria-controls="lab" aria-expanded="false">
-          <label class="nhsuk-label nhsuk-radios__label" for="send-back">
-            Save to lab query list
-          </label>
-        </div>
 
             <div class="nhsuk-radios nhsuk-radios--conditional">
+                     <div class="nhsuk-radios nhsuk-radios--conditional">
 
       <div class="nhsuk-radios__item">
         <input class="nhsuk-radios__input" id="contact-1" name="how-to-resolve" type="radio" value="address" aria-controls="conditional-contact-1" aria-expanded="false">
@@ -326,20 +313,41 @@ NHS Cervical Screening
         </div>
 
       </div>
-      </fieldset>
 
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="contact-1" name="how-to-resolve" type="radio" value="email" aria-controls="query" aria-expanded="false">
+        <label class="nhsuk-label nhsuk-radios__label" for="query">
+          Save to lab query list
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="query">
+
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="email">
+            Enter reason 
+          </label>
+          <input class="nhsuk-input nhsuk-textarea commentBox nhsuk-u-width-full" id="email" data-length=200 rows="5" name="email" type="text">     
+
+        </div>
+
+   </div>
+
+   
+      </fieldset>
+<!--
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
     <form action="manc-p1" method="post">
     <div class="nhsuk-form-group">
-      <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-3" for="example">
-        Comments
+      <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
+        Why have you selected this action?
       </label>
       <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-        Enter comments if needed
+       Enter comments here
       </span>
-      <textarea class="nhsuk-textarea commentBox" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200></textarea>
+      <textarea class="nhsuk-textarea commentBox" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200 required></textarea>
       <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
         You have <span class="counter">200</span> characters remaining
       </span>
@@ -367,6 +375,7 @@ NHS Cervical Screening
 
 </div>
 </div>
+-->
 
     </div>
     <a href="manc-p2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and next</a>

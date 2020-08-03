@@ -2,9 +2,9 @@
 
 {% block pageScripts %}
 
-<script type="text/javascript">
-
+<script src="/js/results-filter.js">
 </script>
+
 <style type="text/css" media="screen">
   .nhsuk-header__navigation-item:nth-child(3){
     border-bottom:4px solid #d8dde0;
@@ -41,33 +41,63 @@
 
 
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-one-half">
-   <div class="nhsuk-panel nhsuk-promo">
-      <dl class="nhsuk-summary-list   nhsuk-summary-list--no-border">
+  <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">Lab contact details</h3>
 
-        <div class="nhsuk-summary-list__row">
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+                <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-            Phone number
+            Lab lead
           </dt>
-          <dd class="nhsuk-summary-list__value">
-           +44 1624 937 363
+         <dd class="nhsuk-summary-list__value">
+          (+44) 1624 937 662 
           </dd>
-
+          <dd class="nhsuk-summary-list__value">
+          <a href=mailto:susan.prince@nhs.net?subject="Query">susan.prince@nhs.net</a> 
         </div>
 
-        <div class="nhsuk-summary-list__row">
+    </dd>
+                <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-           Email address
+            Lab assistant
           </dt>
           <dd class="nhsuk-summary-list__value">
-            manctesting@labs.com
+          (+44) 1624 937 363 
           </dd>
-
+          <dd class="nhsuk-summary-list__value">
+                    <a href=mailto:ian.mcdaid@nhs.net?subject="Query">ian.mcdaid@nhs.net</a> 
+          </dd>
         </div>
+
+    </dd>
+                    <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Lab technician
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+          (+44) 1624 363 937 
+          </dd>
+          <dd class="nhsuk-summary-list__value">
+          <a href=mailto:sarah.jenkins@nhs.net?subject="Query">sarah.jenkins@nhs.net</a> 
+          </dd>
+        </div>
+
+    </dd>
 
       </dl>
     </div>
   </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full ">
+   <label class="nhsuk-label" for="width-20">
+    Filter table
+  </label>
+<input type="search" class="nhsuk-input light-table-filter  nhsuk-input--width-20" for="input-width-20" data-table="order-table"  />
+</div>
 </div>
 
 <div class="nhsuk-grid-row">
@@ -84,9 +114,10 @@
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
+<table class="order-table">
 
-<table class="nhsuk-u-padding-top-4">
-
+<thead>
+  <tr>
   <tr>
    <th class="ten"="To process">Transfer number</th>
     <th class="ten"="To process">Status </th>
@@ -95,8 +126,9 @@
     <th class="ten"="To process">To action</th>
     <th class="ten"="To process"></th>
 <tr>
+</thead>
 
-
+<tbody>
 <!-- TO PROCESS -->
 <tr> <td>03369</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">with processor</span></td> <td>06-02-2020</td> <td>5.27pm</td> <td>20</td> <td></td> </tr>
 <tr> <td>03370</td>  <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">checker rejected</span></td> <td>06-02-2020</td> <td>9.23am</td> <td>2</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="checker-rejected">Start matching</a></td>
@@ -108,7 +140,7 @@
 <tr> <td>03378</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not started</span></td> <td>06-02-2020</td> <td>8.38am</td> <td>44</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
 <tr> <td>03380</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">checker rejected</span></td> <td>04-02-2020</td> <td>1.20pm</td> <td>1</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
 <tr> <td>03379</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not started</span></td> <td>06-02-2020</td> <td>11.40am</td> <td>53</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
-
+</tbody>
 </table>
 </div>
 </div>
