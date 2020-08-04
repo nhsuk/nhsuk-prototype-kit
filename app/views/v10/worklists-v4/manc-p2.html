@@ -277,14 +277,9 @@
             Send to GP
           </label>
         </div>
-        <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="lab" name="how-to-resolve" type="radio" value="lab" aria-controls="lab" aria-expanded="false">
-          <label class="nhsuk-label nhsuk-radios__label" for="send-back">
-            Save to lab query list
-          </label>
-        </div>
 
             <div class="nhsuk-radios nhsuk-radios--conditional">
+                     <div class="nhsuk-radios nhsuk-radios--conditional">
 
       <div class="nhsuk-radios__item">
         <input class="nhsuk-radios__input" id="contact-1" name="how-to-resolve" type="radio" value="address" aria-controls="conditional-contact-1" aria-expanded="false">
@@ -315,21 +310,41 @@
         </div>
 
       </div>
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="contact-1" name="how-to-resolve" type="radio" value="email" aria-controls="query" aria-expanded="false">
+        <label class="nhsuk-label nhsuk-radios__label" for="query">
+          Save to lab query list
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="query">
+
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="email">
+            Enter reason 
+          </label>
+          <input class="nhsuk-input nhsuk-textarea commentBox nhsuk-u-width-full" id="email" data-length=200 rows="5" name="email" type="text">     
+
+        </div>
+
+   </div>
+
+   
       </fieldset>
-
-
+<!--
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
-    <form action="manc-p2" method="post">
+    <form action="manc-p1" method="post">
     <div class="nhsuk-form-group">
-      <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-3" for="example">
-        Comments
+      <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
+        Why have you selected this action?
       </label>
       <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-        Enter comments if needed
+       Enter comments here
       </span>
-      <textarea class="nhsuk-textarea commentBox" id="commentsb" value="commentsb" name="commentsb" rows="5" data-length=200></textarea>
+      <textarea class="nhsuk-textarea commentBox" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200 required></textarea>
       <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
         You have <span class="counter">200</span> characters remaining
       </span>
@@ -348,24 +363,23 @@
     </form>
 
     <ul class="nhsuk-comment-container">
-      {% if data.commentsb !=null %}
+      {% if data.commentsa !=null %}
 
-  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsb}}</li>
+  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsa}}</li>
 
   {% endif %}
   			</ul>
 
 </div>
 </div>
-
-          </div>
-          <a href="manc-p3" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and next</a>
+-->
 
     </div>
+    <a href="manc-p3" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Save and next</a>
 
   </div>
 
-
+</div>
 
 
 
