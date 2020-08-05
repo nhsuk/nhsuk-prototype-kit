@@ -9,12 +9,12 @@
       <p>Minimum deferral is X months</br>Maximum deferral can not exceed X months</p>
     {% endif %}
   {% endset %}
-
+{#
   {{ insetText({
     "HTML":  pnlDeferInfo,
     "classes": "nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-4"
   }) }}
-
+#}
   <form action="prior-notification-{{ data.pnlversion }}-defer-review" method="post">
   
   <div id="nhsuk-form-group-dob-ntdd" class="nhsuk-form-group nhsuk-u-margin-bottom-6">
@@ -64,7 +64,7 @@
 
 <div class="nhsuk-form-group">
   <label class="nhsuk-label" for="example">
-    Comments
+    Comments (optional)
   </label>
   <span class="nhsuk-hint" id="example-hint">
     Do not include clinical information at  this point.
