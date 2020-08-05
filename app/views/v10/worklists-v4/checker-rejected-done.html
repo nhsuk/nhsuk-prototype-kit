@@ -11,6 +11,7 @@
   }
 </style>
 
+
 {% endblock %}
 {% block pageTitle %}
   NHS Cervical Screening
@@ -30,19 +31,19 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
-  <h1 class="nhsuk-heading-l">Manchester  </h1>
- <p> The following results show the manual matches recieved from the labs which need to be actioned today. 
+  <h1 class="nhsuk-heading-l">Manchester</h1>
+ <p> The following results show the manual matches between the lab and system patient details.
  <br>
   Compare the patient details provided by the labs against those held on the system.</p>
 </div>
 </div>
+
 
 <!--
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
     <div class="nhsuk-panel-with-label">
       <h3 class="nhsuk-panel-with-label__label">Lab contact details</h3>
-<a href="lab-details" class="filterFloat nhsuk-u-padding-top-3">Edit details</a>
 
       <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
@@ -73,7 +74,7 @@
     </dd>
                     <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-            Lab scientist 
+            Lab technician
           </dt>
           <dd class="nhsuk-summary-list__value">
           (+44) 1624 363 937 
@@ -103,8 +104,8 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     <nav class="nhsuk-sub-navigation">
-    <ul class="nhsuk-sub-navigation__list">
-      <li class="nhsuk-sub-navigation__item"><a href="manc-process" class="nhsuk-sub-navigation__link" aria-current="page">To process <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">11</span></a></li>
+     <ul class="nhsuk-sub-navigation__list">
+      <li class="nhsuk-sub-navigation__item"><a href="manc-process" class="nhsuk-sub-navigation__link" aria-current="page">To process <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">10</span></a></li>
       <li class="nhsuk-sub-navigation__item"><a href="manc-query" class="nhsuk-sub-navigation__link">To query<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">6</span></a></li>
       <li class="nhsuk-sub-navigation__item"><a href="manc-check" class="nhsuk-sub-navigation__link">To check <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">11</span></a></li>
     </ul>
@@ -112,8 +113,6 @@
 </div>
 </div>
 
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-full">
 
 <table class="order-table">
 <thead>
@@ -135,10 +134,11 @@
 </thead>
 
 <tbody>
+  
+
+<tbody>
 <!-- TO PROCESS -->
-<tr> <td>03368</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">Not started</span></td> <td></td>  <td>06-02-2020</td> <td>11.22am</td> <td> 5 of 23</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="manc-p1">Start matching</a></td> </tr>
-<tr> <td>03369</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">with processor</span></td> <td>Jon Simpson</td>   <td>06-02-2020</td> <td>5.27pm</td> <td>20 of 42</td> <td></td> </tr>
-<tr> <td>03370</td>  <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">checker rejected</span></td> <td>Sally Jones</td>   <td>06-02-2020</td> <td>9.23am</td> <td>2 of 25</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="checker-rejected">Start matching</a></td>
+
 <tr> <td>03371</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">Not started</span></td>  <td></td>   <td>06-02-2020</td> <td>9.02am</td> <td>38 of 54</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
 <tr> <td>03372</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">with processor</span></td>  <td>Mike Ashfeild</td>   <td>06-02-2020</td> <td>8.38am</td> <td>45 of 34</td><td></td></tr>
 <tr> <td>03373</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">Not started</span></td>  <td></td>   <td>06-02-2020</td> <td>8.38am</td> <td>34  of 56</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
@@ -147,6 +147,8 @@
 <tr> <td>03378</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not started</span></td>   <td></td>  <td>06-02-2020</td> <td>8.38am</td> <td>44  of 43</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
 <tr> <td>03380</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">checker rejected</span></td>  <td>Sally Jones</td>  <td>04-02-2020</td> <td>1.20pm</td> <td>1 of 35</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
 <tr> <td>03379</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not started</span></td> <td></td>  <td>06-02-2020</td> <td>11.40am</td> <td>53 of 46</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
+
+
 </tbody>
 </table>
 </div>
