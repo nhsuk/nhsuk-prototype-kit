@@ -2,12 +2,15 @@
 
 {% block pageScripts %}
 
+<script src="/js/results-filter.js">
+</script>
+
+
 <style type="text/css" media="screen">
   .nhsuk-header__navigation-item:nth-child(3){
     border-bottom:4px solid #d8dde0;
   }
 </style>
-
 {% endblock %}
 {% block pageTitle %}
   NHS Cervical Screening
@@ -33,32 +36,51 @@
   Compare the patient details provided by the labs against those held on the system.</p>
 </div>
 </div>
-
-
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-one-half">
-   <div class="nhsuk-panel nhsuk-promo">
-      <dl class="nhsuk-summary-list   nhsuk-summary-list--no-border">
+  <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">Lab contact details</h3>
 
-        <div class="nhsuk-summary-list__row">
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+                <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-            Phone number
+            Lab lead
           </dt>
-          <dd class="nhsuk-summary-list__value">
-           +44 1624 937 363
+         <dd class="nhsuk-summary-list__value">
+          (+44) 1624 937 662 
           </dd>
-
+          <dd class="nhsuk-summary-list__value">
+          <a href=mailto:susan.prince@nhs.net?subject="Query">susan.prince@nhs.net</a> 
         </div>
 
-        <div class="nhsuk-summary-list__row">
+    </dd>
+                <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-           Email address
+            Lab assistant
           </dt>
           <dd class="nhsuk-summary-list__value">
-            manctesting@labs.com
+          (+44) 1624 937 363 
           </dd>
-
+          <dd class="nhsuk-summary-list__value">
+                    <a href=mailto:ian.mcdaid@nhs.net?subject="Query">ian.mcdaid@nhs.net</a> 
+          </dd>
         </div>
+
+    </dd>
+                    <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Lab scientist
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+          (+44) 1624 363 937 
+          </dd>
+          <dd class="nhsuk-summary-list__value">
+          <a href=mailto:sarah.jenkins@nhs.net?subject="Query">sarah.jenkins@nhs.net</a> 
+          </dd>
+        </div>
+
+    </dd>
 
       </dl>
     </div>
@@ -66,12 +88,21 @@
 </div>
 
 <div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full ">
+   <label class="nhsuk-label" for="width-20">
+    Filter table
+  </label>
+<input type="search" class="nhsuk-input light-table-filter  nhsuk-input--width-20" for="input-width-20" data-table="order-table"  />
+</div>
+</div>
+
+<div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     <nav class="nhsuk-sub-navigation">
     <ul class="nhsuk-sub-navigation__list">
-      <li class="nhsuk-sub-navigation__item"><a href="manc-process" class="nhsuk-sub-navigation__link">To process</a></li>
-      <li class="nhsuk-sub-navigation__item"><a href="manc-query" class="nhsuk-sub-navigation__link" aria-current="page">To query</a></li>
-      <li class="nhsuk-sub-navigation__item"><a href="manc-check" class="nhsuk-sub-navigation__link">To check</a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="manc-process" class="nhsuk-sub-navigation__link">To process <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">10</span></a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="manc-query" class="nhsuk-sub-navigation__link" aria-current="page">To query<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">5</span></a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="manc-check" class="nhsuk-sub-navigation__link">To check <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">11</span></a></li>
     </ul>
   </nav>
 </div>
@@ -84,6 +115,7 @@
 
   <tr>
     <th class="ten"="To query">Transfer number</th>
+    <th class="ten"="To query">Patient</th>
     <th class="ten"="To query">Status</th>
     <th class="ten"="To query">Transfer date </th>
     <th class="ten"="To query">Transfer time </th>
@@ -94,15 +126,15 @@
 
 
 <!-- TO QUERY -->
-<tr> <td>03757</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">File error</span></td> <td>05-02-2020</td> <td>11.26am</td> <td>-</td> <td></td> </tr>
-<tr> <td>03758</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>10.45am</td> <td>1</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
-<tr> <td>03759</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>10.59am</td> <td>3</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
-<tr> <td>03760</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">File error</span></td> <td>05-02-2020</td> <td>9.59am</td> <td>-</td><td></td> </tr>
-<tr> <td>03762</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">File error</span></td>  <td>05-02-2020</td> <td>8.38am</td> <td>-</td><td></td> </tr>
-<tr> <td>03763</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>11.25am</td> <td>2</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
-<tr> <td>03764</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>9.34am</td> <td>4</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
-<tr> <td>03765</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>8.34am</td> <td>1</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
-<tr> <td>03766</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">file error</span></td> <td>04-02-2020</td> <td>9.15am</td> <td>-</td><td></td> </tr>
+<tr> <td>03757</td> <td>Caroline Chang</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Non-res match</span></td> <td>05-02-2020</td> <td>11.26am</td> <td>1</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="non-res">View non-res match</a></td> </tr>
+<tr> <td>03758</td> <td>Scarlett Hampson</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>10.45am</td> <td>1</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
+<tr> <td>03759</td> <td>Mia Phamelepe</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>10.59am</td> <td>1</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
+<tr> <td>03760</td> <td></td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">File error</span></td> <td>05-02-2020</td> <td>9.59am</td> <td></td><td></td> </tr>
+<tr> <td>03762</td> <td></td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">File error</span></td>  <td>05-02-2020</td> <td>8.38am</td> <td></td><td></td> </tr>
+<tr> <td>03763</td> <td>Alyssa Hirst</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Non-res match</span></td> <td>05-02-2020</td> <td>11.25am</td> <td>1</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="non-res-1">View non-res match</a></td> </tr>
+<tr> <td>03764</td> <td>Talia Horsefall</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>9.34am</td> <td>1</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
+<tr> <td>03765</td> <td>Valeria Wheeler</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td>05-02-2020</td> <td>8.34am</td> <td>1</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
+<tr> <td>03766</td> <td></td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">file error</span></td> <td>04-02-2020</td> <td>9.15am</td> <td></td><td></td> </tr>
 
 
 

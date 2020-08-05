@@ -2,13 +2,9 @@
 
 {% block pageScripts %}
 
-<script src="/js/results-filter.js"></script>
+<script src="/js/results-filter.js">
+</script>
 
-<style type="text/css" media="screen">
-  .nhsuk-header__navigation-item:nth-child(3){
-    border-bottom:4px solid #d8dde0;
-  }
-</style>
 
 {% endblock %}
 {% block pageTitle %}
@@ -22,7 +18,7 @@
 {% block content %}
 
 {{ backLink({
-  "href": "results",
+  "href": "worklists",
   "text": "Go back to results"
 }) }}
 
@@ -35,6 +31,8 @@
   Compare the patient details provided by the labs against those held on the system.</p>
 </div>
 </div>
+
+
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
     <div class="nhsuk-panel-with-label">
@@ -91,10 +89,9 @@
    <label class="nhsuk-label" for="width-20">
     Filter table
   </label>
-<input type="search" class="nhsuk-input light-table-filter  nhsuk-input--width-20" for="input-width-20" data-table="order-table"/>
+<input type="search" class="nhsuk-input light-table-filter  nhsuk-input--width-20" for="input-width-20" data-table="order-table"  />
 </div>
 </div>
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     <nav class="nhsuk-sub-navigation">
@@ -105,21 +102,18 @@
     </ul>
   </nav>
 
-<thead>
+
 <table class="nhsuk-u-padding-top-4">
     <th class="ten"="To check">Transfer number</th>
-    <th class="ten"="To check"> Status </th>
+    <th class="ten"="To check">Status </th>
     <th class="ten"="To check">Transfer date </th>
     <th class="ten"="To check">Transfer time </th>
     <th class="ten"="To check">To action </th>
-    <th class="ten"="To check"></th>
+    <th class="ten"="To check"> </th>
  </th>
-</thead>
 
-<tbody>
+
 <!-- TO CHECK -->
-<tr><td>03475</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">with checker</span></td> <td>04-02-2020</td> <td>9.41am</td> <td>2</td> <td></td> </tr>
-<tr><td>03368</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not checked </span></td> <td>04-02-2020</td> <td>8.44am</td> <td>2</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="check-p1">Check matched</a></td>  </tr>
 <tr><td>03477</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">with checker</span></td> <td>04-02-2020</td> <td>5.01pm</td> <td>34</td> <td></td> </tr>
 <tr><td>03478</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not checked </span></td> <td>04-02-2020</td> <td>11.52am</td> <td>75</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Check matched</a></td>  </tr>
 <tr><td>03479</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not checked </span></td> <td>04-02-2020</td> <td>11.27am</td> <td>63</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Check matched</a></td> </tr>
@@ -129,7 +123,7 @@
 <tr><td>03483</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">with checker</span></td> <td>04-02-2020</td> <td>2.09pm</td> <td>46</td> <td></td>  </tr>
 <tr><td>03484</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not checked </span></td> <td>04-02-2020</td> <td>9.30am</td> <td>73</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Check matched</a></td> </tr>
 <tr><td>03485</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">with checker</span></td> <td>04-02-2020</td> <td>10.50am</td> <td>35</td> <td></td> </tr>
-</tbody>
+
 </table>
 </div>
 </div>
