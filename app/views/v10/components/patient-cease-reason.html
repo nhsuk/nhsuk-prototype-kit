@@ -1,5 +1,9 @@
 
-  <form action="prior-notification-{{ data.pnlversion }}-cease-confirm" method="post">
+  {% if data.role == 'csas' %}
+    <form action="prior-notification-{{ data.pnlversion }}-cease-crm" method="post">
+  {% else %}
+    <form action="prior-notification-{{ data.pnlversion }}-cease-confirm" method="post">
+  {% endif %}
   <div class="nhsuk-form-group">
 
   <fieldset class="nhsuk-fieldset">

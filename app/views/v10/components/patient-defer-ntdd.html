@@ -1,7 +1,7 @@
-<h1 class="nhsuk-fieldset__legend--m">
+{#<h1 class="nhsuk-fieldset__legend--m">
   Enter the next test due date for the patient
 </h1>
-
+#}
   {% set pnlDeferInfo %}
     {% if data['pnl-defer-reason'] == 'Pregnancy' %}
       <p>Minimum deferral is 3 months after date of delivery</br>Maximum deferral can not exceed 12 months</p>
@@ -15,14 +15,17 @@
     "classes": "nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-4"
   }) }}
 #}
-  <form action="prior-notification-{{ data.pnlversion }}-defer-review" method="post">
+  <form action="prior-notification-{{ data.pnlversion }}-defer-crm" method="post">
   
   <div id="nhsuk-form-group-dob-ntdd" class="nhsuk-form-group nhsuk-u-margin-bottom-6">
     <div class="nhsuk-form-group"> 
       <fieldset class="nhsuk-fieldset" aria-describedby="ntdd-from" role="group">
-        <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
-          Enter Next test due date
+        <legend class="nhsuk-fieldset__legend">
+          <h1 class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-2">Enter the next test due date for the patient</h1>
         </legend>
+        <span class="nhsuk-hint" id="example-hint">
+          For example, 15 3 1984
+        </span>
         <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
           You must enter a date
         </span>
@@ -56,9 +59,12 @@
     </div>
   </div>
 
-
+{#
 <div class="nhsuk-form-group">
   <label class="nhsuk-label" for="example">CRM Case Number</label>
+  <span class="nhsuk-hint" id="example-hint">
+    For example, CAS-12345-ABCDE
+  </span>
   <input class="nhsuk-input nhsuk-input--width-10" type="number" name="crm" value="crm">
 </div>
 
@@ -71,6 +77,7 @@
   </span>
   <textarea class="nhsuk-textarea" id="example" name="comments" rows="5" aria-describedby="example-hint" value="details"></textarea>
 </div>
+#}
 
   <button class="nhsuk-button nhsuk-button--ers">Continue</button>
 
