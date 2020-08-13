@@ -1,0 +1,35 @@
+{#
+<h1 class="nhsuk-fieldset__legend--l">
+  Enter CRM case number
+</h1>
+#}
+
+
+  <form action="prior-notification-{{ data.pnlversion }}-defer-review" method="post">
+  
+
+<div class="nhsuk-form-group">
+  <h1 class="nhsuk-label-wrapper">
+    <label class="nhsuk-label nhsuk-label--l nhsuk-u-margin-bottom-2" for="example-heading">
+      Enter CRM case number
+    </label>
+  </h1>
+  <span class="nhsuk-hint" id="example-hint">
+    For example, CAS-12345-ABCDE
+  </span>
+  <input class="nhsuk-input nhsuk-input--width-10" type="number" name="crm" value="crm">
+</div>
+
+<div class="nhsuk-form-group">
+  <label class="nhsuk-label" for="example">
+    Comments (optional)
+  </label>
+  <span class="nhsuk-hint" id="example-hint">
+    Do not include clinical information at  this point.
+  </span>
+  <textarea class="nhsuk-textarea" id="example" name="comments" rows="5" aria-describedby="example-hint" value="details"></textarea>
+</div>
+
+  <button class="nhsuk-button nhsuk-button--ers">Continue</button>
+
+  </form>

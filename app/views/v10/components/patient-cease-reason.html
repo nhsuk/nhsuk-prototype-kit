@@ -1,5 +1,9 @@
 
-  <form action="prior-notification-{{ data.pnlversion }}-cease-confirm" method="post">
+  {% if data.role == 'csas' %}
+    <form action="prior-notification-{{ data.pnlversion }}-cease-crm" method="post">
+  {% else %}
+    <form action="prior-notification-{{ data.pnlversion }}-cease-confirm" method="post">
+  {% endif %}
   <div class="nhsuk-form-group">
 
   <fieldset class="nhsuk-fieldset">
@@ -28,7 +32,7 @@
       <div class="nhsuk-radios__item">
         <input class="nhsuk-radios__input" id="example-2" name="pnl-cease-reason" type="radio" value="Radiotherapy/stenosis of the cervix">
         <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-          Radiotherapy of the cervix
+          Radiotherapy (to the pelvic area which affects the cervix)
         </label>
       </div>
 

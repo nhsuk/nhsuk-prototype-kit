@@ -17,25 +17,13 @@
         <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
         </svg>
-        {% if data.role == 'csas' %}
-          Back to step 2 - Enter a CRM case number</a>
-        {% else %}
-          Back to step 1 - How long do you want to {{ "delay" if (data.role == 'csas' and data.patversion == '2') else "defer" }} the patient for?</a>
-        {% endif %}
+        Back to step 2 - Entering a next test due date</a>
     </div>
 
   <div class="nhsuk-panel-with-label">
     {% include '../components/pnl-patient-2.html' %}
-    {% if data.role == 'csas' %}
-      <span class="nhsuk-hint">Step 4 of 4</span>
-    {% else %}
-      <span class="nhsuk-hint">Step 3 of 3</span>
-    {% endif %}
-      {% if (data.role == 'csas' and data.patversion == '2') %}
-        {% include '../components/patient-defer-review-csas.html' %}
-      {% else %}
-        {% include '../components/patient-defer-review.html' %}
-      {% endif %}
+    <span class="nhsuk-hint">Step 3 of 4</span>
+      {% include '../components/patient-defer-crm.html' %}
   </div>
 
   </div>
