@@ -10,17 +10,17 @@ module.exports = config => (req, res, next) => {
 
   // default to version 10 of the PNL flow
   if (req.session.data["pnlversion"] == undefined) {
-    req.session.data["pnlversion"] = "10";
+    req.session.data["pnlversion"] = "11";
   }
 
   // default to version 2 of the patient summary
   if (req.session.data["patversion"] == undefined) {
-    req.session.data["patversion"] = "2";
+    req.session.data["patversion"] = "3";
   }
 
   // default to version 2 of the NRL
   if (req.session.data["nrlversion"] == undefined) {
-    req.session.data["nrlversion"] = "2";
+    req.session.data["nrlversion"] = "3";
   }
 
   // load the basic data for PNL
