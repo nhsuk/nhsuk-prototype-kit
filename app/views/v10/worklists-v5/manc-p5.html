@@ -39,28 +39,7 @@
     <div class="nhsuk-grid-column-full">
 
 
-      <h3>Patient summary</h3>
-      <dl class="nhsuk-summary-list">
 
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Next test due date
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            20-June-2020
-          </dd>
-
-        </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Invited date
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            09-Nov-2020
-          </dd>
-
-        </div>
-      </dl>
 
 
 
@@ -129,7 +108,7 @@
 
 <div class="nhsuk-inset-text">
   <span class="nhsuk-u-visually-hidden">Information: </span>
-  <p>No correspondence to home.</p>
+  <p>Care of the GP.</p>
 </div>
 </div>
 </div>
@@ -195,7 +174,6 @@
 
 
 
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
     <!-- OPTIONS -->
@@ -207,12 +185,17 @@
             How do you want to action this result?
           </h1>
         </legend>
-      
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="lab" name="how-to-resolve" type="radio" value="lab" aria-controls="lab" aria-expanded="false">
+          <label class="nhsuk-label nhsuk-radios__label" for="lab">
+            Use lab details
+          </label>
+        </div>
 
         <div class="nhsuk-radios__item">
           <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
           <label class="nhsuk-label nhsuk-radios__label" for="system">
-            Send back to lab
+            Use system details
           </label>
         </div>
 

@@ -11,7 +11,6 @@
   }
 </style>
 
-
 {% endblock %}
 {% block pageTitle %}
   NHS Cervical Screening
@@ -28,6 +27,7 @@
   "text": "Go back to results"
 }) }}
 
+
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
@@ -37,8 +37,6 @@
   Compare the patient details provided by the labs against those held on the system.</p>
 </div>
 </div>
-
-
 <!--
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
@@ -74,7 +72,7 @@
     </dd>
                     <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-            Lab technician
+            Lab scientist
           </dt>
           <dd class="nhsuk-summary-list__value">
           (+44) 1624 363 937 
@@ -92,6 +90,7 @@
 </div>
 -->
 
+
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full ">
    <label class="nhsuk-label" for="width-20">
@@ -104,9 +103,9 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     <nav class="nhsuk-sub-navigation">
-     <ul class="nhsuk-sub-navigation__list">
-      <li class="nhsuk-sub-navigation__item"><a href="manc-process" class="nhsuk-sub-navigation__link" aria-current="page">To process <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">10</span></a></li>
-      <li class="nhsuk-sub-navigation__item"><a href="manc-query" class="nhsuk-sub-navigation__link">To query<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">6</span></a></li>
+    <ul class="nhsuk-sub-navigation__list">
+      <li class="nhsuk-sub-navigation__item"><a href="manc-process" class="nhsuk-sub-navigation__link">To process <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">10</span></a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="manc-query" class="nhsuk-sub-navigation__link" aria-current="page">To query<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">12</span></a></li>
       <li class="nhsuk-sub-navigation__item"><a href="manc-check" class="nhsuk-sub-navigation__link">To check <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">11</span></a></li>
     </ul>
   </nav>
@@ -114,42 +113,48 @@
 </div>
 
 
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
 <table class="order-table">
 <thead>
   <tr>
    <th class="ten"="To process">Transfer number 
 </th>
-    <th class="ten"="To process">Status 
+   <th class="ten" ="To process">Patient name
 </th></th>
-    <th class="ten"="To process">Processor 
+    <th class="ten"width="15%"="To process">Status
+</th></th>
+    <th class="ten"width="15%"="To process">Processor 
 </th></th>
     <th class="ten"="To process">Date recieved
      </th></th>
     <th class="ten"="To process">Time recieved 
 </th></th>
-    <th class="ten"="To process">To action 
+    <th class="ten"="To process">
 </th></th>
-    <th class="ten"="To process"></th>
+    <th class="ten"="To process"></th> 
 <tr>
 </thead>
-
 <tbody>
-  
 
-<tbody>
-<!-- TO PROCESS -->
 
-<tr> <td>03371</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">Not started</span></td>  <td></td>   <td>06-02-2020</td> <td>9.02am</td> <td>4 of 9</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
-<tr> <td>03372</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">with processor</span></td>  <td> Mike Ashfeild</td>   <td>06-02-2020</td> <td>8.38am</td> <td>3 of 12</td><td></td></tr>
-<tr> <td>03373</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">Not started</span></td>  <td></td>   <td>06-02-2020</td> <td>8.38am</td> <td>8 of 12</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
-<tr> <td>03375</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">checker rejected</span></td>  <td></td>   <td>06-02-2020</td> <td>3.34pm</td> <td>11 of 9</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
-<tr> <td>03376</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">checker rejected</span></td>  <td></td>   <td>06-02-2020</td> <td>2.09pm</td> <td>4 of 8</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
-<tr> <td>03378</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not started</span></td>   <td></td>  <td>06-02-2020</td> <td>8.38am</td> <td>7 of 9</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
-<tr> <td>03380</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">checker rejected</span></td>  <td></td>  <td>04-02-2020</td> <td>1.20pm</td> <td>1 of 4</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
-<tr> <td>03379</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not started</span></td> <td></td>  <td>06-02-2020</td> <td>11.40am</td> <td>4 of 13</td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Start matching</a></td></tr>
-
+<!-- TO QUERY -->
+<tr> <td>03365</td> <td>Misha Barts </td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td>Sally Jones</td> <td>05-02-2020</td> <td>9.53am</td> <td></td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="">View non-match</a></td> </tr>
+<tr> <td>03366</td> <td></td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">File error</span></td> <td></td> <td>05-02-2020</td> <td>9.59am</td> <td></td><td></td> </tr>
+<tr> <td>03669</td> <td>Isobel Haw</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td> Jon Simpson</td> <td>05-02-2020</td> <td>10.45am</td> <td></td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
+<tr> <td>03370</td> <td></td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">File error</span></td> <td></td> <td>06-02-2020</td> <td>9.01am</td> <td></td><td></td> </tr>
+<tr> <td>03372</td> <td>Charlotte Gravill</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td> Jon Simpson</td> <td>05-02-2020</td> <td>10.45am</td> <td></td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="non-match-2">View non-match</a></td> </tr>
+<tr> <td>03374</td> <td>Mia Phamelepe</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td> <td>07-02-2020</td> <td>9.12am</td> <td></td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
+<tr> <td>03375</td> <td></td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">File error</span></td> <td></td> <td>07-02-2020</td> <td>9.59am</td> <td></td><td></td> </tr>
+<tr> <td>03376</td> <td></td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">File error</span></td>  <td></td> <td>07-02-2020</td> <td>10.38am</td> <td></td><td></td> </tr>
+<tr> <td>03377</td> <td>Julie Lodge</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td> Jon Simpson</td> <td>07-02-2020</td> <td>10.45am</td> <td></td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
 
 </tbody>
+
+
+
+
 </table>
 </div>
 </div>
