@@ -8,7 +8,7 @@
 
 <!-- Set the page title inside the pageTitle block -->
 {% block pageTitle %}
-  Content page example - NHS.UK prototype kit
+  Page example - {{ serviceName }} prototype
 {% endblock %}
 
 <!-- Breadcrumb goes inside the beforeContent block -->
@@ -19,19 +19,6 @@
     href: "/",
     text: "Home"
   }) }}
-  <!-- Phase banner -->
-  <div class="app-phase-banner">
-    <div class="nhsuk-width-container app-phase-banner__container">
-      <p class="app-phase-banner__content">
-        <strong class="nhsuk-tag app-phase-banner__tag">
-          Prototype
-        </strong>
-        <span class="app-phase-banner__text">
-        This is a prototype - your <a href="#">feedback</a> will help us improve it.
-        </span>
-      </p>
-    </div>
-  </div>
 {% endblock %}
 
 <!-- Your page content goes inside the content block -->
@@ -67,45 +54,6 @@
 
       <h2>Level heading two</h2>
 
-      {{ list({
-        "title": "Do",
-        "type": "tick",
-        "items": [
-          {
-            "item": "cover blisters that are likely to burst with a soft plaster or dressing"
-          },
-          {
-            "item": "wash your hands before touching a burst blister"
-          },
-          {
-            "item": "allow the fluid in a burst blister to drain before covering it with a plaster or dressing"
-          }
-        ]
-      }) }}
-
-      {{ list({
-        "title": "Don't",
-        "type": "cross",
-        "items": [
-          {
-            "item": "burst a blister yourself"
-          },
-          {
-            "item": "peel the skin off a burst blister"
-          },
-          {
-            "item": "pick at the edges of the remaining skin"
-          },
-          {
-            "item": "wear the shoes or use the equipment that caused your blister until it heals"
-          }
-        ]
-      }) }}
-
-      <h3>
-        Level heading three
-      </h3>
-
       <p>
         Body text:
       </p>
@@ -121,16 +69,6 @@
           the lazy dog
         </li>
       </ul>
-
-      {{ warningCallout({
-        "heading": "School, nursery or work",
-        "HTML": "<p>Stay away from school, nursery or work until all the spots have crusted over. This is usually 5 days after the spots first appeared.</p>"
-      }) }}
-
-      {{ reviewDate({
-        "lastReview": "12 February 2017",
-        "nextReview": "1 February 2020"
-      }) }}
 
       <!-- End of content -->
 

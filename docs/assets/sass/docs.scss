@@ -1,6 +1,9 @@
 // NHS.UK frontend library
 @import 'node_modules/nhsuk-frontend/packages/nhsuk';
 
+// NHS.UK frontend library
+@import '_card';
+
 // ==========================================================================
 // FRONTEND STYLE ADJUSTMENTS
 // ==========================================================================
@@ -54,15 +57,4 @@ p .app-code {
 // Installation guide screenshots
 .app-img-guide {
   width: 100%;
-}
-
-// Table hotfix
-
-.nhsuk-table__body .nhsuk-table__cell {
-  vertical-align: top;
-}
-
-.nhsuk-table__header,
-.nhsuk-table__cell {
-  padding: 16px 16px 16px 0;
 }

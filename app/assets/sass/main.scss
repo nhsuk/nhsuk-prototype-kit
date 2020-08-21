@@ -2,10 +2,17 @@
 @import 'node_modules/nhsuk-frontend/packages/nhsuk';
 
 // Components that are not in the NHS.UK frontend library
+@import 'components/alert';
+@import 'components/card';
+@import 'components/expander';
+@import 'components/loading-spinner';
 @import 'components/panel-confirmation';
 @import 'components/phase-banner';
 @import 'components/related-nav';
+@import 'components/small-checkboxes';
+@import 'components/small-radios';
 @import 'components/tag';
+@import 'components/task-list';
 
 ///////////////////////////////////////////
 // Add your custom CSS/Sass styles below... 

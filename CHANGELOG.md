@@ -1,5 +1,16 @@
 # NHS.UK prototype kit Changelog
 
+## 3.2.0 - Unreleased
+
+:new: **New features**
+
+- Add Sass (CSS) for components that need testing, for example: card and tag components
+- Update page templates - including adding the `nhsuk-main-wrapper--s` helper class to the transactional pages
+- Change default header in `layout.html` to be a transactional header
+- Added `serviceName` variable to the default header header in `layout.html` with instructions in the comments on where to update it
+- Add new partial `beforeMain` - for the correct placement of the back link component
+- Add `clear-data` link and pages to the app folder
+
 ## 3.1.0 - 24th April 2020
 
 :new: **New features**

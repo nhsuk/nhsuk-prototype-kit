@@ -1,28 +1,37 @@
 {% extends 'layout.html' %}
 
+<!-- Helper class "nhsuk-main-wrapper--s" reduces the main padding top and bottom -->
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
 {% block pageTitle %}
   Question page
+{% endblock %}
+
+<!-- Set the back link inside the beforeMain block -->
+{% block beforeMain %}
+  {{ backLink({
+    "href": "/templates/start-page",
+    "text": "Go back",
+    "classes": "nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-4"
+  }) }}
 {% endblock %}
 
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-fieldset__legend--l">
-        Heading or question goes here
-      </h1>
-
       <form action="/templates/check-your-answers" method="post">
 
-        <p>
-          [Insert question content here]
-        </p>
-
-        <p>
-          [Visit the 
-            <a href="https://service-manual.nhs.uk">NHS digital service manual</a> 
-          for guidance and examples.]
-        </p>
+        {{ input({
+          "label": {
+            "text": "What is your name?",
+            "classes": "nhsuk-label--l",
+            "isPageHeading": true
+          },
+          "id": "example-name",
+          "name": "example-name",
+          "value": data['example-name']
+        }) }}
 
         {{ button({
           "text": "Continue",
@@ -30,11 +39,6 @@
         }) }}
 
       </form>
-
-      {{ backLink({
-        "href": "#",
-        "text": "Change my previous answer"
-      }) }}
 
     </div>
   </div>

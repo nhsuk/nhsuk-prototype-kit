@@ -1,0 +1,71 @@
+// Task list pattern
+
+.app-task-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.app-task-list__section {
+  display: table;
+  @include nhsuk-font($size:24, $weight: bold);
+}
+
+.app-task-list__section-number {
+  display: table-cell;
+  padding-right: nhsuk-spacing(1);
+
+  @include mq($from: tablet) {
+    min-width: nhsuk-spacing(6);
+    padding-right: 0;
+  }
+}
+
+.app-task-list__items {
+  @include nhsuk-font($size: 19);
+  @include nhsuk-responsive-margin(7, "bottom");
+  list-style: none;
+  padding-left: 0;
+  @include mq($from: tablet) {
+    padding-left: nhsuk-spacing(6);
+  }
+}
+
+.app-task-list__item {
+  border-bottom: 1px solid $nhsuk-border-color;
+  margin-bottom: 0 !important;
+  padding-top: nhsuk-spacing(2);
+  padding-bottom: nhsuk-spacing(2);
+  @include clearfix;
+}
+
+.app-task-list__item:first-child {
+  border-top: 1px solid $nhsuk-border-color;
+}
+
+.app-task-list__task-name {
+  display: block;
+  max-width: 50%;
+  @include mq($from: 350px) {
+    float: left;
+  }
+  @include mq($from: desktop) {
+    max-width: 60%;
+  }
+}
+
+.app-task-list__task-tag {
+  margin-top: nhsuk-spacing(2);
+  margin-bottom: nhsuk-spacing(1);
+
+  @include mq($from: 350px) {
+    float: right;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.app-task-list__items--no-padding {
+  padding-left: 0;
+}

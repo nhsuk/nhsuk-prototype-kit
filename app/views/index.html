@@ -12,8 +12,9 @@
 
 <!-- Set the page title inside the pageTitle block -->
 {% block pageTitle %}
-  NHS.UK prototype kit
+  {{ serviceName }} prototype
 {% endblock %}
+<!-- You can edit the service name in the config.js file -->
 
 <!-- Breadcrumb goes inside the beforeContent block -->
 {% block beforeContent %}
@@ -52,22 +53,24 @@
         You'll find the code for this page at <strong>/app/views/index.html</strong>.
       </p>
 
-      <p>
-        There is also an <a href="/page-example">example page</a>, which contains a selection of NHS.UK frontend styles and components.
-      </p>
-
       <hr>
 
       <h2>
-        Documentation
+        Get started
       </h2>
 
-      <ul>
+      <ul class="nhsuk-list">
         <li>
-          Get started with <a href="/docs">how to guides and page templates</a>
+          <h3 class="nhsuk-u-margin-bottom-2"><a href="/docs/how-tos">How to guides</a></h3>
+          <span class="nhsuk-body-m">Learn how to use the prototype kit, from creating a simple page to building complex user journeys.</span>
         </li>
         <li>
-          Copy and paste styles and components from the <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a>
+          <h3 class="nhsuk-u-margin-bottom-2"><a href="/docs/page-templates">Page templates</a></h3>
+          <span class="nhsuk-body-m">Copy and paste page templates into your project.</span>
+        </li>
+        <li>
+          <h3 class="nhsuk-u-margin-bottom-2"><a href="https://service-manual.nhs.uk/design-system">Design system - styles, components and patterns</a></h3>
+          <span class="nhsuk-body-m">Copy and paste styles, components and patterns into your project.</span>
         </li>
       </ul>
 
