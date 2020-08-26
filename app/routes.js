@@ -51,11 +51,15 @@ router.post("/csass/add-test-result/v2/change", function(req, res) {
   }
 });
 
-router.post("/add-test-result-routes", function (req, res) {
+/*router.post("/add-test-result-routes", function (req, res) {
   var resultType = req.session.data["result-type"];
   res.redirect("/v10/patient/add-test-result/add-test-result-" + resultType.toLowerCase());
 });
-
+*/
+router.post("/add-test-result-routes", function (req, res) {
+  var resultType = req.session.data["result-type"];
+  res.redirect("/v10/patient/add-test-result/add-test-result-english");
+});
 
 router.post("/csass/add-test-result/v1/change", function(req, res) {
   var reason = req.session.data["change-due-date"];

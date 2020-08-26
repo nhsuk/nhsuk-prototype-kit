@@ -19,22 +19,107 @@
         </svg>
         Back to step 1 - Choose a reason test type</a>
     </div>
-
   <div class="nhsuk-panel-with-label">
     {% include '../../components/pnl-patient-2.html' %}
-    <span class="nhsuk-hint">Step 2 of 3</span>
+    <span class="nhsuk-hint">Step 2 of 3</span>  
+  
+  {% if data['result-type']== 'Scottish'%}
+   This is a scottish result 
+   <br>
+  {% endif %}
+
+  {% if data['result-type'] != 'Scottish'%}
+   This is not a scottish result
+   <br>
+  {% endif %}
+
+  {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
+   This is English or welsh
+   <br>
+  {% endif %}
+
+
+    <div class="nhsuk-form-group">
+  <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      Add {{ data['result-type'] }} test details
+    </legend>
       <form>
+    
         {{ input({
-  "label": {
-    "text": "English?"
-  },
-  "id": "example",
-  "name": "example"
-}) }}
-     <button class="nhsuk-button nhsuk-button--ers" type="submit">
-       Save and continue
-     </button>
-    </form>
+         "label": {
+          "text": "Slide number"
+         },
+         "id": "input-width-10",
+         "name": "test-width-10",
+         "classes": "nhsuk-input--width-10"
+        }) }}
+      
+       
+      {% if data['result-type']!= 'Scottish'%}
+        {{ input({
+          "label": {
+            "text": "Sender National code"
+          },
+          "id": "input-width-2",
+          "name": "national-code",
+          "classes": "nhsuk-input--width-2"
+        }) }}
+      {% endif %}
+
+       {{ dateInput({
+         "id": "example",
+         "namePrefix": "example",
+         "fieldset": {
+           "legend": {
+             "text": "Test date",
+             "classes": "nhsuk-input--width-4",
+             "isPageHeading": true
+           }
+         },
+         "items": [
+           {
+             "name": "day",
+             "classes": "nhsuk-input--width-2"
+           },
+           {
+             "name": "month",
+             "classes": "nhsuk-input--width-2"
+           },
+           {
+             "name": "year",
+             "classes": "nhsuk-input--width-4"
+           }
+         ]
+       }) }}
+      
+      {% if data['result-type']!= 'Aboard'%}
+       {{ input({
+         "label": {
+           "text": "Source Code"
+         },
+         "id": "input-width-2",
+         "name": "test-width-2",
+         "classes": "nhsuk-input--width-2"
+       }) }}
+      {% endif %}
+
+      {% if data['result-type']!= 'Scottish'%}
+       {{ input({
+         "label": {
+           "text": "Sender Code"
+         },
+          "id": "input-width-10",
+         "name": "test-width-10",
+         "classes": "nhsuk-input--width-10"
+       }) }}
+      {% endif %}
+
+       <br>
+         <button class="nhsuk-button nhsuk-button--ers" type="submit">
+            Continue
+         </button>
+     </form>
   </div>
 
   </div>
