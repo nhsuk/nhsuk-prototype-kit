@@ -74,7 +74,7 @@
           {% if data.role == 'csas' %}
             {% if data.patientSummary.pnl_action == 'Ceased' %}
               Actions:
-              <a href="change-due-date/enter-reinstate-2?nhsNumber={{ data.patientSummary.nhs_number}}&role=csas&patversion=3">Reinstate</a>
+              <a href="change-due-date/enter-reinstate-3?nhsNumber={{ data.patientSummary.nhs_number}}&role=csas&patversion=3">Reinstate</a>
             {% else %}
               Actions:
               <a href="/v10/start-prior-notifications-defer-reason?nhsNumber={{ data.patientSummary.nhs_number }}&pnlversion=11&patversion=3&role=csas&returnUrl=pat">Delay</a>
