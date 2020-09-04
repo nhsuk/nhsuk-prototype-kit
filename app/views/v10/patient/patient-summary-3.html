@@ -51,6 +51,16 @@
         }) }}
       {% endif %}
 
+<!-- want to add message to say result has gone for review and will be added to patient summary.
+
+      {% set resultMsg = "<p>Update: " + data.addresult_update_msg  + " </p>"  %}
+      {% if (data['addresult_update_msg_show'] > 1) %}
+        {{ insetText({
+          "HTML": resultMsg,
+          "classes": "nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-0"
+        }) }}
+      {% endif %} -->
+
 
     {% if data.patientSummary.pnl_action == 'Deferred' %}
       <span class="nhsuk-tag nhsuk-tag--blue"><span>patient has been deferred recently</span></span>
