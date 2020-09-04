@@ -6,6 +6,8 @@
 
 {% block header %}
   {% include '../../components/header-3.html' %}
+  {% from 'date-input/macro.njk' import dateInput %}
+
 {% endblock %}
 
 {% block content %}
@@ -24,7 +26,7 @@
     <span class="nhsuk-hint">Step 3 of 6</span>  
   
   <!--{% if data['result-type']== 'Scottish'%}
-   This is a scottish result 
+   This is a scottish result
    <br>
   {% endif %}
 
@@ -45,52 +47,65 @@
       Add {{ data['result-type'] }} test details
     </legend>
       <form action='add-test-result-result' method='post'>
-  
-        {{ input({
-         "label": {
-          "text": "Slide number",
-          "classes": "nhsuk-label nhsuk-label__strong"
-         },
-         "id": "input-width-10",
-         "name": "slide-number",
-         "classes": "nhsuk-input--width-10"
-        }) }}
-      
 
-       {{ dateInput({
-         "id": "example",
-         "namePrefix": "example",
-         "fieldset": {
-           "legend": {
-             "text": "Test date",
-             "classes": "nhsuk-input--width-4 nhsuk-label nhsuk-label__strong",
-             "isPageHeading": true
-           }
-         },
-  "hint": {
-    "text": "For example, 15 3 1984"
-  },
-         "items": [
-           {
-             "name": "day",
-             "value": "day",
-             "id": "day",
-             "classes": "nhsuk-input--width-2"
+
+        <div class="nhsuk-form-group">
+          {{ input({
+           "label": {
+            "text": "Slide number",
+            "classes": "nhsuk-label nhsuk-label__strong"
            },
-           {
-             "name": "month",
-             "value": "month",
-             "id": "month",
-             "classes": "nhsuk-input--width-2"
-           },
-           {
-             "name": "year",
-             "value": "year",
-             "id": "year",
-             "classes": "nhsuk-input--width-4"
-           }
-         ]
-       }) }}
+           "id": "input-width-10",
+           "name": "slide-number",
+           "classes": "nhsuk-input--width-10"
+          }) }}
+
+        </div>
+
+        <div class="nhsuk-form-group">
+
+          <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
+            <legend class="nhsuk-fieldset__legend nhsuk-input--width-4 nhsuk-label nhsuk-label__strong">
+    <h1 class="nhsuk-fieldset__heading">
+      Test date
+    </h1>
+  </legend>
+            <span class="nhsuk-hint" id="example-hint">
+              For example, 15 3 1984
+            </span>
+
+            <div class="nhsuk-date-input" id="example">
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="day">
+                    Day
+                  </label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="day" name="day" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="month">
+                    Month
+                  </label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="month" name="month" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+              <div class="nhsuk-date-input__item">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-date-input__label" for="year">
+                    Year
+                  </label>
+                  <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="year" name="year" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+        </div>
+
+
+
 
        <br>
          <button class="nhsuk-button nhsuk-button--ers" type="submit">
