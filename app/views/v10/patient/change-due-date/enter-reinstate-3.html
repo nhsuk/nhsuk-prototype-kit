@@ -20,7 +20,9 @@
     
     <div class="nhsuk-panel-with-label">
       {% include '../../components/pnl-patient-reinstate.html' %}
-      <span class="nhsuk-hint">Step 1 of 2</span>
+      {% if data.reinstateType != 'reject' %}
+        <span class="nhsuk-hint">Step 1 of 4</span>
+      {% endif %}
       {% include '../../components/patient-reinstate.html' %}
     </div>
 
@@ -28,27 +30,6 @@
 </div>
 
 {% endblock %}
-{#
-                <div class="nhsuk-form-group">
-                  <label class="nhsuk-label" for="example">
-                  CRM
-                  </label>
-                <input class="nhsuk-input nhsuk-input--width-10" type="number" name="crm" value="crm">
-              </div>
 
-
-
-                <div class="nhsuk-form-group">
-                  <label class="nhsuk-label" for="example">
-                    Comments
-                  </label>
-                  <span class="nhsuk-hint" id="example-hint">
-                    Do not include clinical information at  this point.
-                  </span>
-                  <textarea class="nhsuk-textarea" id="example" name="details" rows="5" aria-describedby="example-hint" value="details"></textarea>
-                </div>
-                  <button class="nhsuk-button--ers">Continue</button>
-            </form>
-#}
            </div>
 

@@ -13,7 +13,7 @@ const moment = require('moment');
 9100001740
 */
 
-const patients = [
+var patients = [
     {
         "address": {
             "address_line_1": "52 HOLLY MEWS",
@@ -519,12 +519,12 @@ module.exports.submitPatient = function (nhsNumber, type) {
 module.exports.reinstatePatient = function (nhsNumber, ntdd) {
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
     //console.log(patient)
-    console.log("ntdd: " + ntdd)
+    //console.log("ntdd: " + ntdd)
     // use the next test due date supplied
     if (ntdd != null) {
         patient.next_test_due_date = moment(ntdd).format("DD-MMM-YYYY");
     } else {
-        patient.next_test_due_date = moment().add(7, "weeks").format("DD-MMM-YYYY");
+        patient.next_test_due_date = moment().add(11, "weeks").format("DD-MMM-YYYY");
     }
 
     patient.pnl_action = '';
@@ -533,19 +533,41 @@ module.exports.reinstatePatient = function (nhsNumber, ntdd) {
     //console.log(patient)
 };
 
-module.exports.resetPatients = function(req) {
+module.exports.resetPatients = function (req) {
+    //console.log(req.session.data['patients-backup'])
+    //patients = req.session.data['patients-backup'];
+    //patient = {}
     patients.forEach(function (patient) {
         patient.pnl = true;
         patient.pnl_action = "";
         patient.nrl = true; 
     })
-
+//
     patients.forEach(function (patient) {
         if (patient.nhs_number == "9100001694" || patient.nhs_number == "9100001384" || patient.nhs_number == "9100001740" || patient.nhs_number == "9991023867") {
             patient.pnl_action = "Ceased";
-        }
-    })
+            
+            if (patient.nhs_number == "9100001694") {
+                patient.pnl_reason = "No cervix";
+            }
 
+            if (patient.nhs_number == "9100001384") {
+                patient.pnl_reason = "Due to age";
+            }
+
+            if (patient.nhs_number == "9100001740" || patient.nhs_number == "9991023867") {
+                patient.pnl_reason = "Patient informed choice";
+            }
+
+           // 9100001694 No cervix
+           // 9100001384 Due to age
+           // 9100001740 Patient informed choice
+           // 9991023867 Patient informed choice
+       }
+   })
+    //req.session.data['nrl_patients'] = req.session.data['patients-backup'];
+    //req.session.data['patients'] = req.session.data['patients-backup'];
+    //req.session.data['pnl_patient'] = {};
     req.session.data['nrl_patients'] = patients;
     req.session.data['patients'] = patients;
 }

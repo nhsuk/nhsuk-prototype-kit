@@ -121,6 +121,7 @@ router.post("/*/change-due-date", function(req, res) {
 });
 
 router.post("/*/enter-test-result", function (req, res) {
+  req.session.data["pnl_update_msg_show"] = 0;
   var testType = req.session.data['result-type'];
   if (testType == "Abroad") {
     res.redirect("/" + getVersion(req) + "/patient/add-test-result/add-test-result-test-info");
@@ -146,7 +147,7 @@ router.post("/search-v2/", function (req, res) {
 
 router.post("/*/patient/search/search", function(req, res) {
   var nhsNumber = req.session.data["searchnhs"];
-
+  req.session.data["addresult_update_msg_show"] = 0;
   if (getVersion(req) == 'v9' || 'v10') {
     console.log('try to get the patient out of the database')
     const patientSummary = patient.getPatient(nhsNumber);

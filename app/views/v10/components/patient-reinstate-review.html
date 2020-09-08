@@ -10,15 +10,15 @@
     {% if data['ntdd-year'] == '' or data['ntdd-year'] == undefined %}
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">Next test due date</dt>
-        <dd class="nhsuk-summary-list__value">{{ 7 | returnDate('weeks', ("today" | returnDate)) | returnDateFormat + " " + 7 | returnDate('weeks', ("today" | returnDate)) | returnTimeDiff }}</dd>
-        <dd class="nhsuk-summary-list__actions"><a href="patient/change-due-date/enter-reinstate-3-ntdd">Change<span class="nhsuk-u-visually-hidden"> Next test due date</span></a></dd>
+        <dd class="nhsuk-summary-list__value">{{ 11 | returnDate('weeks', ("today" | returnDate)) | returnDateFormat + " " + 11 | returnDate('weeks', ("today" | returnDate)) | returnTimeDiff }}</dd>
+        <dd class="nhsuk-summary-list__actions"><a href="enter-reinstate-3-ntdd">Change<span class="nhsuk-u-visually-hidden"> Next test due date</span></a></dd>
       </div>
     {% else %}
     {% set nextTestDueDate = data['ntdd-year'] + "-" + data['ntdd-month'] + "-" + data['ntdd-day'] %}
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">Next test due date</dt>
         <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat + ' ' + nextTestDueDate | returnTimeDiff }}</dd>
-        <dd class="nhsuk-summary-list__actions"><a href="patient/change-due-date/enter-reinstate-3-ntdd">Change<span class="nhsuk-u-visually-hidden"> Next test due date</span></a></dd>
+        <dd class="nhsuk-summary-list__actions"><a href="enter-reinstate-3-ntdd">Change<span class="nhsuk-u-visually-hidden"> Next test due date</span></a></dd>
       </div>
       
     {% endif %}
@@ -26,13 +26,13 @@
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">CRM Case Number</dt>
       <dd class="nhsuk-summary-list__value">{{ data['crm'] or '' }}</dd>
-      <dd class="nhsuk-summary-list__actions"><a href="patient/change-due-date/enter-reinstate-3-crm">Change<span class="nhsuk-u-visually-hidden"> CRM</span></a></dd>
+      <dd class="nhsuk-summary-list__actions"><a href="enter-reinstate-3-crm">Change<span class="nhsuk-u-visually-hidden"> CRM</span></a></dd>
     </div>
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">Comments</dt>
       <dd class="nhsuk-summary-list__value">{{  data['comments'] or '' }}</dd>
-      <dd class="nhsuk-summary-list__actions"><a href="patient/change-due-date/enter-reinstate-3-crm">Change<span class="nhsuk-u-visually-hidden"> Comments</span></a></dd>
+      <dd class="nhsuk-summary-list__actions"><a href="enter-reinstate-3-crm">Change<span class="nhsuk-u-visually-hidden"> Comments</span></a></dd>
     </div>
 
 </dl>
