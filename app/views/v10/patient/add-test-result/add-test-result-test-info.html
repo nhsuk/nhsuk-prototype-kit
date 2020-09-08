@@ -13,7 +13,6 @@
 {% block content %}
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
-
     <div class="nhsuk-back-link nhsuk-u-margin-bottom-4">
       <a class="nhsuk-back-link__link" href="add-test-result-details">
         <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
@@ -21,46 +20,27 @@
         </svg>
         Back to step 1 - Add test details</a>
     </div>
-  <div class="nhsuk-panel-with-label">
-    {% include '../../components/pnl-patient-2.html' %}
-    <span class="nhsuk-hint">Step 3 of 6</span>  
-  
-  <!--{% if data['result-type']== 'Scottish'%}
-   This is a scottish result
-   <br>
-  {% endif %}
+    <div class="nhsuk-panel-with-label">
+      {% include '../../components/pnl-patient-2.html' %}
+      <span class="nhsuk-hint">Step 3 of 6</span>  
 
-  {% if data['result-type'] != 'Scottish'%}
-   This is not a scottish result
-   <br>
-  {% endif %}
-
-  {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
-   This is English or welsh
-   <br>
-  {% endif %} comments-->
-
-
-    <div class="nhsuk-form-group">
-  <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
-    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-      Add {{ data['result-type'] }} test details
-    </legend>
-      <form action='add-test-result-result' method='post'>
-
-
-        <div class="nhsuk-form-group">
-          {{ input({
-           "label": {
-            "text": "Slide number",
-            "classes": "nhsuk-label nhsuk-label__strong"
-           },
-           "id": "input-width-10",
-           "name": "slide-number",
-           "classes": "nhsuk-input--width-10"
-          }) }}
-
-        </div>
+      <!--<div class="nhsuk-form-group">-->
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            Add {{ data['result-type'] }} test details
+          </legend>
+          <form action='add-test-result-result' method='post'>
+            <!--<div class="nhsuk-form-group">-->
+              {{ input({
+               "label": {
+                "text": "Slide number",
+                "classes": "nhsuk-label nhsuk-label__strong"
+               },
+               "id": "input-width-10",
+               "name": "slide-number",
+               "classes": "nhsuk-input--width-10"
+              }) }}
+            <!--</div>-->
 
             {{ dateInput({
               "id": "example",
@@ -91,16 +71,14 @@
               ]
             }) }}
 
-       <br>
-         <button class="nhsuk-button nhsuk-button--ers" type="submit">
-            Continue
-         </button>
+            <button class="nhsuk-button nhsuk-button--ers" type="submit">Continue</button>
+            
+            <p><a href="../patient-summary-3">Exit without saving</a></p>
 
-         <p><a href="../patient-summary-3">Exit without saving</a></p>
-         
-     </form>
-  </div>
-
+          </form>
+        </fieldset>
+      <!--/div>-->
+    </div>
   </div>
 </div>
 

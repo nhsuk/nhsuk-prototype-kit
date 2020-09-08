@@ -144,6 +144,61 @@ router.get("/*/start-prior-notifications-submit*", function (req, res) {
     }
     
 })
+
+router.get("/*/start-reinstate*", function (req, res) {
+    console.log("REINSTATING PATIENT");
+    const params = new URLSearchParams(req.query);
+    const nhsNumber = params.get('nhsNumber');
+    const version = params.get('pnlversion');
+    req.session.data["pnlversion"] = version;
+    var pnlPatient = patient.getPatient(nhsNumber);
+    req.session.data["pnl_patient"] = pnlPatient;
+    res.redirect("/" + getVersion(req) + "/patient/change-due-date/enter-reinstate-3")
+})
+
+router.get("/*/patient/change-due-date/reinstated-*", function (req, res) {
+    console.log("REINSTATE SUBMITTED");
+    const nhsNumber = req.session.data['pnl_patient']['nhs_number'];
+
+    if ((req.session.data["pnl_update_msg_show"] >= 1)) {
+
+        if (req.session.data["pnl_update_msg_show"] >= 2) {
+            req.session.data["pnl_update_msg"] = ""
+            req.session.data["pnl_update_msg_show"] = 0;
+        }
+        req.session.data["pnl_update_msg_show"]++;
+    }
+
+    // set the ntdd and edd as null and only set if they are valid and supplied
+    var ntdd = null;
+
+    console.log("-----------------");
+    console.log("ntdd-year: " + req.session.data['ntdd-year']);
+   // console.log(" store: " + req.session.data['stored-ntdd'])
+    console.log("-----------------");
+
+   // if (req.session.data['stored-ntdd'] == undefined) {
+   //     console.log('setting the prev ntdd')
+   //     req.session.data['stored-ntdd'] = moment(req.session.data['patientSummary']['next_test_due_date']).format("DD-MMM-YYYY");
+   // }
+
+   // var prev = req.session.data['stored-ntdd'];
+
+    if (req.session.data['ntdd-year'] != undefined && req.session.data['ntdd-year'] != '') {
+        //  NTDD ENTERED
+        ntdd = req.session.data['ntdd-year'] + "-" + req.session.data['ntdd-month'] + "-" + req.session.data['ntdd-day'];
+    }
+
+
+    patient.reinstatePatient(nhsNumber, ntdd)
+    req.session.data["pnl_update_msg"] = "Patient has been reinstated"
+    req.session.data["pnl_update_msg_show"] = 1;
+    const version = req.session.data["patversion"];
+    const patientSummary = patient.getPatient(nhsNumber);
+    req.session.data['patientSummary'] = patientSummary;
+
+    res.redirect("/" + getVersion(req) + "/patient/patient-summary-" + version)
+})
     
 router.get("/*/prior-notification/prior-notification-invited-*", function (req, res) {
     //console.log("INVITE SUBMITTED");

@@ -1,14 +1,21 @@
-<form action="/v10/patient/patient-reinstated" method="post">
+{% if data.reinstateType == 'manual' %}
+  <form action="/v10/patient/change-due-date/enter-reinstate-3-ntdd" method="post">
+{% elif data.reinstateType == 'default' %}
+  <form action="/v10/patient/change-due-date/enter-reinstate-3-crm" method="post">
+{% else %}
+  <form action="/v10/patient/change-due-date/enter-reinstate-3-crm" method="post">
+{% endif %}
+
 
 {% if data.reinstateType == 'manual' %}
   <h1 class="nhsuk-fieldset__legend--m">Are you sure you want to reinstate the patient?</h1>
 {% else %}
   <h1 class="nhsuk-fieldset__legend--m">Reinstate the patient</h1>
 {% endif %}
-
+<!-- data['defer-length'] | returnDate('months', estimatedDateOfDelivery ) -->
 {% if data.reinstateType == 'default' %}
-<p>The next test due date has been calculated to <strong>{{ data.pnl_patient.next_test_due_date | returnDateFormat + " " + data.pnl_patient.next_test_due_date | returnTimeDiff }}</strong></p>
-<p>The recall status has been set to <strong>Called</strong></p>
+<p>The next test due date has been calculated to <strong>{{ 7 | returnDate('weeks', ("today" | returnDate)) | returnDateFormat + " " + 7 | returnDate('weeks', ("today" | returnDate)) | returnTimeDiff }}</strong></p>
+<p>The recall status has been set to <strong>Suspend</strong></p>
 <p>The patient has been added to the <strong>Patient due to be invited</strong> list</p>
 {% endif %}
 
@@ -17,7 +24,7 @@
 {% endif %}
 
 {% if data.reinstateType == 'manual' %}
-<p>The patient was ceased due to no no cervix / radiotherapy</p>
+<p>The patient was ceased due to <strong>{{ data.pnl_patient.pnl_reason or 'No cervix' }}</strong></p>
 {% endif %}
 
 {% if data.reinstateType != 'manual' %}
@@ -25,10 +32,8 @@
   "text": "How has this been calculated",
   "HTML": "
     <ul>
-        <li>The patient was ceased due to [reason]</li>
-        <li>Patient has been tested before</li>
-        <li>The last test was routine</li>
-        <li>The patient was tested over 60</li>
+        <li>The patient was ceased due to <strong>Patient informed choice</strong></li>
+        <li>The patient was <strong>suspended</strong> after their last test</li>
     </ul>
   "
 }) }}

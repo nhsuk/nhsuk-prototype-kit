@@ -51,15 +51,14 @@
         }) }}
       {% endif %}
 
-<!-- want to add message to say result has gone for review and will be added to patient summary.
+      <!-- want to add message to say result has gone for review and will be added to patient summary. -->
 
-      {% set resultMsg = "<p>Update: " + data.addresult_update_msg  + " </p>"  %}
       {% if (data['addresult_update_msg_show'] > 1) %}
         {{ insetText({
-          "HTML": resultMsg,
+          "HTML": "Test result has gone for review and will be added to the patient summary",
           "classes": "nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-0"
         }) }}
-      {% endif %} -->
+      {% endif %} 
 
 
     {% if data.patientSummary.pnl_action == 'Deferred' %}
@@ -84,7 +83,18 @@
           {% if data.role == 'csas' %}
             {% if data.patientSummary.pnl_action == 'Ceased' %}
               Actions:
-              <a href="change-due-date/enter-reinstate-3?nhsNumber={{ data.patientSummary.nhs_number}}&role=csas&patversion=3">Reinstate</a>
+
+              {% if data.patientSummary.pnl_reason == "No cervix" or data.patientSummary.pnl_reason == "Radiotherapy (to the pelvic area which affects the cervix)" %}
+                <a href="/v10/start-reinstate?nhsNumber={{ data.patientSummary.nhs_number}}&role=csas&patversion=3&reinstateType=manual">Reinstate</a>
+              {% elif data.patientSummary.pnl_reason == "Due to age" %}
+                <a href="/v10/start-reinstate?nhsNumber={{ data.patientSummary.nhs_number}}&role=csas&patversion=3&reinstateType=reject">Reinstate</a>
+              {% else %}
+                <a href="/v10/start-reinstate?nhsNumber={{ data.patientSummary.nhs_number}}&role=csas&patversion=3&reinstateType=default">Reinstate</a>
+              {% endif %}
+
+
+
+              <!--<a href="change-due-date/enter-reinstate-3?nhsNumber={{ data.patientSummary.nhs_number}}&role=csas&patversion=3">Reinstate</a>-->
             {% else %}
               Actions:
               <a href="/v10/start-prior-notifications-defer-reason?nhsNumber={{ data.patientSummary.nhs_number }}&pnlversion=11&patversion=3&role=csas&returnUrl=pat">Delay</a>
@@ -192,39 +202,7 @@
                 </tr>
               </thead>
               <tbody class="nhsuk-table__body nhsuk-body-">
-              <!-- OPTION B
-                <tr class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell fixed-side">
-                    {{ data.patientSummary.results.result_date | returnDateFormat or '01-Apr-2017' }}
-                    <span class="nhsuk-table__cell--hint">Private Test</span>
-                  </td>
-                  <td class="nhsuk-table__cell">
-                    {{ data.patientSummary.results.infection_code or '-' }}
-                    <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.infection_result or 'No HPV Data' }}</span>
-                  </td>
-                  <td class="nhsuk-table__cell">
-                    {{ data.patientSummary.results.result_code or '2' }}
-                    <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.result or 'Negative' }}</span>
-                  </td>
-                  <td class="nhsuk-table__cell">
-                    {{ data.patientSummary.results.action_code or 'A' }}
-                    <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.action or 'Routine' }}</span>
-                  </td>
-                  <td class="nhsuk-table__cell">
-                    {{ data.patientSummary.results.recall_months or '60' }}
-                    <span class="nhsuk-table__cell--hint">Months</span>
-                  </td>
-                  <td class="nhsuk-table__cell">
-                    {{ data.patientSummary.results.sending_lab }}
-                    <span class="nhsuk-table__cell--hint">Leeds General Infirmary</span>
-                  </td>
-                  <td class="nhsuk-table__cell">{{ data.patientSummary.results.sender_code or '676567' }}</td>
-                  {% if data.role != 'sampleTaker' %}
-                    <td class="nhsuk-table__cell">{{ data.patientSummary.results.slide_number or '70406000' }}</td>
-                  {% endif %}
-                </tr>
-                -->
-
+{% if data.patientSummary.results != null %}
                 <tr class="nhsuk-table__row">
                   <td class="nhsuk-table__cell fixed-side">
                     {{ data.patientSummary.results.result_date | returnDateFormat or '01-Apr-2017' }}
@@ -286,35 +264,7 @@
                   {% endif %}
                 </tr>
 
-
-
-                <!-- OLD STYLE
-                <tr class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell fixed-side">
-                    {{ data.patientSummary.results.result_date | returnDateFormat or '01-Apr-2017' }}
-                    <span class="nhsuk-table__cell--hint">Abroad Test</span>
-                  </td>
-                  <td class="nhsuk-table__cell">
-                    {{ data.patientSummary.results.infection_result or 'No HPV Data' }}
-                  </td>
-                  <td class="nhsuk-table__cell">
-                    {{ data.patientSummary.results.result or 'Negative' }}
-                  </td>
-                  <td class="nhsuk-table__cell">
-                    {{ data.patientSummary.results.action or 'Routine' }}
-                  </td>
-                  <td class="nhsuk-table__cell">
-                    {{ data.patientSummary.results.recall_months or '60' }} months</span>
-                  </td>
-                  <td class="nhsuk-table__cell">
-                    Leeds General Infirmary
-                  </td>
-                  <td class="nhsuk-table__cell">{{ data.patientSummary.results.sender_code or '676567' }}</td>
-                  {% if data.role != 'sampleTaker' %}
-                    <td class="nhsuk-table__cell">{{ data.patientSummary.results.slide_number or '70406000' }}</td>
-                  {% endif %}
-                </tr>
-                -->
+{% endif %}
               </tbody>
             </table>
           </div>

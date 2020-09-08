@@ -24,75 +24,66 @@
     <span class="nhsuk-hint">Step 4 of 6</span> 
 
 
-    <div class="nhsuk-form-group">
-  <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
-    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-      Add {{ data['result-type'] }} test details
-    </legend>
-      <form action='add-test-result-crm' method='post'>
+    <!--<div class="nhsuk-form-group">-->
+      <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+          Add {{ data['result-type'] }} test result
+        </legend>
+        <form action='add-test-result-crm' method='post'>
 
-      
-<div class="nhsuk-form-group">
-<fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
-  <legend class="nhsuk-fieldset__legend nhsuk-input--width-4 nhsuk-label nhsuk-label__strong">
-    <h1 class="nhsuk-fieldset__heading">
-      Result
-    </h1>
-  </legend>
-<span class="nhsuk-hint" id="example-hint">
-    For example, 1 Q S
-  </span>
+          <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
+              <legend class="nhsuk-fieldset__legend nhsuk-input--width-4 nhsuk-label nhsuk-label__strong">
+                <h1 class="nhsuk-fieldset__heading">Result</h1>
+              </legend>
+              <span class="nhsuk-hint" id="example-hint">For example, 1 Q S</span>
 
+              <div class="nhsuk-date-input" id="example">
+                <div class="nhsuk-date-input__item">
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-date-input__label" for="example-result">
+                      Result
+                    </label>
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-u-margin-right-3" id="example-result" name="result-result" type="number" pattern="[0-9]*">
+                  </div>
+                </div>
+                <div class="nhsuk-date-input__item">
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-date-input__label" for="example-infection">
+                      Infection
+                    </label>
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="example-infection" name="result-infection" type="text">
+                  </div>
+                </div>
+                <div class="nhsuk-date-input__item">
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-date-input__label" for="example-action">
+                      Action
+                    </label>
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="example-action" name="result-action" type="text">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
 
-  <div class="nhsuk-date-input" id="example">
-    <div class="nhsuk-date-input__item">
-      <div class="nhsuk-form-group">
-        <label class="nhsuk-label nhsuk-date-input__label" for="example-result">
-          Result
-        </label>
-        <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-u-margin-right-3" id="example-result" name="result-result" type="number" pattern="[0-9]*">
-      </div>
-    </div>
-    <div class="nhsuk-date-input__item">
-      <div class="nhsuk-form-group">
-        <label class="nhsuk-label nhsuk-date-input__label" for="example-infection">
-          Infection
-        </label>
-        <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="example-infection" name="result-infection" type="text">
-      </div>
-    </div>
-    <div class="nhsuk-date-input__item">
-      <div class="nhsuk-form-group">
-        <label class="nhsuk-label nhsuk-date-input__label" for="example-action">
-          Action
-        </label>
-        <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="example-action" name="result-action" type="text">
-      </div>
-    </div></div></fieldset>
+          {{ input({
+           "label": {
+            "text": "Repeat in months",
+            "classes": "nhsuk-label nhsuk-label__strong"
+           },
+           "id": "input-width-10",
+           "name": "repeat-in-months",
+           "classes": "nhsuk-input--width-10"
+          }) }}
 
+          <button class="nhsuk-button nhsuk-button--ers" type="submit">Continue</button>
 
-</div>
+          <p><a href="../patient-summary-3">Exit without saving</a></p>
 
-        {{ input({
-         "label": {
-          "text": "Repeat in months",
-          "classes": "nhsuk-label nhsuk-label__strong"
-         },
-         "id": "input-width-10",
-         "name": "repeat-in-months",
-         "classes": "nhsuk-input--width-10"
-        }) }}
-
-     <br>
-         <button class="nhsuk-button nhsuk-button--ers" type="submit">
-            Continue
-         </button>
-
-         <p><a href="../patient-summary-3">Exit without saving</a></p>
-
-     </form>
-  </div>
-
+        </form>
+      </fieldset>
+    <!--</div>-->
   </div>
 </div>
 

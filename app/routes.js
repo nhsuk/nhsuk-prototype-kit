@@ -120,6 +120,15 @@ router.post("/*/change-due-date", function(req, res) {
   res.redirect("/" + getVersion(req) + "/patient/patient-summary-deferred");
 });
 
+router.post("/*/enter-test-result", function (req, res) {
+  var testType = req.session.data['result-type'];
+  if (testType == "Abroad") {
+    res.redirect("/" + getVersion(req) + "/patient/add-test-result/add-test-result-test-info");
+  }
+
+  res.redirect("/" + getVersion(req) + "/patient/add-test-result/add-test-result-details");
+});
+
 router.post("/search-v2/", function (req, res) {
   var nhsNumber = req.session.data["searchnhs"];
 
@@ -142,7 +151,7 @@ router.post("/*/patient/search/search", function(req, res) {
     console.log('try to get the patient out of the database')
     const patientSummary = patient.getPatient(nhsNumber);
     req.session.data['patientSummary'] = patientSummary;
-    console.log(patientSummary);
+    //console.log(patientSummary);
   }
   else {
     if (nhsNumber == "6170211547") {
