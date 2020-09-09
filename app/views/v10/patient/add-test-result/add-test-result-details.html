@@ -39,7 +39,8 @@
                 },
                 "id": "input-width-10",
                 "name": "national-code",
-                "classes": "nhsuk-input--width-10"
+                "classes": "nhsuk-input--width-10",
+                "autocomplete": "off"
               }) }}
             {% endif %}
             {% if data['result-type']!= 'Abroad'%}
@@ -50,7 +51,8 @@
                },
                "id": "input-width-2",
                "name": "source-code",
-               "classes": "nhsuk-input--width-2"
+               "classes": "nhsuk-input--width-2",
+               "autocomplete": "off"
              }) }}
             {% endif %}
             {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
@@ -61,7 +63,8 @@
                },
                 "id": "input-width-10",
                "name": "sender-code",
-               "classes": "nhsuk-input--width-10"
+               "classes": "nhsuk-input--width-10",
+               "autocomplete": "off"
              }) }}
             {% endif %}
              {% if data['result-type']== 'Scottish'%}
@@ -72,7 +75,8 @@
                },
                 "id": "input-width-10",
                "name": "health-authority",
-               "classes": "nhsuk-input--width-10"
+               "classes": "nhsuk-input--width-10",
+               "autocomplete": "off"
              }) }}
             {% endif %}
           
