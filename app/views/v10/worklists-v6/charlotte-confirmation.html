@@ -1,0 +1,111 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+  <style type="text/css" media="screen">
+    .nhsuk-header__navigation-item:nth-child(3){
+      border-bottom:4px solid #d8dde0;
+    }
+  </style>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    {{ backLink({
+      "href": "non-match-2",
+      "text": "Go back to non-match"
+    }) }}
+
+  <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Confirm resolved non-match</h1>
+
+
+    <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-two-thirds">
+          <div class="nhsuk-panel nhsuk-promo">
+           <span class="nhsuk-hint nhsuk-margin-bottom-4">
+          Please review the resolved match and complete.
+        </span>
+        <dl class="nhsuk-summary-list">
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key padding-right-8">
+      Name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Charlotte Gravill
+    </dd>
+
+    <dd class="nhsuk-summary-list__actions">
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Transfer number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+    03758
+    </dd>
+    <dd class="nhsuk-summary-list__actions">
+    </dd>
+</div>
+
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      NHS number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+    234 567 8901
+    </dd>
+    <dd class="nhsuk-summary-list__actions">
+    </dd>
+</div>
+
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Action
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+    System details used
+    </dd>
+    <dd class="nhsuk-summary-list__actions">
+    </dd>
+</div>
+
+</div>
+<a href="charlotte-done" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3">Submit</a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {% endblock %}
