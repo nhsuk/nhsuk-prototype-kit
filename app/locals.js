@@ -4,6 +4,10 @@ const gpInfo = require('./data/gp-info.js');
 
 module.exports = config => (req, res, next) => {
   res.locals.serviceName = config.serviceName;
+
+  // store a backup of the patients to use when resetting dirty data
+  req.session.data["patients-backup"] = patient.getPatients();
+
   if (req.session.data["role"] == undefined) {
     req.session.data["role"] = "csas";
   }
@@ -33,11 +37,6 @@ module.exports = config => (req, res, next) => {
     req.session.data["nrl_patients"] = patient.getPatients("nrl");
   }
 
-  //req.session.data["nrl_patients"] = patient.getPatients("nrl");
-  //var patients = patient.getPatients("nrl");
-  //r//eq.session.data["_nrl_patients"] = patients;
-  //res.redirect("/" + getVersion(req) + "/non-responder/non-responder-" + getNotificationVersion(req))
-
   // load the basic data for someone selected as part of the PNL
   if (req.session.data["pnl_patient"] == undefined) {
     req.session.data["pnl_patient"] = patient.getPatient(9991023867);
@@ -51,8 +50,6 @@ module.exports = config => (req, res, next) => {
   if (req.session.data["gpinfo"] == undefined) {
     req.session.data["gpinfo"] = gpInfo.getGPInfo();
   }
-
-  
 
   next();
 };

@@ -1,81 +1,80 @@
-<form action="/v10/patient/patient-reinstated" method="post">
- 
-{{ radios({
+{% if data.reinstateType == 'manual' %}
+  <form action="/v10/patient/change-due-date/enter-reinstate-3-ntdd" method="post">
+{% elif data.reinstateType == 'default' %}
+  <form action="/v10/patient/change-due-date/enter-reinstate-3-crm" method="post">
+{% else %}
+  <form action="/v10/patient/change-due-date/enter-reinstate-3-crm" method="post">
+{% endif %}
+
+
+{% if data.reinstateType == 'manual' %}
+  <h1 class="nhsuk-fieldset__legend--m">Are you sure you want to reinstate the patient?</h1>
+  <p>The patient was ceased due to <strong>{{ data.pnl_patient.pnl_reason or 'No cervix' }}</strong></p>
+
+  {{ radios({
   "idPrefix": "example",
-  "name": "reinstate",
-  "fieldset": {
-    "legend": {
-      "text": "Choose a reason for reinstating",
-      "classes": "nhsuk-fieldset__legend--l",
-      "isPageHeading": "true"
-    }
-  },
+  "name": "example",
   "items": [
     {
-      "value": "Ceased in error",
-      "text": "Ceased in error"
+      "value": "yes",
+      "text": "Yes, reinstate the patient"
     },
     {
-      "value": "Patient requested return",
-      "text": "Patient requested return"
+      "value": "no",
+      "text": "No, I don't want to reinstate"
     }
   ]
-}) }}
+  }) }}
+{% endif %}
 
-<div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
-  <div class="nhsuk-form-group">
-    <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
-      <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
-        Next test due date
-      </legend>
-      <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
-        You must enter a date
-      </span>
-      <div class="nhsuk-date-input" id="dob-from">
-        <div class="nhsuk-date-input__item">
-          <div class="nhsuk-form-group">
-            <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
-              Day
-            </label>
-          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="day" name="day" type="number" pattern="[0-9]*" value="day">                                </div>
-        </div>
-        <div class="nhsuk-date-input__item">
-          <div class="nhsuk-form-group">
-            <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
-              Month
-            </label>
-            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="month" type="number" pattern="[0-9]*" value="month">
-          </div>
-        </div>
-        <div class="nhsuk-date-input__item">
-          <div class="nhsuk-form-group">
-            <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
-              Year
-            </label>
-            <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="year" type="number" pattern="[0-9]*" value="">
-          </div>
-        </div>
-      </div>
-      <input type="hidden" id="ntdd" name="ntdd" value="19 01 2021">
-    </fieldset>
-  </div>
-</div>
+{% if data.reinstateType == 'default' %}
+  <h1 class="nhsuk-fieldset__legend--m">Reinstate the patient</h1>
+  <p>The next test due date has been calculated to <strong>{{ 11 | returnDate('weeks', ("today" | returnDate)) | returnDateFormat + " " + 11 | returnDate('weeks', ("today" | returnDate)) | returnTimeDiff }}</strong></p>
+  <p>The recall status will be set to <strong>Suspend</strong></p>
+  <p>The patient will be added to the <strong>Patient due to be invited</strong> list</p>
 
-<div class="nhsuk-form-group">
-  <label class="nhsuk-label" for="example">CRM Number</label>
-  <input class="nhsuk-input nhsuk-input--width-10" type="number" name="crm" value="crm">
-</div>
+  {{ details({
+  "text": "How has this been calculated",
+  "HTML": "
+    <ul>
+        <li>The patient was ceased due to <strong>Patient informed choice</strong></li>
+        <li>The patient was <strong>suspended</strong> after their last test</li>
+        <li>The patient is <strong>overdue</strong> their next test</li>
+    </ul>
+  "
+  }) }}
+{% endif %}
 
-<div class="nhsuk-form-group">
-  <label class="nhsuk-label" for="example">
-    Comments
-  </label>
-  <span class="nhsuk-hint" id="example-hint">
-    Do not include clinical information at  this point.
-  </span>
-  <textarea class="nhsuk-textarea" id="example" name="comments" rows="5" aria-describedby="example-hint" value="details"></textarea>
-</div>
+{% if data.reinstateType == 'reject' %}
+  <h1 class="nhsuk-fieldset__legend--m">Reinstate is rejected due to age</h1>
+  <p>The patient is out of the national screening programme and can not be reinstated <strong>due to age</strong></p>
+  {{ details({
+  "text": "How has this been calculated",
+  "HTML": "
+    <ul>
+        <li>The patient was ceased <strong>due to age</strong></li>
+        <li>The patient <strong>has been tested before</strong></li>
+        <li>The patient's last test was <strong>routine recall</strong></li>
+        <li>The patient <strong>has been tested when over 60 years of age</strong></li>
+    </ul>
+  "
+  }) }}
+{% endif %}
 
+
+
+{% if data.reinstateType == 'manual' or data.reinstateType == 'default' %}
 <button class="nhsuk-button nhsuk-button--ers">Continue</button>
+{% endif %}
+
+{% if data.reinstateType == 'default' %}
+<a href="/v10/patient/change-due-date/enter-reinstate-3-ntdd" class="nhsuk-button nhsuk-button--secondary nhsuk-button--ers">Manually enter next test due date</a>
+{% endif %}
+
+{% if data.reinstateType == 'reject' %}
+<a href="/v10/patient/patient-summary-3" class="nhsuk-button nhsuk-button--ers">Back to patient summary</a>
+{% endif %}
+
+<p><a href="/v10/patient/patient-summary-3">Exit without saving</a></p>
 
 </form>

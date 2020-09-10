@@ -1,0 +1,35 @@
+{% extends "layout-v2.html" %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header-3.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+    {{ backLink({
+    "href": "../patient-summary-3",
+    "text": "Back to patient summary",
+    "classes" : "nhsuk-u-margin-bottom-4"
+    }) }}
+    
+    <div class="nhsuk-panel-with-label">
+      {% include '../../components/pnl-patient-reinstate.html' %}
+      {% if data.reinstateType != 'reject' %}
+        <span class="nhsuk-hint">Step 1 of 4</span>
+      {% endif %}
+      {% include '../../components/patient-reinstate.html' %}
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
+
+           </div>
+

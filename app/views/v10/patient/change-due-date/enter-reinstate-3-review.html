@@ -1,0 +1,33 @@
+{% extends "layout-v2.html" %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header-3.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+    {{ backLink({
+    "href": "enter-reinstate-3-crm",
+    "text": "Back to entering CRM Case Number",
+    "classes" : "nhsuk-u-margin-bottom-4"
+    }) }}
+    
+    <div class="nhsuk-panel-with-label">
+      {% include '../../components/pnl-patient-reinstate.html' %}
+      <span class="nhsuk-hint">Step 4 of 4</span>
+      {% include '../../components/patient-reinstate-review.html' %}
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
+
+           </div>
+

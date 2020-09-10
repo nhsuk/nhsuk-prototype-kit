@@ -94,6 +94,7 @@ router.get("/*/get-ceased-notifications*", function (req, res) {
 router.get("/*/start-prior-notifications-defer-reason*", function (req, res) {
     //console.log("DEFERING PATIENT");
     const params = new URLSearchParams(req.query);
+    req.session.data["addresult_update_msg_show"] = 0;
     const nhsNumber = params.get('nhsNumber');
     const version = params.get('pnlversion');
     req.session.data["pnlversion"] = version;
@@ -105,6 +106,7 @@ router.get("/*/start-prior-notifications-defer-reason*", function (req, res) {
 router.get("/*/start-prior-notifications-cease-reason*", function (req, res) {
     //console.log("CEASING PATIENT");
     const params = new URLSearchParams(req.query);
+    req.session.data["addresult_update_msg_show"] = 0;
     const nhsNumber = params.get('nhsNumber');
     const version = params.get('pnlversion');
     req.session.data["pnlversion"] = version;
@@ -143,6 +145,62 @@ router.get("/*/start-prior-notifications-submit*", function (req, res) {
      res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-" + PNLversion + "-submit")
     }
     
+})
+
+router.get("/*/start-reinstate*", function (req, res) {
+    console.log("REINSTATING PATIENT");
+    req.session.data["addresult_update_msg_show"] = 0;
+    const params = new URLSearchParams(req.query);
+    const nhsNumber = params.get('nhsNumber');
+    const version = params.get('pnlversion');
+    req.session.data["pnlversion"] = version;
+    var pnlPatient = patient.getPatient(nhsNumber);
+    req.session.data["pnl_patient"] = pnlPatient;
+    res.redirect("/" + getVersion(req) + "/patient/change-due-date/enter-reinstate-3")
+})
+
+router.get("/*/patient/change-due-date/reinstated-*", function (req, res) {
+    console.log("REINSTATE SUBMITTED");
+    const nhsNumber = req.session.data['pnl_patient']['nhs_number'];
+
+    if ((req.session.data["pnl_update_msg_show"] >= 1)) {
+
+        if (req.session.data["pnl_update_msg_show"] >= 2) {
+            req.session.data["pnl_update_msg"] = ""
+            req.session.data["pnl_update_msg_show"] = 0;
+        }
+        req.session.data["pnl_update_msg_show"]++;
+    }
+
+    // set the ntdd and edd as null and only set if they are valid and supplied
+    var ntdd = null;
+
+    console.log("-----------------");
+    console.log("ntdd-year: " + req.session.data['ntdd-year']);
+   // console.log(" store: " + req.session.data['stored-ntdd'])
+    console.log("-----------------");
+
+   // if (req.session.data['stored-ntdd'] == undefined) {
+   //     console.log('setting the prev ntdd')
+   //     req.session.data['stored-ntdd'] = moment(req.session.data['patientSummary']['next_test_due_date']).format("DD-MMM-YYYY");
+   // }
+
+   // var prev = req.session.data['stored-ntdd'];
+
+    if (req.session.data['ntdd-year'] != undefined && req.session.data['ntdd-year'] != '') {
+        //  NTDD ENTERED
+        ntdd = req.session.data['ntdd-year'] + "-" + req.session.data['ntdd-month'] + "-" + req.session.data['ntdd-day'];
+    }
+
+
+    patient.reinstatePatient(nhsNumber, ntdd)
+    req.session.data["pnl_update_msg"] = "Patient has been reinstated"
+    req.session.data["pnl_update_msg_show"] = 2;
+    const version = req.session.data["patversion"];
+    const patientSummary = patient.getPatient(nhsNumber);
+    req.session.data['patientSummary'] = patientSummary;
+
+    res.redirect("/" + getVersion(req) + "/patient/patient-summary-" + version)
 })
     
 router.get("/*/prior-notification/prior-notification-invited-*", function (req, res) {
@@ -308,15 +366,20 @@ router.post("/*/patient-cease-confirm", function (req, res) {
 
 router.get("/*/reset-patient-data-*", function (req, res) {
     console.log("resetting")
-    patient.resetPatients(req);
+    
     const params = new URLSearchParams(req.query);
     const returnUrl = params.get('returnUrl');
-    req.session.data["pnl_update_msg"] = ""
-    req.session.data["pnl_update_msg_show"] = 0;
-    
-    if (req.session.data['role'] == 'csas') {
+    const pnlVersion = req.session.data["pnlversion"];
+    const patVersion = req.session.data["patversion"];
+    const role = req.session.data['role']
+    //req.session.data = {}
+//    req.session.data["pnl_update_msg"] = ""
+//    req.session.data["pnl_update_msg_show"] = 0;
+//    req.session.data["addresult_update_msg_show"] = 0;
+    patient.resetPatients(req);
+    if (role == 'csas') {
         req.session.data = {}
-        res.redirect('/v9/patient/search/search?role=csas&patversion=2&pnlversion=10')
+        res.redirect("/" + getVersion(req) + '/patient/search/search?role=csas&patversion=' + patVersion + '&pnlversion=' + pnlVersion)
     } else {
         req.session.data = {}
         if (returnUrl == "ceased") {

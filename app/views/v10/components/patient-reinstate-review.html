@@ -1,0 +1,44 @@
+<h1 class="nhsuk-fieldset__legend--m">Review patient screening participation</h1>
+
+<dl class="nhsuk-summary-list">
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Action</dt>
+    <dd class="nhsuk-summary-list__value">Reinstate</dd>
+    <dd class="nhsuk-summary-list__actions"></dd>
+  </div>
+
+    {% if data['ntdd-year'] == '' or data['ntdd-year'] == undefined %}
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Next test due date</dt>
+        <dd class="nhsuk-summary-list__value">{{ 11 | returnDate('weeks', ("today" | returnDate)) | returnDateFormat + " " + 11 | returnDate('weeks', ("today" | returnDate)) | returnTimeDiff }}</dd>
+        <dd class="nhsuk-summary-list__actions"><a href="enter-reinstate-3-ntdd">Change<span class="nhsuk-u-visually-hidden"> Next test due date</span></a></dd>
+      </div>
+    {% else %}
+    {% set nextTestDueDate = data['ntdd-year'] + "-" + data['ntdd-month'] + "-" + data['ntdd-day'] %}
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Next test due date</dt>
+        <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat + ' ' + nextTestDueDate | returnTimeDiff }}</dd>
+        <dd class="nhsuk-summary-list__actions"><a href="enter-reinstate-3-ntdd">Change<span class="nhsuk-u-visually-hidden"> Next test due date</span></a></dd>
+      </div>
+      
+    {% endif %}
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">CRM Case Number</dt>
+      <dd class="nhsuk-summary-list__value">{{ data['crm'] or '' }}</dd>
+      <dd class="nhsuk-summary-list__actions"><a href="enter-reinstate-3-crm">Change<span class="nhsuk-u-visually-hidden"> CRM</span></a></dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Comments</dt>
+      <dd class="nhsuk-summary-list__value">{{  data['comments'] or '' }}</dd>
+      <dd class="nhsuk-summary-list__actions"><a href="enter-reinstate-3-crm">Change<span class="nhsuk-u-visually-hidden"> Comments</span></a></dd>
+    </div>
+
+</dl>
+
+<!--<p>Once submitted we will send the patient their invitation on {{ data.pnl_patient.next_test_due_date | returnInviteDate + " " + (data.pnl_patient.next_test_due_date | returnInviteDate) | returnTimeDiff }}<p>-->
+
+  <a href="/v10/patient/change-due-date/reinstated-3" class="nhsuk-button nhsuk-button--ers">Submit</a>
+
+  <p><a href="">Exit without saving</a></p>

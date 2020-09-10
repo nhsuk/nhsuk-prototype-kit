@@ -13,7 +13,7 @@ const moment = require('moment');
 9100001740
 */
 
-const patients = [
+var patients = [
     {
         "address": {
             "address_line_1": "52 HOLLY MEWS",
@@ -52,6 +52,7 @@ const patients = [
         "participant_id": "5f03f444-8452-4e4f-8f24-03d30fefed55",
         "pnl": true,
         "pnl_action": "Ceased",
+        "pnl_reason": "Patient informed choice",
         "registered_gp_practice_code": "C86003",
         "sanitised_first_name": "CURRY",
         "sanitised_last_name": "DEPETRIS",
@@ -93,6 +94,7 @@ const patients = [
         "participant_id": "239ca055-3160-47c2-a8c0-f91558c72e6c",
         "pnl": true,
         "pnl_action": "Ceased",
+        "pnl_reason": "No cervix",
         "registered_gp_practice_code": "L83665",
         "sanitised_first_name": "JUDITH",
         "sanitised_last_name": "CUNNINGHAM",
@@ -133,6 +135,7 @@ const patients = [
         "participant_id": "28f4390a-4a47-4318-8705-8e0ef69f3ffe",
         "pnl": true,
         "pnl_action": "Ceased",
+        "pnl_reason": "Due to age",
         "registered_gp_practice_code": "L83665",
         "sanitised_first_name": "PEPITA",
         "sanitised_last_name": "JEFFERY",
@@ -372,6 +375,7 @@ const patients = [
         "participant_id": "b5a5bf31-5484-4ce2-8ad5-f1c1e0ac5086",
         "pnl": true,
         "pnl_action": "Ceased",
+        "pnl_reason": "Patient informed choice",
         "registered_gp_practice_code": "L83665",
         "sanitised_first_name": "JENNIFER",
         "sanitised_last_name": "GOLDING",
@@ -471,41 +475,22 @@ module.exports.deferPatient = function (nhsNumber, reason, length, ntdd, edd, pr
         patient.pnl_action = "Deferred";
         patient.pnl_reason = reason || '';
     }
-    
-    console.log("----------------------------")
-    console.log("  prev: " + moment(patient.next_test_due_date).format("DD-MMM-YYYY"));
-    console.log("length: " + length);
-    console.log("  ntdd: " + ntdd);
-    console.log("   edd: " + edd);
-    console.log("----------------------------")
-    
-
-    console.log("ntdd: " + patient.next_test_due_date);
 
     // use the estimated date of delivery
     if (edd) {
-        console.log("edd is not null")
         patient.next_test_due_date = moment(edd).add(length, 'months').format("DD-MMM-YYYY");
     }
 
     // use the next test due date supplied
     if (ntdd) {
-        console.log("ntdd is not null")
         patient.next_test_due_date = moment(ntdd).format("DD-MMM-YYYY");
     }
 
     // use the existing next test due date
     if (!ntdd && !edd) {
-        console.log("just move on the date from existing ntdd")
         patient.next_test_due_date = moment().add(length, 'months').format("DD-MMM-YYYY");
     }
 
-    //patient.next_test_due_date = moment(req.data.session['']);
-      //  {% set nextTestDueDate = data['ntdd-year'] + "-" + data['ntdd-month'] + "-" + data['ntdd-day'] %}
-       // {% set estimatedDateOfDelivery = data['edd-year'] + "-" + data['edd-month'] + "-" + data['edd-day'] %}
-       // <dd class="nhsuk-summary-list__value">{{ data['defer-length'] | returnDate('months', estimatedDateOfDelivery) + ' ' + (data['defer-length'] | returnDate('months', estimatedDateOfDelivery)) | returnTimeDiff }}</dd>
-
-    //console.log("reason: " + reason)
 };
 
 module.exports.ceasePatient = function (nhsNumber, reason, type) {
@@ -531,25 +516,58 @@ module.exports.submitPatient = function (nhsNumber, type) {
     }
 };
 
-module.exports.reinstatePatient = function (nhsNumber) {
+module.exports.reinstatePatient = function (nhsNumber, ntdd) {
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
-    patient.pnl = true;
-    patient.pnl_action = "";
+    //console.log(patient)
+    //console.log("ntdd: " + ntdd)
+    // use the next test due date supplied
+    if (ntdd != null) {
+        patient.next_test_due_date = moment(ntdd).format("DD-MMM-YYYY");
+    } else {
+        patient.next_test_due_date = moment().add(11, "weeks").format("DD-MMM-YYYY");
+    }
+
+    patient.pnl_action = '';
+    patient.pnl_reason = '';
+    //patient.next_test_due_date = moment(ntdd).format("DD-MMM-YYYY");
+    //console.log(patient)
 };
 
-module.exports.resetPatients = function(req) {
+module.exports.resetPatients = function (req) {
+    //console.log(req.session.data['patients-backup'])
+    //patients = req.session.data['patients-backup'];
+    //patient = {}
     patients.forEach(function (patient) {
         patient.pnl = true;
         patient.pnl_action = "";
         patient.nrl = true; 
     })
-
+//
     patients.forEach(function (patient) {
         if (patient.nhs_number == "9100001694" || patient.nhs_number == "9100001384" || patient.nhs_number == "9100001740" || patient.nhs_number == "9991023867") {
             patient.pnl_action = "Ceased";
-        }
-    })
+            
+            if (patient.nhs_number == "9100001694") {
+                patient.pnl_reason = "No cervix";
+            }
 
+            if (patient.nhs_number == "9100001384") {
+                patient.pnl_reason = "Due to age";
+            }
+
+            if (patient.nhs_number == "9100001740" || patient.nhs_number == "9991023867") {
+                patient.pnl_reason = "Patient informed choice";
+            }
+
+           // 9100001694 No cervix
+           // 9100001384 Due to age
+           // 9100001740 Patient informed choice
+           // 9991023867 Patient informed choice
+       }
+   })
+    //req.session.data['nrl_patients'] = req.session.data['patients-backup'];
+    //req.session.data['patients'] = req.session.data['patients-backup'];
+    //req.session.data['pnl_patient'] = {};
     req.session.data['nrl_patients'] = patients;
     req.session.data['patients'] = patients;
 }
