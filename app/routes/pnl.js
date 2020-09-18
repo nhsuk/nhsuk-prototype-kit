@@ -156,7 +156,11 @@ router.get("/*/start-reinstate*", function (req, res) {
     req.session.data["pnlversion"] = version;
     var pnlPatient = patient.getPatient(nhsNumber);
     req.session.data["pnl_patient"] = pnlPatient;
-    res.redirect("/" + getVersion(req) + "/patient/change-due-date/enter-reinstate-3")
+    if (getVersion(req) == 'v11') {
+        res.redirect("/" + getVersion(req) + "/patient/change-due-date/enter-reinstate-4")
+    } else {
+        res.redirect("/" + getVersion(req) + "/patient/change-due-date/enter-reinstate-3")
+    }
 })
 
 router.get("/*/patient/change-due-date/reinstated-*", function (req, res) {
@@ -180,18 +184,11 @@ router.get("/*/patient/change-due-date/reinstated-*", function (req, res) {
    // console.log(" store: " + req.session.data['stored-ntdd'])
     console.log("-----------------");
 
-   // if (req.session.data['stored-ntdd'] == undefined) {
-   //     console.log('setting the prev ntdd')
-   //     req.session.data['stored-ntdd'] = moment(req.session.data['patientSummary']['next_test_due_date']).format("DD-MMM-YYYY");
-   // }
-
-   // var prev = req.session.data['stored-ntdd'];
 
     if (req.session.data['ntdd-year'] != undefined && req.session.data['ntdd-year'] != '') {
         //  NTDD ENTERED
         ntdd = req.session.data['ntdd-year'] + "-" + req.session.data['ntdd-month'] + "-" + req.session.data['ntdd-day'];
     }
-
 
     patient.reinstatePatient(nhsNumber, ntdd)
     req.session.data["pnl_update_msg"] = "Patient has been reinstated"

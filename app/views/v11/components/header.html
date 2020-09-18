@@ -1,0 +1,71 @@
+
+{% if data.role == 'sampleTaker' %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "true",
+    
+    "primaryLinks": [
+      {
+        "url"  : "/v11/patient/search/search",
+        "label" : "Patient",
+        "aria-current" : "page"
+      },
+      {
+        'url' : '/v11/worklists-v7/worklists',
+        'label' : 'Results'
+      }
+    ]
+  })
+}}
+
+{% elif data.role == 'admin' %}
+
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "true",
+    "showSearch": "true",
+    "primaryLinks": [
+      {
+        "url"  : "/v11/patient/search/search",
+        "label" : "Patient"
+      },
+      {
+        'url' : '/v11/get-prior-notifications-12',
+        'label' : 'Notifications'
+      }
+    ]
+  })
+}}
+
+{% else %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "true",
+    "showSearch": "true",
+    "primaryLinks": [
+      {
+        "url"  : "/v11/patient/search/search",
+        "label" : "Patient"
+      },
+      {
+        'url' : '/v11/worklists-v7/worklists',
+        'label' : 'Results'
+      },
+      {
+        'url'  : '',
+        'label' : 'Reports'
+      }
+    ]
+  })
+}}
+
+{% endif %}

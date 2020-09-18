@@ -1,0 +1,57 @@
+{% extends "layout-v2.html" %}
+
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header-3.html' %}
+{% endblock %}
+
+{%block content%}
+{{ backLink({
+  "href": "prior-notification-12-manage",
+  "text": "Back to Manage emails",
+  "classes" : "nhsuk-u-margin-bottom-4"
+  }) }}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+     <h1 class="nhsuk-heading-l"> Are you sure you want to remove user@nhs.net?</h1>
+     <div style="border-left-color: red" class="nhsuk-inset-text">
+      <span class="nhsuk-u-visually-hidden" >Information: </span>
+      <p>user@nhs.net will be removed from the mailing list and no longer receive notification emails.</p>
+    </div>
+
+<div class="nhsuk-form-group">
+  <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+    <div class="nhsuk-checkboxes">
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-checkboxes__input" id="example-1" name="deleteEmail" type="checkbox" value="email">
+        <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
+          Yes, I wish to remove this email address
+        </label>
+      </div>
+    </div>
+  </fieldset>
+
+</div>
+<a href="/v11/prior-notification/delete-email" style="background-color: red; box-shadow: 0 4px 0 darkred;" class="nhsuk-button nhsuk-button--ers">Delete</a>   
+
+
+ <p><a href="prior-notification-12-manage">Exit without saving</a></p> 
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+      <p><a href="/v11/reset-patient-data-12">Reset patient data</a></p>
+    </div>
+  </div>
+</footer>
+{% endblock %}

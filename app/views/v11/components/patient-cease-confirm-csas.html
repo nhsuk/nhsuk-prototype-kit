@@ -1,0 +1,51 @@
+  <h1 class="nhsuk-heading-l">You are about to cease a patient from the cervical screening programme</h1>
+  <p>When a patient is ceased they will no longer be invited to be screened.</p>
+  <p>If you think this patient may need to be screened at a later date then you will need to either invite or defer the patient.</p>
+
+  <form action="/v11/patient-cease-confirm" method="post">
+    <div class="nhsuk-form-group">
+  <label class="nhsuk-label" for="example">CRM Case Number</label>
+  <input class="nhsuk-input nhsuk-input--width-10" type="number" name="crm" value="crm">
+</div>
+
+<div class="nhsuk-form-group">
+  <label class="nhsuk-label" for="example">
+    Comments (optional)
+  </label>
+  <span class="nhsuk-hint" id="example-hint">
+    Do not include clinical information at  this point.
+  </span>
+  <textarea class="nhsuk-textarea" id="example" name="comments" rows="5" aria-describedby="example-hint" value="details"></textarea>
+</div>
+    
+    <div class="nhsuk-form-group">
+      
+      <fieldset class="nhsuk-fieldset">
+       
+       <div class="nhsuk-radios">
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-1" name="pnl-cease" type="radio" value="yes">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+          Yes, I wish to cease this patient 
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="pnl-cease" type="radio" value="no">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          {% if data.returnUrl == "nrl" %}
+            No, go back to Patients who have not responded
+          {% elif data.returnUrl == "pat" %}
+            No, go back to Patient summary
+          {% else %}
+            No, go back to Patients due to be invited 
+          {% endif %}
+        </label>
+      </div>
+    </div>
+  </fieldset>
+
+  </div>
+    <button type="submit" class="nhsuk-button nhsuk-button--ers">
+    Continue
+  </button>
+</form>

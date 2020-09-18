@@ -1,0 +1,151 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+
+<script src="/js/results-filter.js">
+</script>
+
+
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(3){
+    border-bottom:4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+{% block content %}
+
+{{ backLink({
+  "href": "results",
+  "text": "Go back to results"
+}) }}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+  <h1 class="nhsuk-heading-l">Manchester</h1>
+ <p> The following results show the manual matches between the lab and system patient details.
+ <br>
+  Compare the patient details provided by the labs against those held on the system.</p>
+</div>
+</div>
+<!--
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">Lab contact details</h3>
+
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+                <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Lab lead
+          </dt>
+         <dd class="nhsuk-summary-list__value">
+          (+44) 1624 937 662 
+          </dd>
+          <dd class="nhsuk-summary-list__value">
+          <a href=mailto:susan.prince@nhs.net?subject="Query">susan.prince@nhs.net</a> 
+        </div>
+
+    </dd>
+                <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Lab assistant
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+          (+44) 1624 937 363 
+          </dd>
+          <dd class="nhsuk-summary-list__value">
+                    <a href=mailto:ian.mcdaid@nhs.net?subject="Query">ian.mcdaid@nhs.net</a> 
+          </dd>
+        </div>
+
+    </dd>
+                    <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Lab scientist
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+          (+44) 1624 363 937 
+          </dd>
+          <dd class="nhsuk-summary-list__value">
+          <a href=mailto:sarah.jenkins@nhs.net?subject="Query">sarah.jenkins@nhs.net</a> 
+          </dd>
+        </div>
+
+    </dd>
+
+      </dl>
+    </div>
+  </div>
+</div>
+-->
+
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <nav class="nhsuk-sub-navigation">
+    <ul class="nhsuk-sub-navigation__list">
+      <li class="nhsuk-sub-navigation__item"><a href="manc-process" class="nhsuk-sub-navigation__link">To process <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">10</span></a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="manc-query" class="nhsuk-sub-navigation__link" aria-current="page">To query<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">9</span></a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="manc-check" class="nhsuk-sub-navigation__link">To check <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">11</span></a></li>
+    </ul>
+  </nav>
+</div>
+</div>
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+<table class="order-table">
+<thead>
+  <tr>
+   <th class="ten"="To process">Transfer number 
+</th>
+   <th class="ten" ="To process">Patient name
+</th></th>
+    <th class="ten"width="15%"="To process">Status
+</th></th>
+    <th class="ten"width="15%"="To process">Processor 
+</th></th>
+    <th class="ten"="To process">Date recieved
+     </th></th>
+    <th class="ten"="To process">Time recieved 
+</th></th>
+    <th class="ten"="To process">
+</th></th>
+    <th class="ten"="To process"></th> 
+<tr>
+</thead>
+<tbody>
+
+
+<!-- TO QUERY -->
+<tr> <td>03365</td> <td>Misha Barts </td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td> <br>Sally Jones</td> <td>05-02-2020</td> <td>10.53am</td> <td></td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="">View non-match</a></td> </tr>
+<tr> <td>03760</td> <td></td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">File error</span></td> <td></td> <td>05-02-2020</td> <td>9.59am</td> <td></td><td></td> </tr>
+<tr> <td>03756</td> <td>Amber Hart</td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Non-res match</span></td> <td></td> <td>05-02-2020</td> <td>11.26am</td> <td></td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="">View non-res match</a></td> </tr></td> </tr>
+<tr> <td>03729</td> <td>Isobel Haw</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td> Jon Simpson</td> <td>05-02-2020</td> <td>10.45am</td> <td></td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
+<tr> <td>03760</td> <td></td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">File error</span></td> <td></td> <td>05-02-2020</td> <td>9.59am</td> <td></td><td></td> </tr>
+<tr> <td>03759</td> <td>Mia Phamelepe</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td>Sally Jones</td> <td>05-02-2020</td> <td>10.59am</td> <td></td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
+<tr> <td>03760</td> <td></td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">File error</span></td> <td></td> <td>05-02-2020</td> <td>9.59am</td> <td></td><td></td> </tr>
+<tr> <td>03762</td> <td></td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">File error</span></td>  <td></td> <td>05-02-2020</td> <td>8.38am</td> <td></td><td></td> </tr>
+<tr> <td>03269</td> <td>Julie Lodge</td> <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td> <td>Jon Simpson</td> <td>05-02-2020</td> <td>10.45am</td> <td></td><td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>View non-match</a></td> </tr>
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

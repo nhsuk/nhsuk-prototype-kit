@@ -1,0 +1,58 @@
+{% extends "layout-v2.html" %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header-3.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+  {% if data.role == 'csas' %}
+    {% if data.patversion == "2" %}
+    {{ backLink({
+      "href": "../patient/patient-summary-2",
+      "text": "Back to patient summary",
+      "classes" : "nhsuk-u-margin-bottom-4"
+    }) }}
+    {% else %}
+    {{ backLink({
+      "href": "../patient/change-due-date/enter-action-1",
+      "text": "Back to choose a reason",
+      "classes" : "nhsuk-u-margin-bottom-4"
+    }) }}
+    {% endif %}
+    
+  {% else %}
+    {{ backLink({
+      "href": "prior-notification-12",
+      "text": "Back to patients due to be invited",
+      "classes" : "nhsuk-u-margin-bottom-4"
+    }) }}
+  {% endif %}
+    
+    <div class="nhsuk-panel-with-label">
+      {% include '../components/pnl-patient-2.html' %}
+      <span class="nhsuk-hint">Step 1 of 3</span>
+      {% include '../components/patient-cease-reason.html' %}
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+      <p><a href="/v11/reset-patient-data-12">Reset patient data</a></p>
+    </div>
+  </div>
+</footer>
+{% endblock %}

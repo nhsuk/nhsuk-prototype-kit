@@ -1,0 +1,135 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "true"
+  })
+}}
+{% endblock %}
+
+{% block patientBanner %}
+  {% include '../../components/patient-banner.html' %}
+{% endblock %}
+
+{% block content %}
+{{ backLink({
+  "href": "code",
+  "text": "Go back to enter sample taker code"
+}) }}
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-one-half">
+
+
+        <h1 class="nhsuk-heading-l">Enter patient details</h1>
+
+        <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
+          <div class="nhsuk-form-group">
+
+</div>
+          <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
+              <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
+                LMP (1st day)
+              </legend>
+              <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
+                You must enter a date
+              </span>
+              <div class="nhsuk-date-input" id="dob-from">
+                <div class="nhsuk-date-input__item">
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-date-input__label" for="dob-day-from">
+                      Day
+                    </label>
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="day" name="day" type="number" pattern="[0-9]*" value="{{ data['day'] }}">
+                  </div>
+                </div>
+                <div class="nhsuk-date-input__item">
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-date-input__label" for="dob-month-from">
+                      Month
+                    </label>
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="month" type="number" pattern="[0-9]*" value="{{ data['month'] }}">
+                  </div>
+                </div>
+                <div class="nhsuk-date-input__item">
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-date-input__label" for="dob-year-from">
+                      Year
+                    </label>
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="year" type="number" pattern="[0-9]*" value="{{ data['year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+        </div>
+        <div class="nhsuk-form-group">
+
+          <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+            <label class="nhsuk-label" for="example">
+              Patient's condition
+            </label>
+
+
+            <span class="nhsuk-hint" id="example-hint">
+              Select all options that are relevant to the patient.
+            </span>
+
+            <div class="nhsuk-checkboxes">
+
+
+                            <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="phone">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="option-2">
+                  Pregnancy (first trimester)
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="phone">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="option-2">
+                  Post-natal
+                </label>
+              </div>
+
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="example-3" name="example" type="checkbox" value="text message">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="option-3">
+                  IUCD fitted (don't take if  fitted in last 12 weeks)
+                </label>
+              </div>
+              <div class="nhsuk-checkboxes__item">
+                <input class="nhsuk-checkboxes__input" id="example-3" name="example" type="checkbox" value="text message">
+                <label class="nhsuk-label nhsuk-checkboxes__label" for="option-4">
+                  Taking hormones
+                </label>
+              </div>
+
+            </div>
+          </fieldset>
+
+        </div>
+        <a class="nhsuk-button--ers nhsuk-u-margin-top-4" href="step-2">Continue</a>
+
+
+
+        </div>
+        </div>
+
+{% endblock %}

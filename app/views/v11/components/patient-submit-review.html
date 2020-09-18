@@ -1,0 +1,6 @@
+<h1 class="nhsuk-fieldset__legend--m">Review patient screening participation</h1>
+
+<p><strong>It is good practice to send a third reminder invitation letter to the patient, especially if they are high risk.</strong></p>
+<p>If the patient does not respond to the third reminder letter then they will be invited for screening on {{ ("3" | returnDate("years", data.pnl_patient.next_test_due_date)) | returnDateFormat }} {{ ("3" | returnDate("years", data.pnl_patient.next_test_due_date) | returnDateFormat) | returnTimeDiff or "" }}</p>
+<p>The patient will be removed from the Patients who have not responded list</p>
+<a href="/v11/prior-notification/prior-notification-submitted-{{ data.pnlversion or 12 }}" class="nhsuk-button nhsuk-button--ers">Submit</a>

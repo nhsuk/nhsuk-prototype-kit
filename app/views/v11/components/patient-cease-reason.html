@@ -1,0 +1,61 @@
+
+  {% if data.role == 'csas' %}
+    <form action="prior-notification-{{ data.pnlversion }}-cease-crm" method="post">
+  {% else %}
+    <form action="prior-notification-{{ data.pnlversion }}-cease-confirm" method="post">
+  {% endif %}
+  <div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      <h1 class="nhsuk-fieldset__heading">Choose a reason to cease the patient</h1>
+    </legend>
+
+    <div class="nhsuk-radios">
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-1" name="pnl-cease-reason" type="radio" value="No cervix">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+          No cervix
+        </label>
+      </div>
+
+      {% if ( data.pnl_patient.date_of_birth | returnAge) > 64 %}
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="pnl-cease-reason" type="radio" value="Due to age">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          Due to age
+        </label>
+      </div>
+      {% endif %}
+      
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="pnl-cease-reason" type="radio" value="Radiotherapy (to the pelvic area which affects the cervix)">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          Radiotherapy (to the pelvic area which affects the cervix)
+        </label>
+      </div>
+
+      {% if data.role == 'csas' %}
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="example-2" name="pnl-cease-reason" type="radio" value="Patient informed choice">
+          <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+            Patient informed choice
+          </label>
+        </div>
+
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="example-2" name="pnl-cease-reason" type="radio" value="Mental capacity act">
+          <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+            Mental capacity act
+          </label>
+        </div>
+      {% endif %}
+    </div>
+  </fieldset>
+
+</div>
+
+  <button class="nhsuk-button nhsuk-button--ers">Continue</button>
+
+  </form>

@@ -148,7 +148,7 @@ router.post("/search-v2/", function (req, res) {
 router.post("/*/patient/search/search", function(req, res) {
   var nhsNumber = req.session.data["searchnhs"];
   req.session.data["addresult_update_msg_show"] = 0;
-  if (getVersion(req) == 'v9' || 'v10') {
+  if (getVersion(req) == 'v9' || 'v10' || 'v11') {
     console.log('try to get the patient out of the database')
     const patientSummary = patient.getPatient(nhsNumber);
     req.session.data['patientSummary'] = patientSummary;

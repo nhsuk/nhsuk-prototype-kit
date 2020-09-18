@@ -157,6 +157,41 @@ module.exports = function (env) {
     return str1 + " " + str2 + " " + str3;
   } 
 
+  filters.returnReasonGuidance = function (reason) {
+    const guidanceValues = [
+      {
+        'Reason': 'Pregnancy',
+        'Max': '12'
+      },
+      {
+        'Reason': 'Recent test',
+        'Max': '3'
+      },
+      {
+        'Reason': 'Under care of colposcopy',
+        'Max': '12'
+      },
+      {
+        'Reason': 'Undergoing treatment relevant to screening',
+        'Max': '18'
+      },
+      {
+        'Reason': 'Discharge from colposcopy',
+        'Max': '36/60'
+      },
+      {
+        'Reason': 'Patient wishes to defer',
+        'Max': '18'
+      },
+      {
+        'Reason': 'Administrative',
+        'Max': '36/60'
+      }
+    ]
+
+    return guidanceValues.find((guidance) => guidance.Reason == reason).Max;
+  }
+
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:

@@ -1,0 +1,147 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+
+<script src="/js/results-filter.js"></script>
+
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(3){
+    border-bottom:4px solid #d8dde0;
+  }
+</style>
+
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+{% block content %}
+
+{{ backLink({
+  "href": "results",
+  "text": "Go back to results"
+}) }}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+  <h1 class="nhsuk-heading-l">Manchester</h1>
+ <p> The following results show the manual matches between the lab and system patient details.
+ <br>
+  Compare the patient details provided by the labs against those held on the system.</p>
+</div>
+</div>
+
+<!--
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">Lab contact details</h3>
+
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+                <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Lab lead
+          </dt>
+         <dd class="nhsuk-summary-list__value">
+          (+44) 1624 937 662 
+          </dd>
+          <dd class="nhsuk-summary-list__value">
+          <a href=mailto:susan.prince@nhs.net?subject="Query">susan.prince@nhs.net</a> 
+        </div>
+
+    </dd>
+                <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Lab assistant
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+          (+44) 1624 937 363 
+          </dd>
+          <dd class="nhsuk-summary-list__value">
+                    <a href=mailto:ian.mcdaid@nhs.net?subject="Query">ian.mcdaid@nhs.net</a> 
+          </dd>
+        </div>
+
+    </dd>
+                    <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Lab technician
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+          (+44) 1624 363 937 
+          </dd>
+          <dd class="nhsuk-summary-list__value">
+          <a href=mailto:sarah.jenkins@nhs.net?subject="Query">sarah.jenkins@nhs.net</a> 
+          </dd>
+        </div>
+
+    </dd>
+
+      </dl>
+    </div>
+  </div>
+</div>
+-->
+
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <nav class="nhsuk-sub-navigation">
+    <ul class="nhsuk-sub-navigation__list">
+      <li class="nhsuk-sub-navigation__item"><a href="manc-process" class="nhsuk-sub-navigation__link">To process <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">10</span></a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="manc-query" class="nhsuk-sub-navigation__link" >To query<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">9</span></a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="manc-check" class="nhsuk-sub-navigation__link" aria-current="page">To check <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">11</span></a></li>
+    </ul>
+  </nav>
+
+
+<table class="order-table">
+<thead>
+  <tr>
+   <th class="ten"="To process">Transfer number 
+</th>
+    <th class="ten"="To process">Status 
+</th></th>
+    <th class="ten"="To process">Checker 
+</th></th>
+    <th class="ten"="To process">Date recieved
+     </th></th>
+    <th class="ten"="To process">Time recieved 
+</th></th>
+    <th class="ten"="To process">To action 
+</th></th>
+    <th class="ten"="To process"></th>
+<tr>
+</thead>
+
+<tbody>
+
+
+<!-- TO CHECK -->
+<tr><td>03368</td> <td><span class="nhsuk-tag nhsuk-tag--aqua-green nhsuk-u-margin-bottom-2">Done </span></td> <td>Jill Heron</td> <td>04-02-2020</td> <td>8.44am</td> <td></td> <td></td>  </tr>
+<tr><td>03477</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">with checker</span></td> <td> Gina Barkley</td> <td>04-02-2020</td> <td>5.01pm</td> <td></td> <td></td> </tr>
+<tr><td>03478</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not checked </span></td> <td></td> <td>04-02-2020</td> <td>11.52am</td> <td>5</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Check matched</a></td>  </tr>
+<tr><td>03479</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not checked </span></td> <td></td> <td>04-02-2020</td> <td>11.27am</td> <td>6</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Check matched</a></td> </tr>
+<tr><td>03480</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">with checker</span></td> <td> Toby Senior</td> <td>04-02-2020</td> <td>11.27am</td> <td></td> <td></td> </tr>
+<tr><td>03481</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not checked </span></td> <td> </td> <td>04-02-2020</td> <td>9.34am</td> <td>5</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Check matched</a></td> </tr>
+<tr><td>03482</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not checked </span></td> <td> </td> <td>04-02-2020</td> <td>9.19am</td> <td>9</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Check matched</a></td> </tr>
+<tr><td>03483</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">with checker</span></td> <td> Josh Kaye</td> <td>04-02-2020</td> <td>2.09pm</td> <td></td> <td></td>  </tr>
+<tr><td>03484</td> <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not checked </span></td> <td> </td> <td>04-02-2020</td> <td>9.30am</td> <td>7</td> <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href=“./“>Check matched</a></td> </tr>
+<tr><td>03485</td> <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">with checker</span></td> <td> Samatha Cotton</td> <td>04-02-2020</td> <td>10.50am</td> <td></td> <td></td> </tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

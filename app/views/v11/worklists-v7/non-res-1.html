@@ -1,0 +1,178 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+  <style type="text/css" media="screen">
+    .nhsuk-header__navigation-item:nth-child(3){
+      border-bottom:4px solid #d8dde0;
+    }
+  </style>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    {{ backLink({
+      "href": "non-match-done",
+      "text": "Go back to query list"
+    }) }}
+
+  <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Non-residual match</h1>
+
+
+    <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-two-thirds">
+          <div class="nhsuk-panel nhsuk-promo">
+           <span class="nhsuk-hint nhsuk-margin-bottom-4">
+          Please review the non-residual match and action.
+        </span>
+        <dl class="nhsuk-summary-list">
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key padding-right-8">
+      Patient name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Alyssa Hirst
+    </dd>
+
+    <dd class="nhsuk-summary-list__actions">
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      NHS number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+    983 184 5978
+    </dd>
+
+
+    <dd class="nhsuk-summary-list__actions">
+
+
+
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+    Error
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      <span class="highlight">Invalid transfer number</span>
+    </dd>
+
+    <dd class="nhsuk-summary-list__actions">
+
+
+    </dd>
+
+  </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+   Test date
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      08-08-20
+    </dd>
+
+    <dd class="nhsuk-summary-list__actions">
+
+
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+    Transfer number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      00082
+    </dd>
+
+    <dd class="nhsuk-summary-list__actions">
+
+
+    </dd>
+
+  </div>
+
+  </div>
+
+</div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+
+    <form action="manc-p2" method="post">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
+        Comments
+      </label>
+      <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+        Enter comments here if needed
+      </span>
+      <textarea class="nhsuk-textarea commentBox" id="nonres" value="nonres" name="nonres" rows="5" data-length=200></textarea>
+     
+    </div>
+
+    <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
+
+    {% set name = "Jon Simpson" %}
+
+    {% set commentDate = ("today" | returnDate) %}
+
+    <input type="hidden" id="name" name="name" value="{{commentName}}">
+
+      <input type="hidden" name="date" value={{commentDate}}>
+
+    </form>
+
+    <ul class="nhsuk-comment-container">
+      {% if data.nonres !=null %}
+
+  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.nonres}}</li>
+
+  {% endif %}
+  			</ul>
+
+</div>
+</div>
+<a href="charlotte-done" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Accept</a>
+<a href="caroline-done" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Save and exit</a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {% endblock %}

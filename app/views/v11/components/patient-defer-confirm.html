@@ -1,0 +1,40 @@
+  <h1 class="nhsuk-heading-l">The patient has been deferred consecutive times</h1>
+  
+  <p>The Patient has been deferred 2 times in a row</p>
+
+  <p>We need to make sure that the patient is being correctly invited for screening and all attempts to screen the patient has been made</p>
+  {{ details({
+  "text": "Why am i seeing this?",
+  "HTML": "
+  <p><a href='https://www.gov.uk/government/publications/cervical-screening-call-and-recall-administration-best-practice/cervical-screening-call-and-recall'>Cervical screening: guidance for call and recall administration best practice</a></p>
+  <p>Section 8.1 states that:</p>
+  <p>It is acceptable for subsequent deferrals to be created, but any multiple deferrals must be identified and reported to the SIT to be audited, and for them to take action by contacting GP practices directly</p>
+  "
+}) }}
+
+  <form action="prior-notification-{{ data.pnlversion }}-defer-length" method="post">
+    <div class="nhsuk-form-group">
+      
+      <fieldset class="nhsuk-fieldset">
+       
+       <div class="nhsuk-radios">
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-1" name="pnl-cease" type="radio" value="yes">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+          Yes, I wish to defer this patient 
+        </label>
+      </div>
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="pnl-cease" type="radio" value="no">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          No, go back to Patients due to be invited
+        </label>
+      </div>
+    </div>
+  </fieldset>
+
+  </div>
+    <button type="submit" class="nhsuk-button nhsuk-button--ers">
+    Continue
+  </button>
+</form>

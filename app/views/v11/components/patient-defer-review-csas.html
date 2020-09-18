@@ -1,0 +1,44 @@
+<h1 class="nhsuk-fieldset__legend--m">Review patient screening participation</h1>
+
+<dl class="nhsuk-summary-list">
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Action</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['pnl-action'] or 'Delay' }}</dd>
+    <dd class="nhsuk-summary-list__actions"></dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Defer reason</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['pnl-defer-reason'] or 'Pregnancy' }}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="prior-notification-{{ data.pnlversion }}-defer-reason">Change<span class="nhsuk-u-visually-hidden"> Defer reason</span></a></dd>
+  </div>
+
+  
+    {% if data['ntdd-year'] != '' %}
+      {% set nextTestDueDate = data['ntdd-year'] + "-" + data['ntdd-month'] + "-" + data['ntdd-day'] %}
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Next test due date</dt>
+        <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat + ' ' + nextTestDueDate | returnTimeDiff }}</dd>
+        <dd class="nhsuk-summary-list__actions"><a href="prior-notification-{{ data.pnlversion }}-defer-length">Change<span class="nhsuk-u-visually-hidden"> Next test due date</span></a></dd>
+      </div>
+    {% endif %}
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">CRM Case Number</dt>
+      <dd class="nhsuk-summary-list__value">{{ data['crm'] or '' }}</dd>
+      <dd class="nhsuk-summary-list__actions"><a href="patient/change-due-date/enter-action-1">Change<span class="nhsuk-u-visually-hidden"> CRM</span></a></dd>
+    </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Comments</dt>
+      <dd class="nhsuk-summary-list__value">{{  data['comments'] or '' }}</dd>
+      <dd class="nhsuk-summary-list__actions"><a href="patient/change-due-date/enter-action-1">Change<span class="nhsuk-u-visually-hidden"> Comments</span></a></dd>
+    </div>
+
+</dl>
+
+<a href="/v11/prior-notification/prior-notification-deferred-{{ data.pnlversion }}" class="nhsuk-button nhsuk-button--ers">Submit</a>
+<p><a href="">Exit without saving</a></p>
+ 
+
+
