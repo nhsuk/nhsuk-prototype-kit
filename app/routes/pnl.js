@@ -139,7 +139,7 @@ router.get("/*/start-prior-notifications-submit*", function (req, res) {
     req.session.data["ceasedversion"] = ceasedVersion;
     var nrlPatient = patient.getPatient(nhsNumber);
     req.session.data["pnl_patient"] = nrlPatient;
-    if (ceasedVersion == "1"){
+    if (ceasedVersion => "1"){
      res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-" + PNLversion + "-ceased-submit")
     } else {
      res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-" + PNLversion + "-submit")
