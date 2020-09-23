@@ -36,13 +36,19 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-4">
     <h2 class="nhsuk-heading-m">Patients to review</h2>
-    <p>The following patients have either been recently ceased, or new to this practice and need reviewing.</p>
-        <p><a href="../prior-notification/prior-notification-12-forms">Find out how to reinstate patients?</a></p>
+    <ul>
+      <li>New patients that have registerered with abnormal follow ups</li>
+      <li>New patients that have registered already ceased from screening</li>
+      <li>Existing patients that have recently been ceased from screening</li>
+    </ul>
+    <p><strong>Notifications will be removed from this list after 8 weeks.</strong></p>
+
+        <p><a href="../prior-notification/prior-notification-12-forms-reinstate">Find out how to reinstate patients?</a></p>
   </div>
 </div>
 
 {% if data['ceased_patients'] == null %} 
-<meta http-equiv="refresh" content="2;url=/v10/get-ceased-notifications-2" />
+<meta http-equiv="refresh" content="2;url=/v11/get-ceased-notifications-2" />
   <div class="styleguide-example">
     <div class="nhsuk-loader__container">
       <h1 class="nhsuk-heading-l">Loading patients</h1>
