@@ -70,7 +70,7 @@ var patients = [
             "address_line_5": "Devon",
             "postcode": "EX2 5SE"
         },
-        "ceased_type": "Re-registered ceased",
+        "ceased_type": "Registered ceased",
         "date_of_birth": "1979-12-23",
         "date_of_birth_and_initial": "1949-12-23C",
         "date_of_birth_and_initial_and_postcode": "1949-12-23CEX25SE",
@@ -112,7 +112,7 @@ var patients = [
             "address_line_5": "Devon",
             "postcode": "EX2 5SE"
         },
-        "ceased_type": "Re-registered ceased",
+        "ceased_type": "Registered ceased",
         "date_of_birth": "1955-08-01",
         "date_of_birth_and_initial": "1952-08-01J",
         "date_of_birth_and_initial_and_postcode": "1952-08-01JEX25SE",

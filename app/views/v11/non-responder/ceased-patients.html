@@ -37,13 +37,13 @@
   <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-bottom-4">
     <h2 class="nhsuk-heading-m">Patients to review</h2>
     <ul>
-      <li>New patients that have registerered with abnormal follow ups</li>
-      <li>New patients that have registered already ceased from screening</li>
+      <li>New patients that have registered with your GP practice with an abnormal follow-up</li>
+      <li>New patients that have registered with your GP that are already ceased from screening</li>
       <li>Existing patients that have recently been ceased from screening</li>
     </ul>
     <p><strong>Notifications will be removed from this list after 8 weeks.</strong></p>
 
-        <p><a href="../prior-notification/prior-notification-12-forms-reinstate">Find out how to reinstate patients?</a></p>
+        <p><a href="../prior-notification/prior-notification-12-forms-reinstate">Find out how to reinstate / action patients because of <strong>mental capacity</strong> or <strong>patient choice</strong>?</a>
   </div>
 </div>
 
@@ -115,7 +115,7 @@
           </td>
           <td class="nhsuk-table__cell">
             {{ patient.ceased_type }}         
-              {% if (patient.ceased_type == "Abnormal Follow-up") or (patient.ceased_type == "Re-registered ceased") %}
+              {% if (patient.ceased_type == "Abnormal Follow-up") or (patient.ceased_type == "Registered ceased") %}
                 <span class="nhsuk-table__cell--hint">New Patient</span>
               {% else %}
                 <span class="nhsuk-table__cell--hint">-</span>
