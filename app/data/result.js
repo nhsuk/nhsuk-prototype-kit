@@ -7,7 +7,7 @@ var moment = require('moment');
 
 const results = [
     {
-        "action": "Suspended",
+        "action": "Repeat Advised",
         "action_code": "S",
         "created": "2020-05-28T12:53:39.328",
         "infection_code": "9",
