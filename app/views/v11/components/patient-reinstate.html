@@ -30,7 +30,7 @@
 {% if data.reinstateType == 'default' %}
   <h1 class="nhsuk-fieldset__legend--m">Reinstate the patient</h1>
   <p>The next test due date has been calculated to <strong>{{ 11 | returnDate('weeks', ("today" | returnDate)) | returnDateFormat + " " + 11 | returnDate('weeks', ("today" | returnDate)) | returnTimeDiff }}</strong></p>
-  <p>The recall status will be set to <strong>Suspend</strong></p>
+  <p>The recall status will be set to <strong>Repeat Advised</strong></p>
   <p>The patient will be added to the <strong>Patient due to be invited</strong> list tomorrow</p>
 
   {{ details({
@@ -38,7 +38,7 @@
   "HTML": "
     <ul>
         <li>The patient was ceased due to <strong>Patient informed choice</strong></li>
-        <li>The patient was <strong>suspended</strong> after their last test</li>
+        <li>The patient's status was <strong>repeat advised</strong> after their last test</li>
         <li>The patient is <strong>overdue</strong> their next test</li>
     </ul>
   "

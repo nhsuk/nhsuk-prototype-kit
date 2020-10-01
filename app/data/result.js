@@ -8,7 +8,7 @@ var moment = require('moment');
 const results = [
     {
         "action": "Repeat Advised",
-        "action_code": "S",
+        "action_code": "R",
         "created": "2020-05-28T12:53:39.328",
         "infection_code": "9",
         "infection_result": "HPV positive",
