@@ -29,7 +29,7 @@
         <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
           Add {{ data['result-type'] }} test result
         </legend>
-        <form action='add-test-result-crm' method='post'>
+        <form action='add-test-result-repeat-in-months' method='post'>
 
           <div class="nhsuk-form-group">
             <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
@@ -69,12 +69,12 @@
 
           {{ input({
            "label": {
-            "text": "Repeat in months",
+            "text": "HPV Primary",
             "classes": "nhsuk-label nhsuk-label__strong"
            },
            "id": "input-width-10",
            "name": "repeat-in-months",
-           "classes": "nhsuk-input--width-10",
+           "classes": "nhsuk-input--width-2",
            "autocomplete": "off"
           }) }}
 
