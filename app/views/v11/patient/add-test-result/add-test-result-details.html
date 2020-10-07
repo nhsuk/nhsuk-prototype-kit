@@ -30,7 +30,7 @@
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
             Add {{ data['result-type'] }} test details
           </legend>
-          <form action="add-test-result-test-info" method="post">
+          <form action="add-test-result-result" method="post">
             {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
               {{ input({
                 "label": {
@@ -61,6 +61,9 @@
                  "text": "Sender Code",
                 "classes": "nhsuk-label nhsuk-label__strong"
                },
+               hint: {
+                  html: "Also known as GP local code, GNC number, GMC number, salary GP code, Practice code or non GP sender code."
+               },
                 "id": "input-width-10",
                "name": "sender-code",
                "classes": "nhsuk-input--width-10",
@@ -79,6 +82,49 @@
                "autocomplete": "off"
              }) }}
             {% endif %}
+            {{ input({
+               "label": {
+                "text": "Slide number",
+                "classes": "nhsuk-label nhsuk-label__strong"
+               },
+               "id": "input-width-10",
+               "name": "slide-number",
+               "classes": "nhsuk-input--width-10",
+               "autocomplete": "off"
+              }) }}
+
+            {{ dateInput({
+              "id": "example",
+              "namePrefix": "example",
+              "fieldset": {
+                "legend": {
+                  "text": "Test date",
+                  "classes": "nhsuk-label nhsuk-label__strong",
+                  "isPageHeading": true
+                }
+              },
+              "hint": {
+                "text": "For example, 15 3 1984"
+              },
+              "items": [
+                {
+                  "name": "day",
+                  "classes": "nhsuk-input--width-2",
+                  "autocomplete": "off"
+                },
+                {
+                  "name": "month",
+                  "classes": "nhsuk-input--width-2",
+                  "autocomplete": "off"
+                },
+                {
+                  "name": "year",
+                  "classes": "nhsuk-input--width-4",
+                  "autocomplete": "off"
+                }
+              ]
+            }) }}
+            
           
             <button class="nhsuk-button nhsuk-button--ers" type="submit">Continue</button>
             <p><a href="../patient-summary-4">Exit without saving</a></p>

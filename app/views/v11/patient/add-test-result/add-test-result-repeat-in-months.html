@@ -21,29 +21,20 @@
     </div>
   <div class="nhsuk-panel-with-label">
     {% include '../../components/pnl-patient-2.html' %}
-    <span class="nhsuk-hint">Step 5 of 7</span> 
+    <span class="nhsuk-hint">Step 4 of 6</span> 
 
-
-    <!--<div class="nhsuk-form-group">-->
       <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
-        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-          Check next test due date
-        </legend>
-        <form action='add-test-result-crm' method='post'>
-
+        <h1 class="nhsuk-heading-l">Check next test due date</h1>
           {{ insetText({
               "HTML": "<p>The patients will next be invited in x months on xx/xx/xxxx.</p>"
            }) }}
 
           <p> This next test due date has been calculated using the patients last test results.</P>
 
-          <button class="nhsuk-button nhsuk-button--ers" type="submit">Ok, Continue</button>
+          <a href="add-test-result-crm" class="nhsuk-button nhsuk-button--ers">Ok, Continue</a>
 
           <p><a href="../patient-summary-4">Exit without saving</a></p>
-
-        </form>
       </fieldset>
-    <!--</div>-->
   </div>
 </div>
 
