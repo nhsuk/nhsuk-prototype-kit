@@ -62,8 +62,9 @@
 
 
     {% if data.patientSummary.pnl_action == 'Deferred' %}
-      <span class="nhsuk-tag nhsuk-tag--blue"><span>patient has been deferred recently</span></span>
+      <span class="nhsuk-tag nhsuk-tag--blue"><span>{{ data.patientSummary.pnl_action }} - {{ data.patientSummary.pnl_reason }}</span></span>
     {% endif %}
+
     {% if data.patientSummary.pnl_action == 'Ceased' %}
       <span class="nhsuk-tag nhsuk-tag--orange">{{ data.patientSummary.pnl_action }} - {{ data.patientSummary.pnl_reason }}</span>
     {% endif %}
