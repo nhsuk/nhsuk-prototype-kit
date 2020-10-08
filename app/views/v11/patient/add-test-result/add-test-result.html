@@ -23,44 +23,50 @@
   <div class="nhsuk-panel-with-label">
     {% include '../../components/pnl-patient-2.html' %}
     <span class="nhsuk-hint">Step 1 of 6</span>
-      <form action="/v11/enter-test-result" method="post">
-             {{ radios({
-         "idPrefix": "example",
-         "name": "result-type",
-         "fieldset": {
-           "legend": {
-             "text": "Enter test type",
-             "classes": "nhsuk-fieldset__legend--l",
-             "isPageHeading": true
-           }
-         },
-         "items": [
-           {
-             "value": "English",
-             "text": "English"
-           },
-           {
-             "value": "Scottish",
-             "text": "Scottish"
-           },
-           {
-             "value": "Welsh",
-             "text": "Welsh"
-           },
-           {
-             "value": "Abroad",
-             "text": "Abroad"
-           }
-         ]
-       }) }}
 
-       {{ insetText({
-  "HTML": "<p>Please start with the most recent test when adding more than one test result to a patients recodes.</p>"
-}) }}
-       
-     <button class="nhsuk-button nhsuk-button--ers" type="submit">
-       Continue
-     </button>
+<h1 class="nhsuk-heading-l">Enter test type</h1>
+
+<div class="nhsuk-inset-text">
+  <span class="nhsuk-u-visually-hidden">Information: </span>
+  <p>Please start with the most recent test when adding more than one test result to a patients recodes.</p>
+</div>
+             <form action="/v11/enter-test-result" method="post">
+                <div class="nhsuk-form-group">
+      
+                <fieldset class="nhsuk-fieldset">
+                     <div class="nhsuk-radios">
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="example-1" name="result-type" type="radio" value="English">
+                      <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                        English
+                      </label>
+                    </div>
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="example-2" name="result-type" type="radio" value="Scottish">
+                      <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                        Scottish
+                      </label>
+                    </div>
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="example-2" name="result-type" type="radio" value="Welsh">
+                      <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                        Welsh
+                      </label>
+                    </div>
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="example-2" name="result-type" type="radio" value="Abroad">
+                      <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                        Abroad
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
+              <br>
+                </div>
+                  <button type="submit" class="nhsuk-button nhsuk-button--ers">
+                  Continue
+                </button>
+              </form>
 
      <p><a href="../patient-summary-4">Exit without saving</a></p>
 
