@@ -9,7 +9,7 @@
 
 {% if data.reinstateType == 'manual' %}
   <h1 class="nhsuk-fieldset__legend--m">Are you sure you want to reinstate the patient?</h1>
-  <p>The patient was ceased on <strong>13th-Oct-2019 (12 months ago)</strong> due to <strong>{{ data.pnl_patient.pnl_reason or 'No cervix' }}</strong></p>
+  <p>The patient was ceased on <strong>13-Oct-2019 (12 months ago)</strong> due to <strong>{{ data.pnl_patient.pnl_reason or 'No cervix' }}</strong></p>
 
   {{ radios({
   "idPrefix": "example",
