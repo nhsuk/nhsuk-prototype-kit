@@ -31,7 +31,7 @@
     {% else %}
       <span class="nhsuk-hint">Step 3 of 3</span>
     {% endif %}
-      {% if (data.role == 'csas' and data.patversion == '2') %}
+      {% if (data.role == 'csas') %}
         {% include '../components/patient-defer-review-csas.html' %}
       {% else %}
         {% include '../components/patient-defer-review.html' %}
