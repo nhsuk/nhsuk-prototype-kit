@@ -17,7 +17,7 @@
         <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
         </svg>
-        Back to step 1 - Choose a reason test type</a>
+        Back to step 5 - Add CRM case number</a>
     </div>
   <div class="nhsuk-panel-with-label">
     {% include '../../components/pnl-patient-2.html' %}
@@ -67,9 +67,11 @@
     <dd class="nhsuk-summary-list__value">{{ data['slide-number'] }}</dd>
     <dd class="nhsuk-summary-list__actions"><a href="add-test-result-test-info">Change<span class="nhsuk-u-visually-hidden"> Slide number</span></a></dd>
   </div>
+
+  {% set nextTestDueDate = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Test date</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['example-day'] }} {{ data['example-month'] }} {{ data['example-year'] }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat }}</dd>
     <dd class="nhsuk-summary-list__actions"><a href="add-test-result-test-info">Change<span class="nhsuk-u-visually-hidden"> Test date</span></a></dd>
   </div>
 
@@ -86,13 +88,10 @@
     <dd class="nhsuk-summary-list__actions"><a href="add-test-result-result">Change<span class="nhsuk-u-visually-hidden"> HPV Primary</span></a></dd>
   </div>
 
-      {% if data['example-year'] != '' %}
-      {% set nextTestDueDate = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
-      <div class="nhsuk-summary-list__row">
-        <dt class="nhsuk-summary-list__key">Repeat in months</dt>
-        <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat + ' ' + nextTestDueDate | returnTimeDiff }}</dd>
-      </div>
-    {% endif %}
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Next test due date</dt>
+      <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', nextTestDueDate) + ' ' + 3 | returnDate('years', nextTestDueDate) | returnTimeDiff }}</dd>
+    </div> 
 
  <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">CRM</dt>

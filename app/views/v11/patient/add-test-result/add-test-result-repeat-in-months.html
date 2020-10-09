@@ -17,19 +17,21 @@
         <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
         </svg>
-        Back to step 1 - Add test details</a>
+        Back to step 3 - Add test result</a>
     </div>
   <div class="nhsuk-panel-with-label">
     {% include '../../components/pnl-patient-2.html' %}
     <span class="nhsuk-hint">Step 4 of 6</span> 
 
+        {% set testResult = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
+    {% set resultText = "<p>The patients will next be invited on <strong>" + 3 | returnDate('years', testResult) + ' ' + 3 | returnDate('years', testResult) | returnTimeDiff +  "</strong></p>" %}
       <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
         <h1 class="nhsuk-heading-l">Check next test due date</h1>
           {{ insetText({
-              "HTML": "<p>The patients will next be invited in x months on xx/xx/xxxx.</p>"
+              "HTML": resultText
            }) }}
 
-          <p> This next test due date has been calculated using the patients last test results.</P>
+          <p> This next test due date has been calculated using the patients latest test results.</P>
 
           <a href="add-test-result-crm" class="nhsuk-button nhsuk-button--ers">Ok, Continue</a>
 
