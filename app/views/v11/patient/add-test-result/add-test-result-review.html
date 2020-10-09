@@ -86,10 +86,13 @@
     <dd class="nhsuk-summary-list__actions"><a href="add-test-result-result">Change<span class="nhsuk-u-visually-hidden"> HPV Primary</span></a></dd>
   </div>
 
-<div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Reapet in months</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['repeat-in-months'] }} x months</dd>
-  </div>
+      {% if data['example-year'] != '' %}
+      {% set nextTestDueDate = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">Repeat in months</dt>
+        <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat + ' ' + nextTestDueDate | returnTimeDiff }}</dd>
+      </div>
+    {% endif %}
 
  <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">CRM</dt>
