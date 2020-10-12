@@ -255,9 +255,14 @@ if (age == 'no') {
 }
   //  default action if nothing selected
 
-
 })
 
+
+router.post("/*/add-test-result", function (req, res) {
+  console.log('ADDING-TEST-RESULT');
+  req.session.data["addresult_update_msg_show"] = "2";
+  res.redirect("/" + getVersion(req) + "/patient/patient-summary-4");
+})
 
 
 
