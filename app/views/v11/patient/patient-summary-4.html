@@ -178,7 +178,7 @@
     <h2 id="testresults" class="nhsuk-heading-l">Test results</h2>
 
     {% if data.role == 'csas' %}
-    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4" href="add-test-result/add-test-result">Add result</a>
+    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4" href="/v11/start-adding-test?nhsNumber={{ data.patientSummary.nhs_number }}&role=csas">Add result</a>
     {% endif %}
 
     <div class="nhsuk-scrollable-pane">
@@ -191,8 +191,8 @@
               <thead class="nhsuk-table__head">
                 <tr class="nhsuk-table__row">
                   <th class="nhsuk-table__header" scope="col">Test Date</th>
-                  <th class="nhsuk-table__header" scope="col">HPV infection</th>
                   <th class="nhsuk-table__header"  scope="col">Cytology result</th>
+                  <th class="nhsuk-table__header" scope="col">HPV infection</th>
                   <th class="nhsuk-table__header" scope="col">Action</th>
                   <th class="nhsuk-table__header" scope="col">Repeat</th>
                   <th class="nhsuk-table__header" scope="col">Screening lab</th>
@@ -203,26 +203,60 @@
                 </tr>
               </thead>
               <tbody class="nhsuk-table__body nhsuk-body-">
-{% if data.patientSummary.results != null %}
+              {% if data['result-type'] != null %}
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">
+                    {% set nextTestDueDate = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
+                    {{ nextTestDueDate | returnDateFormat or '01-Apr-2017' }}
+                    <span class="nhsuk-table__cell--hint">{{ data['result-type'] }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    Negative
+                    <span class="nhsuk-table__cell--hint">{{ data['result-result'] or '2' }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    HPV Negative
+                    <span class="nhsuk-table__cell--hint">{{ data['result-infection'] or '-' }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    Routine
+                  <span class="nhsuk-table__cell--hint">{{ data['result-action'] or 'A' }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    60
+                    <span class="nhsuk-table__cell--hint">Months</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data['national-code'] or '60450' }}
+                    <span class="nhsuk-table__cell--hint">Derby Royal Hospital</span>
+                  </td>
+                  <td class="nhsuk-table__cell">{{ data['sender-code'] or '676567' }}</td>
+                  {% if data.role != 'sampleTaker' %}
+                    <td class="nhsuk-table__cell">{{ data['slide-number'] or '70406000' }}</td>
+                  {% endif %}
+                </tr>
+
+              {% endif %}
+              {% if data.patientSummary.results != null %}
                 <tr class="nhsuk-table__row">
                   <td class="nhsuk-table__cell fixed-side">
                     {{ data.patientSummary.results.result_date | returnDateFormat or '01-Apr-2017' }}
                     <span class="nhsuk-table__cell--hint">NHS Test</span>
                   </td>
                   <td class="nhsuk-table__cell">
-                    {{ data.patientSummary.results.infection_result or 'No HPV Data' }}
-                    <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.infection_code or '-' }}</span>
-                  </td>
-                  <td class="nhsuk-table__cell">
                     {{ data.patientSummary.results.result or 'Negative' }}
                     <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.result_code or '2' }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ data.patientSummary.results.infection_result or 'No HPV Data' }}
+                    <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.infection_code or '-' }}</span>
                   </td>
                   <td class="nhsuk-table__cell">
                     {{ data.patientSummary.results.action or 'Routine' }}
                     <span class="nhsuk-table__cell--hint">{{ data.patientSummary.results.action_code or 'A' }}</span>
                   </td>
                   <td class="nhsuk-table__cell">
-                    {{ data.patientSummary.results.recall_months or '60' }}
+                    {{ data.patientSummary.results.recall_months or '36' }}
                     <span class="nhsuk-table__cell--hint">Months</span>
                   </td>
                   <td class="nhsuk-table__cell">
@@ -240,19 +274,19 @@
                     <span class="nhsuk-table__cell--hint">NHS Test</span>
                   </td>
                   <td class="nhsuk-table__cell">
-                    No HPV Data
-                    <span class="nhsuk-table__cell--hint">-</span>
-                  </td>
-                  <td class="nhsuk-table__cell">
                     Negative
                     <span class="nhsuk-table__cell--hint">2</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    No HPV Data
+                    <span class="nhsuk-table__cell--hint">-</span>
                   </td>
                   <td class="nhsuk-table__cell">
                     Routine
                     <span class="nhsuk-table__cell--hint">A</span>
                   </td>
                   <td class="nhsuk-table__cell">
-                    60
+                    36
                     <span class="nhsuk-table__cell--hint">Months</span>
                   </td>
                   <td class="nhsuk-table__cell">

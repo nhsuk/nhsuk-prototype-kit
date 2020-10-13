@@ -24,8 +24,8 @@
     <span class="nhsuk-hint">Step 4 of 6</span> 
 
         {% set testResult = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
-    {% set resultText = "<p>The patients will next be invited on <strong>" + 3 | returnDate('years', testResult) + ' ' + 3 | returnDate('years', testResult) | returnTimeDiff +  "</strong></p>" %}
-      <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+        {% set resultText = "<p>The patients will next be invited on <strong>" + 3 | returnDate('years', testResult) + ' ' + 3 | returnDate('years', testResult) | returnTimeDiff +  "</strong></p>" %}
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
         <h1 class="nhsuk-heading-l">Check next test due date</h1>
           {{ insetText({
               "HTML": resultText

@@ -30,6 +30,14 @@ module.exports = function (env) {
     }
   }
 
+  filters.returnDateAndTime = function (date) {
+    if (date == "today") {
+      return moment().format("D-MMM-YYYY, h:mm:ss a");
+    }
+    return moment(date).format("D-MMM-YYYY, h:mm:ss a");
+  }
+  
+
   filters.returnDate = function (amount, type) {
       return moment().add(amount, type).format("D-MMM-YYYY");
   }
@@ -81,7 +89,8 @@ module.exports = function (env) {
       if (months < 23) {
         return "(in " + months + " months)"
       }
-      return "(in " + years + " years)"
+      var remainingDays = days - (years * 365);
+      return "(in " + years + " years and " + remainingDays + " days)";
     } else {
       days *= -1
       weeks *= -1
@@ -96,7 +105,8 @@ module.exports = function (env) {
       if (months < 23) {
         return "(" + months + " months ago)"
       }
-      return "(" + years + " years ago)"
+      var remainingDays = days - (years * 365);
+      return "(" + years + " years and " + remainingDays + " days ago)";
     }
   }
 
@@ -190,6 +200,41 @@ module.exports = function (env) {
     ]
 
     return guidanceValues.find((guidance) => guidance.Reason == reason).Max;
+  }
+
+  filters.returnResultText = function (resultCode) {
+    const resultText = [
+      { code: 'X', text: 'No cytology result' },
+      { code: '1', text: 'Inadequate cytology' },
+      { code: '2', text: 'Normal cytology, ableRecall' },
+      { code: '3', text: 'Low grade dyskaryosisllowableRecall' },
+      { code: '4', text: 'High-grade dyskaryosis (severe)' },
+      { code: '5', text: 'High-grade dyskaryosis invasive squamous carcinoma' },
+      { code: '6', text: 'Glandular neoplasia of endocervical type' },
+      { code: '7', text: 'High-grade dyskaryosis (moderate)' },
+      { code: '8', text: 'Borderline squamous' },
+      { code: '9', text: 'Borderline endocervical' },
+      { code: '0', text: 'Glandular neoplasia (non-cervical)' }
+    ]
+    return resultText.find((text) => text.Reason == reason.toUpperCase());
+  }
+
+  filters.returnInfectionText = function (infectionCode) {
+    const infectionText = [
+      { code: '0', text: 'HPV negative' },
+      { code: 'U', text: 'HPV not available' },
+      { code: '9', text: 'HPV positive' }
+    ]
+    return infectionText.find((text) => text.Reason == infectionCode.toUpperCase());
+  }
+
+  filters.returnActionText = function (actionCode) {
+    const actionText = [
+      { code: '0', text: 'HPV negative' },
+      { code: 'U', text: 'HPV not available' },
+      { code: '9', text: 'HPV positive' }
+    ]
+    return actionText.find((text) => text.Reason == reason.toUpperCase());
   }
 
   /* ------------------------------------------------------------------

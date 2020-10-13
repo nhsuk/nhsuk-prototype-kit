@@ -257,10 +257,28 @@ if (age == 'no') {
 
 })
 
+router.get("/*/start-adding-test*", function (req, res) {
+    console.log("START ADDING TEST");
+    req.session.data["addresult_update_msg_show"] = 0;
+    const params = new URLSearchParams(req.query);
+    const nhsNumber = params.get('nhsNumber');
+    //const version = params.get('pnlversion');
+    //req.session.data["pnlversion"] = version;
+    var pnlPatient = patient.getPatient(nhsNumber);
+    req.session.data["pnl_patient"] = pnlPatient;
+    res.redirect("/" + getVersion(req) + "/patient/add-test-result/add-test-result")
+})
+
 
 router.post("/*/add-test-result", function (req, res) {
   console.log('ADDING-TEST-RESULT');
   req.session.data["addresult_update_msg_show"] = "2";
+  console.log("year " + req.session.data['example-year'])
+  console.log("month " + req.session.data['example-month'])
+  console.log("day " + req.session.data['example-day'])
+
+
+  //data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
   res.redirect("/" + getVersion(req) + "/patient/patient-summary-4");
 })
 

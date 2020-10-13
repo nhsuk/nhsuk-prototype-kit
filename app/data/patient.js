@@ -407,7 +407,14 @@ module.exports.getPatients = function (notificationType) {
     var allResults = results.getResults();
 
     for (i = 0; i < patients.length; i++) {
-        patients[i]['results'] = allResults.find((result) => result.nhs_number == patients[i]['nhs_number']);        
+        patients[i]['results'] = allResults.find((result) => result.nhs_number == patients[i]['nhs_number']);    
+        console.log("patient results count: " + patients.length)
+        console.log("results count: " + allResults.length)
+        console.dir(patients[i]);
+
+        // patients = [patient 1],[patient2]
+        // result = results code, infection
+        // result = [result1], [result2]
     }
     
     function compare(a, b) {

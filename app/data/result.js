@@ -198,7 +198,7 @@ const results = [
         },
         "nhs_number": "9100001929",
         "participant_id": "ffb1226a-1849-46d8-8c1e-f273e8417f27",
-        "recall_months": "60",
+        "recall_months": "36",
         "result": "Negative",
         "result_code": "2",
         "result_date": moment().subtract(146, "weeks"), 
