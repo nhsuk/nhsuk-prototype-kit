@@ -29,7 +29,8 @@
     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
       Review test  
     </legend>
-    <form action="/v11/add-test-result" method="post">
+    
+    <form action="/v11/add-test-result?nhsNumber={{ data.pnl_patient.nhs_number }}" method="post">
 
 <dl class="nhsuk-summary-list">
   <div class="nhsuk-summary-list__row">
@@ -104,7 +105,7 @@
     <dd class="nhsuk-summary-list__actions"><a href="add-test-result-crm">Change<span class="nhsuk-u-visually-hidden"> Comments</span></a></dd>
   </div>
 </dl>
-     
+
          <button class="nhsuk-button nhsuk-button--ers" type="submit">
             Submit
          </button>

@@ -1,8 +1,8 @@
-{% if patient.results == null %} 
+{% if patient.results[0] == null %} 
   {% set resultDate = "no results" %} 
 {% else %}
-  {% set result = "(" + (patient.results.result_code or "-" ) + (patient.results.infection_code or "") + (patient.results.action_code or "-") + ") " + (patient.results.result or "-") + ", " +(patient.results.infection_result or "No HPV data") + ", " +(patient.results.action or "-") %}
-  {% set resultDate = (patient.results.result_date | returnDateFormat or "-") + " " + (patient.results.result_date | returnTimeDiff or "-") %}
+  {% set result = "(" + (patient.results[0].result_code or "-" ) + (patient.results[0].infection_code or "") + (patient.results[0].action_code or "-") + ") " + (patient.results[0].result or "-") + ", " +(patient.results[0].infection_result or "No HPV data") + ", " +(patient.results[0].action or "-") %}
+  {% set resultDate = (patient.results[0].result_date | returnDateFormat or "-") + " " + (patient.results[0].result_date | returnTimeDiff or "-") %}
 {% endif %}
 
 <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
@@ -18,7 +18,7 @@
     <dt class="nhsuk-summary-list__key">Last test</dt>
     <dd class="nhsuk-summary-list__value">
       
-          {% if patient.results != null %}
+          {% if patient.results[0] != null %}
             {{ result }}
           {% else %}
             no results

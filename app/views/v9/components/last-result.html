@@ -1,9 +1,9 @@
-{% if patient.results == null %} 
+{% if patient.results[0] == null %} 
   {% set resultDate = "no results" %} 
 {% else %}
-  {% set resultWithoutHPV = "(" + (patient.results.result_code or "-" ) + (patient.results.infection_code or "") + (patient.results.action_code or "-") + ") " + (patient.results.result or "-") + ", " +(patient.results.action or "-") %}
-  {% set resultWithHPV = "(" + (patient.results.result_code or "-" ) + (patient.results.infection_code or "") + (patient.results.action_code or "-") + ") " + (patient.results.result or "-") + ", " +(patient.results.infection_result or "") + ", " +(patient.results.action or "-") %}
-  {% set resultDate = (patient.results.result_date | returnDateFormat or "-") + " " + (patient.results.result_date | returnTimeDiff or "-") %}
+  {% set resultWithoutHPV = "(" + (patient.results[0].result_code or "-" ) + (patient.results[0].infection_code or "") + (patient.results[0].action_code or "-") + ") " + (patient.results[0].result or "-") + ", " +(patient.results[0].action or "-") %}
+  {% set resultWithHPV = "(" + (patient.results[0].result_code or "-" ) + (patient.results[0].infection_code or "") + (patient.results[0].action_code or "-") + ") " + (patient.results[0].result or "-") + ", " +(patient.results[0].infection_result or "") + ", " +(patient.results[0].action or "-") %}
+  {% set resultDate = (patient.results[0].result_date | returnDateFormat or "-") + " " + (patient.results[0].result_date | returnTimeDiff or "-") %}
 {% endif %}
 
 <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
@@ -18,9 +18,9 @@
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Last test</dt>
     <dd class="nhsuk-summary-list__value">
-      {% if patient.results.infection_result == undefined %}
+      {% if patient.results[0].infection_result == undefined %}
         {{ resultWithoutHPV }}
-          {% if patient.results != null %}
+          {% if patient.results[0] != null %}
             <span class="nhsuk-tag nhsuk-tag--orange nhsuk-u-margin-bottom-2">No HPV Data</span>
           {% else %}
             no results

@@ -1,10 +1,10 @@
 
-{% if data.pnl_patient.results == null %} 
+{% if data.pnl_patient.results[0] == null %} 
   {% set resultDate = "no results" %} 
 {% else %}
-  {% set resultWithoutHPV = "(" + (data.pnl_patient.results.result_code or "-" ) + (data.pnl_patient.results.infection_code or "") + (data.pnl_patient.results.action_code or "-") + ") " + (data.pnl_patient.results.result or "-") + ", " +(data.pnl_patient.results.action or "-") %}
-  {% set resultWithHPV = "(" + (data.pnl_patient.results.result_code or "-" ) + (data.pnl_patient.results.infection_code or "") + (data.pnl_patient.results.action_code or "-") + ") " + (data.pnl_patient.results.result or "-") + ", " +(data.pnl_patient.results.infection_result or "") + ", " +(data.pnl_patient.results.action or "-") %}
-  {% set resultDate = (data.pnl_patient.results.result_date | returnDateFormat or "-") + " " + (data.pnl_patient.results.result_date | returnTimeDiff or "-") %}
+  {% set resultWithoutHPV = "(" + (data.pnl_patient.results[0].result_code or "-" ) + (data.pnl_patient.results[0].infection_code or "") + (data.pnl_patient.results[0].action_code or "-") + ") " + (data.pnl_patient.results[0].result or "-") + ", " +(data.pnl_patient.results[0].action or "-") %}
+  {% set resultWithHPV = "(" + (data.pnl_patient.results[0].result_code or "-" ) + (data.pnl_patient.results[0].infection_code or "") + (data.pnl_patient.results[0].action_code or "-") + ") " + (data.pnl_patient.results[0].result or "-") + ", " +(data.pnl_patient.results[0].infection_result or "") + ", " +(data.pnl_patient.results[0].action or "-") %}
+  {% set resultDate = (data.pnl_patient.results[0].result_date | returnDateFormat or "-") + " " + (data.pnl_patient.results[0].result_date | returnTimeDiff or "-") %}
 {% endif %}
   
   <h3 class="nhsuk-panel-with-label__label">{{ data.pnl_patient.first_name | capitalize }} {{ data.pnl_patient.last_name | capitalize }} 
@@ -29,9 +29,9 @@
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Last test</dt>
     <dd class="nhsuk-summary-list__value">
-      {% if data.pnl_patient.results.infection_result == undefined %}
+      {% if data.pnl_patient.results[0].infection_result == undefined %}
         {{ resultWithoutHPV }}
-          {% if data.pnl_patient.results != null %}
+          {% if data.pnl_patient.results[0] != null %}
             <span class="nhsuk-tag nhsuk-tag--orange nhsuk-u-margin-bottom-2">No HPV Data</span>
           {% else %}
             no results

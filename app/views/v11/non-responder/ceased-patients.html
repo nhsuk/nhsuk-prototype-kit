@@ -106,10 +106,10 @@
             <span class="nhsuk-table__cell--hint">{{ patient.date_of_birth  | returnDateFormat }}</span>
           </td>
           <td class="nhsuk-table__cell">
-            {% if patient.results == null %} 
+            {% if patient.results[0] == null %} 
               Called
             {% else %}
-              {{ patient.results.action }}
+              {{ patient.results[0].action }}
             {% endif %}
             <span class="nhsuk-table__cell--hint">Recall</span>
           </td>

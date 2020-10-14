@@ -203,6 +203,72 @@
                 </tr>
               </thead>
               <tbody class="nhsuk-table__body nhsuk-body-">
+
+              {% for result in data.patientSummary.results %}
+                {#
+                {% set rowId =  "selectRow" + loop.index %}
+                {% set detailsId =  "detailsRow" + loop.index %}
+                {% set buttonId =  "btnRow" + loop.index %}
+                {% set NameId =  "nameRow1" + loop.index %}
+                #}
+
+                {#
+                {
+                  "action": "Routine",
+                  "action_code": "A",
+                  "created": "2020-05-28T16:35:45.890",
+                  "migrated_CSO2_data": {
+                      "received": "2020-05-28T16:35:45.890",
+                      "value": "LL|9100002801|1|19890523|2|A||60|S|60210|G|M371|Y|861321|19890616|198901|89007139||KHU|20060526|||"
+                  },
+                  "nhs_number": "9100002801",
+                  "participant_id": "8d0243e8-2ef0-4d4d-be8c-06be86138bfc",
+                  "recall_months": "60",
+                  "result": "Negative",
+                  "result_code": "2",
+                  "result_date": moment().subtract(146, "weeks"), 
+                  "sender_code": "861321",
+                  "sending_lab": "60210",
+                  "slide_number": "89007139",
+                  "sort_key": "RESULT#1989-05-23#2020-05-28T16:35:45.890",
+                  "source_code": "G",
+                  "test_date": moment().subtract(146, "weeks")
+                },
+                #}
+
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">
+                    {{ result.test_date | returnDateFormat }}
+                    <span class="nhsuk-table__cell--hint">{{ result.source_code }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ result.result }}
+                    <span class="nhsuk-table__cell--hint">{{ result.result_code }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ result.infection_result or 'No HPV Data' }}
+                    <span class="nhsuk-table__cell--hint">{{ result.infection_code }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ result.action }}
+                  <span class="nhsuk-table__cell--hint">{{ result.action_code }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ result.recall_months }}
+                    <span class="nhsuk-table__cell--hint">Months</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ result.sending_lab }}
+                    <span class="nhsuk-table__cell--hint">Derby Royal Hospital</span>
+                  </td>
+                  <td class="nhsuk-table__cell">{{ result.sender_code }}</td>
+                  {% if data.role != 'sampleTaker' %}
+                    <td class="nhsuk-table__cell">{{ result.slide_number }}</td>
+                  {% endif %}
+                </tr>
+              {% endfor %}
+
+{#
               {% if data['result-type'] != null %}
                 <tr class="nhsuk-table__row">
                   <td class="nhsuk-table__cell fixed-side">
@@ -300,6 +366,7 @@
                 </tr>
 
 {% endif %}
+#}
               </tbody>
             </table>
           </div>

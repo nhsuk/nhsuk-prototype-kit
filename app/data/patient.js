@@ -1,4 +1,5 @@
 const results = require('./result.js');
+const filters = require('../filters.js');
 const moment = require('moment');
 
 /*
@@ -54,6 +55,7 @@ var patients = [
         "pnl_action": "Ceased",
         "pnl_reason": "Patient informed choice",
         "registered_gp_practice_code": "C86003",
+        "results" : [],
         "sanitised_first_name": "CURRY",
         "sanitised_last_name": "DEPETRIS",
         "sanitised_nhs_number": "9991023867",
@@ -96,6 +98,7 @@ var patients = [
         "pnl_action": "Ceased",
         "pnl_reason": "No cervix",
         "registered_gp_practice_code": "L83665",
+        "results" : [],
         "sanitised_first_name": "JUDITH",
         "sanitised_last_name": "CUNNINGHAM",
         "sanitised_nhs_number": "9100001694",
@@ -137,6 +140,7 @@ var patients = [
         "pnl_action": "Ceased",
         "pnl_reason": "Due to age",
         "registered_gp_practice_code": "L83665",
+        "results" : [],
         "sanitised_first_name": "PEPITA",
         "sanitised_last_name": "JEFFERY",
         "sanitised_nhs_number": "9100001384",
@@ -176,6 +180,7 @@ var patients = [
         "pnl": true,
         "pnl_action": "",
         "registered_gp_practice_code": "L83665",
+        "results" : [],
         "sanitised_first_name": "VERONICA",
         "sanitised_last_name": "HITCHINGS",
         "sanitised_nhs_number": "9100002801",
@@ -216,6 +221,7 @@ var patients = [
         "pnl": true,
         "pnl_action": "",
         "registered_gp_practice_code": "L83665",
+        "results" : [],
         "sanitised_first_name": "ANNIE",
         "sanitised_last_name": "EVANS",
         "sanitised_nhs_number": "9100001899",
@@ -256,6 +262,7 @@ var patients = [
         "pnl": true,
         "pnl_action": "",
         "registered_gp_practice_code": "L83665",
+        "results" : [],
         "sanitised_first_name": "MURIEL",
         "sanitised_last_name": "GREWCOCK",
         "sanitised_nhs_number": "9100001287",
@@ -296,6 +303,7 @@ var patients = [
         "pnl": true,
         "pnl_action": "",
         "registered_gp_practice_code": "L83665",
+        "results" : [],
         "sanitised_first_name": "TANYA",
         "sanitised_last_name": "PARR",
         "sanitised_nhs_number": "9100002798",
@@ -335,6 +343,7 @@ var patients = [
         "pnl": true,
         "pnl_action": "",
         "registered_gp_practice_code": "L83665",
+        "results" : [],
         "sanitised_first_name": "BRENDA",
         "sanitised_last_name": "BRAZIER",
         "sanitised_nhs_number": "9100001929",
@@ -377,6 +386,7 @@ var patients = [
         "pnl_action": "Ceased",
         "pnl_reason": "Patient informed choice",
         "registered_gp_practice_code": "L83665",
+        "results" : [],
         "sanitised_first_name": "JENNIFER",
         "sanitised_last_name": "GOLDING",
         "sanitised_nhs_number": "9100001740",
@@ -407,14 +417,32 @@ module.exports.getPatients = function (notificationType) {
     var allResults = results.getResults();
 
     for (i = 0; i < patients.length; i++) {
-        patients[i]['results'] = allResults.find((result) => result.nhs_number == patients[i]['nhs_number']);    
-        console.log("patient results count: " + patients.length)
-        console.log("results count: " + allResults.length)
-        console.dir(patients[i]);
+        for (j = 0; j < allResults.length; j++) {
+            if (patients[i].nhs_number == allResults[j].nhs_number) {
+                // there is a match with the nhs number
+                //console.log("possible match - awaiting confirmation")
+                 var index = patients[i].results.findIndex(result => result.slide_number == allResults[j].slide_number)
+                if (index === -1) {
+                    //console.log("not a duplicate - adding result")
+                    patients[i].results.push(allResults[j]);
+                }
+                    //else //console.log("object already exists")
+            }
+        }
 
-        // patients = [patient 1],[patient2]
-        // result = results code, infection
-        // result = [result1], [result2]
+        // if there are more than 1 results then order
+        if (patients[i].results.length > 1) {
+            //console.log("nhs number: " + patients[i].nhs_number)
+            patients[i].results.sort(function (a, b) {
+                //return (a.test_date > b.test_date) ? -1 : 1;
+                return  new Date(b.test_date) - new Date(a.test_date);
+            });
+        }
+
+        //console.log("----start----")
+        //console.log("patient: " + patients[i].nhs_number)
+        //console.log("results count: " + patients[i].results.length)
+        //console.log("-----end-----")
     }
     
     function compare(a, b) {
@@ -431,12 +459,12 @@ module.exports.getPatients = function (notificationType) {
         var aStatus = "";
         var bStatus = "";
 
-        if (a.results) {
-            aStatus = a.results.action_code;
+        if (a.results[0]) {
+            aStatus = a.results[0].action_code;
         }
 
-        if (b.results) {
-            bStatus = b.results.action_code;
+        if (b.results[0]) {
+            bStatus = b.results[0].action_code;
         } 
 
         if (aTime == bTime) {
@@ -447,7 +475,6 @@ module.exports.getPatients = function (notificationType) {
         }
     }
 
-    
     //console.log('Notification Type: ' + notificationType)
     if (notificationType == "pnl") {
         console.log("PRIOR NOTIFICATION")
@@ -538,6 +565,67 @@ module.exports.reinstatePatient = function (nhsNumber, ntdd) {
     patient.pnl_reason = '';
     //patient.next_test_due_date = moment(ntdd).format("DD-MMM-YYYY");
     //console.log(patient)
+};
+
+module.exports.addTestResult = function (nhsNumber, data) {
+    console.log("ATTEMPTING TO ADD A TEST RESULT")
+    var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
+    //console.log(patient);
+    //console.log(data['result-type'])
+    //console.log(data['result-type'])
+    //console.log(data);
+    var newTest = [{
+        "action": "" , // to fill in
+        "action_code": data['result-action'],
+        "created": moment(),
+        "infection_code": data['result-infection'],
+        "infection_result": "", // to fill in
+        "nhs_number": nhsNumber,
+        "recall_months": "36", // default to 36 until figure a way to add this
+        "result": "", // to fill in
+        "result_code": data['result-result'],
+        "result_date": data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'],
+        "sender_code": data['sender-code'],
+        "sending_lab": data['national-code'],
+        "slide_number": data['slide-number'],
+        "source_code": data['source-code'],
+        "test_date": data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'],
+        "result-type": data['result-type'],
+        "health-authority": data['health-authority'],
+        "result-infection": data['result-infection'],
+        "hpv-primary": data['hpv-primary'],
+        "crm": data['crm'],
+        "comments": data['comments']
+    }];
+
+    //var results = JSON.parse(patient.results[0]);
+    //console.log(results);
+
+
+     //   for (j = 0; j < allResults.length; j++) {
+     //       if (patient.nhs_number == allResults[j].nhs_number) {
+     //            var index = patient.results.findIndex(result => result.slide_number == allResults[j].slide_number)
+     //           if (index === -1) {
+     //               patient.results.push(allResults[j]);
+     //           }
+     //       }
+     //   }
+
+       
+    
+    patient.results.push(newTest[0]);
+    console.log(patient.results);
+
+    if (patient.results.length > 1) {
+        patient.results.sort(function (a, b) {
+            return  new Date(b.test_date) - new Date(a.test_date);
+        });
+    }
+
+    // add the updated patient back into the patientSummary object
+    //req.session.data[]
+
+    // reorder the results
 };
 
 module.exports.resetPatients = function (req) {

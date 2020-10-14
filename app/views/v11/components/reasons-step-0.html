@@ -1,9 +1,9 @@
-{% if patient.results == null %} 
+{% if patient.results[0] == null %} 
   {% set result = "no results" %}
   {% set resultDate = "no results" %} 
 {% else %}
-  {% set result = "(" + (patient.results.result_code or "-" ) + (patient.results.infection_code or "-") + (patient.results.action_code or "-") + ") " + (patient.results.result or "-") + ", " + (patient.results.infection_result or "-") + ", " + (patient.results.action or "-") %}
-  {% set resultDate = (patient.results.result_date | returnDateFormat or "-") + " " + (patient.results.result_date | returnTimeDiff or "-") %}
+  {% set result = "(" + (patient.results[0].result_code or "-" ) + (patient.results[0].infection_code or "-") + (patient.results[0].action_code or "-") + ") " + (patient.results[0].result or "-") + ", " + (patient.results[0].infection_result or "-") + ", " + (patient.results[0].action or "-") %}
+  {% set resultDate = (patient.results[0].result_date | returnDateFormat or "-") + " " + (patient.results[0].result_date | returnTimeDiff or "-") %}
 {% endif %}
 
 {{ summaryList({

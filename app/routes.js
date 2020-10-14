@@ -276,8 +276,16 @@ router.post("/*/add-test-result", function (req, res) {
   console.log("year " + req.session.data['example-year'])
   console.log("month " + req.session.data['example-month'])
   console.log("day " + req.session.data['example-day'])
+  const params = new URLSearchParams(req.query);
+  const nhsNumber = params.get('nhsNumber');
+  console.log(nhsNumber)
+  var currentPatient = patient.getPatient(nhsNumber);
+  patient.addTestResult(nhsNumber, req.session.data);
 
-
+  // get the patient again with the new results
+  currentPatient = patient.getPatient(nhsNumber);
+  req.session.data['patientSummary'] = currentPatient;
+  
   //data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
   res.redirect("/" + getVersion(req) + "/patient/patient-summary-4");
 })
