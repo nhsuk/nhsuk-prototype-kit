@@ -286,7 +286,6 @@ router.post("/*/add-test-result", function (req, res) {
   currentPatient = patient.getPatient(nhsNumber);
   req.session.data['patientSummary'] = currentPatient;
   
-  //data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
   res.redirect("/" + getVersion(req) + "/patient/patient-summary-4");
 })
 
