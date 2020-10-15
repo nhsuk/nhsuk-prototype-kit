@@ -196,11 +196,11 @@
                   <th class="nhsuk-table__header" scope="col">Action</th>
                   <th class="nhsuk-table__header" scope="col">Repeat</th>
                   <th class="nhsuk-table__header" scope="col">Screening lab</th>
-                  <th class="nhsuk-table__header" scope="col">Sample taker code</th>
+             <!-- <th class="nhsuk-table__header" scope="col">Sample taker code</th>
                   {% if data.role != 'sampleTaker' %}
                     <th class="nhsuk-table__header" scope="col">Slide no</th>
-                  {% endif %}
-                </tr>
+                  {% endif %}-->
+                  <th class="nhsuk-table__header" scope="col">Amend</th>
               </thead>
               <tbody class="nhsuk-table__body nhsuk-body-">
 
@@ -261,14 +261,18 @@
                     {{ result.sending_lab }}
                     <span class="nhsuk-table__cell--hint">Derby Royal Hospital</span>
                   </td>
-                  <td class="nhsuk-table__cell">{{ result.sender_code }}</td>
+                 <!-- <td class="nhsuk-table__cell">{{ result.sender_code }}</td>
                   {% if data.role != 'sampleTaker' %}
-                    <td class="nhsuk-table__cell">{{ result.slide_number }}</td>
+                    <td class="nhsuk-table__cell">{{ result.slide_number }}</td> 
                   {% endif %}
-                </tr>
+                </tr>-->
+                  <td> 
+                  <a href="/v11/add-test-result-review" style="margin-left:4px; margin-right:4px;">Edit</a>
+                  <a href="/v11/start-prior-notifications-defer-reason?nhsNumber={{ patient.nhs_number }}&pnlversion=12&role=admin&returnUrl=pnl" style="margin-left:4px; margin-right:4px;">Remove</a>
+                  </td>
               {% endfor %}
 
-{#
+              {#
               {% if data['result-type'] != null %}
                 <tr class="nhsuk-table__row">
                   <td class="nhsuk-table__cell fixed-side">
