@@ -420,10 +420,8 @@ module.exports.getPatients = function (notificationType) {
         for (j = 0; j < allResults.length; j++) {
             if (patients[i].nhs_number == allResults[j].nhs_number) {
                 // there is a match with the nhs number
-                //console.log("possible match - awaiting confirmation")
                  var index = patients[i].results.findIndex(result => result.slide_number == allResults[j].slide_number)
                 if (index === -1) {
-                    //console.log("not a duplicate - adding result")
                     patients[i].results.push(allResults[j]);
                 }
                     //else //console.log("object already exists")
@@ -432,17 +430,10 @@ module.exports.getPatients = function (notificationType) {
 
         // if there are more than 1 results then order
         if (patients[i].results.length > 1) {
-            //console.log("nhs number: " + patients[i].nhs_number)
             patients[i].results.sort(function (a, b) {
-                //return (a.test_date > b.test_date) ? -1 : 1;
                 return  new Date(b.test_date) - new Date(a.test_date);
             });
         }
-
-        //console.log("----start----")
-        //console.log("patient: " + patients[i].nhs_number)
-        //console.log("results count: " + patients[i].results.length)
-        //console.log("-----end-----")
     }
     
     function compare(a, b) {
@@ -475,7 +466,6 @@ module.exports.getPatients = function (notificationType) {
         }
     }
 
-    //console.log('Notification Type: ' + notificationType)
     if (notificationType == "pnl") {
         console.log("PRIOR NOTIFICATION")
         patients.sort(compare);
@@ -552,9 +542,6 @@ module.exports.submitPatient = function (nhsNumber, type) {
 
 module.exports.reinstatePatient = function (nhsNumber, ntdd) {
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
-    //console.log(patient)
-    //console.log("ntdd: " + ntdd)
-    // use the next test due date supplied
     if (ntdd != null) {
         patient.next_test_due_date = moment(ntdd).format("DD-MMM-YYYY");
     } else {
@@ -563,17 +550,11 @@ module.exports.reinstatePatient = function (nhsNumber, ntdd) {
 
     patient.pnl_action = '';
     patient.pnl_reason = '';
-    //patient.next_test_due_date = moment(ntdd).format("DD-MMM-YYYY");
-    //console.log(patient)
 };
 
 module.exports.addTestResult = function (nhsNumber, data) {
     console.log("ATTEMPTING TO ADD A TEST RESULT")
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
-    //console.log(patient);
-    //console.log(data['result-type'])
-    //console.log(data['result-type'])
-    //console.log(data);
     var newTest = [{
         "action": "" , // to fill in
         "action_code": data['result-action'],
@@ -596,22 +577,7 @@ module.exports.addTestResult = function (nhsNumber, data) {
         "hpv-primary": data['hpv-primary'],
         "crm": data['crm'],
         "comments": data['comments']
-    }];
-
-    //var results = JSON.parse(patient.results[0]);
-    //console.log(results);
-
-
-     //   for (j = 0; j < allResults.length; j++) {
-     //       if (patient.nhs_number == allResults[j].nhs_number) {
-     //            var index = patient.results.findIndex(result => result.slide_number == allResults[j].slide_number)
-     //           if (index === -1) {
-     //               patient.results.push(allResults[j]);
-     //           }
-     //       }
-     //   }
-
-       
+    }]; 
     
     patient.results.push(newTest[0]);
     console.log(patient.results);
@@ -629,40 +595,47 @@ module.exports.addTestResult = function (nhsNumber, data) {
 };
 
 module.exports.resetPatients = function (req) {
-    //console.log(req.session.data['patients-backup'])
-    //patients = req.session.data['patients-backup'];
-    //patient = {}
     patients.forEach(function (patient) {
         patient.pnl = true;
         patient.pnl_action = "";
         patient.nrl = true; 
     })
-//
-    patients.forEach(function (patient) {
-        if (patient.nhs_number == "9100001694" || patient.nhs_number == "9100001384" || patient.nhs_number == "9100001740" || patient.nhs_number == "9991023867") {
-            patient.pnl_action = "Ceased";
+    
+    var allResults = results.getResults();
+    for (i = 0; i < patients.length; i++) {        
+        patients[i].results = [];
+
+        for (j = 0; j < allResults.length; j++) {
+            if (patients[i].nhs_number == allResults[j].nhs_number) {
+                 var index = patients[i].results.findIndex(result => result.slide_number == allResults[j].slide_number)
+                if (index === -1) {
+                    patients[i].results.push(allResults[j]);
+                }
+            }
+        }
+
+        if (patients[i].results.length > 1) {
+            patients[i].results.sort(function (a, b) {
+                return  new Date(b.test_date) - new Date(a.test_date);
+            });
+        }
+
+        if (patients[i].nhs_number == "9100001694" || patients[i].nhs_number == "9100001384" || patients[i].nhs_number == "9100001740" || patients[i].nhs_number == "9991023867") {
+            patients[i].pnl_action = "Ceased";
             
-            if (patient.nhs_number == "9100001694") {
-                patient.pnl_reason = "No cervix";
+            if (patients[i].nhs_number == "9100001694") {
+                patients[i].pnl_reason = "No cervix";
             }
 
-            if (patient.nhs_number == "9100001384") {
-                patient.pnl_reason = "Due to age";
+            if (patients[i].nhs_number == "9100001384") {
+                patients[i].pnl_reason = "Due to age";
             }
 
-            if (patient.nhs_number == "9100001740" || patient.nhs_number == "9991023867") {
-                patient.pnl_reason = "Patient informed choice";
+            if (patients[i].nhs_number == "9100001740" || patients[i].nhs_number == "9991023867") {
+                patients[i].pnl_reason = "Patient informed choice";
             }
-
-           // 9100001694 No cervix
-           // 9100001384 Due to age
-           // 9100001740 Patient informed choice
-           // 9991023867 Patient informed choice
        }
-   })
-    //req.session.data['nrl_patients'] = req.session.data['patients-backup'];
-    //req.session.data['patients'] = req.session.data['patients-backup'];
-    //req.session.data['pnl_patient'] = {};
+   }
     req.session.data['nrl_patients'] = patients;
     req.session.data['patients'] = patients;
 }
