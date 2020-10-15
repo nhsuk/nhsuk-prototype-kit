@@ -67,7 +67,7 @@
             </fieldset>
           </div>
 
-          {{ input({
+          <!--{{ input({
            "label": {
             "text": "HPV Primary",
             "classes": "nhsuk-label nhsuk-label__strong"
@@ -76,7 +76,30 @@
            "name": "hpv-primary",
            "classes": "nhsuk-input--width-2",
            "autocomplete": "off"
-          }) }}
+          }) }}-->
+
+
+          {{ radios({
+  "idPrefix": "hpv",
+  "name": "hpv-primary",
+  "fieldset": {
+    "legend": {
+      "text": "HPV tested?",
+      "classes": "nhsuk-label nhsuk-label__strong",
+      "isPageHeading": true
+    }
+  },
+  "items": [
+    {
+      "value": "yes",
+      "text": "Yes"
+    },
+    {
+      "value": "no",
+      "text": "No"
+    }
+  ]
+}) }}
 
           <button class="nhsuk-button nhsuk-button--ers" type="submit">Continue</button>
 

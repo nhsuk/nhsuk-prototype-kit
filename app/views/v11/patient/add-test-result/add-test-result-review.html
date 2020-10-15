@@ -38,23 +38,28 @@
     <dd class="nhsuk-summary-list__value">{{ data['result-type'] }}</dd>
     <dd class="nhsuk-summary-list__actions"></dd>
   </div>
+  {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender National code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or 'not required' }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] }}</dd>
     <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Change<span class="nhsuk-u-visually-hidden"> Sender National code</span></a></dd>
   </div>
+  {% endif %}
+  {% if data['result-type']!= 'Abroad'%}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Source code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['source-code'] or 'not required' }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['source-code'] }}</dd>
     <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Change<span class="nhsuk-u-visually-hidden"> Source code</span></a></dd>
   </div>
+  {% endif %}
+  {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or 'not required' }} 
-     </dd>
-     
-    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Change<span class="nhsuk-u-visually-hidden"> Sender code</span></a></dd>
+    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] }} </dd>
+   <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Change<span class="nhsuk-u-visually-hidden"> Sender code</span></a></dd>
   </div>
+  {% endif %}
+
   {% if data['result-type'] == 'Scottish' %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Health Authority</dt>
