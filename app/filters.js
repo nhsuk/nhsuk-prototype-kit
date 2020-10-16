@@ -204,38 +204,55 @@ module.exports = function (env) {
 
   filters.returnResultText = function (resultCode) {
     const resultText = [
-      { code: 'X', text: 'No cytology result' },
-      { code: '1', text: 'Inadequate cytology' },
-      { code: '2', text: 'Normal cytology, ableRecall' },
-      { code: '3', text: 'Low grade dyskaryosisllowableRecall' },
-      { code: '4', text: 'High-grade dyskaryosis (severe)' },
-      { code: '5', text: 'High-grade dyskaryosis invasive squamous carcinoma' },
-      { code: '6', text: 'Glandular neoplasia of endocervical type' },
-      { code: '7', text: 'High-grade dyskaryosis (moderate)' },
-      { code: '8', text: 'Borderline squamous' },
-      { code: '9', text: 'Borderline endocervical' },
-      { code: '0', text: 'Glandular neoplasia (non-cervical)' }
+      { Code: 'X', Result: 'No cytology result' },
+      { Code: '1', Result: 'Inadequate cytology' },
+      { Code: '2', Result: 'Normal cytology, ableRecall' },
+      { Code: '3', Result: 'Low grade dyskaryosisllowableRecall' },
+      { Code: '4', Result: 'High-grade dyskaryosis (severe)' },
+      { Code: '5', Result: 'High-grade dyskaryosis invasive squamous carcinoma' },
+      { Code: '6', Result: 'Glandular neoplasia of endocervical type' },
+      { Code: '7', Result: 'High-grade dyskaryosis (moderate)' },
+      { Code: '8', Result: 'Borderline squamous' },
+      { Code: '9', Result: 'Borderline endocervical' },
+      { Code: '0', Result: 'Glandular neoplasia (non-cervical)' }
     ]
-    return resultText.find((text) => text.Reason == reason.toUpperCase());
+    try {
+      return resultText.find((result) => result.Code == resultCode.toUpperCase()).Result;
+    }
+    catch(err) {
+      console.log(err)
+    }
+    
   }
 
   filters.returnInfectionText = function (infectionCode) {
     const infectionText = [
-      { code: '0', text: 'HPV negative' },
-      { code: 'U', text: 'HPV not available' },
-      { code: '9', text: 'HPV positive' }
+      { Code: '0', Infection: 'HPV negative' },
+      { Code: 'U', Infection: 'HPV not available' },
+      { Code: '9', Infection: 'HPV positive' }
     ]
-    return infectionText.find((text) => text.Reason == infectionCode.toUpperCase());
+    try {
+      return infectionText.find((infection) => infection.Code == infectionCode.toUpperCase()).Infection;
+    }
+    catch(err) {
+      console.log(err)
+    }
   }
 
   filters.returnActionText = function (actionCode) {
     const actionText = [
-      { code: '0', text: 'HPV negative' },
-      { code: 'U', text: 'HPV not available' },
-      { code: '9', text: 'HPV positive' }
+      { Code: 'A', Action: 'Routine recall' },
+      { Code: 'R', Action: 'Early recall' },
+      { Code: 'S', Action: 'Refer colposcopy' }
     ]
-    return actionText.find((text) => text.Reason == reason.toUpperCase());
+    try {
+      return actionText.find((action) => action.Code == actionCode.toUpperCase()).Action;
+    }
+    catch(err) {
+      console.log(err)
+    }
   }
+
 
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:

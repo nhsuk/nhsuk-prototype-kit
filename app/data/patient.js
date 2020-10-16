@@ -1,5 +1,5 @@
 const results = require('./result.js');
-const filters = require('../filters.js');
+//const filters = require('~/filters.js');
 const moment = require('moment');
 
 /*
@@ -556,14 +556,14 @@ module.exports.addTestResult = function (nhsNumber, data) {
     console.log("ATTEMPTING TO ADD A TEST RESULT")
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
     var newTest = [{
-        "action": "" , // to fill in
+        "action": data['action-text'], // to fill in
         "action_code": data['result-action'],
         "created": moment(),
         "infection_code": data['result-infection'],
-        "infection_result": "", // to fill in
+        "infection_result": data['infection-text'], // to fill in
         "nhs_number": nhsNumber,
         "recall_months": "36", // default to 36 until figure a way to add this
-        "result": "", // to fill in
+        "result": data['result-text'], // to fill in
         "result_code": data['result-result'],
         "result_date": data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'],
         "sender_code": data['sender-code'],
@@ -587,12 +587,7 @@ module.exports.addTestResult = function (nhsNumber, data) {
             return  new Date(b.test_date) - new Date(a.test_date);
         });
     }
-
-    // add the updated patient back into the patientSummary object
-    //req.session.data[]
-
-    // reorder the results
-};
+}
 
 module.exports.resetPatients = function (req) {
     patients.forEach(function (patient) {
