@@ -11,14 +11,14 @@
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">Next test due date</dt>
         <dd class="nhsuk-summary-list__value">{{ 11 | returnDate('weeks', ("today" | returnDate)) | returnDateFormat + " " + 11 | returnDate('weeks', ("today" | returnDate)) | returnTimeDiff }}</dd>
-        <dd class="nhsuk-summary-list__actions"><a href="enter-reinstate-3-ntdd">Change<span class="nhsuk-u-visually-hidden"> Next test due date</span></a></dd>
+        <dd class="nhsuk-summary-list__actions"></dd>
       </div>
     {% else %}
     {% set nextTestDueDate = data['ntdd-year'] + "-" + data['ntdd-month'] + "-" + data['ntdd-day'] %}
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">Next test due date</dt>
         <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat + ' ' + nextTestDueDate | returnTimeDiff }}</dd>
-        <dd class="nhsuk-summary-list__actions"><a href="enter-reinstate-3-ntdd">Change<span class="nhsuk-u-visually-hidden"> Next test due date</span></a></dd>
+        <dd class="nhsuk-summary-list__actions"></dd>
       </div>
       
     {% endif %}

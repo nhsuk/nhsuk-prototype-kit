@@ -1,12 +1,10 @@
-{% if data.reinstateType == 'manual' %}
-  <form action="/v11/patient/change-due-date/enter-reinstate-4-ntdd" method="post">
-{% elif data.reinstateType == 'default' %}
+{% if data.reinstateType == 'default' %}
   <form action="/v11/patient/change-due-date/enter-reinstate-4-crm" method="post">
 {% else %}
   <form action="/v11/patient/change-due-date/enter-reinstate-4-crm" method="post">
 {% endif %}
 
-
+{#
 {% if data.reinstateType == 'manual' %}
   <h1 class="nhsuk-fieldset__legend--m">Are you sure you want to reinstate the patient?</h1>
   <p>The patient was ceased on <strong>13-Oct-2019 (12 months ago)</strong> due to <strong>{{ data.pnl_patient.pnl_reason or 'No cervix' }}</strong></p>
@@ -26,7 +24,7 @@
   ]
   }) }}
 {% endif %}
-
+#}
 {% if data.reinstateType == 'default' %}
   <h1 class="nhsuk-fieldset__legend--m">Reinstate the patient</h1>
   <p>The next test due date has been calculated to <strong>{{ 11 | returnDate('weeks', ("today" | returnDate)) | returnDateFormat + " " + 11 | returnDate('weeks', ("today" | returnDate)) | returnTimeDiff }}</strong></p>
@@ -60,14 +58,8 @@
   }) }}
 {% endif %}
 
-
-
-{% if data.reinstateType == 'manual' or data.reinstateType == 'default' %}
-<button class="nhsuk-button nhsuk-button--ers">Continue</button>
-{% endif %}
-
 {% if data.reinstateType == 'default' %}
-<a href="/v11/patient/change-due-date/enter-reinstate-4-ntdd" class="nhsuk-button nhsuk-button--secondary nhsuk-button--ers">Manually enter next test due date</a>
+<button class="nhsuk-button nhsuk-button--ers">Continue</button>
 {% endif %}
 
 {% if data.reinstateType == 'reject' %}
