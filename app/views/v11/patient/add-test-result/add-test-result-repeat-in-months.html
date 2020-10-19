@@ -26,12 +26,25 @@
         {% set testResult = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
         {% set resultText = "<p>The patients will next be invited on <strong>" + 3 | returnDate('years', testResult) + ' ' + 3 | returnDate('years', testResult) | returnTimeDiff +  "</strong></p>" %}
         <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
-        <h1 class="nhsuk-heading-l">Check next test due date</h1>
-          {{ insetText({
-              "HTML": resultText
-           }) }}
 
-          <p> This next test due date has been calculated using the patients latest test results.</P>
+        {% set newTestDate = (data['example-year'] + "-" + data['example-month'] + "-" + data['example-day']) | returnDateFormat %}
+        {% set oldTestDate = data.pnl_patient.results[0].result_date | returnDateFormat %}
+
+        
+        {% if (newTestDate | returnUnixTime > oldTestDate | returnUnixTime) %}
+          <h1 class="nhsuk-heading-l">Check next test due date</h1>
+            {{ insetText({
+              "HTML": resultText
+            }) }}
+        <p>This next test due date has been calculated using the patients latest test results.</P>
+        {% else %}
+          <h1 class="nhsuk-heading-l">Next test due date unchanged</h1>
+            {{ insetText({
+              "HTML": "<p>The next test test due date will be unchanged</p>"
+            }) }}
+        <p>The test entered is an older test and won't affect the next test due date.</P>
+
+        {% endif %}
 
           <a href="add-test-result-crm" class="nhsuk-button nhsuk-button--ers">Ok, Continue</a>
 

@@ -239,6 +239,11 @@ module.exports = function (env) {
     }
   }
 
+  filters.returnUnixTime = function (date) {
+    //return moment(date).format("unix");
+    return moment(date).unix();
+  }
+
   filters.returnActionText = function (actionCode) {
     const actionText = [
       { Code: 'A', Action: 'Routine recall' },
@@ -252,6 +257,11 @@ module.exports = function (env) {
       console.log(err)
     }
   }
+//
+//  filter.returnUnixTime = function (date) {
+//    console.log(moment(date))
+    //return moment(date).unix();
+//  }
 
 
   /* ------------------------------------------------------------------
