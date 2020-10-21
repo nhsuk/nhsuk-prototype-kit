@@ -128,11 +128,11 @@
             {{ data['address'] or '20 Thornhill Street, Pudsey, LS15 6FD' }}
         </dd>
         <dd class="nhsuk-summary-list__actions">
-            <a href="#">
+            
               {% if data.role == 'csas' %}
                 <span class="nhsuk-tag nhsuk-tag--red">FP69</span>
               {% endif %}
-            </a>
+           
         </dd>
       </div>
     </dl>
@@ -237,7 +237,7 @@
                     <td class="nhsuk-table__cell">{{ result.slide_number }}</td> 
                   {% else %}
                     <td> 
-                      <a href="/v11/patient/add-test-result/add-test-result-review" style="margin-left:4px; margin-right:4px;">Edit</a>
+                      <a href="/v11/patient/add-test-result/add-test-result-edit" style="margin-left:4px; margin-right:4px;">Edit</a>
                       <a href="/v11/patient/add-test-result/add-test-result-remove" style="margin-left:4px; margin-right:4px;">Remove</a>
                     </td>
                   {% endif %}         
