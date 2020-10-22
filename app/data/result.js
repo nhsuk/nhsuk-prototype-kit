@@ -159,6 +159,7 @@ const results = [
         "result": "Negative",
         "result_code": "2",
         "result_date": moment().subtract(146, "weeks"), 
+        "result-type": "English",
         "sender_code": "871147",
         "sending_lab": "60720",
         "slide_number": "92023780",
