@@ -206,8 +206,8 @@ module.exports = function (env) {
     const resultText = [
       { Code: 'X', Result: 'No cytology result' },
       { Code: '1', Result: 'Inadequate cytology' },
-      { Code: '2', Result: 'Normal cytology, ableRecall' },
-      { Code: '3', Result: 'Low grade dyskaryosisllowableRecall' },
+      { Code: '2', Result: 'Normal cytology' },
+      { Code: '3', Result: 'Low grade dyskaryosisllow' },
       { Code: '4', Result: 'High-grade dyskaryosis (severe)' },
       { Code: '5', Result: 'High-grade dyskaryosis invasive squamous carcinoma' },
       { Code: '6', Result: 'Glandular neoplasia of endocervical type' },
