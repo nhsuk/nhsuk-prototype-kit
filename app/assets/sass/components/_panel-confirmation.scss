@@ -1,5 +1,5 @@
-// Panel - confirmation
-.nhsuk-panel--confirmation {
+// card - confirmation
+.nhsuk-card--confirmation {
   margin-top: 0;
 
   @include mq($from: desktop) {
@@ -8,13 +8,13 @@
   }
 }
 
-.nhsuk-panel__title {
+.nhsuk-card__title {
   @include nhsuk-responsive-margin(4, "bottom");
 
   text-align: center;
 }
 
-.nhsuk-panel__body {
+.nhsuk-card__body {
   @include nhsuk-font(24);
 
   text-align: center;
