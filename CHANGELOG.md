@@ -1,5 +1,18 @@
 # NHS.UK prototype kit Changelog
 
+## 3.2.0 - 26th October 2020
+
+:new: **New features**
+
+- Install [NHS.UK frontend v4.0.0](https://github.com/nhsuk/nhsuk-frontend/blob/master/CHANGELOG.md#400---26-october-2020) which includes the new Tag and Card components
+
+:wrench: **Fixes**
+
+- Remove the old phase banner and tag styles
+- Remove HTML empty whitespace in the layout file caused by the nunjucks macro includes
+- Add missing button on the passing data page to page examples
+- Update package dependencies to latest versions
+
 ## 3.1.0 - 24th April 2020
 
 :new: **New features**
