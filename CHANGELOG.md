@@ -12,6 +12,8 @@
 - Remove HTML empty whitespace in the layout file caused by the nunjucks macro includes
 - Add missing button on the passing data page to page examples
 - Update package dependencies to latest versions
+- Remove panel confirmation styles
+- Update confirmation page example to use new card component
 
 ## 3.1.0 - 24th April 2020
 
