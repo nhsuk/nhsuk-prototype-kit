@@ -1,5 +1,25 @@
 # NHS.UK prototype kit Changelog
 
+## 4.0.0 - 27th October 2020
+
+:boom: **Breaking changes**
+
+- Remove the custom Phase banner component
+- Remove the custom Tag component and use the Tag component from the NHS.UK frontend library
+- Update the class names for the Confirmation panel which now uses the Card component
+- Remove the custom panel confirmation styles
+
+:new: **New features**
+
+- Install [NHS.UK frontend v4.0.0](https://github.com/nhsuk/nhsuk-frontend/blob/master/CHANGELOG.md#400---26-october-2020) which includes the new Tag and Card components
+
+:wrench: **Fixes**
+
+- Remove HTML empty whitespace in the layout file caused by the nunjucks macro includes
+- Add missing button on the passing data page to page examples
+- Update package dependencies to latest versions
+- Update confirmation page example to use new card component
+
 ## 3.1.0 - 24th April 2020
 
 :new: **New features**
