@@ -204,7 +204,7 @@ module.exports = function (env) {
 
   filters.returnResultText = function (resultCode) {
     const resultText = [
-      { Code: 'X', Result: 'No cytology result' },
+      { Code: 'x', Result: 'No cytology result' },
       { Code: '1', Result: 'Inadequate cytology' },
       { Code: '2', Result: 'Normal cytology' },
       { Code: '3', Result: 'Low grade dyskaryosisllow' },
@@ -217,7 +217,7 @@ module.exports = function (env) {
       { Code: '0', Result: 'Glandular neoplasia (non-cervical)' }
     ]
     try {
-      return resultText.find((result) => result.Code == resultCode.toUpperCase()).Result;
+      return resultText.find((result) => result.Code == resultCode.toLowerCase()).Result;
     }
     catch(err) {
       console.log(err)
@@ -228,11 +228,11 @@ module.exports = function (env) {
   filters.returnInfectionText = function (infectionCode) {
     const infectionText = [
       { Code: '0', Infection: 'HPV negative' },
-      { Code: 'U', Infection: 'HPV not available' },
+      { Code: 'u', Infection: 'HPV not available' },
       { Code: '9', Infection: 'HPV positive' }
     ]
     try {
-      return infectionText.find((infection) => infection.Code == infectionCode.toUpperCase()).Infection;
+      return infectionText.find((infection) => infection.Code == infectionCode.toLowerCase()).Infection;
     }
     catch(err) {
       console.log(err)
@@ -246,12 +246,12 @@ module.exports = function (env) {
 
   filters.returnActionText = function (actionCode) {
     const actionText = [
-      { Code: 'A', Action: 'Routine recall' },
-      { Code: 'R', Action: 'Early recall' },
-      { Code: 'S', Action: 'Refer colposcopy' }
+      { Code: 'a', Action: 'Routine recall' },
+      { Code: 'r', Action: 'Early recall' },
+      { Code: 's', Action: 'Refer colposcopy' }
     ]
     try {
-      return actionText.find((action) => action.Code == actionCode.toUpperCase()).Action;
+      return actionText.find((action) => action.Code == actionCode.toLowerCase()).Action;
     }
     catch(err) {
       console.log(err)
