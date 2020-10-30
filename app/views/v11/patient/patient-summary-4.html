@@ -136,7 +136,7 @@
         </dd>
       </div>
     </dl>
-    {% if data.role != 'sampleTaker' %}
+    {#{% if data.role != 'sampleTaker' %}
       {{ details({
       "text": "View previous addresses",
       "HTML": "
@@ -163,7 +163,7 @@
       </tr>
       </table>"
       }) }}
-    {% endif %}
+    {% endif %}#}
 
     {% if data.role == 'sampleTaker' %}
 
@@ -252,7 +252,7 @@
     </div>
 
 
-    {% include '../components/hpv-results.html' %}
+    {# {% include '../components/hpv-results.html' %}#}
   </div>
 </div>
 
