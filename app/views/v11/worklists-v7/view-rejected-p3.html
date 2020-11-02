@@ -1,0 +1,141 @@
+{% extends "layout-v2.html" %}
+
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../components/header-3.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    {{ backLink({
+      "href": "view-rejected-p2",
+      "text": "Go back to previous rejected result"
+    }) }}
+
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+
+    <div class="nhsuk-panel-with-label">
+      {% include '../components/patient-result-3.html' %}
+
+
+      <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-4" aria-describedby="example-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            Test result details
+          </legend>
+
+          <dl class="nhsuk-summary-list">
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Test type</dt>
+              <dd class="nhsuk-summary-list__value">English</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Sender national code</dt>
+              <dd class="nhsuk-summary-list__value">312980</dd>
+            </div>
+
+           <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Sender code</dt>
+    <dd class="nhsuk-summary-list__value">431088</dd>
+  </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Slide number</dt>
+              <dd class="nhsuk-summary-list__value">10328000</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Cytology result</dt>
+              <dd class="nhsuk-summary-list__value">Negative</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Test date</dt>
+              <dd class="nhsuk-summary-list__value">26-Jan-2020</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">HPV Primary</dt>
+              <dd class="nhsuk-summary-list__value">HPV negative</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Action</dt>
+              <dd class="nhsuk-summary-list__value">Invalid action code</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">CRM case number</dt>
+              <dd class="nhsuk-summary-list__value">CAS-32188-SDJPP</dd>
+            </div>
+          </dl>
+
+
+          <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-full">
+
+              <form action="view-rejected-p3" method="post">
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
+                    Comments
+                  </label>
+                  <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+                    Enter comments here if needed
+                  </span>
+                  <textarea class="nhsuk-textarea commentBox" id="rejcomment3" value="rejcomment3" name="rejcomment3" rows="5" data-length=200 required></textarea>
+
+                </div>
+
+                <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
+
+                {% set name = "Josie Driver" %}
+
+                {% set commentDate = ("today" | returnDate) %}
+
+                <input type="hidden" id="name" name="name" value="{{commentName}}">
+
+                <input type="hidden" name="date" value={{commentDate}}>
+
+              </form>
+
+              <ul class="nhsuk-comment-container">
+                {% if data.rejcomment3 !=null %}
+
+                <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.rejcomment3}}</li>
+
+                {% endif %}
+              </ul>
+
+            </div>
+          </div>
+
+        </div>
+        <a href="manc-rejected" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
+        <a href="manc-rejected" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Save and exit</a>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+    </div>
+  </div>
+</footer>
+{% endblock %}
