@@ -30,7 +30,7 @@
   {% if data['result-type'] == 'Scottish' %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Health Authority</dt>
-    <dd class="nhsuk-summary-list__value">{{ result.health_authority] }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ result.health_authority }}</dd>
   </div>
   {% endif %}
 
@@ -55,6 +55,3 @@
     <dd class="nhsuk-summary-list__value">{{ data['comments'] or '' }}</dd>
   </div>
 </dl>
-
-
-<p class="nhsuk-u-margin-bottom-6"><a href="../patient/patient-summary-4">View full patient information</a></p>
