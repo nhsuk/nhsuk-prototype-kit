@@ -1,0 +1,84 @@
+{% if patient.results[0] == null %} 
+  {% set resultDate = "no results" %} 
+{% else %}
+  {% set result = "(" + (patient.results[0].result_code or "-" ) + (patient.results[0].infection_code or "") + (patient.results[0].action_code or "-") + ") " + (patient.results[0].result or "-") + ", " +(patient.results[0].infection_result or "No HPV data") + ", " +(patient.results[0].action or "-") %}
+  {% set resultDate = (patient.results[0].result_date | returnDateFormat or "-") + " " + (patient.results[0].result_date | returnTimeDiff or "-") %}
+{% endif %}
+<h1>Test</h1>
+
+<dl class="nhsuk-summary-list">
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Test type</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['result-type'] }}</dd>
+    <dd class="nhsuk-summary-list__actions"></dd>
+  </div>
+  {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Sender National code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] }}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Change<span class="nhsuk-u-visually-hidden"> Sender National code</span></a></dd>
+  </div>
+  {% endif %}
+  {% if data['result-type']!= 'Abroad'%}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Source code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['source-code'] }}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Change<span class="nhsuk-u-visually-hidden"> Source code</span></a></dd>
+  </div>
+  {% endif %}
+  {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Sender code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] }} </dd>
+   <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Change<span class="nhsuk-u-visually-hidden"> Sender code</span></a></dd>
+  </div>
+  {% endif %}
+
+  {% if data['result-type'] == 'Scottish' %}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Health Authority</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] }}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Change<span class="nhsuk-u-visually-hidden"> Health Authority</span></a></dd>
+  </div>
+  {% endif %}
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Slide number</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] }}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-test-info">Change<span class="nhsuk-u-visually-hidden"> Slide number</span></a></dd>
+  </div>
+
+  {% set nextTestDueDate = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Test date</dt>
+    <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat }}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-test-info">Change<span class="nhsuk-u-visually-hidden"> Test date</span></a></dd>
+  </div>
+
+
+<div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Result</dt>
+    <dd class="nhsuk-summary-list__value">({{ data['result-result'] | capitalize }}{{ data['result-infection'] | capitalize }}{{ data['result-action'] | capitalize }}) {{ data['result-result'] | returnResultText }}, {{ data['result-infection'] | returnInfectionText }}, {{ data['result-action'] | returnActionText }}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-result">Change<span class="nhsuk-u-visually-hidden">Test results</span></a></dd>
+  </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Next test due date</dt>
+      <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', nextTestDueDate) + ' ' + 3 | returnDate('years', nextTestDueDate) | returnTimeDiff }}</dd>
+      <dd class="nhsuk-summary-list__actions"></dd>
+    </div> 
+
+ <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">CRM</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['crm'] or '123456789' }}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-crm">Change<span class="nhsuk-u-visually-hidden"> CRM</span></a></dd>
+  </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Comments</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['comments'] or '' }}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-crm">Change<span class="nhsuk-u-visually-hidden"> Comments</span></a></dd>
+  </div>
+</dl>
+
+
+<p class="nhsuk-u-margin-bottom-6"><a href="../patient/patient-summary-4">View full patient information</a></p>
