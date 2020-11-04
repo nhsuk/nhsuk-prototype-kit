@@ -1,0 +1,46 @@
+
+{% if data.pnl_patient.results[0] == null %} 
+  {% set resultDate = "no results" %} 
+{% else %}
+  {% set result = "(" + (data.pnl_patient.results[0].result_code or "-" ) + (data.pnl_patient.results[0].infection_code or "") + (data.pnl_patient.results[0].action_code or "-") + ") " + (data.pnl_patient.results[0].result or "-") + ", " +(data.pnl_patient.results[0].infection_result or "No HPV data") + ", " +(data.pnl_patient.results[0].action or "-") %}
+  {% set resultDate = (data.pnl_patient.results[0].result_date | returnDateFormat or "-") + " " + (data.pnl_patient.results[0].result_date | returnTimeDiff or "-") %}
+{% endif %}
+  
+  <h3 class="nhsuk-panel-with-label__label">{{ data.pnl_patient.first_name | capitalize }} {{ data.pnl_patient.last_name | capitalize }} 
+  <span style= color:white; class="nhsuk-table__cell--hint">NHS No: {{ data.pnl_patient.nhs_number | formatNHSNumber }}</span></h3>
+
+
+<!--
+  <tr id="detailsRow4" class="detailsRow">
+           <td colspan="3">-->
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-full">
+
+ <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-2">
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Next test due date</dt>
+    <dd class="nhsuk-summary-list__value">{{ (data.pnl_patient.next_test_due_date | returnDateFormat or "-") }} {{ (data.pnl_patient.next_test_due_date | returnTimeDiff or "-") }}</dd>
+  </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Last test date</dt>
+    <dd class="nhsuk-summary-list__value">{{ resultDate }}</dd>
+  </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Last test</dt>
+    <dd class="nhsuk-summary-list__value">
+          {% if data.pnl_patient.results[0] != null %}
+            {{ result }}
+          {% else %}
+            no results
+          {% endif %}
+
+    </dd>
+  </div>
+</dl>
+
+
+<p class="nhsuk-u-margin-bottom-6"><a href="../patient/patient-summary-4">View full patient information</a></p>
+              </div>
+            </div>
+          </td>
+        </tr></p>

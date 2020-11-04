@@ -156,7 +156,9 @@ router.get("/*/start-reinstate*", function (req, res) {
     req.session.data["pnlversion"] = version;
     var pnlPatient = patient.getPatient(nhsNumber);
     req.session.data["pnl_patient"] = pnlPatient;
-    if (getVersion(req) == 'v11') {
+    if (getVersion(req) == 'v12') {
+        res.redirect("/" + getVersion(req) + "/patient/change-due-date/enter-reinstate-5")
+    } else if (getVersion(req) == 'v11') {
         res.redirect("/" + getVersion(req) + "/patient/change-due-date/enter-reinstate-4")
     } else {
         res.redirect("/" + getVersion(req) + "/patient/change-due-date/enter-reinstate-3")

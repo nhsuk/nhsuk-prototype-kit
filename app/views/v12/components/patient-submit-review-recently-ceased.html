@@ -1,0 +1,4 @@
+<h1 class="nhsuk-fieldset__legend--m">Review patient screening participation</h1>
+<p><strong>This patient has been ceased due to {{ data.pnl_patient.pnl_reason or "no cervix" }}.</strong></p>
+<p>Please submit once the patient has been reviewed.</p>
+<a href="/v12/prior-notification/prior-notification-submitted-{{ data.pnlversion or 12 }}" class="nhsuk-button nhsuk-button--ers">Submit</a>

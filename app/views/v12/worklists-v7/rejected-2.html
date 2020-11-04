@@ -1,0 +1,123 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+
+<script src="/js/results-filter.js">
+</script>
+
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(3){
+    border-bottom:4px solid #d8dde0;
+  }
+</style>
+
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+{% block content %}
+
+{{ backLink({
+  "href": "manc-query",
+  "text": "Go back to results"
+}) }}
+
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+  <h1 class="nhsuk-heading-l">Manchester: rejected files</h1>
+ <p> The following results show the non-residual matches sent from the lab. 
+ <br>
+  Review the rejected files and sent summary to the labs to resolve.</p>
+</div>
+</div>
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+
+<dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Transfer number: 
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+     03371
+    </dd>
+
+  </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Date transfer recieved: 
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+     06-02-2020
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+     Time transfer recieved: 
+
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      9.26 am
+    </dd>
+
+  </div>
+
+</dl>
+</div>
+</div>
+
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+<table class="order-table">
+<thead>
+  <tr>
+   <th class="ten"="To process">NHS number 
+</th>
+   <th class="ten" ="To process">Patient name
+</th>
+    <th class="ten"width="20%"="To process">Error
+</th>
+
+    <th class="ten"="To process">
+</th>
+
+<tr>
+</thead>
+<tbody>
+
+
+<!-- TO QUERY -->
+<tr> <td>029 624 1174</td> <td>Jocelynn Erickson </td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Invalid result</span></td>  <td></td> </tr>
+<tr> <td>825 153 7721</td> <td>Joules Trevino </td> <td><span class="nhsuk-tag nhsuk-tag--red  nhsuk-u-margin-bottom-2">Incorrect HPV flag</span></td>   <td></td> </tr>
+<tr> <td>824 254 1749</td> <td>Sohaila Khan </td> <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Invalid test date</span></td>   <td></td> </tr>
+
+</tbody>
+
+
+
+
+</table>
+    <a href="claudia-done-rejected-2" class="nhsuk-button nhsuk-button--ers">Download summary report</a>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

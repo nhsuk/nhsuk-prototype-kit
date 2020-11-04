@@ -1,0 +1,122 @@
+{% extends "layout-v2.html" %}
+
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header-3.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <nav class="nhsuk-sub-navigation nhsuk-u-padding-bottom-6">
+      <h1 class="nhsuk-heading-l">Notifications</h1>
+      <ul class="nhsuk-sub-navigation__list">
+        <li class="nhsuk-sub-navigation__item"><a href="prior-notification-12" class="nhsuk-sub-navigation__link">Patients due to be invited<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">{{ data['patients'].length }}</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="../non-responder/non-responder-4" class="nhsuk-sub-navigation__link">Patients who have not responded<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2"> 6</span> </a></li>
+         <li class="nhsuk-sub-navigation__item"><a href="/v12/non-responder/ceased-patients" class="nhsuk-sub-navigation__link">Patients to review<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2"> 4</span> </a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="" class="nhsuk-sub-navigation__link" aria-current="page">Manage emails</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+     <h1 class="nhsuk-heading-m">Manage Emails</h1>
+     <p class="nhsuk-u-margin-bottom-6">
+  <span class="nhsuk-u-visually-hidden">Information: </span> Check who receives notification emails. Staff members involved in cervical screening tasks should receive the appropriate notification emails.</p>
+  <p class="nhsuk-u-margin-bottom-6">
+
+     <a class="nhsuk-button nhsuk-button--ers" href="prior-notification-12-add-email" > 
+  Add email address
+  </a> 
+  </div>
+  </div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+  <!--
+      <div class="nhsuk-table-responsive nhsuk-u-margin-top-0">
+        <table class="nhsuk-table">
+          <caption class="nhsuk-table__caption">Skin symptoms and possible causes</caption>
+          <thead class="nhsuk-table__head">
+            <tr class="nhsuk-table__row">
+              <th class="nhsuk-table__header" scope="col">Email</th>
+              <th class="nhsuk-table__header" scope="col">Notification Emails</th>
+              <th class="nhsuk-table__header" scope="col"></th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">angela.woodhall@nhs.net</td>
+              <td class="nhsuk-table__cell">
+              <ul>
+              <li>Patients due to be invited</li>
+              <li>Patients who have not responded</li>
+              </ul>
+              </td>
+              <td class="nhsuk-table__cell"><a href="prior-notification-12-edit-email">Edit</a>
+              <a href="prior-notification-12-delete-email?pnlversion=12">Remove</a></td>
+              
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">admin.clarks@nhs.net</td>
+              <td class="nhsuk-table__cell ">
+              <ul>
+              <li>Patients due to be invited</li>
+              </ul>
+              </td>
+              <td class="nhsuk-table__cell"><a href="prior-notification-12-edit-email">Edit</a>
+              <a href="prior-notification-12-delete-email?pnlversion=12">Remove</a></td>
+            </tr>
+          {% if data.manageEmail != null %}
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">{{ data.manageEmail }}</td>
+              <td class="nhsuk-table__cell ">
+              <ul>
+              {% if data.notificationsPNL != null %}
+                <li>{{ data.notificationsPNL }}</li>
+              {% endif %}
+              {% if data.notificationsNRL != null %}
+                 <li>{{ data.notificationsNRL }}</li>
+              {% endif %}
+              </ul>
+              </td>
+              <td class="nhsuk-table__cell"><a href="prior-notification-12-edit-email">Edit</a>
+              <a href="prior-notification-12-delete-email?pnlversion=12">Remove</a></td>
+            </tr>
+            {% endif %}
+
+          </tbody>
+        </table>-->
+
+        {{ panel({
+          "HTML": "<h2>No email added</h2>
+      <p>There are no emails assigned to receive notifications. To be notified of updates you will need to <a href=''>add an email address</a>.</p>",
+      "classes" : "nhsuk-u-margin-top-0"
+    }) }}
+      </div>
+    
+
+  </div>
+  
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+      <p><a href="/2/reset-patient-data-12">Reset patient data</a></p>
+    </div>
+  </div>
+</footer>
+{% endblock %}

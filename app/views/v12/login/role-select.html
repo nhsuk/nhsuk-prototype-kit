@@ -1,0 +1,59 @@
+{% extends 'layout-v2.html' %}
+
+{% block pageTitle %}
+  Role Select - NHS.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<form action="../login/legitimate-relations" method="get">
+
+                {% call fieldset({
+                  legend: {
+                    text: "Choose a role to login with",
+                    classes: "nhsuk-fieldset__legend--l",
+                    isPageHeading: true
+                  }
+                }) %}
+
+                {{ radios({
+                  "idPrefix": "role",
+                  "name": "role",
+                  "items": [
+                    {
+                      "value": "sampleTaker",
+                      "text": "Sample taker"
+                    },
+                    {
+                      "value": "admin",
+                      "text": "Clerical admin"
+                    },
+                    {
+                      "value": "lab",
+                      "text": "Bio-Medical Scientist"
+                    },
+                    {
+                      "value": "csas",
+                      "text": "CSAS Screening Officer"
+                    },
+                    {
+                      "value": "csas",
+                      "text": "CSAS Screening Manager"
+                    },
+                    {
+                      "value": "csas",
+                      "text": "CSAS Quality Assurance"
+                    }
+                  ]
+                }) }}
+
+                {% endcall %}
+
+                {{ button({
+                  "text": "Continue",
+                  "classes": "nhsuk-button--ers"
+                }) }}
+
+              </form>
+
+{% endblock %}

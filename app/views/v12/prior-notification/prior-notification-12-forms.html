@@ -1,0 +1,73 @@
+{% extends "layout-v2.html" %}
+
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header-3.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    {{ backLink({
+      "href": "prior-notification-12",
+      "text": "Back to notifications"
+    }) }}
+    <h1 class="nhsuk-heading-l">How to action patients because of mental capacity or patient choice?</h1>
+
+    <p>You will need to:</p>
+    <ul>
+      <li>download the correct form</li>
+      <li>print the form</li>
+      <li>get the patient to sign the form (Informed patients choice only)</li>
+      <li>a GP, nurse or clinician will need to fill in the form and sign it</li>
+      <li>scan the form</li>
+      <li><a href="">submit the form to the CSAS website (opens in new window)</a></li>
+    </ul>
+
+    <div class="nhsuk-panel-with-label"> 
+      <h3 class="nhsuk-panel-with-label__label">Forms to action patients</h3> 
+      <div class="nhsuk-table-responsive nhsuk-u-margin-top-0">
+        <table class="nhsuk-table">
+          <caption class="nhsuk-table__caption">Skin symptoms and possible causes</caption>
+          <thead class="nhsuk-table__head">
+            <tr class="nhsuk-table__row">
+              <th class="nhsuk-table__header" scope="col">Form Name</th>
+              <th class="nhsuk-table__header" scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">Mental Capacity Act</td>
+              <td class="nhsuk-table__cell "><a href="">download (PDF, 545KB)</a><br><a href="">view (opens in new window)</a></td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">Informed patients choice to cease</td>
+              <td class="nhsuk-table__cell "><a href="">download (PDF, 845KB)</a><br><a href="">view (opens in new window)</a></td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell">Informed patients choice to defer</td>
+              <td class="nhsuk-table__cell "><a href="">download (PDF, 1MB)</a><br><a href="">view (opens in new window)</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+      <p><a href="/v12/reset-patient-data-12">Reset patient data</a></p>
+    </div>
+  </div>
+</footer>
+{% endblock %}

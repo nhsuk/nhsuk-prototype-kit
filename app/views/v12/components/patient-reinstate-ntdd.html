@@ -1,0 +1,85 @@
+{#<h1 class="nhsuk-fieldset__legend--m">
+  Enter the next test due date for the patient
+</h1>
+#}
+  {% set pnlDeferInfo %}
+    {% if data['pnl-defer-reason'] == 'Pregnancy' %}
+      <p>Minimum deferral is 3 months after date of delivery</br>Maximum deferral can not exceed 12 months</p>
+    {% else %}
+      <p>Minimum deferral is X months</br>Maximum deferral can not exceed X months</p>
+    {% endif %}
+  {% endset %}
+{#
+  {{ insetText({
+    "HTML":  pnlDeferInfo,
+    "classes": "nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-4"
+  }) }}
+#}
+  <form action="enter-reinstate-5-crm" method="post">
+  
+  <div id="nhsuk-form-group-dob-ntdd" class="nhsuk-form-group nhsuk-u-margin-bottom-6">
+    <div class="nhsuk-form-group"> 
+      <fieldset class="nhsuk-fieldset" aria-describedby="ntdd-from" role="group">
+        <legend class="nhsuk-fieldset__legend">
+          <h1 class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-2">Enter the next test due date for the patient</h1>
+        </legend>
+        <span class="nhsuk-hint" id="example-hint">
+          For example, 15 3 1984
+        </span>
+        <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
+          You must enter a date
+        </span>
+        <div class="nhsuk-date-input" id="ntdd-from">
+          <div class="nhsuk-date-input__item">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-date-input__label" for="ntdd-day">
+                Day
+              </label>
+            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="day" name="ntdd-day" type="number" pattern="[0-9]*" value="day" autocomplete="off">                                </div>
+          </div>
+          <div class="nhsuk-date-input__item">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-date-input__label" for="ntdd-month">
+                Month
+              </label>
+              <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-2" id="month" name="ntdd-month" type="number" pattern="[0-9]*" value="month" autocomplete="off">
+            </div>
+          </div>
+          <div class="nhsuk-date-input__item">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-date-input__label" for="ntdd-year">
+                Year
+              </label>
+              <input class="nhsuk-input nhsuk-date-input__input nhsuk-dob-input__input nhsuk-input--width-4" id="year" name="ntdd-year" type="number" pattern="[0-9]*" value="year" autocomplete="off">
+            </div>
+          </div>
+        </div>
+        <input type="hidden" id="ntdd" name="ntdd" value="19 01 2021">
+      </fieldset>
+    </div>
+  </div>
+
+{#
+<div class="nhsuk-form-group">
+  <label class="nhsuk-label" for="example">CRM Case Number</label>
+  <span class="nhsuk-hint" id="example-hint">
+    For example, CAS-12345-ABCDE
+  </span>
+  <input class="nhsuk-input nhsuk-input--width-10" type="number" name="crm" value="crm">
+</div>
+
+<div class="nhsuk-form-group">
+  <label class="nhsuk-label" for="example">
+    Comments (optional)
+  </label>
+  <span class="nhsuk-hint" id="example-hint">
+    Do not include clinical information at  this point.
+  </span>
+  <textarea class="nhsuk-textarea" id="example" name="comments" rows="5" aria-describedby="example-hint" value="details"></textarea>
+</div>
+#}
+
+  <button class="nhsuk-button nhsuk-button--ers">Continue</button>
+  <p><a href="/v12/patient/patient-summary-5">Exit without saving</a></p>
+
+  </form>

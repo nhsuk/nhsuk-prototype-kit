@@ -1,0 +1,71 @@
+{% if data.reinstateType == 'default' %}
+  <form action="/v12/patient/change-due-date/enter-reinstate-5-crm" method="post">
+{% else %}
+  <form action="/v12/patient/change-due-date/enter-reinstate-5-crm" method="post">
+{% endif %}
+
+{#
+{% if data.reinstateType == 'manual' %}
+  <h1 class="nhsuk-fieldset__legend--m">Are you sure you want to reinstate the patient?</h1>
+  <p>The patient was ceased on <strong>13-Oct-2019 (12 months ago)</strong> due to <strong>{{ data.pnl_patient.pnl_reason or 'No cervix' }}</strong></p>
+
+  {{ radios({
+  "idPrefix": "example",
+  "name": "example",
+  "items": [
+    {
+      "value": "yes",
+      "text": "Yes, reinstate the patient"
+    },
+    {
+      "value": "no",
+      "text": "No, I don't want to reinstate"
+    }
+  ]
+  }) }}
+{% endif %}
+#}
+{% if data.reinstateType == 'default' %}
+  <h1 class="nhsuk-fieldset__legend--m">Reinstate the patient</h1>
+  <p>The next test due date has been calculated to <strong>{{ 11 | returnDate('weeks', ("today" | returnDate)) | returnDateFormat + " " + 11 | returnDate('weeks', ("today" | returnDate)) | returnTimeDiff }}</strong></p>
+  <p>The recall status will be set to <strong>Repeat Advised</strong></p>
+  <p>The patient will be added to the <strong>Patient due to be invited</strong> list tomorrow</p>
+
+  {{ details({
+  "text": "How has this been calculated",
+  "HTML": "
+    <ul>
+        <li>The patient was ceased due to <strong>Patient informed choice</strong></li>
+        <li>The patient's status was <strong>repeat advised</strong> after their last test</li>
+        <li>The patient is <strong>overdue</strong> their next test</li>
+    </ul>
+  "
+  }) }}
+{% endif %}
+
+{% if data.reinstateType == 'reject' %}
+  <h1 class="nhsuk-fieldset__legend--m">Reinstate is rejected due to age</h1>
+  <p>The patient is out of the national screening programme and can not be reinstated <strong>due to age</strong></p>
+  {{ details({
+  "text": "How has this been calculated",
+  "HTML": "
+    <ul>
+        <li>The patient was ceased <strong>due to age</strong></li>
+        <li>The patient <strong>has been tested before</strong></li>
+        <li>The patient's last test was <strong>routine recall</strong> and <strong>has been tested when over 60 years of age</strong></li>
+    </ul>
+  "
+  }) }}
+{% endif %}
+
+{% if data.reinstateType == 'default' %}
+<button class="nhsuk-button nhsuk-button--ers">Continue</button>
+{% endif %}
+
+{% if data.reinstateType == 'reject' %}
+<a href="/v12/patient/patient-summary-5" class="nhsuk-button nhsuk-button--ers">Back to patient summary</a>
+{% endif %}
+
+<p><a href="/v12/patient/patient-summary-5">Exit without saving</a></p>
+
+</form>

@@ -1,0 +1,45 @@
+{% if data.role == 'csas' %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "true",
+    "showSearch": "false",
+    "primaryLinks": [
+      {
+        "url"  : "/v12/patient/search/search",
+        "label" : "Patient"
+      },
+      {
+        'url' : '/v12/worklists-v7/worklists',
+        'label' : 'Results'
+      },
+      {
+        'url'  : '',
+        'label' : 'Reports'
+      }
+    ]
+  })
+}}
+{% else %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "true",
+    "showSearch": "true",
+    "primaryLinks": [
+      {
+        "url"  : "/v12/patient/search/search",
+        "label" : "Patient"
+      },
+      {
+        'url' : '/v12/get-prior-notifications-12',
+        'label' : 'Notifications'
+      }
+    ]
+  })
+}}
+{% endif %}

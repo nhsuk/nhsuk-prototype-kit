@@ -1,0 +1,26 @@
+{% extends '../../layout-email.html' %}
+
+{% block pageTitle %}
+  Prior notification email
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1 class="nhsuk-fieldset__legend--l">0 new patients have not responded to invitations</h1>
+      <ul>
+        <li>There are <strong>0</strong> new patients that need reviewing</li>
+        <li>There are <strong>0</strong> patients in total that need reviewing</li>
+      </ul>
+
+      <p>Patients that are not reviewed or actioned will be removed after 8 weeks and their next test due date will be reset.</p>
+      
+      <p><a href="../non-responder/non-responder-4?role=admin">View patients who have not responded</a></p>
+
+      <p>If you currently receive notifications but need to stop them you can <a href="">manage emails</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

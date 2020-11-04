@@ -1,0 +1,38 @@
+{% if patient.results[0] == null %} 
+  {% set result = "no results" %}
+  {% set resultDate = "no results" %} 
+{% else %}
+  {% set result = "(" + (patient.results[0].result_code or "-" ) + (patient.results[0].infection_code or "-") + (patient.results[0].action_code or "-") + ") " + (patient.results[0].result or "-") + ", " + (patient.results[0].infection_result or "-") + ", " + (patient.results[0].action or "-") %}
+  {% set resultDate = (patient.results[0].result_date | returnDateFormat or "-") + " " + (patient.results[0].result_date | returnTimeDiff or "-") %}
+{% endif %}
+
+{{ summaryList({
+    classes: 'nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2',
+    rows: [
+      {
+        key: {
+        text: "Next test due date"
+      },
+      value: {
+      text: (patient.next_test_due_date | returnDateFormat or "-") + " " + (patient.next_test_due_date | returnTimeDiff or "-")
+      }
+    },
+    {
+      key: {
+        text: "Last test date"
+      },
+      value: {
+        text: resultDate
+      }
+    },
+    {
+      key: {
+        text: "Last test"
+      },
+      value: {
+        text:  result
+      }
+    }
+  ]
+}) }}
+<p class="nhsuk-u-margin-bottom-6"><a href="../patient/patient-summary-4">View full patient information</a></p>

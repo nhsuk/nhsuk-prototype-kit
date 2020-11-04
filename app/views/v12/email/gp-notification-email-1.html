@@ -1,0 +1,28 @@
+{% extends '../../layout-email.html' %}
+
+{% block pageTitle %}
+  Prior notification email
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1 class="nhsuk-fieldset__legend--l">3 new notifications need reviewing</h1>
+            
+      <ul>
+        <li><strong>2</strong> new patients registered with an abnormal follow-up</li>
+        <li><strong>1</strong> new patient registered as ceased</li>
+        <li><strong>0</strong> patients recently ceased</li>
+      </ul>
+
+      <p>Notifications will be removed after 8 weeeks.</p>
+      
+      <p><a href="../non-responder/ceased-patients?role=admin">View patients that need reviewing</a></p>
+
+      <p>If you currently receive notifications but need to stop them you can <a href="">manage emails</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

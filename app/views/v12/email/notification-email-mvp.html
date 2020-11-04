@@ -1,0 +1,26 @@
+{% extends '../../layout-email.html' %}
+
+{% block pageTitle %}
+  Prior notification email
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1 class="nhsuk-fieldset__legend--l">Screening notification reminder</h1>
+      
+      <h2 class="nhsuk-fieldset__legend--m">Patients due to be invited</h2>
+      <p>Patients that are not reviewed or actioned within 4 weeks will be invited to be screened on their next test due date.</br>
+      <a href="../prior-notification/prior-notification-12?role=admin">View patients due to be invited to screening</a></p>
+
+      <h2 class="nhsuk-fieldset__legend--m">Patients who have not responded</h2>
+      <p>Patients that are not reviewed or actioned will be removed from the list after 8 weeks.</br>
+      <a href="../prior-notification/prior-notification-12?role=admin">View patients who have not responded to invitations</a></p>
+      
+      <p>If you currently receive notifications but need to stop them you can <a href="">manage emails</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -66,8 +66,8 @@
   {% if data.role != 'sampleTaker' %}
   <nav class="nhsuk-sub-navigation">
     <ul class="nhsuk-sub-navigation__list">
-      <li class="nhsuk-sub-navigation__item"><a href="patient-summary-4" class="nhsuk-sub-navigation__link" aria-current="page">Patient Summary</a></li>
-      <li class="nhsuk-sub-navigation__item"><a href="history-v3" class="nhsuk-sub-navigation__link">Audit</a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="patient-summary-5" class="nhsuk-sub-navigation__link" aria-current="page">Patient Summary</a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="history-v4" class="nhsuk-sub-navigation__link">Audit</a></li>
       <li class="nhsuk-sub-navigation__item"><a href="gp-info" class="nhsuk-sub-navigation__link">GP Information</a></li>
     </ul>
   </nav>
@@ -120,11 +120,11 @@
               Actions:
 
               {% if data.patientSummary.pnl_reason == "No cervix" or data.patientSummary.pnl_reason == "Radiotherapy (to the pelvic area which affects the cervix)" %}
-                <a href="/v11/start-reinstate?nhsNumber={{ data.patientSummary.nhs_number}}&role=csas&patversion=4&reinstateType=manual">Reinstate</a>
+                <a href="/v12/start-reinstate?nhsNumber={{ data.patientSummary.nhs_number}}&role=csas&patversion=5&reinstateType=manual">Reinstate</a>
               {% elif data.patientSummary.pnl_reason == "Due to age" %}
-                <a href="/v11/start-reinstate?nhsNumber={{ data.patientSummary.nhs_number}}&role=csas&patversion=4&reinstateType=reject">Reinstate</a>
+                <a href="/v12/start-reinstate?nhsNumber={{ data.patientSummary.nhs_number}}&role=csas&patversion=5&reinstateType=reject">Reinstate</a>
               {% else %}
-                <a href="/v11/start-reinstate?nhsNumber={{ data.patientSummary.nhs_number}}&role=csas&patversion=4&reinstateType=default">Reinstate</a>
+                <a href="/v12/start-reinstate?nhsNumber={{ data.patientSummary.nhs_number}}&role=csas&patversion=5&reinstateType=default">Reinstate</a>
               {% endif %}
 
 
@@ -132,8 +132,8 @@
               <!--<a href="change-due-date/enter-reinstate-3?nhsNumber={{ data.patientSummary.nhs_number}}&role=csas&patversion=3">Reinstate</a>-->
             {% else %}
               Actions:
-              <a href="/v11/start-prior-notifications-defer-reason?nhsNumber={{ data.patientSummary.nhs_number }}&pnlversion=12&patversion=4&role=csas&returnUrl=pat">Defer</a>
-              <a href="/v11/start-prior-notifications-cease-reason?nhsNumber={{ data.patientSummary.nhs_number }}&pnlversion=12&patversion=4&role=csas&returnUrl=pat">Cease</a>
+              <a href="/v12/start-prior-notifications-defer-reason?nhsNumber={{ data.patientSummary.nhs_number }}&pnlversion=12&patversion=5&role=csas&returnUrl=pat">Defer</a>
+              <a href="/v12/start-prior-notifications-cease-reason?nhsNumber={{ data.patientSummary.nhs_number }}&pnlversion=12&patversion=5&role=csas&returnUrl=pat">Cease</a>
             {% endif %}
           {% endif %}
         </dd>
@@ -212,7 +212,7 @@
     <h2 id="testresults" class="nhsuk-heading-l">Test results</h2>
 
     {% if data.role == 'csas' %}
-    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4" href="/v11/start-adding-test?nhsNumber={{ data.patientSummary.nhs_number }}&role=csas">Add result</a>
+    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4" href="/v12/start-adding-test?nhsNumber={{ data.patientSummary.nhs_number }}&role=csas">Add result</a>
     {% endif %}
 
     <div class="nhsuk-scrollable-pane">
@@ -275,8 +275,8 @@
                     <td class="nhsuk-table__cell">{{ result.slide_number }}</td> 
                   {% else %}
                     <td> 
-                      <!--<a href="/v11/patient/add-test-result/add-test-result-edit" style="margin-left:4px; margin-right:4px;">Edit</a>
-                      <a href="/v11/patient/add-test-result/add-test-result-remove" style="margin-left:4px; margin-right:4px;">Remove</a>-->
+                      <!--<a href="/v12/patient/add-test-result/add-test-result-edit" style="margin-left:4px; margin-right:4px;">Edit</a>
+                      <a href="/v12/patient/add-test-result/add-test-result-remove" style="margin-left:4px; margin-right:4px;">Remove</a>-->
                       <button class="expanderButton" type="button" id="{{ buttonId }}" aria-expanded="false" onclick="toggle(this.id,'#{{ detailsId }}');" aria-controls="{{ detailsId }}" aria-label="More details for" aria-labelledby="{{ buttonId }} {{ NameId }}"></button>
                     </td>
                   {% endif %}         
@@ -285,7 +285,7 @@
                     <td colspan="7">
                       <div class="nhsuk-grid-row">
                         <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
-                          <div id="reasons-step-0">{% include '../components/result-details.html' %}</div>
+                          {# <div id="reasons-step-0">{% include '../components/result-details.html' %}</div> #}
                         </div>
                       </div>
                     </td>
@@ -311,7 +311,7 @@
   <div class="nhsuk-footer" id="nhsuk-footer">
     <div class="nhsuk-width-container nhsuk-width-container-fluid">
       <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
-      <p><a href="/v11/reset-patient-data-12">Reset patient data</a></p>
+      <p><a href="/v12/reset-patient-data-12">Reset patient data</a></p>
     </div>
   </div>
 </footer>

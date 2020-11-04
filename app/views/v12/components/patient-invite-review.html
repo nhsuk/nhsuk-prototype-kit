@@ -1,0 +1,44 @@
+  <h1 class="nhsuk-fieldset__legend--m">Review patient screening participation</h1>
+
+  {{ summaryList({
+  rows: [
+    {
+      key: {
+        text: "Action"
+      },
+      value: {
+        text: data['pnl-action'] or 'Invite'
+      },
+      actions: {
+        items: [
+          {
+            href: "",
+            text: "",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Next test due date"
+      },
+      value: {
+        html: data.pnl_patient.next_test_due_date | returnDateFormat + " " + data.pnl_patient.next_test_due_date | returnTimeDiff
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "",
+            visuallyHiddenText: "contact details"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+
+<p>Once submitted we will send the patient their invitation on {{ data.pnl_patient.next_test_due_date | returnInviteDate + " " + (data.pnl_patient.next_test_due_date | returnInviteDate) | returnTimeDiff }}<p>
+
+  <a href="/v12/prior-notification/prior-notification-invited-{{ data.pnlversion or 12 }}" class="nhsuk-button nhsuk-button--ers">Submit</a>

@@ -1,0 +1,139 @@
+{% extends "layout-v2.html" %}
+
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header-3.html' %}
+{% endblock %}
+
+{%block content%}
+{{ backLink({
+  "href": "../patient-summary-4",
+  "text": "Back to Patient Summary",
+  "classes" : "nhsuk-u-margin-bottom-4"
+  }) }}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+     <h1 class="nhsuk-heading-l"> Check test result selected before removing</h1>
+     <div class="nhsuk-inset-text">
+      <span class="nhsuk-u-visually-hidden" >Information: </span>
+      <p>Removing a test result may change the patients next test due date.</p>
+    </div>
+
+    <dl class="nhsuk-summary-list">
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Test type</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['result-type'] }}</dd>
+  </div>
+  {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Sender National code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] }}</dd>
+  </div>
+  {% endif %}
+  {% if data['result-type']!= 'Abroad'%}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Source code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['source-code'] }}</dd>
+  </div>
+  {% endif %}
+  {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Sender code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] }} </dd>
+  </div>
+  {% endif %}
+
+  {% if data['result-type'] == 'Scottish' %}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Health Authority</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] }}</dd>
+  </div>
+  {% endif %}
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Slide number</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] }}</dd>
+  </div>
+
+  {% set nextTestDueDate = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Test date</dt>
+    <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat }}</dd>
+  </div>
+
+
+<div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Result</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['result-result'] }} {{ data['result-infection'] }} {{ data['result-action'] }}</dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">HPV Primary</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] }} </dd>
+  </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Next test due date</dt>
+      <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', nextTestDueDate) + ' ' + 3 | returnDate('years', nextTestDueDate) | returnTimeDiff }}</dd>
+    </div> 
+
+ <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">CRM</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['crm'] or '123456789' }}</dd>
+  </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Comments</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['comments'] or '' }}</dd>
+  </div>
+</dl>
+
+<div class="nhsuk-form-group">
+  <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+    
+       {{ radios({
+             "idPrefix": "remove",
+             "name": "remove-result",
+             "fieldset": {
+               "legend": {
+                 "text": "Are you sure you want to remove this test result?",
+                 "classes": "nhsuk-fieldset__legend--m nhsuk-label__strong",
+                 "isPageHeading": true
+               }
+             },
+             "items": [
+               {
+                 "value": "yes",
+                 "text": "Yes, I want to remove this test result."
+               },
+               {
+                 "value": "no",
+                 "text": "No, return to patient summary. "
+               }
+             ]
+           }) }}
+  </fieldset>
+<br>
+</div>
+<a href="../patient-summary-4" class="nhsuk-button nhsuk-button--ers">Confirm</a>   
+
+
+ <p><a href="../patient-summary-4">Exit without saving</a></p> 
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+      <p><a href="/v12/reset-patient-data-12">Reset patient data</a></p>
+    </div>
+  </div>
+</footer>
+{% endblock %}

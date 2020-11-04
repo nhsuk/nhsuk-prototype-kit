@@ -1,0 +1,51 @@
+{% if data.pnl_patient.results[0] == null %} 
+  {% set result = "no results" %}
+  {% set resultDate = "no results" %} 
+{% else %}
+  {% set result = "(" + (data.pnl_patient.results[0].result_code or "-" ) + (data.pnl_patient.results[0].infection_code or "-") + (data.pnl_patient.results[0].action_code or "-") + ") " + (data.pnl_patient.results[0].result or "-") + ", " + (data.pnl_patient.results[0].infection_result or "-") + ", " + (data.pnl_patient.results[0].action or "-") %}
+  {% set resultDate = data.pnl_patient.results[0].result_date | returnDateFormat + " " + data.pnl_patient.results[0].result_date | returnTimeDiff %}
+{% endif %}
+  
+  <h3 class="nhsuk-panel-with-label__label">{{ data.pnl_patient.first_name | capitalize }} {{ data.pnl_patient.last_name | capitalize }} 
+  <span style= color:white; class="nhsuk-table__cell--hint">NHS No: {{ data.pnl_patient.nhs_number | formatNHSNumber }}</span></h3>
+
+ 
+
+  <tr id="detailsRow4" class="detailsRow">
+           <td colspan="3">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-full">
+                {{ summaryList({
+    classes: 'nhsuk-u-margin-bottom-3',
+    rows: [
+      {
+        key: {
+        text: "Next test due date"
+      },
+      value: {
+      text: "-"
+      }
+    },
+    {
+      key: {
+        text: "Last test date"
+      },
+      value: {
+        text:  resultDate
+      }
+    },
+    {
+      key: {
+        text: "Last test"
+      },
+      value: {
+        text: result
+      }
+    }
+  ]
+}) }}
+<p class="nhsuk-u-margin-bottom-6"><a href="../patient/patient-summary-4">View full patient information</a></p>
+              </div>
+            </div>
+          </td>
+        </tr></p>
