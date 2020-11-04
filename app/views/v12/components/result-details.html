@@ -7,11 +7,10 @@
 
 
 <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
-  {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
+  {% if result['result-type']== 'English' or data['result-type']== 'Welsh'%}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender National code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['national-code'] }}</dd>
-    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Change<span class="nhsuk-u-visually-hidden"> Sender National code</span></a></dd>
+    <dd class="nhsuk-summary-list__value">{{ results.sending_lab }}</dd>
   </div>
   {% endif %}
   {% if data['result-type']!= 'Abroad'%}
@@ -20,7 +19,7 @@
     <dd class="nhsuk-summary-list__value">{{ result.source_code }}</dd>
   </div>
   {% endif %}
-  {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
+  {% if result['result-type']== 'English' or data['result-type']== 'Welsh'%}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender code</dt>
     <dd class="nhsuk-summary-list__value">{{ result.sender_code }} </dd>
