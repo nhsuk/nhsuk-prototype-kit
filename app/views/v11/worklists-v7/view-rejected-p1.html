@@ -21,7 +21,7 @@ NHS Cervical Screening
 </div>
 
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-three-quarters">
+  <div class="nhsuk-grid-column-two-thirds">
 
 
     <div class="nhsuk-panel-with-label">
@@ -111,51 +111,55 @@ NHS Cervical Screening
                 <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272">Comments: Queried with lab</p>
               </div>
             </div>
+      </div>
+    </div>
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
 
-            <div class="nhsuk-grid-row">
-              <div class="nhsuk-grid-column-full">
+        <form action="view-rejected-p1" method="post">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-4" for="example">
+              Comments
+            </label>
+            <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+              Enter comments here if needed
+            </span>
+            <textarea class="nhsuk-textarea commentBox" id="rejcomment1" value="rejcomment1" name="rejcomment1" rows="5" data-length=200 required></textarea>
 
-                <form action="view-rejected-p1" method="post">
-                  <div class="nhsuk-form-group">
-                    <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
-                      Comments
-                    </label>
-                    <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-                      Enter comments here if needed
-                    </span>
-                    <textarea class="nhsuk-textarea commentBox" id="rejcomment1" value="rejcomment1" name="rejcomment1" rows="5" data-length=200 required></textarea>
+          </div>
 
-                  </div>
+          <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
 
-                  <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
+          {% set name = "Josie Driver" %}
 
-                  {% set name = "Josie Driver" %}
+          {% set commentDate = ("today" | returnDate) %}
 
-                  {% set commentDate = ("today" | returnDate) %}
+          <input type="hidden" id="name" name="name" value="{{commentName}}">
 
-                  <input type="hidden" id="name" name="name" value="{{commentName}}">
+          <input type="hidden" name="date" value={{commentDate}}>
 
-                  <input type="hidden" name="date" value={{commentDate}}>
+        </form>
 
-                </form>
+        <ul class="nhsuk-comment-container">
+          {% if data.rejcomment1 !=null %}
 
-                <ul class="nhsuk-comment-container">
-                  {% if data.rejcomment1 !=null %}
+          <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.rejcomment1}}</li>
 
-                  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.rejcomment1}}</li>
-
-                  {% endif %}
-                </ul>
-
-              </div>
-            </div>
+          {% endif %}
+        </ul>
 
       </div>
-      <a href="view-rejected-p2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
-      <a href="manc-rejected" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Save and exit</a>
+
 
     </div>
+    <a href="view-rejected-p2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
+    <a href="manc-rejected" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Save and exit</a>
+
   </div>
+
+
+
+</div>
 </div>
 
 {% endblock %}
