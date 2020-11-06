@@ -36,6 +36,11 @@ NHS Cervical Screening
 
           <dl class="nhsuk-summary-list">
             <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Error status</dt>
+              <dd class="nhsuk-summary-list__value"><span class="nhsuk-tag nhsuk-tag--red">No HPV data</span></dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">Test type</dt>
               <dd class="nhsuk-summary-list__value">English</dd>
             </div>
@@ -44,10 +49,10 @@ NHS Cervical Screening
               <dd class="nhsuk-summary-list__value">238987</dd>
             </div>
 
-           <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Sender code</dt>
-    <dd class="nhsuk-summary-list__value">230122</dd>
-  </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Sender code</dt>
+              <dd class="nhsuk-summary-list__value">230122</dd>
+            </div>
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">Slide number</dt>
@@ -56,7 +61,7 @@ NHS Cervical Screening
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">Test date</dt>
-              <dd class="nhsuk-summary-list__value">Invalid test date</dd>
+              <dd class="nhsuk-summary-list__value">27-Jan-2020</dd>
             </div>
 
             <div class="nhsuk-summary-list__row">
@@ -74,19 +79,15 @@ NHS Cervical Screening
               <dd class="nhsuk-summary-list__value">Routine</dd>
             </div>
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">CRM case number</dt>
-              <dd class="nhsuk-summary-list__value">CAS-12392-ACDQM</dd>
-            </div>
           </dl>
-
-
+          </div>
+          </div>
           <div class="nhsuk-grid-row">
             <div class="nhsuk-grid-column-full">
 
               <form action="view-rejected-p2" method="post">
                 <div class="nhsuk-form-group">
-                  <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
+                  <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-1" for="example">
                     Comments
                   </label>
                   <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
@@ -116,16 +117,16 @@ NHS Cervical Screening
                 {% endif %}
               </ul>
 
-            </div>
+
           </div>
 
-        </div>
-        <a href="view-rejected-p3" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
-        <a href="manc-rejected" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Save and exit</a>
-
       </div>
-    </div>
+      <a href="view-rejected-p3" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
+      <a href="manc-rejected" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Save and exit</a>
+
+
   </div>
+</div>
 
 {% endblock %}
 

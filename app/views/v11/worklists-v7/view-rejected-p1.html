@@ -36,31 +36,24 @@ NHS Cervical Screening
 
           <dl class="nhsuk-summary-list">
             <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Error status</dt>
+              <dd class="nhsuk-summary-list__value"><span class="nhsuk-tag nhsuk-tag--red">Duplicate slide</span></dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">Test type</dt>
               <dd class="nhsuk-summary-list__value">English</dd>
             </div>
+
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">Sender national code</dt>
               <dd class="nhsuk-summary-list__value">676567</dd>
             </div>
-            {#  {% if data['result-type']!= 'Abroad'%} #}
-            <!--  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Source code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['source-code'] }}</dd>
-  </div> -->
-            {#  {% endif %}
-           <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Sender code</dt>
-    <dd class="nhsuk-summary-list__value">131290</dd>
-  </div>
 
-            {# {% if data['result-type'] == 'Scottish' %} #}
-            <!--  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Health Authority</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] }}</dd>
-    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Change<span class="nhsuk-u-visually-hidden"> Health Authority</span></a></dd>
-  </div> -->
-            {# {% endif %} #}
+           <div class="nhsuk-summary-list__row">
+             <dt class="nhsuk-summary-list__key">Sender code</dt>
+             <dd class="nhsuk-summary-list__value">131290</dd>
+           </div>
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">Slide number</dt>
@@ -86,39 +79,34 @@ NHS Cervical Screening
               <dt class="nhsuk-summary-list__key">Action</dt>
               <dd class="nhsuk-summary-list__value">Repeat Advised</dd>
             </div>
+            </dl>
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">CRM case number</dt>
-              <dd class="nhsuk-summary-list__value">CAS-24782-DEJKM</dd>
-            </div>
-          </dl>
+            <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l nhsuk-u-padding-top-6">
+                Audit
+              </legend>
 
-          <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
-            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l nhsuk-u-padding-top-3">
-              Audit
-            </legend>
-
-            <div class="nhs-screening-whole-timeline">
-              <div class="nhs-screening-whole-timeline__item">
-                <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
-                  <h2 class="nhs-screening-whole-timeline__title">Test received</h2>
-                  <p class="nhs-screening-whole-timeline__by">from Derby Royal Hospital (65030)</p>
-                  <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272">09-Sep-2020, 15:54:23 am</p>
-                  <p class="nhs-screening-whole-timeline__date">Error status: No HPV data</p>
+              <div class="nhs-screening-whole-timeline">
+                <div class="nhs-screening-whole-timeline__item">
+                  <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-1">
+                    <h2 class="nhs-screening-whole-timeline__title">Test received</h2>
+                    <p class="nhs-screening-whole-timeline__by">from Derby Royal Hospital (65030)</p>
+                    <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272">25-Jan-2020, 15:54:23 pm</p>
+                    <p class="nhs-screening-whole-timeline__date">Error status: Invalid test date</p>
+                  </div>
+                  <br>
+                  <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272">Comments: Lab corrected date, will re-send</p>
                 </div>
-                <br>
-                <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272">CRM Case Number: CAS-24782-DEJKM</p>
-                <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272">Comments: Queried with lab</p>
               </div>
-            </div>
       </div>
     </div>
+
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-full">
 
         <form action="view-rejected-p1" method="post">
           <div class="nhsuk-form-group">
-            <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-4" for="example">
+            <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-1" for="example">
               Comments
             </label>
             <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
