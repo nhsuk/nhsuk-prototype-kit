@@ -18,10 +18,10 @@
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
-     <h1 class="nhsuk-heading-l"> Check test result selected before removing</h1>
+     <h1 class="nhsuk-heading-l"> Check test result selected before deleting</h1>
      <div class="nhsuk-inset-text">
       <span class="nhsuk-u-visually-hidden" >Information: </span>
-      <p>Removing a test result may change the patients next test due date.</p>
+      <p>Deleting a test result may change the patients next test due date.</p>
     </div>
 
     <dl class="nhsuk-summary-list">
@@ -31,7 +31,7 @@
   </div>
   {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Sender National code</dt>
+    <dt class="nhsuk-summary-list__key">National code</dt>
     <dd class="nhsuk-summary-list__value">{{ data['national-code'] }}</dd>
   </div>
   {% endif %}
@@ -100,7 +100,7 @@
              "name": "remove-result",
              "fieldset": {
                "legend": {
-                 "text": "Are you sure you want to remove this test result?",
+                 "text": "Are you sure you want to delete this test result?",
                  "classes": "nhsuk-fieldset__legend--m nhsuk-label__strong",
                  "isPageHeading": true
                }
@@ -108,7 +108,7 @@
              "items": [
                {
                  "value": "yes",
-                 "text": "Yes, I want to remove this test result."
+                 "text": "Yes, I want to delete this test result."
                },
                {
                  "value": "no",
@@ -119,10 +119,10 @@
   </fieldset>
 <br>
 </div>
-<a href="../patient-summary-4" class="nhsuk-button nhsuk-button--ers">Confirm</a>   
+<a href="../patient-summary-5" class="nhsuk-button nhsuk-button--ers">Confirm</a>   
 
 
- <p><a href="../patient-summary-4">Exit without saving</a></p> 
+ <p><a href="../patient-summary-5">Exit without saving</a></p> 
   </div>
 
 {% endblock %}

@@ -34,9 +34,12 @@
             {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
               {{ input({
                 "label": {
-                  "text": "Sender National code",
+                  "text": "National Code",
                 "classes": "nhsuk-label nhsuk-label__strong"
                 },
+                hint: {
+                  html: "Also known as lab code."
+               },
                 "id": "input-width-10",
                 "name": "national-code",
                 "classes": "nhsuk-input--width-10",
@@ -79,9 +82,9 @@
                  "text": "Health Authority",
                 "classes": "nhsuk-label nhsuk-label__strong"
                },
-                "id": "input-width-10",
+                "id": "input-width-2",
                "name": "health-authority",
-               "classes": "nhsuk-input--width-10",
+               "classes": "nhsuk-input--width-2",
                "autocomplete": "off",
                "value": data['health-authority']
              }) }}
@@ -135,7 +138,7 @@
             
           
             <button class="nhsuk-button nhsuk-button--ers" type="submit">Continue</button>
-            <p><a href="../patient-summary-4">Exit without saving</a></p>
+            <p><a href="../patient-summary-5">Exit without saving</a></p>
           </form>
         </fieldset>
       <!--</div>-->

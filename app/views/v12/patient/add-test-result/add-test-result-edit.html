@@ -110,9 +110,12 @@
  <input type="hidden" id="infectionText" name="infection-text" value="{{ data['result-infection'] | returnInfectionText }}">
  <input type="hidden" id="resultText" name="result-text" value="{{ data['result-result'] | returnResultText }}">
 
-        
 
-         <p><a href="../patient-summary-4">Exit without saving</a></p>
+        <button class="nhsuk-button nhsuk-button--ers" type="submit">
+            Save Changes
+         </button>
+
+         <p><a href="../patient-summary-5">Exit without saving</a></p>
 
      </form>
   </div>

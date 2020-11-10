@@ -30,7 +30,7 @@
       Review test  
     </legend>
     
-    <form action="/v12/add-test-result?nhsNumber={{ data.pnl_patient.nhs_number }}&patversion=5" method="post">
+    <form action="/v12/add-test-result?nhsNumber={{ data.pnl_patient.nhs_number }}&patversion=6" method="post">
 
 <dl class="nhsuk-summary-list">
   <div class="nhsuk-summary-list__row">
@@ -40,7 +40,7 @@
   </div>
   {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Sender National code</dt>
+    <dt class="nhsuk-summary-list__key">National code</dt>
     <dd class="nhsuk-summary-list__value">{{ data['national-code'] }}</dd>
     <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Change<span class="nhsuk-u-visually-hidden"> Sender National code</span></a></dd>
   </div>
@@ -121,7 +121,7 @@
             Submit
          </button>
 
-         <p><a href="../patient-summary-5">Exit without saving</a></p>
+         <p><a href="../patient-summary-6">Exit without saving</a></p>
 
      </form>
   </div>
