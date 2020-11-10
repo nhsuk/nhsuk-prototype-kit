@@ -1,5 +1,33 @@
 {% extends "layout-v2.html" %}
 
+{% block pageScripts %}
+<script>
+  $(".char-textarea").on("keyup",function(event){
+  checkTextAreaMaxLength(this,event);
+});
+
+function checkTextAreaMaxLength(textBox, e) {
+
+    var maxLength = parseInt($(textBox).data("length"));
+
+
+    if (!checkSpecialKeys(e)) {
+        if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
+   }
+  $(".char-count").html(maxLength - textBox.value.length);
+
+    return true;
+}
+
+function checkSpecialKeys(e) {
+    if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
+        return false;
+    else
+        return true;
+}
+</script>
+{% endblock %}
+
 {% block pageTitle %}
 NHS Cervical Screening
 {% endblock %}
@@ -112,8 +140,8 @@ NHS Cervical Screening
             <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
               Enter comments here if needed
             </span>
-            <textarea class="nhsuk-textarea commentBox" id="rejcomment1" value="rejcomment1" name="rejcomment1" rows="5" data-length=200 required></textarea>
-
+            <textarea class="nhsuk-textarea commentBox char-textarea" id="rejcomment1" value="rejcomment1" name="rejcomment1" rows="5" data-length=200 required></textarea>
+            <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
           </div>
 
           <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
