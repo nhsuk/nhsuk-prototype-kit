@@ -1,0 +1,84 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(3) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    {{ backLink({
+      "href": "enter-gp-code",
+      "text": "Back to entering GP or Disctrict Code"
+    }) }}
+
+    {{ summaryList({
+      rows: [
+        {
+          key: {
+            text: "GP"
+          },
+          value: {
+            text: "A123456"
+          }
+        },
+        {
+          key: {
+            text: "District"
+          },
+          value: {
+            text: "B234567"
+          }
+        }
+      ]
+    }) }}
+
+    <form action="amend-letter-text-1" method="POST">
+      {{ radios({
+        "idPrefix": "example",
+        "name": "example",
+        "fieldset": {
+          "legend": {
+            "text": "Choose a letter to amend",
+            "classes": "nhsuk-fieldset__legend--l",
+            "isPageHeading": true
+          }
+        },
+        "items": [
+          {
+            "value": "invite",
+            "text": "Patient invitation to screening"
+          },
+          {
+            "value": "non-responder",
+            "text": "Patient invitation for a patient who has not responded"
+          },
+          {
+            "value": "no",
+            "text": "Patient invitation for a patient who has not responded twice"
+          }
+        ]
+      }) }}
+
+      {{ button({
+          "text": "Continue",
+          "classes": "nhsuk-button--ers"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}
