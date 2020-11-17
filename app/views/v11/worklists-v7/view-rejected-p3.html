@@ -49,7 +49,7 @@ NHS Cervical Screening
 </div>
 
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-three-quarters">
+  <div class="nhsuk-grid-column-two-thirds">
 
 
     <div class="nhsuk-panel-with-label">
@@ -74,7 +74,7 @@ NHS Cervical Screening
             </div>
 
             <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Sender national code</dt>
+              <dt class="nhsuk-summary-list__key">National code</dt>
               <dd class="nhsuk-summary-list__value">312980</dd>
             </div>
 
@@ -115,6 +115,16 @@ NHS Cervical Screening
             <div class="nhsuk-grid-column-full">
 
               <form action="view-rejected-p3" method="post">
+                <fieldset class="nhsuk-fieldset">
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-label--s nhsuk-u-margin-bottom-2" for="example-heading">
+                      Enter CRM case number (optional)
+                    </label>
+                    <span class="nhsuk-hint" id="example-hint">
+                      For example, CAS-12345-ABCDE
+                    </span>
+                    <input class="nhsuk-input nhsuk-input--width-10" type="text" name="crm" autocomplete="off" value="{{ data.crm }}">
+                  </div>
                 <div class="nhsuk-form-group">
                   <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-1" for="example">
                     Comments
@@ -125,6 +135,7 @@ NHS Cervical Screening
                   <textarea class="nhsuk-textarea commentBox char-textarea" id="rejcomment3" value="rejcomment3" name="rejcomment3" rows="5" data-length=200 required></textarea>
                   <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
                 </div>
+                </fieldset>
 
                 <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
 

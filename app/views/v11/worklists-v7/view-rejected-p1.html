@@ -2,29 +2,29 @@
 
 {% block pageScripts %}
 <script>
-  $(".char-textarea").on("keyup",function(event){
-  checkTextAreaMaxLength(this,event);
-});
+  $(".char-textarea").on("keyup", function(event) {
+    checkTextAreaMaxLength(this, event);
+  });
 
-function checkTextAreaMaxLength(textBox, e) {
+  function checkTextAreaMaxLength(textBox, e) {
 
     var maxLength = parseInt($(textBox).data("length"));
 
 
     if (!checkSpecialKeys(e)) {
-        if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
-   }
-  $(".char-count").html(maxLength - textBox.value.length);
+      if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
+    }
+    $(".char-count").html(maxLength - textBox.value.length);
 
     return true;
-}
+  }
 
-function checkSpecialKeys(e) {
+  function checkSpecialKeys(e) {
     if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
-        return false;
+      return false;
     else
-        return true;
-}
+      return true;
+  }
 </script>
 {% endblock %}
 
@@ -74,14 +74,14 @@ NHS Cervical Screening
             </div>
 
             <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Sender national code</dt>
+              <dt class="nhsuk-summary-list__key">National code</dt>
               <dd class="nhsuk-summary-list__value">676567</dd>
             </div>
 
-           <div class="nhsuk-summary-list__row">
-             <dt class="nhsuk-summary-list__key">Sender code</dt>
-             <dd class="nhsuk-summary-list__value">131290</dd>
-           </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Sender code</dt>
+              <dd class="nhsuk-summary-list__value">131290</dd>
+            </div>
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">Slide number</dt>
@@ -107,25 +107,23 @@ NHS Cervical Screening
               <dt class="nhsuk-summary-list__key">Action</dt>
               <dd class="nhsuk-summary-list__value">Repeat Advised</dd>
             </div>
-            </dl>
+          </dl>
 
-            <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
-              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l nhsuk-u-padding-top-6">
-                Audit
-              </legend>
 
-              <div class="nhs-screening-whole-timeline">
-                <div class="nhs-screening-whole-timeline__item">
-                  <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-1">
-                    <h2 class="nhs-screening-whole-timeline__title">Test received</h2>
-                    <p class="nhs-screening-whole-timeline__by">from Derby Royal Hospital (65030)</p>
-                    <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272">25-Jan-2020, 15:54:23 pm</p>
-                    <p class="nhs-screening-whole-timeline__date">Error status: Invalid test date</p>
-                  </div>
-                  <br>
-                  <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272">Comments: Lab corrected date, will re-send</p>
-                </div>
+          <h2 class="nhsuk-heading-m nhsuk-u-padding-top-6">Audit</h2>
+
+          <div class="nhs-screening-whole-timeline">
+            <div class="nhs-screening-whole-timeline__item">
+              <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-1">
+                <h2 class="nhs-screening-whole-timeline__title">Test received</h2>
+                <p class="nhs-screening-whole-timeline__by">from Derby Royal Hospital (65030)</p>
+                <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272">25-Jan-2020, 15:54:23 pm</p>
+                <p class="nhs-screening-whole-timeline__date">Error status: Invalid test date</p>
               </div>
+              <br>
+              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272">Comments: Lab corrected date, will re-send</p>
+            </div>
+          </div>
       </div>
     </div>
 
@@ -133,16 +131,27 @@ NHS Cervical Screening
       <div class="nhsuk-grid-column-full">
 
         <form action="view-rejected-p1" method="post">
-          <div class="nhsuk-form-group">
-            <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-1" for="example">
-              Comments
-            </label>
-            <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-              Enter comments here if needed
-            </span>
-            <textarea class="nhsuk-textarea commentBox char-textarea" id="rejcomment1" value="rejcomment1" name="rejcomment1" rows="5" data-length=200 required></textarea>
-            <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
-          </div>
+          <fieldset class="nhsuk-fieldset">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-label--s nhsuk-u-margin-bottom-2" for="example-heading">
+                Enter CRM case number (optional)
+              </label>
+              <span class="nhsuk-hint" id="example-hint">
+                For example, CAS-12345-ABCDE
+              </span>
+              <input class="nhsuk-input nhsuk-input--width-10" type="text" name="crm" autocomplete="off" value="{{ data.crm }}">
+            </div>
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-1" for="example">
+                Comments
+              </label>
+              <span class="nhsuk-hint nhsuk-u-padding-top-2" id="example-hint" for="one-half">
+                Enter comments here if needed
+              </span>
+              <textarea class="nhsuk-textarea commentBox char-textarea" id="rejcomment1" value="rejcomment1" name="rejcomment1" rows="5" data-length=200 required></textarea>
+              <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
+            </div>
+          </fieldset>
 
           <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
 
