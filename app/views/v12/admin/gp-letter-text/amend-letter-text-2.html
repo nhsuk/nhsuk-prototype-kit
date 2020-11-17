@@ -27,22 +27,15 @@ NHS Cervical Screening
     }) }}
 
     <h1 class="nhsuk-heading-l">Amend GP Letter text</h1>
+
     {{ summaryList({
       rows: [
         {
           key: {
-            text: "GP"
+            text: "GP / District"
           },
           value: {
-            text: "A123456"
-          }
-        },
-        {
-          key: {
-            text: "District"
-          },
-          value: {
-            text: "B234567"
+            text: data['gp-code'] or 'A123456'
           }
         },
         {
@@ -50,7 +43,47 @@ NHS Cervical Screening
             text: "Letter"
           },
           value: {
-            text: "Patient invitation to screening"
+            text: data['gp-letter']
+          }
+        },
+        {
+          key: {
+            text: "Previous text line 1"
+          },
+          value: {
+            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          }
+        },
+        {
+          key: {
+            text: "Previous text line 2"
+          },
+          value: {
+            text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          }
+        },
+        {
+          key: {
+            text: "Previous text line 3"
+          },
+          value: {
+            text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+          }
+        },
+        {
+          key: {
+            text: "Previous text line 4"
+          },
+          value: {
+            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          }
+        },
+        {
+          key: {
+            text: "Previous text line 5"
+          },
+          value: {
+            text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
           }
         }
       ]
@@ -59,66 +92,51 @@ NHS Cervical Screening
     <form action="review-letter-text-2" method="POST">
       {{ input({
         "label": {
-          "text": "GP text line 1",
+          "text": "Text line 1",
           "classes": "nhsuk-label__strong"
         },
-          "hint": {
-          "text": "For example, A123456."
-        },
         "id": "example",
-        "name": "example",
+        "name": "gp-text-line-1",
         "classes": "nhsuk-input--width-20"
       }) }}
 
       {{ input({
         "label": {
-          "text": "GP text line 2",
+          "text": "Text line 2",
           "classes": "nhsuk-label__strong"
         },
-          "hint": {
-          "text": "For example, A123456."
-        },
         "id": "example",
-        "name": "example",
+        "name": "gp-text-line-2",
         "classes": "nhsuk-input--width-20"
       }) }}
 
       {{ input({
         "label": {
-          "text": "GP text line 3",
+          "text": "Text line 3",
           "classes": "nhsuk-label__strong"
         },
-          "hint": {
-          "text": "For example, A123456."
-        },
         "id": "example",
-        "name": "example",
+        "name": "gp-text-line-3",
         "classes": "nhsuk-input--width-20"
       }) }}
 
       {{ input({
         "label": {
-          "text": "GP text line 4",
+          "text": "Text line 4",
           "classes": "nhsuk-label__strong"
         },
-          "hint": {
-          "text": "For example, A123456."
-        },
         "id": "example",
-        "name": "example",
+        "name": "gp-text-line-4",
         "classes": "nhsuk-input--width-20"
       }) }}
 
       {{ input({
         "label": {
-          "text": "GP text line 5",
+          "text": "Text line 5",
           "classes": "nhsuk-label__strong"
         },
-          "hint": {
-          "text": "For example, A123456."
-        },
         "id": "example",
-        "name": "example",
+        "name": "gp-text-line-5",
         "classes": "nhsuk-input--width-20"
       }) }}
 
@@ -126,6 +144,7 @@ NHS Cervical Screening
           "text": "Continue",
           "classes": "nhsuk-button--ers"
       }) }}
+      <p><a href="">Exit without saving</a></p>
     </form>
   </div>
 </div>

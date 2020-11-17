@@ -35,15 +35,17 @@ NHS Cervical Screening
 
 
         <h1 class="nhsuk-heading-l">Enter clinical details</h1>
-        {{ insetText({
-  "HTML": "<p>If cervix was not fully seen please state here.</p>"
-}) }}
+      
         <div class="nhsuk-form-group">
           <label class="nhsuk-label" for="example">
-            Clinical data
+            Add relevant clinical data, including:
           </label>
           <span class="nhsuk-hint" id="example-hint">
-            Previous history of cervical neoplasta and hormone treatment
+           <ul>
+           <li>history of cervical neoplasia</li>
+           <li>hormone treatment</li>
+           <li>if the cervix was not fully seen during screening</li>
+           </ul>
           </span>
           <textarea class="nhsuk-textarea nhsuk-u-margin-bottom-0" id="example" name="example" rows="5" aria-describedby="example-hint"></textarea>
           <span class="nhsuk-hint nhsuk-u-margin-top-1">You have 300 characters remaining</span>
