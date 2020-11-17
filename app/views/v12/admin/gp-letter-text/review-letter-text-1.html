@@ -23,41 +23,12 @@ NHS Cervical Screening
   <div class="nhsuk-grid-column-three-quarters">
     {{ backLink({
       "href": "choose-a-letter",
-      "text": "Back to choosing a letter"
+      "text": "Back to amending letter text"
     }) }}
 
     <h1 class="nhsuk-heading-l">Review Letter text changes</h1>
 
-   {# {{ summaryList({
-      rows: [
-        {
-          key: {
-            text: "GP"
-          },
-          value: {
-            text: data['gp-code'] or 'A123456'
-          }
-        },
-        {
-          key: {
-            text: "District"
-          },
-          value: {
-            text: "B234567"
-          }
-        },
-        {
-          key: {
-            text: "Letter"
-          },
-          value: {
-            text: data['gp-letter']
-          }
-        }
-      ]
-    }) }}#}
-
-    <form action="choose-a-letter-type" method="POST">
+    <form action="confirmation" method="POST">
       <dl class="nhsuk-summary-list">
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">GP / District</dt>
