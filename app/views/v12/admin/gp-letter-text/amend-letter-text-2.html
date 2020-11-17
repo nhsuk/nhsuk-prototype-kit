@@ -27,22 +27,15 @@ NHS Cervical Screening
     }) }}
 
     <h1 class="nhsuk-heading-l">Amend GP Letter text</h1>
+
     {{ summaryList({
       rows: [
         {
           key: {
-            text: "GP"
+            text: "GP / District"
           },
           value: {
-            text: "A123456"
-          }
-        },
-        {
-          key: {
-            text: "District"
-          },
-          value: {
-            text: "B234567"
+            text: data['gp-code'] or 'A123456'
           }
         },
         {
@@ -50,7 +43,7 @@ NHS Cervical Screening
             text: "Letter"
           },
           value: {
-            text: "Patient invitation to screening"
+            text: data['gp-letter']
           }
         }
       ]
@@ -126,6 +119,7 @@ NHS Cervical Screening
           "text": "Continue",
           "classes": "nhsuk-button--ers"
       }) }}
+      <p><a href="">Exit without saving</a></p>
     </form>
   </div>
 </div>

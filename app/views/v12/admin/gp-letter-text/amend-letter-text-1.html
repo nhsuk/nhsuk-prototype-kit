@@ -32,18 +32,10 @@ NHS Cervical Screening
       rows: [
         {
           key: {
-            text: "GP"
+            text: "GP / District"
           },
           value: {
-            text: "A123456"
-          }
-        },
-        {
-          key: {
-            text: "District"
-          },
-          value: {
-            text: "B234567"
+            text: data['gp-code'] or 'A123456'
           }
         },
         {
@@ -51,15 +43,25 @@ NHS Cervical Screening
             text: "Letter"
           },
           value: {
-            text: "Patient invitation to screening"
+            text: data['gp-letter']
+          }
+        },
+        {
+          key: {
+            text: "Previous letter text"
+          },
+          value: {
+            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
           }
         }
       ]
     }) }}
 
+    <h1 class="nhsuk-heading-l">Amend Letter text</h1>
+
     <form action="review-letter-text-1" method="POST">
       {{ textarea({
-        "name": "example",
+        "name": "gp-letter-textarea",
         "id": "example",
         "label": {
           "text": "GP letter text",
@@ -71,6 +73,7 @@ NHS Cervical Screening
           "text": "Continue",
           "classes": "nhsuk-button--ers"
       }) }}
+      <p><a href="">Exit without saving</a></p>
     </form>
   </div>
 </div>
