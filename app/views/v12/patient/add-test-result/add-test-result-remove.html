@@ -10,14 +10,20 @@
 {% endblock %}
 
 {%block content%}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
 {{ backLink({
-  "href": "../patient-summary-4",
+  "href": "../patient-summary-6",
   "text": "Back to Patient Summary",
   "classes" : "nhsuk-u-margin-bottom-4"
   }) }}
 
+  <div class="nhsuk-panel-with-label">
+    {% include '../../components/pnl-patient-2.html' %}
+
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-one-half">
+  <div class="nhsuk-grid-column-three-quarters">
      <h1 class="nhsuk-heading-l"> Check test result selected before deleting</h1>
      <div class="nhsuk-inset-text">
       <span class="nhsuk-u-visually-hidden" >Information: </span>
@@ -72,11 +78,6 @@
     <dd class="nhsuk-summary-list__value">{{ data['result-result'] }} {{ data['result-infection'] }} {{ data['result-action'] }}</dd>
   </div>
 
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">HPV Primary</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] }} </dd>
-  </div>
-
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">Next test due date</dt>
       <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', nextTestDueDate) + ' ' + 3 | returnDate('years', nextTestDueDate) | returnTimeDiff }}</dd>
@@ -119,10 +120,10 @@
   </fieldset>
 <br>
 </div>
-<a href="../patient-summary-5" class="nhsuk-button nhsuk-button--ers">Confirm</a>   
+<a href="../patient-summary-6" class="nhsuk-button nhsuk-button--ers">Confirm</a>   
 
 
- <p><a href="../patient-summary-5">Exit without saving</a></p> 
+ <p><a href="../patient-summary-6">Exit without saving</a></p> 
   </div>
 
 {% endblock %}

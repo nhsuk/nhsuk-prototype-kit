@@ -44,10 +44,10 @@ NHS Cervical Screening
           <div class="nhsuk-form-group">
             <fieldset class="nhsuk-fieldset" aria-describedby="dob-from" role="group">
               <legend class="nhsuk-fieldset__legend nhsuk-label__strong">
-                LMP (1st day)
+                1st day of last menstrual period (LMP)
               </legend>
               <div class="nhsuk-hint" id="example-hint">
-                Leave blank if LMP not known, add reason in clinical notes.
+                Leave blank and add reason if LMP not known.
               </div>
               <span id="dob-from-error-error" class="nhsuk-error-message" style="display: none">
                 You must enter a date
@@ -78,6 +78,13 @@ NHS Cervical Screening
                   </div>
                 </div>
               </div>
+              <br>
+              <div class="nhsuk-form-group">
+                 <div class="nhsuk-hint" id="example-hint">
+                   Reason LMP not known
+                 </div>
+                 <textarea class="nhsuk-textarea" id="example" name="example" rows="4" aria-describedby="example-hint"></textarea>
+               </div>
             </fieldset>
           </div>
 
@@ -86,12 +93,12 @@ NHS Cervical Screening
 
           <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
             <label class="nhsuk-label" for="example">
-              Patient's condition
+              Additional information
             </label>
 
 
             <span class="nhsuk-hint" id="example-hint">
-              Select all options that are relevant to the patient.
+              Select all options that apply to the patient:
             </span>
 
             <div class="nhsuk-checkboxes">
@@ -100,21 +107,21 @@ NHS Cervical Screening
                             <div class="nhsuk-checkboxes__item">
                 <input class="nhsuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="phone">
                 <label class="nhsuk-label nhsuk-checkboxes__label" for="option-2">
-                  Pregnancy (first trimester)
+                  Pregnancy (1st trimester)
                 </label>
               </div>
 
               <div class="nhsuk-checkboxes__item">
                 <input class="nhsuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="phone">
                 <label class="nhsuk-label nhsuk-checkboxes__label" for="option-2">
-                  Post-natal
+                  Postnatal
                 </label>
               </div>
 
               <div class="nhsuk-checkboxes__item">
                 <input class="nhsuk-checkboxes__input" id="example-3" name="example" type="checkbox" value="text message">
                 <label class="nhsuk-label nhsuk-checkboxes__label" for="option-3">
-                  IUCD fitted (don't take if  fitted in last 12 weeks)
+                  IUCD fitted (do not take if IUCD fitted in last 12 weeks)
                 </label>
               </div>
               <div class="nhsuk-checkboxes__item">
