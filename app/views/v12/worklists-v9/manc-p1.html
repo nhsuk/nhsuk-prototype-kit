@@ -40,6 +40,51 @@ function checkSpecialKeys(e) {
     else
         return true;
 }
+// CAROUSEL
+var carousel = $('#carousel'),
+    threshold = 150,
+    slideWidth = 500,
+    dragStart,
+    dragEnd;
+
+$('#next').click(function(){ shiftSlide(-1) })
+$('#prev').click(function(){ shiftSlide(1) })
+
+carousel.on('mousedown', function(){
+  if (carousel.hasClass('transition')) return;
+  dragStart = event.pageX;
+  $(this).on('mousemove', function(){
+    dragEnd = event.pageX;
+    $(this).css('transform','translateX('+ dragPos() +'px)')
+  })
+  $(document).on('mouseup', function(){
+    if (dragPos() > threshold) { return shiftSlide(1) }
+    if (dragPos() < -threshold) { return shiftSlide(-1) }
+    shiftSlide(0);
+  })
+});
+
+function dragPos() {
+  return dragEnd - dragStart;
+}
+
+function shiftSlide(direction) {
+  if (carousel.hasClass('transition')) return;
+  dragEnd = dragStart;
+  $(document).off('mouseup')
+  carousel.off('mousemove')
+          .addClass('transition')
+          .css('transform','translateX(' + (direction * slideWidth) + 'px)');
+  setTimeout(function(){
+    if (direction === 1) {
+      $('.slide:first').before($('.slide:last'));
+    } else if (direction === -1) {
+      $('.slide:last').after($('.slide:first'));
+    }
+    carousel.removeClass('transition')
+		carousel.css('transform','translateX(0px)');
+  },700)
+}
 </script>
 
 {% endblock %}
@@ -71,11 +116,25 @@ NHS Cervical Screening
     <div class="nhsuk-grid-column-full">
 
 
-
-
 <div class="nhsuk-panel nhsuk-promo">
 <h3>Previous letters sent to:</h3>
+
+<div class="">
+  <div class="">
+    <div id="">
+      <span class="" id="b1">SLIDE-1</span>
+      <span class="slide" id="b2">SLIDE-2</span>
+      <span class="slide" id="b3">SLIDE-3</span>
+      <span class="slide" id="b4">SLIDE-4</span>
+      <span class="slide" id="b5">SLIDE-5</span>
+    </div>
+  </div>
+  <span id="prev">PREV</span>
+  <span id="next">NEXT</span>
+</div>
       <dl class="nhsuk-summary-list--no-border nhsuk-body-m">
+
+
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
@@ -224,7 +283,7 @@ NHS Cervical Screening
             How do you want to action this result?
           </h1>
         </legend>
-    
+
 
         <div class="nhsuk-radios__item">
           <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
