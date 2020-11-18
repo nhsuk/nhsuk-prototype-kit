@@ -1,14 +1,19 @@
 {% extends "layout-v2.html" %}
 
 {% block pageScripts %}
-<script>
-  function openRightMenu() {
-    document.getElementById("rightMenu").style.display = "block";
-  }
+  <script type="text/javascript" src="/js/reveal.js"></script>
+  <script type="text/javascript" src="/js/comments.js"></script>
 
+<script>
   function closeRightMenu() {
-    document.getElementById("rightMenu").style.display = "none";
+    document.getElementByClass("nhsuk-sidebar-hidden").style.display = "none";
   }
+  $(document).ready(function() {
+     $(".sidebarbttn").click(function () {
+     $(".nhsuk-sidebar-hidden").toggle();
+    });
+
+   });
 </script>
 
 <script>
@@ -39,11 +44,11 @@ function checkSpecialKeys(e) {
 
 {% endblock %}
 {% block pageTitle %}
-  NHS Cervical Screening
+NHS Cervical Screening
 {% endblock %}
 
 {% block header %}
-  {% include '../components/header.html' %}
+{% include '../components/header.html' %}
 {% endblock %}
 
 
@@ -51,22 +56,19 @@ function checkSpecialKeys(e) {
 <div class="nhsuk-sidebar-hidden" id="rightMenu">
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
-      <a style="float:right;cursor:pointer" class="" onclick="closeRightMenu()" class="">Close this window
+      <a style="float:right;cursor:pointer" class="sidebarbttn">Close this window
 
       <!--  <svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
     <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
   </svg> -->
 
-</a>
+    </a>
 
     </div>
   </div>
 
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
-
-
-
 
 
 
@@ -80,11 +82,11 @@ function checkSpecialKeys(e) {
            20-08-18
           </dt>
           <dd class="nhsuk-summary-list__value">
-    20 Thornhill Street
-    <br>
-    Pudsey
-    <br>
-    LS28 7ED
+           20 Thornhill Street
+          <br>
+          Pudsey
+          <br>
+          LS28 7ED
 
         </div>
         <div class="nhsuk-summary-list__row">
@@ -102,132 +104,129 @@ function checkSpecialKeys(e) {
       </dl>
       </div>
 
-
       <a href="#">View full summary</a>
     </div>
   </div>
 </div>
 
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
     {{ backLink({
-      "href": "manc-p3",
-      "text": "Go back to previous match"
+      "href": "manc-process",
+      "text": "Go back to Manchester results"
     }) }}
 
     <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to process</h1>
 
   </div>
 </div>
-
-
 <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-one-half">
+  <div class="nhsuk-grid-column-one-half">
     <div class="nhsuk-panel-with-label">
-      <h3 class="nhsuk-panel-with-label__label">Lab details</h3>
+      <h3 class="nhsuk-panel-with-label__label">Demographics</h3>
 
-<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Name
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      Charlotte Gravill
-    </dd>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Jane Smith
+          </dd>
 
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            01-01-1970
+          </dd>
+
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            NHS number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class=""> 234 567 8901 </span>
+          </dd>
+
+        </div>
+
+      </dl>
+    </div>
   </div>
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Date of birth
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      11-04-1990
-    </dd>
-
-  </div>
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Contact information
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      1 Westfield Place<br>Great Shelford<br> CB22 5JJ
-    </dd>
-</div>
-     <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      NHS number
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-	     234 567 8901
-    </dd>
-
-  </div>
-  </dl>
-
-
-  </div>
-
 
 </div>
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">Lab address</h3>
 
-    <div class="nhsuk-grid-column-one-half">
-         <div class="nhsuk-panel-with-label">
-      <h3 class="nhsuk-panel-with-label__label">System details</h3>
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
-<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Contact information
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            20 Thornhill Street
+            <br>
+Pudsey
+<br>
+LS28 7PB
+          </dd>
+
+        </div>
 
 
 
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Name
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      Charlotte <span class="highlight">J</span> Gravill
-    </dd>
 
+
+      </dl>
+    </div>
   </div>
 
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Date of birth
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      11-04-1990
-    </dd>
+  <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">System address</h3>
+
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Contact information
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            20 Thornhill Street
+            <br>
+  Pudsey
+  <br>
+  LS28 <span class="highlight">7ED</span>
+          </dd>
+
+        </div>
+
+
+
+
+
+      </dl>
+
+    </div>
+
+
+
 
   </div>
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Contact information
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      1 Westfield Place<br>Great Shel<span class="highlight">l</span>ford<br> CB22 5JJ
-    </dd>
 </div>
-     <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      NHS number
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-    234 567 8901
-    </dd>
-
-  </div>
-
-</dl>
-
-</div>
-</div>
-
-
-
 
 
 
@@ -239,24 +238,25 @@ function checkSpecialKeys(e) {
       <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
         <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
           <h1 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong">
-            How do you want to action this result?
+            Where do you want to send this result?
           </h1>
         </legend>
         <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="lab" name="how-to-resolve" type="radio" value="lab" aria-controls="lab" aria-expanded="false">
-          <label class="nhsuk-label nhsuk-radios__label" for="lab">
-            Use lab details
+          <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
+          <label class="nhsuk-label nhsuk-radios__label" for="system">
+            Use system address
           </label>
         </div>
+
 
         <div class="nhsuk-radios__item">
           <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
           <label class="nhsuk-label nhsuk-radios__label" for="system">
-            Use system details
+            Use lab address
           </label>
         </div>
 
-  <!--    <div class="nhsuk-radios__item">
+    <!--      <div class="nhsuk-radios__item">
           <input class="nhsuk-radios__input" id="gp" name="how-to-resolve" type="radio" value="gp" aria-controls="gp" aria-expanded="false">
           <label class="nhsuk-label nhsuk-radios__label" for="gp">
             Send to GP practice.
@@ -313,19 +313,18 @@ function checkSpecialKeys(e) {
 
       </fieldset>
 
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
-    <form action="manc-p3" method="post">
+    <form action="manc-p1" method="post">
     <div class="nhsuk-form-group">
       <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
         Comments
       </label>
       <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-        Enter comments here if needed
+       Enter comments here if needed
       </span>
-      <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsc" value="commentsc" name="commentsc" rows="5" data-length=200></textarea>
+      <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200 required></textarea>
       <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
     </div>
 
@@ -342,9 +341,9 @@ function checkSpecialKeys(e) {
     </form>
 
     <ul class="nhsuk-comment-container">
-      {% if data.commentsc !=null %}
+      {% if data.commentsa !=null %}
 
-  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsc}}</li>
+  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsa}}</li>
 
   {% endif %}
   			</ul>
@@ -353,25 +352,14 @@ function checkSpecialKeys(e) {
 </div>
 
 
-
-          </div>
-    <a href="manc-p5" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
-    <a href="manc-process" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Save and exit</a>
-
     </div>
+    <a href="manc-p2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
+    <a href="manc-process" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Save and exit</a>
 
   </div>
 
+</div>
 
 
 
-
-
-
-
-
-
-
-
-
-  {% endblock %}
+{% endblock %}
