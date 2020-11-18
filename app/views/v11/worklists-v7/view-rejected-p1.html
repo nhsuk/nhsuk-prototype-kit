@@ -160,15 +160,19 @@ NHS Cervical Screening
           {% set commentDate = ("today" | returnDate) %}
 
           <input type="hidden" id="name" name="name" value="{{commentName}}">
-
           <input type="hidden" name="date" value={{commentDate}}>
 
         </form>
 
         <ul class="nhsuk-comment-container">
-          {% if data.rejcomment1 !=null %}
+          {% if (data.rejcomment1 !=null) %}
 
-          <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.rejcomment1}}</li>
+          <li class="nhsuk-panel">
+            <span class="name">{{ name }}</span>
+            <span class="date"><strong>{{data.date}}</strong></span>
+            <span class="crm">CRM: {{ data['crm'] }}</span><br>
+            {{data.rejcomment1}}
+          </li>
 
           {% endif %}
         </ul>

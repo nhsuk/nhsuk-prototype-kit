@@ -1,0 +1,216 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+
+<script src="/js/results-filter.js"></script>
+
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(3) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+
+<script>
+  function toggle(btnID, eIDs) {
+    // Feed the list of ids as a selector
+    var theRows = document.querySelectorAll(eIDs);
+    // Get the button that triggered this
+    var theButton = document.getElementById(btnID);
+    // If the button is not expanded...
+    if (theButton.getAttribute("aria-expanded") == "false") {
+      // Loop through the rows and show them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("shown");
+        theRows[i].classList.remove("hidden");
+      }
+      // Now set the button to expanded
+      theButton.setAttribute("aria-expanded", "true");
+      // Otherwise button is not expanded...
+    } else {
+      // Loop through the rows and hide them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("hidden");
+        theRows[i].classList.remove("shown");
+      }
+      // Now set the button to collapsed
+      theButton.setAttribute("aria-expanded", "false");
+    }
+    $('.expanderButton[aria-expanded="true"]').closest('tr').addClass('expandedRow');
+    $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
+  }
+</script>
+
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+{% block content %}
+
+{{ backLink({
+  "href": "results",
+  "text": "Go back to results"
+}) }}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <h1 class="nhsuk-heading-l">Manchester</h1>
+    <p> The following results show the manual matches between the lab and system patient details.
+      <br>
+      Compare the patient details provided by the labs against those held on the system.
+    </p>
+  </div>
+</div>
+
+<!--
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">Lab contact details</h3>
+
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+                <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Lab lead
+          </dt>
+         <dd class="nhsuk-summary-list__value">
+          (+44) 1624 937 662
+          </dd>
+          <dd class="nhsuk-summary-list__value">
+          <a href=mailto:susan.prince@nhs.net?subject="Query">susan.prince@nhs.net</a>
+        </div>
+
+    </dd>
+                <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Lab assistant
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+          (+44) 1624 937 363
+          </dd>
+          <dd class="nhsuk-summary-list__value">
+                    <a href=mailto:ian.mcdaid@nhs.net?subject="Query">ian.mcdaid@nhs.net</a>
+          </dd>
+        </div>
+
+    </dd>
+                    <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Lab technician
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+          (+44) 1624 363 937
+          </dd>
+          <dd class="nhsuk-summary-list__value">
+          <a href=mailto:sarah.jenkins@nhs.net?subject="Query">sarah.jenkins@nhs.net</a>
+          </dd>
+        </div>
+
+    </dd>
+
+      </dl>
+    </div>
+  </div>
+</div>
+-->
+
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <nav class="nhsuk-sub-navigation">
+      <ul class="nhsuk-sub-navigation__list">
+        <li class="nhsuk-sub-navigation__item"><a href="manc-process" class="nhsuk-sub-navigation__link">To process <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">10</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="manc-query" class="nhsuk-sub-navigation__link">To query<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">2</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="manc-check" class="nhsuk-sub-navigation__link">To check <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">11</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="manc-rejected" class="nhsuk-sub-navigation__link" aria-current="page">Rejected<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">3</span></a></li>
+      </ul>
+    </nav>
+
+
+    <table class="order-table bna-table">
+      <thead>
+        <tr>
+          <th class="ten">Patient name
+          </th>
+          <th class="ten">NHS number
+          </th>
+          <th class="ten">Error status
+          </th>
+          <th class="ten">Date received
+          </th>
+          <th class="ten">Time received
+          </th>
+          <th class="ten">
+          </th>
+        <tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Jane Simmons</td>
+          <td>308 219 3281</td>
+          <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Duplicate slide</span></td>
+          <td>04-02-2020</td>
+          <td>8.44am</td>
+          <td class=“nhsuk-table__cell"><button class="expanderButton" type="button" id="btn1" aria-expanded="false" onclick="toggle(this.id,'#row1');" aria-controls="row1" aria-label="More details for" aria-labelledby="row1"></button></td>
+        </tr>
+        <tr id="row1" class="hidden detailsRow">
+          <td colspan="6">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/rejected-test1.html' %}</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Kate Roisin</td>
+          <td>102 239 5439</td>
+          <td><span class="nhsuk-tag nhsuk-tag--red" style="margin-bottom: 16px">Invalid test date</span><br><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">No HPV data</span></td>
+          <td>04-02-2020</td>
+          <td>9.21am</td>
+          <td class=“nhsuk-table__cell"><button class="expanderButton" type="button" id="btn2" aria-expanded="false" onclick="toggle(this.id,'#row2');" aria-controls="row2" aria-label="More details for" aria-labelledby="row2"></button></td>
+        </tr>
+        <tr id="row2" class="hidden detailsRow">
+          <td colspan="6">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/rejected-test2.html' %}</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Margery Bowling</td>
+          <td>239 138 9920</td>
+          <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Invalid action code</span></td>
+          <td>04-02-2020</td>
+          <td>11.06am</td>
+          <td class=“nhsuk-table__cell"><button class="expanderButton" type="button" id="btn3" aria-expanded="false" onclick="toggle(this.id,'#row3');" aria-controls="row3" aria-label="More details for" aria-labelledby="row3"></button></td>
+        </tr>
+        <tr id="row3" class="hidden detailsRow">
+          <td colspan="6">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/rejected-test3.html' %}</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}
