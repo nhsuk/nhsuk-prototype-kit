@@ -25,21 +25,25 @@
 }
 // CAROUSEL
 
+
+body * { -webkit-user-select: none }
+
 .wrap {
   position: relative;
-  height: 300px;
+  max-width:600px ;
+  max-height: 300px;
   margin: 0 auto;
-  box-shadow:7px 7px 5px 0px rgba(0, 0, 0, 0.25);
+
 }
 
 .window {
   overflow: hidden;
   position: relative;
-  background: #222;
+  
 }
 
 #carousel {
-  width: 100%;
+  width: 10000px;
   position: relative;
   top: 0; left: -450px;
 }
@@ -54,21 +58,16 @@
   justify-content: center;
 }
 
-.slide#b1 { background: #556270 }
-.slide#b2 { background: #4ECDC4 }
-.slide#b3 { background: #9CE462 }
-.slide#b4 { background: #FF6B6B }
-.slide#b5 { background: #C44D33 }
+
 
 #prev, #next {
   cursor: pointer;
   position: absolute;
   bottom: -40px;
-  font-size: 14pt;
+
 }
 
-#prev { left: 0 }
-#next { right: 0 }
+#next { left: 0 }
 
 .transition {
   transition: .7s;

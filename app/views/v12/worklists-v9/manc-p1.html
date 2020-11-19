@@ -1,90 +1,83 @@
 {% extends "layout-v2.html" %}
 
 {% block pageScripts %}
-  <script type="text/javascript" src="/js/reveal.js"></script>
-  <script type="text/javascript" src="/js/comments.js"></script>
+<script type="text/javascript" src="/js/reveal.js"></script>
+<script type="text/javascript" src="/js/comments.js"></script>
+<script type="text/javascript" src="/js/carousel.js" charset="utf-8"></script>
 
 <script>
   function closeRightMenu() {
     document.getElementByClass("nhsuk-sidebar-hidden").style.display = "none";
   }
   $(document).ready(function() {
-     $(".sidebarbttn").click(function () {
-     $(".nhsuk-sidebar-hidden").toggle();
+    $(".sidebarbttn").click(function() {
+      $(".nhsuk-sidebar-hidden").toggle();
     });
 
-   });
+  });
 </script>
 
 <script>
-  $(".char-textarea").on("keyup",function(event){
-  checkTextAreaMaxLength(this,event);
-});
+  $(".char-textarea").on("keyup", function(event) {
+    checkTextAreaMaxLength(this, event);
+  });
 
-function checkTextAreaMaxLength(textBox, e) {
+  function checkTextAreaMaxLength(textBox, e) {
 
     var maxLength = parseInt($(textBox).data("length"));
 
 
     if (!checkSpecialKeys(e)) {
-        if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
-   }
-  $(".char-count").html(maxLength - textBox.value.length);
+      if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
+    }
+    $(".char-count").html(maxLength - textBox.value.length);
 
     return true;
-}
+  }
 
-function checkSpecialKeys(e) {
+  function checkSpecialKeys(e) {
     if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
-        return false;
+      return false;
     else
-        return true;
-}
-// CAROUSEL
-var carousel = $('#carousel'),
+      return true;
+  }
+  // CAROUSEL
+  var carousel = $('#carousel'),
     threshold = 150,
     slideWidth = 500,
     dragStart,
     dragEnd;
 
-$('#next').click(function(){ shiftSlide(-1) })
-$('#prev').click(function(){ shiftSlide(1) })
-
-carousel.on('mousedown', function(){
-  if (carousel.hasClass('transition')) return;
-  dragStart = event.pageX;
-  $(this).on('mousemove', function(){
-    dragEnd = event.pageX;
-    $(this).css('transform','translateX('+ dragPos() +'px)')
+  $('#next').click(function() {
+    shiftSlide(-1)
   })
-  $(document).on('mouseup', function(){
-    if (dragPos() > threshold) { return shiftSlide(1) }
-    if (dragPos() < -threshold) { return shiftSlide(-1) }
-    shiftSlide(0);
+  $('#prev').click(function() {
+    shiftSlide(1)
   })
-});
 
-function dragPos() {
-  return dragEnd - dragStart;
-}
+  carousel.on('mousedown', function() {
+    if (carousel.hasClass('transition')) return;
+    dragStart = event.pageX;
+    $(this).on('mousemove', function() {
+      dragEnd = event.pageX;
+      $(this).css('transform', 'translateX(' + dragPos() + 'px)')
+    })
+    $(document).on('mouseup', function() {
+      if (dragPos() > threshold) {
+        return shiftSlide(1)
+      }
+      if (dragPos() < -threshold) {
+        return shiftSlide(-1)
+      }
+      shiftSlide(0);
+    })
+  });
 
-function shiftSlide(direction) {
-  if (carousel.hasClass('transition')) return;
-  dragEnd = dragStart;
-  $(document).off('mouseup')
-  carousel.off('mousemove')
-          .addClass('transition')
-          .css('transform','translateX(' + (direction * slideWidth) + 'px)');
-  setTimeout(function(){
-    if (direction === 1) {
-      $('.slide:first').before($('.slide:last'));
-    } else if (direction === -1) {
-      $('.slide:last').after($('.slide:first'));
-    }
-    carousel.removeClass('transition')
-		carousel.css('transform','translateX(0px)');
-  },700)
-}
+  function dragPos() {
+    return dragEnd - dragStart;
+  }
+
+
 </script>
 
 {% endblock %}
@@ -103,11 +96,11 @@ NHS Cervical Screening
     <div class="nhsuk-grid-column-full">
       <a style="float:right;cursor:pointer" class="sidebarbttn">Close this window
 
-      <!--  <svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <!--  <svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
     <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
   </svg> -->
 
-    </a>
+      </a>
 
     </div>
   </div>
@@ -116,53 +109,7 @@ NHS Cervical Screening
     <div class="nhsuk-grid-column-full">
 
 
-<div class="nhsuk-panel nhsuk-promo">
-<h3>Previous letters sent to:</h3>
-AHAHAHAHAH
 
-<div class="">
-  <div class="">
-    <div id="">
-      <span class="" id="b1">SLIDE-1</span>
-      <span class="slide" id="b2">SLIDE-2</span>
-      <span class="slide" id="b3">SLIDE-3</span>
-      <span class="slide" id="b4">SLIDE-4</span>
-      <span class="slide" id="b5">SLIDE-5</span>
-    </div>
-  </div>
-  <span id="prev">PREV</span>
-  <span id="next">NEXT</span>
-</div>
-      <dl class="nhsuk-summary-list--no-border nhsuk-body-m">
-
-
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-           20-08-18
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-           20 Thornhill Street
-          <br>
-          Pudsey
-          <br>
-          LS28 7ED
-
-        </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            20-08-15
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-             16 Chessington Drive
-          <br>
-          Leeds
-          <br>LS14 6KK
-          </dd>
-
-        </div>
-      </dl>
-      </div>
 
       <a href="#">View full summary</a>
     </div>
@@ -183,6 +130,7 @@ AHAHAHAHAH
 </div>
 
 <div class="nhsuk-grid-row">
+  <!-- LAB -->
   <div class="nhsuk-grid-column-one-half">
     <div class="nhsuk-panel-with-label">
       <h3 class="nhsuk-panel-with-label__label">Lab demographics</h3>
@@ -220,48 +168,141 @@ AHAHAHAHAH
         </div>
 
       </dl>
+
     </div>
   </div>
+
+  <!-- SYSTEM -->
 
   <div class="nhsuk-grid-column-one-half">
     <div class="nhsuk-panel-with-label">
       <h3 class="nhsuk-panel-with-label__label">System demographics</h3>
 
-      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+      <h4>  <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+        </svg></h4>
 
 
 
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Name
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            Jane <span class="highlight"> Louise </span> Smith
-          </dd>
 
-        </div>
+<div class="wrap">
+  <div class="window">
+    <div id="carousel">
+      <span class="slide" id="b1"> <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Date of birth
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            01-01-1970
-          </dd>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Jane Smith 1
+            </dd>
 
-        </div>
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              01-01-1970
+            </dd>
+          </div>
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              NHS number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <span class=""> 234 567 8901 </span>
+            </dd>
+
+          </div>
+
+        </dl></span>
 
 
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            NHS number
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class=""> 234 567 8901 </span>
-          </dd>
 
-        </div>
-      </dl>
+      <span class="slide" id="b3">  <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Jane Smith 3
+            </dd>
+
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              01-01-1970
+            </dd>
+
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              NHS number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <span class=""> 234 567 8901 </span>
+            </dd>
+
+          </div>
+
+        </dl></span>
+      <span class="slide" id="b4">  <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Name
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              Jane Smith
+            </dd>
+
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              01-01-1970
+            </dd>
+
+          </div>
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              NHS number
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              <span class=""> 234 567 8901 </span>
+            </dd>
+
+          </div>
+
+        </dl></span>
+
+    </div>
+  </div>
+
+  <button id="next" class="nhsuk-button--ers_secondary" type="button" name="button">Next</button>
+</div>
+
+
+
+
+
+
+
+
+
 
     </div>
 
@@ -293,7 +334,7 @@ AHAHAHAHAH
           </label>
         </div>
 
-    <!--      <div class="nhsuk-radios__item">
+        <!--      <div class="nhsuk-radios__item">
           <input class="nhsuk-radios__input" id="gp" name="how-to-resolve" type="radio" value="gp" aria-controls="gp" aria-expanded="false">
           <label class="nhsuk-label nhsuk-radios__label" for="gp">
             Send to GP practice.
@@ -302,84 +343,84 @@ AHAHAHAHAH
           </label>
         </div> -->
 
-            <div class="nhsuk-radios nhsuk-radios--conditional">
-                     <div class="nhsuk-radios nhsuk-radios--conditional">
+        <div class="nhsuk-radios nhsuk-radios--conditional">
+          <div class="nhsuk-radios nhsuk-radios--conditional">
 
-           <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
+            <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
 
-        <div class="nhsuk-form-group">
-          <label class="nhsuk-label" for="email">
-            Building and street
-          </label>
-          <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
-        <label class="nhsuk-label" for="email">
-            Town or city
-          </label>
-          <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
-          <label class="nhsuk-label" for="email">
-            County
-          </label>
-          <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
-          <label class="nhsuk-label" for="email">
-            Postcode
-          </label>
-          <input class="nhsuk-input nhsuk-u-width-two-thirds nhsuk-u-margin-bottom-8" id="email" name="email" type="text">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="email">
+                  Building and street
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
+                <label class="nhsuk-label" for="email">
+                  Town or city
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
+                <label class="nhsuk-label" for="email">
+                  County
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
+                <label class="nhsuk-label" for="email">
+                  Postcode
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-two-thirds nhsuk-u-margin-bottom-8" id="email" name="email" type="text">
+
+              </div>
+
+            </div>
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="contact-1" name="how-to-resolve" type="radio" value="email" aria-controls="query" aria-expanded="false">
+              <label class="nhsuk-label nhsuk-radios__label" for="query">
+                Save to lab query list
+              </label>
+            </div>
+
+          </div>
 
         </div>
-
-      </div>
-
-      <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="contact-1" name="how-to-resolve" type="radio" value="email" aria-controls="query" aria-expanded="false">
-        <label class="nhsuk-label nhsuk-radios__label" for="query">
-          Save to lab query list
-        </label>
-      </div>
-
-        </div>
-
-   </div>
 
 
       </fieldset>
 
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
 
-    <form action="manc-p1" method="post">
-    <div class="nhsuk-form-group">
-      <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
-        Comments
-      </label>
-      <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-       Enter comments here if needed
-      </span>
-      <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200 required></textarea>
-      <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
-    </div>
+          <form action="manc-p1" method="post">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
+                Comments
+              </label>
+              <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+                Enter comments here if needed
+              </span>
+              <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200 required></textarea>
+              <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
+            </div>
 
-    <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
+            <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
 
-    {% set name = "Jon Simpson" %}
+            {% set name = "Jon Simpson" %}
 
-    {% set commentDate = ("today" | returnDate) %}
+            {% set commentDate = ("today" | returnDate) %}
 
-    <input type="hidden" id="name" name="name" value="{{commentName}}">
+            <input type="hidden" id="name" name="name" value="{{commentName}}">
 
-      <input type="hidden" name="date" value={{commentDate}}>
+            <input type="hidden" name="date" value={{commentDate}}>
 
-    </form>
+          </form>
 
-    <ul class="nhsuk-comment-container">
-      {% if data.commentsa !=null %}
+          <ul class="nhsuk-comment-container">
+            {% if data.commentsa !=null %}
 
-  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsa}}</li>
+            <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsa}}</li>
 
-  {% endif %}
-  			</ul>
+            {% endif %}
+          </ul>
 
-</div>
-</div>
+        </div>
+      </div>
 
 
     </div>
