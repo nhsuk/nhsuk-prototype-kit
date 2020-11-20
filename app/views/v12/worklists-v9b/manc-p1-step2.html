@@ -113,19 +113,18 @@ NHS Cervical Screening
   <div class="nhsuk-grid-column-full">
 
     {{ backLink({
-      "href": "manc-process",
-      "text": "Go back to Manchester results"
+      "href": "manc-p1",
+      "text": "Go back"
     }) }}
 
     <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to process</h1>
 
   </div>
 </div>
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
     <div class="nhsuk-panel-with-label">
-      <h3 class="nhsuk-panel-with-label__label">Lab details</h3>
+      <h3 class="nhsuk-panel-with-label__label">Demographics</h3>
 
       <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
@@ -151,14 +150,6 @@ NHS Cervical Screening
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-            Contact information
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            20 Thornhill Street<br>Pudsey<br> LS28 7PB
-          </dd>
-        </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
             NHS number
           </dt>
           <dd class="nhsuk-summary-list__value">
@@ -171,9 +162,39 @@ NHS Cervical Screening
     </div>
   </div>
 
+</div>
+<div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
     <div class="nhsuk-panel-with-label">
-      <h3 class="nhsuk-panel-with-label__label">System details</h3>
+      <h3 class="nhsuk-panel-with-label__label">Lab address</h3>
+
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Contact information
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            20 Thornhill Street
+            <br>
+Pudsey
+<br>
+LS28 7PB
+          </dd>
+
+        </div>
+
+
+
+
+
+      </dl>
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">System address</h3>
 
       <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
@@ -181,38 +202,14 @@ NHS Cervical Screening
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-            Name
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            Jane <span class="highlight"> Louise </span> Smith
-          </dd>
-
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Date of birth
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            01-01-1970
-          </dd>
-
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
             Contact information
           </dt>
           <dd class="nhsuk-summary-list__value">
-            20 Thornhill Street<br>Pudsey<br> LS28 <span class="highlight">7ED</span>
-          </dd>
-        </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            NHS number
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class=""> 234 567 8901 </span>
+            20 Thornhill Street
+            <br>
+  Pudsey
+  <br>
+  LS28 <span class="highlight">7ED</span>
           </dd>
 
         </div>
@@ -232,20 +229,21 @@ NHS Cervical Screening
       <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
         <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
           <h1 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong">
-            How do you want to action this result?
+            Where do you want to send this result?
           </h1>
         </legend>
         <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="lab" name="how-to-resolve" type="radio" value="lab" aria-controls="lab" aria-expanded="false">
-          <label class="nhsuk-label nhsuk-radios__label" for="lab">
-            Use lab details
+          <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
+          <label class="nhsuk-label nhsuk-radios__label" for="system">
+            Use lab address
           </label>
         </div>
+
 
         <div class="nhsuk-radios__item">
           <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
           <label class="nhsuk-label nhsuk-radios__label" for="system">
-            Use system details
+            Use system address
           </label>
         </div>
 
