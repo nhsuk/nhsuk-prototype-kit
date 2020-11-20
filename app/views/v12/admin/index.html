@@ -14,16 +14,19 @@ NHS Cervical Screening
 {% endblock %}
 
 {% block header %}
-{% include '../../components/header.html' %}
+{% include '../components/header.html' %}
 {% endblock %}
 
 
 {% block content %}
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
-    <h1 class="nhsuk-heading-l">GP Practice letter text has been successfully updated</h1>
-    <p>GP Practice letter changes are immediate but will not affect letters that have already been processed.</p>
-    <a href="../../admin" class="nhsuk-button nhsuk-button--ers">Back to Admin</a>
+
+    <h1 class="nhsuk-heading-l">Admin</h1>
+
+    <p><a href="/v12/admin/result-files">Result Files</a></p>
+    <p><a href="/v12/admin/gp-letter-text/enter-gp-code">GP Practice</a> / <a href="/v12/admin/gp-letter-text/enter-district-code">District Letter Text</a></p>
+    <p><a href="/v12/admin/incidents/incidents">Incidents</a></p>
   </div>
 </div>
 {% endblock %}

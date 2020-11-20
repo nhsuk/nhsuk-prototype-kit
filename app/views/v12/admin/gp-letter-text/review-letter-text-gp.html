@@ -1,0 +1,68 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(5) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    {{ backLink({
+      "href": "amend-letter-text-gp",
+      "text": "Back to entering CRM Case Number"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Review GP Practice Letter text</h1>
+
+    <form action="confirmation" method="POST">
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">GP Practice Code</dt>
+          <dd class="nhsuk-summary-list__value">{{ data['gp-code'] or 'A123456' }}</dd>
+          <dd class="nhsuk-summary-list__actions"><a href="choose-a-letter">Change<span class="nhsuk-u-visually-hidden"> Change</span></a></dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Previous GP Practice letter text</dt>
+          <dd class="nhsuk-summary-list__value">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</dd>
+          <dd class="nhsuk-summary-list__actions"></dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">GP Practice letter text</dt>
+          <dd class="nhsuk-summary-list__value">{{ data['gp-letter-textarea'] }}</dd>
+          <dd class="nhsuk-summary-list__actions"><a href="amend-letter-text-1">Change<span class="nhsuk-u-visually-hidden"> Change</span></a></dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">CRM Case Number</dt>
+          <dd class="nhsuk-summary-list__value"></dd>
+          <dd class="nhsuk-summary-list__actions"><a href="amend-letter-text-1">Change<span class="nhsuk-u-visually-hidden"> Change</span></a></dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Comments</dt>
+          <dd class="nhsuk-summary-list__value"></dd>
+          <dd class="nhsuk-summary-list__actions"><a href="amend-letter-text-1">Change<span class="nhsuk-u-visually-hidden"> Change</span></a></dd>
+        </div>
+      </dl>
+
+      {{ button({
+          "text": "Submit",
+          "classes": "nhsuk-button--ers"
+      }) }}
+      <p><a href="">Exit without saving</a></p>
+    </form>
+  </div>
+</div>
+{% endblock %}

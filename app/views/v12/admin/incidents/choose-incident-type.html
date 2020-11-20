@@ -22,46 +22,51 @@ NHS Cervical Screening
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
     {{ backLink({
-      "href": "enter-gp-code",
-      "text": "Back to entering GP or Disctrict Code"
+      "href": "enter-incident-number",
+      "text": "Back to entering incident number"
     }) }}
 
-    <form action="amend-letter-text-1" method="POST">
+    <form action="enter-incident-nhsnumber" method="POST">
 
     <fieldset class="nhsuk-fieldset">
       <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-        <h1 class="nhsuk-fieldset__heading">Choose a letter to amend</h1>
+        <h1 class="nhsuk-fieldset__heading">Choose an incident type</h1>
       </legend>
-
-      <div class=" nhsuk-u-margin-bottom-2">
-        <dl class="nhsuk-summary-list">
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">GP / District</dt>
-            <dd class="nhsuk-summary-list__value">{{ data["gp-code"] or "A123456" }}</dd>
-          </div>
-        </dl>
-      </div>
 
       <div class="nhsuk-form-group">
         <div class="nhsuk-radios">
           <div class="nhsuk-radios__item">
             <input class="nhsuk-radios__input" id="example-hints-1" name="gp-letter" type="radio" value="Patient invitation to screening">
             <label class="nhsuk-label nhsuk-radios__label" for="example-hints-1">
-              Patient invitation to screening
+              A General incident or unknown
             </label>
           </div>
 
           <div class="nhsuk-radios__item">
             <input class="nhsuk-radios__input" id="example-hints-2" name="gp-letter" type="radio" value="Patient invitation for a patient who has not responded">
             <label class="nhsuk-label nhsuk-radios__label" for="example-hints-2">
-              Patient invitation for a patient who has not responded
+              An incident relating to deferring a patient
             </label>
           </div>
 
           <div class="nhsuk-radios__item">
             <input class="nhsuk-radios__input" id="example-hints-3" name="gp-letter" type="radio" value="Patient invitation for a patient who has not responded twice">
             <label class="nhsuk-label nhsuk-radios__label" for="example-hints-3">
-              Patient invitation for a patient who has not responded twice
+              An incident relating to ceasing a patient
+            </label>
+          </div>
+
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="example-hints-3" name="gp-letter" type="radio" value="Patient invitation for a patient who has not responded twice">
+            <label class="nhsuk-label nhsuk-radios__label" for="example-hints-3">
+              An incident relating to reinstating a patient
+            </label>
+          </div>
+
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="example-hints-3" name="gp-letter" type="radio" value="Patient invitation for a patient who has not responded twice">
+            <label class="nhsuk-label nhsuk-radios__label" for="example-hints-3">
+              An incident relating to a test result added for a patient
             </label>
           </div>
 

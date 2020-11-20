@@ -1,0 +1,151 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(5) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+
+<script>
+  $(".char-textarea").on("keyup",function(event){
+  checkTextAreaMaxLength(this,event);
+});
+
+function checkTextAreaMaxLength(textBox, e) {
+
+    var maxLength = parseInt($(textBox).data("length"));
+
+
+    if (!checkSpecialKeys(e)) {
+        if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
+   }
+  $(".char-count").html(maxLength - textBox.value.length);
+
+    return true;
+}
+
+function checkSpecialKeys(e) {
+    if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
+        return false;
+    else
+        return true;
+}
+</script>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    {{ backLink({
+      "href": "enter-district-code",
+      "text": "Back to entering GP Practice / District code"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Amend District {{ data['gp-code'] or 'A123456' }} letter text</h1>
+      <form action="enter-crm-district" method="POST">
+        <h2 class="nhsuk-heading-m">Invite letter text</h2>
+        <p>some blurb about the invitation text of districts</p>
+
+        {{ details({
+          "text": "View previous district invite letter text",
+          "HTML": "
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          "
+        }) }}
+
+        {{ details({
+          "text": "View district default invite letter text",
+          "HTML": "
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          <p><a href=''>Use district default letter text</a></p>
+          "
+        }) }}
+
+    
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-label__strong" for="example">
+            Invite letter text
+          </label>
+          <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsc" value="commentsc" name="gp-letter-textarea" rows="5" data-length=100></textarea>
+          <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">100</span> characters remaining</p>
+        </div>
+
+        <hr>
+
+        <h2 class="nhsuk-heading-m">Reminder letter text</h2>
+        <p>some blurb about the reminder text of districts</p>
+
+        {{ details({
+          "text": "View previous district reminder letter text",
+          "HTML": "
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          "
+        }) }}
+
+        {{ details({
+          "text": "View previous district reminder letter text",
+          "HTML": "
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          <p><a href=''>Use district default letter text</a></p>
+          "
+        }) }}
+
+    
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-label__strong" for="example">
+            Result letter text
+          </label>
+          <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsc" value="commentsc" name="gp-letter-textarea" rows="5" data-length=100></textarea>
+          <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">100</span> characters remaining</p>
+        </div>
+
+        <hr>
+
+        <h2 class="nhsuk-heading-m">Result letter text</h2>
+        <p>some blurb about the result text of districts</p>
+
+        {{ details({
+          "text": "View previous district result letter text",
+          "HTML": "
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          "
+        }) }}
+
+        {{ details({
+          "text": "View previous district result letter text",
+          "HTML": "
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          <p><a href=''>Use district default letter text</a></p>
+          "
+        }) }}
+
+    
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-label__strong" for="example">
+            Result letter text
+          </label>
+          <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsc" value="commentsc" name="gp-letter-textarea" rows="5" data-length=100></textarea>
+          <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">100</span> characters remaining</p>
+        </div>
+
+        {{ button({
+            "text": "Continue",
+            "classes": "nhsuk-button--ers"
+        }) }}
+
+      <p><a href="">Exit without saving</a></p>
+    </form>
+  </div>
+</div>
+{% endblock %}

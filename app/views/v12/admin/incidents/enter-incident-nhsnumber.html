@@ -22,22 +22,22 @@ NHS Cervical Screening
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
   {{ backLink({
-      "href": "../index",
-      "text": "Back to Admin"
+      "href": "choose-incident-type",
+      "text": "Back to choosing an incident type"
     }) }}
 
-    <form action="amend-letter-text-gp" method="POST">
+    <form action="enter-incident-crm" method="POST">
       {{ input({
         "label": {
-          "text": "Enter GP Practice or District Code",
+          "text": "Enter the NHS Number of the patient affected by the incident",
           "classes": "nhsuk-label--l",
           "isPageHeading": true
         },
           "hint": {
-          "text": "For example, A123456."
+          "text": "For example, 1123456578."
         },
         "id": "example",
-        "name": "gp-code",
+        "name": "incident-number",
         "classes": "nhsuk-input--width-10"
       }) }}
 

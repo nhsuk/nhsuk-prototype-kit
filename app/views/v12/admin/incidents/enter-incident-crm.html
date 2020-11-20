@@ -1,0 +1,56 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(5) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    {{ backLink({
+      "href": "enter-incident-nhsnumber",
+      "text": "Back to entering the NHS Number of the patient affected by the incident"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Enter a CRM case number related to the incident</h1>
+      <form action="review-incident" method="post">
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-label__strong" for="example-heading">
+              CRM case number (optional)
+            </label>
+          <span class="nhsuk-hint" id="example-hint">
+            For example, CAS-12345-ABCDE
+          </span>
+          <input class="nhsuk-input nhsuk-input--width-10" type="text" name="crm" value="" autocomplete="off">
+        </div>
+
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-label__strong" for="example">
+            Comments (optional)
+          </label>
+          <span class="nhsuk-hint" id="example-hint">
+            Do not include clinical information at  this point.
+          </span>
+          <textarea class="nhsuk-textarea" id="example" name="comments" rows="5" aria-describedby="example-hint" value="details" autocomplete="off"></textarea>
+        </div>
+
+        <button class="nhsuk-button nhsuk-button--ers">Continue</button>
+        <p><a href="/v12/patient/patient-summary-4">Exit without saving</a></p>
+      </form>
+    </div>
+  </div>
+{% endblock %}

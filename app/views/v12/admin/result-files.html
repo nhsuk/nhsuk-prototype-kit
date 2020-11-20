@@ -1,0 +1,181 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(5) {
+    border-bottom: 4px solid #d8dde0;
+  }
+
+  .nhsuk-button, .nhsuk-button--ers, .dropdown .dropbtn, .nhsuk-button--ers_secondary, .nhsuk-button--ers_reverse, .nhsuk-button--ers_reverse:hover, .nhsuk-button--ers_reverse:focus, .nhsuk-button--ers_reject, .nhsuk-blue, .nhsuk-right  {
+    margin-bottom: 0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    {{ backLink({
+      "href": "index",
+      "text": "Back to Admin"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Result Files</h1>
+
+    {{ table({
+      panel: false,
+      caption: "Skin symptoms and possible causes",
+      firstCellIsHeader: false,
+      head: [
+        {
+          text: "Filename"
+        },
+        {
+          text: "Date"
+        },
+        {
+          text: "Letter Type"
+        },
+        {
+          text: "Number of Letters"
+        },
+        {
+          text: "Action"
+        }
+      ],
+      rows: [
+        [
+          {
+            text: "1605890317"
+          },
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Invite"
+          },
+          {
+            text: "2"
+          },
+          {
+            html: '<button class="nhsuk-button nhsuk-button--ers">Download as CSV</button>'
+          }
+        ],
+        [
+          {
+            text: "1605890317"
+          },
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Result"
+          },
+          {
+            text: "15"
+          },
+          {
+            html: '<button class="nhsuk-button nhsuk-button--ers">Download as CSV</button>'
+          }
+        ],
+        [
+          {
+            text: "1605890317"
+          },
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Result"
+          },
+          {
+            text: "23"
+          },
+          {
+            html: '<button class="nhsuk-button nhsuk-button--ers">Download as CSV</button>'
+          }
+        ],
+        [
+          {
+            text: "1605890317"
+          },
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Reminder"
+          },
+          {
+            text: "9"
+          },
+          {
+            html: '<button class="nhsuk-button nhsuk-button--ers">Download as CSV</button>'
+          }
+        ],
+        [
+          {
+            text: "1605890317"
+          },
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Invite"
+          },
+          {
+            text: "52"
+          },
+          {
+            html: '<button class="nhsuk-button nhsuk-button--ers">Download as CSV</button>'
+          }
+        ],
+        [
+          {
+            text: "1605890317"
+          },
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Invite"
+          },
+          {
+            text: "24"
+          },
+          {
+            html: '<button class="nhsuk-button nhsuk-button--ers">Download as CSV</button>'
+          }
+        ],
+        [
+          {
+            text: "1605890317"
+          },
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Reminder"
+          },
+          {
+            text: "22"
+          },
+          {
+            html: '<button class="nhsuk-button nhsuk-button--ers">Download as CSV</button>'
+          }
+        ]
+      ]
+}) }}
+
+  </div>
+</div>
+{% endblock %}
