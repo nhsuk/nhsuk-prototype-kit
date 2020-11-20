@@ -22,7 +22,7 @@ NHS Cervical Screening
 {% block content %}
 
 {{ backLink({
-  "href": "results",
+  "href": "worklists",
   "text": "Go back to results"
 }) }}
 
@@ -37,60 +37,6 @@ NHS Cervical Screening
     </p>
   </div>
 </div>
-
-<!--
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-two-thirds">
-    <div class="nhsuk-panel-with-label">
-      <h3 class="nhsuk-panel-with-label__label">Lab contact details</h3>
-
-      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
-
-                <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Lab lead
-          </dt>
-         <dd class="nhsuk-summary-list__value">
-          (+44) 1624 937 662
-          </dd>
-          <dd class="nhsuk-summary-list__value">
-          <a href=mailto:susan.prince@nhs.net?subject="Query">susan.prince@nhs.net</a>
-        </div>
-
-    </dd>
-                <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Lab assistant
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-          (+44) 1624 937 363
-          </dd>
-          <dd class="nhsuk-summary-list__value">
-                    <a href=mailto:ian.mcdaid@nhs.net?subject="Query">ian.mcdaid@nhs.net</a>
-          </dd>
-        </div>
-
-    </dd>
-                    <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Lab technician
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-          (+44) 1624 363 937
-          </dd>
-          <dd class="nhsuk-summary-list__value">
-          <a href=mailto:sarah.jenkins@nhs.net?subject="Query">sarah.jenkins@nhs.net</a>
-          </dd>
-        </div>
-
-    </dd>
-
-      </dl>
-    </div>
-  </div>
-</div>
--->
-
 
 
 <div class="nhsuk-grid-row">
@@ -112,9 +58,11 @@ NHS Cervical Screening
           </th>
           <th class="ten">NHS number
           </th>
-          <th class="ten">Error status
+          <th class="ten">Error
           </th>
-          <th class="ten">Date received
+          <th class="ten">Status
+          </th>
+          <th class="ten">Processor
           </th>
           <th class="ten">Time received
           </th>
@@ -131,25 +79,31 @@ NHS Cervical Screening
           <td>Jane Simmons</td>
           <td>308 219 3281</td>
           <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Duplicate slide</span></td>
-          <td>04-02-2020</td>
-          <td>8.44am</td>
-          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="view-rejected-p1">View more</a></td>
+          <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">With lab</span></td>
+          <td>Josie Driver</td>
+          <td>8.44am
+            <span class="nhsuk-table__cell--hint">04-02-2020</span></td>
+          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-3" href="rejected-p1">View more</a></td>
         </tr>
         <tr>
           <td>Kate Roisin</td>
           <td>102 239 5439</td>
           <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">No HPV data</span></td>
-          <td>04-02-2020</td>
-          <td>9.21am</td>
-          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="view-rejected-p2">View more</a></td>
+          <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">Not actioned</span></td>
+          <td></td>
+          <td>9.21am
+            <span class="nhsuk-table__cell--hint">04-02-2020</span></td>
+          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-3" href="rejected-p2">View more</a></td>
         </tr>
         <tr>
           <td>Margery Bowling</td>
           <td>239 138 9920</td>
           <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Invalid action code</span></td>
-          <td>04-02-2020</td>
-          <td>11.06am</td>
-          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="view-rejected-p3">View more</a></td>
+          <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">Not actioned</span></td>
+          <td></td>
+          <td>11.06am
+            <span class="nhsuk-table__cell--hint">04-02-2020</span></td>
+          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-3" href="rejected-p3">View more</a></td>
         </tr>
       </tbody>
     </table>

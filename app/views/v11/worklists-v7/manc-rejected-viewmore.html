@@ -10,6 +10,36 @@
   }
 </style>
 
+<script>
+  function toggle(btnID, eIDs) {
+    // Feed the list of ids as a selector
+    var theRows = document.querySelectorAll(eIDs);
+    // Get the button that triggered this
+    var theButton = document.getElementById(btnID);
+    // If the button is not expanded...
+    if (theButton.getAttribute("aria-expanded") == "false") {
+      // Loop through the rows and show them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("shown");
+        theRows[i].classList.remove("hidden");
+      }
+      // Now set the button to expanded
+      theButton.setAttribute("aria-expanded", "true");
+      // Otherwise button is not expanded...
+    } else {
+      // Loop through the rows and hide them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("hidden");
+        theRows[i].classList.remove("shown");
+      }
+      // Now set the button to collapsed
+      theButton.setAttribute("aria-expanded", "false");
+    }
+    $('.expanderButton[aria-expanded="true"]').closest('tr').addClass('expandedRow');
+    $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
+  }
+</script>
+
 {% endblock %}
 {% block pageTitle %}
 NHS Cervical Screening
@@ -105,7 +135,7 @@ NHS Cervical Screening
     </nav>
 
 
-    <table class="order-table">
+    <table class="order-table bna-table">
       <thead>
         <tr>
           <th class="ten">Patient name
@@ -124,24 +154,39 @@ NHS Cervical Screening
       </thead>
 
       <tbody>
-
-
-        <!-- REJECTED -->
         <tr>
           <td>Jane Simmons</td>
           <td>308 219 3281</td>
           <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Duplicate slide</span></td>
           <td>04-02-2020</td>
           <td>8.44am</td>
-          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="view-rejected-p1">View more</a></td>
+          <td class=“nhsuk-table__cell"><button class="expanderButton" type="button" id="btn1" aria-expanded="false" onclick="toggle(this.id,'#row1');" aria-controls="row1" aria-label="More details for" aria-labelledby="row1"></button></td>
+        </tr>
+        <tr id="row1" class="hidden detailsRow">
+          <td colspan="6">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/rejected-test1.html' %}</div>
+              </div>
+            </div>
+          </td>
         </tr>
         <tr>
           <td>Kate Roisin</td>
           <td>102 239 5439</td>
-          <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">No HPV data</span></td>
+          <td><span class="nhsuk-tag nhsuk-tag--red" style="margin-bottom: 16px">Invalid test date</span><br><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">No HPV data</span></td>
           <td>04-02-2020</td>
           <td>9.21am</td>
-          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="view-rejected-p2">View more</a></td>
+          <td class=“nhsuk-table__cell"><button class="expanderButton" type="button" id="btn2" aria-expanded="false" onclick="toggle(this.id,'#row2');" aria-controls="row2" aria-label="More details for" aria-labelledby="row2"></button></td>
+        </tr>
+        <tr id="row2" class="hidden detailsRow">
+          <td colspan="6">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/rejected-test2.html' %}</div>
+              </div>
+            </div>
+          </td>
         </tr>
         <tr>
           <td>Margery Bowling</td>
@@ -149,7 +194,16 @@ NHS Cervical Screening
           <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Invalid action code</span></td>
           <td>04-02-2020</td>
           <td>11.06am</td>
-          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="view-rejected-p3">View more</a></td>
+          <td class=“nhsuk-table__cell"><button class="expanderButton" type="button" id="btn3" aria-expanded="false" onclick="toggle(this.id,'#row3');" aria-controls="row3" aria-label="More details for" aria-labelledby="row3"></button></td>
+        </tr>
+        <tr id="row3" class="hidden detailsRow">
+          <td colspan="6">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">{% include '../components/rejected-test3.html' %}</div>
+              </div>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>

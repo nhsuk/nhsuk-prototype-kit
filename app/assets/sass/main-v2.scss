@@ -15,11 +15,60 @@
 @import "components/shame"; // oh the shame - unique, overrides and more
 @import "components/small-checkboxes"; // taken from scra
 @import "components/autocomplete"; // testing out the add test result page / had to create a custom component as autocomplete is used on the search
-@import "components/messaging"; // 
+@import "components/messaging"; //
 
 
 
 .nhsuk-inset-text--danger {
      border-left-color: red;
      background-color: pink;
+}
+// CAROUSEL
+
+
+body * { -webkit-user-select: none }
+
+.wrap {
+  position: relative;
+  max-width:600px ;
+  max-height: 300px;
+  margin: 0 auto;
+
+}
+
+.window {
+  overflow: hidden;
+  position: relative;
+  
+}
+
+#carousel {
+  width: 10000px;
+  position: relative;
+  top: 0; left: -450px;
+}
+
+.slide {
+  height: 300px;
+  width: 500px;
+  cursor: pointer;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+
+#prev, #next {
+  cursor: pointer;
+  position: absolute;
+  bottom: -40px;
+
+}
+
+#next { left: 0 }
+
+.transition {
+  transition: .7s;
 }

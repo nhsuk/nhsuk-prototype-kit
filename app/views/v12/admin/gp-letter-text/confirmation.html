@@ -21,27 +21,12 @@ NHS Cervical Screening
 {% block content %}
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
-    <form action="choose-a-letter" method="POST">
-      {{ input({
-        "label": {
-          "text": "Enter GP or Disctrict Code",
-          "classes": "nhsuk-label--l",
-          "isPageHeading": true
-        },
-          "hint": {
-          "text": "For example, A123456."
-        },
-        "id": "example",
-        "name": "gp-code",
-        "classes": "nhsuk-input--width-10"
-      }) }}
-
+    <h1 class="nhsuk-heading-l">Letter text has been successfully amended</h1>
+    <p>Letter changes are immediate but will not affect letters that have already been processed.</p>
       {{ button({
-          "text": "Continue",
+          "text": "Amend another letter",
           "classes": "nhsuk-button--ers"
       }) }}
-      <p><a href="">Exit without saving</a></p>
-    </form>
   </div>
 </div>
 {% endblock %}

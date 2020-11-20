@@ -1,19 +1,14 @@
 {% extends "layout-v2.html" %}
 
 {% block pageScripts %}
-  <script type="text/javascript" src="/js/reveal.js"></script>
-  <script type="text/javascript" src="/js/comments.js"></script>
-
 <script>
-  function closeRightMenu() {
-    document.getElementByClass("nhsuk-sidebar-hidden").style.display = "none";
+  function openRightMenu() {
+    document.getElementById("rightMenu").style.display = "block";
   }
-  $(document).ready(function() {
-     $(".sidebarbttn").click(function () {
-     $(".nhsuk-sidebar-hidden").toggle();
-    });
 
-   });
+  function closeRightMenu() {
+    document.getElementById("rightMenu").style.display = "none";
+  }
 </script>
 
 <script>
@@ -40,60 +35,14 @@ function checkSpecialKeys(e) {
     else
         return true;
 }
-// CAROUSEL
-var carousel = $('#carousel'),
-    threshold = 150,
-    slideWidth = 500,
-    dragStart,
-    dragEnd;
-
-$('#next').click(function(){ shiftSlide(-1) })
-$('#prev').click(function(){ shiftSlide(1) })
-
-carousel.on('mousedown', function(){
-  if (carousel.hasClass('transition')) return;
-  dragStart = event.pageX;
-  $(this).on('mousemove', function(){
-    dragEnd = event.pageX;
-    $(this).css('transform','translateX('+ dragPos() +'px)')
-  })
-  $(document).on('mouseup', function(){
-    if (dragPos() > threshold) { return shiftSlide(1) }
-    if (dragPos() < -threshold) { return shiftSlide(-1) }
-    shiftSlide(0);
-  })
-});
-
-function dragPos() {
-  return dragEnd - dragStart;
-}
-
-function shiftSlide(direction) {
-  if (carousel.hasClass('transition')) return;
-  dragEnd = dragStart;
-  $(document).off('mouseup')
-  carousel.off('mousemove')
-          .addClass('transition')
-          .css('transform','translateX(' + (direction * slideWidth) + 'px)');
-  setTimeout(function(){
-    if (direction === 1) {
-      $('.slide:first').before($('.slide:last'));
-    } else if (direction === -1) {
-      $('.slide:last').after($('.slide:first'));
-    }
-    carousel.removeClass('transition')
-		carousel.css('transform','translateX(0px)');
-  },700)
-}
 </script>
-
 {% endblock %}
 {% block pageTitle %}
-NHS Cervical Screening
+  NHS Cervical Screening
 {% endblock %}
 
 {% block header %}
-{% include '../components/header.html' %}
+  {% include '../components/header.html' %}
 {% endblock %}
 
 
@@ -101,13 +50,13 @@ NHS Cervical Screening
 <div class="nhsuk-sidebar-hidden" id="rightMenu">
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
-      <a style="float:right;cursor:pointer" class="sidebarbttn">Close this window
+      <a style="float:right;cursor:pointer" class="" onclick="closeRightMenu()" class="">Close this window
 
       <!--  <svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
     <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
   </svg> -->
 
-    </a>
+</a>
 
     </div>
   </div>
@@ -118,35 +67,18 @@ NHS Cervical Screening
 
 <div class="nhsuk-panel nhsuk-promo">
 <h3>Previous letters sent to:</h3>
-AHAHAHAHAH
-
-<div class="">
-  <div class="">
-    <div id="">
-      <span class="" id="b1">SLIDE-1</span>
-      <span class="slide" id="b2">SLIDE-2</span>
-      <span class="slide" id="b3">SLIDE-3</span>
-      <span class="slide" id="b4">SLIDE-4</span>
-      <span class="slide" id="b5">SLIDE-5</span>
-    </div>
-  </div>
-  <span id="prev">PREV</span>
-  <span id="next">NEXT</span>
-</div>
       <dl class="nhsuk-summary-list--no-border nhsuk-body-m">
-
-
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
            20-08-18
           </dt>
           <dd class="nhsuk-summary-list__value">
-           20 Thornhill Street
-          <br>
-          Pudsey
-          <br>
-          LS28 7ED
+         46 Stirling Way
+         <br>
+         Sutton
+         <br>
+         CB6 2QZ
 
         </div>
         <div class="nhsuk-summary-list__row">
@@ -164,17 +96,20 @@ AHAHAHAHAH
       </dl>
       </div>
 
+
       <a href="#">View full summary</a>
     </div>
   </div>
 </div>
 
+
+
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
     {{ backLink({
-      "href": "manc-process",
-      "text": "Go back to Manchester results"
+      "href": "manc-p1",
+      "text": "Go back to previous match"
     }) }}
 
     <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to process</h1>
@@ -182,94 +117,112 @@ AHAHAHAHAH
   </div>
 </div>
 
+
+
+
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-grid-column-one-half">
     <div class="nhsuk-panel-with-label">
-      <h3 class="nhsuk-panel-with-label__label">Lab demographics</h3>
+      <h3 class="nhsuk-panel-with-label__label">Lab details</h3>
 
-      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Name
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            Jane Smith
-          </dd>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Lisa Jones
+    </dd>
 
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Date of birth
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            01-01-1970
-          </dd>
-
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            NHS number
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class=""> 234 567 8901 </span>
-          </dd>
-
-        </div>
-
-      </dl>
-    </div>
   </div>
 
-  <div class="nhsuk-grid-column-one-half">
-    <div class="nhsuk-panel-with-label">
-      <h3 class="nhsuk-panel-with-label__label">System demographics</h3>
-
-      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
-
-
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Name
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            Jane <span class="highlight"> Louise </span> Smith
-          </dd>
-
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Date of birth
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            01-01-1970
-          </dd>
-
-        </div>
-
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            NHS number
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class=""> 234 567 8901 </span>
-          </dd>
-
-        </div>
-      </dl>
-
-    </div>
-
-
-
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Date of birth
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      02-07-1979
+    </dd>
 
   </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Contact information
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      46 Stirling Way <br> Sutton<br /> CB6 2QZ
+    </dd>
 </div>
+     <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      NHS number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      345 678 9012
+    </dd>
+
+  </div>
+
+</dl>
+</div>
+</div>
+<div class="nhsuk-grid-column-one-half">
+     <div class="nhsuk-panel-with-label">
+  <h3 class="nhsuk-panel-with-label__label">System details</h3>
+
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+
+
+<div class="nhsuk-summary-list__row">
+<dt class="nhsuk-summary-list__key">
+  Name
+</dt>
+<dd class="nhsuk-summary-list__value">
+  Lisa <span class="highlight"> Alma </span>Jones
+</dd>
+
+</div>
+
+<div class="nhsuk-summary-list__row">
+<dt class="nhsuk-summary-list__key">
+  Date of birth
+</dt>
+<dd class="nhsuk-summary-list__value">
+  02-07-1979
+</dd>
+
+</div>
+
+<div class="nhsuk-summary-list__row">
+<dt class="nhsuk-summary-list__key">
+  Contact information
+</dt>
+<dd class="nhsuk-summary-list__value">
+  46 Stirling Way <br> Sutton<br /> CB6 2QZ
+</dd>
+</div>
+ <div class="nhsuk-summary-list__row">
+<dt class="nhsuk-summary-list__key">
+  NHS number
+</dt>
+<dd class="nhsuk-summary-list__value">
+  345 678 9012
+</dd>
+
+</div>
+</dl>
+
+</div>
+</div>
+
+
+
+
+
+
 
 
 
@@ -284,7 +237,12 @@ AHAHAHAHAH
             How do you want to action this result?
           </h1>
         </legend>
-
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="lab" name="how-to-resolve" type="radio" value="lab" aria-controls="lab" aria-expanded="false">
+          <label class="nhsuk-label nhsuk-radios__label" for="lab">
+            Use lab details
+          </label>
+        </div>
 
         <div class="nhsuk-radios__item">
           <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
@@ -293,7 +251,7 @@ AHAHAHAHAH
           </label>
         </div>
 
-    <!--      <div class="nhsuk-radios__item">
+  <!--     <div class="nhsuk-radios__item">
           <input class="nhsuk-radios__input" id="gp" name="how-to-resolve" type="radio" value="gp" aria-controls="gp" aria-expanded="false">
           <label class="nhsuk-label nhsuk-radios__label" for="gp">
             Send to GP practice.
@@ -304,6 +262,12 @@ AHAHAHAHAH
 
             <div class="nhsuk-radios nhsuk-radios--conditional">
                      <div class="nhsuk-radios nhsuk-radios--conditional">
+<div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="contact-1" name="how-to-resolve" type="radio" value="address" aria-controls="conditional-contact-1" aria-expanded="false">
+        <label class="nhsuk-label nhsuk-radios__label" for="contact-1">
+          Enter a different address
+        </label>
+      </div>
 
            <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
 
@@ -342,6 +306,7 @@ AHAHAHAHAH
 
 
       </fieldset>
+
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
@@ -383,7 +348,7 @@ AHAHAHAHAH
 
 
     </div>
-    <a href="manc-p1-step2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Continue</a>
+     <a href="manc-p3" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
     <a href="manc-process" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Save and exit</a>
 
   </div>
@@ -392,4 +357,14 @@ AHAHAHAHAH
 
 
 
-{% endblock %}
+
+
+
+
+
+
+
+
+
+
+  {% endblock %}

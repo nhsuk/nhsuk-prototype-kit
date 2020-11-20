@@ -1,0 +1,104 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(3) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    {{ backLink({
+      "href": "choose-a-letter",
+      "text": "Back to amending letter text"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Review Letter text changes</h1>
+
+    <form action="confirmation" method="POST">
+      <dl class="nhsuk-summary-list">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">GP / District</dt>
+          <dd class="nhsuk-summary-list__value">{{ data['gp-code'] }}</dd>
+          <dd class="nhsuk-summary-list__actions"><a href="choose-a-letter">Change<span class="nhsuk-u-visually-hidden"> Change</span></a></dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Letter</dt>
+          <dd class="nhsuk-summary-list__value">{{ data['gp-letter'] }}</dd>
+          <dd class="nhsuk-summary-list__actions"><a href="choose-a-letter">Change<span class="nhsuk-u-visually-hidden"> Change</span></a></dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Previous text line 1</dt>
+          <dd class="nhsuk-summary-list__value">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</dd>
+          <dd class="nhsuk-summary-list__actions"></dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Previous text line 2</dt>
+          <dd class="nhsuk-summary-list__value">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</dd>
+          <dd class="nhsuk-summary-list__actions"></dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Previous text line 3</dt>
+          <dd class="nhsuk-summary-list__value">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</dd>
+          <dd class="nhsuk-summary-list__actions"></dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Previous text line 4</dt>
+          <dd class="nhsuk-summary-list__value">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</dd>
+          <dd class="nhsuk-summary-list__actions"></dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Previous text line 5</dt>
+          <dd class="nhsuk-summary-list__value">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</dd>
+          <dd class="nhsuk-summary-list__actions"></dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">New text line 1</dt>
+          <dd class="nhsuk-summary-list__value">{{ data['gp-text-line-1'] }}</dd>
+          <dd class="nhsuk-summary-list__actions"><a href="amend-letter-text-1">Change<span class="nhsuk-u-visually-hidden"> Change</span></a></dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">New text line 2</dt>
+          <dd class="nhsuk-summary-list__value">{{ data['gp-text-line-2'] }}</dd>
+          <dd class="nhsuk-summary-list__actions"><a href="amend-letter-text-1">Change<span class="nhsuk-u-visually-hidden"> Change</span></a></dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">New text line 3</dt>
+          <dd class="nhsuk-summary-list__value">{{ data['gp-text-line-3'] }}</dd>
+          <dd class="nhsuk-summary-list__actions"><a href="amend-letter-text-1">Change<span class="nhsuk-u-visually-hidden"> Change</span></a></dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">New text line 4</dt>
+          <dd class="nhsuk-summary-list__value">{{ data['gp-text-line-4'] }}</dd>
+          <dd class="nhsuk-summary-list__actions"><a href="amend-letter-text-1">Change<span class="nhsuk-u-visually-hidden"> Change</span></a></dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">New text line 5</dt>
+          <dd class="nhsuk-summary-list__value">{{ data['gp-text-line-5'] }}</dd>
+          <dd class="nhsuk-summary-list__actions"><a href="amend-letter-text-1">Change<span class="nhsuk-u-visually-hidden"> Change</span></a></dd>
+        </div>
+        
+      </dl>
+
+      {{ button({
+          "text": "Continue",
+          "classes": "nhsuk-button--ers"
+      }) }}
+      <p><a href="">Exit without saving</a></p>
+    </form>
+  </div>
+</div>
+{% endblock %}
