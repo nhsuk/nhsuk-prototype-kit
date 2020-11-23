@@ -48,12 +48,72 @@ function checkSpecialKeys(e) {
 
 
 {% block content %}
+<div class="nhsuk-sidebar-hidden" id="rightMenu">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <a style="float:right;cursor:pointer" class="" onclick="closeRightMenu()" class="">Close this window
+
+      <!--  <svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+  </svg> -->
+
+</a>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+
+
+
+
+
+
+<div class="nhsuk-panel nhsuk-promo">
+<h3>Previous letters sent to:</h3>
+      <dl class="nhsuk-summary-list--no-border nhsuk-body-m">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+           20-08-18
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+    20 Thornhill Street
+    <br>
+    Pudsey
+    <br>
+    LS28 7ED
+
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            20-08-15
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+             16 Chessington Drive
+          <br>
+          Leeds
+          <br>LS14 6KK
+          </dd>
+
+        </div>
+      </dl>
+      </div>
+
+
+      <a href="#">View full summary</a>
+    </div>
+  </div>
+</div>
+
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
     {{ backLink({
-      "href": "manc-p4",
+      "href": "manc-p3",
       "text": "Go back to previous match"
     }) }}
 
@@ -68,11 +128,6 @@ function checkSpecialKeys(e) {
     <div class="nhsuk-panel-with-label">
       <h3 class="nhsuk-panel-with-label__label">Lab details</h3>
 
-<div class="nhsuk-inset-text">
-  <span class="nhsuk-u-visually-hidden">Information: </span>
-  <p>No correspondance to home. </p>
-</div>
-
 <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
   <div class="nhsuk-summary-list__row">
@@ -80,7 +135,7 @@ function checkSpecialKeys(e) {
       Name
     </dt>
     <dd class="nhsuk-summary-list__value">
-      Lynda Puck
+      Charlotte Gravill
     </dd>
 
   </div>
@@ -90,41 +145,36 @@ function checkSpecialKeys(e) {
       Date of birth
     </dt>
     <dd class="nhsuk-summary-list__value">
-      23-07-1962
-    </dd>
-
-  </div>
-
- <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Practice name
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      Lambourn Surgery
-
+      11-04-1990
     </dd>
 
   </div>
 
   <div class="nhsuk-summary-list__row">
- <dt class="nhsuk-summary-list__key">
-   NHS number
- </dt>
- <dd class="nhsuk-summary-list__value">
-   567 234 8901
- </dd>
+    <dt class="nhsuk-summary-list__key">
+      Contact information
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      1 Westfield Place<br>Great Shelford<br> CB22 5JJ
+    </dd>
+</div>
+     <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      NHS number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+	     234 567 8901
+    </dd>
 
+  </div>
+  </dl>
+
+
+  </div>
 
 
 </div>
 
-</div>
-</div>
-
-
-
-
-<div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-one-half">
          <div class="nhsuk-panel-with-label">
       <h3 class="nhsuk-panel-with-label__label">System details</h3>
@@ -138,7 +188,7 @@ function checkSpecialKeys(e) {
       Name
     </dt>
     <dd class="nhsuk-summary-list__value">
-      Lynda <span class="highlight">Julia</span> Puck
+      Charlotte <span class="highlight">J</span> Gravill
     </dd>
 
   </div>
@@ -148,21 +198,26 @@ function checkSpecialKeys(e) {
       Date of birth
     </dt>
     <dd class="nhsuk-summary-list__value">
-      23-07-1962
+      11-04-1990
     </dd>
 
   </div>
 
-
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Contact information
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      1 Westfield Place<br>Great Shel<span class="highlight">l</span>ford<br> CB22 5JJ
+    </dd>
+</div>
      <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">
       NHS number
     </dt>
     <dd class="nhsuk-summary-list__value">
-      567 234 8901
+    234 567 8901
     </dd>
-
-
 
   </div>
 
@@ -170,7 +225,8 @@ function checkSpecialKeys(e) {
 
 </div>
 </div>
-</div>
+
+
 
 
 
@@ -200,7 +256,7 @@ function checkSpecialKeys(e) {
           </label>
         </div>
 
-  <!--  <div class="nhsuk-radios__item">
+  <!--    <div class="nhsuk-radios__item">
           <input class="nhsuk-radios__input" id="gp" name="how-to-resolve" type="radio" value="gp" aria-controls="gp" aria-expanded="false">
           <label class="nhsuk-label nhsuk-radios__label" for="gp">
             Send to GP practice.
@@ -258,7 +314,6 @@ function checkSpecialKeys(e) {
       </fieldset>
 
 
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
@@ -271,7 +326,7 @@ function checkSpecialKeys(e) {
         Enter comments here if needed
       </span>
       <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsc" value="commentsc" name="commentsc" rows="5" data-length=200></textarea>
-    <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
+      <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
     </div>
 
     <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
@@ -300,9 +355,8 @@ function checkSpecialKeys(e) {
 
 
           </div>
-          <a href="manc-p5-step2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Continue</a>
-          <a href="manc-process" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Save and exit</a>
-
+    <a href="manc-p5" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
+    <a href="manc-process" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Save and exit</a>
 
     </div>
 

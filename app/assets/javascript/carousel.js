@@ -1,6 +1,6 @@
 var carousel = $('#carousel'),
     threshold = 150,
-    slideWidth = 500,
+    // slideWidth = 500,
     dragStart,
     dragEnd;
 

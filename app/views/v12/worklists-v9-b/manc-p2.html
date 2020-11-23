@@ -1,9 +1,15 @@
 {% extends "layout-v2.html" %}
 
 {% block pageScripts %}
-<script type="text/javascript" src="/js/comments.js"></script>
-<script type="text/javascript" src="/js/carousel.js" charset="utf-8"></script>
+<script>
+  function openRightMenu() {
+    document.getElementById("rightMenu").style.display = "block";
+  }
 
+  function closeRightMenu() {
+    document.getElementById("rightMenu").style.display = "none";
+  }
+</script>
 
 <script>
   $(".char-textarea").on("keyup",function(event){
@@ -28,42 +34,6 @@ function checkSpecialKeys(e) {
         return false;
     else
         return true;
-}
-
-// CAROUSEL
-var carousel = $('#carousel'),
-  threshold = 150,
-  slideWidth = 500,
-  dragStart,
-  dragEnd;
-
-$('#next').click(function() {
-  shiftSlide(-1)
-})
-$('#prev').click(function() {
-  shiftSlide(1)
-})
-
-carousel.on('mousedown', function() {
-  if (carousel.hasClass('transition')) return;
-  dragStart = event.pageX;
-  $(this).on('mousemove', function() {
-    dragEnd = event.pageX;
-    $(this).css('transform', 'translateX(' + dragPos() + 'px)')
-  })
-  $(document).on('mouseup', function() {
-    if (dragPos() > threshold) {
-      return shiftSlide(1)
-    }
-    if (dragPos() < -threshold) {
-      return shiftSlide(-1)
-    }
-    shiftSlide(0);
-  })
-});
-
-function dragPos() {
-  return dragEnd - dragStart;
 }
 </script>
 {% endblock %}
@@ -122,7 +92,6 @@ function dragPos() {
 
 
 <div class="nhsuk-grid-row">
-  <!-- LAB -->
     <div class="nhsuk-grid-column-one-half">
     <div class="nhsuk-panel-with-label">
       <h3 class="nhsuk-panel-with-label__label">Lab details</h3>
@@ -163,152 +132,46 @@ function dragPos() {
 </dl>
 </div>
 </div>
-<!-- SYSTEM -->
 <div class="nhsuk-grid-column-one-half">
      <div class="nhsuk-panel-with-label">
   <h3 class="nhsuk-panel-with-label__label">System details</h3>
-  <div class="wrap">
-    <div class="window">
-      <div id="carousel">
-          <span class="slide" id="b1">
-            <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
 
 
-            <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Name
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              Lisa <span class="highlight"> Alma </span>Jones
-            </dd>
+<div class="nhsuk-summary-list__row">
+<dt class="nhsuk-summary-list__key">
+  Name
+</dt>
+<dd class="nhsuk-summary-list__value">
+  Lisa <span class="highlight"> Alma </span>Jones
+</dd>
 
-            </div>
+</div>
 
-            <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Date of birth
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              02-07-1979
-            </dd>
+<div class="nhsuk-summary-list__row">
+<dt class="nhsuk-summary-list__key">
+  Date of birth
+</dt>
+<dd class="nhsuk-summary-list__value">
+  02-07-1979
+</dd>
 
-            </div>
-
-
-             <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              NHS number
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              345 678 9012
-            </dd>
-
-            </div>
-            </dl>
-
-            </span>
-
-            <span class="slide" id="b2">  <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+</div>
 
 
+ <div class="nhsuk-summary-list__row">
+<dt class="nhsuk-summary-list__key">
+  NHS number
+</dt>
+<dd class="nhsuk-summary-list__value">
+  345 678 9012
+</dd>
 
-              <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Name
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-              <span class="highlight">Amanda</span> Jones
-              </dd>
-
-              </div>
-
-              <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Date of birth
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                02-07-1979
-              </dd>
-
-              </div>
-
-
-               <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                NHS number
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                <span class="highlight">985 776 0022</span>
-              </dd>
-
-              </div>
-              </dl></span>
-
-              <span class="slide" id="b3">  <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
-
-
-
-                <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Name
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                <span class="highlight">Julie-anne</span> Jones
-                </dd>
-
-                </div>
-
-                <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  Date of birth
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  02-07-1979
-                </dd>
-
-                </div>
-
-
-                 <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">
-                  NHS number
-                </dt>
-                <dd class="nhsuk-summary-list__value">
-                  <span class="highlight">987 663 1100</span>
-                </dd>
-
-                </div>
-                </dl></span>
-
-
-        </div>
-
-        <div class="pagination-wrapper">
-          <nav class="nhsuk-pagination" role="navigation" aria-label="Pagination">
-                  <ul class="nhsuk-list nhsuk-pagination__list">
-                          <li class="nhsuk-pagination-item--next">
-              <a id="next" class="nhsuk-pagination__link nhsuk-pagination__link--next">
-                  <span class="nhsuk-pagination__title">Next match</span>
-                  <span class="nhsuk-u-visually-hidden">:</span>
-                  <span class="nhsuk-pagination__page">2 of 4</span>
-                  <svg class="nhsuk-icon nhsuk-icon__arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M19.6 11.66l-2.73-3A.51.51 0 0 0 16 9v2H5a1 1 0 0 0 0 2h11v2a.5.5 0 0 0 .32.46.39.39 0 0 0 .18 0 .52.52 0 0 0 .37-.16l2.73-3a.5.5 0 0 0 0-.64z">
-                      </path>
-                  </svg>
-              </a>
-          </li>
-
-
-                  </ul>
-              </nav>
-        </div>
-        </div>
-        </div>
-
-
-
-
+</div>
+</dl>
+<button class="nhsuk-button--ers_secondary" type="button" name="button">View next match</button>
 
 </div>
 </div>
@@ -401,7 +264,7 @@ function dragPos() {
 
 
     </div>
-     <a href="manc-p2-step2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Continue</a>
+     <a href="manc-p2-step2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
     <a href="manc-process" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Save and exit</a>
 
   </div>
