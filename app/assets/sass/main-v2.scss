@@ -31,7 +31,7 @@ body * { -webkit-user-select: none }
 .wrap {
   position: relative;
   max-width:600px ;
-  max-height: 300px;
+  max-height:200px;
   margin: 0 auto;
 
 }
@@ -39,18 +39,21 @@ body * { -webkit-user-select: none }
 .window {
   overflow: hidden;
   position: relative;
-  
+
 }
 
 #carousel {
   width: 10000px;
+  display: block;
+
+}
+.pagination-wrapper{
   position: relative;
-  top: 0; left: -450px;
 }
 
 .slide {
-  height: 300px;
-  width: 500px;
+  max-height: 300px;
+  max-width: 600px;
   cursor: pointer;
   float: left;
   display: flex;
@@ -60,14 +63,13 @@ body * { -webkit-user-select: none }
 
 
 
-#prev, #next {
+#next {
   cursor: pointer;
   position: absolute;
   bottom: -40px;
+  left: 0;
 
 }
-
-#next { left: 0 }
 
 .transition {
   transition: .7s;

@@ -1,0 +1,300 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script>
+  function openRightMenu() {
+    document.getElementById("rightMenu").style.display = "block";
+  }
+
+  function closeRightMenu() {
+    document.getElementById("rightMenu").style.display = "none";
+  }
+</script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(3){
+    border-bottom:4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-sidebar-hidden" id="rightMenu">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <a style="float:right;cursor:pointer" class="" onclick="closeRightMenu()" class="">Close this window
+
+      <!--  <svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+  </svg> -->
+
+</a>
+
+    </div>
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <div class="nhsuk-panel nhsuk-promo">
+
+        <h3>Previously used addresses</h3>
+        <p> 46 Stirling Way
+          <br>
+          Sutton
+          <br>
+          CB6 2QZ</p>
+
+        <p>16 Chessington Drive
+          <br>
+          Leeds
+          <br>LS14 6KK</p>
+      </div>
+
+
+<div class="nhsuk-panel nhsuk-promo">
+
+     <h3>Previous letters sent to:</h3>
+      <dl class="nhsuk-summary-list--no-border nhsuk-body-m">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+           20-08-18
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+           46 Stirling Way
+          <br>
+          Sutton
+          <br>
+          CB6 2QZ
+
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            20-08-15
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+             16 Chessington Drive
+          <br>
+          Leeds
+          <br>LS14 6KK
+          </dd>
+
+        </div>
+      </dl>
+      </div>
+
+      <a href="#">View full summary</a>
+    </div>
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+   {{ backLink({
+      "href": "check-p1",
+      "text": "Go back to previous match"
+    }) }}
+
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to check</h1>
+
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-quarter">
+<div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-2" </div>
+       <span class="nhsuk-u-visually-hidden">System details used </span>
+       <h3 class="nhsuk-heading-s">System details used</h3>
+              <p> <strong>Processor:</strong> Josie Driver</p>
+    </div>
+</div>
+</div>
+
+
+<div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">Lab details</h3>
+
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Name
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      Lisa Jones
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Date of birth
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      02-07-1979
+    </dd>
+
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      Contact information
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      46 Stirling Way <br> Sutton<br /> CB6 2QZ
+    </dd>
+</div>
+     <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">
+      NHS number
+    </dt>
+    <dd class="nhsuk-summary-list__value">
+      345 678 9012
+    </dd>
+
+  </div>
+
+</dl>
+</div>
+</div>
+<div class="nhsuk-grid-column-one-half">
+     <div class="nhsuk-panel-with-label">
+  <h3 class="nhsuk-panel-with-label__label">System details</h3>
+
+<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+
+
+<div class="nhsuk-summary-list__row">
+<dt class="nhsuk-summary-list__key">
+  Name
+</dt>
+<dd class="nhsuk-summary-list__value">
+  Lisa <span class="highlight"> Alma </span>Jones
+</dd>
+
+</div>
+
+<div class="nhsuk-summary-list__row">
+<dt class="nhsuk-summary-list__key">
+  Date of birth
+</dt>
+<dd class="nhsuk-summary-list__value">
+  02-07-1979
+</dd>
+
+</div>
+
+<div class="nhsuk-summary-list__row">
+<dt class="nhsuk-summary-list__key">
+  Contact information
+</dt>
+<dd class="nhsuk-summary-list__value">
+  46 Stirling Way <br> Sutton<br /> CB6 2QZ
+</dd>
+</div>
+ <div class="nhsuk-summary-list__row">
+<dt class="nhsuk-summary-list__key">
+  NHS number
+</dt>
+<dd class="nhsuk-summary-list__value">
+  345 678 9012
+</dd>
+
+</div>
+</dl>
+
+</div>
+
+
+</div>
+
+
+
+
+  <div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+<ul class="nhsuk-comment-container">
+
+  <li class="nhsuk-panel"><span class="name"> Josie Driver</span> <span class="date"><strong>20-Jul-2020</strong></span> System details used as they match the address shown in patient summary.</li>
+  			</ul>
+</div>
+</div>
+
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+
+    <form action="check-p1" method="post">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
+        Comments
+      </label>
+      <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+        Enter comments if needed
+      </span>
+      <textarea class="nhsuk-textarea commentBox" id="commentsch1" value="commentsch1" name="commentsch1" rows="5" data-length=200></textarea>
+
+    </div>
+
+    <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
+
+    {% set name = "Jon Simpson" %}
+
+    {% set commentDate = ("today" | returnDate) %}
+
+    <input type="hidden" id="name" name="name" value="{{commentName}}">
+
+      <input type="hidden" name="date" value={{commentDate}}>
+
+    </form>
+
+    <ul class="nhsuk-comment-container">
+      {% if data.commentsch1 !=null %}
+
+  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsch1}}</li>
+
+  {% endif %}
+  			</ul>
+
+</div>
+</div>
+
+
+    <a href="manc-check" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Accept match</a>
+    <a href="manc-check" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Send back to processor worklist</a>
+    <a href="manc-check" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Save and exit</a>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {% endblock %}

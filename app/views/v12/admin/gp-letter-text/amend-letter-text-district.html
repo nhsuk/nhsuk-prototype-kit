@@ -54,47 +54,18 @@ NHS Cervical Screening
 
     <h1 class="nhsuk-heading-l">Amend District {{ data['gp-code'] or 'A123456' }} letter text</h1>
       <form action="enter-crm-district" method="POST">
-        <h2 class="nhsuk-heading-m">Invite letter text</h2>
-        <p>some blurb about the invitation text of districts</p>
+        <h2 class="nhsuk-heading-m">Invite and Reminder letter text</h2>
+        <p>some blurb about the invite and reminder text of districts</p>
 
         {{ details({
-          "text": "View previous district invite letter text",
+          "text": "View previous district invite and reminder letter text",
           "HTML": "
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
           "
         }) }}
 
         {{ details({
-          "text": "View district default invite letter text",
-          "HTML": "
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-          <p><a href=''>Use district default letter text</a></p>
-          "
-        }) }}
-
-    
-        <div class="nhsuk-form-group">
-          <label class="nhsuk-label nhsuk-label__strong" for="example">
-            Invite letter text
-          </label>
-          <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsc" value="commentsc" name="gp-letter-textarea" rows="5" data-length=100></textarea>
-          <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">100</span> characters remaining</p>
-        </div>
-
-        <hr>
-
-        <h2 class="nhsuk-heading-m">Reminder letter text</h2>
-        <p>some blurb about the reminder text of districts</p>
-
-        {{ details({
-          "text": "View previous district reminder letter text",
-          "HTML": "
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-          "
-        }) }}
-
-        {{ details({
-          "text": "View previous district reminder letter text",
+          "text": "View previous district invite and reminder letter text",
           "HTML": "
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
           <p><a href=''>Use district default letter text</a></p>
@@ -104,7 +75,7 @@ NHS Cervical Screening
     
         <div class="nhsuk-form-group">
           <label class="nhsuk-label nhsuk-label__strong" for="example">
-            Result letter text
+            Invite and Reminder letter text
           </label>
           <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsc" value="commentsc" name="gp-letter-textarea" rows="5" data-length=100></textarea>
           <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">100</span> characters remaining</p>

@@ -36,6 +36,7 @@
       return true;
   }
 </script>
+
 {% endblock %}
 {% block pageTitle %}
 NHS Cervical Screening
@@ -74,11 +75,11 @@ NHS Cervical Screening
               20-08-18
             </dt>
             <dd class="nhsuk-summary-list__value">
-              46 Stirling Way
+              22 Norwood Grove
               <br>
-              Sutton
+              Headingley
               <br>
-              CB6 2QZ
+              LS6 5JJ
 
           </div>
           <div class="nhsuk-summary-list__row">
@@ -86,10 +87,11 @@ NHS Cervical Screening
               20-08-15
             </dt>
             <dd class="nhsuk-summary-list__value">
-              16 Chessington Drive
+              56 Acorn Road
               <br>
-              Leeds
-              <br>LS14 6KK
+              Bramley
+              <br>
+              LS22 9GD
             </dd>
 
           </div>
@@ -103,12 +105,11 @@ NHS Cervical Screening
 </div>
 
 
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
     {{ backLink({
-      "href": "manc-p1",
+      "href": "manc-p4",
       "text": "Go back to previous match"
     }) }}
 
@@ -123,15 +124,13 @@ NHS Cervical Screening
       <h3 class="nhsuk-panel-with-label__label">Demographics</h3>
 
       <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
-
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Name
           </dt>
           <dd class="nhsuk-summary-list__value">
-            Lisa Alma Jones
+            Lynda Julia Puck
           </dd>
-
         </div>
 
         <div class="nhsuk-summary-list__row">
@@ -139,7 +138,7 @@ NHS Cervical Screening
             Date of birth
           </dt>
           <dd class="nhsuk-summary-list__value">
-            02-07-1979
+            23-07-1962
           </dd>
         </div>
 
@@ -148,50 +147,79 @@ NHS Cervical Screening
             NHS number
           </dt>
           <dd class="nhsuk-summary-list__value">
-            345 678 9012
+            567 234 8901
           </dd>
         </div>
+
       </dl>
+
     </div>
   </div>
 </div>
+
+
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
     <div class="nhsuk-panel-with-label">
       <h3 class="nhsuk-panel-with-label__label">Lab address</h3>
 
+      <div class="nhsuk-inset-text">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p>No correspondence to home </p>
+      </div>
+
       <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-            Contact information
+            Practice name
           </dt>
           <dd class="nhsuk-summary-list__value">
-            46 Stirling Way <br> Sutton<br /> CB6 2QZ
+            Lambourn Surgery
           </dd>
         </div>
-      </dl>
-    </div>
-  </div>
 
-  <div class="nhsuk-grid-column-one-half">
-    <div class="nhsuk-panel-with-label">
-      <h3 class="nhsuk-panel-with-label__label">System address</h3>
-
-      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
-            Contact information
+            Practice address
           </dt>
           <dd class="nhsuk-summary-list__value">
-            <span class="highlight">42 Stewart Street</span><br> Sutton<br /> CB6 2QZ
+            Bockhampton Road <br>
+            Lambourn <br>
+            Hungerford <br>
+            Berkshire <br>
+            RG17 8PS
           </dd>
         </div>
-      </dl>
-
     </div>
   </div>
+
+
+
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-half">
+      <div class="nhsuk-panel-with-label">
+        <h3 class="nhsuk-panel-with-label__label">System address</h3>
+
+        <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+
+          <div class="nhsuk-summary-list__row">
+            <dt class="nhsuk-summary-list__key">
+              Contact information
+            </dt>
+            <dd class="nhsuk-summary-list__value">
+              23 Norwood Grove<br>Headingley<br> LS6 5JJ
+            </dd>
+          </div>
+        </dl>
+
+      </div>
+    </div>
+  </div>
+
 
 
 
@@ -206,11 +234,9 @@ NHS Cervical Screening
               Where do you want to send this result?
             </h1>
           </legend>
-
-
           <div class="nhsuk-radios__item">
-            <input class="nhsuk-radios__input" id="lab-address" name="lab-address" type="radio" value="lab-address" aria-controls="lab" aria-expanded="false">
-            <label class="nhsuk-label nhsuk-radios__label" for="lab-address">
+            <input class="nhsuk-radios__input" id="lab" name="how-to-resolve" type="radio" value="lab" aria-controls="lab" aria-expanded="false">
+            <label class="nhsuk-label nhsuk-radios__label" for="lab">
               Use lab address
             </label>
           </div>
@@ -224,6 +250,7 @@ NHS Cervical Screening
 
           <div class="nhsuk-radios nhsuk-radios--conditional">
             <div class="nhsuk-radios nhsuk-radios--conditional">
+
               <div class="nhsuk-radios__item">
                 <input class="nhsuk-radios__input" id="contact-1" name="how-to-resolve" type="radio" value="address" aria-controls="conditional-contact-1" aria-expanded="false">
                 <label class="nhsuk-label nhsuk-radios__label" for="contact-1">
@@ -234,19 +261,19 @@ NHS Cervical Screening
               <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
 
                 <div class="nhsuk-form-group">
-                  <label class="nhsuk-label" for="building">
+                  <label class="nhsuk-label" for="email">
                     Building and street
                   </label>
-                  <input class="nhsuk-input nhsuk-u-width-one-thirds" id="town" name="town" type="text">
-                  <label class="nhsuk-label" for="town">
+                  <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
+                  <label class="nhsuk-label" for="email">
                     Town or city
                   </label>
-                  <input class="nhsuk-input nhsuk-u-width-one-thirds" id="county" name="county type="text">
-                  <label class="nhsuk-label" for="county">
+                  <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
+                  <label class="nhsuk-label" for="email">
                     County
                   </label>
                   <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
-                  <label class="nhsuk-label" for="postcode">
+                  <label class="nhsuk-label" for="email">
                     Postcode
                   </label>
                   <input class="nhsuk-input nhsuk-u-width-two-thirds nhsuk-u-margin-bottom-8" id="email" name="email" type="text">
@@ -256,7 +283,7 @@ NHS Cervical Screening
               </div>
 
               <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="query" name="how-to-resolve" type="radio" value="query" aria-controls="query" aria-expanded="false">
+                <input class="nhsuk-radios__input" id="contact-1" name="how-to-resolve" type="radio" value="email" aria-controls="query" aria-expanded="false">
                 <label class="nhsuk-label nhsuk-radios__label" for="query">
                   Save to lab query list
                 </label>
@@ -269,10 +296,11 @@ NHS Cervical Screening
         </fieldset>
 
 
+
         <div class="nhsuk-grid-row">
           <div class="nhsuk-grid-column-full">
 
-            <form action="manc-p1" method="post">
+            <form action="manc-p3" method="post">
               <div class="nhsuk-form-group">
                 <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
                   Comments
@@ -280,7 +308,7 @@ NHS Cervical Screening
                 <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
                   Enter comments here if needed
                 </span>
-                <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200 required></textarea>
+                <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsc" value="commentsc" name="commentsc" rows="5" data-length=200></textarea>
                 <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
               </div>
 
@@ -297,9 +325,9 @@ NHS Cervical Screening
             </form>
 
             <ul class="nhsuk-comment-container">
-              {% if data.commentsa !=null %}
+              {% if data.commentsc !=null %}
 
-              <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsa}}</li>
+              <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsc}}</li>
 
               {% endif %}
             </ul>
@@ -308,9 +336,9 @@ NHS Cervical Screening
         </div>
 
 
+
       </div>
-      <a href="manc-p3" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
-      <a href="manc-process" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Save and exit</a>
+      <a href="manc-done" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and exit</a>
 
     </div>
 
