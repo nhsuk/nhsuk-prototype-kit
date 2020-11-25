@@ -40,5 +40,5 @@ function shiftSlide(direction) {
     }
     carousel.removeClass('transition')
 		carousel.css('transform','translateX(0px)');
-  },700)
+  },300)
 }

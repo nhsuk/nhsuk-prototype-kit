@@ -76,8 +76,6 @@
   function dragPos() {
     return dragEnd - dragStart;
   }
-
-
 </script>
 
 {% endblock %}
@@ -112,7 +110,7 @@ NHS Cervical Screening
     <div class="nhsuk-panel-with-label">
       <h3 class="nhsuk-panel-with-label__label">Lab demographics</h3>
 
-      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3">
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
@@ -122,6 +120,8 @@ NHS Cervical Screening
             Jane Smith
           </dd>
 
+
+
         </div>
 
         <div class="nhsuk-summary-list__row">
@@ -130,6 +130,19 @@ NHS Cervical Screening
           </dt>
           <dd class="nhsuk-summary-list__value">
             01-01-1970
+          </dd>
+
+
+
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Contact information
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            20 Thornhill street
+            <br>Pudsey
+            <br>LS28 7PB
           </dd>
 
         </div>
@@ -159,163 +172,214 @@ NHS Cervical Screening
 
 
 
-<div class="wrap">
-  <div class="window">
-    <div id="carousel">
-      <span class="slide" id="b1"> <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3  nhsuk-summary-list--no-border">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Jane <span class="highlight">Louise</span> Smith
+          </dd>
+
+
+        </div>
+
+
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            01-01-1970
+          </dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Contact information
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            20 Thornhill street
+            <br>Pudsey
+            <br>LS28 <span class="highlight">7ED</span>
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+
+
+            <fieldset class="nhsuk-fieldset">
+
+
+              <div class="nhsuk-radios nhsuk-radios--inline">
+
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="example-inline-2" name="example-inline" type="radio" value="no">
+                  <label class="nhsuk-label nhsuk-radios__label" for="example-inline-2">
+
+                  </label>
+                </div>
+
+              </div>
+            </fieldset>
+
+
+          </dd>
+
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            NHS number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class=""> 234 567 8901 </span>
+          </dd>
+
+        </div>
+      </dl>
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Show previous addresses
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
           <div class="nhsuk-summary-list__row">
             <dt class="nhsuk-summary-list__key">
-              Name
+              Contact information
             </dt>
             <dd class="nhsuk-summary-list__value">
-              Jane <span class="highlight">Louise</span> Smith
+              <span class="">ADDRESS</span>
             </dd>
 
           </div>
+        </div>
+      </details>
 
 
 
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Date of birth
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              01-01-1970
-            </dd>
-          </div>
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              NHS number
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <span class=""> 234 567 8901 </span>
-            </dd>
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
-          </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="highlight">Janeen</span> Smith
+          </dd>
 
+        </div>
 
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            01-01-1971
+          </dd>
 
-        </dl></span>
-
-
-
-      <span class="slide" id="b2">  <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Name
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <span class="highlight">Janeen</span> Smith
-            </dd>
-
-          </div>
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Date of birth
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              01-01-1971
-            </dd>
-
-          </div>
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              NHS number
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <span class=""> 234 567 9876</span>
-            </dd>
-
-          </div>
-
-        </dl></span>
-      <span class="slide" id="b3">  <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Name
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <span class="highlight">Amanda Knox</span> Smith
-            </dd>
-
-          </div>
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              Date of birth
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              01-01-1970
-            </dd>
-
-          </div>
-
-          <div class="nhsuk-summary-list__row">
-            <dt class="nhsuk-summary-list__key">
-              NHS number
-            </dt>
-            <dd class="nhsuk-summary-list__value">
-              <span class=""> 234 567 8901 </span>
-            </dd>
-
-          </div>
-
-        </dl></span>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Contact information
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            62 Peter Street
+            <br>Westminster
+            <br> <span class="highlight">SW1P 3LN</span>
+          </dd>
+          <fieldset class="nhsuk-fieldset">
 
 
+            <div class="nhsuk-radios nhsuk-radios--inline">
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-inline-2" name="example-inline" type="radio" value="no">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-inline-2">
+
+                </label>
+              </div>
+
+            </div>
+          </fieldset>
 
 
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            NHS number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="highliht">764 990 1176</span>
+          </dd>
+
+        </div>
+
+      </dl>
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="highlight">Amanda Knox</span> Smith
+          </dd>
+
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            01-01-1970
+          </dd>
+
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Contact information
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            76 Mint Road
+            <br>York
+            <br><span class="highlight">YO11 4FF</span>
+          </dd>
+
+          <fieldset class="nhsuk-fieldset">
 
 
+            <div class="nhsuk-radios nhsuk-radios--inline">
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-inline-2" name="example-inline" type="radio" value="no">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-inline-2">
+
+                </label>
+              </div>
+
+            </div>
+          </fieldset>
+
+
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            NHS number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class=""> 234 567 8901 </span>
+          </dd>
+
+        </div>
+
+      </dl>
     </div>
-
-    <div class="pagination-wrapper">
-      <nav class="nhsuk-pagination" role="navigation" aria-label="Pagination">
-              <ul class="nhsuk-list nhsuk-pagination__list">
-                      <li class="nhsuk-pagination-item--next">
-          <a id="next" class="nhsuk-pagination__link nhsuk-pagination__link--next">
-              <span class="nhsuk-pagination__title">Next match</span>
-              <span class="nhsuk-u-visually-hidden">:</span>
-              <span class="nhsuk-pagination__page">2 of 4</span>
-              <svg class="nhsuk-icon nhsuk-icon__arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M19.6 11.66l-2.73-3A.51.51 0 0 0 16 9v2H5a1 1 0 0 0 0 2h11v2a.5.5 0 0 0 .32.46.39.39 0 0 0 .18 0 .52.52 0 0 0 .37-.16l2.73-3a.5.5 0 0 0 0-.64z">
-                  </path>
-              </svg>
-          </a>
-      </li>
-
-
-              </ul>
-          </nav>
-
-
-    </div>
-
-  </div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-    </div>
-
-
-
-
   </div>
 </div>
 
@@ -431,8 +495,8 @@ NHS Cervical Screening
 
 
     </div>
-    <a href="manc-p1-step2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Continue</a>
-    <a href="manc-process" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Save and exit</a>
+    <a href="manc-p1-step2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
+    <a href="manc-process" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Query and next</a>
 
   </div>
 
