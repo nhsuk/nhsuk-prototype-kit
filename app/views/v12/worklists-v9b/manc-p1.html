@@ -132,7 +132,7 @@ NHS Cervical Screening
       <h3 class="nhsuk-u-margin-top-4">System patient demographics</h3>
       <p>Select which system patient demographics to use. If no appropriate system match found, save to lab query list.</p>
 
-      <table class="clickable-table order-table">
+      <table class="order-table clickable-table">
         <thead>
           <tr>
             <th style="width: 15%"></th>
@@ -147,12 +147,17 @@ NHS Cervical Screening
 
         <tbody>
           <!-- SYSTEM DEMOGRAPHICS -->
-          <div class="nhsuk-radios">
+          <form action="manc-p1-step2" method="post">
+          <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset" aria-describedby="system-patient-demographics">
+              <legend class="nhsuk-fieldset__legend">
+              </legend>
+              <div class="nhsuk-radios">
                 <tr role="row" class="nhsuk-table__row">
                   <td class="nhsuk-table__cell">
                     <div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
-                      <label class="nhsuk-label nhsuk-radios__label" for="example-1"></label>
+                      <input class="nhsuk-radios__input" id="patient1a" name="system-dem-choice" type="radio" value="patient1a">
+                      <label class="nhsuk-label nhsuk-radios__label" for="patient1a"></label>
                     </div>
                   </td>
                   <td>Jane <span class="highlight">Alma</span> Smith</td>
@@ -162,8 +167,8 @@ NHS Cervical Screening
                 <tr role="row" class="nhsuk-table__row">
                   <td class="nhsuk-table__cell">
                     <div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
-                      <label class="nhsuk-label nhsuk-radios__label" for="example-1"></label>
+                      <input class="nhsuk-radios__input" id="patient1b" name="system-dem-choice" type="radio" value="patient1b">
+                      <label class="nhsuk-label nhsuk-radios__label" for="patient1b"></label>
                     </div>
                   </td>
                   <td><span class="highlight">Jude</span> Smith</td>
@@ -173,8 +178,8 @@ NHS Cervical Screening
                 <tr role="row" class="nhsuk-table__row">
                   <td class="nhsuk-table__cell">
                     <div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
-                      <label class="nhsuk-label nhsuk-radios__label" for="example-1"></label>
+                      <input class="nhsuk-radios__input" id="patient1c" name="system-dem-choice" type="radio" value="patient1c">
+                      <label class="nhsuk-label nhsuk-radios__label" for="patient1c"></label>
                     </div>
                   </td>
                   <td>Jane <span class="highlight">Smithson</span></td>
@@ -182,6 +187,11 @@ NHS Cervical Screening
                   <td>234 567 8901</td>
                 </tr>
                 </div>
+
+                </fieldset>
+
+                </div>
+                </form>
             </tbody>
         </table>
     </div>
@@ -191,8 +201,9 @@ NHS Cervical Screening
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
+      <button type="button" name="button">Submit</button>
 
-      <a href="manc-p2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Continue to address</a>
+      <a href="manc-p1-step2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Continue to address</a>
       <a href="manc-p2" class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save patient to query</a>
         <p><a href="manc-process">Exit without saving</a></p>
 
