@@ -43,26 +43,6 @@
   }
   // SIDEBAR
 
-  $(function() {
-
-      var $sidebar   = $("#sidebar-fixed"),
-          $window    = $(window),
-          offset     = $sidebar.offset(),
-          topPadding = 15;
-
-      $window.scroll(function() {
-          if ($window.scrollTop() > offset.top) {
-              $sidebar.stop().animate({
-                  marginTop: $window.scrollTop() - offset.top + topPadding
-              });
-          } else {
-              $sidebar.stop().animate({
-                  marginTop: 0
-              });
-          }
-      });
-
-  });
 
 </script>
 
@@ -507,8 +487,7 @@ NHS Cervical Screening
 
 
       </div>
-      <a href="manc-p2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
-      <a href="manc-process" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Exit without saving</a>
+      <a href="manc-process" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Save and exit</a>
 
     </div>
 

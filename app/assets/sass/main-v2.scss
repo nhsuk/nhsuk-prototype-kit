@@ -29,15 +29,12 @@
 // CAROUSEL IS DEAD BABY
 
 #page-wrap{
+  position: relative;
 
 }
 
-#sidebar-fixed{
-  width: auto;
- height: 125vh; // experiment with this value, try changing to 110vh
- min-height: 200px;
- overflow: auto;
- position: -webkit-sticky;
- position: sticky;
- top: 0;
+#sidebar-fixed {
+
+
+
 }
