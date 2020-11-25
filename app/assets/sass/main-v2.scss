@@ -26,54 +26,18 @@
 .result-box{
   border-bottom: 5px solid $nhsuk-border-color;
 }
-// CAROUSEL IS DEAD
+// CAROUSEL IS DEAD BABY
 
-
-body * { -webkit-user-select: none }
-
-.wrap {
-  position: relative;
-  max-width:600px ;
-  max-height:200px;
-  margin: 0 auto;
+#page-wrap{
 
 }
 
-.window {
-  overflow: hidden;
-  position: relative;
-
-}
-
-#carousel {
-  width: 10000px;
-  display: block;
-
-}
-.pagination-wrapper{
-  position: relative;
-}
-
-.slide {
-  max-height: 300px;
-  max-width: 600px;
-  cursor: pointer;
-  float: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-
-
-#next {
-  cursor: pointer;
-  position: absolute;
-  bottom: -40px;
-  left: 0;
-
-}
-
-.transition {
-  transition: .7s;
+#sidebar-fixed{
+  width: auto;
+ height: 125vh; // experiment with this value, try changing to 110vh
+ min-height: 200px;
+ overflow: auto;
+ position: -webkit-sticky;
+ position: sticky;
+ top: 0;
 }
