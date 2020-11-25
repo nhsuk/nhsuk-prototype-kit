@@ -58,7 +58,7 @@ NHS Cervical Screening
   <div class="nhsuk-grid-column-full">
 
     {{ backLink({
-      "href": "manc-p1",
+      "href": "manc-p2",
       "text": "Go back to demographics"
     }) }}
 
@@ -73,13 +73,13 @@ NHS Cervical Screening
 
       <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
-        {% if data['system-dem-choice'] ==  'patient1a' %}
+        {% if data['system-dem-choice'] ==  'patient2a' %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Name
           </dt>
           <dd class="nhsuk-summary-list__value">
-            Jane Alma Smith
+            Elizabeth Jones
           </dd>
         </div>
 
@@ -88,7 +88,7 @@ NHS Cervical Screening
             Date of birth
           </dt>
           <dd class="nhsuk-summary-list__value">
-            01-01-1970
+            20-07-1979
           </dd>
         </div>
 
@@ -97,18 +97,18 @@ NHS Cervical Screening
             NHS number
           </dt>
           <dd class="nhsuk-summary-list__value">
-            <span class=""> 234 567 8901 </span>
+            234 567 8901
           </dd>
         </div>
         {% endif %}
 
-        {% if data['system-dem-choice'] ==  'patient1b' %}
+        {% if data['system-dem-choice'] ==  'patient2b' %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Name
           </dt>
           <dd class="nhsuk-summary-list__value">
-            Jude Smith
+            Lisa Johnson
           </dd>
         </div>
 
@@ -117,7 +117,7 @@ NHS Cervical Screening
             Date of birth
           </dt>
           <dd class="nhsuk-summary-list__value">
-            01-01-1970
+            02-07-1979
           </dd>
         </div>
 
@@ -126,40 +126,10 @@ NHS Cervical Screening
             NHS number
           </dt>
           <dd class="nhsuk-summary-list__value">
-            <span class=""> 234 567 8902 </span>
+            345 678 9011
           </dd>
         </div>
         {% endif %}
-
-        {% if data['system-dem-choice'] ==  'patient1c' %}
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Name
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            Jane Smithson
-          </dd>
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Date of birth
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            10-01-1970
-          </dd>
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            NHS number
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class=""> 234 567 8901 </span>
-          </dd>
-        </div>
-        {% endif %}
-
 
       </dl>
     </div>
@@ -179,11 +149,11 @@ NHS Cervical Screening
             Contact information
           </dt>
           <dd class="nhsuk-summary-list__value">
-            20 Thornhill Street
+            46 Stirling Way
             <br>
-            Pudsey
+            Sutton
             <br>
-            LS28 7PB
+            CB6 2QZ
           </dd>
 
         </div>
@@ -198,47 +168,32 @@ NHS Cervical Screening
 
       <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
-        {% if data['system-dem-choice'] ==  'patient1a' %}
+        {% if data['system-dem-choice'] ==  'patient2a' %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Contact information
           </dt>
           <dd class="nhsuk-summary-list__value">
-            20 Thornhill Street
+            46 Stirling Way
             <br>
-            Pudsey
+            Sutton
             <br>
-            LS28 <span class="highlight">7ED</span>
+            CB6 <span class="highlight">9IZ</span>
           </dd>
         </div>
         {% endif %}
 
-        {% if data['system-dem-choice'] ==  'patient1b' %}
+        {% if data['system-dem-choice'] ==  'patient2b' %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Contact information
           </dt>
           <dd class="nhsuk-summary-list__value">
-            <span class="highlight">462 Cottingham Road
-            <br>
-            Hull
-            <br>
-            HU7 8QR</span>
-          </dd>
-        </div>
-        {% endif %}
-
-        {% if data['system-dem-choice'] ==  'patient1c' %}
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Contact information
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class="highlight">38 Saxon Road
+            <span class="highlight">30 Hemlock Road
             <br>
             York
             <br>
-            YO41 1BY</span>
+            YO31 9DG</span>
           </dd>
         </div>
         {% endif %}
@@ -328,7 +283,7 @@ NHS Cervical Screening
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-full">
 
-          <form action="manc-p1-step2" method="post">
+          <form action="manc-p2-step2" method="post">
             <div class="nhsuk-form-group">
               <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
                 Comments

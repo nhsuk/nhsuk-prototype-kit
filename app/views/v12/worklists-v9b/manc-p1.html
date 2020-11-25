@@ -44,21 +44,21 @@
 
 <!-- clickable rows with hover colour -->
 <script type="text/javascript">
-  $(document).ready(function () {
-    $('.clickable-table tr').click(function (event) {
-        if (event.target.type !== 'radio') {
-            $(':radio', this).trigger('click');
-        }
+  $(document).ready(function() {
+    $('.clickable-table tr').click(function(event) {
+      if (event.target.type !== 'radio') {
+        $(':radio', this).trigger('click');
+      }
     });
 
-    $("input[type='radio']").change(function (e) {
-        e.stopPropagation();
-        $('.clickable-table tr').removeClass("highlight_row");
-        if ($(this).is(":checked")) {
-            $(this).closest('tr').addClass("highlight_row");
-        }
+    $("input[type='radio']").change(function(e) {
+      e.stopPropagation();
+      $('.clickable-table tr').removeClass("highlight_row");
+      if ($(this).is(":checked")) {
+        $(this).closest('tr').addClass("highlight_row");
+      }
     });
-});
+  });
 </script>
 
 
@@ -67,6 +67,7 @@
     background-color: #d8dde0;
     cursor: pointer;
   }
+
   .highlight_row {
     background: #d8dde0;
   }
@@ -95,43 +96,45 @@ NHS Cervical Screening
     <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to process</h1>
 
     <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-8">
-      <h2 class="nhsuk-heading-s">3 possible system matches found</h2></div>
-
-      <h3>Lab patient demographics</h3>
-
-      <table class="order-table">
-        <thead>
-          <tr>
-            <th style="width: 25%">Name
-            </th>
-            <th style="width: 25%">Date of birth
-            </th>
-            <th style="width: 25%">NHS number
-            </th>
-            <th></th>
-          <tr>
-        </thead>
-
-        <tbody>
-          <!-- LAB DEMOGRAPHICS -->
-          <tr>
-            <td>Jane Smith</td>
-            <td>01-01-1970</td>
-            <td>234 567 8901</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+      <h2 class="nhsuk-heading-s">3 possible system matches found</h2>
     </div>
+
+    <h3>Lab patient demographics</h3>
+
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th style="width: 25%">Name
+          </th>
+          <th style="width: 25%">Date of birth
+          </th>
+          <th style="width: 25%">NHS number
+          </th>
+          <th></th>
+        <tr>
+      </thead>
+
+      <tbody>
+        <!-- LAB DEMOGRAPHICS -->
+        <tr>
+          <td>Jane Smith</td>
+          <td>01-01-1970</td>
+          <td>234 567 8901</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
 
 
-  <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-full">
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
 
-      <h3 class="nhsuk-u-margin-top-4">System patient demographics</h3>
-      <p>Select which system patient demographics to use. If no appropriate system match found, save to lab query list.</p>
+    <h3 class="nhsuk-u-margin-top-4">System patient demographics</h3>
+    <p>Select which system patient demographics to use. If no appropriate system match found, save to lab query list.</p>
 
+    <form action="manc-p1-step2" method="post">
       <table class="order-table clickable-table">
         <thead>
           <tr>
@@ -147,7 +150,6 @@ NHS Cervical Screening
 
         <tbody>
           <!-- SYSTEM DEMOGRAPHICS -->
-          <form action="manc-p1-step2" method="post">
           <div class="nhsuk-form-group">
             <fieldset class="nhsuk-fieldset" aria-describedby="system-patient-demographics">
               <legend class="nhsuk-fieldset__legend">
@@ -186,34 +188,23 @@ NHS Cervical Screening
                   <td><span class="highlight">10</span>-01-1970</td>
                   <td>234 567 8901</td>
                 </tr>
-                </div>
+              </div>
+            </fieldset>
+          </div>
+        </tbody>
+      </table>
+      
+      <button type="submit" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6" name="button">Continue to address</button>
+    <a href="manc-p2" class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save patient to query</a>
+    <p><a href="manc-process">Exit without saving</a></p>
 
-                </fieldset>
+  </form>
+  </div>
 
-                </div>
-                </form>
-            </tbody>
-        </table>
-    </div>
-    </div>
-
-
-  <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
-
-      <button type="button" name="button">Submit</button>
-
-      <a href="manc-p1-step2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Continue to address</a>
-      <a href="manc-p2" class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save patient to query</a>
-        <p><a href="manc-process">Exit without saving</a></p>
-
-
-      </div>
-
-    </div>
+</div>
 
 
 
 
 
-  {% endblock %}
+{% endblock %}
