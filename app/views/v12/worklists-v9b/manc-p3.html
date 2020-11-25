@@ -42,6 +42,35 @@
   }
 </script>
 
+<!-- clickable rows with hover colour -->
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('.clickable-table tr').click(function (event) {
+        if (event.target.type !== 'radio') {
+            $(':radio', this).trigger('click');
+        }
+    });
+
+    $("input[type='radio']").change(function (e) {
+        e.stopPropagation();
+        $('.clickable-table tr').removeClass("highlight_row");
+        if ($(this).is(":checked")) {
+            $(this).closest('tr').addClass("highlight_row");
+        }
+    });
+});
+</script>
+
+
+<style media="screen">
+  .clickable-table tbody tr:hover {
+    background-color: #d8dde0;
+    cursor: pointer;
+  }
+  .highlight_row {
+    background: #d8dde0;
+  }
+</style>
 
 {% endblock %}
 {% block pageTitle %}
@@ -54,44 +83,23 @@ NHS Cervical Screening
 
 
 {% block content %}
-<div class="nhsuk-sidebar-hidden" id="rightMenu">
-  <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-full">
-      <a style="float:right;cursor:pointer" class="sidebarbttn">Close this window</a>
-    </div>
-  </div>
-
-  <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-full">
-      <div class="nhsuk-panel nhsuk-promo">
-        <dl class="nhsuk-summary-list--no-border nhsuk-body-m"></dl>
-      </div>
-      <a href="#">View full summary</a>
-    </div>
-  </div>
-</div>
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
     {{ backLink({
-      "href": "manc-p1",
+      "href": "manc-p2",
       "text": "Go back to previous match"
     }) }}
 
     <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to process</h1>
 
-    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-8" </div>
+    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-8">
       <h2 class="nhsuk-heading-s">2 possible system matches found</h2>
     </div>
-  </div>
 
-  <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-full">
+      <h3>Lab patient demographics</h3>
 
-      <h3 class="nhsuk-grid-column-full">Lab patient demographics</h3>
-
-      <table class="nhsuk-grid-column-full order-table">
+      <table class="order-table">
         <thead>
           <tr>
             <th style="width: 25%">Name
@@ -121,99 +129,64 @@ NHS Cervical Screening
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
 
-      <h3 class="nhsuk-grid-column-full nhsuk-u-margin-top-4">System patient demographics</h3>
+      <h3 class="nhsuk-u-margin-top-4">System patient demographics</h3>
+      <p>Select which system patient demographics to use. If no appropriate system match found, save to lab query list.</p>
 
-      <table class="nhsuk-grid-column-full order-table">
+      <table class="clickable-table order-table">
         <thead>
           <tr>
-            <th style="width: 25%">Name
+            <th style="width: 10%"></th>
+            <th>Name
             </th>
-            <th style="width: 25%">Date of birth
+            <th>Date of birth
             </th>
-            <th style="width: 25%">NHS number
-            </th>
-            <th style="width: 25%">
+            <th>NHS number
             </th>
           <tr>
         </thead>
 
         <tbody>
           <!-- SYSTEM DEMOGRAPHICS -->
-                <tr>
+          <div class="nhsuk-radios">
+                <tr role="row" class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell">
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+                      <label class="nhsuk-label nhsuk-radios__label" for="example-1"></label>
+                    </div>
+                  </td>
                   <td>Claudia <span class="highlight">Jones</span> Beddis</td>
                   <td>19-09-<span class="highlight">1983</span></td>
                   <td>234 567 8901</td>
-                  <td><a href="manc-p3-step2a" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-bottom-3">Select patient details</a>
-                  </td>
                 </tr>
-                <tr>
+                <tr role="row" class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell">
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+                      <label class="nhsuk-label nhsuk-radios__label" for="example-1"></label>
+                    </div>
+                  </td>
                   <td><span class="highlight">Claudette</span> Beddis</td>
                   <td>19-09-1993</td>
                   <td>234 <span class="highlight">428</span> 8901</td>
-                  <td><a href="manc-p3-step2b" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-bottom-3">Select patient details</a>
-                  </td>
                 </tr>
+                </div>
             </tbody>
         </table>
     </div>
     </div>
 
 
-  <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
-
-      <div class="nhsuk-checkboxes__item">
-        <input class="nhsuk-checkboxes__input" type="checkbox" id="querylist" name="querylist" value="query">
-        <label class="nhsuk-label nhsuk-checkboxes__label" for="querylist">
-          Save patient to lab query list if no appropriate system match found
-        </label>
-      </div>
-
         <div class="nhsuk-grid-row">
           <div class="nhsuk-grid-column-full">
 
-            <form action="manc-p1" method="post">
-              <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
-                  Comments
-                </label>
-                <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-                  Enter comments here if needed
-                </span>
-                <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200 required></textarea>
-                <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
-              </div>
+            <a href="manc-p4-step2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Continue to address</a>
+            <a href="manc-p4-step2" class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save patient to query</a>
+            <p><a href="manc-process">Exit without saving</a></p>
 
-              <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
-
-              {% set name = "Josie Driver" %}
-
-              {% set commentDate = ("today" | returnDate) %}
-
-              <input type="hidden" id="name" name="name" value="{{commentName}}">
-
-              <input type="hidden" name="date" value={{commentDate}}>
-
-            </form>
-
-            <ul class="nhsuk-comment-container">
-              {% if data.commentsa !=null %}
-
-              <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsa}}</li>
-
-              {% endif %}
-            </ul>
 
           </div>
         </div>
-        <a href="manc-process" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Exit without saving</a>
-
-
-      </div>
-
-    </div>
-
-  </div>
 
 
 
