@@ -16,4 +16,14 @@
       <li><span><strong>NHS No: </strong> {{ data.patientSummary.nhs_number | formatNHSNumber or '123 456 7890' }}</span></li>
     </ul>
   </div>
+  <!-- COMMENT OUT IF YOU NEED A CLOSE BUTTON ON THE PATIENT BANNER
+  add this to the patient-info nav section padding-left:48px
+  <a style="box-shadow: none;border: 1px solid #4c6272; background-color: transparent; margin: 8px; margin-right: 48px; display: flex; align-items: center; width: unset; height: unset" class="nhsuk-button nhsuk-button-ers" href="/v12/patient/search/search">
+    <span style="color: #4c6272; font-size: 16px; line-height: 1.5; margin-left: 8px">Close</span>
+    <svg style="width: unset;height: unset;fill: #4c6272; transform: scale(.7);" class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="32" width="32">
+      <path styl="fill: #4c6272;" d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+    </svg>
+  </a>
+  -->
+  
 </nav>

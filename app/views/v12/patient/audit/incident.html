@@ -1,0 +1,91 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script>
+  $(".char-textarea").on("keyup",function(event){
+  checkTextAreaMaxLength(this,event);
+});
+
+function checkTextAreaMaxLength(textBox, e) {
+
+    var maxLength = parseInt($(textBox).data("length"));
+
+
+    if (!checkSpecialKeys(e)) {
+        if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
+   }
+  $(".char-count").html(maxLength - textBox.value.length);
+
+    return true;
+}
+
+function checkSpecialKeys(e) {
+    if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
+        return false;
+    else
+        return true;
+}
+</script>
+{% endblock %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header-3.html' %}
+{% endblock %}
+
+{%block content%}
+{{ backLink({
+  "href": "../patient-summary-6",
+  "text": "Back to Audit",
+  "classes" : "nhsuk-u-margin-bottom-4"
+  }) }}
+
+  <div class="nhsuk-panel-with-label">
+    {% include '../../components/pnl-patient-2.html' %}
+    <h1 class="nhsuk-heading-l">Incident Information</h1>
+    <div class="nhsuk-inset-text">
+      <span class="nhsuk-u-visually-hidden" >Information: </span>
+      <p>Incident information is not audited in this system and is only used for reference</p>
+    </div>
+    <form action="../patient-summary-6" method="POST">
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label nhsuk-label__strong" for="example">
+          Incident text
+        </label>
+        <textarea class="nhsuk-textarea commentBox char-textarea" id="incidenttext" value="incident-text" name="incident-text" rows="5" data-length=100>{{ data['incident-text'] }}</textarea>
+        <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">100</span> characters remaining</p>
+      </div>
+
+      {{ checkboxes({
+        "idPrefix": "example",
+        "name": "show-incident",
+        "items": [
+          {
+            "value": "true",
+            "text": "Show the incident text on the patient summary page",
+            "checked": data['show-incident']
+          }
+        ]
+      }) }}
+
+      <button class="nhsuk-button nhsuk-button--ers">Submit</button>
+      <p><a href="../patient-summary-5">Exit without saving</a></p> 
+      </div>
+    </form>
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+      <p><a href="/v12/reset-patient-data-12">Reset patient data</a></p>
+    </div>
+  </div>
+</footer>
+{% endblock %}

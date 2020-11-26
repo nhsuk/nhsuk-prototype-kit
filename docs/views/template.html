@@ -80,6 +80,9 @@
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
     {% block bodyStart %}{% endblock %}
 
+    <!-- comment out if you need a logout button -->
+    <!--<p style="color:white; position: absolute; right:48px; top:28px;">Logout</p>-->
+    
       {% block skipLink %}
         {{ skipLink({
           href: '#maincontent',

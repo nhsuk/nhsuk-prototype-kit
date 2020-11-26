@@ -16,7 +16,7 @@ NHS Cervical Screening
       "longName": "false"
     },
     "showNav": "false",
-    "showSearch": "true"
+    "showSearch": "false"
   })
 }}
 {% endblock %}
@@ -39,7 +39,8 @@ NHS Cervical Screening
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-full">
     <h1 class="nhsuk-heading-l">Audit</h1>
-      <p>Export as: <a href="">Excel(.xls)</a> or <a href="">Word(.doc)</a></p>
+      <p><a href="audit/incident" class="nhsuk-button  nhsuk-button--ers">Add / Amend incident Information</a></p>
+      <!--<p>Export as: <a href="">Excel(.xls)</a> or <a href="">Word(.doc)</a></p>-->
         <div class="nhs-screening-whole-timeline">
 
         {% for result in data.patientSummary.results | sort(true, true, 'created') %}
