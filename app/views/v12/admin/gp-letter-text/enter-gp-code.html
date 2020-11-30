@@ -4,7 +4,7 @@
 <script type="text/javascript" src="/js/search.js"></script>
 <script type="text/javascript" src="/js/auto.js"></script>
 <style type="text/css" media="screen">
-  .nhsuk-header__navigation-item:nth-child(3) {
+  .nhsuk-header__navigation-item:nth-child(5) {
     border-bottom: 4px solid #d8dde0;
   }
 </style>
@@ -21,10 +21,15 @@ NHS Cervical Screening
 {% block content %}
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
-    <form action="choose-a-letter" method="POST">
+  {{ backLink({
+      "href": "../index",
+      "text": "Back to Admin"
+    }) }}
+
+    <form action="amend-letter-text-gp" method="POST">
       {{ input({
         "label": {
-          "text": "Enter GP or Disctrict Code",
+          "text": "Enter GP Practice or District Code",
           "classes": "nhsuk-label--l",
           "isPageHeading": true
         },

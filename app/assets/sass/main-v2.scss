@@ -23,52 +23,18 @@
      border-left-color: red;
      background-color: pink;
 }
-// CAROUSEL
+.result-box{
+  border-bottom: 5px solid $nhsuk-border-color;
+}
+// CAROUSEL IS DEAD BABY
 
-
-body * { -webkit-user-select: none }
-
-.wrap {
+#page-wrap{
   position: relative;
-  max-width:600px ;
-  max-height: 300px;
-  margin: 0 auto;
 
 }
 
-.window {
-  overflow: hidden;
-  position: relative;
-  
-}
-
-#carousel {
-  width: 10000px;
-  position: relative;
-  top: 0; left: -450px;
-}
-
-.slide {
-  height: 300px;
-  width: 500px;
-  cursor: pointer;
-  float: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+#sidebar-fixed {
 
 
 
-#prev, #next {
-  cursor: pointer;
-  position: absolute;
-  bottom: -40px;
-
-}
-
-#next { left: 0 }
-
-.transition {
-  transition: .7s;
 }

@@ -16,7 +16,7 @@ NHS Cervical Screening
       "longName": "false"
     },
     "showNav": "false",
-    "showSearch": "true"
+    "showSearch": "false"
   })
 }}
 {% endblock %}
@@ -39,7 +39,8 @@ NHS Cervical Screening
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-full">
     <h1 class="nhsuk-heading-l">Audit</h1>
-      <p>Export as: <a href="">Excel(.xls)</a> or <a href="">Word(.doc)</a></p>
+      <p><a href="audit/incident" class="nhsuk-button  nhsuk-button--ers">Add / Amend incident Information</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary" href="audit/subject-access-print">Subject Access Print</a></p>
+      <!--<p>Export as: <a href="">Excel(.xls)</a> or <a href="">Word(.doc)</a></p>-->
         <div class="nhs-screening-whole-timeline">
 
         {% for result in data.patientSummary.results | sort(true, true, 'created') %}
@@ -132,7 +133,7 @@ NHS Cervical Screening
           <div class="nhs-screening-whole-timeline__item">
             <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
               <h2 class="nhs-screening-whole-timeline__title">Result sent</h2>
-              <p class="nhs-screening-whole-timeline__by">by System - <span><span class="nhsuk-tag nhsuk-tag--grey">Sent to patient</span> <a href="">Resend</a></span></p>
+              <p class="nhs-screening-whole-timeline__by">by System - <span><span class="nhsuk-tag nhsuk-tag--grey">Sent to patient</span> <a href="audit/resend-a-letter">Resend</a></span></p>
               <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">04-Jan-2017, 09:00:00 am</time></p>
               <p class="nhs-screening-whole-timeline__date">Test Result: (39S) Low-grade dyskaryosis, HPV positive, Repeat Advised</p>
               <p class="nhs-screening-whole-timeline__date"><time datetime="2017-11-20T14:27">29-Dec-2016, 10:15:52 am</time></p>
@@ -171,7 +172,7 @@ NHS Cervical Screening
           <div class="nhs-screening-whole-timeline__item">
             <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
               <h2 class="nhs-screening-whole-timeline__title">1st screening reminder sent</h2>
-              <p class="nhs-screening-whole-timeline__by">by System - <span><span class="nhsuk-tag nhsuk-tag--grey">Sent to patient</span> <a href="">Resend</a></span></p>
+              <p class="nhs-screening-whole-timeline__by">by System - <span><span class="nhsuk-tag nhsuk-tag--grey">Sent to patient</span> <a href="audit/resend-a-letter">Resend</a></span></p>
               <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">10-Nov-2016, 09:00:00 am</time></p>
             </div>
           </div>
@@ -179,7 +180,7 @@ NHS Cervical Screening
           <div class="nhs-screening-whole-timeline__item">
             <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
               <h2 class="nhs-screening-whole-timeline__title">Screening invitation sent</h2>
-              <p class="nhs-screening-whole-timeline__by">by System - <span><span class="nhsuk-tag nhsuk-tag--grey">Sent to patient</span> <a href="">Resend</a></span></p>
+              <p class="nhs-screening-whole-timeline__by">by System - <span><span class="nhsuk-tag nhsuk-tag--grey">Sent to patient</span> <a href="audit/resend-a-letter">Resend</a></span></p>
               <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">01-Oct-2016, 09:00:00 am</time></p>
             </div>
           </div>

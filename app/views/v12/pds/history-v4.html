@@ -1,0 +1,200 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "false"
+  })
+}}
+{% endblock %}
+
+{% block patientBanner %}
+  {% include '../components/patient-banner.html' %}
+{% endblock %}
+
+{% block content %}
+
+<nav class="nhsuk-sub-navigation">
+  <ul class="nhsuk-sub-navigation__list">
+    <li class="nhsuk-sub-navigation__item"><a href="patient-summary-6" class="nhsuk-sub-navigation__link">Patient Summary</a></li>
+    <li class="nhsuk-sub-navigation__item"><a href="history-v4" class="nhsuk-sub-navigation__link" aria-current="page">Audit</a></li>
+    <li class="nhsuk-sub-navigation__item"><a href="gp-info" class="nhsuk-sub-navigation__link">GP Information</a></li>
+  
+  </ul>
+</nav>
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-full">
+    <h1 class="nhsuk-heading-l">Audit</h1>
+      <p><a href="audit/incident" class="nhsuk-button  nhsuk-button--ers">Add / Amend incident Information</a></p>
+      <!--<p>Export as: <a href="">Excel(.xls)</a> or <a href="">Word(.doc)</a></p>-->
+        <div class="nhs-screening-whole-timeline">
+
+        {% for result in data.patientSummary.results | sort(true, true, 'created') %}
+        {% if result.crm != null %}
+          <div class="nhs-screening-whole-timeline__item">
+            <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
+              <h2 class="nhs-screening-whole-timeline__title">Test result added</h2>
+              <p class="nhs-screening-whole-timeline__by">by Jane Smith</p>
+              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">{{ result.created | returnDateAndTime }}</time></p>
+            </div> 
+            <p>({{ result['result_code'] + result['infection_code'] + result['action_code'] }}) {{ result['result_code'] | returnResultText }}, {{ result['infection_code'] | returnInfectionText }}, {{ result['action_code'] | returnActionText }}</p>
+            {% if result.crm != null %}
+              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">CRM Case Number: {{ result.crm }}</time></p>
+              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">Comments: {{ result.comments }} </time></p>
+            {% endif %}
+          </div>
+        {% endif %}
+        {% endfor %}
+          <div class="nhs-screening-whole-timeline__item">
+            <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
+              <h2 class="nhs-screening-whole-timeline__title">Result sent</h2>
+              <p class="nhs-screening-whole-timeline__by">by System - <span><span class="nhsuk-tag nhsuk-tag--yellow">Sent to printer</span> <a href="audit/cancel-a-letter">Cancel</a></span></p>
+              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">22-Oct-2020, 09:00:00 am</time></p>
+              <p class="nhs-screening-whole-timeline__date">Test Result: (39S) Low-grade dyskaryosis, HPV positive, Repeat Advised</p>
+              <p class="nhs-screening-whole-timeline__date"><time datetime="2017-11-20T14:27">Test Date: 19-Oct-2020, 9:00:00 am</time></p>
+           </div>
+          </div>
+
+          <div class="nhs-screening-whole-timeline__item">
+            <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
+              <h2 class="nhs-screening-whole-timeline__title">Next test due date changed</h2>
+              <p class="nhs-screening-whole-timeline__by">by System</p>
+              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">21-Oct-2020, 00:00:00 am</time></p>
+              <p class="nhs-screening-whole-timeline__date">Next test due date changed to 10-Oct-2021</p>
+            </div>
+            <!--<p>Next test due date changed to 10-Oct-2021</p>-->
+          </div>
+
+          <div class="nhs-screening-whole-timeline__item">
+            <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
+              <h2 class="nhs-screening-whole-timeline__title">Test result added</h2>
+              <p class="nhs-screening-whole-timeline__by">by System (Edifax)</p>
+              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">20-Oct-2020, 9:00:00 am</time></p>
+              <p class="nhs-screening-whole-timeline__date">(39S) Low-grade dyskaryosis, HPV positive, Repeat Advised</p>
+            </div>
+            <!--<p>(39S) Low-grade dyskaryosis, HPV positive, Repeat Advised</p>-->
+          </div>
+
+          <div class="nhs-screening-whole-timeline__item">
+            <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
+              <h2 class="nhs-screening-whole-timeline__title">Patient ceased</h2>
+              <p class="nhs-screening-whole-timeline__by">by Alison Johnson (CSAS)</p>
+              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">09-Sep-2020, 15:54:23 am</time></p>
+              <p class="nhs-screening-whole-timeline__date">Patient ceased due to patient informed choice</p>
+            </div>
+            <!--<p>Patient ceased due to patient informed choice</p>-->
+            <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">CRM Case Number: CAS-12345-ABCDE</time></p>
+            <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">Comments: Requested via the GP form</time></p>
+          </div>
+  
+          <div class="nhs-screening-whole-timeline__item">
+            <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
+              <h2 class="nhs-screening-whole-timeline__title">Next test due date changed</h2>
+              <p class="nhs-screening-whole-timeline__by">by System</p>
+              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">05-Jan-2020, 00:00:00 am</time></p>
+              <p class="nhs-screening-whole-timeline__date">Next test due date changed to 10-Oct-2021</p>
+            </div>
+          </div>
+
+          <div class="nhs-screening-whole-timeline__item">
+            <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
+              <h2 class="nhs-screening-whole-timeline__title">Patient deferred</h2>
+              <p class="nhs-screening-whole-timeline__by">by James Smith (CSAS)</p>
+              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">04-Jan-2020, 09:23:09 am</time></p>
+              <p class="nhs-screening-whole-timeline__date">Defer Reason: Pregnancy</p>
+            </div>
+            <!--<p>Patient deferred due to pregnancy</p>-->
+            <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">CRM Case Number: CAS-12345-ABCDE</time></p>
+            <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">Comments: Requested via the GP form</time></p>
+          </div>
+
+          <div class="nhs-screening-whole-timeline__item">
+            <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
+              <h2 class="nhs-screening-whole-timeline__title">Added to patients due to be invited</h2>
+              <p class="nhs-screening-whole-timeline__by">by System</p>
+              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">12-Dec-2019, 00:00:32 am</time></p>
+            </div>
+          </div>
+
+          <div class="nhs-screening-whole-timeline__item">
+            <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
+              <h2 class="nhs-screening-whole-timeline__title">Result sent</h2>
+              <p class="nhs-screening-whole-timeline__by">by System - <span><span class="nhsuk-tag nhsuk-tag--grey">Sent to patient</span> <a href="">Resend</a></span></p>
+              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">04-Jan-2017, 09:00:00 am</time></p>
+              <p class="nhs-screening-whole-timeline__date">Test Result: (39S) Low-grade dyskaryosis, HPV positive, Repeat Advised</p>
+              <p class="nhs-screening-whole-timeline__date"><time datetime="2017-11-20T14:27">29-Dec-2016, 10:15:52 am</time></p>
+            </div>
+          </div>
+
+          <div class="nhs-screening-whole-timeline__item">
+            <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
+              <h2 class="nhs-screening-whole-timeline__title">Next test due date changed</h2>
+              <p class="nhs-screening-whole-timeline__by">by System</p>
+              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">03-Jan-2017, 00:00:00 am</time></p>
+              <p class="nhs-screening-whole-timeline__date">Next test due date changed to 10-Oct-2021</p>
+            </div>
+            <!--<p>Next test due date changed to 10-Oct-2021</p>-->
+          </div>
+
+          <div class="nhs-screening-whole-timeline__item">
+            <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
+              <h2 class="nhs-screening-whole-timeline__title">Test result added</h2>
+              <p class="nhs-screening-whole-timeline__by">by System (Edifax)</p>
+              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">02-Jan-2017, 9:00:54 am</time></p>
+              <p class="nhs-screening-whole-timeline__date">Test Result: (39S) Low-grade dyskaryosis, HPV positive, Repeat Advised</p>
+
+            </div>
+            <!--<p>(39S) Low-grade dyskaryosis, HPV positive, Repeat Advised</p>-->
+          </div>
+
+          <div class="nhs-screening-whole-timeline__item">
+            <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
+              <h2 class="nhs-screening-whole-timeline__title">HMR101 Printed</h2>
+              <p class="nhs-screening-whole-timeline__by">by Alicia Johnson (Sample Taker)</p>
+              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">20-Dec-2016, 10:15:31 am</time></p>
+            </div>
+          </div>
+
+          <div class="nhs-screening-whole-timeline__item">
+            <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
+              <h2 class="nhs-screening-whole-timeline__title">1st screening reminder sent</h2>
+              <p class="nhs-screening-whole-timeline__by">by System - <span><span class="nhsuk-tag nhsuk-tag--grey">Sent to patient</span> <a href="">Resend</a></span></p>
+              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">10-Nov-2016, 09:00:00 am</time></p>
+            </div>
+          </div>
+
+          <div class="nhs-screening-whole-timeline__item">
+            <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
+              <h2 class="nhs-screening-whole-timeline__title">Screening invitation sent</h2>
+              <p class="nhs-screening-whole-timeline__by">by System - <span><span class="nhsuk-tag nhsuk-tag--grey">Sent to patient</span> <a href="">Resend</a></span></p>
+              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">01-Oct-2016, 09:00:00 am</time></p>
+            </div>
+          </div>
+
+          <div class="nhs-screening-whole-timeline__item">
+            <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
+              <h2 class="nhs-screening-whole-timeline__title">Added to patients due to be invited</h2>
+              <p class="nhs-screening-whole-timeline__by">by System</p>
+              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">20-Aug-2016, 10:15:00 am</time></p>
+            </div>
+          </div>
+        </div>
+        
+  </div>
+</div>
+
+{% endblock %}

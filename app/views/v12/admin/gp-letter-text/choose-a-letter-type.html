@@ -1,0 +1,63 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(5) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    {{ backLink({
+      "href": "enter-district-code",
+      "text": "Back to entering GP Practice or District Code"
+    }) }}
+
+    <form action="choose-an-action" method="POST">
+
+    <fieldset class="nhsuk-fieldset">
+      {{ radios({
+        "idPrefix": "contact",
+        "name": "letter-type",
+        "fieldset": {
+          "legend": {
+            "text": "Choose a letter type for District " + (data['gp-code'] or 'A123456'),
+            "classes": "nhsuk-fieldset__legend--l",
+            "isPageHeading": "true"
+          }
+        },
+        "items": [
+          {
+            "value": "Result",
+            "text": "Result letter text"
+          },
+          {
+            "value": "Invite and Reminder",
+            "text": "Invite and Reminder letter text"
+          }
+        ]
+      }) }}
+    </fieldset>
+
+    {{ button({
+        "text": "Continue",
+        "classes": "nhsuk-button--ers"
+    }) }}
+    <p><a href="">Exit without saving</a></p>
+    </form>
+  </div>
+</div>
+{% endblock %}

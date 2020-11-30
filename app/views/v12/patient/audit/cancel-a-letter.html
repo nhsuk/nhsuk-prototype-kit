@@ -18,66 +18,50 @@
 
   <div class="nhsuk-panel-with-label">
       {% include '../../components/pnl-patient-2.html' %}
-      {# <span class="nhsuk-hint">Step 5 of 6</span> #}
 
-
-     <h1 class="nhsuk-heading-l">Cancel a pending letter</h1>
-     {#<div class="nhsuk-inset-text">
-      <span class="nhsuk-u-visually-hidden" >Information: </span>
-      <p>Removing a test result may change the patients next test due date.</p>
-    </div>#}
+     <h1 class="nhsuk-heading-l">Cancel a pending result letter</h1>
 
     <dl class="nhsuk-summary-list">
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Test type</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['result-type'] }}</dd>
+    <dd class="nhsuk-summary-list__value">English</dd>
   </div>
-  {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
+
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender National code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['national-code'] }}</dd>
+    <dd class="nhsuk-summary-list__value">B123456</dd>
   </div>
-  {% endif %}
-  {% if data['result-type']!= 'Abroad'%}
+
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Source code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['source-code'] }}</dd>
+    <dd class="nhsuk-summary-list__value">X</dd>
   </div>
-  {% endif %}
-  {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
+
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] }} </dd>
+    <dd class="nhsuk-summary-list__value">12456</dd>
   </div>
-  {% endif %}
 
-  {% if data['result-type'] == 'Scottish' %}
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Health Authority</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] }}</dd>
-  </div>
-  {% endif %}
 
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Slide number</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] }}</dd>
+    <dd class="nhsuk-summary-list__value">12345678</dd>
   </div>
 
-  {% set nextTestDueDate = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
+  
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Test date</dt>
-    <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ '19-Oct-2020' | returnDateFormat }}</dd>
   </div>
-
 
 <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Result</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['result-result'] }} {{ data['result-infection'] }} {{ data['result-action'] }}</dd>
+    <dd class="nhsuk-summary-list__value">(39S) Low-grade dyskaryosis, HPV positive, Repeat Advised</dd>
   </div>
 
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">HPV Primary</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] }} </dd>
+    <dd class="nhsuk-summary-list__value">Y</dd>
   </div>
 
     <div class="nhsuk-summary-list__row">
@@ -87,7 +71,7 @@
 
  <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">CRM</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['crm'] or '123456789' }}</dd>
+    <dd class="nhsuk-summary-list__value">CAS-12345-ABCDE</dd>
   </div>
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Comments</dt>
@@ -103,7 +87,7 @@
              "name": "remove-result",
              "fieldset": {
                "legend": {
-                 "text": "Are you sure you want to remove this test result?",
+                 "text": "Are you sure you want to cancel this letter?",
                  "classes": "nhsuk-fieldset__legend--m nhsuk-label__strong",
                  "isPageHeading": true
                }
@@ -111,7 +95,7 @@
              "items": [
                {
                  "value": "yes",
-                 "text": "Yes, I want to remove this test result."
+                 "text": "Yes, I want to cancel this letter."
                },
                {
                  "value": "no",
@@ -122,7 +106,7 @@
   </fieldset>
 <br>
 </div>
-<a href="../patient-summary-5" class="nhsuk-button nhsuk-button--ers">Confirm</a>   
+<a href="../history-v4" class="nhsuk-button nhsuk-button--ers">Submit</a>   
 
 
  <p><a href="../patient-summary-5">Exit without saving</a></p> 

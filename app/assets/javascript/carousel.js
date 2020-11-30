@@ -1,6 +1,6 @@
 var carousel = $('#carousel'),
     threshold = 150,
-    slideWidth = 500,
+    // slideWidth = 500,
     dragStart,
     dragEnd;
 
@@ -40,5 +40,5 @@ function shiftSlide(direction) {
     }
     carousel.removeClass('transition')
 		carousel.css('transform','translateX(0px)');
-  },700)
+  },300)
 }

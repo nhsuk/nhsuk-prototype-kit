@@ -1,380 +1,530 @@
 {% extends "layout-v2.html" %}
 
 {% block pageScripts %}
-<script>
-  function openRightMenu() {
-    document.getElementById("rightMenu").style.display = "block";
-  }
+<script type="text/javascript" src="/js/reveal.js"></script>
+<script type="text/javascript" src="/js/comments.js"></script>
+<script type="text/javascript" src="/js/carousel.js" charset="utf-8"></script>
 
+<script>
   function closeRightMenu() {
-    document.getElementById("rightMenu").style.display = "none";
+    document.getElementByClass("nhsuk-sidebar-hidden").style.display = "none";
   }
+  $(document).ready(function() {
+    $(".sidebarbttn").click(function() {
+      $(".nhsuk-sidebar-hidden").toggle();
+    });
+
+  });
 </script>
 
 <script>
-  $(".char-textarea").on("keyup",function(event){
-  checkTextAreaMaxLength(this,event);
-});
+  $(".char-textarea").on("keyup", function(event) {
+    checkTextAreaMaxLength(this, event);
+  });
 
-function checkTextAreaMaxLength(textBox, e) {
+  function checkTextAreaMaxLength(textBox, e) {
 
     var maxLength = parseInt($(textBox).data("length"));
 
 
     if (!checkSpecialKeys(e)) {
-        if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
-   }
-  $(".char-count").html(maxLength - textBox.value.length);
+      if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
+    }
+    $(".char-count").html(maxLength - textBox.value.length);
 
     return true;
-}
+  }
 
-function checkSpecialKeys(e) {
+  function checkSpecialKeys(e) {
     if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
-        return false;
+      return false;
     else
-        return true;
-}
+      return true;
+  }
+  // SIDEBAR
+
+
 </script>
 
 {% endblock %}
 {% block pageTitle %}
-  NHS Cervical Screening
+NHS Cervical Screening
 {% endblock %}
 
 {% block header %}
-  {% include '../components/header.html' %}
+{% include '../components/header.html' %}
 {% endblock %}
 
 
 {% block content %}
-<div class="nhsuk-sidebar-hidden" id="rightMenu">
-  <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-full">
-      <a style="float:right;cursor:pointer" class="" onclick="closeRightMenu()" class="">Close this window
 
-      <!--  <svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-    <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
-  </svg> -->
+<div id="page-wrap">
 
-</a>
-
-    </div>
-  </div>
 
   <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-full">
+    <div class="nhsuk-grid-column-one-half">
 
+      {{ backLink({
+        "href": "manc-p2",
+        "text": "Go back"
+      }) }}
 
+      <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to process</h1>
+      <h2 class="nhsuk-heading-m">Match result to a patient</h2>
+      <p>Choose which system details (name, DOB, and NHS number) to match the result to.</p>
+      <p> If no appropriate match is found on the system, save to lab query list.</p>
 
-<div class="nhsuk-panel nhsuk-promo">
-<h3>Previous letters sent to:</h3>
-      <dl class="nhsuk-summary-list--no-border nhsuk-body-m">
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-           20-08-18
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-    20 Thornhill Street
-    <br>
-    Pudsey
-    <br>
-    LS28 7ED
-
-        </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            20-08-15
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-             16 Chessington Drive
-          <br>
-          Leeds
-          <br>LS14 6KK
-          </dd>
-
-        </div>
-      </dl>
-      </div>
-
-
-      <a href="#">View full summary</a>
     </div>
   </div>
-</div>
 
-
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-full">
-
-
-    {{ backLink({
-      "href": "manc-p2",
-      "text": "Go back to previous match"
-    }) }}
-
-    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to process</h1>
-
-  </div>
-</div>
-
-
-<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-row">
+    <!-- LAB -->
     <div class="nhsuk-grid-column-one-half">
-    <div class="nhsuk-panel-with-label">
-      <h3 class="nhsuk-panel-with-label__label">Lab details</h3>
+      <!-- SIDEBAR -->
 
-<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+      <div id="sidebar-fixed">
+        <div>
+          <div class="nhsuk-panel-with-label">
+            <h3 class="nhsuk-panel-with-label__label">Lab details</h3>
 
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Name
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      Claudia Beddis
-    </dd>
+            <div>
+              <dl class="nhsuk-summary-list nhsuk-summary-list--no-border">
 
-  </div>
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Date of birth
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      19-09-1993
-    </dd>
-
-  </div>
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Contact information
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      12 Poplars Close<br>Burwell<br> CB25 0ET
-    </dd>
-</div>
-   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      NHS number
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-     234 567 8901
-    </dd>
-
-  </div>
-  </dl>
-
-
-  </div>
-
-
-</div>
-
-    <div class="nhsuk-grid-column-one-half">
-         <div class="nhsuk-panel-with-label">
-      <h3 class="nhsuk-panel-with-label__label">System details</h3>
-
-<dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Name
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                  Claudia Beddis
+                  </dd>
 
 
 
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Name
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      Claudia Beddis<span class="highlight">s</span>
-    </dd>
+                </div>
 
-  </div>
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Date of birth
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      19-09-1993
-    </dd>
-
-  </div>
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      Contact information
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-      12 Poplars Close<br>Burwell<br> CB25 <span class="highlight">BOC</span>
-    </dd>
-</div>
-     <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">
-      NHS number
-    </dt>
-    <dd class="nhsuk-summary-list__value">
-     234 567 8901
-    </dd>
-
-  </div>
-
-</dl>
-
-</div>
-</div>
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Date of birth
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    19-09-1993
+                  </dd>
 
 
 
+                </div>
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    Contact information
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    12 Poplars Close
+                    <br>Burwell
+                    <br>CB25 0ET
+                  </dd>
 
+                </div>
 
+                <div class="nhsuk-summary-list__row">
+                  <dt class="nhsuk-summary-list__key">
+                    NHS number
+                  </dt>
+                  <dd class="nhsuk-summary-list__value">
+                    <span class="">234 567 8901</span>
+                  </dd>
 
+                </div>
 
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-one-half">
-    <!-- OPTIONS -->
-    <div class="nhsuk-form-group">
+              </dl>
 
-      <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
-        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-          <h1 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong">
-            How do you want to action this result?
-          </h1>
-        </legend>
-        <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="lab" name="how-to-resolve" type="radio" value="lab" aria-controls="lab" aria-expanded="false">
-          <label class="nhsuk-label nhsuk-radios__label" for="lab">
-            Use lab details
-          </label>
-        </div>
-
-        <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
-          <label class="nhsuk-label nhsuk-radios__label" for="system">
-            Use system details
-          </label>
-        </div>
-
-  <!--     <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="gp" name="how-to-resolve" type="radio" value="gp" aria-controls="gp" aria-expanded="false">
-          <label class="nhsuk-label nhsuk-radios__label" for="gp">
-            Send to GP practice.
-            <span class="nhsuk-hint">
-           For example, GP address.</span>
-          </label>
-        </div> -->
-
-            <div class="nhsuk-radios nhsuk-radios--conditional">
-                     <div class="nhsuk-radios nhsuk-radios--conditional">
-
-      <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="contact-1" name="how-to-resolve" type="radio" value="address" aria-controls="conditional-contact-1" aria-expanded="false">
-        <label class="nhsuk-label nhsuk-radios__label" for="contact-1">
-          Enter a different address
-        </label>
-      </div>
-
-           <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
-
-        <div class="nhsuk-form-group">
-          <label class="nhsuk-label" for="email">
-            Building and street
-          </label>
-          <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
-        <label class="nhsuk-label" for="email">
-            Town or city
-          </label>
-          <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
-          <label class="nhsuk-label" for="email">
-            County
-          </label>
-          <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
-          <label class="nhsuk-label" for="email">
-            Postcode
-          </label>
-          <input class="nhsuk-input nhsuk-u-width-two-thirds nhsuk-u-margin-bottom-8" id="email" name="email" type="text">
-
-        </div>
-
-      </div>
-
-      <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="contact-1" name="how-to-resolve" type="radio" value="email" aria-controls="query" aria-expanded="false">
-        <label class="nhsuk-label nhsuk-radios__label" for="query">
-          Save to lab query list
-        </label>
-      </div>
-
-        </div>
-
-   </div>
-
-
-      </fieldset>
-
-
-
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-full">
-
-    <form action="manc-p3" method="post">
-    <div class="nhsuk-form-group">
-      <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
-        Comments
-      </label>
-      <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-        Enter comments here if needed
-      </span>
-      <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsc" value="commentsc" name="commentsc" rows="5" data-length=200></textarea>
-    <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
-    </div>
-
-    <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
-
-    {% set name = "Jon Simpson" %}
-
-    {% set commentDate = ("today" | returnDate) %}
-
-    <input type="hidden" id="name" name="name" value="{{commentName}}">
-
-      <input type="hidden" name="date" value={{commentDate}}>
-
-    </form>
-
-    <ul class="nhsuk-comment-container">
-      {% if data.commentsc !=null %}
-
-  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsc}}</li>
-
-  {% endif %}
-  			</ul>
-
-</div>
-</div>
+            </div>
 
 
 
           </div>
-          <a href="manc-p4" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
-          <a href="manc-process-saved" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Save and exit</a>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <!-- END SIDEBAR -->
+
+    <!-- SYSTEM DETAILS -->
+
+    <div class="nhsuk-grid-column-one-half" style="float:right">
+      <div class="nhsuk-panel-with-label">
+        <h3 class="nhsuk-panel-with-label__label">System details</h3>
+
+        <div class="result-box">
+
+          <dl class="nhsuk-summary-list nhsuk-u-padding-top-3  nhsuk-summary-list--no-border">
+            <p>Match 1</p>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Name
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                <span class="highlight">Sarah</span> Beddis
+              </dd>
+
+
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Date of birth
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                19-09-1993
+              </dd>
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Contact information
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+              <span class="highlight">63 Burnside
+                <br>Suffolk
+                <br>SU88 6HG</span>
+              </dd>
+              <dd class="nhsuk-summary-list__actions">
+
+
+                <fieldset class="nhsuk-fieldset">
+
+
+                  <div class="nhsuk-radios nhsuk-radios--inline">
+
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="example-inline-2" name="example-inline" type="radio" value="no">
+                      <label class="nhsuk-label nhsuk-radios__label" for="example-inline-2">
+
+                      </label>
+                    </div>
+
+                  </div>
+                </fieldset>
+
+
+              </dd>
+
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                NHS number
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                <span class="highlight">766 000 1766</span>
+              </dd>
+
+            </div>
+          </dl>
+
+          <details class="nhsuk-details">
+            <summary class="nhsuk-details__summary">
+              <span class="nhsuk-details__summary-text">
+                Show previous addresses
+              </span>
+            </summary>
+            <div class="nhsuk-details__text">
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">
+                  Contact information
+                </dt>
+                <dd class="nhsuk-summary-list__value">
+                  <span class="">19 Loop Way<br>
+                    Brighton <br>BR2 9MM</span>
+                </dd>
+
+              </div>
+            </div>
+          </details>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="result-box">
+          <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+            <p>Match 2</p>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Name
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                Claudia <span class="highlight">Amis</span> Beddis
+              </dd>
+
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Date of birth
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                19-09-1993
+              </dd>
+
+            </div>
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Contact information
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                12 Poplars Close
+                <br>Burwell
+                <br>CB25 <span class="highlight">BOC</span>
+              </dd>
+              <fieldset class="nhsuk-fieldset">
+
+
+                <div class="nhsuk-radios nhsuk-radios--inline">
+
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="example-inline-2" name="example-inline" type="radio" value="no">
+                    <label class="nhsuk-label nhsuk-radios__label" for="example-inline-2">
+
+                    </label>
+                  </div>
+
+                </div>
+              </fieldset>
+
+
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                NHS number
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                <span>234 567 8901</span>
+              </dd>
+
+            </div>
+
+          </dl>
+
+        </div>
+
+
+        <div class="result-box">
+
+          <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+            <p>Match 3</p>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Name
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                <span class="highlight">Mandy</span> Beddis
+              </dd>
+
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Date of birth
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+              19-09-1993
+              </dd>
+
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Contact information
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+
+                <span class="highlight">Coconut Close<br> Wafford <br>DT01 8HH</span>
+              </dd>
+
+              <fieldset class="nhsuk-fieldset">
+
+
+                <div class="nhsuk-radios nhsuk-radios--inline">
+
+                  <div class="nhsuk-radios__item">
+                    <input class="nhsuk-radios__input" id="example-inline-2" name="example-inline" type="radio" value="no">
+                    <label class="nhsuk-label nhsuk-radios__label" for="example-inline-2">
+
+                    </label>
+                  </div>
+
+                </div>
+              </fieldset>
+
+
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                NHS number
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                <span class="highlight">882 888 0187</span>
+              </dd>
+
+            </div>
+
+          </dl>
+
+        </div>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- RADIOS -->
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-half">
+      <!-- OPTIONS -->
+      <div class="nhsuk-form-group">
+
+        <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h2 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong">
+              Choose where to send the result
+              <span class="nhsuk-hint">If no appropriate address available, save to lab query list</span>
+            </h2>
+          </legend>
+
+
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
+            <label class="nhsuk-label nhsuk-radios__label" for="system">
+              Send to system address
+            </label>
+          </div>
+
+
+
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="gp" name="how-to-resolve" type="radio" value="gp" aria-controls="gp" aria-expanded="false">
+            <label class="nhsuk-label nhsuk-radios__label" for="gp">
+              Send to lab address
+              <span class="nhsuk-hint">
+                For example, GP address.</span>
+            </label>
+          </div>
+
+          <div class="nhsuk-radios nhsuk-radios--conditional">
+            <div class="nhsuk-radios nhsuk-radios--conditional">
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="contact-1" name="how-to-resolve" type="radio" value="address" aria-controls="conditional-contact-1" aria-expanded="false">
+                <label class="nhsuk-label nhsuk-radios__label" for="contact-1">
+                  Enter a new address
+                </label>
+              </div>
+
+              <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
+
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label" for="email">
+                    Building and street
+                  </label>
+                  <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
+                  <label class="nhsuk-label" for="email">
+                    Town or city
+                  </label>
+                  <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
+                  <label class="nhsuk-label" for="email">
+                    County
+                  </label>
+                  <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
+                  <label class="nhsuk-label" for="email">
+                    Postcode
+                  </label>
+                  <input class="nhsuk-input nhsuk-u-width-two-thirds nhsuk-u-margin-bottom-8" id="email" name="email" type="text">
+
+                </div>
+
+              </div>
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="contact-1" name="how-to-resolve" type="radio" value="email" aria-controls="query" aria-expanded="false">
+                <label class="nhsuk-label nhsuk-radios__label" for="query">
+                  Save to lab query list
+                </label>
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </fieldset>
+
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-full">
+
+            <form action="manc-p1" method="post">
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
+                  Comments
+                </label>
+                <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+                  Enter comments if needed
+                </span>
+                <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200 required></textarea>
+                <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
+              </div>
+
+              <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
+
+              {% set name = "Jon Simpson" %}
+
+              {% set commentDate = ("today" | returnDate) %}
+
+              <input type="hidden" id="name" name="name" value="{{commentName}}">
+
+              <input type="hidden" name="date" value={{commentDate}}>
+
+            </form>
+
+            <ul class="nhsuk-comment-container">
+              {% if data.commentsa !=null %}
+
+              <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsa}}</li>
+
+              {% endif %}
+            </ul>
+
+          </div>
+        </div>
+
+
+      </div>
+      <a href="manc-p4" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
+      <a href="manc-process" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Exit without saving</a>
 
     </div>
 
   </div>
 
+</div>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-  {% endblock %}
+{% endblock %}

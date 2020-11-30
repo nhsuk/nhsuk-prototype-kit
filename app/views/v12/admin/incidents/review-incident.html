@@ -4,7 +4,7 @@
 <script type="text/javascript" src="/js/search.js"></script>
 <script type="text/javascript" src="/js/auto.js"></script>
 <style type="text/css" media="screen">
-  .nhsuk-header__navigation-item:nth-child(3) {
+  .nhsuk-header__navigation-item:nth-child(5) {
     border-bottom: 4px solid #d8dde0;
   }
 </style>
@@ -22,38 +22,43 @@ NHS Cervical Screening
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
     {{ backLink({
-      "href": "choose-a-letter",
-      "text": "Back to amending letter text"
+      "href": "enter-incident-crm",
+      "text": "Back to entering CRM Case Number"
     }) }}
 
-    <h1 class="nhsuk-heading-l">Review Letter text changes</h1>
+    <h1 class="nhsuk-heading-l">Review Incident</h1>
 
     <form action="confirmation" method="POST">
       <dl class="nhsuk-summary-list">
         <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">GP / District</dt>
-          <dd class="nhsuk-summary-list__value">{{ data['gp-code'] }}</dd>
+          <dt class="nhsuk-summary-list__key">Incident number</dt>
+          <dd class="nhsuk-summary-list__value">654321</dd>
           <dd class="nhsuk-summary-list__actions"><a href="choose-a-letter">Change<span class="nhsuk-u-visually-hidden"> Change</span></a></dd>
         </div>
         <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Letter</dt>
-          <dd class="nhsuk-summary-list__value">{{ data['gp-letter'] }}</dd>
+          <dt class="nhsuk-summary-list__key">Affected patient's NHS Number</dt>
+          <dd class="nhsuk-summary-list__value">12345678</dd>
           <dd class="nhsuk-summary-list__actions"><a href="choose-a-letter">Change<span class="nhsuk-u-visually-hidden"> Change</span></a></dd>
         </div>
         <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">Previous letter text</dt>
-          <dd class="nhsuk-summary-list__value">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</dd>
+          <dt class="nhsuk-summary-list__key">Incident type</dt>
+          <dd class="nhsuk-summary-list__value">Defer</dd>
           <dd class="nhsuk-summary-list__actions"><a href="amend-letter-text-1">Change<span class="nhsuk-u-visually-hidden"> Change</span></a></dd>
         </div>
         <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">New Letter text</dt>
-          <dd class="nhsuk-summary-list__value">{{ data['gp-letter-textarea'] }}</dd>
+          <dt class="nhsuk-summary-list__key">CRM Case Number</dt>
+          <dd class="nhsuk-summary-list__value">CAS-12345-ABCDE</dd>
+          <dd class="nhsuk-summary-list__actions"><a href="amend-letter-text-1">Change<span class="nhsuk-u-visually-hidden"> Change</span></a></dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Comments</dt>
+          <dd class="nhsuk-summary-list__value"></dd>
           <dd class="nhsuk-summary-list__actions"><a href="amend-letter-text-1">Change<span class="nhsuk-u-visually-hidden"> Change</span></a></dd>
         </div>
       </dl>
 
       {{ button({
-          "text": "Continue",
+          "text": "Submit",
           "classes": "nhsuk-button--ers"
       }) }}
       <p><a href="">Exit without saving</a></p>
