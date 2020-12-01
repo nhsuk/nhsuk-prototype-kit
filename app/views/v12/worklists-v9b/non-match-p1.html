@@ -61,6 +61,35 @@
   });
 </script>
 
+<script>
+  function toggle(btnID, eIDs) {
+    // Feed the list of ids as a selector
+    var theRows = document.querySelectorAll(eIDs);
+    // Get the button that triggered this
+    var theButton = document.getElementById(btnID);
+    // If the button is not expanded...
+    if (theButton.getAttribute("aria-expanded") == "false") {
+      // Loop through the rows and show them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("shown");
+        theRows[i].classList.remove("hidden");
+      }
+      // Now set the button to expanded
+      theButton.setAttribute("aria-expanded", "true");
+      // Otherwise button is not expanded...
+    } else {
+      // Loop through the rows and hide them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("hidden");
+        theRows[i].classList.remove("shown");
+      }
+      // Now set the button to collapsed
+      theButton.setAttribute("aria-expanded", "false");
+    }
+    $('.expanderButton[aria-expanded="true"]').closest('tr').addClass('expandedRow');
+    $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
+  }
+</script>
 
 <style media="screen">
   .clickable-table tbody tr:hover {
@@ -120,7 +149,31 @@ NHS Cervical Screening
           <td>02-07-1979</td>
           <td>345 678 9012</td>
           <td class="nhsuk-table__cell">
-            <button class="expanderButton" type="button" id="{{ buttonId }}" aria-expanded="false" onclick="toggle(this.id,'#{{ detailsId }}');" aria-controls="{{ detailsId }}" aria-label="More details for" aria-labelledby="{{ buttonId }} {{ NameId }}"></button>
+            <button class="expanderButton" type="button" id="btn1" aria-expanded="false" onclick="toggle(this.id,'#row1');" aria-controls="row1" aria-label="More details for" aria-labelledby="row1"></button>
+          </td>
+        </tr>
+        <tr id="row1" class="hidden detailsRow">
+          <td colspan="5">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">
+                  <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Contact information
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      46 Stirling Way
+                      <br>
+                      Sutton
+                      <br>
+                      CB6 2QZ
+                    </dd>
+                  </div>
+                  </dl>
+                </div>
+              </div>
+            </div>
           </td>
         </tr>
       </tbody>
@@ -149,7 +202,7 @@ NHS Cervical Screening
           <tr>
         </thead>
 
-        <tbody class="nhsuk-table__body">
+        <tbody>
           <!-- SYSTEM DEMOGRAPHICS -->
           <div class="nhsuk-form-group">
             <fieldset class="nhsuk-fieldset" aria-describedby="system-patient-demographics">
@@ -167,7 +220,31 @@ NHS Cervical Screening
                   <td><span class="highlight">20</span>-07-1979</td>
                   <td>234 567 8901</td>
                   <td class="nhsuk-table__cell">
-                    <button class="expanderButton" type="button" id="{{ buttonId }}" aria-expanded="false" onclick="toggle(this.id,'#{{ detailsId }}');" aria-controls="{{ detailsId }}" aria-label="More details for" aria-labelledby="{{ buttonId }} {{ NameId }}"></button>
+                    <button class="expanderButton" type="button" id="btn2" aria-expanded="false" onclick="toggle(this.id,'#row2');" aria-controls="row2" aria-label="More details for" aria-labelledby="row2"></button>
+                  </td>
+                </tr>
+                <tr id="row2" class="hidden detailsRow">
+                  <td colspan="5">
+                    <div class="nhsuk-grid-row">
+                      <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                        <div id="reasons-step-0">
+                          <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
+                          <div class="nhsuk-summary-list__row">
+                            <dt class="nhsuk-summary-list__key">
+                              Contact information
+                            </dt>
+                            <dd class="nhsuk-summary-list__value">
+                              46 Stirling Way
+                              <br>
+                              Sutton
+                              <br>
+                              CB6 9IZ
+                            </dd>
+                          </div>
+                          </dl>
+                        </div>
+                      </div>
+                    </div>
                   </td>
                 </tr>
                 <tr role="row" class="nhsuk-table__row">
@@ -181,9 +258,34 @@ NHS Cervical Screening
                   <td>02-07-1979</td>
                   <td>345 678 901<span class="highlight">1</span></td>
                   <td class="nhsuk-table__cell">
-                    <button class="expanderButton" type="button" id="{{ buttonId }}" aria-expanded="false" onclick="toggle(this.id,'#{{ detailsId }}');" aria-controls="{{ detailsId }}" aria-label="More details for" aria-labelledby="{{ buttonId }} {{ NameId }}"></button>
+                    <button class="expanderButton" type="button" id="btn3" aria-expanded="false" onclick="toggle(this.id,'#row3');" aria-controls="row3" aria-label="More details for" aria-labelledby="row3"></button>
                   </td>
                 </tr>
+                <tr id="row3" class="hidden detailsRow">
+                  <td colspan="5">
+                    <div class="nhsuk-grid-row">
+                      <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                        <div id="reasons-step-0">
+                          <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
+                          <div class="nhsuk-summary-list__row">
+                            <dt class="nhsuk-summary-list__key">
+                              Contact information
+                            </dt>
+                            <dd class="nhsuk-summary-list__value">
+                              30 Hemlock Road
+                              <br>
+                              York
+                              <br>
+                              YO31 9DG
+                            </dd>
+                          </div>
+                          </dl>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
               </div>
             </fieldset>
           </div>
