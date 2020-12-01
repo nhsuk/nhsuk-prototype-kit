@@ -266,7 +266,25 @@ router.get("/*/start-adding-test*", function (req, res) {
     //req.session.data["pnlversion"] = version;
     var pnlPatient = patient.getPatient(nhsNumber);
     req.session.data["pnl_patient"] = pnlPatient;
-    
+    req.session.data['action-text'] = "";
+    req.session.data['result-action'] = "";
+    req.session.data['result-infection'] = "";
+    req.session.data['infection-text'] = "";
+    req.session.data['result-text'] = "";
+    req.session.data['result-result'] = "";
+    req.session.data['example-year'] = "";
+    req.session.data['example-month'] = "";
+    req.session.data['example-day'] = "";
+    req.session.data['sender-code'] = "";
+    req.session.data['national-code'] = "";
+    req.session.data['slide-number'] = "";
+    req.session.data['source-code'] = "";
+    req.session.data['result-type'] = "";
+    req.session.data['health-authority'] = "";
+    req.session.data['result-infection'] = "";
+    req.session.data['hpv-primary'] = "";
+    req.session.data['crm'] = "";
+    req.session.data['comments'] = "";
 
     res.redirect("/" + getVersion(req) + "/patient/add-test-result/add-test-result")
 })
