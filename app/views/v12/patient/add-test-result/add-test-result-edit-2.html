@@ -12,7 +12,7 @@
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
 
-    
+  
   <div class="nhsuk-panel-with-label">
     {% include '../../components/pnl-patient-2.html' %}
 
@@ -101,28 +101,7 @@
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Comments</dt>
     <dd class="nhsuk-summary-list__value">
-{{ data['comments'] or '' }}
-    <details class="nhsuk-details">
-                       <summary class="nhsuk-details__summary">
-                         <span class="nhsuk-details__summary-text">
-                           View comments
-                         </span>
-                       </summary>
-                      <div class="nhsuk-details__text">
-                        <div class="nhs-screening-whole-timeline">
-                          <div class="nhs-screening-whole-timeline__item">
-                            <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
-                              <h2 class="nhs-screening-whole-timeline__title">Jane Smith</h2>
-                              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">22-Oct-2020, 09:00:00 am</time></p>
-                              <p class="nhs-screening-whole-timeline__date">{{ data['comments'] or 'comment here' }}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                         
-    </details>
-                           
-                                      
+{% include '../../components/comments-timeline.html' %}                               
     <dd class="nhsuk-summary-list__actions"><a href="add-test-result-add-comment">Add comment<span class="nhsuk-u-visually-hidden"> Comments</span></a></dd>
   </div>
 </dl>

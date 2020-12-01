@@ -28,11 +28,11 @@
         <!--<legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
           Add {{ data['result-type'] }} test details
         </legend>-->
-          <form action="add-test-result-review" method="post">
+          <form action="add-test-result-edit-2" method="post">
             <div class="nhsuk-form-group">
               <h1 class="nhsuk-label-wrapper">
                 <label class="nhsuk-label nhsuk-label--l nhsuk-u-margin-bottom-2" for="example-heading">
-                  Add comment
+                  Add comment to test result
                 </label>
               </h1>
             <div class="nhsuk-form-group">
@@ -41,27 +41,8 @@
               </span>
               <textarea class="nhsuk-textarea" id="example" name="comments" rows="5" aria-describedby="example-hint" autocomplete="off">{{ data.comments }}</textarea>
             </div>
-            
-            <details class="nhsuk-details">
-                       <summary class="nhsuk-details__summary">
-                         <span class="nhsuk-details__summary-text">
-                           View previous comments
-                         </span>
-                       </summary>
-                      <div class="nhsuk-details__text">
-                        <div class="nhs-screening-whole-timeline">
-                          <div class="nhs-screening-whole-timeline__item">
-                            <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-2">
-                              <h2 class="nhs-screening-whole-timeline__title">Jane Smith</h2>
-                              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272"><time datetime="2017-11-20T14:27">22-Oct-2020, 09:00:00 am</time></p>
-                              <p class="nhs-screening-whole-timeline__date">{{ data['comment'] or 'comment here' }}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                         
-            </details>
-
+               {% include '../../components/comments-timeline.html' %}
+              <br>
             <button class="nhsuk-button nhsuk-button--ers" type="submit">Add comment</button>
             <p><a href="../patient-summary-6">Exit without saving</a></p>
           </form>

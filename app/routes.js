@@ -266,6 +266,8 @@ router.get("/*/start-adding-test*", function (req, res) {
     //req.session.data["pnlversion"] = version;
     var pnlPatient = patient.getPatient(nhsNumber);
     req.session.data["pnl_patient"] = pnlPatient;
+    
+
     res.redirect("/" + getVersion(req) + "/patient/add-test-result/add-test-result")
 })
 
