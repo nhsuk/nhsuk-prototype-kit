@@ -15,7 +15,7 @@
 {% block content %}
 <div class="nhsuk-grid-row">
 <div class="nhsuk-grid-column-full">
-  <form id="searchform" action="search-results" method="post" name="search-form">
+  <form id="searchform" action="search-all-results" method="post" name="search-form">
     <div class="nhsuk-form">
       <div class="nhsuk-form-group">
         <div class="nhsuk-grid-row">
@@ -35,7 +35,7 @@
     <!--<div class="nhsuk-form-group">-->
       <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-one-half">
-        <form action="search-results" method="post">
+        <form action="search-all-results" method="post">
         <fieldset class="nhsuk-fieldset">
       <div class="nhsuk-form-group" id="nhsuk-form-group-first-name-advanced">
         <label class="nhsuk-label nhsuk-label__strong" for="first-name-advanced">
@@ -55,7 +55,7 @@
         </span>
         <input class="nhsuk-input nhsuk-input--width-20" id="last-name-advanced" name="last-name" type="text">
       </div>
-      
+    </fieldset>
 
       <div id="nhsuk-form-group-dob-advanced" class="nhsuk-form-group">
         <div class="nhsuk-form-group">
@@ -109,7 +109,17 @@
             <input class="nhsuk-input nhsuk-input--width-10" id="address-postcode" name="address-postcode" type="text">
           </div>
 
-        </fieldset>
+          <fieldset class="nhsuk-fieldset">
+          <div class="nhsuk-checkboxes">
+            <div class="nhsuk-checkboxes__item">
+              <input class="nhsuk-checkboxes__input" type="checkbox" id="widensearch" name="widensearch" value="widensearch">
+              <label class="nhsuk-label nhsuk-checkboxes__label" for="widensearch"></label>
+              Widen search to include similar or misspelt names and postcodes
+            </div>
+
+          </div>
+          </fieldset>
+
         <!--<button class="nhsuk-button">Search</button>-->
       <!--</form>-->
 
@@ -118,7 +128,7 @@
     <div class="nhsuk-form-group">
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-full">
-          <button class="nhsuk-button nhsuk-button--ers" type="submit">Search</button>
+          <button class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4" type="submit">Search</button>
         </div>
       </div>
     </div>
