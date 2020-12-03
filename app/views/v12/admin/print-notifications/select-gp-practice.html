@@ -1,0 +1,123 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(5) {
+    border-bottom: 4px solid #d8dde0;
+  }
+
+  .nhsuk-button, .nhsuk-button--ers, .dropdown .dropbtn, .nhsuk-button--ers_secondary, .nhsuk-button--ers_reverse, .nhsuk-button--ers_reverse:hover, .nhsuk-button--ers_reverse:focus, .nhsuk-button--ers_reject, .nhsuk-blue, .nhsuk-right  {
+    margin-bottom: 0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    {{ backLink({
+      "href": "../index",
+      "text": "Back to Admin GP"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Select a GP Practice to print notifications</h1>
+    
+    <p>GP Practices who have not supplied an email address to receive notifications will appear in this list.</p>
+    {{ table({
+      panel: false,
+      caption: "Skin symptoms and possible causes",
+      firstCellIsHeader: false,
+      head: [
+        {
+          text: "GP Practice Code"
+        },
+        {
+          text: "Address"
+        },
+        {
+          text: "Action"
+        }
+      ],
+      rows: [
+        [
+          {
+            text: "A123456"
+          },
+          {
+            text: "122  Farburn Terrace, CA10 0WP"
+          },
+          {
+            html: '<a href="print-notifications">Select this GP Practice</a>'
+          }
+        ],
+        [
+          {
+            text: "B234567"
+          },
+          {
+            text: "65  Chapel Lane, AB41 4YZ"
+          },
+          {
+            html: '<a href="print-notifications">Select this GP Practice</a>'
+          }
+        ],
+        [
+          {
+            text: "C345678"
+          },
+          {
+            text: "78  Scotsburn Rd, RG20 5BX"
+          },
+          {
+            html: '<a href="print-notifications">Select this GP Practice</a>'
+          }
+        ],
+        [
+          {
+            text: "D456789"
+          },
+          {
+            text: "81  Berkeley Rd, AB2 1ZB"
+          },
+          {
+            html: '<a href="print-notifications">Select this GP Practice</a>'
+          }
+        ],
+        [
+          {
+            text: "E567890"
+          },
+          {
+            text: "91  Roker Terrace, PE6 7EW"
+          },
+          {
+            html: '<a href="print-notifications">Select this GP Practice</a>'
+          }
+        ],
+        [
+          {
+            text: "F678901"
+          },
+          {
+            text: "120  Preston Rd, BH20 8WG"
+          },
+          {
+            html: '<a href="print-notifications">Select this GP Practice</a>'
+          }
+        ]
+      ]
+}) }}
+
+  </div>
+</div>
+{% endblock %}
