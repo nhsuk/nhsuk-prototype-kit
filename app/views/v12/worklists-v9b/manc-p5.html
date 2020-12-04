@@ -40,6 +40,17 @@
     else
       return true;
   }
+
+  window.onscroll = function() {myFunction()};
+var navbar = document.getElementById("lab");
+var sticky = navbar.offsetTop;
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    lab.classList.add("sticky")
+  } else {
+    lab.classList.remove("sticky");
+  }
+}
 </script>
 
 <!-- clickable rows with hover colour -->
@@ -71,6 +82,18 @@
   .highlight_row {
     background: #d8dde0;
   }
+
+  #lab {
+    background-color: #f0f4f5;
+  }
+
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    box-shadow: 0px 6px 10px #768692;
+  }
 </style>
 
 {% endblock %}
@@ -101,7 +124,7 @@ NHS Cervical Screening
 
     <h3 class=>Lab patient demographics</h3>
 
-    <table class="order-table">
+    <table class="order-table" id="lab">
       <thead>
         <tr>
           <th>Name
