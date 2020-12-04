@@ -49,15 +49,15 @@ NHS Cervical Screening
   <div class="nhsuk-grid-column-three-quarters">
     {{ backLink({
       "href": "enter-gp-code",
-      "text": "Back to entering GP Practice / District code"
+      "text": "Back to entering GP practice / District code"
     }) }}
 
-    <h1 class="nhsuk-heading-l">Amend GP Practice {{ data['gp-code'] or 'A123456' }} Invite and Reminder letter text</h1>
+    <h1 class="nhsuk-heading-l">Amend GP practice {{ data['gp-code'] or 'A123456' }} Invite and Reminder letter text</h1>
 
-    <p>GP Practice letter text is the same for both Invites and Reminders.</p>
+    <p>GP practice letter text is the same for both Invites and Reminders.</p>
     
     {{ details({
-      "text": "View previous GP Practice letter text",
+      "text": "View previous GP practice letter text",
       "HTML": "
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
       "
@@ -66,7 +66,7 @@ NHS Cervical Screening
     <form action="amend-letter-text-crm" method="POST">
       <div class="nhsuk-form-group">
         <label class="nhsuk-label nhsuk-label__strong" for="example">
-          GP Practice letter text
+          GP practice letter text
         </label>
         <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsc" value="commentsc" name="gp-letter-textarea" rows="5" data-length=100></textarea>
         <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">100</span> characters remaining</p>

@@ -1,12 +1,12 @@
 <h1 class="nhsuk-fieldset__legend--m">
-  How long do you want to defer the patient for?
+  How long do you want to defer the patient for from todays date?
 </h1>
 
   {% set pnlDeferInfo %}
     {% if data['pnl-defer-reason'] ==  'Pregnancy' %}
-      <p>Minimum deferral is 3 months after date of delivery</br>Maximum deferral can not exceed 12 months</p>
+      <p>Minimum deferral is 3 months after date of delivery</br>Maximum deferral is 12 months from today's date</p>
     {% else %}
-      <p>Minimum deferral is X months</br>Maximum deferral can not exceed X months</p>
+      <p>Minimum deferral is X months, which will set the next test due date 10 weeks from today's date</br>Maximum deferral can not exceed X months</p>
     {% endif %}
   {% endset %}
 
