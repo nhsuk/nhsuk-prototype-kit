@@ -48,17 +48,20 @@ function checkSpecialKeys(e) {
     <h1 class="nhsuk-heading-l">Incident Information</h1>
     <div class="nhsuk-inset-text">
       <span class="nhsuk-u-visually-hidden" >Information: </span>
-      <p>Incident information is not audited in this system and is only used for reference</p>
+      <p>Incident information is added to the audit in the system. It is for reference only.</p>
     </div>
     <form action="../patient-summary-6" method="POST">
       <div class="nhsuk-form-group">
         <label class="nhsuk-label nhsuk-label__strong" for="example">
           Incident text
         </label>
+        <div class="nhsuk-hint" id="example-hint">
+          Enter, edit or delete incident text shown on the patient summary.
+        </div>
         <textarea class="nhsuk-textarea commentBox char-textarea" id="incidenttext" value="incident-text" name="incident-text" rows="5" data-length=100>{{ data['incident-text'] }}</textarea>
-        <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">100</span> characters remaining</p>
+        <!--<p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">100</span> characters remaining</p>-->
       </div>
-
+{#
       {{ checkboxes({
         "idPrefix": "example",
         "name": "show-incident",
@@ -70,7 +73,7 @@ function checkSpecialKeys(e) {
           }
         ]
       }) }}
-
+#}
       <button class="nhsuk-button nhsuk-button--ers">Submit</button>
       <p><a href="../patient-summary-5">Exit without saving</a></p> 
       </div>
