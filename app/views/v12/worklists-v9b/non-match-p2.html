@@ -361,6 +361,45 @@ NHS Cervical Screening
       </div>
       </div>
       </div>
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-half">
+
+          <form action="non-match-p2" method="post">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
+                Comments
+              </label>
+              <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+                Enter comments if needed
+              </span>
+              <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200 required></textarea>
+              <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
+            </div>
+
+            <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
+
+            {% set name = "Jon Simpson" %}
+
+            {% set commentDate = ("today" | returnDate) %}
+
+            <input type="hidden" id="name" name="name" value="{{commentName}}">
+
+            <input type="hidden" name="date" value={{commentDate}}>
+
+          </form>
+
+          <ul class="nhsuk-comment-container">
+            {% if data.commentsa !=null %}
+
+            <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsa}}</li>
+
+            {% endif %}
+          </ul>
+
+        </div>
+      </div>
+
       <a href="manc-query" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Save and exit</a>
       <a href="manc-query" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-4">Save to lab query list</a>
       <p><a href="manc-query">Exit without saving</a></p>
