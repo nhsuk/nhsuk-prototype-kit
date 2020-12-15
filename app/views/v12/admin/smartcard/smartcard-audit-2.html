@@ -1,0 +1,213 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(5) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+  {{ backLink({
+      "href": "enter-smartcard-number",
+      "text": "Back to entering smartcard ID"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Smartcard activity for Jane Smith({{ data['smartcard-id'] or '1234567890' }})</h1>
+
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-one-third">
+        {{ dateInput({
+          "id": "example",
+          "namePrefix": "example",
+          "fieldset": {
+            "legend": {
+              "text": "Date range from",
+              "classes": "nhsuk-label nhsuk-label__strong",
+              "isPageHeading": false
+            }
+          },
+          "items": [
+            {
+              "name": "day",
+              "classes": "nhsuk-input--width-2"
+            },
+            {
+              "name": "month",
+              "classes": "nhsuk-input--width-2"
+            },
+            {
+              "name": "year",
+              "classes": "nhsuk-input--width-4"
+            }
+          ]
+        }) }}
+      </div>
+
+      <div class="nhsuk-grid-column-one-third">
+        {{ dateInput({
+          "id": "example",
+          "namePrefix": "example",
+          "fieldset": {
+            "legend": {
+              "text": "Date range to",
+              "classes": "nhsuk-label nhsuk-label__strong",
+              "isPageHeading": false
+            }
+          },
+          "items": [
+            {
+              "name": "day",
+              "classes": "nhsuk-input--width-2"
+            },
+            {
+              "name": "month",
+              "classes": "nhsuk-input--width-2"
+            },
+            {
+              "name": "year",
+              "classes": "nhsuk-input--width-4"
+            }
+          ]
+        }) }}
+      </div>
+
+      <div class="nhsuk-grid-column-one-third">
+        <div style="margin-top:-1px">
+        {{ input({
+          "label": {
+          "text": "Filter by action",
+          "classes": "nhsuk-label nhsuk-label__strong nhsuk-u-margin-top-5"
+          },
+          "id": "input-width-10",
+          "name": "test-width-10",
+          "classes": "nhsuk-input--width-10"
+        }) }}
+        </div>
+      </div>
+
+      <div class="nhsuk-grid-column-one-quarter">
+       {# {{ input({
+          "label": {
+          "text": "10 character width"
+          },
+          "id": "input-width-10",
+          "name": "test-width-10",
+          "classes": "nhsuk-input--width-10"
+        }) }} #}
+      </div>
+    </div>
+
+       {{ table({
+      panel: false,
+      caption: "Skin symptoms and possible causes",
+      firstCellIsHeader: false,
+      head: [
+        {
+          text: "Time and Date"
+        },
+        {
+          text: "Action"
+        },
+        {
+          text: "Participant ID"
+        }
+      ],
+      rows: [
+        [
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Login"
+          },
+          {
+            text: ""
+          }
+        ],
+        [
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Logout"
+          },
+          {
+            text: ""
+          }
+        ],
+        [
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Login"
+          },
+          {
+            text: ""
+          }
+        ],
+        [
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Search for participant"
+          },
+          {
+            text: "1234567890"
+          }
+        ],
+        [
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "View Participant"
+          },
+          {
+            text: "1234567890"
+          }
+        ],
+        [
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Login"
+          },
+          {
+            text: ""
+          }
+        ],
+        [
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Logout"
+          },
+          {
+            text: ""
+          }
+        ]
+      ]
+}) }}
+
+  </div>
+</div>
+
+{% endblock %}
