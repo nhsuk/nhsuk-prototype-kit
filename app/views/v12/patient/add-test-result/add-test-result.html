@@ -34,33 +34,60 @@
                 <div class="nhsuk-form-group">
       
                 <fieldset class="nhsuk-fieldset">
-                     <div class="nhsuk-radios">
-                    <div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="example-1" name="result-type" type="radio" value="English" {{ checked("result-type", "English") }}>
-                      <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-                        English
-                      </label>
-                    </div>
-                    <div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="example-2" name="result-type" type="radio" value="Scottish" {{ checked("result-type", "Scottish") }}>
-                      <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                        Scottish
-                      </label>
-                    </div>
-                    <div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="example-2" name="result-type" type="radio" value="Welsh" {{ checked("result-type", "Welsh") }}>
-                      <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                        Welsh
-                      </label>
-                    </div>
-                    <!--<div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="example-2" name="result-type" type="radio" value="Abroad" {{ checked("result-type", "Abroad") }}>
-                      <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                        Abroad
-                      </label>
-                    </div>-->
-                  </div>
-                </fieldset>
+                    
+
+                        <div class="nhsuk-radios nhsuk-radios--conditional">
+
+                            <div class="nhsuk-radios__item">
+                              <input class="nhsuk-radios__input" id="example-1" name="result-type" type="radio" value="English" aria-controls="conditional-example-1" aria-expanded="false">
+                              <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                                English
+                              </label>
+                            </div>
+
+                                <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-example-1">
+      
+                                         <div class="nhsuk-form-group">
+                                           <label class="nhsuk-label" for="email">
+                                             Are you recording a self sample test?
+                                           </label>
+                                             <div class="nhsuk-radios__item">
+                                               <input class="nhsuk-radios__input" id="yes-selfsample" name="yes" type="radio">
+                                                  <label class="nhsuk-label nhsuk-radios__label" for="yes-selfsample">
+                                                    Yes, this is a self sample test
+                                                  </label>
+                                              </div>
+                                              <div class="nhsuk-radios__item">
+                                               <input class="nhsuk-radios__input" id="no-selfsample" name="no" type="radio">
+                                                   <label class="nhsuk-label nhsuk-radios__label" for="no-selfsample">
+                                                      No, this is not a self sample test
+                                                   </label>
+                                              </div>
+                                           </div>
+                                 </div>
+                         </div>
+
+         <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-2" name="result-type" type="radio" value="Scottish" {{ checked("result-type", "Scottish") }}>
+              <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                Scottish
+              </label>
+            </div>
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-2" name="result-type" type="radio" value="Welsh" {{ checked("result-type", "Welsh") }}>
+              <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                Welsh
+              </label>
+            </div>
+            
+            <!--<div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="example-2" name="result-type" type="radio" value="Abroad" {{ checked("result-type", "Abroad") }}>
+              <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                Abroad
+              </label>
+            </div>-->
+          </div>
+        </fieldset>
               <br>
                 </div>
                   <button type="submit" class="nhsuk-button nhsuk-button--ers">
