@@ -26,26 +26,40 @@ NHS Cervical Screening
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
     {{ backLink({
-      "href": "enter-gp-code",
-      "text": "Back to entering GP practice Code"
+      "href": "print-notifications",
+      "text": "Back to choosing a notification to print"
     }) }}
 </div>
 </div>
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
-    <h1 class="nhsuk-heading-l">Print Notifications for {{ data['gp-code'] or 'A123456' }}</h1>
+    <h1 class="nhsuk-heading-l">Print notifications for {{ data['gp-code'] or 'A123456' }}</h1>
 
-    <div class="no-print">
+    <!--<div class="no-print">
       <h2>CSAS guidance</h2>
       <p>some guidance here for CSAS</p>
       <p>some guidance here for CSAS</p>
       <p>some guidance here for CSAS</p>
-    </div>
+    </div>-->
+    <!--
     <ul>
       <li>GP surgery: {{ data['gp-code'] or 'A123456' }}</li>
       <li>Date range: 01-01-2021 - 08-01-21</li>
     </ul>
+    -->
 
+    <p>Use this list to review the patients at your GP surgery who are due to be invited for cervical screening.</p>
+    <p>You can cease them from screening or defer their invitation if needed. If you do not this before 17 Jan 2021 the patient will be invited for cervical screening on their next test due date.</p>
+    <p>
+      To cease or defer a patient:
+      <ul>
+        <li>download the correct cease or defer form from the CSAS primary care support website: <a href="https://www.csas.nhs.uk/support/">https://www.csas.nhs.uk/support/</a></li>
+        <li>print the form</li>
+        <li>fill in and sign the form (needs to be done by a GP, nurse or clinician, or by the patient for the ‘Informed consent for withdrawal from the cervical screening programme’ form)</li>
+        <li>scan the form</li>
+        <li>submit it to the CSAS website: <a href="https://www.csas.nhs.uk/contact-us/">https://www.csas.nhs.uk/contact-us/</a></li>
+      </ul>
+    </p>
 {% if data['patients'] == null %} 
 <meta http-equiv="refresh" content="2;url=/v12/admin/print-notifications/print-patients-due-to-be-invited" />
   <div class="styleguide-example">
