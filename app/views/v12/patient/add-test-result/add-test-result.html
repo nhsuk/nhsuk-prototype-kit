@@ -52,13 +52,13 @@
                                              Are you recording a self sample test?
                                            </label>
                                              <div class="nhsuk-radios__item">
-                                               <input class="nhsuk-radios__input" id="yes-selfsample" name="yes" type="radio">
+                                               <input class="nhsuk-radios__input" id="yes-selfsample" name="result-type" value="Self Sample"type="radio" {{ checked("result-type", "Self Sample") }}>
                                                   <label class="nhsuk-label nhsuk-radios__label" for="yes-selfsample">
                                                     Yes, this is a self sample test
                                                   </label>
                                               </div>
                                               <div class="nhsuk-radios__item">
-                                               <input class="nhsuk-radios__input" id="no-selfsample" name="no" type="radio">
+                                               <input class="nhsuk-radios__input" id="no-selfsample" name="result-type" value="English" type="radio" {{ checked("result-type", "English") }}>
                                                    <label class="nhsuk-label nhsuk-radios__label" for="no-selfsample">
                                                       No, this is not a self sample test
                                                    </label>
