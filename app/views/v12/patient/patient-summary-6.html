@@ -43,7 +43,7 @@
   <div class="nhsuk-grid-column-three-quarters">
     <h1 class="nhsuk-heading-l">Patient summary</h1>
       
-      {% if (data['show-incident'] == 'true') and (data['incident-text'] != '') %}
+      {% if data['incident-text'] != '' %}
         <div class="nhsuk-inset-text nhsuk-u-margin-bottom-4 nhsuk-u-margin-top-4">
           <span class="nhsuk-u-visually-hidden">Information: </span>
           <p>Incident: {{ data['incident-text'] or '123456A has been logged against this patient' }}</p>
