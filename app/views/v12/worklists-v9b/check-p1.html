@@ -1,25 +1,102 @@
 {% extends "layout-v2.html" %}
 
 {% block pageScripts %}
-  <script type="text/javascript" src="/js/reveal.js"></script>
-  <script type="text/javascript" src="/js/comments.js"></script>
+<script type="text/javascript" src="/js/reveal.js"></script>
+<script type="text/javascript" src="/js/comments.js"></script>
 
 <script>
   function closeRightMenu() {
     document.getElementByClass("nhsuk-sidebar-hidden").style.display = "none";
   }
   $(document).ready(function() {
-     $(".sidebarbttn").click(function () {
-     $(".nhsuk-sidebar-hidden").toggle();
+    $(".sidebarbttn").click(function() {
+      $(".nhsuk-sidebar-hidden").toggle();
     });
 
-   });
+  });
 </script>
-<style type="text/css" media="screen">
-  .nhsuk-header__navigation-item:nth-child(3){
-    border-bottom:4px solid #d8dde0;
+
+<script>
+  $(".char-textarea").on("keyup", function(event) {
+    checkTextAreaMaxLength(this, event);
+  });
+
+  function checkTextAreaMaxLength(textBox, e) {
+
+    var maxLength = parseInt($(textBox).data("length"));
+
+
+    if (!checkSpecialKeys(e)) {
+      if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
+    }
+    $(".char-count").html(maxLength - textBox.value.length);
+
+    return true;
+  }
+
+  function checkSpecialKeys(e) {
+    if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
+      return false;
+    else
+      return true;
+  }
+</script>
+
+<!-- clickable rows with hover colour -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.clickable-table tr').click(function(event) {
+      if (event.target.type !== 'radio') {
+        $(':radio', this).trigger('click');
+      }
+    });
+
+    $("input[type='radio']").change(function(e) {
+      e.stopPropagation();
+      $('.clickable-table tr').removeClass("highlight_row");
+      if ($(this).is(":checked")) {
+        $(this).closest('tr').addClass("highlight_row");
+      }
+    });
+  });
+</script>
+
+<script>
+  function toggle(btnID, eIDs) {
+    // Feed the list of ids as a selector
+    var theRows = document.querySelectorAll(eIDs);
+    // Get the button that triggered this
+    var theButton = document.getElementById(btnID);
+    // If the button is not expanded...
+    if (theButton.getAttribute("aria-expanded") == "false") {
+      // Loop through the rows and show them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("shown");
+        theRows[i].classList.remove("hidden");
+      }
+      // Now set the button to expanded
+      theButton.setAttribute("aria-expanded", "true");
+      // Otherwise button is not expanded...
+    } else {
+      // Loop through the rows and hide them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("hidden");
+        theRows[i].classList.remove("shown");
+      }
+      // Now set the button to collapsed
+      theButton.setAttribute("aria-expanded", "false");
+    }
+    $('.expanderButton[aria-expanded="true"]').closest('tr').addClass('expandedRow');
+    $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
+  }
+</script>
+
+<style media="screen">
+  .clickable-table tbody tr:hover {
+    cursor: pointer;
   }
 </style>
+
 
 {% endblock %}
 {% block pageTitle %}
@@ -33,7 +110,6 @@ NHS Cervical Screening
 
 {% block content %}
 
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
@@ -44,181 +120,229 @@ NHS Cervical Screening
 
     <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to check</h1>
 
+        <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-padding-top-3 nhsuk-u-padding-bottom-3">
+          <span class="nhsuk-u-visually-hidden">System demographic details and system address used</span>
+          <h3 class="nhsuk-heading-s">System demographic details and system address used</h3>
+          <p> <strong>Processor:</strong> Josie Driver</p>
+        </div>
+
+    <h3>Lab patient demographics</h3>
+
+    <table class="nhsuk-table-clickable bna-table">
+      <thead>
+        <tr>
+          <th style="width: 25%">Name
+          </th>
+          <th style="width: 25%">Date of birth
+          </th>
+          <th style="width: 25%">NHS number
+          </th>
+          <th style="width: 25%">View address
+          </th>
+        <tr>
+      </thead>
+
+      <tbody>
+        <!-- LAB DEMOGRAPHICS -->
+        <tr class="nhsuk-table__row">
+          <td>Claudia Beddis</td>
+          <td>19-09-1993</td>
+          <td>234 567 8901</td>
+          <td class="nhsuk-table__cell">
+            <button class="expanderButton" type="button" id="btn1" aria-expanded="false" onclick="toggle(this.id,'#row1');" aria-controls="row1" aria-label="More details for" aria-labelledby="row1"></button>
+          </td>
+        </tr>
+        <tr id="row1" class="hidden detailsRow">
+          <td colspan="5">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">
+                  <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
+                    <div class="nhsuk-summary-list__row">
+                      <dt class="nhsuk-summary-list__key">
+                        Contact information
+                      </dt>
+                      <dd class="nhsuk-summary-list__value">
+                        46 Stirling Way
+                        <br>
+                        Sutton
+                        <br>
+                        CB6 2QZ
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
 
-
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-one-quarter">
-<div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-0 nhsuk-u-margin-bottom-2" </div>
-       <span class="nhsuk-u-visually-hidden">System details used </span>
-       <h3 class="nhsuk-heading-s">System details used</h3>
-              <p> <strong>Processor:</strong> Josie Driver</p>
-    </div>
-</div>
-</div>
+  <div class="nhsuk-grid-column-full">
 
+    <h3 class="nhsuk-u-margin-top-4">System patient demographics</h3>
 
+    <form action="non-match-p2" method="post">
+      <table class="nhsuk-table-clickable bna-table clickable-table">
+        <thead>
+          <tr>
+            <th style="width: 10%"></th>
+            <th>Name
+            </th>
+            <th>Date of birth
+            </th>
+            <th>NHS number
+            </th>
+            <th>View address</th>
+          <tr>
+        </thead>
 
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-one-half">
-    <div class="nhsuk-panel-with-label">
-      <h3 class="nhsuk-panel-with-label__label">Lab details</h3>
+        <tbody>
+          <!-- SYSTEM DEMOGRAPHICS -->
+          <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset" aria-describedby="system-patient-demographics">
+              <legend class="nhsuk-fieldset__legend">
+              </legend>
+              <div class="nhsuk-radios">
+                <tr role="row" class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell">
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="patient2a" name="system-dem-choice" type="radio" value="patient2a" checked>
+                      <label class="nhsuk-label nhsuk-radios__label" for="patient2a"></label>
+                    </div>
+                  </td>
+                  <td>Claudia Jones Beddis</td>
+                  <td>19-09-1983</td>
+                  <td>234 567 8901</td>
+                  <td class="nhsuk-table__cell">
+                    <button class="expanderButton" type="button" id="btn2" aria-expanded="false" onclick="toggle(this.id,'#row2');" aria-controls="row2" aria-label="More details for" aria-labelledby="row2"></button>
+                  </td>
+                </tr>
+                <tr id="row2" class="hidden detailsRow">
+                  <td colspan="5">
+                    <div class="nhsuk-grid-row">
+                      <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                        <div id="reasons-step-0">
+                          <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
+                            <div class="nhsuk-summary-list__row">
+                              <dt class="nhsuk-summary-list__key">
+                                Contact information
+                              </dt>
+                              <dd class="nhsuk-summary-list__value">
+                                12 Poplars Close
+                                <br>
+                                Burwell
+                                <br>
+                                CB25 BOC
+                              </dd>
+                            </div>
+                          </dl>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr role="row" class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell">
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="patient2b" name="system-dem-choice" type="radio" value="patient2b">
+                      <label class="nhsuk-label nhsuk-radios__label" for="patient2b"></label>
+                    </div>
+                  </td>
+                  <td>Claudette Beddis</td>
+                  <td>19-09-1993</td>
+                  <td>234 568 8901</td>
+                  <td class="nhsuk-table__cell">
+                    <button class="expanderButton" type="button" id="btn3" aria-expanded="false" onclick="toggle(this.id,'#row3');" aria-controls="row3" aria-label="More details for" aria-labelledby="row3"></button>
+                  </td>
+                </tr>
+                <tr id="row3" class="hidden detailsRow">
+                  <td colspan="5">
+                    <div class="nhsuk-grid-row">
+                      <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                        <div id="reasons-step-0">
+                          <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
+                            <div class="nhsuk-summary-list__row">
+                              <dt class="nhsuk-summary-list__key">
+                                Contact information
+                              </dt>
+                              <dd class="nhsuk-summary-list__value">
+                                42 Mulehouse Road
+                                <br>
+                                Sheffield
+                                <br>
+                                S10 1TA
+                              </dd>
+                            </div>
+                          </dl>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
 
-      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+              </div>
+            </fieldset>
+          </div>
+        </tbody>
+      </table>
 
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Name
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            Claudia Potter
-          </dd>
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-half">
+
+              <ul class="nhsuk-comment-container">
+                <li class="nhsuk-panel"><span class="name"> Josie Driver</span> <span class="date"><strong>20-Jul-2020</strong></span>Claudia Jones Beddis picked as NHS number matches. Chose system address as postcode matches address.</li>
+              </ul>
+
+          <form action="non-match-p1" method="post">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
+                Comments
+              </label>
+              <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+                Enter comments if needed
+              </span>
+              <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200 required></textarea>
+              <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
+            </div>
+
+            <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
+
+            {% set name = "Jon Simpson" %}
+
+            {% set commentDate = ("today" | returnDate) %}
+
+            <input type="hidden" id="name" name="name" value="{{commentName}}">
+
+            <input type="hidden" name="date" value={{commentDate}}>
+
+          </form>
+
+          <ul class="nhsuk-comment-container">
+            {% if data.commentsa !=null %}
+
+            <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsa}}</li>
+
+            {% endif %}
+          </ul>
 
         </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Date of birth
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            01-01-1970
-          </dd>
-
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Contact information
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            20 Thornhill Street<br>Pudsey<br> LS28 7PB
-          </dd>
-        </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            NHS number
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class=""> 238 120 4388 </span>
-          </dd>
-
-        </div>
-
-      </dl>
-    </div>
-  </div>
-
-  <div class="nhsuk-grid-column-one-half">
-    <div class="nhsuk-panel-with-label">
-      <h3 class="nhsuk-panel-with-label__label">System details</h3>
-
-      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+      </div>
 
 
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Name
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            Claudia <span class="highlight"> Louise </span> Potter
-          </dd>
-
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Date of birth
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            01-01-1970
-          </dd>
-
-        </div>
-
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            Contact information
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            20 Thornhill Street<br>Pudsey<br> LS28 <span class="highlight">7ED</span>
-          </dd>
-        </div>
-        <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">
-            NHS number
-          </dt>
-          <dd class="nhsuk-summary-list__value">
-            <span class=""> 238 120 4388 </span>
-          </dd>
-
-        </div>
-      </dl>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-  <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-one-half">
-<ul class="nhsuk-comment-container">
-
-  <li class="nhsuk-panel"><span class="name"> Josie Driver</span> <span class="date"><strong>20-Jul-2020</strong></span> System details used.</li>
-  			</ul>
-</div>
-</div>
-
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-one-half">
-
-    <form action="check-p1" method="post">
-    <div class="nhsuk-form-group">
-      <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
-        Comments
-      </label>
-      <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-        Enter comments if needed
-      </span>
-      <textarea class="nhsuk-textarea commentBox" id="commentsch1" value="commentsch1" name="commentsch1" rows="5" data-length=200></textarea>
-
-    </div>
-
-    <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
-
-    {% set name = "Jon Simpson" %}
-
-    {% set commentDate = ("today" | returnDate) %}
-
-    <input type="hidden" id="name" name="name" value="{{commentName}}">
-
-      <input type="hidden" name="date" value={{commentDate}}>
+      <a href="check-p2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Accept match</a>
+      <a href="check-p2" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Send back to processor</a>
+      <p><a href="manc-check">Exit without saving</a></p>
 
     </form>
-
-    <ul class="nhsuk-comment-container">
-      {% if data.commentsch1 !=null %}
-
-  <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsch1}}</li>
-
-  {% endif %}
-  			</ul>
-
-</div>
-</div>
-
-
-    <a href="check-p2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Accept match</a>
-    <a href="check-p2" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Send back to processor</a>
-    <p><a href="manc-check">Exit without saving</a></p>
-
   </div>
-
 </div>
+
 
 
 

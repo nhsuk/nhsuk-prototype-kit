@@ -33,6 +33,33 @@ NHS Cervical Screening
     <h1 class="nhsuk-heading-l">Select a GP practice to print notifications</h1>
     
     <p>GP practices who have not supplied an email address to receive notifications will appear in this list.</p>
+
+    <details class="nhsuk-details">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          What to do if your GP surgery is not listed?
+        </span>
+      </summary>
+      <div class="nhsuk-details__text">
+        <mark>guidance around what to do</mark></br>
+        <form action="print-notifications" method="">
+          {{ input({
+            "label": {
+            "text": "Enter GP Practice Code"
+            },
+            "id": "input-width-10",
+            "name": "gp-code",
+            "classes": "nhsuk-input--width-10"
+          }) }}
+
+          {{ button({
+            "text": "Submit",
+            "classes": "nhsuk-button nhsuk-button--ers"
+          }) }}
+        </form>
+      </div>
+    </details>
+
     {{ table({
       panel: false,
       caption: "Skin symptoms and possible causes",
