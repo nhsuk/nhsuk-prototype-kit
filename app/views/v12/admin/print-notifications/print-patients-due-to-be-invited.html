@@ -34,7 +34,7 @@ NHS Cervical Screening
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     <h1 class="nhsuk-heading-l">Print patients due to be invited for {{ data['gp-code'] or 'A123456' }}</h1>
-  <button class="nhsuk-button nhsuk-button--ers">Print</button>
+    <p class="no-print"><a onclick="window.print(); " class="nhsuk-button nhsuk-button--ers">Print</a></p>
     <!--<div class="no-print">
       <h2>CSAS guidance</h2>
       <p>some guidance here for CSAS</p>
