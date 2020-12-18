@@ -46,9 +46,15 @@
 
         {% endif %}
 
-          <a href="add-test-result-crm" class="nhsuk-button nhsuk-button--ers">Ok, Continue</a>
+        {% if data['edit-review'] == 'true' %}
+             <a href="add-test-result-crm" class="nhsuk-button nhsuk-button--ers">Ok, Continue</a>
+        {% else %}
+             <a href="add-test-result-crm-edit" class="nhsuk-button nhsuk-button--ers">Ok, Continue</a>
+        {% endif %}
+          <!-- <a href="add-test-result-crm" class="nhsuk-button nhsuk-button--ers">Ok, Continue</a>-->
 
-          <p><a href="../patient-summary-6">Exit without saving</a></p>
+          
+        <p><a href="../patient-summary-6">Exit without saving</a></p>
       </fieldset>
   </div>
 </div>

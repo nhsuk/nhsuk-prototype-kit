@@ -31,7 +31,7 @@
             Add {{ data['result-type'] }} test details
           </legend>
           <form action="add-test-result-result" method="post">
-            {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
+            {% if data['result-type']== 'English' or data['result-type']== 'Welsh' or data['result-type']== 'Self Sample'%}
               {{ input({
                 "label": {
                   "text": "National Code",
@@ -47,6 +47,14 @@
                 "value": data['national-code']
               }) }}
             {% endif %}
+
+
+           {% if data ['result-type'] == 'Self Sample' %}
+           {% set sourceValue= '6' %}
+           {% else %}
+           {% set sourceValue= data['source-code'] %}
+           {% endif %}
+
             {% if data['result-type']!= 'Abroad'%}
              {{ input({
                "label": {
@@ -57,10 +65,17 @@
                "name": "source-code",
                "classes": "nhsuk-input--width-2",
                "autocomplete": "off",
-               "value": data['source-code']
+               "value": sourceValue
              }) }}
             {% endif %}
-            {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
+
+           {% if data ['result-type'] == 'Self Sample' %}
+           {% set senderValue= 'SLFSMP' %}
+           {% else %}
+           {% set senderValue= data['sender-code'] %}
+           {% endif %}
+
+            {% if data['result-type']== 'English' or data['result-type']== 'Welsh' or data['result-type']== 'Self Sample'%}
              {{ input({
                "label": {
                  "text": "Sender Code",
@@ -73,9 +88,10 @@
                "name": "sender-code",
                "classes": "nhsuk-input--width-10",
                "autocomplete": "off",
-               "value": data['sender-code']
+               "value": senderValue
              }) }}
             {% endif %}
+            
              {% if data['result-type']== 'Scottish'%}
              {{ input({
                "label": {
