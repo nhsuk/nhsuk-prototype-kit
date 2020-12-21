@@ -1,0 +1,69 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+{% endblock %}
+
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "false"
+  })
+}}
+{% endblock %}
+
+{% block patientBanner %}
+  {% include '../components/new-patient-banner.html' %}
+{% endblock %}
+
+{% block content %}
+
+<nav class="nhsuk-sub-navigation">
+  <ul class="nhsuk-sub-navigation__list">
+    <li class="nhsuk-sub-navigation__item"><a href="new-patient-summary" class="nhsuk-sub-navigation__link">Patient Summary</a></li>
+    <li class="nhsuk-sub-navigation__item"><a href="#" class="nhsuk-sub-navigation__link">Audit</a></li>
+    <li class="nhsuk-sub-navigation__item"><a href="new-gp-info" class="nhsuk-sub-navigation__link" aria-current="page">GP Information</a></li>
+
+  </ul>
+</nav>
+
+{% set address %}
+  <p>{{ data.gpinfo.address_line_1 or 'IVESON APPROACH' }}</p>
+  <p>{{ data.gpinfo.address_line_3 or 'LEEDS' }}</p>
+  <p>{{ data.gpinfo.address_line_4 or 'WEST YORKSHIRE' }}</p>
+  <p>{{ data.gpinfo.address_line_5 or 'ENGLAND' }}</p>
+  <p>{{ data.gpinfo.postcode or 'LS16 6FR' }}</p>
+{% endset %}
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-full">
+    <h1 class="nhsuk-heading-l">GP Information</h1>
+
+    {{ summaryList({
+    rows: [
+    {
+      key: { text: "Practice Code" },
+      value: { text: data.gpinfo.organisation_code or 'B86044' }
+    },
+    {
+      key: { text: "Practice Name" },
+      value: { text: data.gpinfo.name or "IRELAND WOOD SURGERY" }
+    },
+    {
+      key: { text: "Practice Address" },
+      value: { html: address }
+    }
+  ]
+  }) }}
+  </div>
+</div>
+{% endblock %}

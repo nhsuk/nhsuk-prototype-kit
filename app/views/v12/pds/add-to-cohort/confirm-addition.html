@@ -1,0 +1,84 @@
+{% extends "layout-v2.html" %}
+
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header-3.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+
+    <div class="nhsuk-back-link nhsuk-u-margin-bottom-4">
+      <a class="nhsuk-back-link__link" href="consent">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Back to patient consent</a>
+    </div>
+
+    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-8">
+      <h3 class="nhsuk-heading-s">Patient successfully added</h3>
+    </div>
+
+    <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">Patient details</h3>
+
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Olly Smith
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            04-06-1988
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            NHS number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            834 469 0382
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Contact information
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            30 Hemlock Road<br>
+            York<br>
+            YO31 9DG<br>
+          </dd>
+        </div>
+      </dl>
+    </div>
+
+    <h3>What happens next</h3>
+    <p>Block of text explaning</p>
+
+    <a href="../../patient/new-patient-summary" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-6 nhsuk-u-margin-right-6">Continue to patient summary</a>
+    <p><a href="../search/search-all-results">Back to search results</p>
+
+
+  </div>
+</div>
+
+
+{% endblock %}

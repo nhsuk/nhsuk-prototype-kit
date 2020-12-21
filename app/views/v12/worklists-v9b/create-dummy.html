@@ -1,0 +1,60 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/reveal.js"></script>
+<script type="text/javascript" src="/js/comments.js"></script>
+
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+
+    {{ backLink({
+      "href": "non-match-p1-dummy",
+      "text": "Go back to non-match"
+    }) }}
+
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Creating a dummy patient</h1>
+    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-6">
+           <h3 class="nhsuk-heading-s">You are about to create a dummy patient to the cervical screening programme</h3>
+        </div>
+
+        <p>Text about what creating a dummy patient is.<br><br>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut blandit, quam ac imperdiet commodo, risus ligula gravida mi, ut malesuada quam arcu at nisi. Donec lorem orci, egestas eget metus et, dapibus tincidunt nulla. Praesent ac lacus odio.
+        </p>
+
+        <div class="nhsuk-form-group">
+          <div class="nhsuk-checkboxes">
+            <div class="nhsuk-checkboxes__item">
+            <input class="nhsuk-checkboxes__input" id="confirmIdentity" name="confirmIdentity" type="checkbox" value="confirmIdentity">
+            <label class="nhsuk-label nhsuk-checkboxes__label" for="confirmIdentity">
+              I confirm that I wish to create a dummy patient
+            </label>
+          </div>
+          </div>
+
+
+        <a href="review-dummy" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-6 nhsuk-u-margin-right-6">Save and continue</a>
+        <p><a href="non-match-p1-dummy">Exit without saving</a></p>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

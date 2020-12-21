@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block header %}
-  {% include '../../components/header-3.html' %}
+  {% include '../../components/header.html' %}
 {% endblock %}
 
 
@@ -21,6 +21,97 @@
         Back to patient search</a>
     </div>
 
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+
+    <h1 class="nhsuk-heading-l">Adding a patient</h1>
+
+    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-6">
+      <h3 class="nhsuk-heading-s">You are about to add a new patient to the list of patients due to be invited for screening</h3>
+    </div>
+
+    <details class="nhsuk-details nhsuk-u-padding-bottom-2 nhsuk-u-padding-top-2">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          What happens when I add a patient to the cohort?
+        </span>
+      </summary>
+      <div class="nhsuk-details__text">
+        <p>Block of text explaining</p>
+      </div>
+    </details>
+
+    <h3 class="nhsuk-heading-xs">Check the patient details are correct before you continue:</h3>
+
+    <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">Patient details</h3>
+
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Olly Smith
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            04-06-1988
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            NHS number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            834 469 0382
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Contact information
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            30 Hemlock Road<br>
+            York<br>
+            YO31 9DG<br>
+          </dd>
+        </div>
+      </dl>
+    </div>
+
+    </div>
+  </div>
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+
+    <div class="nhsuk-form-group">
+      <div class="nhsuk-checkboxes">
+        <div class="nhsuk-checkboxes__item">
+        <input class="nhsuk-checkboxes__input" id="confirmIdentity" name="confirmIdentity" type="checkbox" value="confirmIdentity">
+        <label class="nhsuk-label nhsuk-checkboxes__label" for="confirmIdentity">
+          I confirm the patient details are correct and the patient can be added to the list of patients due to be invited for screening
+        </label>
+      </div>
+      </div>
+
+      <a href="consent" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-6 nhsuk-u-margin-right-6">Save and continue</a>
+      <p><a href="../search/search-all-results">Exit without saving</p>
+
+    </div>
 
   </div>
 </div>

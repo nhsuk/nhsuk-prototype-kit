@@ -119,9 +119,13 @@ NHS Cervical Screening
     }) }}
 
     <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: non-match</h1>
+    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-8">
+           <h3 class="nhsuk-heading-s">No system result found</h3>
+        </div>
+
     <h3>Lab patient demographics</h3>
 
-    <p class="nhsuk-hint">If no system details match the lab results, <a href="#">create a dummy patient</a>.</p>
+    <a href="create-dummy" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-2">Create dummy patient</a>
 
     <table class="nhsuk-table-clickable bna-table">
       <thead>
@@ -165,6 +169,24 @@ NHS Cervical Screening
                         CB6 2QZ
                       </dd>
                     </div>
+                    <div class="nhsuk-summary-list__row">
+                      <dt class="nhsuk-summary-list__key">
+                        Sender
+                      </dt>
+                      <dd class="nhsuk-summary-list__value">
+                        Brance Colposcopy Clinic
+                      </dd>
+                    </div>
+
+                    <div class="nhsuk-summary-list__row">
+                      <dt class="nhsuk-summary-list__key">
+                        Sender address
+                      </dt>
+                      <dd class="nhsuk-summary-list__value">
+                        RG12 1YQ
+                      </dd>
+                    </div>
+
                   </dl>
                 </div>
               </div>
@@ -177,118 +199,10 @@ NHS Cervical Screening
 </div>
 
 
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-full">
-
-    <h3 class="nhsuk-u-margin-top-4">System patient demographics</h3>
-
-    <form action="non-match-p2" method="post">
-      <table class="nhsuk-table-clickable bna-table clickable-table">
-        <thead>
-          <tr>
-            <th style="width: 10%"></th>
-            <th>Name
-            </th>
-            <th>Date of birth
-            </th>
-            <th>NHS number
-            </th>
-            <th>View address</th>
-          <tr>
-        </thead>
-
-        <tbody>
-          <!-- SYSTEM DEMOGRAPHICS -->
-          <div class="nhsuk-form-group">
-            <fieldset class="nhsuk-fieldset" aria-describedby="system-patient-demographics">
-              <legend class="nhsuk-fieldset__legend">
-              </legend>
-              <div class="nhsuk-radios">
-                <tr role="row" class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell">
-                    <div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="patient2a" name="system-dem-choice" type="radio" value="patient2a" checked>
-                      <label class="nhsuk-label nhsuk-radios__label" for="patient2a"></label>
-                    </div>
-                  </td>
-                  <td>Elizabeth Jones</td>
-                  <td>20-07-1979</td>
-                  <td>345 678 9012</td>
-                  <td class="nhsuk-table__cell">
-                    <button class="expanderButton" type="button" id="btn2" aria-expanded="false" onclick="toggle(this.id,'#row2');" aria-controls="row2" aria-label="More details for" aria-labelledby="row2"></button>
-                  </td>
-                </tr>
-                <tr id="row2" class="hidden detailsRow">
-                  <td colspan="5">
-                    <div class="nhsuk-grid-row">
-                      <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
-                        <div id="reasons-step-0">
-                          <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
-                            <div class="nhsuk-summary-list__row">
-                              <dt class="nhsuk-summary-list__key">
-                                Contact information
-                              </dt>
-                              <dd class="nhsuk-summary-list__value">
-                                46 Stirling Way
-                                <br>
-                                Sutton
-                                <br>
-                                CB6 9IZ
-                              </dd>
-                            </div>
-                          </dl>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr role="row" class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell">
-                    <div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="patient2b" name="system-dem-choice" type="radio" value="patient2b">
-                      <label class="nhsuk-label nhsuk-radios__label" for="patient2b"></label>
-                    </div>
-                  </td>
-                  <td>Lisa Johnson</td>
-                  <td>02-07-1979</td>
-                  <td>345 678 9011</td>
-                  <td class="nhsuk-table__cell">
-                    <button class="expanderButton" type="button" id="btn3" aria-expanded="false" onclick="toggle(this.id,'#row3');" aria-controls="row3" aria-label="More details for" aria-labelledby="row3"></button>
-                  </td>
-                </tr>
-                <tr id="row3" class="hidden detailsRow">
-                  <td colspan="5">
-                    <div class="nhsuk-grid-row">
-                      <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
-                        <div id="reasons-step-0">
-                          <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
-                            <div class="nhsuk-summary-list__row">
-                              <dt class="nhsuk-summary-list__key">
-                                Contact information
-                              </dt>
-                              <dd class="nhsuk-summary-list__value">
-                                30 Hemlock Road
-                                <br>
-                                York
-                                <br>
-                                YO31 9DG
-                              </dd>
-                            </div>
-                          </dl>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-
-              </div>
-            </fieldset>
-          </div>
-        </tbody>
-      </table>
-
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-one-half">
+
+          <form action="non-match-p2-dummy3" method="post">
 
           <!-- OPTIONS -->
           <div class="nhsuk-form-group">
@@ -304,14 +218,14 @@ NHS Cervical Screening
               <div class="nhsuk-radios__item">
                 <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
                 <label class="nhsuk-label nhsuk-radios__label" for="system">
-                  Send to system address
+                  Send to lab address
                 </label>
               </div>
 
               <div class="nhsuk-radios__item">
                 <input class="nhsuk-radios__input" id="gp" name="how-to-resolve" type="radio" value="gp" aria-controls="gp" aria-expanded="false">
                 <label class="nhsuk-label nhsuk-radios__label" for="gp">
-                  Send to lab address
+                  Send to sender address
                 </label>
               </div>
 
@@ -353,13 +267,15 @@ NHS Cervical Screening
             </fieldset>
 
           </div>
+
+            </form>
         </div>
       </div>
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-one-half">
 
-          <form action="non-match-p1" method="post">
+          <form action="non-match-p1-dummy3" method="post">
             <div class="nhsuk-form-group">
               <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
                 Comments
@@ -399,9 +315,7 @@ NHS Cervical Screening
       <a href="non-match-p2" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-4">Save to lab query list</a>
       <p><a href="manc-query">Exit without saving</a></p>
 
-    </form>
-  </div>
-</div>
+
 
 
 
