@@ -27,25 +27,27 @@ NHS Cervical Screening
   <div class="nhsuk-grid-column-three-quarters">
     {{ backLink({
       "href": "../index",
-      "text": "Back to Admin GP"
+      "text": "Back to Admin"
     }) }}
 
-    <h1 class="nhsuk-heading-l">Select a GP practice to print notifications</h1>
+    <h1 class="nhsuk-heading-l">Choose a GP surgery to print notifications</h1>
     
-    <p>GP practices who have not supplied an email address to receive notifications will appear in this list.</p>
+    <p>Listed GP surgeries have not given an email address to receive notifications. Choose a GP surgery to print and send notifications to.</p>
 
     <details class="nhsuk-details">
       <summary class="nhsuk-details__summary">
         <span class="nhsuk-details__summary-text">
-          What to do if your GP surgery is not listed?
+          How to find a GP surgery not on the list?
         </span>
       </summary>
       <div class="nhsuk-details__text">
-        <mark>guidance around what to do</mark></br>
         <form action="print-notifications" method="">
           {{ input({
             "label": {
-            "text": "Enter GP Practice Code"
+            "text": "Enter GP practice code to find a GP surgery"
+            },
+              "hint": {
+              "text": "GP practice codes have 1 letter followed by a 6 digit number, like A123456."
             },
             "id": "input-width-10",
             "name": "gp-code",
@@ -66,7 +68,7 @@ NHS Cervical Screening
       firstCellIsHeader: false,
       head: [
         {
-          text: "GP practice Code"
+          text: "GP practice code"
         },
         {
           text: "Address"
@@ -84,7 +86,7 @@ NHS Cervical Screening
             text: "122  Farburn Terrace, CA10 0WP"
           },
           {
-            html: '<a href="print-notifications">Select this GP practice</a>'
+            html: '<a href="print-notifications">Choose GP surgery</a>'
           }
         ],
         [
@@ -95,7 +97,7 @@ NHS Cervical Screening
             text: "65  Chapel Lane, AB41 4YZ"
           },
           {
-            html: '<a href="print-notifications">Select this GP practice</a>'
+            html: '<a href="print-notifications">Choose GP surgery</a>'
           }
         ],
         [
@@ -106,7 +108,7 @@ NHS Cervical Screening
             text: "78  Scotsburn Rd, RG20 5BX"
           },
           {
-            html: '<a href="print-notifications">Select this GP practice</a>'
+            html: '<a href="print-notifications">Choose GP surgery</a>'
           }
         ],
         [
@@ -117,7 +119,7 @@ NHS Cervical Screening
             text: "81  Berkeley Rd, AB2 1ZB"
           },
           {
-            html: '<a href="print-notifications">Select this GP practice</a>'
+            html: '<a href="print-notifications">Choose GP surgery</a>'
           }
         ],
         [
@@ -128,7 +130,7 @@ NHS Cervical Screening
             text: "91  Roker Terrace, PE6 7EW"
           },
           {
-            html: '<a href="print-notifications">Select this GP practice</a>'
+            html: '<a href="print-notifications">Choose GP surgery</a>'
           }
         ],
         [
@@ -139,7 +141,7 @@ NHS Cervical Screening
             text: "120  Preston Rd, BH20 8WG"
           },
           {
-            html: '<a href="print-notifications">Select this GP practice</a>'
+            html: '<a href="print-notifications">Choose GP surgery</a>'
           }
         ]
       ]

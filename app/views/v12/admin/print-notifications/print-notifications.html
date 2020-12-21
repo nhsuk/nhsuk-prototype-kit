@@ -30,8 +30,10 @@ NHS Cervical Screening
       "text": "Back to selecting a GP practice"
     }) }}
 
-    <h1 class="nhsuk-heading-l">Print Notifications for {{ data['gp-code'] or 'A123456' }}</h1>
-
+    <h1 class="nhsuk-heading-l">Print notifications for {{ data['gp-code'] or 'A123456' }}</h1>
+    <p>Choose a notification type to print and send to the GP surgery.</p>
+    <p>Notifications must be sent to the GP surgery by the date shown to give them time to review and action the patients.</p>
+    
     {{ table({
       panel: false,
       caption: "Skin symptoms and possible causes",
@@ -41,7 +43,7 @@ NHS Cervical Screening
           text: "Date"
         },
         {
-          text: "Notification Type"
+          text: "Notification type"
         },
         {
           text: "Action"
@@ -56,7 +58,7 @@ NHS Cervical Screening
             text: "Patients due to be invited"
           },
           {
-            html: '<a href="print-patients-due-to-be-invited">Print</a> or <a>Download as CSV</a>'
+            html: '<a href="print-patients-due-to-be-invited">Print preview</a> or <a>Download CSV</a>'
           }
         ],
         [
@@ -67,7 +69,7 @@ NHS Cervical Screening
             text: "Patients who have not responded"
           },
           {
-            html: '<a href="">Print</a> or <a>Download as CSV</a>'
+            html: '<a href="">Print preview</a> or <a>Download CSV</a>'
           }
         ],
         [
@@ -78,7 +80,7 @@ NHS Cervical Screening
             text: "Cease notifications"
           },
           {
-            html: '<a href="">Print</a> or <a>Download as CSV</a>'
+            html: '<a href="">Print preview</a> or <a>Download CSV</a>'
           }
         ],
         [
@@ -89,7 +91,7 @@ NHS Cervical Screening
             text: "Patients due to be invited"
           },
           {
-            html: '<a href="">Print</a> or <a>Download as CSV</a>'
+            html: '<a href="">Print preview</a> or <a>Download CSV</a>'
           }
         ],
         [
@@ -100,7 +102,7 @@ NHS Cervical Screening
             text: "Patients who have not responded"
           },
           {
-            html: '<a href="">Print</a> or <a>Download as CSV</a>'
+            html: '<a href="">Print preview</a> or <a>Download CSV</a>'
           }
         ],
         [
@@ -111,7 +113,7 @@ NHS Cervical Screening
             text: "Cease notifications"
           },
           {
-            html: '<a href="">Print</a> or <a>Download as CSV</a>'
+            html: '<a href="">Print preview</a> or <a>Download CSV</a>'
           }
         ]
       ]

@@ -96,28 +96,45 @@
 <div class="nhsuk-form-group">
   <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
     
-       {{ radios({
-             "idPrefix": "remove",
-             "name": "remove-result",
-             "fieldset": {
-               "legend": {
-                 "text": "Are you sure you want to delete this test result?",
-                 "classes": "nhsuk-fieldset__legend--m nhsuk-label__strong",
-                 "isPageHeading": true
-               }
-             },
-             "items": [
-               {
-                 "value": "yes",
-                 "text": "Yes, I want to delete this test result."
-               },
-               {
-                 "value": "no",
-                 "text": "No, return to patient summary. "
-               }
-             ]
-           }) }}
-  </fieldset>
+    <div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+    <legend class="nhsuk-fieldset__legend--m nhsuk-label__strong">
+      <h1 class="nhsuk-fieldset__heading">
+        Are you sure you want to delete this test result?
+      </h1>
+    </legend>
+
+        <div class="nhsuk-radios nhsuk-radios--conditional">
+           <div class="nhsuk-radios__item">
+             <input class="nhsuk-radios__input" id="example-1" name="result-type" type="radio" value="English" {{ checked("result-type", "English") }} aria-controls="conditional-example-1" aria-expanded="false">
+             <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+               Yes, I want to delete this test result
+             </label>
+           </div>
+
+               <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-example-1">
+      
+                 <div class="nhsuk-form-group">
+                   <label class="nhsuk-label" for="email">
+                     Deleting this test will change the NTDD to (date) or it wont effect the date and will remain (date)
+                   </label>
+                 </div>
+        </div>
+      </div>
+    
+    <div class="nhsuk-radios nhsuk-radios--conditional">
+           <div class="nhsuk-radios__item">
+             <input class="nhsuk-radios__input" id="example-1" name="result-type" type="radio" value="English" >
+             <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+               No, return to patient summary.
+             </label>
+           </div>
+
+            
+      </div> 
+    </feildset> 
+
 <br>
 </div>
 <a href="../patient-summary-6" class="nhsuk-button nhsuk-button--ers">Confirm</a>   
