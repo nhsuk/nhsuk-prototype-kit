@@ -33,7 +33,7 @@
   <nav class="nhsuk-sub-navigation">
     <ul class="nhsuk-sub-navigation__list">
       <li class="nhsuk-sub-navigation__item"><a href="new-patient-summary" class="nhsuk-sub-navigation__link" aria-current="page">Patient Summary</a></li>
-      <li class="nhsuk-sub-navigation__item"><a href="#" class="nhsuk-sub-navigation__link">Audit</a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="new-history" class="nhsuk-sub-navigation__link">Audit</a></li>
       <li class="nhsuk-sub-navigation__item"><a href="new-gp-info" class="nhsuk-sub-navigation__link">GP Information</a></li>
     </ul>
   </nav>
@@ -112,7 +112,7 @@
     {% endif %}#}
 
     {% if data.role == 'sampleTaker' %}
-
+    <br>
     {% include '../components/hmr101.html' %}
 
     {% endif %}
@@ -127,7 +127,7 @@
 
     <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4" href="/v12/start-adding-test?nhsNumber={{ data.patientSummary.nhs_number }}&role=csas&edit-review=">Add result</a>
     {% endif %}
-    
+
   </div>
 </div>
 
