@@ -4,19 +4,6 @@
 <script type="text/javascript" src="/js/reveal.js"></script>
 <script type="text/javascript" src="/js/comments.js"></script>
 
-<script type="text/javascript">
-  function validateForm() {
-    var a = document.forms["change-address"]["address-line-1"].value;
-    var b = document.forms["change-address"]["address-line-2"].value;
-    var c = document.forms["change-address"]["address-town"].value;
-    var d = document.forms["change-address"]["address-county"].value;
-    var e = document.forms["change-address"]["address-postcode"].value;
-    if ((a == null || a == "") && (b == null || b == "") && (c == null || c == "") && (d == null || d == "") && (e == null || e == "")) {
-        var emptyForm = true;
-    }
-  }
-</script>
-
 {% endblock %}
 {% block pageTitle %}
 NHS Cervical Screening
@@ -43,7 +30,7 @@ NHS Cervical Screening
 
       <h3 class="nhsuk-panel-with-label__label">Patient details</h3>
 
-      <form action="review-dummy" method="post" onsubmit="return validateForm()" action="" name="change-address">
+      <form action="review-dummy" method="post">
 
         <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
           <legend class="nhsuk-fieldset__legend">
