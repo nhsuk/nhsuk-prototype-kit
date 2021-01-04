@@ -5,7 +5,7 @@
 <script type="text/javascript" src="/js/comments.js"></script>
 
 <script type="text/javascript">
-  
+
 
 </script>
 
@@ -83,7 +83,7 @@ NHS Cervical Screening
                 <dd class="nhsuk-summary-list__value" id="address">
                 {#  {{ data['address-line-1'] + data['address-line-2'] + data['address-town'] + data['address-county'] + data['address-postcode'] or '1 Westfield Place<br>Great Shelford<br>CB22 5JJ' }} #}
 
-                {#  {% if data['address-line-1'] != null %}
+                  {% if data['address-line-1'] != null %}
                   {{ data['address-line-1'] }} <br>
                   {% endif %}
 
@@ -103,24 +103,25 @@ NHS Cervical Screening
                   {{ data['address-postcode'] }} <br>
                   {% endif %}
 
-                  {% if (data['address-line-1'] != null) or (data['address-line-2'] != null) or (data['address-town'] != null) or (data['address-county'] != null) or (data['address-postcode'] != null) %}
-                  {{ data['address-line-1'] }} <br>
-                  {{ data['address-line-2'] }} <br>
-                  {{ data['address-town'] }} <br>
-                  {{ data['address-county'] }} <br>
-                  {{ data['address-postcode'] }}
-
-                  {% elseif (data['address-line-1'] == null) and (data['address-line-2'] == null) and (data['address-town'] == null) and (data['address-county'] == null) and (data['address-postcode'] == null) %}
+                  {% if (data['address-line-1'] == null) and (data['address-line-2'] == null) and (data['address-town'] == null) and (data['address-county'] == null) and (data['address-postcode'] == null) %}
                   1 Westfield Place<br>Great Shelford<br> CB22 5JJ
                   {% endif %}
+
+
+                  {#   {% if (data['address-line-1'] != null) or (data['address-line-2'] != null) or (data['address-town'] != null) or (data['address-county'] != null) or (data['address-postcode'] != null) %}
+                      {{ data['address-line-1'] }} <br>
+                      {{ data['address-line-2'] }} <br>
+                      {{ data['address-town'] }} <br>
+                      {{ data['address-county'] }} <br>
+                      {{ data['address-postcode'] }}
 
                   {% if (data['address-line-1'] == null) and (data['address-line-2'] == null) and (data['address-town'] == null) and (data['address-county'] == null) and (data['address-postcode'] == null) %}
                   1 Westfield Place<br>Great Shelford<br> CB22 5JJ
-                  {% endif %}  #}
+                  {% endif %}
 
                   {% if data['checkFill'] == "true" %}
                   1 Westfield Place<br>Great Shelford<br> CB22 5JJ
-                  {% endif %}
+                  {% endif %}  #}
 
 
                 </dd>
