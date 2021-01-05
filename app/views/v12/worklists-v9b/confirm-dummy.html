@@ -66,7 +66,30 @@ NHS Cervical Screening
                 Contact information
               </dt>
               <dd class="nhsuk-summary-list__value">
-                1 Westfield Place<br>Great Shelford<br> CB22 5JJ
+
+                 {% if (data['address-line-1'] != "" and data['address-line-1'] != null) %}
+                  {{ data['address-line-1'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-line-2'] != "" and data['address-line-2'] != null) %}
+                  {{ data['address-line-2'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-town'] != "" and data['address-town'] != null) %}
+                  {{ data['address-town'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-county'] != "" and data['address-county'] != null) %}
+                  {{ data['address-county'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-postcode'] != "" and data['address-postcode'] != null) %}
+                  {{ data['address-postcode'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-line-1'] == "" or data['address-line-1'] == null) and (data['address-line-2'] == "" or data['address-line-2'] == null) and (data['address-town'] == "" or data['address-town'] == null) and (data['address-county'] == "" or data['address-county'] == null) and (data['address-postcode'] == "" or data['address-postcode'] == null) %}
+                  1 Westfield Place<br>Great Shelford<br> CB22 5JJ
+                  {% endif %} 
               </dd>
             </div>
           </dl>
