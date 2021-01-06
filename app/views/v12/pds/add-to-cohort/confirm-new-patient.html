@@ -22,7 +22,7 @@ NHS Cervical Screening
     </div>
 
     <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-8">
-      <h3 class="nhsuk-heading-s">Patient successfully added</h3>
+      <h3 class="nhsuk-heading-s">Dummy patient successfully created</h3>
     </div>
 
     <div class="nhsuk-panel-with-label">
@@ -35,25 +35,28 @@ NHS Cervical Screening
             Name
           </dt>
           <dd class="nhsuk-summary-list__value">
-            Olly Smith
+            {{ data['new-patient-name'] }}
           </dd>
         </div>
 
+        {% if data['new-patient-day'] != null or data['new-patient-month'] != null or data['new-patient-year'] != null %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Date of birth
           </dt>
           <dd class="nhsuk-summary-list__value">
-            04-06-1988
+            {{ newPatientDob }}
           </dd>
         </div>
+        {% endif %}
+
 
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             NHS number
           </dt>
           <dd class="nhsuk-summary-list__value">
-            834 469 0382
+            T123 4556 7890
           </dd>
         </div>
 
@@ -62,18 +65,36 @@ NHS Cervical Screening
             Contact information
           </dt>
           <dd class="nhsuk-summary-list__value">
-            30 Hemlock Road<br>
-            York<br>
-            YO31 9DG<br>
+
+          {% if (data['new-address-line-1'] != "" and data['new-address-line-1'] != null) %}
+          {{ data['new-address-line-1'] }} <br>
+          {% endif %}
+
+          {% if (data['new-address-line-2'] != "" and data['new-address-line-2'] != null) %}
+          {{ data['new-address-line-2'] }} <br>
+          {% endif %}
+
+          {% if (data['new-address-town'] != "" and data['new-address-town'] != null) %}
+          {{ data['new-address-town'] }} <br>
+          {% endif %}
+
+          {% if (data['new-address-county'] != "" and data['new-address-county'] != null) %}
+          {{ data['new-address-county'] }} <br>
+          {% endif %}
+
+          {% if (data['new-address-postcode'] != "" and data['new-address-postcode'] != null) %}
+          {{ data['new-address-postcode'] }} <br>
+          {% endif %}
+
           </dd>
         </div>
       </dl>
     </div>
 
     <h3>What happens next</h3>
-    <p>A patient summary has been created and the patient will be added to the list of patients due to be invited for screening. This is done based on their recall status.</p>
+    <p>A patient summary has been created so that a result can be sent to the patient. The patient will not be added to the list of patients due to be invited for screening.</p>
 
-    <a href="../../patient/new-patient-summary" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-6 nhsuk-u-margin-right-6">Continue to patient summary</a>
+    <a href="../../patient/dummy-patient-summary" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-6 nhsuk-u-margin-right-6">Continue to patient summary</a>
     <p><a href="../search/search-all-results">Back to search results</p>
 
 
