@@ -33,12 +33,20 @@
         {% else %}
              <form action="add-test-result-review" method="post">
         {% endif %}
+
+        
             <div class="nhsuk-form-group">
               <h1 class="nhsuk-label-wrapper">
                 <label class="nhsuk-label nhsuk-label--l nhsuk-u-margin-bottom-2" for="example-heading">
                   Enter CRM case number
                 </label>
               </h1>
+
+               <div class="nhsuk-inset-text">
+                 <span class="nhsuk-u-visually-hidden">Information: </span>
+                 <p>Adding a new CRM case number or comment does not delete existing ones. You can view all previous CRM case numbers and comments.</p>
+                </div>
+                
               <span class="nhsuk-hint" id="example-hint">
                 For example, CAS-12345-ABCDE
               </span>
@@ -56,7 +64,7 @@
 
             {% include '../../components/comments-timeline.html' %}  
 
-            <button class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary">Add new CRM and comment</button>
+            <!--<button class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary">Add new CRM and comment</button>-->
             
             <p><button class="nhsuk-button nhsuk-button--ers" type="submit">Continue</button></p>
             <p><a href="../patient-summary-6">Exit without saving</a></p>
