@@ -200,16 +200,17 @@ NHS Cervical Screening
 </div>
 
 
+
+<!-- SYSTEM DEMOGRAPHICS -->
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
     <h3 class="nhsuk-u-margin-top-4">System patient demographics</h3>
+     <p><strong>Chosen patient demographics</strong></p>
 
-    <form action="non-match-p2" method="post">
       <table class="nhsuk-table-clickable bna-table clickable-table">
         <thead>
           <tr>
-            <th style="width: 10%"></th>
             <th>Name
             </th>
             <th>Date of birth
@@ -221,94 +222,93 @@ NHS Cervical Screening
         </thead>
 
         <tbody>
-          <!-- SYSTEM DEMOGRAPHICS -->
-          <div class="nhsuk-form-group">
-            <fieldset class="nhsuk-fieldset" aria-describedby="system-patient-demographics">
-              <legend class="nhsuk-fieldset__legend">
-              </legend>
-              <div class="nhsuk-radios">
-                <tr role="row" class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell">
-                    <div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="patient2a" name="system-dem-choice" type="radio" value="patient2a">
-                      <label class="nhsuk-label nhsuk-radios__label" for="patient2a"></label>
-                    </div>
-                  </td>
-                  <td>Charlotte Gravehill</td>
-                  <td>11-04-1990</td>
-                  <td>234 567 8902</td>
-                  <td class="nhsuk-table__cell">
-                    <button class="expanderButton" type="button" id="btn2" aria-expanded="false" onclick="toggle(this.id,'#row2');" aria-controls="row2" aria-label="More details for" aria-labelledby="row2"></button>
-                  </td>
-                </tr>
-                <tr id="row2" class="hidden detailsRow">
-                  <td colspan="5">
-                    <div class="nhsuk-grid-row">
-                      <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
-                        <div id="reasons-step-0">
-                          <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
-                            <div class="nhsuk-summary-list__row">
-                              <dt class="nhsuk-summary-list__key">
-                                Contact information
-                              </dt>
-                              <dd class="nhsuk-summary-list__value">
-                                12 Poplars Close
-                                <br>
-                                Burwell
-                                <br>
-                                CB25 BOC
-                              </dd>
-                            </div>
-                          </dl>
-                        </div>
+          <tr role="row" class="nhsuk-table__row">
+            <td>Charlotte J Gravill</td>
+            <td>11-04-1990</td>
+            <td>234 567 8901</td>
+            <td class="nhsuk-table__cell">
+              <button class="expanderButton" type="button" id="btn3" aria-expanded="false" onclick="toggle(this.id,'#row3');" aria-controls="row3" aria-label="More details for" aria-labelledby="row3"></button>
+            </td>
+          </tr>
+          <tr id="row3" class="hidden detailsRow">
+            <td colspan="5">
+              <div class="nhsuk-grid-row">
+                <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                  <div id="reasons-step-0">
+                    <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
+                      <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                          Contact information
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                          1 Westfield Place
+                          <br>
+                          Great Shelford
+                          <br>
+                          CB22 5ZI
+                        </dd>
                       </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr role="row" class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell">
-                    <div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="patient2b" name="system-dem-choice" type="radio" value="patient2b" checked>
-                      <label class="nhsuk-label nhsuk-radios__label" for="patient2b"></label>
-                    </div>
-                  </td>
-                  <td>Charlotte J Gravill</td>
-                  <td>11-04-1990</td>
-                  <td>234 567 8901</td>
-                  <td class="nhsuk-table__cell">
-                    <button class="expanderButton" type="button" id="btn3" aria-expanded="false" onclick="toggle(this.id,'#row3');" aria-controls="row3" aria-label="More details for" aria-labelledby="row3"></button>
-                  </td>
-                </tr>
-                <tr id="row3" class="hidden detailsRow">
-                  <td colspan="5">
-                    <div class="nhsuk-grid-row">
-                      <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
-                        <div id="reasons-step-0">
-                          <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
-                            <div class="nhsuk-summary-list__row">
-                              <dt class="nhsuk-summary-list__key">
-                                Contact information
-                              </dt>
-                              <dd class="nhsuk-summary-list__value">
-                                1 Westfield Place
-                                <br>
-                                Great Shelford
-                                <br>
-                                CB22 5ZI
-                              </dd>
-                            </div>
-                          </dl>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-
+                    </dl>
+                  </div>
+                </div>
               </div>
-            </fieldset>
-          </div>
+            </td>
+          </tr>
         </tbody>
       </table>
+
+      
+      <p class="nhsuk-u-padding-top-2"><strong>Other patient demographics options</strong></p>
+
+      <table class="nhsuk-table-clickable bna-table clickable-table">
+        <thead>
+          <tr>
+            <th>Name
+            </th>
+            <th>Date of birth
+            </th>
+            <th>NHS number
+            </th>
+            <th>View address</th>
+          <tr>
+        </thead>
+
+        <tbody>
+          <tr role="row" class="nhsuk-table__row">
+            <td>Charlotte Gravehill</td>
+            <td>11-04-1990</td>
+            <td>234 567 8902</td>
+            <td class="nhsuk-table__cell">
+              <button class="expanderButton" type="button" id="btn2" aria-expanded="false" onclick="toggle(this.id,'#row2');" aria-controls="row2" aria-label="More details for" aria-labelledby="row2"></button>
+            </td>
+          </tr>
+          <tr id="row2" class="hidden detailsRow">
+            <td colspan="5">
+              <div class="nhsuk-grid-row">
+                <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                  <div id="reasons-step-0">
+                    <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
+                      <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                          Contact information
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                          12 Poplars Close
+                          <br>
+                          Burwell
+                          <br>
+                          CB25 BOC
+                        </dd>
+                      </div>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-one-half">
@@ -353,8 +353,8 @@ NHS Cervical Screening
       </div>
 
 
-      <a href="manc-check" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Accept match</a>
-      <a href="manc-check" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Send back to processor</a>
+      <a href="non-match-dummy" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Accept match</a>
+      <a href="non-match-dummy" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Send back to processor</a>
       <p><a href="manc-check">Exit without saving</a></p>
 
     </form>
