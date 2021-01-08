@@ -1,0 +1,74 @@
+{% extends "layout-v2.html" %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header-3.html' %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-half">
+
+      {{ backLink({
+      "href": "new-patient-name",
+      "text": "Go back to patient name"
+    }) }}
+
+<form action="new-patient-address" method="post">
+
+<div class="nhsuk-form-group">
+  <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
+    <legend class="nhsuk-fieldset__legend nhsuk-label--l">
+      <h1 class="nhsuk-fieldset__heading">
+        Enter patient date of birth
+      </h1>
+    </legend>
+    <div class="nhsuk-hint" id="example-hint">
+      For example, 15 03 1984
+    </div>
+
+    <div class="nhsuk-date-input" id="example">
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label" for="new-patient-day">
+            Day
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="new-patient-day" name="new-patient-day" type="number" pattern="[0-9]*">
+        </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label" for="new-patient-month">
+            Month
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="new-patient-month" name="new-patient-month" type="number" pattern="[0-9]*">
+        </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label" for="new-patient-year">
+            Year
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="enew-patient-year" name="new-patient-year" type="number" pattern="[0-9]*">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+</div>
+
+      <button class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-2" type="submit">Save and continue</button>
+
+      <p>
+        <a href="../search/search-all-results">Exit without saving</a>
+      </p>
+
+    </form>
+
+    </div>
+  </div>
+
+{% endblock %}

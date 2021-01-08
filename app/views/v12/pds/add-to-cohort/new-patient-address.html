@@ -1,0 +1,64 @@
+{% extends "layout-v2.html" %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header-3.html' %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-half">
+
+      {{ backLink({
+      "href": "new-patient-dob",
+      "text": "Go back to patient date of birth"
+    }) }}
+
+      <form action="review-new-patient" method="post">
+
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-label--l">
+            <h1 class="nhsuk-fieldset__heading">Add address to send the result</h1>
+          </legend>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="address-line-1">Building and street<span class="nhsuk-u-visually-hidden">Line 1 of 2</span></label>
+              <input class="nhsuk-input nhsuk-u-width-full" type="text" id="address-line-1" name="new-address-line-1">
+            </div>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="address-line-2"><span class="nhsuk-u-visually-hidden">Line 2 of 2</span></label>
+              <input class="nhsuk-input nhsuk-u-width-full" type="text" id="address-line-2" name="new-address-line-2">
+            </div>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="address-town">Town or city</label>
+              <input class="nhsuk-input nhsuk-u-width-two-thirds" type="text" id="address-town" name="new-address-town">
+            </div>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="address-county">County</label>
+              <input class="nhsuk-input nhsuk-u-width-two-thirds" type="text" id="address-county" name="new-address-county">
+            </div>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="address-postcode">Postcode</label>
+              <input class="nhsuk-input nhsuk-input--width-10" id="address-postcode" name="new-address-postcode" type="text">
+            </div>
+
+            <button class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-2" type="submit">Submit</button>
+
+      </form>
+
+
+      <p>
+        <a href="../search/search-all-results">Exit without saving</a>
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

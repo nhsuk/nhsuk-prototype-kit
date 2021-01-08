@@ -11,15 +11,39 @@
 
 {% block content %}
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-two-thirds">
+  <div class="nhsuk-grid-column-one-half">
 
-    <div class="nhsuk-back-link nhsuk-u-margin-bottom-4">
-      <a class="nhsuk-back-link__link" href="../search/search-all-results">
-        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
-        </svg>
-        Back to patient search</a>
-    </div>
+    {{ backLink({
+      "href": "../search/search-all-results",
+      "text": "Go back to search results"
+    }) }}
+
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Create a dummy patient</h1>
+    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-6">
+           <h3 class="nhsuk-heading-s">You are about to create a dummy patient to attach a sample to</h3>
+        </div>
+
+        <p>Creating a dummy patient means you can send this result to a person who is not in the cervical screening system.<br><br>
+          The dummy patient is only used for this result, they are not added into the cervical screening system. This means that the patient will not be invited for screening in the future.
+        </p>
+
+        <p>
+         You should only create a dummy patient if there are no system details available. 
+        </p>
+
+        <div class="nhsuk-form-group">
+          <div class="nhsuk-checkboxes">
+            <div class="nhsuk-checkboxes__item">
+            <input class="nhsuk-checkboxes__input" id="confirmIdentity" name="confirmIdentity" type="checkbox" value="confirmIdentity">
+            <label class="nhsuk-label nhsuk-checkboxes__label" for="confirmIdentity">
+              I confirm that I wish to create a dummy patient
+            </label>
+          </div>
+          </div>
+
+
+        <a href="new-patient-name" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-6 nhsuk-u-margin-right-6">Save and continue</a>
+        <p><a href="../search/search-all-results">Exit without saving</a></p>
 
 
   </div>

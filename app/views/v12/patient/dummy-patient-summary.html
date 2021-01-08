@@ -1,0 +1,143 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+  <script type="text/javascript" src="/js/action-menu.js"></script>
+  <script type="text/javascript" src="/js/sort.js"></script>
+    <script type="text/javascript" src="/js/tabs.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{{ header({
+    "service": {
+      "name": "Cervical Screening",
+      "longName": "false"
+    },
+    "showNav": "false",
+    "showSearch": "false"
+  })
+}}
+{% endblock %}
+
+{% block patientBanner %}
+  {% include '../components/dummy-patient-banner.html' %}
+{% endblock %}
+
+
+{% block content %}
+  {% if data.role != 'sampleTaker' %}
+  <nav class="nhsuk-sub-navigation">
+    <ul class="nhsuk-sub-navigation__list">
+      <li class="nhsuk-sub-navigation__item"><a href="dummy-patient-summary" class="nhsuk-sub-navigation__link" aria-current="page">Patient Summary</a></li>
+      <li class="nhsuk-sub-navigation__item"><a href="dummy-history" class="nhsuk-sub-navigation__link">Audit</a></li>
+    </ul>
+  </nav>
+{% endif %}
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-three-quarters">
+    <h1 class="nhsuk-heading-l">Patient summary</h1>
+
+    <dl class="nhsuk-summary-list nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+          Next test due date:
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          20-Jan-2023
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+          {% if data.role == 'csas' %}
+            Actions:
+              <a href="/v12/start-prior-notifications-cease-reason?nhsNumber={{ data.patientSummary.nhs_number }}&pnlversion=12&patversion=6&role=csas&returnUrl=pat">Cease</a>
+          {% endif %}
+        </dd>
+      </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Invited date:
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+              09-Nov-2020
+          </dd>
+          <dd class="nhsuk-summary-list__actions">
+          </dd>
+        </div>
+
+      <div class="nhsuk-summary-list__row">
+        <dt class="nhsuk-summary-list__key">
+            Address:
+        </dt>
+        <dd class="nhsuk-summary-list__value">
+          30 Hemlock Road, York, YO31 9DG
+        </dd>
+        <dd class="nhsuk-summary-list__actions">
+        </dd>
+      </div>
+    </dl>
+    {#{% if data.role != 'sampleTaker' %}
+      {{ details({
+      "text": "View previous addresses",
+      "HTML": "
+
+      <h4>Address History</h4>
+      <table>
+      <thead>
+      <tr>
+        <th>Moved in</th>
+        <th>Address</th>
+      </tr>
+      </thead>
+      <tr>
+      <td>07 2017</td>
+      <td>20 Thornhill Street, Pudsey, LS15 6FD</td>
+      </tr>
+      <tr>
+      <td>03 2013</td>
+      <td>29 Jubilee Close, Bradford, BD19 3WE</td>
+      </tr>
+      <tr>
+      <td>01 2011</td>
+      <td>1 High Street, Bradford, BD13 5TY</td>
+      </tr>
+      </table>"
+      }) }}
+    {% endif %}#}
+
+    {% if data.role == 'sampleTaker' %}
+    <br>
+    {% include '../components/hmr101.html' %}
+
+    {% endif %}
+  </div>
+</div>
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-full">
+
+    {% if data.role == 'csas' %}
+    <h2 id="testresults" class="nhsuk-heading-l">Test results</h2>
+
+    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4" href="/v12/start-adding-test?nhsNumber={{ data.patientSummary.nhs_number }}&role=csas&edit-review=">Add result</a>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+      <p><a href="/v12/reset-patient-data-12">Reset patient data</a></p>
+    </div>
+  </div>
+</footer>
+{% endblock %}

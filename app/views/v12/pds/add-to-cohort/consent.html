@@ -1,17 +1,17 @@
 {% extends "layout-v2.html" %}
 
 {% block pageTitle %}
-  NHS Cervical Screening
+NHS Cervical Screening
 {% endblock %}
 
 {% block header %}
-  {% include '../../components/header-3.html' %}
+{% include '../../components/header-3.html' %}
 {% endblock %}
 
 
 {% block content %}
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-two-thirds">
+  <div class="nhsuk-grid-column-one-half">
 
     <div class="nhsuk-back-link nhsuk-u-margin-bottom-4">
       <a class="nhsuk-back-link__link" href="confirm-identity">
@@ -21,10 +21,46 @@
         Back to patient identity</a>
     </div>
 
+    <h1 class="nhsuk-heading-l">Gaining patient consent</h1>
+
+    <p>
+      New patients must give permission to be added to the screening programme.<br><br>
+      For consent to be valid, it must be voluntary and informed, and the patient consenting must have the capacity to make the decision.<br><br>
+      Consent can be given:
+    </p>
+
+    <ul>
+      <li>verbally – for example, saying they're happy to be invited for screening
+      </li>
+      <li>in writing – for example, signing a consent form
+      </li>
+    </ul>
+
+    <div class="nhsuk-form-group nhsuk-u-padding-top-3">
+      <fieldset class="nhsuk-fieldset">
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--1">
+          <h3 class="nhsuk-fieldset__heading">Has the patient given their consent to be added to the screening programme?</h3>
+          </legend>
+      </fieldset>
+      <div class="nhsuk-checkboxes nhsuk-u-padding-top-3">
+        <div class="nhsuk-checkboxes__item">
+          <input class="nhsuk-checkboxes__input" id="confirmIdentity" name="confirmIdentity" type="checkbox" value="confirmIdentity">
+          <label class="nhsuk-label nhsuk-checkboxes__label" for="confirmIdentity">
+            I confirm the patient has given consent
+          </label>
+        </div>
+
+      </div>
+
+      <a href="confirm-addition" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-6 nhsuk-u-margin-right-6">Save and continue</a>
+      <p><a href="../search/search-all-results">Exit without saving</p>
+
+
+    </div>
+
 
   </div>
 </div>
-
 
 
 {% endblock %}

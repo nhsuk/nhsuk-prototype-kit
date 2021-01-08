@@ -1,0 +1,99 @@
+{% extends "layout-v2.html" %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header-3.html' %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-half">
+
+      {{ backLink({
+      "href": "new-patient-address",
+      "text": "Go back to patient address"
+    }) }}
+
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review patient details</h1>
+
+    <div class="nhsuk-panel-with-label">
+
+      <div class="nhsuk-form-group nhsuk-u-padding-top-6">
+          <form action="confirm-new-patient" method="post">
+
+            <dl class="nhsuk-summary-list">
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Name</dt>
+                <dd class="nhsuk-summary-list__value">
+                {{ data['new-patient-name'] }}
+                </dd>
+                <dd class="nhsuk-summary-list__actions"><a href="new-patient-name">Change<span class="nhsuk-u-visually-hidden">Name</span></a></dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Date of birth</dt>
+                <dd class="nhsuk-summary-list__value">
+                  
+                  {% if data['new-patient-day'] != null or data['new-patient-month'] != null or data['new-patient-year'] != null %}
+                  {% set newPatientDob = data['new-patient-day'] + "-" + data['new-patient-month'] + "-" + data['new-patient-year'] %}
+                  {{ newPatientDob }}
+                  {% else %}
+                  <br>
+                  {% endif %}
+
+                </dd>
+                <dd class="nhsuk-summary-list__actions"><a href="new-patient-dob">Change<span class="nhsuk-u-visually-hidden">Date of birth</span></a></dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">NHS Number</dt>
+                <dd class="nhsuk-summary-list__value">T123 456 7890</dd>
+                <dd class="nhsuk-summary-list__actions"></dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Contact information</dt>
+                <dd class="nhsuk-summary-list__value" id="address-info" name="address-info">
+
+                  {% if (data['new-address-line-1'] != "" and data['new-address-line-1'] != null) %}
+                  {{ data['new-address-line-1'] }} <br>
+                  {% endif %}
+
+                  {% if (data['new-address-line-2'] != "" and data['new-address-line-2'] != null) %}
+                  {{ data['new-address-line-2'] }} <br>
+                  {% endif %}
+
+                  {% if (data['new-address-town'] != "" and data['new-address-town'] != null) %}
+                  {{ data['new-address-town'] }} <br>
+                  {% endif %}
+
+                  {% if (data['new-address-county'] != "" and data['new-address-county'] != null) %}
+                  {{ data['new-address-county'] }} <br>
+                  {% endif %}
+
+                  {% if (data['new-address-postcode'] != "" and data['new-address-postcode'] != null) %}
+                  {{ data['new-address-postcode'] }} <br>
+                  {% endif %}
+
+                </dd>
+                <dd class="nhsuk-summary-list__actions"><a href="new-patient-address">Change<span class="nhsuk-u-visually-hidden">Contact information</span></a></dd>
+              </div>
+
+            </dl>
+
+            <button class="nhsuk-button nhsuk-button--ers" type="submit">Submit</button>
+
+            <p><a href="../search/search-all-results">Exit without saving</a></p>
+
+          </form>
+
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

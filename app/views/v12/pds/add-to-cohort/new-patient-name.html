@@ -1,0 +1,42 @@
+{% extends "layout-v2.html" %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header-3.html' %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-half">
+
+      {{ backLink({
+      "href": "new-patient",
+      "text": "Go back to creating a patient"
+    }) }}
+
+    <form action="new-patient-dob" method="post">
+
+      <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Enter patient name</h1>
+
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label" for="patientName">
+            Full name
+         </label>
+        <input class="nhsuk-input" id="patientName" name="new-patient-name" type="text">
+      </div>
+
+      <button class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-2" type="submit">Save and continue</button>
+      
+      <p>
+        <a href="../search/search-all-results">Exit without saving</a>
+      </p>
+
+    </form>
+
+    </div>
+  </div>
+
+{% endblock %}
