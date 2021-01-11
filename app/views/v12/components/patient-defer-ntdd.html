@@ -2,10 +2,23 @@
   Enter the next test due date for the patient
 </h1>
 
+{% set message %}
+  {% if data['pnl-defer-reason'] != null %}
+    {% if data['pnl-defer-reason'] == 'Discharge from colposcopy' %}
+      <p>The earliest date you can enter is today's date, which will set the next test due date 10 weeks from tomorrow</p>
+      <p>If the next test due date sent by the colposcopy is earlier than today's date, enter it as a comment</p>
+      <p>Maximum deferral can not exceed {{ data['pnl-defer-reason'] | returnReasonGuidance }} months</p>    
+    {% else %}
+      <p>Maximum deferral can not exceed {{ data['pnl-defer-reason'] | returnReasonGuidance }} months</p> 
+    {% endif %}
+  {% else %}
+    <p>Maximum deferral can not exceed X months</p> 
+  {% endif %}
+{% endset %}
+
 
   {{ insetText({
-    "HTML":  '<p>Maximum deferral can not exceed ' + data['pnl-defer-reason'] | returnReasonGuidance + ' months</p>',
-    "classes": "nhsuk-u-margin-top-2 nhsuk-u-margin-bottom-4"
+    "HTML":  message
   }) }}
 
   <form action="prior-notification-{{ data.pnlversion }}-defer-crm" method="post">
