@@ -42,24 +42,6 @@
   }
 </script>
 
-<!-- clickable rows with hover colour -->
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('.clickable-table tr').click(function(event) {
-      if (event.target.type !== 'radio') {
-        $(':radio', this).trigger('click');
-      }
-    });
-
-    $("input[type='radio']").change(function(e) {
-      e.stopPropagation();
-      $('.clickable-table tr').removeClass("highlight_row");
-      if ($(this).is(":checked")) {
-        $(this).closest('tr').addClass("highlight_row");
-      }
-    });
-  });
-</script>
 
 <script>
   function toggle(btnID, eIDs) {
@@ -91,9 +73,33 @@
   }
 </script>
 
+<!-- clickable rows with hover colour -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.clickable-table tr').click(function(event) {
+      if (event.target.type !== 'radio') {
+        $(':radio', this).trigger('click');
+      }
+    });
+
+    $("input[type='radio']").change(function(e) {
+      e.stopPropagation();
+      $('.clickable-table tr').removeClass("highlight_row");
+      if ($(this).is(":checked")) {
+        $(this).closest('tr').addClass("highlight_row");
+      }
+    });
+  });
+</script>
+
+
 <style media="screen">
-  .clickable-table tbody tr:hover {
-    cursor: pointer;
+  .highlight_row {
+    background: #d8dde0;
+  }
+
+  #lab {
+    background-color: #f0f4f5;
   }
 </style>
 
@@ -200,115 +206,117 @@ NHS Cervical Screening
 </div>
 
 
+<!-- SYSTEM DEMOGRAPHICS -->
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
     <h3 class="nhsuk-u-margin-top-4">System patient demographics</h3>
+      <p><strong>Chosen patient demographics</strong></p>
 
-    <form action="non-match-p2" method="post">
       <table class="nhsuk-table-clickable bna-table clickable-table">
         <thead>
           <tr>
-            <th style="width: 10%"></th>
-            <th>Name
-            </th>
-            <th>Date of birth
-            </th>
-            <th>NHS number
-            </th>
-            <th>View address</th>
+          <th style="width: 25%">Name
+          </th>
+          <th style="width: 25%">Date of birth
+          </th>
+          <th style="width: 25%">NHS number
+          </th>
+          <th style="width: 25%">View address
+          </th>
           <tr>
         </thead>
 
         <tbody>
-          <!-- SYSTEM DEMOGRAPHICS -->
-          <div class="nhsuk-form-group">
-            <fieldset class="nhsuk-fieldset" aria-describedby="system-patient-demographics">
-              <legend class="nhsuk-fieldset__legend">
-              </legend>
-              <div class="nhsuk-radios">
-                <tr role="row" class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell">
-                    <div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="patient2a" name="system-dem-choice" type="radio" value="patient2a" checked>
-                      <label class="nhsuk-label nhsuk-radios__label" for="patient2a"></label>
-                    </div>
-                  </td>
-                  <td>Claudia Jones Beddis</td>
-                  <td>19-09-1983</td>
-                  <td>234 567 8901</td>
-                  <td class="nhsuk-table__cell">
-                    <button class="expanderButton" type="button" id="btn2" aria-expanded="false" onclick="toggle(this.id,'#row2');" aria-controls="row2" aria-label="More details for" aria-labelledby="row2"></button>
-                  </td>
-                </tr>
-                <tr id="row2" class="hidden detailsRow">
-                  <td colspan="5">
-                    <div class="nhsuk-grid-row">
-                      <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
-                        <div id="reasons-step-0">
-                          <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
-                            <div class="nhsuk-summary-list__row">
-                              <dt class="nhsuk-summary-list__key">
-                                Contact information
-                              </dt>
-                              <dd class="nhsuk-summary-list__value">
-                                12 Poplars Close
-                                <br>
-                                Burwell
-                                <br>
-                                CB25 BOC
-                              </dd>
-                            </div>
-                          </dl>
-                        </div>
+          <tr role="row" class="nhsuk-table__row">
+            <td>Claudia Jones Beddis</td>
+            <td>19-09-1983</td>
+            <td>234 567 8901</td>
+            <td class="nhsuk-table__cell">
+              <button class="expanderButton" type="button" id="btn2" aria-expanded="false" onclick="toggle(this.id,'#row2');" aria-controls="row2" aria-label="More details for" aria-labelledby="row2"></button>
+            </td>
+          </tr>
+          <tr id="row2" class="hidden detailsRow">
+            <td colspan="5">
+              <div class="nhsuk-grid-row">
+                <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                  <div id="reasons-step-0">
+                    <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
+                      <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                          Contact information
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                          12 Poplars Close
+                          <br>
+                          Burwell
+                          <br>
+                          CB25 BOC
+                        </dd>
                       </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr role="row" class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell">
-                    <div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="patient2b" name="system-dem-choice" type="radio" value="patient2b">
-                      <label class="nhsuk-label nhsuk-radios__label" for="patient2b"></label>
-                    </div>
-                  </td>
-                  <td>Claudette Beddis</td>
-                  <td>19-09-1993</td>
-                  <td>234 568 8901</td>
-                  <td class="nhsuk-table__cell">
-                    <button class="expanderButton" type="button" id="btn3" aria-expanded="false" onclick="toggle(this.id,'#row3');" aria-controls="row3" aria-label="More details for" aria-labelledby="row3"></button>
-                  </td>
-                </tr>
-                <tr id="row3" class="hidden detailsRow">
-                  <td colspan="5">
-                    <div class="nhsuk-grid-row">
-                      <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
-                        <div id="reasons-step-0">
-                          <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
-                            <div class="nhsuk-summary-list__row">
-                              <dt class="nhsuk-summary-list__key">
-                                Contact information
-                              </dt>
-                              <dd class="nhsuk-summary-list__value">
-                                42 Mulehouse Road
-                                <br>
-                                Sheffield
-                                <br>
-                                S10 1TA
-                              </dd>
-                            </div>
-                          </dl>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-
+                    </dl>
+                  </div>
+                </div>
               </div>
-            </fieldset>
-          </div>
+            </td>
+          </tr>
         </tbody>
       </table>
+
+
+    <p class="nhsuk-u-padding-top-2"><strong>Other patient demographics options</strong></p>
+
+      <table class="nhsuk-table-clickable bna-table clickable-table">
+        <thead>
+          <tr>
+          <th style="width: 25%">Name
+          </th>
+          <th style="width: 25%">Date of birth
+          </th>
+          <th style="width: 25%">NHS number
+          </th>
+          <th style="width: 25%">View address
+          </th>
+          <tr>
+        </thead>
+
+        <tbody>
+          <tr role="row" class="nhsuk-table__row">
+            <td>Claudette Beddis</td>
+            <td>19-09-1993</td>
+            <td>234 568 8901</td>
+            <td class="nhsuk-table__cell">
+              <button class="expanderButton" type="button" id="btn3" aria-expanded="false" onclick="toggle(this.id,'#row3');" aria-controls="row3" aria-label="More details for" aria-labelledby="row3"></button>
+            </td>
+          </tr>
+          <tr id="row3" class="hidden detailsRow">
+            <td colspan="5">
+              <div class="nhsuk-grid-row">
+                <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                  <div id="reasons-step-0">
+                    <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
+                      <div class="nhsuk-summary-list__row">
+                        <dt class="nhsuk-summary-list__key">
+                          Contact information
+                        </dt>
+                        <dd class="nhsuk-summary-list__value">
+                          42 Mulehouse Road
+                          <br>
+                          Sheffield
+                          <br>
+                          S10 1TA
+                        </dd>
+                      </div>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-one-half">
