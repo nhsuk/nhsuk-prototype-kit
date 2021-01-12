@@ -26,21 +26,24 @@ NHS Cervical Screening
 
     <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Add result to a dummy patient</h1>
     <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-6">
-           <h3 class="nhsuk-heading-s">You are about to create a dummy patient to add a result to</h3>
+           <h3 class="nhsuk-heading-s">You are about to create a dummy patient in the cervical screening call recall system</h3>
         </div>
 
-        <p>Creating a dummy patient means you can send this result to a person who is not in the cervical screening system.<br><br>
-          The dummy patient is only used for this result, they are not added into the cervical screening system. This means you cannot:
+        <p>Creating a dummy patient means:<br>
         </p>
 
         <ul>
-          <li>invite them for screening in the future</li>
-          <li>add other test results to their record</li>
-          <li>view their screening history</li>
+          <li>we will create a unique number to identify them, as they will not have an NHS number</li>
+          <li>you can send this result to the patient</li>
+          <li>they will be invited for screening based on their recall status</li>
+          <li>you can view their patient summary on the system</li>
+          <li>you can add future test results to their record and view their screening history</li>
         </ul>
 
         <p>
-         You should only create a dummy patient if there are no system details available and you’ve checked with the lab. 
+        Dummy patient details cannot be updated. This means if their details change, such as they move address or change GP, they will not be updated and letters may not reach them.
+        <br><br>
+        You should only create a dummy patient as a last resort if there are no system details available and you’ve checked the details with the lab.
         </p>
 
         <div class="nhsuk-form-group">
@@ -48,7 +51,7 @@ NHS Cervical Screening
             <div class="nhsuk-checkboxes__item">
             <input class="nhsuk-checkboxes__input" id="confirmIdentity" name="confirmIdentity" type="checkbox" value="confirmIdentity">
             <label class="nhsuk-label nhsuk-checkboxes__label" for="confirmIdentity">
-              I confirm that I wish to create a dummy patient
+              I confirm that I wish to create a dummy patient for this result
             </label>
           </div>
           </div>
