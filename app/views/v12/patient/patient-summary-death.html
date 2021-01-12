@@ -43,12 +43,14 @@
   <div class="nhsuk-grid-column-three-quarters">
     <h1 class="nhsuk-heading-l">Patient summary</h1>
       
+      {# 
       {% if data['incident-text'] != '' %}
         <div class="nhsuk-inset-text nhsuk-u-margin-bottom-4 nhsuk-u-margin-top-4">
           <span class="nhsuk-u-visually-hidden">Information: </span>
           <p>Incident: {{ data['incident-text'] or '123456A has been logged against this patient' }}</p>
         </div>
       {% endif %}
+      #}
 
       {% set pnlMsg = "<p>Update: " + data.pnl_update_msg  + " </p>"  %}
       {% if (data['pnl_update_msg_show'] > 1) %}
@@ -68,13 +70,11 @@
       {% endif %} 
 
 
-    {% if data.patientSummary.pnl_action == 'Deferred' %}
-      <span class="nhsuk-tag nhsuk-tag--blue"><span>{{ data.patientSummary.pnl_action }} - {{ data.patientSummary.pnl_reason }}</span></span>
-    {% endif %}
+    {# {% if data.patientSummary.pnl_action == 'Deferred' %} #}
+      <span class="nhsuk-tag nhsuk-tag--red"><span>Inactive - Due to death</span></span>
+    {# {% endif %} #}
 
-    {% if data.patientSummary.pnl_action == 'Ceased' %}
-      <span class="nhsuk-tag nhsuk-tag--orange">{{ data.patientSummary.pnl_action }} - {{ data.patientSummary.pnl_reason }}</span>
-    {% endif %}
+
     <dl class="nhsuk-summary-list nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-4">
       <div class="nhsuk-summary-list__row">
         <dt class="nhsuk-summary-list__key">
@@ -88,8 +88,8 @@
           {% endif %}
         </dd>
         <dd class="nhsuk-summary-list__actions">
-          {% if data.role == 'csas' %}
-            {% if data.patientSummary.pnl_action == 'Ceased' %}
+ {#          {% if data.role == 'csas' %}
+           {% if data.patientSummary.pnl_action == 'Ceased' %}
               Actions:
 
               {% if data.patientSummary.pnl_reason == "No cervix" or data.patientSummary.pnl_reason == "Radiotherapy (to the pelvic area which affects the cervix)" %}
@@ -108,7 +108,7 @@
               <a href="/v12/start-prior-notifications-defer-reason?nhsNumber={{ data.patientSummary.nhs_number }}&pnlversion=12&patversion=6&role=csas&returnUrl=pat">Defer</a>
               <a href="/v12/start-prior-notifications-cease-reason?nhsNumber={{ data.patientSummary.nhs_number }}&pnlversion=12&patversion=6&role=csas&returnUrl=pat">Cease</a>
             {% endif %}
-          {% endif %}
+          {% endif %}#}
         </dd>
       </div>
 
