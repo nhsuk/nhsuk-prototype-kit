@@ -30,7 +30,7 @@
 
 {% block content %}
   {% if data.role != 'sampleTaker' %}
-  <nav class="nhsuk-sub-navigation">
+  <nav class="nhsuk-sub-navigation no-print">
     <ul class="nhsuk-sub-navigation__list">
       <li class="nhsuk-sub-navigation__item"><a href="patient-summary-6" class="nhsuk-sub-navigation__link" aria-current="page">Patient Summary</a></li>
       <li class="nhsuk-sub-navigation__item"><a href="history-v4" class="nhsuk-sub-navigation__link">Audit</a></li>
@@ -87,7 +87,7 @@
             {{ data.patientSummary.next_test_due_date | returnDateFormat or '20-Jan-2020' }}
           {% endif %}
         </dd>
-        <dd class="nhsuk-summary-list__actions">
+        <dd class="nhsuk-summary-list__actions no-print">
           {% if data.role == 'csas' %}
             {% if data.patientSummary.pnl_action == 'Ceased' %}
               Actions:
@@ -185,7 +185,7 @@
     <h2 id="testresults" class="nhsuk-heading-l">Test results</h2>
 
     {% if data.role == 'csas' %}
-    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4" href="/v12/start-adding-test?nhsNumber={{ data.patientSummary.nhs_number }}&role=csas&edit-review=">Add result</a>
+    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4 no-print" href="/v12/start-adding-test?nhsNumber={{ data.patientSummary.nhs_number }}&role=csas&edit-review=">Add result</a>
     {% endif %}
 
     <div class="nhsuk-scrollable-pane">
@@ -203,11 +203,14 @@
                   <th class="nhsuk-table__header" scope="col">Action</th>
                   <th class="nhsuk-table__header" scope="col">Repeat</th>
                   <th class="nhsuk-table__header" scope="col">Slide Number</th>
+
+                  <th class="nhsuk-table__header only-print" scope="col">Sender code</th>
+
                   {% if data.role != 'csas' %}
                     <th class="nhsuk-table__header" scope="col">Sample taker code</th>
                     <!--<th class="nhsuk-table__header" scope="col">Slide no</th>-->
                   {% else %}
-                    <th class="nhsuk-table__header" scope="col">Amend</th>
+                    <th class="nhsuk-table__header no-print" scope="col">Amend</th>
                   {% endif %}   
                 </tr> 
               </thead>
@@ -244,7 +247,10 @@
                     <td class="nhsuk-table__cell">{{ result.sender_code }}</td>
                     <td class="nhsuk-table__cell">{{ result.slide_number }}</td> 
                   {% else %}
-                    <td> 
+
+                  <td class="nhsuk-table__cell only-print">{{ result.sender_code }}</td>
+
+                    <td class="no-print"> 
                       <a href="/v12/patient/add-test-result/add-test-result-edit-2?slide-number={{ result.slide_number }}&result-type={{ result['result-type'] }}&result_code={{ result['result-result'] }}&comments=&edit-review=true" style="margin-left:4px; margin-right:4px;">Review</a>
                       <a href="/v12/patient/add-test-result/add-test-result-remove" style="margin-left:4px; margin-right:4px;">Delete</a>
                     </td>
@@ -259,7 +265,6 @@
 
     </div>
 
-
     {# {% include '../components/hpv-results.html' %}#}
   </div>
 </div>
@@ -271,7 +276,7 @@
   <div class="nhsuk-footer" id="nhsuk-footer">
     <div class="nhsuk-width-container nhsuk-width-container-fluid">
       <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
-      <p><a href="/v12/reset-patient-data-12">Reset patient data</a></p>
+      <p><a href="/v12/reset-patient-data-12 no-print">Reset patient data</a></p>
     </div>
   </div>
 </footer>

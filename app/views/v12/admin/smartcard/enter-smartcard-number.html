@@ -27,16 +27,16 @@ NHS Cervical Screening
     }) }}
 
     <form action="smartcard-audit-1" method="POST">
-    <h1 class="nhsuk-heading-l">Find the daily activity of a smartcard user</h1>
+    <h1 class="nhsuk-heading-l">Find daily activity of smartcard user</h1>
 
       {{ input({
         "label": {
-          "text": "Enter Smartcard ID number",
+          "text": "Enter the smartcard ID number",
           "classes": "nhsuk-label nhsuk-label__strong",
           "isPageHeading": false
         },
           "hint": {
-          "text": "For example, 1234567890."
+          "text": "This is a 12 digit number found on the front of the smartcard. For example, 12345678912"
         },
         "id": "example",
         "name": "smartcard-id",
@@ -48,7 +48,7 @@ NHS Cervical Screening
         "namePrefix": "example",
         "fieldset": {
           "legend": {
-            "text": "Enter the date you want to view",
+            "text": "Enter date of activity you want to view",
             "classes": "nhsuk-label nhsuk-label__strong",
             "isPageHeading": false
           }
