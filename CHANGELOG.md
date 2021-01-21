@@ -1,5 +1,14 @@
 # NHS.UK prototype kit Changelog
 
+## 4.1.0 - 21 January 2021
+
+:new: **New features**
+
+- Install [NHS.UK frontend v4.1.0](https://github.com/nhsuk/nhsuk-frontend/blob/master/CHANGELOG.md#410---21-january-2021)
+
+:wrench: **Fixes**
+
+- Update package dependencies to latest versions
 ## 4.0.0 - 27th October 2020
 
 :boom: **Breaking changes**
