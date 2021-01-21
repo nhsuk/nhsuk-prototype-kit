@@ -114,9 +114,9 @@ NHS Cervical Screening
                 <h2 class="nhs-screening-whole-timeline__title">Test received</h2>
                 <p class="nhs-screening-whole-timeline__by">from Derby Royal Hospital (65030)</p>
                 <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272">02-Feb-2020, 15:54:23 pm</p>
-                <p class="nhs-screening-whole-timeline__date">Result location: Reject tab</p>
-                <br>
                 <p class="nhs-screening-whole-timeline__date">Error status: Invalid test date</p>
+                <br>
+                <p class="nhs-screening-whole-timeline__date">Sender code: 131290</p>
                 <p class="nhs-screening-whole-timeline__date">Slide number: 70406000</p>
                 <p class="nhs-screening-whole-timeline__date">Test result: Low-grade dyskaryosis (39S), HPV Positive, Repeat Advised</p>
               </div>
@@ -136,7 +136,7 @@ NHS Cervical Screening
           <fieldset class="nhsuk-fieldset">
             <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
               <h2 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong nhsuk-u-margin-top-4">
-                Choose the correct test result details
+                How do you want to action the result?
               </h2>
             </legend>
 
@@ -145,15 +145,18 @@ NHS Cervical Screening
               <div class="nhsuk-radios__item">
                 <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="current">
                 <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-                  Current result
+                  Use current test result
                 </label>
               </div>
 
               <div class="nhsuk-radios__item">
                 <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="past">
                 <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                  Past result
+                  Use past test result from 03-Feb-2020 (10.29am)
                 </label>
+                <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
+                 This is shown in the audit history
+                </div>
               </div>
 
             </div>
