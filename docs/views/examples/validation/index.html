@@ -31,6 +31,20 @@
           } if errors.docsExampleName
         })}}
 
+        {{ input({
+          "label": {
+            "text": "Email",
+            "classes": "nhsuk-label--l nhsuk-u-margin-bottom-3",
+            "isPageHeading": true
+          },
+          "id": "docsExampleEmail",
+          "name": "docsExampleEmail",
+          "value": data.docsExampleEmail,
+          "errorMessage": {
+            "text": errors.docsExampleEmail
+          } if errors.docsExampleEmail
+        })}}
+
         {{ button({
           "text": "Submit"
         })}}
