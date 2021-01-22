@@ -33,9 +33,7 @@
 
 }
 
-@media print
-
-  {   
+@media print {   
     a, p, h1, h2, h3, h4, h5, h6 {
       color: black !important;
     } 
@@ -44,11 +42,7 @@
     {
         display: none !important;
     }
-
-    //.print {
-    //  display: block !important;
-    //}
-  }
+}
 
 @media screen {
    .only-print, .only-print * {
