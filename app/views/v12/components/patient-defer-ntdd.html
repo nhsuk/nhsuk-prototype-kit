@@ -2,11 +2,12 @@
   Enter the next test due date for the patient
 </h1>
 
+
 {% set message %}
   {% if data['pnl-defer-reason'] != null %}
     {% if data['pnl-defer-reason'] == 'Discharge from colposcopy' %}
-      <p>The earliest date you can enter is today's date, which will set the next test due date 10 weeks from tomorrow</p>
-      <p>If the next test due date sent by the colposcopy is earlier than today's date, enter it as a comment</p>
+      <p>The earliest next test due date you can enter is {{ 71 | returnDate("days") | returnNumericDateFormat }}</p>
+      <p>If the next test due date sent by the colposcopy is earlier than {{ 71 | returnDate("days") | returnNumericDateFormat }}, enter it as a comment</p>
       <p>Maximum deferral can not exceed {{ data['pnl-defer-reason'] | returnReasonGuidance }} months</p>    
     {% else %}
       <p>Maximum deferral can not exceed {{ data['pnl-defer-reason'] | returnReasonGuidance }} months</p> 

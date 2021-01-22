@@ -37,7 +37,7 @@ module.exports = function (env) {
     return moment(date).format("D-MMM-YYYY, h:mm:ss a");
   }
   
-
+  // {{ 10 | returnDate("weeks") }}
   filters.returnDate = function (amount, type) {
       return moment().add(amount, type).format("D-MMM-YYYY");
   }
