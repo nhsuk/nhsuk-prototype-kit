@@ -27,7 +27,17 @@
     <!--<div class="nhsuk-form-group">-->
       <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
         <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-          Add {{ data['result-type'] }} test result
+
+        {% if data ['self-sample'] == 'Yes' %}
+           {% set resultType= 'self-sample' %}
+           {% elif data ['health-authority'] != ''  %}
+           {% set resultType= 'Scottish' %}
+           {% else %}
+           {% set resultType= '' %}
+           {% endif %}
+
+
+            Add {{ resultType }} test result
         </legend>
         <form action='add-test-result-repeat-in-months' method='post'>
 
@@ -36,156 +46,12 @@
               <legend class="nhsuk-fieldset__legend nhsuk-input--width-4 nhsuk-label nhsuk-label__strong">
                 <h1 class="nhsuk-fieldset__heading">Result</h1>
               </legend>
-               {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
+               {% if data['health-authority']!= '' %}
+               <span class="nhsuk-hint" id="example-hint"> Needs to be in English result format. For example, X 0 A</span>
+               {% else %}
                   <span class="nhsuk-hint" id="example-hint">For example, X 0 A</span>
                {% endif %}
-              {% if data['result-type']== 'Scottish'%} 
-              <span class="nhsuk-hint" id="example-hint"> Needs to be in English result format. For example, X 0 A</span>
-              
-                    <details class="nhsuk-details">
-                       <summary class="nhsuk-details__summary">
-                         <span class="nhsuk-details__summary-text">
-                           See how to translate into English result format
-                         </span>
-                       </summary>
-                       <div class="nhsuk-details__text">
-                        
-                        <table role="table" class="nhsuk-table-responsive">
-  <caption class="nhsuk-table__caption">Ibuprofen tablet dosages for children</caption>
-  <thead role="rowgroup" class="nhsuk-table__head">
-    <tr role="row">
-      <th role="columnheader" class="" scope="col">
-        Test Result Reporting Category 
-        <span class="nhsuk-table__cell--hint">Pre 01 April 2013</span>
-      </th>
-      <th role="columnheader" class="" scope="col">
-        Test Result Reporting Category 
-         <span class="nhsuk-table__cell--hint">From 01 April 2013</span>
-      </th>
-      <th role="columnheader" class="" scope="col">
-        Code For NHAIS 
-        <span class="nhsuk-table__cell--hint">Non HPV</span>
-      </th>
-    </tr>
-  </thead>
-  <tbody class="nhsuk-table__body">
-    <tr role="row" class="nhsuk-table__row">
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">Unsatisfactory </span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">Unsatisfactory </span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">1R</span>
-      </td>
-       <tr role="row" class="nhsuk-table__row">
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">Negative</span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">Negative</span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">2A</span>
-      </td>
-    </tr>
-    <tr role="row" class="nhsuk-table__row">
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">Borderline Glandular Changes</span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">Borderline change in endocervical cells</span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">8R (months) </span>
-      </td>
-    </tr>
-     <tr role="row" class="nhsuk-table__row">
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">Mild Dyskaryosis </span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">Low grade dyskaryosis</span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">3R (months) - Early Repeat 3S - Referra</span>
-      </td>
-    </tr>
-    <tr role="row" class="nhsuk-table__row">
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">Moderate Dyskaryosis </span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">High grade dyskaryosis (moderate) </span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">7S</span>
-      </td>
-    </tr>
-    <tr role="row" class="nhsuk-table__row">
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">Severe Dyskaryosis</span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">High grade dyskaryosis (severe)</span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">4S</span>
-      </td>
-    </tr>
-     <tr role="row" class="nhsuk-table__row">
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">Severe Dyskaryosis/? Invasive</span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">High grade dyskaryosis ? invasive</span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">5S</span>
-      </td>
-    </tr>
-      <tr role="row" class="nhsuk-table__row">
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">Glandular Abnormality</span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">Glandular Abnormality</span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">6S</span>
-      </td>
-    </tr>
-    <tr role="row" class="nhsuk-table__row">
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">Endocervical Adenocarcinoma</span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">Endocervical Adenocarcinoma</span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">9S</span>
-      </td>
-    </tr>
-    <tr role="row" class="nhsuk-table__row">
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">Endometrial or other cancer </span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">Endometrial or other malignancy</span>
-      </td>
-      <td role="cell" class="nhsuk-table__cell">
-        <span class="nhsuk-table-responsive__heading">0A</span>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-                
-                      </div>
-                     </details>
-
-              {% endif %}
+          
 
               <div class="nhsuk-date-input" id="example">
                 <div class="nhsuk-date-input__item">

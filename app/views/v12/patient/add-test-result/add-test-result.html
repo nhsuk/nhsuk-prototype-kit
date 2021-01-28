@@ -20,7 +20,7 @@
         Back patient summary</a>
     </div>
 
-  <div class="nhsuk-panel-with-label">
+<div class="nhsuk-panel-with-label">
     {% include '../../components/pnl-patient-2.html' %}
     <span class="nhsuk-hint">Step 1 of 6</span>
 
@@ -37,8 +37,9 @@
 
           <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-            Add {{ data['result-type'] }} test details
+            Add test details
           </legend>
+
           <form action="add-test-result-result" method="post">
             
               {{ input({
@@ -70,23 +71,22 @@
              }) }}
             
             <div class="nhsuk-form-group">
-               <label class="nhsuk-label" for="email">
-                 Are you recording a self sample test?
+               <label class="nhsuk-label nhsuk-label__strong" for="email">
+                 Are you recording a self-sample test?
                </label>
                  <div class="nhsuk-radios__item">
-                   <input class="nhsuk-radios__input" id="yes-selfsample" name="result-type" value="Self Sample"type="radio" {{ checked("result-type", "Self Sample") }}>
+                   <input class="nhsuk-radios__input" id="yes-selfsample" name="self-sample" value="Yes"type="radio" {{ checked("self-sample", "Yes") }}>
                       <label class="nhsuk-label nhsuk-radios__label" for="yes-selfsample">
-                        Yes, this is a self sample test
+                        Yes, this is a self-sample test
                       </label>
                   </div>
                   <div class="nhsuk-radios__item">
-                   <input class="nhsuk-radios__input" id="no-selfsample" name="result-type" value="English" type="radio" {{ checked("result-type", "English") }}>
+                   <input class="nhsuk-radios__input" id="no-selfsample" name="self-sample" value="No" type="radio" {{ checked("self-sample", "No") }}>
                        <label class="nhsuk-label nhsuk-radios__label" for="no-selfsample">
-                          No, this is not a self sample test
+                          No, this is not a self-sample test
                        </label>
                   </div>
-              </div>
-            </div>
+              
 
                 
              </fieldset>
@@ -104,6 +104,7 @@
 
   </div>
 </div>
+
 
 {% endblock %}
 

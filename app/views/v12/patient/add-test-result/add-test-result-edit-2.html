@@ -26,26 +26,28 @@
     <form action="/v12/add-test-result?nhsNumber={{ data.pnl_patient.nhs_number }}" method="post">
 
 <dl class="nhsuk-summary-list">
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Test type</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['result-type'] or 'English'}}</dd>
-    <dd class="nhsuk-summary-list__actions"></dd>
-  </div>
-  {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
+  
+  {% if data['health-authority']== '' %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">National code</dt>
     <dd class="nhsuk-summary-list__value">{{ data['national-code'] or '12345678'}}</dd>
-    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Edit<span class="nhsuk-u-visually-hidden"> Sender National code</span></a></dd>
+    <dd class="nhsuk-summary-list__actions"><a href="add-test-result">Edit<span class="nhsuk-u-visually-hidden"> Sender National code</span></a></dd>
   </div>
   {% endif %}
-  {% if data['result-type']!= 'Abroad'%}
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Self-sample</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['self-sample'] or 'No'}}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="add-test-result">Edit<span class="nhsuk-u-visually-hidden"> Self-sample</span></a></dd>
+  </div>
+  
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Source code</dt>
     <dd class="nhsuk-summary-list__value">{{ data['source-code'] or 'H' }}</dd>
     <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Edit<span class="nhsuk-u-visually-hidden"> Source code</span></a></dd>
   </div>
-  {% endif %}
-  {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
+  
+  {% if data['health-authority']== '' %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender code</dt>
     <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or '54321'}} </dd>
@@ -53,11 +55,11 @@
   </div>
   {% endif %}
 
-  {% if data['result-type'] == 'Scottish' %}
+  {% if data['health-authority'] != '' %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Health Authority</dt>
     <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or 'X'}}</dd>
-    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Edit<span class="nhsuk-u-visually-hidden"> Health Authority</span></a></dd>
+    <dd class="nhsuk-summary-list__actions"><a href="add-test-result">Edit<span class="nhsuk-u-visually-hidden"> Health Authority</span></a></dd>
   </div>
   {% endif %}
 

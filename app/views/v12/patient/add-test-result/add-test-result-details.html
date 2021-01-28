@@ -28,34 +28,29 @@
       <!--<div class="nhsuk-form-group">-->
         <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-            Add {{ data['result-type'] }} test details
+
+
+           {% if data ['self-sample'] == 'Yes' %}
+           {% set resultType= 'self-sample' %}
+           {% elif data ['health-authority'] != ''  %}
+           {% set resultType= 'Scottish' %}
+           {% else %}
+           {% set resultType= '' %}
+           {% endif %}
+
+
+            Add {{ resultType }} test details
           </legend>
           <form action="add-test-result-result" method="post">
-            {% if data['result-type']== 'English' or data['result-type']== 'Welsh' or data['result-type']== 'Self Sample'%}
-              {{ input({
-                "label": {
-                  "text": "National Code",
-                "classes": "nhsuk-label nhsuk-label__strong"
-                },
-                hint: {
-                  html: "Also known as lab code."
-               },
-                "id": "input-width-10",
-                "name": "national-code",
-                "classes": "nhsuk-input--width-10",
-                "autocomplete": "off",
-                "value": data['national-code']
-              }) }}
-            {% endif %}
+            
 
 
-           {% if data ['result-type'] == 'Self Sample' %}
+           {% if data ['self-sample'] == 'Yes' %}
            {% set sourceValue= '6' %}
            {% else %}
            {% set sourceValue= data['source-code'] %}
            {% endif %}
 
-            {% if data['result-type']!= 'Abroad'%}
              {{ input({
                "label": {
                  "text": "Source Code",
@@ -67,15 +62,15 @@
                "autocomplete": "off",
                "value": sourceValue
              }) }}
-            {% endif %}
+            
 
-           {% if data ['result-type'] == 'Self Sample' %}
+           {% if data ['self-sample'] == 'Yes' %}
            {% set senderValue= 'SLFSMP' %}
            {% else %}
            {% set senderValue= data['sender-code'] %}
            {% endif %}
 
-            {% if data['result-type']== 'English' or data['result-type']== 'Welsh' or data['result-type']== 'Self Sample'%}
+            {% if data['national-code']!= '' or data['self-sample']== 'Yes'%}
              {{ input({
                "label": {
                  "text": "Sender Code",
@@ -92,19 +87,6 @@
              }) }}
             {% endif %}
             
-             {% if data['result-type']== 'Scottish'%}
-             {{ input({
-               "label": {
-                 "text": "Health Authority",
-                "classes": "nhsuk-label nhsuk-label__strong"
-               },
-                "id": "input-width-2",
-               "name": "health-authority",
-               "classes": "nhsuk-input--width-2",
-               "autocomplete": "off",
-               "value": data['health-authority']
-             }) }}
-            {% endif %}
             {{ input({
                "label": {
                 "text": "Slide number",
