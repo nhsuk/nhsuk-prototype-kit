@@ -24,73 +24,70 @@
     {% include '../../components/pnl-patient-2.html' %}
     <span class="nhsuk-hint">Step 1 of 6</span>
 
-<h1 class="nhsuk-heading-l">Enter test type</h1>
+  <h1 class="nhsuk-heading-l">Define test type</h1>
 
-<div class="nhsuk-inset-text">
-  <span class="nhsuk-u-visually-hidden">Information: </span>
-  <p>Please start with the most recent test when adding more than one test result to a patients records.</p>
-</div>
-     <form action="/v12/enter-test-result" method="post">
-        <div class="nhsuk-form-group">
-      
-            <fieldset class="nhsuk-fieldset">
-                    
-
-                       <!-- <div class="nhsuk-radios nhsuk-radios--conditional">-->
-
-                       <div class="nhsuk-radios__item">
-                         <input class="nhsuk-radios__input" id="example-1" name="result-type" type="radio" value="English" {{ checked("result-type", "English") }} aria-controls="conditional-example-1" aria-expanded="false">
-                         <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-                           English
-                         </label>
-                       </div>
+     <div class="nhsuk-inset-text">
+       <span class="nhsuk-u-visually-hidden">Information: </span>
+       <p>Please start with the most recent test when adding more than one test result to a patients records.</p>
+     </div>
+        
+    <form action="/v12/enter-test-result" method="post">
+         <div class="nhsuk-form-group">
              
-                                            <!-- <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-example-1">
-                   
-                                               <div class="nhsuk-form-group">
-                                                 <label class="nhsuk-label" for="email">
-                                                   Are you recording a self sample test?
-                                                 </label>
-                                                   <div class="nhsuk-radios__item">
-                                                     <input class="nhsuk-radios__input" id="yes-selfsample" name="result-type" value="Self Sample"type="radio" {{ checked("result-type", "Self Sample") }}>
-                                                        <label class="nhsuk-label nhsuk-radios__label" for="yes-selfsample">
-                                                          Yes, this is a self sample test
-                                                        </label>
-                                                    </div>
-                                                    <div class="nhsuk-radios__item">
-                                                     <input class="nhsuk-radios__input" id="no-selfsample" name="result-type" value="English" type="radio" {{ checked("result-type", "English") }}>
-                                                         <label class="nhsuk-label nhsuk-radios__label" for="no-selfsample">
-                                                            No, this is not a self sample test
-                                                         </label>
-                                                    </div>
-                                                </div>
-                                              </div>
-                                      </div>-->
-             
-                      <div class="nhsuk-radios__item">
-                           <input class="nhsuk-radios__input" id="example-2" name="result-type" type="radio" value="Scottish" {{ checked("result-type", "Scottish") }}>
-                           <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                             Scottish
-                           </label>
-                         </div>
-                         <div class="nhsuk-radios__item">
-                           <input class="nhsuk-radios__input" id="example-2" name="result-type" type="radio" value="Welsh" {{ checked("result-type", "Welsh") }}>
-                           <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                             Welsh
-                           </label>
-                         </div>
-                         <div class="nhsuk-radios__item">
-                           <input class="nhsuk-radios__input" id="example-2" name="result-type" type="radio" value="Self Sample" {{ checked("result-type", "Self Sample") }}>
-                           <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                             Self Sample (YouScreen)
-                           </label>
-                         </div>
-                         <!--<div class="nhsuk-radios__item">
-                           <input class="nhsuk-radios__input" id="example-2" name="result-type" type="radio" value="Abroad" {{ checked("result-type", "Abroad") }}>
-                           <label class="nhsuk-label nhsuk-radios__label" for="example-2">
-                             Abroad
-                           </label>
-                         </div>-->
+
+          <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            Add {{ data['result-type'] }} test details
+          </legend>
+          <form action="add-test-result-result" method="post">
+            
+              {{ input({
+                "label": {
+                  "text": "National Code",
+                "classes": "nhsuk-label nhsuk-label__strong"
+                },
+                hint: {
+                  html: "Also known as lab code."
+               },
+                "id": "input-width-10",
+                "name": "national-code",
+                "classes": "nhsuk-input--width-10",
+                "autocomplete": "off",
+                "value": data['national-code']
+              }) }}
+            
+          
+             {{ input({
+               "label": {
+                 "text": "Health Authority",
+                "classes": "nhsuk-label nhsuk-label__strong"
+               },
+                "id": "input-width-2",
+               "name": "health-authority",
+               "classes": "nhsuk-input--width-2",
+               "autocomplete": "off",
+               "value": data['health-authority']
+             }) }}
+            
+            <div class="nhsuk-form-group">
+               <label class="nhsuk-label" for="email">
+                 Are you recording a self sample test?
+               </label>
+                 <div class="nhsuk-radios__item">
+                   <input class="nhsuk-radios__input" id="yes-selfsample" name="result-type" value="Self Sample"type="radio" {{ checked("result-type", "Self Sample") }}>
+                      <label class="nhsuk-label nhsuk-radios__label" for="yes-selfsample">
+                        Yes, this is a self sample test
+                      </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                   <input class="nhsuk-radios__input" id="no-selfsample" name="result-type" value="English" type="radio" {{ checked("result-type", "English") }}>
+                       <label class="nhsuk-label nhsuk-radios__label" for="no-selfsample">
+                          No, this is not a self sample test
+                       </label>
+                  </div>
+              </div>
+            </div>
+
                 
              </fieldset>
               <br>

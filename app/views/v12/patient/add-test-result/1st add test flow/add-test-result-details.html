@@ -1,0 +1,176 @@
+{% extends "layout-v2.html" %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header-3.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+    <div class="nhsuk-back-link nhsuk-u-margin-bottom-4">
+      <a class="nhsuk-back-link__link" href="add-test-result">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Back to step 1 - Choose a test type
+      </a>
+    </div>
+
+    <div class="nhsuk-panel-with-label">
+      {% include '../../components/pnl-patient-2.html' %}
+      <span class="nhsuk-hint">Step 2 of 6</span>  
+  
+      <!--<div class="nhsuk-form-group">-->
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            Add {{ data['result-type'] }} test details
+          </legend>
+          <form action="add-test-result-result" method="post">
+            {% if data['result-type']== 'English' or data['result-type']== 'Welsh' or data['result-type']== 'Self Sample'%}
+              {{ input({
+                "label": {
+                  "text": "National Code",
+                "classes": "nhsuk-label nhsuk-label__strong"
+                },
+                hint: {
+                  html: "Also known as lab code."
+               },
+                "id": "input-width-10",
+                "name": "national-code",
+                "classes": "nhsuk-input--width-10",
+                "autocomplete": "off",
+                "value": data['national-code']
+              }) }}
+            {% endif %}
+
+
+           {% if data ['result-type'] == 'Self Sample' %}
+           {% set sourceValue= '6' %}
+           {% else %}
+           {% set sourceValue= data['source-code'] %}
+           {% endif %}
+
+            {% if data['result-type']!= 'Abroad'%}
+             {{ input({
+               "label": {
+                 "text": "Source Code",
+                "classes": "nhsuk-label nhsuk-label__strong"
+               },
+               "id": "input-width-2",
+               "name": "source-code",
+               "classes": "nhsuk-input--width-2",
+               "autocomplete": "off",
+               "value": sourceValue
+             }) }}
+            {% endif %}
+
+           {% if data ['result-type'] == 'Self Sample' %}
+           {% set senderValue= 'SLFSMP' %}
+           {% else %}
+           {% set senderValue= data['sender-code'] %}
+           {% endif %}
+
+            {% if data['result-type']== 'English' or data['result-type']== 'Welsh' or data['result-type']== 'Self Sample'%}
+             {{ input({
+               "label": {
+                 "text": "Sender Code",
+                "classes": "nhsuk-label nhsuk-label__strong"
+               },
+               hint: {
+                  html: "Also known as GP local code, GNC number, GMC number, salary GP code, Practice code or non GP sender code."
+               },
+                "id": "input-width-10",
+               "name": "sender-code",
+               "classes": "nhsuk-input--width-10",
+               "autocomplete": "off",
+               "value": senderValue
+             }) }}
+            {% endif %}
+            
+             {% if data['result-type']== 'Scottish'%}
+             {{ input({
+               "label": {
+                 "text": "Health Authority",
+                "classes": "nhsuk-label nhsuk-label__strong"
+               },
+                "id": "input-width-2",
+               "name": "health-authority",
+               "classes": "nhsuk-input--width-2",
+               "autocomplete": "off",
+               "value": data['health-authority']
+             }) }}
+            {% endif %}
+            {{ input({
+               "label": {
+                "text": "Slide number",
+                "classes": "nhsuk-label nhsuk-label__strong"
+               },
+               "id": "input-width-10",
+               "name": "slide-number",
+               "classes": "nhsuk-input--width-10",
+               "autocomplete": "off",
+               "value": data['slide-number']
+              }) }}
+
+            {{ dateInput({
+              "id": "example",
+              "namePrefix": "example",
+              "fieldset": {
+                "legend": {
+                  "text": "Test date",
+                  "classes": "nhsuk-label nhsuk-label__strong",
+                  "isPageHeading": true
+                }
+              },
+              "hint": {
+                "text": "For example, 15 3 1984"
+              },
+              "items": [
+                {
+                  "name": "day",
+                  "classes": "nhsuk-input--width-2",
+                  "autocomplete": "off",
+                  "value": data['example-day']
+                },
+                {
+                  "name": "month",
+                  "classes": "nhsuk-input--width-2",
+                  "autocomplete": "off",
+                  "value": data['example-month']
+                },
+                {
+                  "name": "year",
+                  "classes": "nhsuk-input--width-4",
+                  "autocomplete": "off",
+                  "value": data['example-year']
+                }
+              ]
+            }) }}
+            
+          
+            <button class="nhsuk-button nhsuk-button--ers" type="submit">Continue</button>
+            <p><a href="../patient-summary-5">Exit without saving</a></p>
+          </form>
+        </fieldset>
+      <!--</div>-->
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+      <p><a href="/v12/reset-patient-data-12">Reset patient data</a></p>
+    </div>
+  </div>
+</footer>
+{% endblock %}
