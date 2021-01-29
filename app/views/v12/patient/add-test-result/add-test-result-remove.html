@@ -31,35 +31,37 @@
     </div>
 
     <dl class="nhsuk-summary-list">
+
+     {% if data['health-authority'] != '' %}
   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Test type</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['result-type'] }}</dd>
+    <dt class="nhsuk-summary-list__key">Health Authority</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] }}</dd>
   </div>
-  {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
+  {% endif %}
+  
+  {% if data['health-authority']== '' %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">National code</dt>
     <dd class="nhsuk-summary-list__value">{{ data['national-code'] }}</dd>
   </div>
   {% endif %}
-  {% if data['result-type']!= 'Abroad'%}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Self-sample</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['self-sample'] }}</dd>
+  </div>
+  
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Source code</dt>
     <dd class="nhsuk-summary-list__value">{{ data['source-code'] }}</dd>
   </div>
-  {% endif %}
-  {% if data['result-type']== 'English' or data['result-type']== 'Welsh'%}
+  
+  {% if data['health-authority']== '' %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender code</dt>
     <dd class="nhsuk-summary-list__value">{{ data['sender-code'] }} </dd>
   </div>
   {% endif %}
 
-  {% if data['result-type'] == 'Scottish' %}
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Health Authority</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] }}</dd>
-  </div>
-  {% endif %}
 
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Slide number</dt>

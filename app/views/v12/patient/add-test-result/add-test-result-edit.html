@@ -26,6 +26,13 @@
     <form action="/v12/add-test-result?nhsNumber={{ data.pnl_patient.nhs_number }}" method="post">
 
 <dl class="nhsuk-summary-list">
+{% if data['result-type'] == 'Scottish' %}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Health Authority</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or 'X'}}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Change<span class="nhsuk-u-visually-hidden"> Health Authority</span></a></dd>
+  </div>
+  {% endif %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Test type</dt>
     <dd class="nhsuk-summary-list__value">{{ data['result-type'] or 'English'}}</dd>
@@ -53,13 +60,6 @@
   </div>
   {% endif %}
 
-  {% if data['result-type'] == 'Scottish' %}
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Health Authority</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or 'X'}}</dd>
-    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Change<span class="nhsuk-u-visually-hidden"> Health Authority</span></a></dd>
-  </div>
-  {% endif %}
 
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Slide number</dt>
