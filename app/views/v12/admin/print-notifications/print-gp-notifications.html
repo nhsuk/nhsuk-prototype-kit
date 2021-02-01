@@ -1,0 +1,148 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(5) {
+    border-bottom: 4px solid #d8dde0;
+  }
+
+  .nhsuk-button, .nhsuk-button--ers, .dropdown .dropbtn, .nhsuk-button--ers_secondary, .nhsuk-button--ers_reverse, .nhsuk-button--ers_reverse:hover, .nhsuk-button--ers_reverse:focus, .nhsuk-button--ers_reject, .nhsuk-blue, .nhsuk-right  {
+    margin-bottom: 0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    {{ backLink({
+      "href": "print-notifications",
+      "text": "Back to choosing a notification to print"
+    }) }}
+</div>
+</div>
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <h1 class="nhsuk-heading-l">Print GP notifications for {{ data['gp-code'] or 'A123456' }}</h1>
+    <p class="no-print"><a onclick="window.print(); " class="nhsuk-button nhsuk-button--ers">Print</a></p>
+
+    <p>Use this list to review the patients at your GP surgery who are:</p>
+    <ul>
+      <li>new patients registered at your GP surgery with an abnormal follow-up</li>
+      <li>new patients registered at your GP surgery who are ceased from screening</li>
+      <li>existing patients recently ceased from screening</li>
+    </ul>
+    <p>Patients not reviewed will be removed from the list after 8 weeks.</p>
+    <p>
+      To cease or defer a patient:
+      <ul>
+        <li>download the correct cease or defer form from the CSAS primary care support website: <a href="https://www.csas.nhs.uk/support/">https://www.csas.nhs.uk/support/</a></li>
+        <li>print the form</li>
+        <li>fill in and sign the form (needs to be done by a GP, nurse or clinician, or by the patient for the ‘Informed consent for withdrawal from the cervical screening programme’ form)</li>
+        <li>scan the form</li>
+        <li>submit it to the CSAS website: <a href="https://www.csas.nhs.uk/contact-us/">https://www.csas.nhs.uk/contact-us/</a></li>
+      </ul>
+    </p>
+{% if data['patients'] == null %} 
+<meta http-equiv="refresh" content="2;url=/v12/admin/print-notifications/print-patients-due-to-be-invited" />
+  <div class="styleguide-example">
+    <div class="nhsuk-loader__container">
+      <h1 class="nhsuk-heading-l">Loading patients</h1>
+    </div>
+    <div class="nhsuk-loader__container">
+      <div class="nhsuk-loader">
+      </div>
+    </div>
+  </div>
+{% else %}
+
+{% if data['patients'].length >= 1 %} 
+
+    <table id="sortable" class="nhsuk-table-clickable bna-table nhsuk-u-margin-top-0">
+      <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">Name</th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">Age</th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">Status</th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">Notification type</th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">Last result</th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">Next test due date</th>
+          <!--<th class="nhsuk-table__header" aria-sort="none" scope="col">Review By</th>-->
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        {% for patient in data['patients'] %}
+          {% set rowId =  "selectRow" + loop.index %}
+          {% set detailsId =  "detailsRow" + loop.index %}
+          {% set buttonId =  "btnRow" + loop.index %}
+          {% set NameId =  "nameRow1" + loop.index %}
+          <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+          {{ patient.first_name | capitalize }} {{ patient.last_name | capitalize }} 
+            <span class="nhsuk-table__cell--hint">NHS No: {{ patient.nhs_number | formatNHSNumber }}</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            {{ patient.date_of_birth | returnAge }}
+            <span class="nhsuk-table__cell--hint">{{ patient.date_of_birth  | returnNumericDateFormat }}</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            {% if patient.results[0] == null %} 
+              Called
+            {% else %}
+              {{ patient.results[0].action }}
+            {% endif %}
+            <span class="nhsuk-table__cell--hint">Recall</span>
+          </td>
+          <td>{{ patient.ceased_type }}         
+              {% if (patient.ceased_type == "Abnormal Follow-up") or (patient.ceased_type == "Registered ceased") %}
+                <span class="nhsuk-table__cell--hint">New Patient</span>
+              {% else %}
+                <span class="nhsuk-table__cell--hint">-</span>
+              {% endif %}</td>
+          <td>
+            {% if patient.results[0] == null %} 
+              {% set resultDate = "no results" %} 
+            {% else %}
+              {% set result = "(" + (patient.results[0].result_code or "-" ) + (patient.results[0].infection_code or "") + (patient.results[0].action_code or "-") + ") " + (patient.results[0].result or "-") + ", " +(patient.results[0].infection_result or "No HPV data") + ", " +(patient.results[0].action or "-") %}
+              {% set resultDate = (patient.results[0].result_date | returnNumericDateFormat or "-") + " " + (patient.results[0].result_date | returnTimeDiff or "-") %}
+            {% endif %}
+            {% if patient.results[0] != null %}
+              {{ result }}
+            {% else %}
+              no results
+            {% endif %}
+            <span class="nhsuk-table__cell--hint">{{ resultDate }}</span>
+          </td>
+          <td class="nhsuk-table__cell">
+            {{ patient.next_test_due_date | returnNumericDateFormat }} 
+             <span class="nhsuk-table__cell--hint">{{ ((( patient.next_test_due_date | returnDateFormat) | returnTimeDiffDays) | removeBrackets) | capitalize }} </span>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>   
+    </table>
+
+{% else %}
+  {{ panel({
+      "HTML": "<h2>Completed <svg style='vertical-align: text-top' class='nhsuk-icon nhsuk-icon__tick' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 21' fill='none' aria-hidden='true'>
+        <path stroke-width='4' stroke-linecap='round' d='M18.4 7.8l-8.5 8.4L5.6 12'></path>
+      </svg></h2>
+      <p>There are no more patients that need reviewing.</p>",
+      "classes" : "nhsuk-u-margin-top-0"
+    }) }}
+{% endif %}
+{% endif %}
+
+  </div>
+</div>
+{% endblock %}
