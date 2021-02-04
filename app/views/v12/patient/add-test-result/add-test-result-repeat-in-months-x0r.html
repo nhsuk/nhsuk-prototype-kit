@@ -1,0 +1,111 @@
+{% extends "layout-v2.html" %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header-3.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+    <div class="nhsuk-back-link nhsuk-u-margin-bottom-4">
+      <a class="nhsuk-back-link__link" href="add-test-result-test-info">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Back to step 3 - Add test result</a>
+    </div>
+  <div class="nhsuk-panel-with-label">
+    {% include '../../components/pnl-patient-2.html' %}
+    <span class="nhsuk-hint">Step 4 of 6</span> 
+
+        {% set testResult = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
+        {% set resultText = "<p>The patients will next be invited on <strong>" + 3 | returnDate('years', testResult) + ' ' + 3 | returnDate('years', testResult) | returnTimeDiff +  "</strong></p>" %}
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+
+        {% set newTestDate = (data['example-year'] + "-" + data['example-month'] + "-" + data['example-day']) | returnDateFormat %}
+        {% set oldTestDate = data.pnl_patient.results[0].result_date | returnDateFormat %}
+
+  
+    
+    <div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      <h1 class="nhsuk-fieldset__heading">
+        Select next test due date
+      </h1>
+    </legend>
+
+    <div class="nhsuk-radios">
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="yes">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+          36 months {{ resultText }}
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          12 months
+        </label>
+      </div>
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="no">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          6 months
+        </label>
+      </div>
+
+    </div>
+  
+
+</div>
+
+        <!--{% if (newTestDate | returnUnixTime > oldTestDate | returnUnixTime) %}
+          <h1 class="nhsuk-heading-l">Check next test due date</h1>
+            {{ insetText({
+              "HTML": resultText
+            }) }}
+        <p>This next test due date has been calculated using the patients latest test results.</P>
+        {% else %}
+          <h1 class="nhsuk-heading-l">Next test due date unchanged</h1>
+            {{ insetText({
+              "HTML": "<p>The next test test due date will <strong>not</strong> be changed</p>"
+            }) }}
+        <p>The test entered is an older test and will not affect the next test due date.</P>
+
+        {% endif %}-->
+
+        {% if data['edit-review'] == 'true' %}
+             <a href="add-test-result-crm" class="nhsuk-button nhsuk-button--ers">Ok, Continue</a>
+        {% else %}
+             <a href="add-test-result-crm-edit" class="nhsuk-button nhsuk-button--ers">Ok, Continue</a>
+        {% endif %}
+          <!-- <a href="add-test-result-crm" class="nhsuk-button nhsuk-button--ers">Ok, Continue</a>-->
+
+          
+        <p><a href="../patient-summary-6">Exit without saving</a></p>
+      </fieldset>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+      <p><a href="/v12/reset-patient-data-12">Reset patient data</a></p>
+    </div>
+  </div>
+</footer>
+{% endblock %}

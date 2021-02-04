@@ -311,7 +311,17 @@ router.post("/*/add-test-result", function (req, res) {
 })
 
 
-
+router.post("/*/check-test-result", function (req, res) {
+  var result = (req.session.data["result-result"] + req.session.data["result-infection"] + req.session.data["result-action"]).toUpperCase();
+  console.log("result : " + result)
+  if(result=="X0R"){ 
+    res.redirect("/v12/patient/add-test-result/add-test-result-repeat-in-months-x0r")
+  }
+  if(result=="09R" || result=="29R"){ 
+    res.redirect("/v12/patient/add-test-result/add-test-result-repeat-in-months-09r")
+  }
+  res.redirect("/v12/patient/add-test-result/add-test-result-ntdd")
+});
 
 
 
