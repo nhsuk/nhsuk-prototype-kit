@@ -24,26 +24,31 @@ NHS Cervical Screening
       "text": "Go back to non-match"
     }) }}
 
-    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Add result to a dummy patient</h1>
-    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-6">
-           <h3 class="nhsuk-heading-s">You are about to create a dummy patient in the cervical screening call recall system</h3>
-        </div>
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Create a dummy registration</h1>
 
-        <p>Creating a dummy patient means:<br>
+    <div class="nhsuk-warning-callout">
+      <h3 class="nhsuk-warning-callout__label">
+      Important<span class="nhsuk-u-visually-hidden">:</span>
+      </h3>
+      <p>Only create a dummy registration as a last resort if a participant cannot be matched in the system and you've checked the details with the lab</p>
+    </div>
+
+       <p>Creating a dummy registration means:<br>
         </p>
 
         <ul>
-          <li>we will create a unique number to identify them, as they will not have an NHS number</li>
+          <li>we will create a unique number to identify them</li>
           <li>you can send this result to the patient</li>
           <li>they will be invited for screening based on their recall status</li>
           <li>you can view their patient summary on the system</li>
           <li>you can add future test results to their record and view their screening history</li>
+          <li>you can cease and defer them from screening</li>
         </ul>
 
         <p>
-        Dummy patient details cannot be updated. This means if their details change, such as they move address or change GP, they will not be updated and letters may not reach them.
+        Demographics data cannot be updated on dummy registrations.
         <br><br>
-        You should only create a dummy patient as a last resort if there are no system details available and you’ve checked the details with the lab.
+        This means if the patient’s details change, such as they move address or change GP, they will not be updated in the system and letters may not reach them.
         </p>
 
         <div class="nhsuk-form-group">
@@ -51,7 +56,7 @@ NHS Cervical Screening
             <div class="nhsuk-checkboxes__item">
             <input class="nhsuk-checkboxes__input" id="confirmIdentity" name="confirmIdentity" type="checkbox" value="confirmIdentity">
             <label class="nhsuk-label nhsuk-checkboxes__label" for="confirmIdentity">
-              I confirm that I wish to create a dummy patient for this result
+              I confirm that I wish to create a dummy registration for this result
             </label>
           </div>
           </div>
