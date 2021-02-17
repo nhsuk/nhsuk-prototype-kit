@@ -102,7 +102,11 @@
         {{ footer() }}
       {% endblock %}
 
-    {% block bodyEnd %}{% endblock %}
+    {% block bodyEnd %}
+      {% block scripts %}
+        {% block pageScripts %}{% endblock %}
+      {% endblock %}
+    {% endblock %}
 
   </body>
 </html>
