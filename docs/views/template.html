@@ -35,6 +35,7 @@
 {%- from 'summary-list/macro.njk' import summaryList %}
 {%- from 'tag/macro.njk' import tag %}
 {%- from 'textarea/macro.njk' import textarea %}
+
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="ie8" lang="en"><![endif]--><!--[if IE 9]><html class="ie9" lang="en"><![endif]--><!--[if gt IE 9]><!--><html lang="en" style="{{ html_style }}"><!--<![endif]-->
   <head>
@@ -91,7 +92,7 @@
 
       {% block main %}
         <div class="nhsuk-width-container {{ containerClasses }}">
-          {% block beforeMain %}{% endblock %}
+          {% block outerContent %}{% endblock %}
           <main class="nhsuk-main-wrapper {{ mainClasses }}" id="maincontent" role="main">
             {% block content %}{% endblock %}
           </main>
@@ -102,11 +103,7 @@
         {{ footer() }}
       {% endblock %}
 
-    {% block bodyEnd %}
-      {% block scripts %}
-        {% block pageScripts %}{% endblock %}
-      {% endblock %}
-    {% endblock %}
+    {% block bodyEnd %}{% endblock %}
 
   </body>
 </html>
