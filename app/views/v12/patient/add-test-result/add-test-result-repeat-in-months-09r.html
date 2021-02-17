@@ -24,14 +24,57 @@
     <span class="nhsuk-hint">Step 4 of 6</span> 
 
         {% set testResult = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
-        {% set resultText = "<p>The patients will next be invited on <strong>" + 3 | returnDate('years', testResult) + ' ' + 3 | returnDate('years', testResult) | returnTimeDiff +  "</strong></p>" %}
+        {% set resultText = 3 | returnDate('years', testResult) + ' ' + 3 | returnDate('years', testResult) | returnTimeDiff %}
         <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
 
         {% set newTestDate = (data['example-year'] + "-" + data['example-month'] + "-" + data['example-day']) | returnDateFormat %}
         {% set oldTestDate = data.pnl_patient.results[0].result_date | returnDateFormat %}
 
-        
-        {% if (newTestDate | returnUnixTime > oldTestDate | returnUnixTime) %}
+   {% if data['edit-review'] == 'true' %}
+             <form action="add-test-result-crm-edit" method="POST"> 
+        {% else %}
+             <form action="add-test-result-crm" method="POST">
+        {% endif %}
+    
+    <div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      <h1 class="nhsuk-fieldset__heading">
+        Select repeat in months
+      </h1>
+    </legend>
+
+    <p>The patients test result 09R has multiple options for recall, please select the given repeat in months.</p>
+
+    <div class="nhsuk-radios">
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="12-moths" name="repeat-in-months" type="radio" value="12">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          12 months
+        </label>
+        <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+        The patient will next be invited on {{ resultText }}
+        </div>
+      </div>
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="36-months" name="repeat-in-months" type="radio" value="36">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+          36 months
+        </label>
+        <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+        The patient will next be invited on {{ resultText }}
+        </div>
+      </div>
+
+    </div>
+  
+
+</div>
+
+        <!--{% if (newTestDate | returnUnixTime > oldTestDate | returnUnixTime) %}
           <h1 class="nhsuk-heading-l">Check next test due date</h1>
             {{ insetText({
               "HTML": resultText
@@ -44,13 +87,10 @@
             }) }}
         <p>The test entered is an older test and will not affect the next test due date.</P>
 
-        {% endif %}
+        {% endif %}-->
 
-        {% if data['edit-review'] == 'true' %}
-             <a href="add-test-result-crm-edit" class="nhsuk-button nhsuk-button--ers">Ok, Continue</a>
-        {% else %}
-             <a href="add-test-result-crm" class="nhsuk-button nhsuk-button--ers">Ok, Continue</a>
-        {% endif %}
+        <button class="nhsuk-button nhsuk-button--ers">Continue</button>
+
           <!-- <a href="add-test-result-crm" class="nhsuk-button nhsuk-button--ers">Ok, Continue</a>-->
 
           
