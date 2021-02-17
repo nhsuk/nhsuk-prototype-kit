@@ -55,7 +55,7 @@
         </dd>
         <dd class="nhsuk-summary-list__actions">
             Actions:
-              <a href="#">Make inactive</a>
+              <a href="#">Deactivate</a>
         </dd>
       </div>
 
@@ -124,7 +124,7 @@
     {% if data.role == 'csas' %}
     <h2 id="testresults" class="nhsuk-heading-l">Test results</h2>
 
-    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4" href="/v12/start-adding-test?nhsNumber={{ data.patientSummary.nhs_number }}&role=csas&edit-review=">Add result</a>
+    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4" href="#">Add result</a>
     {% endif %}
 
       <div class="nhsuk-scrollable-pane">
@@ -142,15 +142,7 @@
                       <th class="nhsuk-table__header" scope="col">Action</th>
                       <th class="nhsuk-table__header" scope="col">Repeat</th>
                       <th class="nhsuk-table__header" scope="col">Slide Number</th>
-
-                      <th class="nhsuk-table__header only-print" scope="col">Sender code</th>
-
-                      {% if data.role != 'csas' %}
-                        <th class="nhsuk-table__header" scope="col">Sample taker code</th>
-                        <!--<th class="nhsuk-table__header" scope="col">Slide no</th>-->
-                      {% else %}
-                        <th class="nhsuk-table__header no-print" scope="col">Amend</th>
-                      {% endif %}   
+                      <th class="nhsuk-table__header no-print" scope="col">Amend</th>
                     </tr> 
                   </thead>
                   <tbody class="nhsuk-table__body nhsuk-body-">
@@ -181,18 +173,11 @@
                         70406000
                         <span class="nhsuk-table__cell--hint"> Lab: 65030</span>
                       </td>
-                      {% if data.role != 'csas' %}
-                        <td class="nhsuk-table__cell">{{ result.sender_code }}</td>
-                        <td class="nhsuk-table__cell">{{ result.slide_number }}</td> 
-                      {% else %}
-
-                      <td class="nhsuk-table__cell only-print">{{ result.sender_code }}</td>
-
-                        <td class="no-print"> 
-                          <a href="#" style="margin-left:4px; margin-right:4px;">Review</a>
-                          <a href="#" style="margin-left:4px; margin-right:4px;">Delete</a>
-                        </td>
-                      {% endif %}         
+                      <td class="no-print"> 
+                        <a href="#" style="margin-left:4px; margin-right:4px;">Review</a>
+                        <a href="#" style="margin-left:4px; margin-right:4px;">Delete</a>
+                      </td>
+        
                     </tr>
                   </tbody>
                 </table>
