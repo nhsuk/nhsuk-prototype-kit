@@ -133,6 +133,24 @@
                 }
               ]
             }) }}
+
+          
+               <label class="nhsuk-label nhsuk-label__strong" for="email">
+                 Is the test hpv tested?
+               </label>
+                 <div class="nhsuk-radios__item">
+                   <input class="nhsuk-radios__input" id="yes-hpv" name="hpv-primary" value="Yes"type="radio" {{ checked("hyp-tested", "Yes") }}>
+                      <label class="nhsuk-label nhsuk-radios__label" for="yes-selfsample">
+                        Yes, test is hpv tested
+                      </label>
+                  </div>
+                  <div class="nhsuk-radios__item">
+                   <input class="nhsuk-radios__input" id="no-hpv" name="hpv-primary" value="No" type="radio" {{ checked("hpv-tested", "No") }}>
+                       <label class="nhsuk-label nhsuk-radios__label" for="no-selfsample">
+                          No, not hpv tested
+                       </label>
+                  </div>
+                </div>
             
           
             <button class="nhsuk-button nhsuk-button--ers" type="submit">Continue</button>

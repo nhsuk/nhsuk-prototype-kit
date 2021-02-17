@@ -42,6 +42,8 @@
         <form action='/v12/check-test-result' method='post'>
 
           <div class="nhsuk-form-group">
+
+          
             <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
               <legend class="nhsuk-fieldset__legend nhsuk-input--width-4 nhsuk-label nhsuk-label__strong">
                 <h1 class="nhsuk-fieldset__heading">Result</h1>
@@ -51,7 +53,12 @@
                {% else %}
                   <span class="nhsuk-hint" id="example-hint">For example, X 0 A</span>
                {% endif %}
-          
+
+               {% if data ['hpv-primary'] == 'Yes' %}
+                <span class="nhsuk-hint" id="example-hint"> nothing</span>
+                {% else %}
+                <span class="nhsuk-hint" id="example-hint">You have stated this test is not hpv tested so it is ok to leave the infectoion code blank if you dont have a code to enter</span>
+                {% endif %}
 
               <div class="nhsuk-date-input" id="example">
                 <div class="nhsuk-date-input__item">
@@ -93,27 +100,7 @@
            "autocomplete": "off"
           }) }}-->
 
-                  <!--   {{ radios({
-             "idPrefix": "hpv",
-             "name": "hpv-primary",
-             "fieldset": {
-               "legend": {
-                 "text": "HPV tested?",
-                 "classes": "nhsuk-label nhsuk-label__strong",
-                 "isPageHeading": true
-               }
-             },
-             "items": [
-               {
-                 "value": "yes",
-                 "text": "Yes"
-               },
-               {
-                 "value": "no",
-                 "text": "No"
-               }
-             ]
-           }) }}-->
+                 
 
           <button class="nhsuk-button nhsuk-button--ers" type="submit">Continue</button>
 
