@@ -25,7 +25,7 @@
       {% include '../../components/pnl-patient-2.html' %}
       <span class="nhsuk-hint">Step 2 of 6</span>  
   
-      <!--<div class="nhsuk-form-group">-->
+      <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
 
@@ -139,13 +139,15 @@
                  Is the test hpv tested?
                </label>
                  <div class="nhsuk-radios__item">
-                   <input class="nhsuk-radios__input" id="yes-hpv" name="hpv-primary" value="Yes"type="radio" {{ checked("hyp-tested", "Yes") }}>
+                   <input class="nhsuk-radios__input" id="yes-hpv" name="hpv-primary" value="Yes"type="radio" {{ checked("hyp-primary", "Yes") }}>
                       <label class="nhsuk-label nhsuk-radios__label" for="yes-selfsample">
                         Yes, test is hpv tested
                       </label>
                   </div>
+                
                   <div class="nhsuk-radios__item">
-                   <input class="nhsuk-radios__input" id="no-hpv" name="hpv-primary" value="No" type="radio" {{ checked("hpv-tested", "No") }}>
+                   <input class="nhsuk-radios__input" id="no-hpv" name="hpv-primary" value="No" type="radio" 
+                   {{ checked("hpv-primary", "No") }}>
                        <label class="nhsuk-label nhsuk-radios__label" for="no-selfsample">
                           No, not hpv tested
                        </label>
@@ -157,10 +159,9 @@
             <p><a href="../patient-summary-5">Exit without saving</a></p>
           </form>
         </fieldset>
-      <!--</div>-->
-    </div>
-  </div>
-</div>
+      </div>
+   
+
 
 {% endblock %}
 

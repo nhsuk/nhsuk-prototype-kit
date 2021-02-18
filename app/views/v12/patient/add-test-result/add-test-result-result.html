@@ -48,6 +48,7 @@
               <legend class="nhsuk-fieldset__legend nhsuk-input--width-4 nhsuk-label nhsuk-label__strong">
                 <h1 class="nhsuk-fieldset__heading">Result</h1>
               </legend>
+
                {% if data['health-authority']!= '' %}
                <span class="nhsuk-hint" id="example-hint"> Needs to be in English result format. For example, X 0 A</span>
                {% else %}
@@ -55,10 +56,10 @@
                {% endif %}
 
                {% if data ['hpv-primary'] == 'Yes' %}
-                <span class="nhsuk-hint" id="example-hint"> nothing</span>
-                {% else %}
-                <span class="nhsuk-hint" id="example-hint">You have stated this test is not hpv tested so it is ok to leave the infectoion code blank if you dont have a code to enter</span>
-                {% endif %}
+               <span class="nhsuk-hint" id="example-hint"> HPV Primary test</span>
+               {% else %}
+               <span class="nhsuk-hint" id="example-hint">Not HPV tested, leave infection blank if no code given</span>
+               {% endif %}
 
               <div class="nhsuk-date-input" id="example">
                 <div class="nhsuk-date-input__item">
