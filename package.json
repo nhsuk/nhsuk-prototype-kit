@@ -14,11 +14,11 @@
   "author": "https://github.com/nhsuk/",
   "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
+    "@babel/core": "^7.12.17",
+    "@babel/preset-env": "^7.12.17",
     "basic-auth": "^2.0.1",
     "body-parser": "^1.19.0",
-    "browser-sync": "^2.26.13",
+    "browser-sync": "^2.26.14",
     "client-sessions": "^0.8.0",
     "dotenv": "^6.0.0",
     "express": "^4.17.1",
@@ -33,7 +33,7 @@
     "keypather": "^3.0.0",
     "nhsuk-frontend": "^4.1.0",
     "node-sass": "^4.14.1",
-    "nunjucks": "^3.2.2",
+    "nunjucks": "^3.2.3",
     "path": "^0.12.7"
   },
   "devDependencies": {}

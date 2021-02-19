@@ -1,6 +1,6 @@
 # NHS.UK prototype kit Changelog
 
-## 4.2.0 - unreleased
+## 4.2.0 - 25 February 2021
 
 :new: **New features**
 
@@ -11,6 +11,11 @@
   For example: The back link component.
 
 - Update page template examples
+
+:wrench: **Fixes**
+
+- Update package dependencies to latest versions
+- Use the latest version of jQuery (3.5.1)
 
 ## 4.1.0 - 21 January 2021
 
