@@ -320,6 +320,9 @@ router.post("/*/check-test-result", function (req, res) {
   if(result=="09R" || result=="29R"){ 
     res.redirect("/v12/patient/add-test-result/add-test-result-repeat-in-months-09r")
   }
+  if(result=="0R" || result=="0S" || result=="1R" || result=="1S" || result=="2R" || result=="2S" || result=="3R" || result=="3S" || result=="4S" || result=="5S" || result=="6S" || result=="7S" || result=="8R" || result=="8S" || result=="9R" || result=="9S"){ 
+    res.redirect("/v12/patient/add-test-result/add-test-result-repeat-in-months-manual-input")
+  }
   res.redirect("/v12/patient/add-test-result/add-test-result-ntdd")
 });
 

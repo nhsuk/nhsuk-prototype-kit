@@ -1,0 +1,93 @@
+{% extends "layout-v2.html" %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header-3.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+    <div class="nhsuk-back-link nhsuk-u-margin-bottom-4">
+      <a class="nhsuk-back-link__link" href="add-test-result-test-info">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Back to step 3 - Add test result</a>
+    </div>
+  <div class="nhsuk-panel-with-label">
+    {% include '../../components/pnl-patient-2.html' %}
+    <span class="nhsuk-hint">Step 4 of 6</span> 
+
+        {% set testResult = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
+        {% set resultText = 3 | returnDate('years', testResult) + ' ' + 3 | returnDate('years', testResult) | returnTimeDiff %}
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+
+        {% set newTestDate = (data['example-year'] + "-" + data['example-month'] + "-" + data['example-day']) | returnDateFormat %}
+        {% set oldTestDate = data.pnl_patient.results[0].result_date | returnDateFormat %}
+
+   {% if data['edit-review'] == 'true' %}
+             <form action="add-test-result-crm-edit" method="POST"> 
+        {% else %}
+             <form action="add-test-result-crm" method="POST">
+        {% endif %}
+    
+    <div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      <h1 class="nhsuk-fieldset__heading">
+        Repeat in months
+      </h1>
+    </legend>
+
+    <p>The patients test result 0R requires the repeat in months to be manually entered, please enter the the repeat in months given.</p>
+
+     <div class="nhsuk-date-input" id="example">
+                <div class="nhsuk-date-input__item">
+                  <div class="nhsuk-form-group">
+                    <label class="nhsuk-label nhsuk-label__strong" for="example-result">
+                      Repeat in months
+                    </label>
+                    <span class="nhsuk-hint" id="example-hint">mimimum/maximum</span>
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-u-margin-right-3" id="example-result" name="result-result" type="text" autocomplete="off" value="{{ data['result-result'] }}">
+                  </div>
+                </div>
+
+     
+    </div>
+    
+<div class="nhsuk-inset-text">
+       <span class="nhsuk-u-visually-hidden">Information: </span>
+       <p>The patients next test due dat will be calculated using the repeat in months stated and the test result.</p>
+     </div>
+</div>
+
+        
+
+        <button class="nhsuk-button nhsuk-button--ers">Continue</button>
+
+          <!-- <a href="add-test-result-crm" class="nhsuk-button nhsuk-button--ers">Ok, Continue</a>-->
+
+          
+        <p><a href="../patient-summary-6">Exit without saving</a></p>
+      </fieldset>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+      <p><a href="/v12/reset-patient-data-12">Reset patient data</a></p>
+    </div>
+  </div>
+</footer>
+{% endblock %}
