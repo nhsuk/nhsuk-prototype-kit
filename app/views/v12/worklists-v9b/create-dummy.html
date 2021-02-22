@@ -19,10 +19,20 @@ NHS Cervical Screening
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
 
+    {% if data['dummy-route'] == ['process-dummy'] %}
+    {{ backLink({
+      "href": "manc-p4",
+      "text": "Go back to match"
+    }) }}
+    {% endif %}
+
+    {% if data['dummy-route'] == ['query-dummy'] %}
     {{ backLink({
       "href": "non-match-dummy",
       "text": "Go back to non-match"
     }) }}
+    {% endif %}
+
 
     <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Create a dummy registration</h1>
 
@@ -30,7 +40,7 @@ NHS Cervical Screening
       <h3 class="nhsuk-warning-callout__label">
       Important<span class="nhsuk-u-visually-hidden">:</span>
       </h3>
-      <p>You should only create a dummy registration as a last resort if a participant cannot be matched in the system and you've checked the details with the lab</p>
+      <p>You should only create a dummy registration as a last resort if a participant cannot be matched in the system</p>
     </div>
 
        <p>Creating a dummy registration means:<br>
