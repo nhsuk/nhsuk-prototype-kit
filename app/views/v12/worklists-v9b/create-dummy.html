@@ -33,6 +33,13 @@ NHS Cervical Screening
     }) }}
     {% endif %}
 
+    {% if data['dummy-route'] == null %}
+    {{ backLink({
+      "href": "non-match-dummy",
+      "text": "Go back to non-match"
+    }) }}
+    {% endif %}
+
 
     <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Create a dummy registration</h1>
 
