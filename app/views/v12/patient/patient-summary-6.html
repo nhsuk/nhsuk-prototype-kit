@@ -58,6 +58,13 @@
         }) }}
       {% endif %}
 
+      {% if data['audit_msg_show'] == 1 %}
+        {{ insetText({
+          "HTML": "<p>" + data.auditMsg + "</p>",
+          "classes": "nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-0"
+        }) }}
+      {% endif %}
+
       <!-- want to add message to say result has gone for review and will be added to patient summary. -->
 
       {% if (data['addresult_update_msg_show'] > 1) %}

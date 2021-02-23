@@ -11,74 +11,22 @@
 
 {%block content%}
 {{ backLink({
-  "href": "../history-v4",
-  "text": "Back to Audit",
+  "href": "../patient-summary-6",
+  "text": "Back to patient summary",
   "classes" : "nhsuk-u-margin-bottom-4"
   }) }}
 
-<form action="../history-v4?audit_msg_show=1&auditMsg=Letter has been resent" method="post">
+<form action="../patient-summary-6?audit_msg_show=1&auditMsg=Invitation letter has been resent" method="post">
 
   <div class="nhsuk-panel-with-label">
       {% include '../../components/pnl-patient-2.html' %}
 
-     <h1 class="nhsuk-heading-l">Resend a result letter</h1>
+     <h1 class="nhsuk-heading-l">Resend an invitation letter</h1>
 
     <dl class="nhsuk-summary-list">
   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Test type</dt>
-    <dd class="nhsuk-summary-list__value">English</dd>
-  </div>
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Sender National code</dt>
-    <dd class="nhsuk-summary-list__value">B123456</dd>
-  </div>
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Source code</dt>
-    <dd class="nhsuk-summary-list__value">X</dd>
-  </div>
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Sender code</dt>
-    <dd class="nhsuk-summary-list__value">12456</dd>
-  </div>
-
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Slide number</dt>
-    <dd class="nhsuk-summary-list__value">12345678</dd>
-  </div>
-
-  
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Test date</dt>
-    <dd class="nhsuk-summary-list__value">{{ '19-Oct-2020' | returnDateFormat }}</dd>
-  </div>
-
-<div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Result</dt>
-    <dd class="nhsuk-summary-list__value">(39S) Low-grade dyskaryosis, HPV positive, Repeat Advised</dd>
-  </div>
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">HPV Primary</dt>
-    <dd class="nhsuk-summary-list__value">Y</dd>
-  </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">Next test due date</dt>
-      <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', nextTestDueDate) + ' ' + 3 | returnDate('years', nextTestDueDate) | returnTimeDiff }}</dd>
-    </div> 
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">CRM</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['crm'] or '123456789' }}</dd>
-  </div>
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Comments</dt>
-    <dd class="nhsuk-summary-list__value">
-    {% include '../../components/comments-timeline.html' %}                               
+    <dt class="nhsuk-summary-list__key">Letter type</dt>
+    <dd class="nhsuk-summary-list__value">PA-1</dd>
   </div>
 
   <div class="nhsuk-summary-list__row">
