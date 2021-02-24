@@ -55,7 +55,7 @@
                   <span class="nhsuk-hint" id="example-hint">For example, X 0 A</span>
                {% endif %}
 
-               {% if data ['hpv-primary'] == 'Yes' %}
+               {% if data['hpv-primary'] == 'Yes' or data['self-sample'] == 'Yes'%}
                <span class="nhsuk-hint" id="example-hint"> HPV Primary test</span>
                {% else %}
                <span class="nhsuk-hint" id="example-hint">Not HPV tested, leave infection blank if no code given</span>
