@@ -13,8 +13,8 @@
   <div class="nhsuk-grid-column-three-quarters">
 
     {{ backLink({
-  "href": "resend-a-result-letter-v2",
-  "text": "Back to resending a letter",
+  "href": "../patient-summary-6",
+  "text": "Back to patient-summary",
   "classes" : "nhsuk-u-margin-bottom-4"
   }) }}
     <div class="nhsuk-panel-with-label">
@@ -26,25 +26,33 @@
         <!--<legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
           Add {{ data['result-type'] }} test details
         </legend>-->
-          <form action="resend-a-result-letter-v2" method="post">
+          <form action="resend-an-invite-letter-v2" method="post">
             <div class="nhsuk-form-group">
               <h1 class="nhsuk-label-wrapper">
                 <label class="nhsuk-label nhsuk-label--l nhsuk-u-margin-bottom-2" for="example-heading">
-                  Add comment to resend letter
+                  Enter CRM case number
                 </label>
               </h1>
-            <div class="nhsuk-form-group">
               <span class="nhsuk-hint" id="example-hint">
-                Do not include clinical information.
+                For example, CAS-12345-ABCDE
+              </span>
+              <input class="nhsuk-input nhsuk-input--width-10" type="text" name="crm" autocomplete="off" value="{{ data.crm }}">
+            </div>
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="example">
+                Comments (optional)
+              </label>
+              <span class="nhsuk-hint" id="example-hint">
+                Do not include clinical information at  this point.
               </span>
               <textarea class="nhsuk-textarea" id="example" name="comments" rows="5" aria-describedby="example-hint" autocomplete="off">{{ data.comments }}</textarea>
             </div>
-               {% include '../../components/comments-timeline.html' %}
-              <br>
-            <button class="nhsuk-button nhsuk-button--ers" type="submit">Add comment</button>
-            <p><a href="../patient-summary-6">Exit without saving</a></p>
+
+<button class="nhsuk-button nhsuk-button--ers" type="submit">Add comment</button>
+            
           </form>
         </fieldset>
+            <p><a href="../patient-summary-6">Exit without saving</a></p>
       <!--</div>-->
     </div>
   </div>
