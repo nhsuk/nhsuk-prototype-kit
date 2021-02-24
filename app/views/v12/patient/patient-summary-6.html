@@ -58,6 +58,13 @@
         }) }}
       {% endif %}
 
+      {% if data['audit_msg_show'] == 1 %}
+        {{ insetText({
+          "HTML": "<p>" + data.auditMsg + "</p>",
+          "classes": "nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-0"
+        }) }}
+      {% endif %}
+
       <!-- want to add message to say result has gone for review and will be added to patient summary. -->
 
       {% if (data['addresult_update_msg_show'] > 1) %}
@@ -124,6 +131,10 @@
             {% endif %}
           </dd>
           <dd class="nhsuk-summary-list__actions">
+          {% if data.role == 'csas' %}
+            Actions:
+            <a href="/v12/patient/audit/resend-an-invite-letter-v2">Resend invite</a>
+          {% endif %}
           </dd>
         </div>
 
@@ -185,7 +196,7 @@
     <h2 id="testresults" class="nhsuk-heading-l">Test results</h2>
 
     {% if data.role == 'csas' %}
-    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4 no-print" href="/v12/start-adding-test?nhsNumber={{ data.patientSummary.nhs_number }}&role=csas&edit-review=">Add result</a>
+    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4 no-print" href="/v12/start-adding-test?nhsNumber={{ data.patientSummary.nhs_number }}&role=csas&edit-review=">Add result</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4 no-print" href="/v12/patient/audit/resend-a-result-letter-v2">Resend last result letter</a>
     {% endif %}
 
     <div class="nhsuk-scrollable-pane">

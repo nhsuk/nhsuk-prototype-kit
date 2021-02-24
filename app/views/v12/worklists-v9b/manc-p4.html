@@ -126,73 +126,82 @@ NHS Cervical Screening
 
     <h3>Lab patient demographics</h3>
 
-    <table class="order-table" id="lab">
-      <thead>
-        <tr>
-          <th style="width: 25%">Name
-          </th>
-          <th style="width: 25%">Date of birth
-          </th>
-          <th style="width: 25%">NHS number
-          </th>
-          <th style="width: 25%"></th>
-        <tr>
-      </thead>
+    <form action="create-dummy" method="post">
+      <button type="submit" name="dummy-route" value="process-dummy" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-2">Create a dummy registration</button>
 
-      <tbody>
-        <!-- LAB DEMOGRAPHICS -->
-        <tr>
-          <td>Charlotte Gravill</td>
-          <td>11-04-1990</td>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
+      <table class="order-table" id="lab">
+        <thead>
+          <tr>
+            <th style="width: 25%">Name
+            </th>
+            <th style="width: 25%">Date of birth
+            </th>
+            <th style="width: 25%">NHS number
+            </th>
+            <th style="width: 25%"></th>
+          <tr>
+        </thead>
+
+        <tbody>
+          <!-- LAB DEMOGRAPHICS -->
+          <tr>
+            <td>Charlotte Gravill</td>
+            <td>11-04-1990</td>
+            <td>?00 000 0000</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </form>
   </div>
 </div>
 
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-one-half">
 
-          <form action="non-match-p1-dummy3" method="post">
-            <div class="nhsuk-form-group">
-              <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
-                Comments
-              </label>
-              <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-                Enter comments if needed
-              </span>
-              <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200 required></textarea>
-              <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
-            </div>
+          <form action="manc-p4" method="post">
 
-            <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
+                  Comments
+                </label>
+                <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+                  Enter comments if needed
+                </span>
+                <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200 required></textarea>
+                <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
+              </div>
 
-            {% set name = "Jon Simpson" %}
+              <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
 
-            {% set commentDate = ("today" | returnDate) %}
+              {% set name = "Jon Simpson" %}
 
-            <input type="hidden" id="name" name="name" value="{{commentName}}">
+              {% set commentDate = ("today" | returnDate) %}
 
-            <input type="hidden" name="date" value={{commentDate}}>
+              <input type="hidden" id="name" name="name" value="{{commentName}}">
+
+              <input type="hidden" name="date" value={{commentDate}}>
+
+
+            <ul class="nhsuk-comment-container">
+              {% if data.commentsa !=null %}
+
+              <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsa}}</li>
+
+              {% endif %}
+            </ul>
 
           </form>
 
-          <ul class="nhsuk-comment-container">
-            {% if data.commentsa !=null %}
+          <a href="manc-p5" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Save to lab query list</a>
+          <p><a href="manc-process">Exit without saving</a></p>
 
-            <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsa}}</li>
-
-            {% endif %}
-          </ul>
 
         </div>
       </div>
 
 
-      <a href="manc-p5" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Save to lab query list</a>
-      <p><a href="manc-process">Exit without saving</a></p>
 
 
 

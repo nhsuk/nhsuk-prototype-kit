@@ -1,0 +1,58 @@
+{% extends "layout-v2.html" %}
+
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header-3.html' %}
+{% endblock %}
+
+{%block content%}
+{{ backLink({
+  "href": "../patient-summary-6",
+  "text": "Back to patient summary",
+  "classes" : "nhsuk-u-margin-bottom-4"
+  }) }}
+
+<form action="../patient-summary-6?audit_msg_show=1&auditMsg=Invitation letter has been resent" method="post">
+
+  <div class="nhsuk-panel-with-label">
+      {% include '../../components/pnl-patient-2.html' %}
+
+     <h1 class="nhsuk-heading-l">Resend an invitation letter</h1>
+
+    <dl class="nhsuk-summary-list">
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Letter type</dt>
+    <dd class="nhsuk-summary-list__value">PA-1</dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Address</dt>
+    <dd class="nhsuk-summary-list__value">69  Sloe Lane, Croydon, CR1 1FR</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-add-comment">Edit<span class="nhsuk-u-visually-hidden"> Address</span></a></dd>
+
+  </div>
+</dl>
+
+<button class="nhsuk-button nhsuk-button--ers">Submit and resend this letter</button>   
+</form>
+
+ <p><a href="../patient-summary-5">Exit without saving</a></p> 
+  </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+      <p><a href="/v12/reset-patient-data-12">Reset patient data</a></p>
+    </div>
+  </div>
+</footer>
+{% endblock %}

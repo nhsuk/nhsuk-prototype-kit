@@ -54,7 +54,7 @@ NHS Cervical Screening
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">
-                NHS number
+                Identifying number
               </dt>
               <dd class="nhsuk-summary-list__value">
                 T123 456 7890
@@ -95,7 +95,19 @@ NHS Cervical Screening
           </dl>
         </div>
 
+
+    {% if data['dummy-route'] == ['process-dummy'] %}
+        <a href="manc-p5" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Save and next</a>
+    {% endif %}
+
+    {% if data['dummy-route'] == ['query-dummy'] %}
         <a href="manc-query" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Save and exit</a>
+    {% endif %}
+
+    {% if data['dummy-route'] == null %}
+        <a href="manc-query" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Save and exit</a>
+    {% endif %}
+
 
 </div>
 
