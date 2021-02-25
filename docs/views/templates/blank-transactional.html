@@ -1,10 +1,20 @@
 {% extends 'layout.html' %}
 
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
 {% block pageTitle %}
   Blank transactional template - NHS.UK prototype kit
 {% endblock %}
 
 {% block beforeContent %}
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "/templates/start-page",
+    "text": "Back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -13,11 +23,6 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <!-- Add your content here -->
-
-      {{ backLink({
-        "href": "#",
-        "text": "Change my previous answer"
-      }) }}
 
     </div>  
 

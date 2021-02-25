@@ -10,17 +10,23 @@
     - add custom CSS and JavaScript
 -->
 
-<!-- Set the page title inside the pageTitle block -->
+<!-- Set the page title -->
 {% block pageTitle %}
   NHS.UK prototype kit
 {% endblock %}
 
-<!-- Breadcrumb goes inside the beforeContent block -->
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
 {% block beforeContent %}
 {% endblock %}
 
-<!-- Your page content goes inside the content block -->
-<!-- More info and code for the page layout can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
@@ -59,15 +65,20 @@
       <hr>
 
       <h2>
-        Documentation
+        Get started
       </h2>
+
+      <p>Get started by using the:</p>
 
       <ul>
         <li>
-          Get started with <a href="/docs">how to guides and page templates</a>
+          <a href="/docs/how-tos">how to guides</a>
         </li>
         <li>
-          Copy and paste styles and components from the <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a>
+          <a href="/docs/page-templates">page templates</a>
+        </li>
+        <li>
+          code snippets for styles and components from the <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a>
         </li>
       </ul>
 

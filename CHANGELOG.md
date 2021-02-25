@@ -1,5 +1,17 @@
 # NHS.UK prototype kit Changelog
 
+## 4.2.0 - unreleased
+
+:new: **New features**
+
+- Add `outerContent` block to page template.
+  
+  Add content that needs to appear outside `<main>` element but inside the `<nhsuk-width-container>`.
+  
+  For example: The back link component.
+
+- Update page template examples
+
 ## 4.1.0 - 21 January 2021
 
 :new: **New features**

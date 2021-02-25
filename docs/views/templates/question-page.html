@@ -1,40 +1,55 @@
 {% extends 'layout.html' %}
 
+{% set mainClasses = "nhsuk-main-wrapper--s" %}
+
 {% block pageTitle %}
   Question page
+{% endblock %}
+
+{% block outerContent %}
+  {{ backLink({
+    "href": "/templates/start-page",
+    "text": "Back",
+    "classes": "nhsuk-u-margin-top-4 nhsuk-u-margin-bottom-0"
+  }) }}
 {% endblock %}
 
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-fieldset__legend--l">
-        Heading or question goes here
-      </h1>
+      <form action="/templates/check-your-answers" method="post" class="form">
 
-      <form action="/templates/check-your-answers" method="post">
-
-        <p>
-          [Insert question content here]
-        </p>
-
-        <p>
-          [Visit the 
-            <a href="https://service-manual.nhs.uk">NHS digital service manual</a> 
-          for guidance and examples.]
-        </p>
+        {{ radios({
+          "idPrefix": "example",
+          "name": "example",
+          "fieldset": {
+            "legend": {
+              "text": "Heading or question goes here",
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          },
+          "items": [
+            {
+              "value": "yes",
+              "text": "Yes"
+            },
+            {
+              "value": "no",
+              "text": "No"
+            }
+          ]
+        }) }}
 
         {{ button({
           "text": "Continue",
           "id": "btn_submit"
         }) }}
 
-      </form>
+        <p>[See the <a href="https://service-manual.nhs.uk/design-system/componnets">NHS digital service manual</a> for examples.]</p>
 
-      {{ backLink({
-        "href": "#",
-        "text": "Change my previous answer"
-      }) }}
+      </form>
 
     </div>
   </div>
