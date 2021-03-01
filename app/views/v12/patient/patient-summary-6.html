@@ -196,7 +196,7 @@
     <h2 id="testresults" class="nhsuk-heading-l">Test results</h2>
 
     {% if data.role == 'csas' %}
-    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4 no-print" href="/v12/start-adding-test?nhsNumber={{ data.patientSummary.nhs_number }}&role=csas&edit-review=">Add result</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4 no-print" href="/v12/patient/audit/resend-a-result-letter-v2">Resend last result letter</a>
+    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4 no-print" href="/v12/start-adding-test?nhsNumber={{ data.patientSummary.nhs_number }}&role=csas&edit-review=">Add result</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4 no-print" href="/v12/patient/audit/resend-result-add-comment">Resend last result letter</a>
     {% endif %}
 
     <div class="nhsuk-scrollable-pane">
