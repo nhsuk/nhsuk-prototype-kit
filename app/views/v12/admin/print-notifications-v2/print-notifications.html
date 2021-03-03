@@ -1,0 +1,124 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(5) {
+    border-bottom: 4px solid #d8dde0;
+  }
+
+  .nhsuk-button, .nhsuk-button--ers, .dropdown .dropbtn, .nhsuk-button--ers_secondary, .nhsuk-button--ers_reverse, .nhsuk-button--ers_reverse:hover, .nhsuk-button--ers_reverse:focus, .nhsuk-button--ers_reject, .nhsuk-blue, .nhsuk-right  {
+    margin-bottom: 0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    {{ backLink({
+      "href": "select-gp-practice",
+      "text": "Back to selecting a GP practice"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Print notifications for {{ data['gp-code'] or 'A123456' }}</h1>
+    <p>Choose a notification type to print and send to the GP surgery.</p>
+    <p>Notifications must be sent to the GP surgery by the date shown to give them time to review and action the patients.</p>
+    
+    {{ table({
+      panel: false,
+      caption: "Skin symptoms and possible causes",
+      firstCellIsHeader: false,
+      head: [
+        {
+          text: "Date"
+        },
+        {
+          text: "Notification type"
+        },
+        {
+          text: "Action"
+        }
+      ],
+      rows: [
+        [
+          {
+            text: "01-12-2020"
+          },
+          {
+            text: "Patients due to be invited"
+          },
+          {
+            html: '<a href="print-patients-due-to-be-invited">Print preview</a> or <a>Download CSV</a>'
+          }
+        ],
+        [
+          {
+            text: "01-12-2020"
+          },
+          {
+            text: "Patients who have not responded"
+          },
+          {
+            html: '<a href="print-patients-who-have-not-responded">Print preview</a> or <a>Download CSV</a>'
+          }
+        ],
+        [
+          {
+            text: "01-12-2020"
+          },
+          {
+            text: "GP notifications"
+          },
+          {
+            html: '<a href="print-gp-notifications">Print preview</a> or <a>Download CSV</a>'
+          }
+        ],
+        [
+          {
+            text: "23-11-2020"
+          },
+          {
+            text: "Patients due to be invited"
+          },
+          {
+            html: '<a href="print-patients-due-to-be-invited">Print preview</a> or <a>Download CSV</a>'
+          }
+        ],
+        [
+          {
+            text: "23-11-2020"
+          },
+          {
+            text: "Patients who have not responded"
+          },
+          {
+            html: '<a href="print-patients-who-have-not-responded">Print preview</a> or <a>Download CSV</a>'
+          }
+        ],
+        [
+          {
+            text: "23-11-2020"
+          },
+          {
+            text: "GP notifications"
+          },
+          {
+            html: '<a href="print-gp-notifications">Print preview</a> or <a>Download CSV</a>'
+          }
+        ]
+      ]
+}) }}
+
+  </div>
+</div>
+{% endblock %}

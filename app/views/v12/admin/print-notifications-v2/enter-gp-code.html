@@ -1,0 +1,52 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(5) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+  {{ backLink({
+      "href": "../index",
+      "text": "Back to Admin"
+    }) }}
+
+    <form action="print-notifications" method="POST">
+      {{ input({
+        "label": {
+          "text": "Enter GP practice Code",
+          "classes": "nhsuk-label--l",
+          "isPageHeading": true
+        },
+          "hint": {
+          "text": "For example, A123456."
+        },
+        "id": "example",
+        "name": "gp-code",
+        "classes": "nhsuk-input--width-10"
+      }) }}
+
+      {{ button({
+          "text": "Continue",
+          "classes": "nhsuk-button--ers"
+      }) }}
+      <p><a href="">Exit without saving</a></p>
+    </form>
+  </div>
+</div>
+{% endblock %}
