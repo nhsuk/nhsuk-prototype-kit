@@ -30,54 +30,82 @@
         {% set newTestDate = (data['example-year'] + "-" + data['example-month'] + "-" + data['example-day']) | returnDateFormat %}
         {% set oldTestDate = data.pnl_patient.results[0].result_date | returnDateFormat %}
 
-   {% if data['edit-review'] == 'true' %}
+  
+    {% if data['edit-review'] == 'true' %}
              <form action="add-test-result-crm-edit" method="POST"> 
         {% else %}
              <form action="add-test-result-crm" method="POST">
         {% endif %}
-    
+
     <div class="nhsuk-form-group">
 
   <fieldset class="nhsuk-fieldset">
     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
       <h1 class="nhsuk-fieldset__heading">
-        Repeat in months
+        Select repeat in months
       </h1>
     </legend>
 
-    <p>For the test result 0R:
-    <ul>
-    <li>the minimim repeat is 1 months</li>
-    <li>the maximim repeat is X months</li>
-    </ul>
-    </p>
-    <p> The next test due date will be calculated using the repeat in months and the test result.</p>
-     <div class="nhsuk-date-input" id="example">
-                <div class="nhsuk-date-input__item">
-                  <div class="nhsuk-form-group">
-                    <label class="nhsuk-label nhsuk-label__strong" for="example-repeat">
-                      Repeat in months
-                    </label>
-                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-u-margin-right-3" id="example-repeat" name="repeat-months" type="text" autocomplete="off" value="{{ data['result-result'] }}">
-                  </div>
-                </div>
+    <p>Chose to repeat in 6,12 or 36 months for test results X0R.</p>
+    <p>The next test due date has been calculated using the patients latest test results.</p>
 
-     
+    <div class="nhsuk-radios">
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="36-months" name="repeat-in-months" type="radio" value="36">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+          36 months
+        </label>
+        <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+        The next test due date will be{{ resultText }}
+        </div>
+      </div>
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="12-months" name="repeat-in-months" type="radio" value="12">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          12 months
+        </label>
+        <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+        The next test due date will be {{ resultText }}
+        </div>
+      </div>
+
+      <div class="nhsuk-radios__item">
+        <input class="nhsuk-radios__input" id="6-months" name="repeat-in-months" type="radio" value="6">
+        <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+          6 months
+        </label>
+        <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+        The next test due date will be {{ resultText }}
+        </div>
+      </div>
+
     </div>
-    
-<!--<div class="nhsuk-inset-text">
-       <span class="nhsuk-u-visually-hidden">Information: </span>
-       <p>The patients next test due dat will be calculated using the repeat in months stated and the test result.</p>
-     </div>-->
+  
+
 </div>
 
+        <!--{% if (newTestDate | returnUnixTime > oldTestDate | returnUnixTime) %}
+          <h1 class="nhsuk-heading-l">Check next test due date</h1>
+            {{ insetText({
+              "HTML": resultText
+            }) }}
+        <p>This next test due date has been calculated using the patients latest test results.</P>
+        {% else %}
+          <h1 class="nhsuk-heading-l">Next test due date unchanged</h1>
+            {{ insetText({
+              "HTML": "<p>The next test test due date will <strong>not</strong> be changed</p>"
+            }) }}
+        <p>The test entered is an older test and will not affect the next test due date.</P>
+
+        {% endif %}-->
+
+          <button class="nhsuk-button nhsuk-button--ers">Continue</button>
         
-
-        <button class="nhsuk-button nhsuk-button--ers">Continue</button>
-
           <!-- <a href="add-test-result-crm" class="nhsuk-button nhsuk-button--ers">Ok, Continue</a>-->
 
-          
+        </form>  
         <p><a href="../patient-summary-6">Exit without saving</a></p>
       </fieldset>
   </div>

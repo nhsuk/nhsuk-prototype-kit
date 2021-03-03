@@ -34,19 +34,20 @@
 
 <dl class="nhsuk-summary-list">
   
-   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">National code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['national-code'] }}</dd>
-    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Change<span class="nhsuk-u-visually-hidden"> Sender National code</span></a></dd>
-  </div>
-
+  {% if data['health-authority'] != '' %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Health Authority</dt>
     <dd class="nhsuk-summary-list__value">{{ data['health-authority'] }}</dd>
     <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Change<span class="nhsuk-u-visually-hidden"> Health Authority</span></a></dd>
   </div>
-  
-
+  {% endif %}
+  {% if data['health-authority']== '' %}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">National code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] }}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Change<span class="nhsuk-u-visually-hidden"> Sender National code</span></a></dd>
+  </div>
+  {% endif %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Self-sample</dt>
     <dd class="nhsuk-summary-list__value">{{ data['self-sample'] }}</dd>
@@ -59,13 +60,14 @@
     <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Change<span class="nhsuk-u-visually-hidden"> Source code</span></a></dd>
   </div>
   
-  
+  {% if data['health-authority']== '' %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender code</dt>
     <dd class="nhsuk-summary-list__value">{{ data['sender-code'] }} </dd>
    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Change<span class="nhsuk-u-visually-hidden"> Sender code</span></a></dd>
   </div>
- 
+  {% endif %}
+
 
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Slide number</dt>

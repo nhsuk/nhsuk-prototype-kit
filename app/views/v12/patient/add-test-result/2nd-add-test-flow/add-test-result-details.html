@@ -32,6 +32,8 @@
 
            {% if data ['self-sample'] == 'Yes' %}
            {% set resultType= 'self-sample' %}
+           {% elif data ['health-authority'] != ''  %}
+           {% set resultType= 'Scottish' %}
            {% else %}
            {% set resultType= '' %}
            {% endif %}
@@ -68,18 +70,22 @@
            {% set senderValue= data['sender-code'] %}
            {% endif %}
 
-            <div class="nhsuk-form-group">
-                <label class="nhsuk-label nhsuk-label__strong" for="sender-code">
-                  Sender code
-                </label>
-                <div class="nhsuk-hint" id="example-with-hint-text-hint">
-                  Also known as Practice code, non GP sender code or GNC number.
-                  <br>
-                  Leave blank if no sender code provided.
-                </div>
-                <input class="nhsuk-input nhsuk-input--width-2" id="sender-code" name="sender-code" type="text" aria-describedby="Sender code" inputmode="numeric">
-            </div>
-            
+            {% if data['national-code']!= '' or data['self-sample']== 'Yes'%}
+             {{ input({
+               "label": {
+                 "text": "Sender code",
+                "classes": "nhsuk-label nhsuk-label__strong"
+               },
+               hint: {
+                  html: "Also known as Practice code, non GP sender code or GNC number."
+               },
+                "id": "input-width-10",
+               "name": "sender-code",
+               "classes": "nhsuk-input--width-10",
+               "autocomplete": "off",
+               "value": senderValue
+             }) }}
+            {% endif %}
 
              <!--Over code names we may not need: GP local code,GMC number, salary GP code -->
 

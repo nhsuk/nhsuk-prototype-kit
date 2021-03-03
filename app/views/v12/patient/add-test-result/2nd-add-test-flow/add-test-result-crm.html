@@ -40,7 +40,7 @@
                 </label>
               </h1>
               <span class="nhsuk-hint" id="example-hint">
-                For example, CAS-12345-ABCDE.
+                For example, CAS-12345-ABCDE
               </span>
               <input class="nhsuk-input nhsuk-input--width-10" type="text" name="crm" autocomplete="off" value="{{ data.crm }}">
             </div>
@@ -51,9 +51,11 @@
               <!--<span class="nhsuk-hint" id="example-hint">
                 Do not include clinical information at this point.
               </span>-->
-              
+              {% if data['health-authority']!= '' %}
+               <span class="nhsuk-hint" id="example-hint"> Add Scottish sender code if avalible.</span>
+               {% else %}
                   <span class="nhsuk-hint" id="example-hint">Do not include clinical information at this point.</span>
-               
+               {% endif %}
               <textarea class="nhsuk-textarea" id="example" name="comments" rows="5" aria-describedby="example-hint" autocomplete="off">{{ data.comments }}</textarea>
             </div>
 

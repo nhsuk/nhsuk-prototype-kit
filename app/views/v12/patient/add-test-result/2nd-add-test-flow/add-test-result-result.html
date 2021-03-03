@@ -30,6 +30,8 @@
 
         {% if data ['self-sample'] == 'Yes' %}
            {% set resultType= 'self-sample' %}
+           {% elif data ['health-authority'] != ''  %}
+           {% set resultType= 'Scottish' %}
            {% else %}
            {% set resultType= '' %}
            {% endif %}
@@ -46,9 +48,13 @@
               <legend class="nhsuk-fieldset__legend nhsuk-input--width-4 nhsuk-label nhsuk-label__strong">
                 <h1 class="nhsuk-fieldset__heading">Result</h1>
               </legend>
-              <span class="nhsuk-hint" id="example-hint">For example, X 0 A. 
-              <br> Scottish results need to be in English result format.</span>
-               
+
+               {% if data['health-authority']!= '' %}
+               <span class="nhsuk-hint" id="example-hint"> Needs to be in English result format. For example, X 0 A</span>
+               {% else %}
+                  <span class="nhsuk-hint" id="example-hint">For example, X 0 A</span>
+               {% endif %}
+
                {% if data['hpv-primary'] == 'Yes' or data['self-sample'] == 'Yes'%}
                <span class="nhsuk-hint" id="example-hint"> </span>
                {% else %}

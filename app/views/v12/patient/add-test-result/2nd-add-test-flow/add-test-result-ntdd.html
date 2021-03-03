@@ -24,57 +24,33 @@
     <span class="nhsuk-hint">Step 4 of 6</span> 
 
         {% set testResult = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
-        {% set resultText = 3 | returnDate('years', testResult) + ' ' + 3 | returnDate('years', testResult) | returnTimeDiff %}
+        {% set resultText = "<p>The patients will next be invited on <strong>" + 3 | returnDate('years', testResult) + ' ' + 3 | returnDate('years', testResult) | returnTimeDiff +  "</strong></p>" %}
         <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
 
         {% set newTestDate = (data['example-year'] + "-" + data['example-month'] + "-" + data['example-day']) | returnDateFormat %}
         {% set oldTestDate = data.pnl_patient.results[0].result_date | returnDateFormat %}
 
-   {% if data['edit-review'] == 'true' %}
-             <form action="add-test-result-crm-edit" method="POST"> 
-        {% else %}
-             <form action="add-test-result-crm" method="POST">
-        {% endif %}
-    
-    <div class="nhsuk-form-group">
-
-  <fieldset class="nhsuk-fieldset">
-    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-      <h1 class="nhsuk-fieldset__heading">
-        Repeat in months
-      </h1>
-    </legend>
-
-    <p>For the test result 0R:
-    <ul>
-    <li>the minimim repeat is 1 months</li>
-    <li>the maximim repeat is X months</li>
-    </ul>
-    </p>
-    <p> The next test due date will be calculated using the repeat in months and the test result.</p>
-     <div class="nhsuk-date-input" id="example">
-                <div class="nhsuk-date-input__item">
-                  <div class="nhsuk-form-group">
-                    <label class="nhsuk-label nhsuk-label__strong" for="example-repeat">
-                      Repeat in months
-                    </label>
-                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-u-margin-right-3" id="example-repeat" name="repeat-months" type="text" autocomplete="off" value="{{ data['result-result'] }}">
-                  </div>
-                </div>
-
-     
-    </div>
-    
-<!--<div class="nhsuk-inset-text">
-       <span class="nhsuk-u-visually-hidden">Information: </span>
-       <p>The patients next test due dat will be calculated using the repeat in months stated and the test result.</p>
-     </div>-->
-</div>
-
         
+        {% if (newTestDate | returnUnixTime > oldTestDate | returnUnixTime) %}
+          <h1 class="nhsuk-heading-l">Check next test due date</h1>
+            {{ insetText({
+              "HTML": resultText
+            }) }}
+        <p>This next test due date has been calculated using the patients latest test results.</P>
+        {% else %}
+          <h1 class="nhsuk-heading-l">Next test due date unchanged</h1>
+            {{ insetText({
+              "HTML": "<p>The next test test due date will <strong>not</strong> be changed</p>"
+            }) }}
+        <p>The test entered is an older test and will not affect the next test due date.</P>
 
-        <button class="nhsuk-button nhsuk-button--ers">Continue</button>
+        {% endif %}
 
+        {% if data['edit-review'] == 'true' %}
+             <a href="add-test-result-crm-edit" class="nhsuk-button nhsuk-button--ers">Continue</a>
+        {% else %}
+             <a href="add-test-result-crm" class="nhsuk-button nhsuk-button--ers">Continue</a>
+        {% endif %}
           <!-- <a href="add-test-result-crm" class="nhsuk-button nhsuk-button--ers">Ok, Continue</a>-->
 
           

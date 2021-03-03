@@ -41,17 +41,21 @@
 
           <form action="add-test-result-result" method="post">
             
-            <div class="nhsuk-form-group">
-              <label class="nhsuk-label nhsuk-label__strong" for="example-with-hint-text">
-                National code
-              </label>
-              <div class="nhsuk-hint" id="example-with-hint-text-hint">
-                Also known as lab code.
-                <br> Leave blank for Scottish results.
-              </div>
-              <input class="nhsuk-input nhsuk-input--width-10" id="example-with-hint-text" name="example-with-hint-text" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
-            </div>
-  
+              {{ input({
+                "label": {
+                  "text": "National code",
+                "classes": "nhsuk-label nhsuk-label__strong"
+                },
+                hint: {
+                  html: "Also known as lab code."
+               },
+                "id": "input-width-10",
+                "name": "national-code",
+                "classes": "nhsuk-input--width-10",
+                "autocomplete": "off",
+                "value": data['national-code']
+              }) }}
+            
           
              {{ input({
                "label": {
@@ -59,7 +63,7 @@
                 "classes": "nhsuk-label nhsuk-label__strong"
                },
                hint: {
-                  html: "For scottish test results only."
+                  html: "For scottish test results only"
                },
                 "id": "input-width-2",
                "name": "health-authority",
