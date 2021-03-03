@@ -53,7 +53,7 @@
 
              {{ input({
                "label": {
-                 "text": "Source Code",
+                 "text": "Source code",
                 "classes": "nhsuk-label nhsuk-label__strong"
                },
                "id": "input-width-2",
@@ -73,11 +73,11 @@
             {% if data['national-code']!= '' or data['self-sample']== 'Yes'%}
              {{ input({
                "label": {
-                 "text": "Sender Code",
+                 "text": "Sender code",
                 "classes": "nhsuk-label nhsuk-label__strong"
                },
                hint: {
-                  html: "Also known as GP local code, GNC number, GMC number, salary GP code, Practice code or non GP sender code."
+                  html: "Also known as Practice code, non GP sender code or GNC number."
                },
                 "id": "input-width-10",
                "name": "sender-code",
@@ -86,7 +86,9 @@
                "value": senderValue
              }) }}
             {% endif %}
-            
+
+             <!--Over code names we may not need: GP local code,GMC number, salary GP code -->
+
             {{ input({
                "label": {
                 "text": "Slide number",
@@ -136,12 +138,15 @@
 
           {% if data['self-sample']== 'No' %}
                <label class="nhsuk-label nhsuk-label__strong" for="email">
-                 Is the test hpv tested?
+                 HPV primary screening
                </label>
+                <div class="nhsuk-hint" id="example-hints-2-item-hint">
+                  Was the sample tested for HPV before cytology (HPV primary screening)?
+                </div>
                  <div class="nhsuk-radios__item">
                    <input class="nhsuk-radios__input" id="yes-hpv" name="hpv-primary" value="Yes"type="radio" {{ checked("hyp-primary", "Yes") }}>
                       <label class="nhsuk-label nhsuk-radios__label" for="yes-selfsample">
-                        Yes, test is hpv tested
+                        Yes, it was HPV primary screening
                       </label>
                   </div>
                 
@@ -149,7 +154,7 @@
                    <input class="nhsuk-radios__input" id="no-hpv" name="hpv-primary" value="No" type="radio" 
                    {{ checked("hpv-primary", "No") }}>
                        <label class="nhsuk-label nhsuk-radios__label" for="no-selfsample">
-                          No, not hpv tested
+                          No, it was not HPV primary screening
                        </label>
                   </div>
                 

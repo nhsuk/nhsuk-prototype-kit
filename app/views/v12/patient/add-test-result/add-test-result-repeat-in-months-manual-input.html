@@ -45,26 +45,30 @@
       </h1>
     </legend>
 
-    <p>The patients test result 0R requires the repeat in months to be manually entered, please enter the the repeat in months given.</p>
-
+    <p>For the test result 0R:
+    <ul>
+    <li>the minimim repeat is X months</li>
+    <li>the maximim repeat is X months</li>
+    </ul>
+    </p>
+    <p> The next test due date will be calculated using the repeat in months and the test result.</p>
      <div class="nhsuk-date-input" id="example">
                 <div class="nhsuk-date-input__item">
                   <div class="nhsuk-form-group">
-                    <label class="nhsuk-label nhsuk-label__strong" for="example-result">
+                    <label class="nhsuk-label nhsuk-label__strong" for="example-repeat">
                       Repeat in months
                     </label>
-                    <span class="nhsuk-hint" id="example-hint">mimimum/maximum</span>
-                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-u-margin-right-3" id="example-result" name="result-result" type="text" autocomplete="off" value="{{ data['result-result'] }}">
+                    <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-u-margin-right-3" id="example-repeat" name="repeat-months" type="text" autocomplete="off" value="{{ data['result-result'] }}">
                   </div>
                 </div>
 
      
     </div>
     
-<div class="nhsuk-inset-text">
+<!--<div class="nhsuk-inset-text">
        <span class="nhsuk-u-visually-hidden">Information: </span>
        <p>The patients next test due dat will be calculated using the repeat in months stated and the test result.</p>
-     </div>
+     </div>-->
 </div>
 
         

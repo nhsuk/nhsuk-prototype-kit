@@ -270,6 +270,74 @@
               {% endfor %}
               </tbody>
             </table>
+<br>
+<br>
+<br>
+          <div id="table-scroll" class="table-scroll">
+          <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+            <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table">
+
+              <!-- TABLE START -->
+              <thead class="nhsuk-table__head">
+                <tr class="nhsuk-table__row">
+                  <th class="nhsuk-table__header" scope="col">Test Date</th>
+                  <th class="nhsuk-table__header"  scope="col">Test result</th>
+                  <th class="nhsuk-table__header" scope="col">Repeat</th>
+                  <th class="nhsuk-table__header" scope="col">Slide Number</th>
+                  <th class="nhsuk-table__header" scope="col">Self-sample</th>
+
+                  <th class="nhsuk-table__header only-print" scope="col">Sender code</th>
+
+                  {% if data.role != 'csas' %}
+                    <th class="nhsuk-table__header" scope="col">Sample taker code</th>
+                    <!--<th class="nhsuk-table__header" scope="col">Slide no</th>-->
+                  {% else %}
+                    <th class="nhsuk-table__header no-print" scope="col">Amend</th>
+                  {% endif %}   
+                </tr> 
+              </thead>
+              <tbody class="nhsuk-table__body nhsuk-body-">
+
+              {% for result in data.patientSummary.results %}
+                <tr class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell fixed-side">
+                    {{ result.test_date | returnDateFormat }}
+                    <span class="nhsuk-table__cell--hint">{{ result['sender-code'] }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                  (39R) Low-grade dyskaryosis, HPV positive, Repeat Advised
+                    <span class="nhsuk-table__cell--hint">HPV Primary</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ result.recall_months }}
+                    <span class="nhsuk-table__cell--hint">Months</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    {{ result.slide_number }}
+                    <!--<span class="nhsuk-table__cell--hint">Derby Royal Hospital</span>-->
+                    <span class="nhsuk-table__cell--hint"> Lab: {{ result.sending_lab }}</span>
+                  </td>
+                  <td class="nhsuk-table__cell">
+                    No
+                    
+                  </td>
+                  {% if data.role != 'csas' %}
+                    <td class="nhsuk-table__cell">{{ result.sender_code }}</td>
+                    <td class="nhsuk-table__cell">{{ result.slide_number }}</td> 
+                  {% else %}
+
+                  <td class="nhsuk-table__cell only-print">{{ result.sender_code }}</td>
+
+                    <td class="no-print"> 
+                      <a href="/v12/patient/add-test-result/add-test-result-edit-2?slide-number={{ result.slide_number }}&result-type={{ result['result-type'] }}&result_code={{ result['result-result'] }}&comments=&edit-review=true" style="margin-left:4px; margin-right:4px;">Review</a>
+                      <a href="/v12/patient/add-test-result/add-test-result-remove" style="margin-left:4px; margin-right:4px;">Delete</a>
+                    </td>
+                  {% endif %}         
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+            
           </div>
         </div>
       </div>
