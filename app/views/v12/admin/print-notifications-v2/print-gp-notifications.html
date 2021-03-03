@@ -26,8 +26,8 @@ NHS Cervical Screening
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
     {{ backLink({
-      "href": "print-notifications",
-      "text": "Back to choosing a notification to print"
+      "href": "select-gp-practice",
+      "text": "Back to selecting a GP practice"
     }) }}
 </div>
 </div>
@@ -54,7 +54,7 @@ NHS Cervical Screening
       </ul>
     </p>
 {% if data['patients'] == null %} 
-<meta http-equiv="refresh" content="2;url=/v12/admin/print-notifications/print-patients-due-to-be-invited" />
+<meta http-equiv="refresh" content="2;url=/v12/admin/print-notifications/print-patients-to-review" />
   <div class="styleguide-example">
     <div class="nhsuk-loader__container">
       <h1 class="nhsuk-heading-l">Loading patients</h1>
@@ -76,12 +76,12 @@ NHS Cervical Screening
           <th class="nhsuk-table__header" aria-sort="none" scope="col">Status</th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">Notification type</th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">Last result</th>
-          <th class="nhsuk-table__header" aria-sort="none" scope="col">Next test due date</th>
-          <!--<th class="nhsuk-table__header" aria-sort="none" scope="col">Review By</th>-->
+          <!--<th class="nhsuk-table__header" aria-sort="none" scope="col">Next test due date</th>-->
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">Review By</th>
         </tr>
       </thead>
       <tbody class="nhsuk-table__body">
-        {% for patient in data['patients'] %}
+        {% for patient in data['ceased_patients'] %}
           {% set rowId =  "selectRow" + loop.index %}
           {% set detailsId =  "detailsRow" + loop.index %}
           {% set buttonId =  "btnRow" + loop.index %}
@@ -124,8 +124,8 @@ NHS Cervical Screening
             <span class="nhsuk-table__cell--hint">{{ resultDate }}</span>
           </td>
           <td class="nhsuk-table__cell">
-            {{ patient.next_test_due_date | returnNumericDateFormat }} 
-             <span class="nhsuk-table__cell--hint">{{ ((( patient.next_test_due_date | returnDateFormat) | returnTimeDiffDays) | removeBrackets) | capitalize }} </span>
+            {{ patient.next_test_due_date | returnInviteDateFormat }} 
+             <span class="nhsuk-table__cell--hint">{{ ((( patient.next_test_due_date | returnInviteDate) | returnTimeDiffDays) | removeBrackets) | capitalize }} </span>
           </td>
         </tr>
         {% endfor %}
