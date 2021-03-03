@@ -27,21 +27,18 @@
 
 <dl class="nhsuk-summary-list">
   
-  {% if data['health-authority'] != '' %}
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Health Authority</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or 'X'}}</dd>
-    <dd class="nhsuk-summary-list__actions"><a href="add-test-result">Edit<span class="nhsuk-u-visually-hidden"> Health Authority</span></a></dd>
-  </div>
-  {% endif %}
-  
-  {% if data['health-authority']== '' %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">National code</dt>
     <dd class="nhsuk-summary-list__value">{{ data['national-code'] or '12345678'}}</dd>
     <dd class="nhsuk-summary-list__actions"><a href="add-test-result">Edit<span class="nhsuk-u-visually-hidden"> Sender National code</span></a></dd>
   </div>
-  {% endif %}
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Health Authority</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or 'X'}}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="add-test-result">Edit<span class="nhsuk-u-visually-hidden"> Health Authority</span></a></dd>
+  </div>
+ 
 
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Self-sample</dt>
@@ -55,13 +52,13 @@
     <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Edit<span class="nhsuk-u-visually-hidden"> Source code</span></a></dd>
   </div>
   
-  {% if data['health-authority']== '' %}
+ 
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender code</dt>
     <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or '54321'}} </dd>
    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-details">Edit<span class="nhsuk-u-visually-hidden"> Sender code</span></a></dd>
   </div>
-  {% endif %}
+  
 
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Slide number</dt>
@@ -83,11 +80,17 @@
     <dd class="nhsuk-summary-list__actions"><a href="add-test-result-result">Edit<span class="nhsuk-u-visually-hidden">Test results</span></a></dd>
   </div>
 
-  <!--<div class="nhsuk-summary-list__row">
+   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">HPV Primary</dt>
     <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] }} </dd>
     <dd class="nhsuk-summary-list__actions"><a href="add-test-result-result">Change<span class="nhsuk-u-visually-hidden"> HPV Primary</span></a></dd>
-  </div>-->
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Repeat in months</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] }} months</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-repeat-in-months">Change<span class="nhsuk-u-visually-hidden"> Test Type</span></a></dd>
+  </div>
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">Next test due date</dt>
