@@ -27,35 +27,63 @@ NHS Cervical Screening
       "text": "back to reports"
     }) }}
 
-    <h1 class="nhsuk-heading-l">Invitations sent report</h1>
-    <p>Information about the inviations sent report</p>
+    <h1 class="nhsuk-heading-l">Invitations and results sent report</h1>
+    <p>Information about the inviations and results sent report</p>
+
+    <p>Total invites sent: 11602</p>
+    <p>Total results sent: 25074</p>
+
     <table class="nhsuk-table">
-      <caption class="nhsuk-table__caption">Skin symptoms and possible causes</caption>
+      <caption class="nhsuk-table__caption">Invitations sent</caption>
       <thead role="rowgroup" class="nhsuk-table__head">
         <tr role="row">
           <th role="columnheader" class="" scope="col">
-            Skin symptoms
+            Letter code
           </th>
           <th role="columnheader" class="" scope="col">
-            Possible cause
+            Letter name
+          </th>
+          <th role="columnheader" class="" scope="col">
+            No of people on the file sent to CIC
           </th>
         </tr>
       </thead>
       <tbody class="nhsuk-table__body">
         <tr role="row" class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">Blisters on lips or around the mouth</td>
-          <td class="nhsuk-table__cell ">cold sores</td>
+          <td class="nhsuk-table__cell">PA1</td>
+          <td class="nhsuk-table__cell ">HPV Primary screening invitation</td>
+          <td class="nhsuk-table__cell">1234</td>
         </tr>
         <tr role="row" class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">Itchy, dry, cracked, sore</td>
-          <td class="nhsuk-table__cell ">eczema</td>
+          <td class="nhsuk-table__cell">PA2</td>
+          <td class="nhsuk-table__cell ">HPV Primary screening reminder</td>
+          <td class="nhsuk-table__cell">2345</td>
         </tr>
         <tr role="row" class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">Itchy blisters</td>
-          <td class="nhsuk-table__cell ">shingles, chickenpox</td>
+          <td class="nhsuk-table__cell">PA3</td>
+          <td class="nhsuk-table__cell ">HPV Primary screening invitation (participants not registered with GP)</td>
+          <td class="nhsuk-table__cell">3456</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">PA4</td>
+          <td class="nhsuk-table__cell ">HPV Primary screening reminder (participants not registered with GP)</td>
+          <td class="nhsuk-table__cell">4567</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">P0QR</td>
+          <td class="nhsuk-table__cell ">Result of abnormal cells (non-cervical) with previous HPV</td>
+          <td class="nhsuk-table__cell">21621</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">P1XR</td>
+          <td class="nhsuk-table__cell ">Result of abnormal cells (non-cervical)</td>
+          <td class="nhsuk-table__cell">3453</td>
         </tr>
       </tbody>
     </table>
+
+
+   
   </div>
 </div>
 {% endblock %}
