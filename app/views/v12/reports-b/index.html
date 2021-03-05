@@ -1,0 +1,42 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(4) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+    <h1 class="nhsuk-heading-l">Reports</h1>
+    <p>Information about the external reports and how they work and how you get access to them</p>
+    
+    {{ actionLink({
+      "text": "View Tableau reports",
+      "href": "https://www.nhs.uk/service-search/minor-injuries-unit/locationsearch/551"
+    }) }}
+
+    <h2>Internal reports</h2>
+    <p>Information about the invitations end report</p>
+    <p><a href="/v12/reports-b/report-invitations-sent">View invitations sent</a></p>
+
+    <h2>Lab files</h2>
+    <p>Information about the lab files report</p>
+    <p><a href="/v12/reports-b/report-lab-files">View lab files</a></p>
+  </div>
+</div>
+{% endblock %}
