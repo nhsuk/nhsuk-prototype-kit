@@ -40,8 +40,37 @@
         <form action='/v12/check-test-result' method='post'>
 
           <div class="nhsuk-form-group">
+             
+             <!--<div class="nhsuk-inset-text">
+               <span class="nhsuk-u-visually-hidden">Information: </span>
+               <p>This result will be validated against being a HPV primary test. 
+               <br>Go back to step 2 if this is not a HPV primary test.</p>
+             </div>-->
+             {% if data['self-sample']== 'No' %}
+               <label class="nhsuk-label nhsuk-label__strong" for="email">
+                 HPV primary screening
+               </label>
+                <div class="nhsuk-hint" id="example-hints-2-item-hint">
+                  Was the sample tested for HPV before cytology (HPV primary screening)?
+                </div>
+                 <div class="nhsuk-radios__item">
+                   <input class="nhsuk-radios__input" id="yes-hpv" name="hpv-primary" value="Yes"type="radio" {{ checked("hyp-primary", "Yes") }}>
+                      <label class="nhsuk-label nhsuk-radios__label" for="yes-selfsample">
+                        Yes, it was HPV primary screening
+                      </label>
+                  </div>
+                
+                  <div class="nhsuk-radios__item">
+                   <input class="nhsuk-radios__input" id="no-hpv" name="hpv-primary" value="No" type="radio" 
+                   {{ checked("hpv-primary", "No") }}>
+                       <label class="nhsuk-label nhsuk-radios__label" for="no-selfsample">
+                          No, it was not HPV primary screening
+                       </label>
+                  </div>
+                
+            {% endif %}
+          <br>
 
-          
             <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
               <legend class="nhsuk-fieldset__legend nhsuk-input--width-4 nhsuk-label nhsuk-label__strong">
                 <h1 class="nhsuk-fieldset__heading">Result</h1>
