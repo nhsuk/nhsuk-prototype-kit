@@ -1,0 +1,81 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(4) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+    {{ backLink({
+      "href": "index",
+      "text": "back to reports"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Lab files report</h1>
+    <p>Information about the lab files report</p>
+
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption">Lab files receieved (yesterday and today)</caption>
+      <thead role="rowgroup" class="nhsuk-table__head">
+        <tr role="row">
+          <th role="columnheader" class="" scope="col">
+            Date and time
+          </th>
+          <th role="columnheader" class="" scope="col">
+            Lab
+          </th>
+          <th role="columnheader" class="" scope="col">
+            File
+          </th>
+          <th role="columnheader" class="" scope="col">
+            Accept?
+          </th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">16-01-21 21:00:00</td>
+          <td class="nhsuk-table__cell ">Manchester</td>
+          <td class="nhsuk-table__cell ">123</td>
+          <td class="nhsuk-table__cell ">Y</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">16-01-21 21:00:00</td>
+          <td class="nhsuk-table__cell ">Derby</td>
+          <td class="nhsuk-table__cell ">123</td>
+          <td class="nhsuk-table__cell ">Y</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">16-01-21 21:00:00</td>
+          <td class="nhsuk-table__cell ">Liverpool</td>
+          <td class="nhsuk-table__cell ">123</td>
+          <td class="nhsuk-table__cell ">Y</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">16-01-21 21:00:00</td>
+          <td class="nhsuk-table__cell ">Birmingham</td>
+          <td class="nhsuk-table__cell ">123</td>
+          <td class="nhsuk-table__cell ">Y</td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
