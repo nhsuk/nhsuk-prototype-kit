@@ -75,28 +75,28 @@
 
               <div class="nhsuk-radios nhsuk-radios--conditional">
                  <div class="nhsuk-radios__item">
-                   <input class="nhsuk-radios__input" id="yes-selfsample" name="self-sample" value="Yes"type="radio" {{ checked("self-sample", "Yes") }}>
+                   <input class="nhsuk-radios__input" id="yes-selfsample" name="self-sample" value="Yes"type="radio" {{ checked("self-sample", "Yes") }} aria-controls="conditional-selfsample-1" aria-expanded="false">
                       <label class="nhsuk-label nhsuk-radios__label" for="yes-selfsample">
                         Yes, this is a self-sample test result
                       </label>
                   </div>
                    
-                   <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-example-1">
+                   <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-selfsample-1">
                    
                                                <div class="nhsuk-form-group">
-                                                 <label class="nhsuk-label" for="email">
-                                                   Are you recording a self sample test?
-                                                 </label>
+                                                <div class="nhsuk-hint" id="example-with-hint-text-hint">
+                                                  Please select the self-sample provider
+                                                </div>
                                                    <div class="nhsuk-radios__item">
                                                      <input class="nhsuk-radios__input" id="yes-selfsample" name="result-type" value="Self Sample"type="radio" {{ checked("result-type", "Self Sample") }}>
                                                         <label class="nhsuk-label nhsuk-radios__label" for="yes-selfsample">
-                                                          Yes, this is a self sample test
+                                                          YouScreen
                                                         </label>
                                                     </div>
                                                     <div class="nhsuk-radios__item">
                                                      <input class="nhsuk-radios__input" id="no-selfsample" name="result-type" value="English" type="radio" {{ checked("result-type", "English") }}>
                                                          <label class="nhsuk-label nhsuk-radios__label" for="no-selfsample">
-                                                            No, this is not a self sample test
+                                                            Other
                                                          </label>
                                                     </div>
                                                 </div>

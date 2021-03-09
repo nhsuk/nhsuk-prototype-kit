@@ -69,22 +69,20 @@
     <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat }}</dd>
   </div>
 
+ <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">HPV Primary</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] }} </dd>
+  </div>
 
 <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Result</dt>
     <dd class="nhsuk-summary-list__value">{{ data['result-result'] }} {{ data['result-infection'] }} {{ data['result-action'] }}</dd>
   </div>
 
-   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">HPV Primary</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] }} </dd>
-    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-result">Change<span class="nhsuk-u-visually-hidden"> HPV Primary</span></a></dd>
-  </div>
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Repeat in months</dt>
     <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] }} months</dd>
-    <dd class="nhsuk-summary-list__actions"><a href="add-test-result-repeat-in-months">Change<span class="nhsuk-u-visually-hidden"> Test Type</span></a></dd>
   </div>
 
     <div class="nhsuk-summary-list__row">
