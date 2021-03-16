@@ -1,5 +1,12 @@
 # NHS.UK prototype kit Changelog
 
+## 4.3.0 - 16th March 2021
+
+:new: **New features**
+
+- Install NHS.UK frontend v5.0.0
+- Update package dependencies to latest versions
+
 ## 4.2.0 - 25 February 2021
 
 :new: **New features**
