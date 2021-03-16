@@ -1,6 +1,6 @@
 {
   "name": "nhsuk-prototype-kit",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "description": "Rapidly create HTML prototypes of NHS websites and services.",
   "main": "app.js",
   "scripts": {
@@ -31,7 +31,7 @@
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.1.0",
     "keypather": "^3.0.0",
-    "nhsuk-frontend": "^4.1.0",
+    "nhsuk-frontend": "^5.0.0",
     "node-sass": "^4.14.1",
     "nunjucks": "^3.2.3",
     "path": "^0.12.7"
