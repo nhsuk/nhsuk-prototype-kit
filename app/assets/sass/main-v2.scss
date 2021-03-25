@@ -3,6 +3,7 @@
 @import "node_modules/nhsuk-frontend/packages/nhsuk";
 
 @import "components/action-menu"; // extends the eRS buttons
+@import "components/alert"; // taken from NHS.UK beta work
 @import "components/buttons"; // extends the NHSUK button
 @import "components/patient-banner-v2"; //rename to the patient banner
 @import "components/sub-navigation"; // tab navigation taken from eRS

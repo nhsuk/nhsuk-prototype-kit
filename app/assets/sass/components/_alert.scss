@@ -1,0 +1,120 @@
+/* ==========================================================================
+   COMPONENTS / #ALERT
+   ========================================================================== */
+/**
+ * 1. Removes top margin from first element and bottom margin from last,
+ *    to ensure correct spacing within the component.
+ */
+
+$nhsuk-border-width-alert: 4px;
+
+.nhsuk-alert {
+  @include top-and-bottom(); /* [1] */
+  @include nhsuk-responsive-margin(5, 'bottom');
+  @include nhsuk-responsive-padding(4);
+
+  border: $nhsuk-border-width-alert solid $color_nhsuk-blue;
+  position: relative;
+
+  @include mq($media-type: print) {
+    border-color: $nhsuk-print-text-color;
+  }
+
+  .nhsuk-alert__heading {
+    @include nhsuk-responsive-margin(4, 'bottom');
+  }
+
+}
+
+/* Colour variations
+   ========================================================================== */
+
+.nhsuk-alert--warning {
+  border-color: $color_nhsuk-red;
+}
+
+.nhsuk-alert--success {
+  border-color: $color_nhsuk-green;
+}
+
+.nhsuk-alert--system {
+  border-color: $color_nhsuk-warm-yellow;
+}
+
+/* Alert icon
+   ========================================================================== */
+
+.nhsuk-alert--icon {
+  padding-left: nhsuk-spacing(7);
+
+  @include mq($from: tablet) {
+    padding-left: nhsuk-spacing(9);
+  }
+}
+
+.nhsuk-alert__icon {
+  height: 28px;
+  left: 12px;
+  position: absolute;
+  top: 14px;
+  width: 28px;
+
+  @include mq($from: tablet) {
+    height: 34px;
+    left: 18px;
+    top: 20px;
+    width: 34px;
+  }
+}
+
+.nhsuk-icon__info {
+  fill: $color_nhsuk-blue;
+  padding: 4px;
+  transform: rotate(180deg);
+}
+
+.nhsuk-icon__warning {
+  fill: $color_nhsuk-red;
+  padding: 4px;
+}
+
+.nhsuk-icon__system {
+  fill: $color_nhsuk-warm-yellow;
+  padding: 4px;
+}
+
+/* Alert dismiss
+   ========================================================================== */
+
+.nhsuk-alert--dismiss {
+  padding-right: nhsuk-spacing(7);
+
+  @include mq($from: tablet) {
+    padding-right: nhsuk-spacing(8);
+  }
+}
+
+.nhsuk-alert--close {
+  @include nhsuk-font($size: 16);
+
+  background: 0;
+  border: 0;
+  color: $nhsuk-link-color;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+
+  &:hover {
+    color: $nhsuk-link-hover-color;
+    text-decoration: none;
+  }
+
+  &:focus {
+    background: $nhsuk-focus-color;
+    border: 0;
+    box-shadow: 0 $nhsuk-focus-width 0 0 $nhsuk-focus-text-color;
+    color: $nhsuk-focus-text-color;
+    outline: 0;
+    text-decoration: none;
+  }
+}
