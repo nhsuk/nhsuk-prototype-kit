@@ -77,6 +77,12 @@
     <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat }}</dd>
   </div>
   
+  {% if data ['self-sample'] == 'Yes' %}
+  {% set senderValue= 'Yes' %}
+  {% else %}
+  {% set senderValue= data['sender-code'] %}
+  {% endif %}
+
  <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">HPV Primary</dt>
     <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] }} </dd>

@@ -24,7 +24,7 @@
     <span class="nhsuk-hint">Step 4 of 6</span> 
 
         {% set testResult = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
-        {% set resultText = "<p>The patients will next be invited on <strong>" + 3 | returnDate('years', testResult) + ' ' + 3 | returnDate('years', testResult) | returnTimeDiff +  "</strong></p>" %}
+        {% set resultText = "<p>The patient's next test due date will be <strong>" + 3 | returnDate('years', testResult) + ' ' + 3 | returnDate('years', testResult) | returnTimeDiff +  "</strong></p>" %}
         <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
 
         {% set newTestDate = (data['example-year'] + "-" + data['example-month'] + "-" + data['example-day']) | returnDateFormat %}

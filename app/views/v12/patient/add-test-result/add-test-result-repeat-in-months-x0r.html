@@ -42,22 +42,21 @@
   <fieldset class="nhsuk-fieldset">
     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
       <h1 class="nhsuk-fieldset__heading">
-        Select repeat in months
+        Choose when to repeat the test
       </h1>
     </legend>
 
-    <p>Chose to repeat in 6,12 or 36 months for test results X0R.</p>
-    <p>The next test due date has been calculated using the patients latest test results.</p>
+    <p>For the test result X0R you need to choose when to repeat the test in monhts.</p>
 
     <div class="nhsuk-radios">
 
       <div class="nhsuk-radios__item">
         <input class="nhsuk-radios__input" id="36-months" name="repeat-months" type="radio" value="36">
         <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-          36 months
+          36 months (default)
         </label>
         <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
-        The next test due date will be{{ resultText }}
+        The patient's next test due date will be{{ resultText }}
         </div>
       </div>
 
@@ -67,7 +66,7 @@
           12 months
         </label>
         <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
-        The next test due date will be {{ resultText }}
+        The patient's next test due date will be {{ resultText }}
         </div>
       </div>
 
@@ -77,12 +76,13 @@
           6 months
         </label>
         <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
-        The next test due date will be {{ resultText }}
+        The patient's next test due date will be {{ resultText }}
         </div>
       </div>
 
     </div>
-  
+  <br>
+    <p>The next test due date has been calculated using the patients latest test results.</p>
 
 </div>
 

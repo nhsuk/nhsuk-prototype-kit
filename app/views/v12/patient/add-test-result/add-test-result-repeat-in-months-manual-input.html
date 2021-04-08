@@ -41,22 +41,22 @@
   <fieldset class="nhsuk-fieldset">
     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
       <h1 class="nhsuk-fieldset__heading">
-        Repeat in months
+       When to repeat the test
       </h1>
     </legend>
 
-    <p>For the test result 0R:
+    <p>For the test result 0R you need to enter when to repeat the test (in months):
     <ul>
-    <li>the minimim repeat is 1 months</li>
-    <li>the maximim repeat is X months</li>
+    <li>the minimim is 1 month</li>
+    <li>the maximim is 36 months</li>
     </ul>
     </p>
-    <p> The next test due date will be calculated using the repeat in months and the test result.</p>
+    <p> The next test due date will be calculated using the test result and when it will be repeated.</p>
      <div class="nhsuk-date-input" id="example">
                 <div class="nhsuk-date-input__item">
                   <div class="nhsuk-form-group">
                     <label class="nhsuk-label nhsuk-label__strong" for="example-repeat">
-                      Repeat in months
+                      When to repeat (in months)
                     </label>
                     <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-u-margin-right-3" id="example-repeat" name="repeat-months" type="text" autocomplete="off" value="{{ data['result-result'] }}">
                   </div>
