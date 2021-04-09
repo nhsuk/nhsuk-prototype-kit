@@ -25,6 +25,8 @@
 
         {% set testResult = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
         {% set resultText = "<p>The patient's next test due date will be <strong>" + 3 | returnDate('years', testResult) + ' ' + 3 | returnDate('years', testResult) | returnTimeDiff +  "</strong></p>" %}
+        {% set resultTextno = "<p>The patient's next test test due date will <strong>not</strong> be changed</p>
+        <p>The next test due date with this result would be <strong>" + 3 | returnDate('years', testResult) + ' ' + 3 | returnDate('years', testResult) | returnTimeDiff +  "</strong></p>" %}
         <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
 
         {% set newTestDate = (data['example-year'] + "-" + data['example-month'] + "-" + data['example-day']) | returnDateFormat %}
@@ -36,11 +38,10 @@
             {{ insetText({
               "HTML": resultText
             }) }}
-        <p>This next test due date has been calculated using the patients latest test results.</P>
         {% else %}
           <h1 class="nhsuk-heading-l">Next test due date unchanged</h1>
             {{ insetText({
-              "HTML": "<p>The next test test due date will <strong>not</strong> be changed</p>"
+              "HTML": resultTextno
             }) }}
         <p>The test entered is an older test and will not affect the next test due date.</P>
 

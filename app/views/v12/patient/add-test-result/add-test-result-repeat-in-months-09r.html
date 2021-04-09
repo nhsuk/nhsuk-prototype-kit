@@ -54,19 +54,31 @@
         <label class="nhsuk-label nhsuk-radios__label" for="example-2">
           12 months (default)
         </label>
-        <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
-        The patient's next test due date will be {{ resultText }}
+        {% if (newTestDate | returnUnixTime > oldTestDate | returnUnixTime) %}
+           <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+         The patient's next test due date will be{{ resultText }}
+         </div>
+         {% else %}
+           <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+         The patient's next test due date will not be effected.
+         </div>
+         {% endif %}
         </div>
-      </div>
 
       <div class="nhsuk-radios__item">
         <input class="nhsuk-radios__input" id="36-months" name="repeat-months" type="radio" value="36">
         <label class="nhsuk-label nhsuk-radios__label" for="example-1">
           36 months
         </label>
-        <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
-        The patient's next test due date will be {{ resultText }}
-        </div>
+        {% if (newTestDate | returnUnixTime > oldTestDate | returnUnixTime) %}
+           <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+         The patient's next test due date will be{{ resultText }}
+         </div>
+         {% else %}
+           <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+         The patient's next test due date will not be effected.
+         </div>
+         {% endif %}
       </div>
 
     </div>
