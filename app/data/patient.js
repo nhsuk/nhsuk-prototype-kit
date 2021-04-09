@@ -179,6 +179,7 @@ var patients = [
         "participant_id": "8d0243e8-2ef0-4d4d-be8c-06be86138bfc",
         "pnl": true,
         "pnl_action": "",
+        "pnl_reason": "Patient informed choice",
         "registered_gp_practice_code": "L83665",
         "results" : [],
         "sanitised_first_name": "VERONICA",
@@ -577,7 +578,7 @@ module.exports.addTestResult = function (nhsNumber, data) {
         "hpv-primary": data['hpv-primary'],
         "crm": data['crm'],
         "comments": data['comments']
-    }]; 
+    }];
     
     patient.results.push(newTest[0]);
     console.log(patient.results);

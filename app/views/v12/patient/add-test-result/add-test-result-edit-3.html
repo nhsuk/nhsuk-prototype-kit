@@ -88,7 +88,7 @@
 
  <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">HPV Primary</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] }} </dd>
+    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] or 'yes' }} </dd>
    
   </div>
 
@@ -100,7 +100,7 @@
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Repeat in months</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] }} months</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or '36' }} months</dd>
     
   </div>
 
@@ -117,7 +117,7 @@
   </div>
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Comments</dt>
-    <dd class="nhsuk-summary-list__value">                             
+    <dd class="nhsuk-summary-list__value">{{ data['comments'] }}</dd>                          
     
   </div>
 </dl>
