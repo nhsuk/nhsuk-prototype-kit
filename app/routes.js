@@ -301,7 +301,9 @@ router.post("/*/add-test-result", function (req, res) {
   //console.log(nhsNumber)
   var currentPatient = patient.getPatient(nhsNumber);
   patient.addTestResult(nhsNumber, req.session.data);
-
+  patient.reinstatePatient(nhsNumber);
+  
+  
   // get the patient again with the new results
   currentPatient = patient.getPatient(nhsNumber);
   req.session.data['patientSummary'] = currentPatient;
