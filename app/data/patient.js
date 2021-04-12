@@ -178,7 +178,7 @@ var patients = [
         "nrl": true,
         "participant_id": "8d0243e8-2ef0-4d4d-be8c-06be86138bfc",
         "pnl": true,
-        "pnl_action": "",
+        "pnl_action": "Ceased",
         "pnl_reason": "Patient informed choice",
         "registered_gp_practice_code": "L83665",
         "results" : [],
