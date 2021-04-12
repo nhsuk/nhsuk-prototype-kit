@@ -557,6 +557,7 @@ module.exports.addTestResult = function (nhsNumber, data) {
     console.log("ATTEMPTING TO ADD A TEST RESULT")
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
     var newTest = [{
+        "result_ID": Math.random().toString(16).slice(2),
         "action": data['action-text'], // to fill in
         "action_code": data['result-action'],
         "created": moment(),
@@ -578,6 +579,7 @@ module.exports.addTestResult = function (nhsNumber, data) {
         "hpv-primary": data['hpv-primary'],
         "crm": data['crm'],
         "comments": data['comments']
+        
     }];
     
     patient.results.push(newTest[0]);
