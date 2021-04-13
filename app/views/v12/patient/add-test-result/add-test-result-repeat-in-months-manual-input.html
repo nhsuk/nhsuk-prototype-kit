@@ -54,7 +54,7 @@
     {% if (newTestDate | returnUnixTime > oldTestDate | returnUnixTime) %}
         <p> The next test due date will be calculated using the test result and when it will be repeated.</p>
     {% else %}
-        <p>The test entered is an older test and recording the repeat given will not affect the next test due date.</P>
+        <p>The patient has a more recent test result. So their next test due date will not be affected by this result.</P>
     {% endif %}
    
      <div class="nhsuk-date-input" id="example">
