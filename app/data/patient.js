@@ -594,13 +594,48 @@ module.exports.addTestResult = function (nhsNumber, data) {
 
 module.exports.editTestResult = function (nhsNumber, data) {
     console.log("ATTEMPTING TO EDIT A TEST RESULT")
-    
+    console.log(data);
     // find the patient
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
     
+    //console.log("result id: " + data['result_ID']);
     // find the result to edit
+    var result = patient.results.find((result) => result.result_ID == data['result_ID']);
     // need some unique ID to make this easier
+    //console.log(patient.results)
 
+    result.action = data['action-text'];
+    result.action_code = data['result-action'];
+    result.infection_code = data['result-infection'];
+    result.infection_result = data['infection-text'];
+    result.recall_months = "36";
+    result.result = data['result-text'];
+    result.result_code = data['result-result'];
+    result.result_date = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'];
+    result.sender_code = data['sender-code'];
+    result.sending_lab = data['national-code'];
+    result.slide_number = data['slide-number'];
+    result.source_code = data['source-code'];
+    result.test_date = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'];
+    result.result_type = data['result-type'];
+    result.health_authority = data['health-authority'];
+    result.result_infection = data['result-infection'];
+    result.hpv_primary = data['hpv-primary'];
+    result.crm = data['crm'];
+    result.comments = data['comments'];
+
+    //result.is_deleted = true;
+    // const array = [2, 5, 9];
+
+    // console.log(array);
+
+    // const index = patient.results.indexOf((result) => result.result_ID == data['result_ID']);
+    // if (index > -1) {
+    //    patient.results.splice(index, 1);
+    // }
+
+    // array = [2, 9]
+    // console.log(patient.results); 
 
     /*
     var newTest = [{
@@ -638,6 +673,28 @@ module.exports.editTestResult = function (nhsNumber, data) {
             return  new Date(b.test_date) - new Date(a.test_date);
         });
     }
+}
+
+module.exports.deleteTestResult = function (nhsNumber, data) {
+    console.log("ATTEMPTING TO DELETE A TEST RESULT")
+    
+    // find the patient
+    var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
+    
+    console.log("result id: " + data['result_ID']);
+    // find the result to delete
+    var result = patient.results.find((result) => result.result_ID == data['result_ID']).is_deleted = true;
+    // need some unique ID to make this easier
+    console.log(patient.results)
+
+    // sort the results - incase the test date was changed
+    /*
+    if (patient.results.length > 1) {
+        patient.results.sort(function (a, b) {
+            return  new Date(b.test_date) - new Date(a.test_date);
+        });
+    }
+    */
 }
 
 
