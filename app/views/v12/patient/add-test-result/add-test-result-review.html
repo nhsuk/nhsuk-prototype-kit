@@ -119,6 +119,15 @@
  <input type="hidden" id="infectionText" name="infection-text" value="{{ data['result-infection'] | returnInfectionText }}">
  <input type="hidden" id="resultText" name="result-text" value="{{ data['result-result'] | returnResultText }}">
 
+{% if data['pnl_action'] == 'Ceased' %}
+  <div class="nhsuk-inset-text">
+       <span class="nhsuk-u-visually-hidden">Information: </span>
+       <p>Adding this test will reistate the patient and set their next test due date.</p>
+    </div>
+{% else %}
+<p> no text </p>
+{% endif %}
+
          <button class="nhsuk-button nhsuk-button--ers" type="submit">
             Submit
          </button>
