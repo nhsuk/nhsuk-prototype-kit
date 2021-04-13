@@ -178,7 +178,7 @@ var patients = [
         "nrl": true,
         "participant_id": "8d0243e8-2ef0-4d4d-be8c-06be86138bfc",
         "pnl": true,
-        "pnl_action": "",
+        "pnl_action": "Ceased",
         "pnl_reason": "Patient informed choice",
         "registered_gp_practice_code": "L83665",
         "results" : [],
@@ -557,6 +557,7 @@ module.exports.addTestResult = function (nhsNumber, data) {
     console.log("ATTEMPTING TO ADD A TEST RESULT")
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
     var newTest = [{
+        "result_ID": Math.random().toString(16).slice(2),
         "action": data['action-text'], // to fill in
         "action_code": data['result-action'],
         "created": moment(),
@@ -578,6 +579,7 @@ module.exports.addTestResult = function (nhsNumber, data) {
         "hpv-primary": data['hpv-primary'],
         "crm": data['crm'],
         "comments": data['comments']
+        
     }];
     
     patient.results.push(newTest[0]);
@@ -589,6 +591,56 @@ module.exports.addTestResult = function (nhsNumber, data) {
         });
     }
 }
+
+module.exports.editTestResult = function (nhsNumber, data) {
+    console.log("ATTEMPTING TO EDIT A TEST RESULT")
+    
+    // find the patient
+    var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
+    
+    // find the result to edit
+    // need some unique ID to make this easier
+
+
+    /*
+    var newTest = [{
+        "action": data['action-text'], 
+        "action_code": data['result-action'],
+        "created": moment(),
+        "infection_code": data['result-infection'],
+        "infection_result": data['infection-text'], 
+        "nhs_number": nhsNumber,
+        "recall_months": "36",
+        "result": data['result-text'],
+        "result_code": data['result-result'],
+        "result_date": data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'],
+        "sender_code": data['sender-code'],
+        "sending_lab": data['national-code'],
+        "slide_number": data['slide-number'],
+        "source_code": data['source-code'],
+        "test_date": data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'],
+        "result-type": data['result-type'],
+        "health-authority": data['health-authority'],
+        "result-infection": data['result-infection'],
+        "hpv-primary": data['hpv-primary'],
+        "crm": data['crm'],
+        "comments": data['comments']
+    }];
+    */
+    /*
+    patient.results.push(newTest[0]);
+    console.log(patient.results);
+    */
+    
+    // sort the results - incase the test date was changed
+    if (patient.results.length > 1) {
+        patient.results.sort(function (a, b) {
+            return  new Date(b.test_date) - new Date(a.test_date);
+        });
+    }
+}
+
+
 
 module.exports.resetPatients = function (req) {
     patients.forEach(function (patient) {
@@ -616,7 +668,7 @@ module.exports.resetPatients = function (req) {
             });
         }
 
-        if (patients[i].nhs_number == "9100001694" || patients[i].nhs_number == "9100001384" || patients[i].nhs_number == "9100001740" || patients[i].nhs_number == "9991023867") {
+        if (patients[i].nhs_number == "9100002801" || patients[i].nhs_number == "9100001694" || patients[i].nhs_number == "9100001384" || patients[i].nhs_number == "9100001740" || patients[i].nhs_number == "9991023867") {
             patients[i].pnl_action = "Ceased";
             
             if (patients[i].nhs_number == "9100001694") {
@@ -627,7 +679,7 @@ module.exports.resetPatients = function (req) {
                 patients[i].pnl_reason = "Due to age";
             }
 
-            if (patients[i].nhs_number == "9100001740" || patients[i].nhs_number == "9991023867") {
+            if (patients[i].nhs_number == "9100001740" || patients[i].nhs_number == "9991023867" || patients[i].nhs_number == "9100002801") {
                 patients[i].pnl_reason = "Patient informed choice";
             }
        }

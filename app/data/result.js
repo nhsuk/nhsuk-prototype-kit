@@ -7,6 +7,7 @@ var moment = require('moment');
 
 const results = [
     {
+        "result_ID": Math.random().toString(16).slice(2),
         "action": "Repeat Advised",
         "action_code": "R",
         "created": "2020-05-28T12:53:39.328",
@@ -27,6 +28,7 @@ const results = [
         "test_date": moment().subtract(96, "weeks")
     },
     {
+        "result_ID": Math.random().toString(16).slice(2),
         "action": "Routine",
         "action_code": "A",
         "created": "2020-05-28T16:35:45.890",
@@ -45,6 +47,7 @@ const results = [
         "test_date": moment().subtract(146, "weeks")
     },
     {
+        "result_ID": Math.random().toString(16).slice(2),
         "action": "Routine",
         "action_code": "A",
         "created": "2020-05-28T16:35:45.890",
@@ -63,6 +66,7 @@ const results = [
         "test_date": moment().subtract(146, "weeks")
     },
     {
+        "result_ID": Math.random().toString(16).slice(2),
         "action": "Routine",
         "action_code": "A",
         "created": "2020-05-28T16:35:49.207",
@@ -81,6 +85,7 @@ const results = [
         "test_date": moment().subtract(146, "weeks")
     },
     {
+        "result_ID": Math.random().toString(16).slice(2),
         "action": "Routine",
         "action_code": "A",
         "created": "2020-05-28T16:35:45.306",
@@ -98,6 +103,7 @@ const results = [
         "test_date": moment().subtract(146, "weeks")
     },
     {
+        "result_ID": Math.random().toString(16).slice(2),
         "action": "Routine",
         "action_code": "A",
         "created": "2020-05-28T16:35:45.883",
@@ -115,6 +121,7 @@ const results = [
         "test_date": moment().subtract(148, "weeks")
     },
     {
+        "result_ID": Math.random().toString(16).slice(2),
         "action": "Routine",
         "action_code": "A",
         "created": "2020-05-28T16:35:49.199",
@@ -132,6 +139,7 @@ const results = [
         "test_date": moment().subtract(146, "weeks")
     },
     {
+        "result_ID": Math.random().toString(16).slice(2),
         "action": "Routine",
         "action_code": "A",
         "created": "2020-05-28T16:35:45.864",
@@ -150,6 +158,7 @@ const results = [
         "test_date": moment().subtract(406, "weeks")
     },
     {
+        "result_ID": Math.random().toString(16).slice(2),
         "action": "Routine",
         "action_code": "A",
         "created": "2020-05-28T16:35:45.700",
@@ -168,6 +177,7 @@ const results = [
         "test_date": moment().subtract(146, "weeks")
     },
     {
+        "result_ID": Math.random().toString(16).slice(2),
         "action": "Repeat advised",
         "action_code": "R",
         "created": "2020-05-28T16:35:45.829",
@@ -184,6 +194,7 @@ const results = [
         "test_date": moment().subtract(94, "weeks")
     },
     {
+        "result_ID": Math.random().toString(16).slice(2),
         "action": "Repeat advised",
         "action_code": "R",
         "created": "2020-05-28T16:35:45.829",

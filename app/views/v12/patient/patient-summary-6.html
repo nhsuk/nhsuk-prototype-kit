@@ -190,6 +190,7 @@
     {% endif %}
   </div>
 </div>
+<p>results</p>
 
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-full">
@@ -209,7 +210,7 @@
               <thead class="nhsuk-table__head">
                 <tr class="nhsuk-table__row">
                   <th class="nhsuk-table__header" scope="col">Test Date</th>
-                  <th class="nhsuk-table__header"  scope="col">Cytology result</th>
+                  <th class="nhsuk-table__header" scope="col">Cytology result</th>
                   <th class="nhsuk-table__header" scope="col">HPV infection</th>
                   <th class="nhsuk-table__header" scope="col">Action</th>
                   <th class="nhsuk-table__header" scope="col">Repeat</th>
@@ -228,10 +229,12 @@
               <tbody class="nhsuk-table__body nhsuk-body-">
 
               {% for result in data.patientSummary.results %}
+                {% set resultId = loop.index %}
+
                 <tr class="nhsuk-table__row">
                   <td class="nhsuk-table__cell fixed-side">
                     {{ result.test_date | returnDateFormat }}
-                    <span class="nhsuk-table__cell--hint">{{ result['result-type'] }}</span>
+                    <span class="nhsuk-table__cell--hint">{{ result['result-type'] }} - {{ result.result_ID }}</span>
                   </td>
                   <td class="nhsuk-table__cell">
                     {{ result.result }}
@@ -258,12 +261,10 @@
                     <td class="nhsuk-table__cell">{{ result.sender_code }}</td>
                     <td class="nhsuk-table__cell">{{ result.slide_number }}</td> 
                   {% else %}
-
                   <td class="nhsuk-table__cell only-print">{{ result.sender_code }}</td>
-
                     <td class="no-print"> 
-                      <a href="/v12/patient/add-test-result/add-test-result-edit-3?slide-number={{ result.slide_number }}&result-type={{ result['result-type'] }}&result_code={{ result['result-result'] }}&comments=&edit-review=true" style="margin-left:4px; margin-right:4px;">Review</a>
-                      <a href="/v12/patient/add-test-result/add-test-result-remove" style="margin-left:4px; margin-right:4px;">Delete</a>
+                      <a href="/v12/patient/add-test-result/add-test-result-edit-3?slide-number={{ result.slide_number }}&result-type={{ result['result-type'] }}&hpv_primary={{ result['hpv-primary'] }}&result_code={{ result['result-result'] }}&comments=&edit-review=true" style="margin-left:4px; margin-right:4px;">Review</a>
+                      <a href="/v12/patient/add-test-result/add-test-result-remove?&resultId={{ resultId }}&slide-number={{ result.slide_number }}&result-type={{ result['result-type'] }}&result_code={{ result['result-result'] }}&comments=" style="margin-left:4px; margin-right:4px;">Delete</a>
                     </td>
                   {% endif %}         
                 </tr>
