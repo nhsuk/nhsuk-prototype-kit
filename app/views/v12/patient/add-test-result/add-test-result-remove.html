@@ -63,7 +63,7 @@
     <dd class="nhsuk-summary-list__value">{{ data['slide-number'] }}</dd>
   </div>
 
-  {% set nextTestDueDate = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
+  {% set nextTestDueDate = data['test_date'] %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Test date</dt>
     <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat }}</dd>
@@ -87,7 +87,7 @@
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">Next test due date</dt>
-      <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', nextTestDueDate) + ' ' + 3 | returnDate('years', nextTestDueDate) | returnTimeDiff }}</dd>
+      <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', data['test_date']) + ' ' + 3 | returnDate('years', data['test_date']) | returnTimeDiff }}</dd>
     </div> 
 
  <div class="nhsuk-summary-list__row">
