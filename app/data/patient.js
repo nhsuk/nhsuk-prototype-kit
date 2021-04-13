@@ -563,6 +563,7 @@ module.exports.addTestResult = function (nhsNumber, data) {
         "created": moment(),
         "infection_code": data['result-infection'],
         "infection_result": data['infection-text'], // to fill in
+        "is_deleted": false, // to fill in
         "nhs_number": nhsNumber,
         "recall_months": "36", // default to 36 until figure a way to add this
         "result": data['result-text'], // to fill in
