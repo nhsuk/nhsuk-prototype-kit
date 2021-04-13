@@ -40,12 +40,12 @@
   
    <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">National code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['national-code'] }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or '-'}}</dd>
   </div>
 
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Health Authority</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or '-' }}</dd>
   </div>
   
 
@@ -62,7 +62,7 @@
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] }} </dd>
+    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or '-' }} </dd>
   </div>
  
 

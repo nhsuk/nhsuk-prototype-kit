@@ -32,12 +32,13 @@
         {% set newTestDate = (data['example-year'] + "-" + data['example-month'] + "-" + data['example-day']) | returnDateFormat %}
         {% set oldTestDate = data.pnl_patient.results[0].result_date | returnDateFormat %}
 
-        
+
         {% if (newTestDate | returnUnixTime > oldTestDate | returnUnixTime) %}
           <h1 class="nhsuk-heading-l">Check next test due date</h1>
             {{ insetText({
               "HTML": resultText
             }) }}
+          <p>The next test due date has been calculated using the patient's most recent test result.</p>
         {% else %}
           <h1 class="nhsuk-heading-l">Next test due date unchanged</h1>
             {{ insetText({
