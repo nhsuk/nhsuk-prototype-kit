@@ -282,9 +282,29 @@ source-code={{ result.sending_lab }}&
 test_date={{ result.test_date }}&
 health-authority={{ result.health_authority }}&
 crm={{ result.crm }}& 
-comments={{ result.comments }}""
+comments={{ result.comments }}"
                         style="margin-left:4px; margin-right:4px;">Review</a>
-                        <a href="/v12/patient/add-test-result/add-test-result-remove?result_ID={{ result.result_ID }}&slide-number={{ result.slide_number }}&result-type={{ result['result-type'] }}&result_code={{ result['result-result'] }}&comments=" style="margin-left:4px; margin-right:4px;">Delete</a>
+                        <a href="/v12/patient/add-test-result/add-test-result-remove
+?result_ID={{ result.result_ID }}&
+slide-number={{ result.slide_number }}&
+result-type={{ result['result-type'] }}&
+hpv-primary={{ result['hpv-primary'] }}&
+edit-review=true&
+action-text={{ result.action }}&
+result-action={{ result.action_code }}&
+result-infection={{ result.infection_code }}&
+infection-text={{ result.infection_result }}&
+repeat-months={{ result.recall_months }}&
+result-text={{ result.result }}&
+result-result={{ result.result_code }}&
+sender-code={{ result.sender_code }}&
+national-code={{ result.national_code }}&
+source-code={{ result.sending_lab }}&
+test_date={{ result.test_date }}&
+health-authority={{ result.health_authority }}&
+crm={{ result.crm }}& 
+comments={{ result.comments }}"
+                        style="margin-left:4px; margin-right:4px;">Delete</a>
                       </td>
                     {% endif %}         
                   </tr>
