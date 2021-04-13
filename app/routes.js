@@ -314,7 +314,7 @@ router.post("/*/add-test-result", function (req, res) {
 
 router.post("/*/edit-test-result", function (req, res) {
   console.log('EDITING-TEST-RESULT');
-  req.session.data["addresult_update_msg_show"] = "2";
+  req.session.data["editresult_update_msg_show"] = "2";
 
   const params = new URLSearchParams(req.query);
   const nhsNumber = params.get('nhsNumber');
@@ -331,6 +331,22 @@ router.post("/*/edit-test-result", function (req, res) {
   res.redirect("/" + getVersion(req) + "/patient/patient-summary-" + patVersion);
 })
 
+router.post("/*/delete-test-result", function (req, res) {
+  console.log('DELETING-TEST-RESULT');
+  req.session.data["deleteresult_update_msg_show"] = "2";
+
+  const params = new URLSearchParams(req.query);
+  const nhsNumber = params.get('nhsNumber');
+  var currentPatient = patient.getPatient(nhsNumber);
+  patient.deleteTestResult(nhsNumber, req.session.data);
+
+  // get the patient again with the new results
+  currentPatient = patient.getPatient(nhsNumber);
+  req.session.data['patientSummary'] = currentPatient;
+  const patVersion = req.session.data["patversion"];
+  
+  res.redirect("/" + getVersion(req) + "/patient/patient-summary-" + patVersion);
+})
 
 router.post("/*/check-test-result", function (req, res) {
   var result = (req.session.data["result-result"] + req.session.data["result-infection"] + req.session.data["result-action"]).toUpperCase();

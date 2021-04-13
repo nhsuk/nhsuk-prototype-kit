@@ -11,6 +11,7 @@ const results = [
         "action": "Repeat Advised",
         "action_code": "R",
         "created": "2020-05-28T12:53:39.328",
+        "is_deleted" : false,
         "infection_code": "9",
         "infection_result": "HPV positive",
         "nhs_number": "9991023867",
@@ -32,6 +33,7 @@ const results = [
         "action": "Routine",
         "action_code": "A",
         "created": "2020-05-28T16:35:45.890",
+        "is_deleted" : false,
         "nhs_number": "9100002801",
         "participant_id": "8d0243e8-2ef0-4d4d-be8c-06be86138bfc",
         "recall_months": "60",
@@ -51,6 +53,7 @@ const results = [
         "action": "Routine",
         "action_code": "A",
         "created": "2020-05-28T16:35:45.890",
+        "is_deleted" : false,
         "nhs_number": "9100001384",
         "participant_id": "8d0243e8-2ef0-4d4d-be8c-06be86138bfc",
         "recall_months": "60",
@@ -70,6 +73,7 @@ const results = [
         "action": "Routine",
         "action_code": "A",
         "created": "2020-05-28T16:35:49.207",
+        "is_deleted" : false,
         "nhs_number": "9100002801",
         "participant_id": "8d0243e8-2ef0-4d4d-be8c-06be86138bfc",
         "recall_months": "60",
@@ -89,6 +93,7 @@ const results = [
         "action": "Routine",
         "action_code": "A",
         "created": "2020-05-28T16:35:45.306",
+        "is_deleted" : false,
         "nhs_number": "9100001287",
         "participant_id": "1490e402-80a4-4b31-890f-bc28d3850a06",
         "recall_months": "60",
@@ -107,6 +112,7 @@ const results = [
         "action": "Routine",
         "action_code": "A",
         "created": "2020-05-28T16:35:45.883",
+        "is_deleted" : false,
         "nhs_number": "9100002798",
         "participant_id": "527087fc-4372-4949-b50e-e1b3b9f3e15a",
         "recall_months": "60",
@@ -125,6 +131,7 @@ const results = [
         "action": "Routine",
         "action_code": "A",
         "created": "2020-05-28T16:35:49.199",
+        "is_deleted" : false,
         "nhs_number": "9100002798",
         "participant_id": "527087fc-4372-4949-b50e-e1b3b9f3e15a",
         "recall_months": "60",
@@ -143,6 +150,7 @@ const results = [
         "action": "Routine",
         "action_code": "A",
         "created": "2020-05-28T16:35:45.864",
+        "is_deleted" : false,
         "nhs_number": "9100001929",
         "participant_id": "ffb1226a-1849-46d8-8c1e-f273e8417f27",
         "recall_months": "36",
@@ -162,6 +170,7 @@ const results = [
         "action": "Routine",
         "action_code": "A",
         "created": "2020-05-28T16:35:45.700",
+        "is_deleted" : false,
         "nhs_number": "9100001929",
         "participant_id": "ffb1226a-1849-46d8-8c1e-f273e8417f27",
         "recall_months": "36",
@@ -181,6 +190,7 @@ const results = [
         "action": "Repeat advised",
         "action_code": "R",
         "created": "2020-05-28T16:35:45.829",
+        "is_deleted" : false,
         "nhs_number": "9100001740",
         "participant_id": "b5a5bf31-5484-4ce2-8ad5-f1c1e0ac5086",
         "result": "Low-grade dyskaryosis",
@@ -198,6 +208,7 @@ const results = [
         "action": "Repeat advised",
         "action_code": "R",
         "created": "2020-05-28T16:35:45.829",
+        "is_deleted" : false,
         "nhs_number": "9100001694",
         "participant_id": "b5a5bf31-5484-4ce2-8ad5-f1c1e0ac5086",
         "result": "Low-grade dyskaryosis",
@@ -210,8 +221,6 @@ const results = [
         "source_code": "X",
         "test_date": moment().subtract(94, "weeks")
     }
-
-    
 ]
 
 module.exports.getResults = function () {

@@ -230,44 +230,65 @@
 
               {% for result in data.patientSummary.results %}
                 {% set resultId = loop.index %}
-
-                <tr class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell fixed-side">
-                    {{ result.test_date | returnDateFormat }}
-                    <span class="nhsuk-table__cell--hint">{{ result['result-type'] }} - {{ result.result_ID }}</span>
-                  </td>
-                  <td class="nhsuk-table__cell">
-                    {{ result.result }}
-                    <span class="nhsuk-table__cell--hint">{{ result.result_code }}</span>
-                  </td>
-                  <td class="nhsuk-table__cell">
-                    {{ result.infection_result or 'No HPV Data' }}
-                    <span class="nhsuk-table__cell--hint">{{ result.infection_code }}</span>
-                  </td>
-                  <td class="nhsuk-table__cell">
-                    {{ result.action }}
-                  <span class="nhsuk-table__cell--hint">{{ result.action_code }}</span>
-                  </td>
-                  <td class="nhsuk-table__cell">
-                    {{ result.recall_months }}
-                    <span class="nhsuk-table__cell--hint">Months</span>
-                  </td>
-                  <td class="nhsuk-table__cell">
-                    {{ result.slide_number }}
-                    <!--<span class="nhsuk-table__cell--hint">Derby Royal Hospital</span>-->
-                    <span class="nhsuk-table__cell--hint"> Lab: {{ result.sending_lab }}</span>
-                  </td>
-                  {% if data.role != 'csas' %}
-                    <td class="nhsuk-table__cell">{{ result.sender_code }}</td>
-                    <td class="nhsuk-table__cell">{{ result.slide_number }}</td> 
-                  {% else %}
-                  <td class="nhsuk-table__cell only-print">{{ result.sender_code }}</td>
-                    <td class="no-print"> 
-                      <a href="/v12/patient/add-test-result/add-test-result-edit-3?slide-number={{ result.slide_number }}&result-type={{ result['result-type'] }}&hpv_primary={{ result['hpv-primary'] }}&result_code={{ result['result-result'] }}&comments=&edit-review=true" style="margin-left:4px; margin-right:4px;">Review</a>
-                      <a href="/v12/patient/add-test-result/add-test-result-remove?&resultId={{ resultId }}&slide-number={{ result.slide_number }}&result-type={{ result['result-type'] }}&result_code={{ result['result-result'] }}&comments=" style="margin-left:4px; margin-right:4px;">Delete</a>
+                {% if result.is_deleted == false %}
+                  <tr class="nhsuk-table__row">
+                    <td class="nhsuk-table__cell fixed-side">
+                      {{ result.test_date | returnDateFormat }}
+                      <span class="nhsuk-table__cell--hint">{{ result['result-type'] }} - {{ result.result_ID }}</span>
                     </td>
-                  {% endif %}         
-                </tr>
+                    <td class="nhsuk-table__cell">
+                      {{ result.result }}
+                      <span class="nhsuk-table__cell--hint">{{ result.result_code }}</span>
+                    </td>
+                    <td class="nhsuk-table__cell">
+                      {{ result.infection_result or 'No HPV Data' }}
+                      <span class="nhsuk-table__cell--hint">{{ result.infection_code }}</span>
+                    </td>
+                    <td class="nhsuk-table__cell">
+                      {{ result.action }}
+                    <span class="nhsuk-table__cell--hint">{{ result.action_code }}</span>
+                    </td>
+                    <td class="nhsuk-table__cell">
+                      {{ result.recall_months }}
+                      <span class="nhsuk-table__cell--hint">Months</span>
+                    </td>
+                    <td class="nhsuk-table__cell">
+                      {{ result.slide_number }}
+                      <!--<span class="nhsuk-table__cell--hint">Derby Royal Hospital</span>-->
+                      <span class="nhsuk-table__cell--hint"> Lab: {{ result.sending_lab }}</span>
+                    </td>
+                    {% if data.role != 'csas' %}
+                      <td class="nhsuk-table__cell">{{ result.sender_code }}</td>
+                      <td class="nhsuk-table__cell">{{ result.slide_number }}</td> 
+                    {% else %}
+                    <td class="nhsuk-table__cell only-print">{{ result.sender_code }}</td>
+                      <td class="no-print"> 
+                        <a href="/v12/patient/add-test-result/add-test-result-edit-3
+?result_ID={{ result.result_ID }}&
+slide-number={{ result.slide_number }}&
+result-type={{ result['result-type'] }}&
+hpv-primary={{ result['hpv-primary'] }}&
+edit-review=true&
+action-text={{ result.action }}&
+result-action={{ result.action_code }}&
+result-infection={{ result.infection_code }}&
+infection-text={{ result.infection_result }}&
+repeat-months={{ result.recall_months }}&
+result-text={{ result.result }}&
+result-result={{ result.result_code }}&
+sender-code={{ result.sender_code }}&
+national-code={{ result.national_code }}&
+source-code={{ result.sending_lab }}&
+test_date={{ result.test_date }}&
+health-authority={{ result.health_authority }}&
+crm={{ result.crm }}& 
+comments={{ result.comments }}""
+                        style="margin-left:4px; margin-right:4px;">Review</a>
+                        <a href="/v12/patient/add-test-result/add-test-result-remove?result_ID={{ result.result_ID }}&slide-number={{ result.slide_number }}&result-type={{ result['result-type'] }}&result_code={{ result['result-result'] }}&comments=" style="margin-left:4px; margin-right:4px;">Delete</a>
+                      </td>
+                    {% endif %}         
+                  </tr>
+                {% endif %}
               {% endfor %}
               </tbody>
             </table>
