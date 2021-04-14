@@ -51,7 +51,7 @@
                 Also known as lab code. For example, 18010000.
                 <br> Leave blank for Scottish results.
               </div>
-              <input class="nhsuk-input nhsuk-input--width-10" value={{ data['national-code'] }} id="national-code" name="national-code" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
+              <input class="nhsuk-input nhsuk-input--width-10" value="{{ data['national-code'] }}" id="national-code" name="national-code" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
             </div>
   
           
@@ -78,7 +78,7 @@
 
               <div class="nhsuk-radios nhsuk-radios--conditional">
                  <div class="nhsuk-radios__item">
-                   <input class="nhsuk-radios__input" id="yes-selfsample" name="self-sample" value="Yes"type="radio" {{ checked("self-sample", "Yes") }} aria-controls="conditional-selfsample-1" aria-expanded="false">
+                   <input class="nhsuk-radios__input" id="yes-selfsample" name="self-sample" value="Yes" type="radio" {{ checked("self-sample", "Yes") }} aria-controls="conditional-selfsample-1" aria-expanded="false">
                       <label class="nhsuk-label nhsuk-radios__label" for="yes-selfsample">
                         Yes, this is a self-sample test result
                       </label>

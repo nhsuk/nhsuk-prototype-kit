@@ -556,6 +556,10 @@ module.exports.reinstatePatient = function (nhsNumber, ntdd) {
 module.exports.addTestResult = function (nhsNumber, data) {
     console.log("ATTEMPTING TO ADD A TEST RESULT")
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
+
+    console.log(data['result.self-sample']);
+
+
     var newTest = [{
         "result_ID": Math.random().toString(16).slice(2),
         "action": data['action-text'], // to fill in
@@ -565,18 +569,18 @@ module.exports.addTestResult = function (nhsNumber, data) {
         "infection_result": data['infection-text'], // to fill in
         "is_deleted": false, // to fill in
         "nhs_number": nhsNumber,
-        "recall_months": "36", // default to 36 until figure a way to add this
+        "recall_months": data['repeat-months'], // default to 36 until figure a way to add this
         "result": data['result-text'], // to fill in
         "result_code": data['result-result'],
         "result_date": data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'],
-        "self_sample" : data['result.self-sample'],
+        "self_sample" : data['self-sample'],
         "sender_code": data['sender-code'],
         "sending_lab": data['national-code'],
         "slide_number": data['slide-number'],
         "source_code": data['source-code'],
         "test_date": data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'],
         "result-type": data['result-type'],
-        "health-authority": data['health-authority'],
+        "health_authority": data['health-authority'],
         "result-infection": data['result-infection'],
         "hpv-primary": data['hpv-primary'],
         "crm": data['crm'],
@@ -585,7 +589,7 @@ module.exports.addTestResult = function (nhsNumber, data) {
     }];
     
     patient.results.push(newTest[0]);
-    console.log(patient.results);
+    //console.log(patient.results);
 
     if (patient.results.length > 1) {
         patient.results.sort(function (a, b) {
@@ -596,7 +600,7 @@ module.exports.addTestResult = function (nhsNumber, data) {
 
 module.exports.editTestResult = function (nhsNumber, data) {
     console.log("ATTEMPTING TO EDIT A TEST RESULT")
-    console.log(data);
+    //console.log(data);
     // find the patient
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
     
@@ -604,71 +608,27 @@ module.exports.editTestResult = function (nhsNumber, data) {
     // find the result to edit
     var result = patient.results.find((result) => result.result_ID == data['result_ID']);
     // need some unique ID to make this easier
-    //console.log(patient.results)
 
-    result.action = data['action-text'];
-    result.action_code = data['result-action'];
-    result.infection_code = data['result-infection'];
-    result.infection_result = data['infection-text'];
-    result.recall_months = "36";
-    result.result = data['result-text'];
+    result.action = data['action-text'] || ''; // not sure why this isn't working - need to double check it doesn't break anything
+    result.action_code = data['result-action'] || '';
+    result.infection_code = data['result-infection'] || '';
+    result.infection_result = data['infection-text'] || '';
+    result.recall_months = data['repeat-months'] || '';
+    result.result = data['result-text'] || '';
     result.result_code = data['result-result'];
-    result.result_date = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'];
-    result.self_sample = data['self-sample'];
-    result.sender_code = data['sender-code'];
-    result.sending_lab = data['national-code'];
-    result.slide_number = data['slide-number'];
-    result.source_code = data['source-code'];
-    result.test_date = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'];
-    result.result_type = data['result-type'];
-    result.health_authority = data['health-authority'];
-    result.result_infection = data['result-infection'];
-    result.hpv_primary = data['hpv-primary'];
-    result.crm = data['crm'];
-    result.comments = data['comments'];
-
-    //result.is_deleted = true;
-    // const array = [2, 5, 9];
-
-    // console.log(array);
-
-    // const index = patient.results.indexOf((result) => result.result_ID == data['result_ID']);
-    // if (index > -1) {
-    //    patient.results.splice(index, 1);
-    // }
-
-    // array = [2, 9]
-    // console.log(patient.results); 
-
-    /*
-    var newTest = [{
-        "action": data['action-text'], 
-        "action_code": data['result-action'],
-        "created": moment(),
-        "infection_code": data['result-infection'],
-        "infection_result": data['infection-text'], 
-        "nhs_number": nhsNumber,
-        "recall_months": "36",
-        "result": data['result-text'],
-        "result_code": data['result-result'],
-        "result_date": data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'],
-        "sender_code": data['sender-code'],
-        "sending_lab": data['national-code'],
-        "slide_number": data['slide-number'],
-        "source_code": data['source-code'],
-        "test_date": data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'],
-        "result-type": data['result-type'],
-        "health-authority": data['health-authority'],
-        "result-infection": data['result-infection'],
-        "hpv-primary": data['hpv-primary'],
-        "crm": data['crm'],
-        "comments": data['comments']
-    }];
-    */
-    /*
-    patient.results.push(newTest[0]);
-    console.log(patient.results);
-    */
+    result.result_date = data['example-year'] || '' + "-" + data['example-month'] || '' + "-" + data['example-day'] || '';
+    result.self_sample = data['self-sample'] || '';
+    result.sender_code = data['sender-code'] || '';
+    result.sending_lab = data['national-code'] || '';
+    result.slide_number = data['slide-number'] || '';
+    result.source_code = data['source-code'] || '';
+    result.test_date = data['example-year'] || '' + "-" + data['example-month'] || '' + "-" + data['example-day'] || '';
+    result.result_type = data['result-type'] || '';
+    result.health_authority = data['health-authority'] || '';
+    result.result_infection = data['result-infection'] || '';
+    result.hpv_primary = data['hpv-primary'] || '';
+    result.crm = data['crm'] || '';
+    result.comments = data['comments'] || '';
     
     // sort the results - incase the test date was changed
     if (patient.results.length > 1) {

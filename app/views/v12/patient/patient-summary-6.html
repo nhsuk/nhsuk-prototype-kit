@@ -431,7 +431,7 @@ comments={{ result.comments }}"
                 <tr class="nhsuk-table__row">
                   <td class="nhsuk-table__cell fixed-side">
                     {{ result.test_date | returnDateFormat }}
-                    <span class="nhsuk-table__cell--hint">HA: {{ result.health_authority }}</span>
+                    <span class="nhsuk-table__cell--hint">HA: {{ result.health_authority or "-" }}</span>
                   </td>
                   <td class="nhsuk-table__cell">
                     {{ result.result_code }}{{ result.infection_code }}{{ result.action_code }} - {{ result.recall_months }} Months{% if result.hpv_primary == 'Yes' %} - HPV Primary{% endif %} {% if result.self_sample == 'Yes' %} - Self sample{% endif %}
@@ -439,14 +439,14 @@ comments={{ result.comments }}"
                   </td>
 
                   <td class="nhsuk-table__cell">
-                    {{ result.sender_code }}
-                    <span class="nhsuk-table__cell--hint">Source: {{ result.source_code }}</span>
+                    {{ result.sender_code  or "-" }}
+                    <span class="nhsuk-table__cell--hint">Source: {{ result.source_code  or "-" }}</span>
                   </td>
 
                   <td class="nhsuk-table__cell">
-                    {{ result.slide_number }}
+                    {{ result.slide_number  or "-" }}
                     <!--<span class="nhsuk-table__cell--hint">Derby Royal Hospital</span>-->
-                    <span class="nhsuk-table__cell--hint"> Nat Code: {{ result.sending_lab }}</span>
+                    <span class="nhsuk-table__cell--hint"> Nat Code: {{ result.sending_lab  or "-" }}</span>
                   </td>
 
                     <td> 
