@@ -569,6 +569,7 @@ module.exports.addTestResult = function (nhsNumber, data) {
         "result": data['result-text'], // to fill in
         "result_code": data['result-result'],
         "result_date": data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'],
+        "self_sample" : data['result.self-sample'],
         "sender_code": data['sender-code'],
         "sending_lab": data['national-code'],
         "slide_number": data['slide-number'],
@@ -613,6 +614,7 @@ module.exports.editTestResult = function (nhsNumber, data) {
     result.result = data['result-text'];
     result.result_code = data['result-result'];
     result.result_date = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'];
+    result.self_sample = data['self-sample'];
     result.sender_code = data['sender-code'];
     result.sending_lab = data['national-code'];
     result.slide_number = data['slide-number'];
