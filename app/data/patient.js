@@ -582,7 +582,7 @@ module.exports.addTestResult = function (nhsNumber, data) {
         "result-type": data['result-type'],
         "health_authority": data['health-authority'],
         "result-infection": data['result-infection'],
-        "hpv-primary": data['hpv-primary'],
+        "hpv_primary": data['hpv-primary'],
         "crm": data['crm'],
         "comments": data['comments']
         
