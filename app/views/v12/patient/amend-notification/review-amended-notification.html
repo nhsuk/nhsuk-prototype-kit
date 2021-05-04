@@ -26,18 +26,18 @@
 
     <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
       <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-        Review amended notification  
+        Review cancelling result letter  
       </legend>
       <div class="nhsuk-inset-text nhsuk-u-margin-top-4">
         <span class="nhsuk-u-visually-hidden">Information: </span>
         <p>A result letter will not be sent to the participant.</p>
       </div>
-      <form action="../patient-summary-6?blocked-result=Yes" method="post">
+      <form action="../patient-summary-6" method="post">
         {{ summaryList({
           rows: [
             {
               key: {
-                text: "Notification blocked"
+                text: "Cancel result letter"
               },
               value: {
                 text: data['result-blocked']

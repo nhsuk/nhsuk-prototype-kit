@@ -427,6 +427,17 @@ comments={{ result.comments }}"
 
               {% for result in data.patientSummary.results %}
               {% if result.is_deleted == false %}
+              {% if loop.index == 1 %}
+                  {% if data['result-blocked'] == 'Yes' %}
+                    <tr style="background-color: #d5281b">
+                      <td style="text-align: center; color: white; border-bottom: none; padding-top: 8px; padding-bottom: 8px" colspan="5" class="nhsuk-table__cell">This result letter has been cancelled</td>
+                    </tr>
+                  {% else %}
+                    <tr style="background-color: #ffeb3b">
+                      <td style="text-align: center; border-bottom: none; padding-top: 8px; padding-bottom: 8px" colspan="5" class="nhsuk-table__cell">Processing result letter - <a href="amend-notification/choose-reason-to-amend-notification">Cancel letter<a></td>
+                    </tr>
+                  {% endif %}
+                {% endif %}
                 <tr class="nhsuk-table__row">
                   <td class="nhsuk-table__cell fixed-side">
                     {{ result.test_date | returnDateFormat }}
@@ -496,17 +507,7 @@ comments={{ result.comments or '' }}"
                     </td>
                 </tr>
 
-                {% if loop.index == 1 %}
-                  {% if data['result-blocked'] == 'Yes' %}
-                    <tr style="background-color: #d5281b">
-                      <td style="text-align: center; color: white" colspan="5" class="nhsuk-table__cell">This result letter has been blocked due to update from lab</td>
-                    </tr>
-                  {% else %}
-                    <tr style="background-color: #ffeb3b">
-                      <td style="text-align: center" colspan="5" class="nhsuk-table__cell">Processing result - <a href="amend-notification/choose-reason-to-amend-notification">Amend this notification</a></td>
-                    </tr>
-                  {% endif %}
-                {% endif %}
+                
               {% endif %}
               {% endfor %}
               </tbody>
