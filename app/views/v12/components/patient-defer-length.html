@@ -11,8 +11,10 @@
     {% endif %}
   {% endset %}
 
-<!--{% if data['pnl-defer-reason'] ==  'Recent test' %}
-      <p>Minimum deferral is X months, which will set the next test due date 10 weeks from tomorrow's date.</br>Maximum deferral can not exceed X months.</br> -->
+{#
+{% if data['pnl-defer-reason'] ==  'Recent test' %}
+      <p>Minimum deferral is X months, which will set the next test due date 10 weeks from tomorrow's date.</br>Maximum deferral can not exceed X months.</br>
+#}
 
   {{ insetText({
     "HTML":  pnlDeferInfo,
