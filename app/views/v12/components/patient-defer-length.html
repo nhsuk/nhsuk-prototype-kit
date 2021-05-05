@@ -2,13 +2,17 @@
  How long do you want to defer the patient?
 </h1>
 
+
   {% set pnlDeferInfo %}
     {% if data['pnl-defer-reason'] ==  'Pregnancy' %}
-      <p>Minimum deferral is 12 weeks after date of delivery.</br>Maximum deferral is 52 weeks after date of delivery.</br> </br>The earliest the next test due date can be set is 10 weeks from today's date.</p>
-    {% else %}
-      <p>Minimum deferral is X months, which will set the next test due date 10 weeks from today's date</br>Maximum deferral can not exceed X months</p>
+      <p>Minimum deferral is 12 weeks from date of delivery.</br>Maximum deferral is 52 weeks from today's date.</br> </br>The earliest the next test due date can be set is 10 weeks from tomorrow.</p>
+   {% else %}
+      <p>Minimum deferral is X months, which will set the next test due date 10 weeks from tomorrow's date.</br>Maximum deferral can not exceed X months.</br> 
     {% endif %}
   {% endset %}
+
+<!--{% if data['pnl-defer-reason'] ==  'Recent test' %}
+      <p>Minimum deferral is X months, which will set the next test due date 10 weeks from tomorrow's date.</br>Maximum deferral can not exceed X months.</br> -->
 
   {{ insetText({
     "HTML":  pnlDeferInfo,
@@ -61,7 +65,7 @@
 
   {% set pnlDeferLabel %}
     {% if data['pnl-defer-reason'] == 'Pregnancy' %}
-      Weeks to defer after the date of delivery
+      Weeks to defer from today's date
     {% else %}
       Months to defer
     {% endif %}
