@@ -46,7 +46,7 @@
       {% if data['incident-text'] != '' %}
         <div class="nhsuk-inset-text nhsuk-u-margin-bottom-4 nhsuk-u-margin-top-4">
           <span class="nhsuk-u-visually-hidden">Information: </span>
-          <p>Incident: {{ data['incident-text'] or '123456A has been logged against this patient' }}</p>
+          <p>{{ data['incident-text'] or '123456A has been logged against this patient' }}</p>
         </div>
       {% endif %}
 
@@ -427,6 +427,17 @@ comments={{ result.comments }}"
 
               {% for result in data.patientSummary.results %}
               {% if result.is_deleted == false %}
+              {% if loop.index == 1 %}
+                  {% if data['result-blocked'] == 'Yes' %}
+                    <tr style="background-color: #d5281b">
+                      <td style="text-align: center; color: white; border-bottom: none; padding-top: 8px; padding-bottom: 8px" colspan="5" class="nhsuk-table__cell">This result letter has been cancelled</td>
+                    </tr>
+                  {% else %}
+                    <tr style="background-color: #ffeb3b">
+                      <td style="text-align: center; border-bottom: none; padding-top: 8px; padding-bottom: 8px" colspan="5" class="nhsuk-table__cell">Processing result letter - <a href="amend-notification/choose-reason-to-amend-notification">Cancel letter<a></td>
+                    </tr>
+                  {% endif %}
+                {% endif %}
                 <tr class="nhsuk-table__row">
                   <td class="nhsuk-table__cell fixed-side">
                     {{ result.test_date | returnDateFormat }}
@@ -495,6 +506,8 @@ comments={{ result.comments or '' }}"
                         style="margin-left:4px; margin-right:4px;">Delete</a>
                     </td>
                 </tr>
+
+                
               {% endif %}
               {% endfor %}
               </tbody>
