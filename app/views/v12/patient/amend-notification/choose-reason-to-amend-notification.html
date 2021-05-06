@@ -30,7 +30,7 @@
       </legend>
       <div class="nhsuk-inset-text nhsuk-u-margin-top-4">
         <span class="nhsuk-u-visually-hidden">Information: </span>
-        <p>The result letter is being processed and is due to be sent to the printers.</p>
+        <p>The result letter is being processed and will be sent to the printers today.<br>If you cancel the result letter, it will not be sent to the participant.</p>
       </div>
       <form action="review-amended-notification" method="post">
         {{ checkboxes({
@@ -39,7 +39,7 @@
           "items": [
             {
               "value": "Yes",
-              "text": "Cancel this result letter"
+              "text": "I confirm that I want to cancel this result letter"
             }
           ]
         }) }}
