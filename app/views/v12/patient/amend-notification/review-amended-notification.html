@@ -26,12 +26,8 @@
 
     <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
       <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-        Review cancelling result letter  
+        Review cancelling results letter  
       </legend>
-      <div class="nhsuk-inset-text nhsuk-u-margin-top-4">
-        <span class="nhsuk-u-visually-hidden">Information: </span>
-        <p>A result letter will not be sent to the participant.</p>
-      </div>
       <form action="../patient-summary-6" method="post">
         {{ summaryList({
           rows: [
@@ -48,6 +44,23 @@
                     href: "choose-reason-to-amend-notification",
                     text: "Change",
                     visuallyHiddenText: "name"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Date of result"
+              },
+              value: {
+                html: '15-Jun-2019'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "",
+                    text: "",
+                    visuallyHiddenText: "contact information"
                   }
                 ]
               }
