@@ -90,15 +90,19 @@
       <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', data['test_date']) + ' ' + 3 | returnDate('years', data['test_date']) | returnTimeDiff }}</dd>
     </div> 
 
- <div class="nhsuk-summary-list__row">
+ <!--<div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">CRM</dt>
     <dd class="nhsuk-summary-list__value">{{ data['crm'] or '-' }}</dd>
   </div>
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Comments</dt>
     <dd class="nhsuk-summary-list__value">{{ data['comments'] or "-" }}</dd>
-  </div>
+  </div>-->
 </dl>
+
+{% include '../../components/comments-timeline.html' %}  
+
+
   <form action="../v12/delete-test-result?nhsNumber={{ data.pnl_patient.nhs_number }}" method="post">
     <div class="nhsuk-form-group">
       <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
@@ -115,9 +119,28 @@
             <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
              The patient's next test due date will not be affected.
             </div>
+                        <div class="nhsuk-form-group">
+              <h1 class="nhsuk-label-wrapper">
+                <label class="nhsuk-fieldset__legend--s nhsuk-label__strong" for="example-heading">
+                  Enter CRM case number
+                </label>
+              </h1>
+              <span class="nhsuk-hint" id="example-hint">
+                For example, CAS-12345-ABCDE.
+              </span>
+              <input class="nhsuk-input nhsuk-input--width-10" type="text" name="crm" autocomplete="off" value="{{ data.crm }}">
+            </div>
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="example">
+                Comments 
+              </label>
+                  <!--<span class="nhsuk-hint" id="example-hint">Do not include clinical information at this point.</span>-->
+               
+              <textarea class="nhsuk-textarea" id="example" name="comments" rows="3" aria-describedby="example-hint" autocomplete="off">{{ data.comments }}</textarea>
+            </div>
           </div>
         </div>
-    
+    <br>
         <div class="nhsuk-radios nhsuk-radios--conditional">
           <div class="nhsuk-radios__item">
             <input class="nhsuk-radios__input" id="example-1" name="result-type" type="radio" value="English" >
@@ -128,6 +151,7 @@
         </div> 
       </fieldset> 
     </div>
+    <br>
     <button class="nhsuk-button nhsuk-button--ers" type="submit">Confirm</button>   
   </form>
 

@@ -25,9 +25,8 @@
 
         {% set testResult = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
         {% set resultText = "<p>The patient's next test due date will be <strong>" + 3 | returnDate('years', testResult) + ' ' + 3 | returnDate('years', testResult) | returnTimeDiff +  "</strong></p>" %}
-        {% set resultTextno = "<p>The patient has a more recent test result, so their next test due date will <strong>not</strong> be affected.</p>
-        <p>But their next test due date would be  <strong>" + 3 | returnDate('years', testResult) + ' ' + 3 | returnDate('years', testResult) | returnTimeDiff +  "</strong> for this result.</p>" %}
-        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+        {% set resultTextno = "<p>The patient has a more recent test result, so their next test due date will <strong>not</strong> be affected.</p>" %}
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint"> 
 
         {% set newTestDate = (data['example-year'] + "-" + data['example-month'] + "-" + data['example-day']) | returnDateFormat %}
         {% set oldTestDate = data.pnl_patient.results[0].result_date | returnDateFormat %}
