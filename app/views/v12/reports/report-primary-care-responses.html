@@ -1,0 +1,226 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(4) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full-width">
+
+    {{ backLink({
+      "href": "reports",
+      "text": "back to reports"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Reports - Primary care responses</h1>
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-one-third">
+        {{ dateInput({
+          "id": "example",
+          "namePrefix": "example",
+          "fieldset": {
+            "legend": {
+              "text": "Date from",
+              "classes": "nhsuk-label--s",
+              "isPageHeading": false
+            }
+          },
+          "hint": {
+            "text": "For example, 15 3 1984"
+          },
+          "items": [
+            {
+              "name": "day",
+              "classes": "nhsuk-input--width-2"
+            },
+            {
+              "name": "month",
+              "classes": "nhsuk-input--width-2"
+            },
+            {
+              "name": "year",
+              "classes": "nhsuk-input--width-4"
+            }
+          ]
+        }) }}
+      </div>
+
+      <div class="nhsuk-grid-column-one-third">
+        {{ dateInput({
+          "id": "example",
+          "namePrefix": "example",
+          "fieldset": {
+            "legend": {
+              "text": "Date to",
+              "classes": "nhsuk-label--s",
+              "isPageHeading": false
+            }
+          },
+          "hint": {
+            "text": "For example, 15 3 1984"
+          },
+          "items": [
+            {
+              "name": "day",
+              "classes": "nhsuk-input--width-2"
+            },
+            {
+              "name": "month",
+              "classes": "nhsuk-input--width-2"
+            },
+            {
+              "name": "year",
+              "classes": "nhsuk-input--width-4"
+            }
+          ]
+        }) }}
+      </div>
+      
+    </div>
+    <button class="nhsuk-button nhsuk-button--ers">Update</button>
+    <hr>
+    <h3>16 Dec 2020 - 20 Dec 2020</h3><a id="toggle" href="report-primary-care-responses-drilldown#toggle" class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary">Toggle GP practice view</a>
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption">16 Dec 2020 - 20 Dec 2020</caption>
+      <thead role="rowgroup" class="nhsuk-table__head">
+        <tr role="row">
+          <th role="columnheader" scope="col" rowspan="3" colspan="1">
+            Group
+          </th>
+          <th role="columnheader" scope="col" rowspan="1" colspan="6">
+            User Actioned
+          </th>
+          <th role="columnheader" scope="col" rowspan="1" colspan="4">
+            System Actioned
+          </th>
+          <th role="columnheader" scope="col" rowspan="3" colspan="1">
+            Total
+          </th>
+        </tr>
+        <tr role="row">
+          <th role="columnheader" scope="col" rowspan="1" colspan="2">
+            Accept
+          </th>
+          <th role="columnheader" scope="col" rowspan="1" colspan="2">
+            Defer
+          </th>
+          <th role="columnheader" scope="col" rowspan="1" colspan="2">
+            Cease
+          </th>
+          <th role="columnheader" scope="col" rowspan="1" colspan="2">
+            Accept
+          </th>
+          <th role="columnheader" scope="col" rowspan="1" colspan="2">
+            Other
+          </th>
+        </tr>
+        <tr role="row">
+          <th role="columnheader" scope="col">
+            No
+          </th>
+          <th role="columnheader" scope="col">
+            %
+          </th>
+          <th role="columnheader" scope="col">
+            No
+          </th>
+          <th role="columnheader" scope="col">
+            %
+          </th>
+          <th role="columnheader" scope="col">
+            No
+          </th>
+          <th role="columnheader" scope="col">
+            %
+          </th>
+          <th role="columnheader" scope="col">
+            No
+          </th>
+          <th role="columnheader" scope="col">
+            %
+          </th>
+          <th role="columnheader" scope="col">
+            No
+          </th>
+          <th role="columnheader" scope="col">
+            %
+          </th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">CCG1</td>
+          <td class="nhsuk-table__cell">3</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">0</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">0</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">100</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">1</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">104</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">CCG2</td>
+          <td class="nhsuk-table__cell">121</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">0</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">0</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">100</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">1</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">121</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">CCG3</td>
+          <td class="nhsuk-table__cell">47</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">7</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">6</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">171</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">0</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">231</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">CCG4</td>
+          <td class="nhsuk-table__cell">9</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">17</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">11</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">59</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">0</td>
+          <td class="nhsuk-table__cell">x</td>
+          <td class="nhsuk-table__cell">96</td>
+        </tr>
+      </tbody>
+    </table>   
+  </div>
+</div>
+{% endblock %}

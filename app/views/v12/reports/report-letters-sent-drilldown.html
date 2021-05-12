@@ -1,0 +1,120 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(4) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full-width">
+
+    {{ backLink({
+      "href": "report-letters-sent",
+      "text": "back to letters sent"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Letters sent report</h1>
+    <button class="nhsuk-button nhsuk-button--ers">Download CSV</button>
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption">16 Dec 2020 - 10:30 Invite and reminder letters</caption>
+      <thead role="rowgroup" class="nhsuk-table__head">
+        <tr role="row">
+          <th role="columnheader" scope="col">
+            Letter code
+          </th>
+          <th role="columnheader" scope="col" width="300">
+            Letter name
+          </th>
+          <th role="columnheader" scope="col">
+            Call
+          </th>
+          <th role="columnheader" scope="col">
+            Normal
+          </th>
+          <th role="columnheader" scope="col">
+            Inadequate
+          </th>
+          <th role="columnheader" scope="col">
+            Repeat advised
+          </th>
+          <th role="columnheader" scope="col">
+            Suspended
+          </th>
+          <th role="columnheader" scope="col">
+            Total
+          </th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">PA1</td>
+          <td class="nhsuk-table__cell ">HPV Primary screening invitation</td>
+          <td class="nhsuk-table__cell">1000</td>
+          <td class="nhsuk-table__cell">1000</td>
+          <td class="nhsuk-table__cell">1000</td>
+          <td class="nhsuk-table__cell">1000</td>
+          <td class="nhsuk-table__cell">1000</td>
+          <td class="nhsuk-table__cell">5000</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">PA2</td>
+          <td class="nhsuk-table__cell ">HPV Primary screening reminder</td>
+          <td class="nhsuk-table__cell">320</td>
+          <td class="nhsuk-table__cell">200</td>
+          <td class="nhsuk-table__cell">180</td>
+          <td class="nhsuk-table__cell">0</td>
+          <td class="nhsuk-table__cell">88</td>
+          <td class="nhsuk-table__cell">388</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">PA3</td>
+          <td class="nhsuk-table__cell ">HPV Primary screening invitation (participants not registered with GP)</td>
+          <td class="nhsuk-table__cell">100</td>
+          <td class="nhsuk-table__cell">100</td>
+          <td class="nhsuk-table__cell">100</td>
+          <td class="nhsuk-table__cell">112</td>
+          <td class="nhsuk-table__cell">100</td>
+          <td class="nhsuk-table__cell">512</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">PA4</td>
+          <td class="nhsuk-table__cell ">HPV Primary screening reminder (participants not registered with GP)</td>
+          <td class="nhsuk-table__cell">1000</td>
+          <td class="nhsuk-table__cell">1000</td>
+          <td class="nhsuk-table__cell">1000</td>
+          <td class="nhsuk-table__cell">400</td>
+          <td class="nhsuk-table__cell">500</td>
+          <td class="nhsuk-table__cell">3900</td>
+        </tr>       
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Totals</td>
+          <td class="nhsuk-table__cell "></td>
+          <td class="nhsuk-table__cell">2420</td>
+          <td class="nhsuk-table__cell">10,000</td>
+          <td class="nhsuk-table__cell">2280</td>
+          <td class="nhsuk-table__cell">1512</td>
+          <td class="nhsuk-table__cell">1688</td>
+          <td class="nhsuk-table__cell">10000</td>
+        </tr>        
+      </tbody>
+    </table>
+
+
+   
+  </div>
+</div>
+{% endblock %}

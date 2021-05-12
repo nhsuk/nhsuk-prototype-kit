@@ -1,0 +1,31 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(4) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+    <h1 class="nhsuk-heading-l">Reports</h1>
+    <p><a href="report-letters-sent">Letters sent</a></p>
+    <p><a href="report-lab-files-received">Lab files received</a></p>
+    <p><a href="report-primary-care-responses">Primary care responses</a></p>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(4) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+    {{ backLink({
+      "href": "reports",
+      "text": "back to reports"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Reports - Letters sent</h1>
+    <button class="nhsuk-button nhsuk-button--ers">Download CSV</button>
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption">16 Dec 2020 - Files sent to CIC</caption>
+      <thead role="rowgroup" class="nhsuk-table__head">
+        <tr role="row">
+          <th role="columnheader" class="" scope="col">
+            Time
+          </th>
+          <th role="columnheader" class="" scope="col">
+            File type
+          </th>
+          <th role="columnheader" class="" scope="col">
+            volume of letters
+          </th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">05:30</td>
+          <td class="nhsuk-table__cell "><a href="report-letters-sent-drilldown">Invite and reminder letters</a></td>
+          <td class="nhsuk-table__cell">7200</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">10:30</td>
+          <td class="nhsuk-table__cell "><a href="report-letters-sent-drilldown">Invite and reminder letters</a></td>
+          <td class="nhsuk-table__cell">10000</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">10:30</td>
+          <td class="nhsuk-table__cell "><a href="report-letters-sent-drilldown">Result and cease letters</a></td>
+          <td class="nhsuk-table__cell">6500</td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">14:30</td>
+          <td class="nhsuk-table__cell "><a href="report-letters-sent-drilldown">Result and cease letters</a></td>
+          <td class="nhsuk-table__cell">11230</td>
+        </tr>
+      </tbody>
+    </table>   
+  </div>
+</div>
+{% endblock %}
