@@ -157,6 +157,7 @@ const results = [
         "participant_id": "ffb1226a-1849-46d8-8c1e-f273e8417f27",
         "recall_months": "36",
         "result": "Negative",
+        "result_blocked" : "No",
         "result_code": "X",
         "result_date": moment().subtract(0, "weeks"), 
         "result-type": "English",
@@ -165,7 +166,7 @@ const results = [
         "slide_number": "91003184",
         "sort_key": "RESULT#1991-04-04#2020-05-28T16:35:45.864",
         "source_code": "N",
-        "test_date": moment().subtract(1, "weeks")
+        "test_date": moment().subtract(0, "weeks")
     },
     {
         "result_ID": Math.random().toString(16).slice(2),

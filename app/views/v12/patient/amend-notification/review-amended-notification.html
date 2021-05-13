@@ -24,19 +24,32 @@
     <span class="nhsuk-hint">Step 2 of 2</span>
 
 
+
     <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
       <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-        Review cancelling results letter  
+        {% if data.result_blocked == "No" %}
+          {% set notificationText = "Resend result letter" %}
+            {% if data.result_blocked == "Yes" %}
+              {% set notificationValue = "No" %}
+            {% else %}
+              {% set notificationValue = "Yes" %}
+            {% endif %}
+          Review resending results letter 
+        {% else %}
+        {% set notificationText = "Cancel result letter" %}
+          {% set notificationValue = data['result_blocked'] %}
+          Review cancelling results letter 
+        {% endif %}
       </legend>
       <form action="../patient-summary-7" method="post">
         {{ summaryList({
           rows: [
             {
               key: {
-                text: "Cancel result letter"
+                text: notificationText
               },
               value: {
-                text: data['result-blocked']
+                text: notificationValue
               },
               actions: {
                 items: [

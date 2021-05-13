@@ -21,6 +21,19 @@
   <div class="nhsuk-panel-with-label">
     {% include '../../components/pnl-patient-2.html' %}
 
+    {% if data.result_blocked == 'Yes' %}
+      <div class="nhsuk-inset-text nhsuk-u-margin-top-2" style="border-color: red">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p>This result letter has been cancelled - <a href="../amend-notification/choose-reason-to-amend-notification">Resend result</a></p>
+      </div>
+    {% elif data.result_blocked == 'No' %}
+      <div class="nhsuk-inset-text nhsuk-u-margin-top-2" style="border-color: orange">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p>Processing result letter -  <a href="../amend-notification/choose-reason-to-amend-notification">Cancel letter</a></p>
+      </div>
+    {% else %}
+      <!-- <span class="nhsuk-tag nhsuk-tag--green">Sent</span> -->
+    {% endif %}
 
     <div class="nhsuk-form-group">
   <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
