@@ -3,18 +3,15 @@
 </h1>
 
 
+
   {% set pnlDeferInfo %}
     {% if data['pnl-defer-reason'] == 'Pregnancy' %}
       <p>Minimum deferral is 3 months from date of delivery.</br>Maximum deferral is 12 months from today's date.</br> </br>The earliest the next test due date can be set is 10 weeks from tomorrow.</p>
    {% else %}
-      <p>Minimum deferral is X months, which will set the next test due date 10 weeks from tomorrow's date.</br>Maximum deferral can not exceed X months.</br> 
+      <p>Minimum deferral is {{ data['minMonths'] }} months, which will set the next test due date 10 weeks from tomorrow's date.</br>Maximum deferral can not exceed {{ data['maxMonths'] }} months.</br> 
     {% endif %}
   {% endset %}
 
-{#
-{% if data['pnl-defer-reason'] ==  'Recent test' %}
-      <p>Minimum deferral is X months, which will set the next test due date 10 weeks from tomorrow's date.</br>Maximum deferral can not exceed X months.</br>
-#}
 
   {{ insetText({
     "HTML":  pnlDeferInfo,

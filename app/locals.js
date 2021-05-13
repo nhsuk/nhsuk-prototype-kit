@@ -19,7 +19,7 @@ module.exports = config => (req, res, next) => {
 
   // default to version 2 of the patient summary
   if (req.session.data["patversion"] == undefined) {
-    req.session.data["patversion"] = "6";
+    req.session.data["patversion"] = "7";
   }
 
   // default to version 2 of the NRL

@@ -21,6 +21,29 @@ function getVersion(a) {
   return a.url.substring(1, secondBracket) || "v1";
 }
 
+router.post('/v12/choose-defer-reason', function (req, res) {
+  //console.log('choosing a deferral!!')
+  var deferReason = req.session.data['pnl-defer-reason'];
+  //console.log("defer reason: " + deferReason)
+
+  var minMonths = '';
+  var maxMonths = '';
+
+  if (deferReason == 'Recent test') {
+    minMonths = '1';
+    maxMonths = '3';
+  } else {
+    minMonths = '3';
+    maxMonths = '12';
+  }
+
+  req.session.data['minMonths'] = minMonths;
+  req.session.data['maxMonths'] = maxMonths;
+
+  res.redirect("/" + getVersion(req) + "/prior-notification/prior-notification-12-defer-length");
+})
+
+
 router.post("/*/patient/change-due-date/change", function(req, res) {
   var reason = req.session.data["reason"];
   // Check whether the variable matches a condition

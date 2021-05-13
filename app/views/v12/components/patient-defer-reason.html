@@ -1,7 +1,8 @@
 {% if data.pnl_patient.nhs_number == "9991023867" or data.pnl_patient.nhs_number ==  "9100001287" %}
   <form action="prior-notification-{{ data.pnlversion }}-defer-confirm" method="post">
 {% else %}
-  <form action="prior-notification-{{ data.pnlversion }}-defer-length" method="post">
+  {# <form action="prior-notification-{{ data.pnlversion }}-defer-length" method="post"> #}
+  <form action="/v12/choose-defer-reason" method="post">
 {% endif %}
 
 <details class="nhsuk-details">
