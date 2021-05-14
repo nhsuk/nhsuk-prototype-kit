@@ -18,7 +18,8 @@
     "classes" : "nhsuk-u-margin-bottom-4"
   }) }}
 
-<form action="../patient-summary-7?audit_msg_show=1&auditMsg=Result letter has been resent" method="post">
+{# <form action="../patient-summary-7?audit_msg_show=1&auditMsg=Result letter has been resent" method="post"> #}
+<form action="/v12/resend-result-letter" method="post">
 
   <div class="nhsuk-panel-with-label">
       {% include '../../components/pnl-patient-2.html' %}

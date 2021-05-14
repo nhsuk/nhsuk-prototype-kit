@@ -386,6 +386,27 @@ router.post("/*/check-test-result", function (req, res) {
   res.redirect("/v12/patient/add-test-result/add-test-result-ntdd")
 });
 
+router.post("/*/cancel-result-letter", function (req, res) {
+  //var cancelResult = req.session.data['cancel-result-letter'];
+  var nhsNumber = req.session.data['nhsNumber'];
+  patient.cancelResultLetter(nhsNumber, req.session.data);
+  currentPatient = patient.getPatient(nhsNumber);
+  req.session.data['patientSummary'] = currentPatient;
+  req.session.data['audit_msg_show'] = "1"
+  req.session.data['auditMsg'] = "Result letter has been cancelled"
+  res.redirect("/" + getVersion(req) + "/patient/patient-summary-7")
+});
+
+router.post("/*/resend-result-letter", function (req, res) {
+  //var cancelResult = req.session.data['resending-result-letter'];
+  var nhsNumber = req.session.data['nhsNumber'];
+  patient.resendResultLetter(nhsNumber, req.session.data);
+  currentPatient = patient.getPatient(nhsNumber);
+  req.session.data['patientSummary'] = currentPatient;
+  req.session.data['audit_msg_show'] = "1"
+  req.session.data['auditMsg'] = "Result letter has been resent"
+  res.redirect("/" + getVersion(req) + "/patient/patient-summary-7")
+});
 
 
 

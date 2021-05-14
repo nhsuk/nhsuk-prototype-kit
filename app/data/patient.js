@@ -660,6 +660,35 @@ module.exports.deleteTestResult = function (nhsNumber, data) {
     */
 }
 
+module.exports.cancelResultLetter = function (nhsNumber, data) {
+    console.log("ATTEMPTING TO CANCEL A RESULT LETTER")
+    //console.log("nhsnumber: " + nhsNumber)
+    // find the patient
+    var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
+    //console.log(patient)
+    //var allResults = results.getResults()
+    //console.log(allResults)
+    //console.log("result id: " + data['result_ID']);
+    // find the result to delete
+    var result = patient.results.find((result) => result.result_ID == data['result_ID']);
+    result.letter_status = "Cancelled";
+   // var result = allResults.find((result) => result.result_ID == data['result_ID']).letter_status = "Cancelled";
+    // need some unique ID to make this easier
+    console.log(result)
+
+   
+}
+
+module.exports.resendResultLetter = function (nhsNumber, data) {
+    console.log("ATTEMPTING TO CANCEL A RESULT LETTER")
+    var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
+    var result = patient.results.find((result) => result.result_ID == data['result_ID']);
+    result.letter_status = "Processing";
+    console.log(result)
+}
+
+
+
 
 
 module.exports.resetPatients = function (req) {
