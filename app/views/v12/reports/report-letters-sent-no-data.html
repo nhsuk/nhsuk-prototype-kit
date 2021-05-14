@@ -1,0 +1,71 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(4) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+    {{ backLink({
+      "href": "reports",
+      "text": "back to reports"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Reports - Letters sent</h1>
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-third">
+          {{ dateInput({
+            "id": "example",
+            "namePrefix": "example",
+            "fieldset": {
+              "legend": {
+                "text": "Enter a date",
+                "classes": "nhsuk-label--s",
+                "isPageHeading": false
+              }
+            },
+            "hint": {
+              "text": "For example, 15 3 1984"
+            },
+            "items": [
+              {
+                "name": "day",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "month",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "year",
+                "classes": "nhsuk-input--width-4"
+              }
+            ]
+          }) }}
+        </div>      
+      </div>
+    <button class="nhsuk-button nhsuk-button--ers">Update</button>
+    {{ panel({
+      "HTML": "<h2>No data available</h2>
+      <p>There is no data available for the date choosen. Please try another date.</p>",
+      "classes" : "nhsuk-u-margin-top-0"
+    }) }}
+  </div>
+</div>
+{% endblock %}

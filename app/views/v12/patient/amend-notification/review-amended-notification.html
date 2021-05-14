@@ -42,78 +42,56 @@
         {% endif %}
       </legend>
       <form action="../patient-summary-7" method="post">
-        {{ summaryList({
-          rows: [
-            {
-              key: {
-                text: notificationText
-              },
-              value: {
-                text: notificationValue
-              },
-              actions: {
-                items: [
-                  {
-                    href: "choose-reason-to-amend-notification",
-                    text: "Change",
-                    visuallyHiddenText: "name"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "Date of result"
-              },
-              value: {
-                html: '15-Jun-2019'
-              },
-              actions: {
-                items: [
-                  {
-                    href: "",
-                    text: "",
-                    visuallyHiddenText: "contact information"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "CRM"
-              },
-              value: {
-                html: data['crm'] or '123456789'
-              },
-              actions: {
-                items: [
-                  {
-                    href: "choose-reason-to-amend-notification",
-                    text: "Change",
-                    visuallyHiddenText: "contact information"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "Comments"
-              },
-              value: {
-                html: data['comments'] or ''
-              },
-              actions: {
-                items: [
-                  {
-                    href: "choose-reason-to-amend-notification",
-                    text: "Change",
-                    visuallyHiddenText: "contact details"
-                  }
-                ]
-              }
-            }
-          ]
-        }) }}
+      <dl class="nhsuk-summary-list">
+  
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Sender code</dt>
+          <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or '-' }} </dd>
+          <dd class="nhsuk-summary-list__actions"></dd>          
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Slide number</dt>
+          <dd class="nhsuk-summary-list__value">{{ data['slide-number'] }}</dd>
+          <dd class="nhsuk-summary-list__actions"></dd>   
+        </div>
+
+        {% set nextTestDueDate = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Test date</dt>
+          <dd class="nhsuk-summary-list__value">{{ data['test_date'] | returnDateFormat }}</dd>
+          <dd class="nhsuk-summary-list__actions"></dd>   
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Result</dt>
+          <dd class="nhsuk-summary-list__value">({{ data['result-result'] | capitalize }}{{ data['result-infection'] | capitalize }}{{ data['result-action'] | capitalize }}) {{ data['result-result'] | returnResultText }}, {{ data['result-infection'] | returnInfectionText }}, {{ data['result-action'] | returnActionText }}</dd>
+          <dd class="nhsuk-summary-list__actions"></dd>   
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Address</dt>
+          <dd class="nhsuk-summary-list__value">69 Sloe Lane, Croydon, CR1 1FR</dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">{{ notificationText }}</dt>
+          <dd class="nhsuk-summary-list__value">{{ notificationValue }}</dd>
+          <dd class="nhsuk-summary-list__actions"><a href="choose-reason-to-amend-notification">Change</a></dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">CRM case number</dt>
+          <dd class="nhsuk-summary-list__value">{{ data['crm'] }}</dd>
+          <dd class="nhsuk-summary-list__actions"><a href="choose-reason-to-amend-notification">Change</a></dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Comments</dt>
+          <dd class="nhsuk-summary-list__value">{{ data['comments'] }}</dd>
+          <dd class="nhsuk-summary-list__actions"><a href="choose-reason-to-amend-notification">Change</a></dd>
+        </div>
+      </dl>
 
         <button class="nhsuk-button nhsuk-button--ers" type="submit">Submit</button>
         <p><a href="../patient-summary-7">Exit without saving</a></p>

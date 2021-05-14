@@ -38,7 +38,41 @@
             <p>The result letter is being processed and will be sent to the printers today.<br>If you cancel the result letter, it will not be sent to the participant.</p>
           </div>
         {% endif %}
-      
+
+
+<dl class="nhsuk-summary-list">
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Sender code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or '-' }} </dd>
+  </div>
+ 
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Slide number</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] }}</dd>
+  </div>
+
+  {% set nextTestDueDate = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Test date</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['test_date'] | returnDateFormat }}</dd>
+  </div>
+
+
+<div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Result</dt>
+    <dd class="nhsuk-summary-list__value">({{ data['result-result'] | capitalize }}{{ data['result-infection'] | capitalize }}{{ data['result-action'] | capitalize }}) {{ data['result-result'] | returnResultText }}, {{ data['result-infection'] | returnInfectionText }}, {{ data['result-action'] | returnActionText }}</dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Address</dt>
+    <dd class="nhsuk-summary-list__value">69 Sloe Lane, Croydon, CR1 1FR</dd>
+  </div>
+
+</dl>
+
+
       <form action="review-amended-notification" method="post">
         {% if data.result_blocked == "Yes" %}
           {{ checkboxes({
@@ -79,7 +113,7 @@
 
         <div class="nhsuk-form-group">
           <label class="nhsuk-label" for="example">
-            Comments (optional)
+            Comments
           </label>
           <span class="nhsuk-hint" id="example-hint">
             Do not include clinical information at  this point.
