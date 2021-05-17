@@ -20,6 +20,8 @@ function cleanPublic() {
   .pipe(clean());
 }
 
+sass.compiler = require('sass');
+
 // Compile SASS to CSS
 function compileStyles() {
   return gulp.src([
