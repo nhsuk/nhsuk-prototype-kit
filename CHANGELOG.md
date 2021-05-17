@@ -9,6 +9,7 @@
 :wrench: **Fixes**
 
 - Update package dependencies to latest versions
+- Use `dart-sass` instead of `node-sass` as this module is now deprecated ([NHS.UK frontend issue #731](https://github.com/nhsuk/nhsuk-frontend/pull/731))
 
 ## 4.3.0 - 16th March 2021
 
