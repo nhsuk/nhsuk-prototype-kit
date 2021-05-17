@@ -59,10 +59,10 @@ NHS Cervical Screening
 
     {{ backLink({
       "href": "manc-p1",
-      "text": "Go back to demographics"
+      "text": "Go back to match patient details"
     }) }}
 
-    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to process</h1>
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Choose where to send the result</h1>
   </div>
 </div>
 
@@ -275,7 +275,7 @@ NHS Cervical Screening
       <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
         <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
           <h1 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong">
-            Choose where to send the result
+            Choose address
           </h1>
           <p class="nhsuk-hint">If no appropriate address available, save to lab query list</p>
         </legend>
@@ -352,34 +352,14 @@ NHS Cervical Screening
           <form action="manc-p1-step2" method="post">
             <div class="nhsuk-form-group">
               <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
-                Comments
+                Comments (optional)
               </label>
-              <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-                Enter comments if needed
-              </span>
-              <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200 required></textarea>
-              <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
-            </div>
+              <!--<span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+              </span>-->
+              <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" ></textarea>
+              <br>
 
-            <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
-
-            {% set name = "Jon Simpson" %}
-
-            {% set commentDate = ("today" | returnDate) %}
-
-            <input type="hidden" id="name" name="name" value="{{commentName}}">
-
-            <input type="hidden" name="date" value={{commentDate}}>
-
-          </form>
-
-          <ul class="nhsuk-comment-container">
-            {% if data.commentsa !=null %}
-
-            <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsa}}</li>
-
-            {% endif %}
-          </ul>
+            
 
         </div>
       </div>

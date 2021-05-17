@@ -124,7 +124,7 @@ NHS Cervical Screening
       "text": "Go back to Manchester results"
     }) }}
 
-    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Check patient details</h1>
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to check</h1>
 
         <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-padding-top-3 nhsuk-u-padding-bottom-3">
           <span class="nhsuk-u-visually-hidden">System patient demographic details and system address used</span>
@@ -321,22 +321,45 @@ NHS Cervical Screening
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-one-half">
 
-         <form action="non-match-p1" method="post">
+          <form action="non-match-p1" method="post">
             <div class="nhsuk-form-group">
               <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
-                Comments (optional)
+                Comments
               </label>
-              
-              <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" ></textarea>
-              
+              <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+                Enter comments if needed
+              </span>
+              <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200 required></textarea>
+              <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
             </div>
-            
-          </form> 
+
+            <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
+
+            {% set name = "Jon Simpson" %}
+
+            {% set commentDate = ("today" | returnDate) %}
+
+            <input type="hidden" id="name" name="name" value="{{commentName}}">
+
+            <input type="hidden" name="date" value={{commentDate}}>
+
+          </form>
+
+          <ul class="nhsuk-comment-container">
+            {% if data.commentsa !=null %}
+
+            <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsa}}</li>
+
+            {% endif %}
+          </ul>
+
+          <ul class="nhsuk-comment-container">
+            <li class="nhsuk-panel"><span class="name"> Josie Driver</span> <span class="date"><strong>20-Jul-2020</strong></span>Claudia Jones Beddis picked as NHS number matches. Chose system address as postcode matches address.</li>
+          </ul>
 
         </div>
       </div>
 
- {% include '../components/comments-timeline-manual-match.html' %} 
 
       <a href="check-p2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Accept match</a>
       <a href="check-p2" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Send back to processor</a>

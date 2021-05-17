@@ -32,11 +32,29 @@ NHS Cervical Screening
     <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review patient details</h1>
 
     <div class="nhsuk-panel-with-label">
+       <h3 class="nhsuk-panel-with-label__label">Create dummy registation</h3>
+      <h3 class="nhsuk-heading-s nhsuk-u-padding-top-4">Test result details:</h3>
+
+      <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-2">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Next test due date</dt>
+          <dd class="nhsuk-summary-list__value">29-March-2023</dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Last test date</dt>
+          <dd class="nhsuk-summary-list__value">09-Dec-2020</dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Test result</dt>
+          <dd class="nhsuk-summary-list__value">(X9S) No cytology result, HPV Positive, Refer colposcopy</dd>
+        </div>
+      </dl>
+
 
       <div class="nhsuk-form-group nhsuk-u-padding-top-6">
         <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
           <legend class="nhsuk-fieldset__legend">
-            <h3 class="nhsuk-heading-s">Lab patient details to create dummy registration:</h3>
+            <h3 class="nhsuk-heading-s">Lab patient details to create dummy patient:</h3>
           </legend>
 
           <form action="confirm-dummy" method="post">
@@ -45,19 +63,19 @@ NHS Cervical Screening
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">Name</dt>
                 <dd class="nhsuk-summary-list__value">Charlotte Gravill</dd>
-                <dd class="nhsuk-summary-list__actions"></dd>
+                <dd class="nhsuk-summary-list__actions"><a href="#"><span class="nhsuk-u-visually-hidden">Name</span></a></dd>
               </div>
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">Date of birth</dt>
                 <dd class="nhsuk-summary-list__value">11-04-1990</dd>
-                <dd class="nhsuk-summary-list__actions"></dd>
+                <dd class="nhsuk-summary-list__actions"><a href="#"><span class="nhsuk-u-visually-hidden">Date of birth</span></a></dd>
               </div>
 
               <div class="nhsuk-summary-list__row">
                 <dt class="nhsuk-summary-list__key">NHS Number</dt>
-                <dd class="nhsuk-summary-list__value">?00 000 0000</dd>
-                <dd class="nhsuk-summary-list__actions"></dd>
+                <dd class="nhsuk-summary-list__value">T123 456 7890</dd>
+                <dd class="nhsuk-summary-list__actions"><a href="#"><span class="nhsuk-u-visually-hidden"> NHS number</span></a></dd>
               </div>
 
               <div class="nhsuk-summary-list__row">
@@ -90,84 +108,17 @@ NHS Cervical Screening
 
 
                 </dd>
-                <dd class="nhsuk-summary-list__actions"></dd>
+                <dd class="nhsuk-summary-list__actions"><a href="change-dummy-address">Change<span class="nhsuk-u-visually-hidden">Contact information</span></a></dd>
               </div>
-
               <div class="nhsuk-summary-list__row">
-                <dt class="nhsuk-summary-list__key">Sender address</dt>
-                <dd class="nhsuk-summary-list__value">RG12 1YQ</dd>
-                <dd class="nhsuk-summary-list__actions"></dd>
+                <dt class="nhsuk-summary-list__key">Comments </dt>
+                <dd class="nhsuk-summary-list__value">Used address sent by lab</dd>
+                <dd class="nhsuk-summary-list__actions"><a href="#">Change<span class="nhsuk-u-visually-hidden"> NHS number</span></a></dd>
               </div>
 
             </dl>
 
-            <div class="nhsuk-form-group">
-
-            <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
-              <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-                <h2 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong nhsuk-u-margin-top-4">
-                  Choose where to send the result
-                </h2>
-              </legend>
-
-
-              <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
-                <label class="nhsuk-label nhsuk-radios__label" for="system">
-                  Send to lab address
-                </label>
-              </div>
-
-              <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="gp" name="how-to-resolve" type="radio" value="gp" aria-controls="gp" aria-expanded="false">
-                <label class="nhsuk-label nhsuk-radios__label" for="gp">
-                  Send to sender address
-                </label>
-                <div class="nhsuk-hint nhsuk-radios__hint">
-                 Use sender address when no correspondence to home
-                </div>
-              </div>
-
-              <div class="nhsuk-radios nhsuk-radios--conditional">
-                <div class="nhsuk-radios nhsuk-radios--conditional">
-
-                  <div class="nhsuk-radios__item">
-                    <input class="nhsuk-radios__input" id="contact-1" name="how-to-resolve" type="radio" value="address" aria-controls="conditional-contact-1" aria-expanded="false">
-                    <label class="nhsuk-label nhsuk-radios__label" for="contact-1">
-                      Enter a new address
-                    </label>
-                  </div>
-
-                  <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
-
-                    <div class="nhsuk-form-group">
-                      <label class="nhsuk-label" for="email">
-                        Building and street
-                      </label>
-                      <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
-                      <label class="nhsuk-label" for="email">
-                        Town or city
-                      </label>
-                      <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
-                      <label class="nhsuk-label" for="email">
-                        County
-                      </label>
-                      <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
-                      <label class="nhsuk-label" for="email">
-                        Postcode
-                      </label>
-                      <input class="nhsuk-input nhsuk-u-width-two-thirds nhsuk-u-margin-bottom-8" id="email" name="email" type="text">
-
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </fieldset>
-
-          </div>
-
-            <button class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-6" type="submit">Submit</button>
+            <button class="nhsuk-button nhsuk-button--ers" type="submit">Submit</button>
 
             <p><a href="non-match-dummy">Exit without saving</a></p>
 

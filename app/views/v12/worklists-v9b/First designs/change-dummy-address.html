@@ -1,0 +1,83 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/reveal.js"></script>
+<script type="text/javascript" src="/js/comments.js"></script>
+
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+
+    {{ backLink({
+      "href": "create-dummy",
+      "text": "Go back to dummy patient information"
+    }) }}
+
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review patient details</h1>
+
+    <div class="nhsuk-panel-with-label">
+
+      <h3 class="nhsuk-panel-with-label__label">Patient details</h3>
+
+      <form action="review-dummy" method="post">
+
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+          <legend class="nhsuk-fieldset__legend">
+            <h3 class="nhsuk-heading-m">Add address to send the result</h3>
+          </legend>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="address-line-1">Building and street<span class="nhsuk-u-visually-hidden">Line 1 of 2</span></label>
+              <input class="nhsuk-input nhsuk-u-width-full" type="text" id="address-line-1" name="address-line-1">
+            </div>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="address-line-2"><span class="nhsuk-u-visually-hidden">Line 2 of 2</span></label>
+              <input class="nhsuk-input nhsuk-u-width-full" type="text" id="address-line-2" name="address-line-2">
+            </div>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="address-town">Town or city</label>
+              <input class="nhsuk-input nhsuk-u-width-two-thirds" type="text" id="address-town" name="address-town">
+            </div>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="address-county">County</label>
+              <input class="nhsuk-input nhsuk-u-width-two-thirds" type="text" id="address-county" name="address-county">
+            </div>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="address-postcode">Postcode</label>
+              <input class="nhsuk-input nhsuk-input--width-10" id="address-postcode" name="address-postcode" type="text">
+            </div>
+
+            <button class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-2" type="submit">Submit</button>
+
+      </form>
+
+          <p><a href="non-match-dummy">Exit without saving</a></p>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

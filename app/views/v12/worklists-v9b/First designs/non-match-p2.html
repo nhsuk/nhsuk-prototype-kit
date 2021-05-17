@@ -119,7 +119,7 @@ NHS Cervical Screening
       "text": "Go back to previous non-match"
     }) }}
 
-    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review unmatched patient</h1>
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: non-match</h1>
 
     <h3 class="nhsuk-u-padding-top-4">Lab patient demographics</h3>
 
@@ -391,17 +391,37 @@ NHS Cervical Screening
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-one-half">
 
-      <form action="non-match-p1" method="post">
+          <form action="non-match-p2" method="post">
             <div class="nhsuk-form-group">
               <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
-                Comments (optional)
+                Comments
               </label>
-              
-              <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" ></textarea>
-              
+              <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+                Enter comments if needed
+              </span>
+              <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200 required></textarea>
+              <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
             </div>
-            
-          </form> 
+
+            <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
+
+            {% set name = "Jon Simpson" %}
+
+            {% set commentDate = ("today" | returnDate) %}
+
+            <input type="hidden" id="name" name="name" value="{{commentName}}">
+
+            <input type="hidden" name="date" value={{commentDate}}>
+
+          </form>
+
+          <ul class="nhsuk-comment-container">
+            {% if data.commentsa !=null %}
+
+            <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsa}}</li>
+
+            {% endif %}
+          </ul>
 
         </div>
       </div>
