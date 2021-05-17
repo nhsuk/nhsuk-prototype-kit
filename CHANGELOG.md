@@ -1,5 +1,15 @@
 # NHS.UK prototype kit Changelog
 
+## 4.4.0 - 17 May 2021
+
+:new: **New features**
+
+- Install NHS.UK frontend v5.1.0 which includes JavaScript for the Error summary component
+
+:wrench: **Fixes**
+
+- Update package dependencies to latest versions
+
 ## 4.3.0 - 16th March 2021
 
 :new: **New features**
