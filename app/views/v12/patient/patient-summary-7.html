@@ -236,57 +236,28 @@ comments="
                     <span class="nhsuk-table__cell--hint"> Nat Code: {{ result.sending_lab  or "-" }}</span>
                   </td>
 
+                  {% if result.letter_status == "Processing" %}
+                    {% set letterStyle = "nhsuk-tag--orange" %}
+                  {% elif result.letter_status == "Cancelled" %}
+                    {% set letterStyle = "nhsuk-tag--red" %}
+                  {% else %}
+                    {% set letterStyle = "nhsuk-tag--green" %}
+                  {% endif %}
+
                   <td class="nhsuk-table__cell">
-                    {% if loop.index == 1 %}
-                      {% if result.result_blocked == "Yes" or data.result_blocked == "Yes" %}
-                        <span class="nhsuk-tag nhsuk-tag--red">Cancelled</span>
-                       {# <span class="nhsuk-table__cell--hint"><a href="amend-notification/choose-reason-to-amend-notification?
-result_blocked={{ data.result_blocked or result.result_blocked }}&
-result_ID={{ result.result_ID }}&
-slide-number={{ result.slide_number or '' }}&
-action-text={{ result.action or '' }}&
-result-action={{ result.action_code or '' }}&
-result-infection={{ result.infection_code or '' }}&
-infection-text={{ result.infection_result or '' }}&
-result-text={{ result.result or '' }}&
-result-result={{ result.result_code or '' }}&
-sender-code={{ result.sender_code or '' }}&
-test_date={{ result.test_date or '' }}&
-crm={{ result.crm or '' }}& 
-comments={{ result.comments or '' }}">resend result</a></span>#}
-                      {% elif result.result_blocked == "No" or data.result_blocked == "No" %}
-                        <span class="nhsuk-tag nhsuk-tag--orange">Processing</span>
-                        {#<span class="nhsuk-table__cell--hint"><a href="amend-notification/choose-reason-to-amend-notification?
-result_blocked={{ data.result_blocked or result.result_blocked }}&
-result_ID={{ result.result_ID }}&
-slide-number={{ result.slide_number or '' }}&
-action-text={{ result.action or '' }}&
-result-action={{ result.action_code or '' }}&
-result-infection={{ result.infection_code or '' }}&
-infection-text={{ result.infection_result or '' }}&
-result-text={{ result.result or '' }}&
-result-result={{ result.result_code or '' }}&
-sender-code={{ result.sender_code or '' }}&
-test_date={{ result.test_date or '' }}&
-crm={{ result.crm or '' }}& 
-comments={{ result.comments or '' }}">Cancel letter</a></span>#}
-                      {% else %}
-                        <span class="nhsuk-tag nhsuk-tag--green">Sent</span>
-                        {#<span class="nhsuk-table__cell--hint"><a href="amend-notification/choose-reason-to-amend-notification?result_blocked={{ data.result_blocked or result.result_blocked }}">resend result</a></span>#}
-                      {% endif %}
-                    {% else %}
-                      <span class="nhsuk-tag nhsuk-tag--green">Sent</span>
-                    {% endif %}
+                    <span class="nhsuk-tag {{ letterStyle }}">{{ result.letter_status }}</span>
                   </td>
 
                     <td class="nhsuk-table__cell">  
-                      <a href="/v12/patient/add-test-result/add-test-result-edit-3
-?result_ID={{ result.result_ID }}&
+                      <a href="/v12/patient/add-test-result/add-test-result-edit-3?
+result_ID={{ result.result_ID }}&
+nhsNumber={{ data.patientSummary.nhs_number }}&
 slide-number={{ result.slide_number or '' }}&
 result-type={{ result['result-type'] or '' }}&
 hpv-primary={{ result['hpv-primary'] or 'No' }}&
 edit-review=true&
 action-text={{ result.action or '' }}&
+letter_status={{ result.letter_status or '' }}&
 result-action={{ result.action_code or '' }}&
 result_blocked={{ data.result_blocked or result.result_blocked }}&
 result-infection={{ result.infection_code or '' }}&
@@ -303,8 +274,9 @@ self-sample={{ result.self_sample or 'No' }}&
 crm={{ result.crm or '' }}& 
 comments={{ result.comments or '' }}"
                         style="margin-left:4px; margin-right:4px;">Review</a>
-                        <a href="/v12/patient/add-test-result/add-test-result-remove
-?result_ID={{ result.result_ID }}&
+                        <a href="/v12/patient/add-test-result/add-test-result-remove?
+result_ID={{ result.result_ID }}&
+nhsNumber={{ data.patientSummary.nhs_number }}&
 slide-number={{ result.slide_number or '' }}&
 result-type={{ result['result-type'] or '' }}&
 hpv-primary={{ result['hpv-primary'] or 'No' }}&
@@ -313,6 +285,7 @@ action-text={{ result.action or '' }}&
 result-action={{ result.action_code }}&
 result-infection={{ result.infection_code or '' }}&
 infection-text={{ result.infection_result or '' }}&
+letter_status={{ result.letter_status or '' }}&
 repeat-months={{ result.recall_months or '' }}&
 result-text={{ result.result or '' }}&
 result-result={{ result.result_code or '' }}&
@@ -326,44 +299,31 @@ crm={{ result.crm or '' }}&
 comments={{ result.comments or '' }}"
                         style="margin-left:4px; margin-right:4px;">Delete</a>
                         
-                      {% if result.result_blocked == "Yes" or data.result_blocked == "Yes" %}
-                        
-                       <a href="/v12/patient/audit/resend-result-add-comment?
-result_blocked={{ data.result_blocked or result.result_blocked }}&
-result_ID={{ result.result_ID }}&
-slide-number={{ result.slide_number or '' }}&
-action-text={{ result.action or '' }}&
-result-action={{ result.action_code or '' }}&
-result-infection={{ result.infection_code or '' }}&
-infection-text={{ result.infection_result or '' }}&
-result-text={{ result.result or '' }}&
-result-result={{ result.result_code or '' }}&
-sender-code={{ result.sender_code or '' }}&
-test_date={{ result.test_date or '' }}&
-crm={{ result.crm or '' }}& 
-comments={{ result.comments or '' }}">resend result</a>
-                      {% elif result.result_blocked == "No" or data.result_blocked == "No" %}
-                        <a href="amend-notification/choose-reason-to-amend-notification?
-result_blocked={{ data.result_blocked or result.result_blocked }}&
-result_ID={{ result.result_ID }}&
-slide-number={{ result.slide_number or '' }}&
-action-text={{ result.action or '' }}&
-result-action={{ result.action_code or '' }}&
-result-infection={{ result.infection_code or '' }}&
-infection-text={{ result.infection_result or '' }}&
-result-text={{ result.result or '' }}&
-result-result={{ result.result_code or '' }}&
-sender-code={{ result.sender_code or '' }}&
-test_date={{ result.test_date or '' }}&
-crm={{ result.crm or '' }}& 
-comments={{ result.comments or '' }}">Cancel letter</a>
+                      {% if result.letter_status == "Processing" %}
+                        {% set letterLinkText = "Cancel result" %}
+                        {% set letterLink = "amend-notification/choose-reason-to-amend-notification" %}
+                      {% elif result.letter_status == "Cancelled" %}
+                        {% set letterLinkText = "Resend result" %}
+                        {% set letterLink = "/v12/patient/audit/resend-result-add-comment" %}
                       {% else %}
+                        {% set letterLinkText = "" %}
                       {% endif %}
-                    {% else %}
-
-                        
-                        
-                        <a href="">Resend result</a>
+                       <a href="{{ letterLink }}?
+nhsNumber={{ data.patientSummary.nhs_number }}&
+result_blocked={{ data.result_blocked or result.result_blocked }}&
+result_ID={{ result.result_ID }}&
+slide-number={{ result.slide_number or '' }}&
+action-text={{ result.action or '' }}&
+result-action={{ result.action_code or '' }}&
+result-infection={{ result.infection_code or '' }}&
+infection-text={{ result.infection_result or '' }}&
+result-text={{ result.result or '' }}&
+result-result={{ result.result_code or '' }}&
+sender-code={{ result.sender_code or '' }}&
+test_date={{ result.test_date or '' }}&
+crm={{ result.crm or '' }}& 
+comments={{ result.comments or '' }}">{{ letterLinkText }}</a>
+                    
                     </td>
                 </tr>
 

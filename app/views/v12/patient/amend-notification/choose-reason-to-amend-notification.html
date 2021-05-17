@@ -72,22 +72,10 @@
 
 </dl>
 
-
       <form action="review-amended-notification" method="post">
-        {% if data.result_blocked == "Yes" %}
+
           {{ checkboxes({
-            "name": "result_blocked",
-            "classes": "nhsuk-u-padding-bottom-4",
-            "items": [
-              {
-                "value": "No",
-                "text": "I confirm that I want to resend this result letter"
-              }
-            ]
-          }) }}
-        {% else %}
-          {{ checkboxes({
-            "name": "result_blocked",
+            "name": "cancel-result-letter",
             "classes": "nhsuk-u-padding-bottom-4",
             "items": [
               {
@@ -96,9 +84,7 @@
               }
             ]
           }) }}
-        {% endif %}
         
-
         <div class="nhsuk-form-group">
           <h1 class="nhsuk-label-wrapper">
             <label class="nhsuk-label nhsuk-label--l nhsuk-u-margin-bottom-2" for="example-heading">

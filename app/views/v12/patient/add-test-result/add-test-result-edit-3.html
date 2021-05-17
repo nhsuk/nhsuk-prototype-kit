@@ -21,18 +21,18 @@
   <div class="nhsuk-panel-with-label">
     {% include '../../components/pnl-patient-2.html' %}
 
-    {% if data.result_blocked == 'Yes' %}
-      <div class="nhsuk-inset-text nhsuk-u-margin-top-2" style="border-color: red">
-        <span class="nhsuk-u-visually-hidden">Information: </span>
-        <p>This result letter has been cancelled - <a href="../patient/audit/resend-result-add-comment">Resend result</a></p>
-      </div>
-    {% elif data.result_blocked == 'No' %}
-      <div class="nhsuk-inset-text nhsuk-u-margin-top-2" style="border-color: orange">
+    {% if data.letter_status == "Processing" %}
+      <div class="nhsuk-inset-text nhsuk-u-margin-top-2" style="border-color: #ffb81C">
         <span class="nhsuk-u-visually-hidden">Information: </span>
         <p>Processing result letter -  <a href="../amend-notification/choose-reason-to-amend-notification">Cancel letter</a></p>
       </div>
+    {% elif data.letter_status == "Cancelled" %}
+      <div class="nhsuk-inset-text nhsuk-u-margin-top-2" style="border-color: #d5281b">
+        <span class="nhsuk-u-visually-hidden">Information: </span>
+        <p>This result letter has been cancelled - <a href="../audit/resend-result-add-comment">Resend result</a></p>
+      </div>
     {% else %}
-      <!-- <span class="nhsuk-tag nhsuk-tag--green">Sent</span> -->
+      {% set letterLinkText = "" %}
     {% endif %}
 
     <div class="nhsuk-form-group">

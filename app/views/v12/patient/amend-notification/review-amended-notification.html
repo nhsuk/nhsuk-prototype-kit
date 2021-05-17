@@ -27,21 +27,9 @@
 
     <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
       <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-        {% if data.result_blocked == "No" %}
-          {% set notificationText = "Resend result letter" %}
-            {% if data.result_blocked == "Yes" %}
-              {% set notificationValue = "No" %}
-            {% else %}
-              {% set notificationValue = "Yes" %}
-            {% endif %}
-          Review resending results letter 
-        {% else %}
-        {% set notificationText = "Cancel result letter" %}
-          {% set notificationValue = data['result_blocked'] %}
-          Review cancelling results letter 
-        {% endif %}
+        Review cancelling results letter 
       </legend>
-      <form action="../patient-summary-7" method="post">
+      <form action="/v12/cancel-result-letter" method="post">
       <dl class="nhsuk-summary-list">
   
         <div class="nhsuk-summary-list__row">
@@ -75,8 +63,8 @@
         </div>
 
         <div class="nhsuk-summary-list__row">
-          <dt class="nhsuk-summary-list__key">{{ notificationText }}</dt>
-          <dd class="nhsuk-summary-list__value">{{ notificationValue }}</dd>
+          <dt class="nhsuk-summary-list__key">Cancel result letter</dt>
+          <dd class="nhsuk-summary-list__value">{{ data['cancel-result-letter'] }}</dd>
           <dd class="nhsuk-summary-list__actions"><a href="choose-reason-to-amend-notification">Change</a></dd>
         </div>
 
