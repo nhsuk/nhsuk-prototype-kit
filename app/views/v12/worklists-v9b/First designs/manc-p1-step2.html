@@ -58,11 +58,11 @@ NHS Cervical Screening
   <div class="nhsuk-grid-column-full">
 
     {{ backLink({
-      "href": "manc-p3",
-      "text": "Go back to match patient details"
+      "href": "manc-p1",
+      "text": "Go back to demographics"
     }) }}
 
-    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Choose where to send the result</h1>
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to process</h1>
   </div>
 </div>
 
@@ -73,13 +73,13 @@ NHS Cervical Screening
 
       <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
-        {% if data['system-dem-choice'] ==  'patient3a' %}
+        {% if data['system-dem-choice'] ==  'patient1a' %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Name
           </dt>
           <dd class="nhsuk-summary-list__value">
-            Claudia Jones Beddis
+            Jane Alma Smith
           </dd>
         </div>
 
@@ -88,7 +88,7 @@ NHS Cervical Screening
             Date of birth
           </dt>
           <dd class="nhsuk-summary-list__value">
-            19-09-1983
+            01-01-1970
           </dd>
         </div>
 
@@ -97,18 +97,18 @@ NHS Cervical Screening
             NHS number
           </dt>
           <dd class="nhsuk-summary-list__value">
-            234 567 8901
+            <span class=""> 234 567 8901 </span>
           </dd>
         </div>
         {% endif %}
 
-        {% if data['system-dem-choice'] ==  'patient3b' %}
+        {% if data['system-dem-choice'] ==  'patient1b' %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Name
           </dt>
           <dd class="nhsuk-summary-list__value">
-            Claudette Beddis
+            Jude Smith
           </dd>
         </div>
 
@@ -117,7 +117,7 @@ NHS Cervical Screening
             Date of birth
           </dt>
           <dd class="nhsuk-summary-list__value">
-            19-09-1993
+            01-01-1970
           </dd>
         </div>
 
@@ -126,10 +126,40 @@ NHS Cervical Screening
             NHS number
           </dt>
           <dd class="nhsuk-summary-list__value">
-            234 568 8901
+            <span class=""> 234 567 8902 </span>
           </dd>
         </div>
         {% endif %}
+
+        {% if data['system-dem-choice'] ==  'patient1c' %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Jane Smithson
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            10-01-1970
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            NHS number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class=""> 234 567 8901 </span>
+          </dd>
+        </div>
+        {% endif %}
+
 
       </dl>
     </div>
@@ -149,12 +179,12 @@ NHS Cervical Screening
             Contact information
           </dt>
           <dd class="nhsuk-summary-list__value">
-            12 Poplars Close
+            20 Thornhill Street
             <br>
-            Burwell
+            Pudsey
             <br>
-            CB25 0ET
-            </dd>
+            LS28 7PB
+          </dd>
         </div>
 
         <div class="nhsuk-summary-list__row">
@@ -186,35 +216,48 @@ NHS Cervical Screening
 
       <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
-        {% if data['system-dem-choice'] ==  'patient3a' %}
+        {% if data['system-dem-choice'] ==  'patient1a' %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Contact information
           </dt>
           <dd class="nhsuk-summary-list__value">
-            12 Poplars Close
+            20 Thornhill Street
             <br>
-            Burwell
+            Pudsey
             <br>
-            CB25 <span class="highlight">BOC</span>
+            LS28 <span class="highlight">7ED</span>
           </dd>
         </div>
         {% endif %}
 
-        {% if data['system-dem-choice'] ==  'patient3b' %}
+        {% if data['system-dem-choice'] ==  'patient1b' %}
         <div class="nhsuk-summary-list__row">
           <dt class="nhsuk-summary-list__key">
             Contact information
           </dt>
           <dd class="nhsuk-summary-list__value">
-            <span class="highlight">42 Mulehouse Road
+            <span class="highlight">462 Cottingham Road
             <br>
-            Sheffield
+            Hull
             <br>
-            S10 1TA</span>
+            HU7 8QR</span>
           </dd>
         </div>
         {% endif %}
+
+<!--        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Contact information
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="highlight">38 Saxon Road
+            <br>
+            York
+            <br>
+            YO41 1BY</span>
+          </dd>
+        </div> -->
 
 
       </dl>
@@ -232,10 +275,9 @@ NHS Cervical Screening
       <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
         <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
           <h1 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong">
-            Choose address
+            Choose where to send the result
           </h1>
           <p class="nhsuk-hint">If no appropriate address available, save to lab query list</p>
-
         </legend>
         <div class="nhsuk-radios__item">
           <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
@@ -258,7 +300,7 @@ NHS Cervical Screening
             Send to sender address
           </label>
           <div class="nhsuk-hint nhsuk-radios__hint">
-            Use sender address when no correspondence to home
+           Use sender address when no correspondence to home
           </div>
         </div>
 
@@ -310,20 +352,42 @@ NHS Cervical Screening
           <form action="manc-p1-step2" method="post">
             <div class="nhsuk-form-group">
               <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
-                Comments (optional)
+                Comments
               </label>
-              <!--<span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-              </span>-->
-              <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" ></textarea>
-              <br>
+              <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+                Enter comments if needed
+              </span>
+              <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" data-length=200 required></textarea>
+              <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
+            </div>
+
+            <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
+
+            {% set name = "Jon Simpson" %}
+
+            {% set commentDate = ("today" | returnDate) %}
+
+            <input type="hidden" id="name" name="name" value="{{commentName}}">
+
+            <input type="hidden" name="date" value={{commentDate}}>
+
+          </form>
+
+          <ul class="nhsuk-comment-container">
+            {% if data.commentsa !=null %}
+
+            <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.commentsa}}</li>
+
+            {% endif %}
+          </ul>
 
         </div>
       </div>
 
 
     </div>
-    <a href="manc-p4" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
-    <a href="manc-p4" class="nhsuk-button--secondary nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save to lab query list</a>
+    <a href="manc-p2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
+    <a href="manc-p2" class="nhsuk-button--secondary nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save to lab query list</a>
     <p><a href="manc-process">Exit without saving</a></p>
 
   </div>

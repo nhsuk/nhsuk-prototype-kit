@@ -2,8 +2,7 @@
 
 {% block pageScripts %}
 
-<script src="/js/results-filter.js">
-</script>
+<script src="/js/results-filter.js"></script>
 
 <style type="text/css" media="screen">
   .nhsuk-header__navigation-item:nth-child(3) {
@@ -36,24 +35,17 @@ NHS Cervical Screening
 </div>
 
 
-
-
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     <nav class="nhsuk-sub-navigation">
       <ul class="nhsuk-sub-navigation__list">
         <li class="nhsuk-sub-navigation__item"><a href="manc-process" class="nhsuk-sub-navigation__link">To process <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">10</span></a></li>
-        <li class="nhsuk-sub-navigation__item"><a href="manc-query" class="nhsuk-sub-navigation__link" aria-current="page">To query<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">3</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="manc-query" class="nhsuk-sub-navigation__link">To query<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">3</span></a></li>
         <li class="nhsuk-sub-navigation__item"><a href="manc-check" class="nhsuk-sub-navigation__link">To check <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">11</span></a></li>
-        <li class="nhsuk-sub-navigation__item"><a href="manc-rejected" class="nhsuk-sub-navigation__link">Rejected<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">3</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="manc-rejected" class="nhsuk-sub-navigation__link" aria-current="page">Rejected<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">3</span></a></li>
       </ul>
     </nav>
-  </div>
-</div>
 
-
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-full">
 
     <table class="order-table">
       <thead>
@@ -66,42 +58,48 @@ NHS Cervical Screening
           </th>
           <th class="ten">Processor
           </th>
+          <th class="ten">Error
+          </th>
           <th class="ten">Time received
           </th>
-          <th>
+          <th class="ten">
           </th>
         <tr>
       </thead>
+
       <tbody>
 
 
-        <!-- TO QUERY -->
+        <!-- REJECTED -->
         <tr>
-          <td>Lisa Jones</td>
-          <td>345 678 9012</td>
-          <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td>
-          <td> Josie Driver</td>
-          <td>10:31 am
+          <td>Jane Simmons</td>
+          <td>308 219 3281</td>
+          <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">Not actioned</span></td>
+          <td></td>
+          <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Duplicate data</span></td>
+          <td>08:44 am
             <span class="nhsuk-table__cell--hint">04-Feb-2020</span></td>
-          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-3" href="non-match-p1">Review non-match</a></td>
+          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-3" href="rejected-p1">View more</a></td>
         </tr>
         <tr>
-          <td>Claudia Beddis</td>
-          <td>234 567 8901</td>
-          <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">Non-match</span></td>
-          <td> Josie Driver</td>
-          <td>11:39 am
+          <td>Kate Roisin</td>
+          <td>102 239 5439</td>
+          <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">Not actioned</span></td>
+          <td></td>
+          <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Multiple errors</span></td>
+          <td>09:21 am
             <span class="nhsuk-table__cell--hint">04-Feb-2020</span></td>
-          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-3" href="non-match-p2">Review non-match</a></td>
+          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-3" href="rejected-p2">View more</a></td>
         </tr>
         <tr>
-          <td>Charlotte Gravill</td>
-          <td>?00 000 0000</td>
-          <td><span class="nhsuk-tag nhsuk-tag--purple nhsuk-u-margin-bottom-2">No system match</span></td>
+          <td>Margery Bowling</td>
+          <td>239 138 9920</td>
+          <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">Actioned</span></td>
           <td>Josie Driver</td>
-          <td>12:41 pm
+          <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Invalid data</span></td>
+          <td>11:06 am
             <span class="nhsuk-table__cell--hint">04-Feb-2020</span></td>
-          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-3" href="non-match-dummy">Review non-match</a></td>
+          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-3" href="rejected-p3">View more</a></td>
         </tr>
       </tbody>
     </table>

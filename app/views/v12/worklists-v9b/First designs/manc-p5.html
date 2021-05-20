@@ -41,7 +41,6 @@
       return true;
   }
 
-
   window.onscroll = function() {myFunction()};
 var navbar = document.getElementById("lab");
 var sticky = navbar.offsetTop;
@@ -97,7 +96,6 @@ function myFunction() {
   }
 </style>
 
-
 {% endblock %}
 {% block pageTitle %}
 NHS Cervical Screening
@@ -113,17 +111,18 @@ NHS Cervical Screening
   <div class="nhsuk-grid-column-full">
 
     {{ backLink({
-      "href": "manc-process",
-      "text": "Go back to Manchester results"
+      "href": "manc-p4",
+      "text": "Go back to previous match"
     }) }}
 
-    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Start matching patient details</h1>
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Manchester: to process</h1>
 
     <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-8">
-      <h2 class="nhsuk-heading-s">2 possible system matches found</h2>
+      <h2 class="nhsuk-heading-s">1 possible system match found</h2>
     </div>
 
-    <h3>Lab patient demographics</h3>
+
+    <h3 class=>Lab patient demographics</h3>
 
     <table class="order-table" id="lab">
       <thead>
@@ -134,16 +133,16 @@ NHS Cervical Screening
           </th>
           <th style="width: 25%">NHS number
           </th>
-          <th></th>
+          <th style="width: 25%"></th>
         <tr>
       </thead>
 
       <tbody>
         <!-- LAB DEMOGRAPHICS -->
         <tr>
-          <td>Jane Smith</td>
-          <td>01-01-1970</td>
-          <td>234 567 8901</td>
+          <td>Lynda Puck</td>
+          <td>23-07-1962</td>
+          <td>567 234 8901</td>
           <td></td>
         </tr>
       </tbody>
@@ -158,11 +157,12 @@ NHS Cervical Screening
     <h3 class="nhsuk-u-margin-top-4">System patient demographics</h3>
     <p>Choose which system patient demographics to use. If no appropriate system match found, save to lab query list.</p>
 
-    <form action="manc-p1-step2" method="post">
-      <table class="order-table clickable-table">
+    <form action="manc-p5-step2" method="post">
+      <table class="clickable-table order-table">
         <thead>
           <tr>
-            <th style="width: 15%"></th>
+            <th style="width: 10%">
+            </th>
             <th>Name
             </th>
             <th>Date of birth
@@ -182,35 +182,24 @@ NHS Cervical Screening
                 <tr role="row" class="nhsuk-table__row">
                   <td class="nhsuk-table__cell">
                     <div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="patient1a" name="system-dem-choice" type="radio" value="patient1a">
-                      <label class="nhsuk-label nhsuk-radios__label" for="patient1a"></label>
+                      <input class="nhsuk-radios__input" id="patient5a" name="system-dem-choice" type="radio" value="patient5a">
+                      <label class="nhsuk-label nhsuk-radios__label" for="patient5a"></label>
                     </div>
                   </td>
-                  <td>Jane <span class="highlight">Alma</span> Smith</td>
-                  <td>01-01-1970</td>
-                  <td>234 567 8901</td>
+                  <td>Lynda <span class="highlight">Julia</span> Puck</td>
+                  <td>23-07-1962</td>
+                  <td>567 234 8901</td>
                 </tr>
-                <tr role="row" class="nhsuk-table__row">
+        <!--        <tr role="row" class="nhsuk-table__row">
                   <td class="nhsuk-table__cell">
                     <div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="patient1b" name="system-dem-choice" type="radio" value="patient1b">
-                      <label class="nhsuk-label nhsuk-radios__label" for="patient1b"></label>
+                      <input class="nhsuk-radios__input" id="patient5b" name="system-dem-choice" type="radio" value="patient5b">
+                      <label class="nhsuk-label nhsuk-radios__label" for="patient5b"></label>
                     </div>
                   </td>
-                  <td><span class="highlight">Jude</span> Smith</td>
-                  <td>01-01-1970</td>
-                  <td>234 567 890<span class="highlight">2</span></td>
-                </tr>
-          <!--      <tr role="row" class="nhsuk-table__row">
-                  <td class="nhsuk-table__cell">
-                    <div class="nhsuk-radios__item">
-                      <input class="nhsuk-radios__input" id="patient1c" name="system-dem-choice" type="radio" value="patient1c">
-                      <label class="nhsuk-label nhsuk-radios__label" for="patient1c"></label>
-                    </div>
-                  </td>
-                  <td>Jane <span class="highlight">Smithson</span></td>
-                  <td><span class="highlight">10</span>-01-1970</td>
-                  <td>234 567 8901</td>
+                  <td><span class="highlight">Linda</span> Puck</td>
+                  <td>23-07-<span class="highlight">1972</span></td>
+                  <td>567 234 8901</td>
                 </tr> -->
               </div>
             </fieldset>
@@ -219,15 +208,13 @@ NHS Cervical Screening
       </table>
 
       <button type="submit" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6" name="button">Continue to address</button>
-    <a href="manc-p2" class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save to lab query list</a>
-    <p><a href="manc-process">Exit without saving</a></p>
+      <a href="manc-process" class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save to lab query list</a>
+      <p><a href="manc-process">Exit without saving</a></p>
 
-  </form>
+    </form>
+
   </div>
-
 </div>
-
-
 
 
 
