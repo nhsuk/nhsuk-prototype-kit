@@ -300,10 +300,10 @@ comments={{ result.comments or '' }}"
                         style="margin-left:4px; margin-right:4px;">Delete</a>
                         
                       {% if result.letter_status == "Processing" %}
-                        {% set letterLinkText = "Cancel result" %}
+                        {% set letterLinkText = "Cancel letter" %}
                         {% set letterLink = "amend-notification/choose-reason-to-amend-notification" %}
                       {% elif result.letter_status == "Cancelled" %}
-                        {% set letterLinkText = "Resend result" %}
+                        {% set letterLinkText = "Resend letter" %}
                         {% set letterLink = "/v12/patient/audit/resend-result-add-comment" %}
                       {% else %}
                         {% set letterLinkText = "" %}
