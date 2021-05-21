@@ -51,5 +51,11 @@ module.exports = config => (req, res, next) => {
     req.session.data["gpinfo"] = gpInfo.getGPInfo();
   }
 
+  res.locals.data = {}
+
+  for (var j in req.session.data) {
+    res.locals.data[j] = req.session.data[j]
+  }
+
   next();
 };
