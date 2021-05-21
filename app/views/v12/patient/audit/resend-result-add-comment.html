@@ -18,35 +18,118 @@
   "classes" : "nhsuk-u-margin-bottom-4"
   }) }}
     <div class="nhsuk-panel-with-label">
-      {% include '../../components/pnl-patient-2.html' %}
+      {% include '../../components/pnl-patient-2-no-result.html' %} 
+      <span class="nhsuk-hint">Step 1 of 2</span>
       
+           <h1 class="nhsuk-heading-l">Resend result letter</h1>
+        
 
-      <!--<div class="nhsuk-form-group">-->
-        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
-        <!--<legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-          Add {{ data['result-type'] }} test details
-        </legend>-->
+       <dl class="nhsuk-summary-list">
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Letter type</dt>
+      <dd class="nhsuk-summary-list__value">PA-1</dd>
+      <dd class="nhsuk-summary-list__actions"></dd>
+    </div>
+    
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Test type</dt>
+      <dd class="nhsuk-summary-list__value">English</dd>
+      <dd class="nhsuk-summary-list__actions"></dd>
+    </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Sender National code</dt>
+    <dd class="nhsuk-summary-list__value">B123456</dd>
+    <dd class="nhsuk-summary-list__actions"></dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Source code</dt>
+    <dd class="nhsuk-summary-list__value">X</dd>
+    <dd class="nhsuk-summary-list__actions"></dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Sender code</dt>
+    <dd class="nhsuk-summary-list__value">12456</dd>
+    <dd class="nhsuk-summary-list__actions"></dd>
+  </div>
+
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Slide number</dt>
+    <dd class="nhsuk-summary-list__value">12345678</dd>
+    <dd class="nhsuk-summary-list__actions"></dd>
+  </div>
+
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Test date</dt>
+    <dd class="nhsuk-summary-list__value">{{ '19-Oct-2020' | returnDateFormat }}</dd>
+    <dd class="nhsuk-summary-list__actions"></dd>
+  </div>
+
+<div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Result</dt>
+    <dd class="nhsuk-summary-list__value">(39S) Low-grade dyskaryosis, HPV positive, Repeat Advised</dd>
+    <dd class="nhsuk-summary-list__actions"></dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">HPV Primary</dt>
+    <dd class="nhsuk-summary-list__value">Y</dd>
+    <dd class="nhsuk-summary-list__actions"></dd>
+  </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Next test due date</dt>
+      <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', nextTestDueDate) + ' ' + 3 | returnDate('years', nextTestDueDate) | returnTimeDiff }}</dd>
+      <dd class="nhsuk-summary-list__actions"></dd>
+    </div> 
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Address</dt>
+    <dd class="nhsuk-summary-list__value">69  Sloe Lane, Croydon, CR1 1FR</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="resend-a-letter-edit-address">Change<span class="nhsuk-u-visually-hidden"> Address</span></a></dd>
+  </div>
+</dl>
+
+
           <form action="resend-a-result-letter-v2" method="post">
-            <div class="nhsuk-form-group">
-              <h1 class="nhsuk-label-wrapper">
-                <label class="nhsuk-label nhsuk-label--l nhsuk-u-margin-bottom-2" for="example-heading">
-                  Enter CRM case number
-                </label>
-              </h1>
-              <span class="nhsuk-hint" id="example-hint">
-                For example, CAS-12345-ABCDE
-              </span>
-              <input class="nhsuk-input nhsuk-input--width-10" type="text" name="crm" autocomplete="off" value="{{ data.crm }}">
-            </div>
-            <div class="nhsuk-form-group">
-              <label class="nhsuk-label" for="example">
-                Comments (optional)
-              </label>
-              <span class="nhsuk-hint" id="example-hint">
-                Do not include clinical information at  this point.
-              </span>
-              <textarea class="nhsuk-textarea" id="example" name="comments" rows="5" aria-describedby="example-hint" autocomplete="off">{{ data.comments }}</textarea>
-            </div>
+
+          {{ checkboxes({
+            "name": "resend-result-letter",
+            "classes": "nhsuk-u-padding-bottom-4",
+            "items": [
+              {
+                "value": "Yes",
+                "text": "I confirm that I want to resend this result letter"
+              }
+            ]
+          }) }}
+        
+        <div class="nhsuk-form-group">
+          <h1 class="nhsuk-label-wrapper">
+            <label class="nhsuk-label nhsuk-label--l nhsuk-u-margin-bottom-2" for="example-heading">
+              Enter CRM case number
+            </label>
+          </h1>
+          <span class="nhsuk-hint" id="example-hint">
+            For example, CAS-12345-ABCDE
+          </span>
+          <input class="nhsuk-input nhsuk-input--width-10" type="text" name="crm" value="" autocomplete="off">
+        </div>
+
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label" for="example">
+            Comments
+          </label>
+          <span class="nhsuk-hint" id="example-hint">
+            Do not include clinical information at  this point.
+          </span>
+          <textarea class="nhsuk-textarea" id="example" name="comments" rows="5" aria-describedby="example-hint" value="details" autocomplete="off"></textarea>
+        </div>
 
 <button class="nhsuk-button nhsuk-button--ers" type="submit">Continue</button>
             

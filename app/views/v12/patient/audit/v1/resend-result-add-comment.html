@@ -1,0 +1,72 @@
+{% extends "layout-v2.html" %}
+
+{% block pageTitle %}
+  NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header-3.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+    {{ backLink({
+  "href": "../patient-summary-7",
+  "text": "Back to patient-summary",
+  "classes" : "nhsuk-u-margin-bottom-4"
+  }) }}
+    <div class="nhsuk-panel-with-label">
+      {% include '../../components/pnl-patient-2.html' %}
+      
+
+      <!--<div class="nhsuk-form-group">-->
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+        <!--<legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+          Add {{ data['result-type'] }} test details
+        </legend>-->
+          <form action="resend-a-result-letter-v2" method="post">
+            <div class="nhsuk-form-group">
+              <h1 class="nhsuk-label-wrapper">
+                <label class="nhsuk-label nhsuk-label--l nhsuk-u-margin-bottom-2" for="example-heading">
+                  Enter CRM case number
+                </label>
+              </h1>
+              <span class="nhsuk-hint" id="example-hint">
+                For example, CAS-12345-ABCDE
+              </span>
+              <input class="nhsuk-input nhsuk-input--width-10" type="text" name="crm" autocomplete="off" value="{{ data.crm }}">
+            </div>
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="example">
+                Comments (optional)
+              </label>
+              <span class="nhsuk-hint" id="example-hint">
+                Do not include clinical information at  this point.
+              </span>
+              <textarea class="nhsuk-textarea" id="example" name="comments" rows="5" aria-describedby="example-hint" autocomplete="off">{{ data.comments }}</textarea>
+            </div>
+
+<button class="nhsuk-button nhsuk-button--ers" type="submit">Continue</button>
+            
+          </form>
+        </fieldset>
+            <p><a href="../patient-summary-7">Exit without saving</a></p>
+      <!--</div>-->
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+      <p><a href="/v12/reset-patient-data-12">Reset patient data</a></p>
+    </div>
+  </div>
+</footer>
+{% endblock %}
