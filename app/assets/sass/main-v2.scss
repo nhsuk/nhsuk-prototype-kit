@@ -9,6 +9,7 @@
 @import "components/sub-navigation"; // tab navigation taken from eRS
 @import "components/tables"; // taken from eRS
 @import "components/tabs";
+@import "components/card";
 @import "components/tabs_2";
 @import "components/tags-v2"; // taken from BETA work from
 @import "components/tags-v3"; // taken from the latest NHSUK beta styles
@@ -17,8 +18,6 @@
 @import "components/small-checkboxes"; // taken from scra
 @import "components/autocomplete"; // testing out the add test result page / had to create a custom component as autocomplete is used on the search
 @import "components/messaging"; //
-
-
 
 .nhsuk-inset-text--danger {
      border-left-color: red;
