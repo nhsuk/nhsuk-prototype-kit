@@ -1,5 +1,12 @@
 # NHS.UK prototype kit Changelog
 
+## 4.4.1 - 26 May 2021
+
+:wrench: **Fixes**
+
+- Add missing steps to 'Updating the kit' how to guide
+- Update package dependencies to latest versions
+
 ## 4.4.0 - 17 May 2021
 
 :new: **New features**
