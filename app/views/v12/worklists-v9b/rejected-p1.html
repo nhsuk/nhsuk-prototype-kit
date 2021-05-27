@@ -49,38 +49,32 @@ NHS Cervical Screening
   </div>
 </div>
 
+ <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review test result with duplicate data</h1>
+
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-two-thirds">
+  <div class="nhsuk-grid-column-three-quarters">
+    <ul class="nhsuk-inset-text nhsuk-comment-container nhsuk-inset-text__screening nhsuk-inset-text__screening--success">
+      <li class="nhsuk-panel"> <strong>This test result has a duplicate slide number.</strong> </span>
+      <p> <br> <span class="date" style="color:	#4c6272">Time recieved: 20 May 2021, 09:30am </span></li>
+    </ul>
+ </div>
+</div>
 
-
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
     <div class="nhsuk-panel-with-label">
+      <class="nhsuk-panel-with-label__label">
       {% include '../components/patient-result-1.html' %}
 
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 ">
 
-      <div class="nhsuk-form-group">
-        <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-4" aria-describedby="example-hint">
-          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-            Test result details
-          </legend>
-
-          <dl class="nhsuk-summary-list">
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Error status</dt>
-              <dd class="nhsuk-summary-list__value"><span class="nhsuk-tag nhsuk-tag--red">Duplicate data</span></dd>
-            </div>
-
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Error details</dt>
-              <dd class="nhsuk-summary-list__value">Duplicate slide</dd>
-            </div>
-
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Time received</dt>
-              <dd class="nhsuk-summary-list__value">04-Feb-2020, 08:44 am</dd>
-            </div>
-
-            <div class="nhsuk-summary-list__row">
+        <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">National code</dt>
+              <dd class="nhsuk-summary-list__value"><span class="highlight">676567</span></dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Health authority</dt>
               <dd class="nhsuk-summary-list__value">676567</dd>
             </div>
 
@@ -100,43 +94,90 @@ NHS Cervical Screening
             </div>
 
             <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Cytology result</dt>
+              <dt class="nhsuk-summary-list__key">Test result</dt>
               <dd class="nhsuk-summary-list__value">Low-grade dyskaryosis (39S)</dd>
             </div>
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">HPV Primary</dt>
-              <dd class="nhsuk-summary-list__value">HPV Positive</dd>
+              <dd class="nhsuk-summary-list__value">Yes</dd>
             </div>
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">Action</dt>
-              <dd class="nhsuk-summary-list__value">Repeat Advised</dd>
+              <dd class="nhsuk-summary-list__value">Repeat Advised months?</dd>
+            </div>
+          </dl>
+
+      </dl>
+    </div>
+  </div>
+
+
+  <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">Result in patient summary</h3>
+
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3">
+
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">National code</dt>
+              <dd class="nhsuk-summary-list__value"><span class="highlight">676567</span></dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Health authority</dt>
+              <dd class="nhsuk-summary-list__value">676567</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Sender code</dt>
+              <dd class="nhsuk-summary-list__value">131290</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Slide number</dt>
+              <dd class="nhsuk-summary-list__value">70406000</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Test date</dt>
+              <dd class="nhsuk-summary-list__value">26-Jan-2020</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Test result</dt>
+              <dd class="nhsuk-summary-list__value">Low-grade dyskaryosis (39S)</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">HPV Primary</dt>
+              <dd class="nhsuk-summary-list__value">Yes</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Action</dt>
+              <dd class="nhsuk-summary-list__value">Repeat Advised months?</dd>
             </div>
           </dl>
 
 
-          <h2 class="nhsuk-heading-m nhsuk-u-padding-top-6">Previous test results</h2>
 
-          <div class="nhs-screening-whole-timeline">
-            <div class="nhs-screening-whole-timeline__item">
-              <div class="nhs-screening-whole-timeline__header nhsuk-u-margin-bottom-1">
-                <h2 class="nhs-screening-whole-timeline__title">Test received</h2>
-                <p class="nhs-screening-whole-timeline__by">from Derby Royal Hospital (676567)</p>
-                <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272">03-Feb-2020, 10:29 am</p>
-                <p class="nhs-screening-whole-timeline__date">Error status: Invalid test date</p>
-                <br>
-                <p class="nhs-screening-whole-timeline__date">Sender code: 131290</p>
-                <p class="nhs-screening-whole-timeline__date">Slide number: 70406000</p>
-                <p class="nhs-screening-whole-timeline__date">Test date: 62-Jan-2020</p>
-                <p class="nhs-screening-whole-timeline__date">Test result: Low-grade dyskaryosis (39S), HPV Positive, Repeat Advised</p>
-              </div>
-              <br>
-              <p class="nhs-screening-whole-timeline__date" style="color:	#4c6272">Comments: Lab corrected date, will re-send</p>
-            </div>
-          </div>
-      </div>
+      </dl>
     </div>
+  </div>
+</div>
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+
+    <div class="nhsuk-panel-with-label">
+      {% include '../components/patient-result-1.html' %}
+
+
 
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-full">

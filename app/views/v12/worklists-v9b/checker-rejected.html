@@ -74,7 +74,7 @@ NHS Cervical Screening
 
     {{ backLink({
       "href": "manc-process",
-      "text": "Go back to Manchester results"
+      "text": "Go back to process list"
     }) }}
 
     <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review rejected patient details</h1>
@@ -83,10 +83,11 @@ NHS Cervical Screening
 </div>
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
-<ul class="nhsuk-inset-text nhsuk-comment-container">
-  <li class="nhsuk-panel"><span class="name">Sally Jones: Checker</span> <span class="date"><strong>21-Jul-2020</strong></span> Queried with labs and reviewed previously used address. Lab details should be used, system details represent a different patient.  </li>
-  			</ul>
-</div>
+    <ul class="nhsuk-inset-text nhsuk-comment-container" style="border-color: #ffb81C">
+      <li class="nhsuk-panel"> <strong>Queried with labs and reviewed previously used address. Lab details should be used, system details represent a different patient.</strong></span>
+      <p> <br>Checker: Sally Jones <span class="date" style="color:	#4c6272">20-May-2021</span></li>
+    </ul>
+ </div>
 </div>
 <br>
 <div class="nhsuk-grid-row">
@@ -140,7 +141,7 @@ NHS Cervical Screening
 
   <div class="nhsuk-grid-column-one-half">
     <div class="nhsuk-panel-with-label">
-      <h3 class="nhsuk-panel-with-label__label">System details</h3>
+      <h3 class="nhsuk-panel-with-label__label">Chosen details</h3>
 
       <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
 
@@ -193,85 +194,67 @@ NHS Cervical Screening
 </div>
 
 
-
-
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-one-half">
-    <!-- OPTIONS -->
-    <div class="nhsuk-form-group">
-
-      <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
-        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-          <h1 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong">
-            How do you want to action this result?
-          </h1>
-        </legend>
-        <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="lab" name="how-to-resolve" type="radio" value="lab" aria-controls="lab" aria-expanded="false">
-          <label class="nhsuk-label nhsuk-radios__label" for="lab">
-            Use lab details
-          </label>
-        </div>
-
-        <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
-          <label class="nhsuk-label nhsuk-radios__label" for="system">
-            Use system details
-          </label>
-        </div>
-
-  <!--  <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="gp" name="how-to-resolve" type="radio" value="gp" aria-controls="gp" aria-expanded="false">
-          <label class="nhsuk-label nhsuk-radios__label" for="gp">
-            Send to GP practice.
-            <span class="nhsuk-hint">
-           For example, GP address.</span>
-          </label>
-        </div> -->
-
-        <div class="nhsuk-radios__item">
-          <input class="nhsuk-radios__input" id="lab" name="how-to-resolve" type="radio" value="lab" aria-controls="lab" aria-expanded="false">
-          <label class="nhsuk-label nhsuk-radios__label" for="send-back">
-            Save to lab query list
-          </label>
-        </div>
-
-            <div class="nhsuk-radios nhsuk-radios--conditional">
-
-      <div class="nhsuk-radios__item">
-        <input class="nhsuk-radios__input" id="contact-1" name="how-to-resolve" type="radio" value="address" aria-controls="conditional-contact-1" aria-expanded="false">
-        <label class="nhsuk-label nhsuk-radios__label" for="contact-1">
-          Enter a different address
-        </label>
-      </div>
-
-           <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
-
-        <div class="nhsuk-form-group">
-          <label class="nhsuk-label" for="email">
-            Building and street
-          </label>
-          <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
-        <label class="nhsuk-label" for="email">
-            Town or city
-          </label>
-          <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
-          <label class="nhsuk-label" for="email">
-            County
-          </label>
-          <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
-          <label class="nhsuk-label" for="email">
-            Postcode
-          </label>
-          <input class="nhsuk-input nhsuk-u-width-two-thirds" id="email" name="email" type="text">
-        </div>
-
-      </div>
-      </fieldset>
-
+ 
 
 <div class="nhsuk-grid-row">
-        <div class="nhsuk-grid-column-full">
+  <div class="nhsuk-grid-column-full">
+
+    <h3 class="nhsuk-u-margin-top-4">System patient demographics</h3>
+    <p>Choose which system patient demographics to use. If no appropriate system match found, save to lab query list.</p>
+
+    <form action="checker-rejected-step-2" method="post">
+      <table class="order-table clickable-table">
+        <thead>
+          <tr>
+            <th style="width: 15%"></th>
+            <th>Name
+            </th>
+            <th>Date of birth
+            </th>
+            <th>NHS number
+            </th>
+          <tr>
+        </thead>
+
+        <tbody>
+          <!-- SYSTEM DEMOGRAPHICS -->
+          <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset" aria-describedby="system-patient-demographics">
+              <legend class="nhsuk-fieldset__legend">
+              </legend>
+              <div class="nhsuk-radios">
+                <tr role="row" class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell">
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="patient1a" name="system-dem-choice" type="radio" value="patient1a">
+                      <label class="nhsuk-label nhsuk-radios__label" for="patient1a"></label>
+                    </div>
+                  </td>
+                  <td>Samantha <span class="highlight">Kate</span> Rhodes</td>
+                  <td>04-01-1988</td>
+                  <td>456 789 0123</td>
+                </tr>
+                <tr role="row" class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell">
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="patient1b" name="system-dem-choice" type="radio" value="patient1b">
+                      <label class="nhsuk-label nhsuk-radios__label" for="patient1b"></label>
+                    </div>
+                  </td>
+                  <td><span class="highlight">Sam</span> Rhodes</td>
+                  <td>0<span class="highlight">1</span>-01-19<span class="highlight">70</span></td>
+                  <td>456 789 012<span class="highlight">2</span></td>
+                </tr>
+          
+              </div>
+            </fieldset>
+          </div>
+        </tbody>
+      </table>
+
+
+     <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-half">
 
          <form action="non-match-p1" method="post">
             <div class="nhsuk-form-group">
@@ -283,7 +266,7 @@ NHS Cervical Screening
               
             </div>
             
-          </form> 
+          
 
         </div>
       </div>
@@ -291,7 +274,7 @@ NHS Cervical Screening
  {% include '../components/comments-timeline-manual-match.html' %} 
 
 
-</div>
+
 </div>
 
 </div>
@@ -300,13 +283,18 @@ NHS Cervical Screening
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
 
-    <a href="checker-rejected-2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
-    <a href="manc-process" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Save and exit</a>
+    <button type="submit" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6" name="button">Continue to address</button>
+    
 </div>
 </div>
+
+
+
 <p><a href="manc-process">Exit without saving</a></p>
+
+  </form>
+  </div>
+
 </div>
-
-
 
 {% endblock %}
