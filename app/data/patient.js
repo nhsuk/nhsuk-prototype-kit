@@ -1,19 +1,8 @@
 const results = require('./result.js');
-//const filters = require('~/filters.js');
 const moment = require('moment');
 
-/*
-9991023867
-9100001694
-9100001384
-9100002801
-9100001899
-9100001287
-9100002798
-9100001929
-9100001740
-*/
-
+// List of all the patients in the system using JSON format
+// When adding new patients just make sure the formatting is ok
 var patients = [
     {
         "address": {
@@ -401,6 +390,8 @@ module.exports = function () {
     console.log('getting patients')
 }
 
+
+// get a single patient using the NHS Number. Patient[0] is selected by default
 module.exports.getPatient = function (nhsNumber) {
     if (nhsNumber == '') {
         var patient = patients[0];
@@ -409,11 +400,11 @@ module.exports.getPatient = function (nhsNumber) {
         try { console.log(patient.first_name + " " + patient.last_name + " NHS Number: " + patient.nhs_number); }
         catch (err) { console.log('patient not found') }
     }
-
     return patient;
 };
 
 
+// get all the patients in the data. A notification type of nrl / pnl / ceased is used to change the sorting
 module.exports.getPatients = function (notificationType) {
     var allResults = results.getResults();
 
@@ -425,7 +416,6 @@ module.exports.getPatients = function (notificationType) {
                 if (index === -1) {
                     patients[i].results.push(allResults[j]);
                 }
-                    //else //console.log("object already exists")
             }
         }
 
@@ -437,6 +427,7 @@ module.exports.getPatients = function (notificationType) {
         }
     }
     
+    // lots of things here which sort the data
     function compare(a, b) {
         if (notificationType == "nrl") {
             var aTime = moment(a.nrl_review_date).diff(moment(), "days");
@@ -445,8 +436,6 @@ module.exports.getPatients = function (notificationType) {
             var aTime = moment(a.next_test_due_date).diff(moment(), "days");
             var bTime = moment(b.next_test_due_date).diff(moment(), "days");
         }
-        // might need to add sorting for ceased by ceased date
-        // could sort by ceased type / reason
         
         var aStatus = "";
         var bStatus = "";
@@ -487,7 +476,9 @@ module.exports.getPatients = function (notificationType) {
 
     return patients;
 };
-//nhsNumber, reason, length, ntdd, edd, prev, req.session.data['returnUrl']
+
+
+// defer a patient, it needs an NHS Number, reason, length of deferral / NTDD, EDD if needed and the type of deferral
 module.exports.deferPatient = function (nhsNumber, reason, length, ntdd, edd, prev, type) {
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
 
@@ -518,6 +509,8 @@ module.exports.deferPatient = function (nhsNumber, reason, length, ntdd, edd, pr
 
 };
 
+
+// cease the patient, requires NHS Number, reason and type of notification
 module.exports.ceasePatient = function (nhsNumber, reason, type) {
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
     if (type == 'nrl') {
@@ -531,6 +524,8 @@ module.exports.ceasePatient = function (nhsNumber, reason, type) {
     }
 };
 
+
+// submit a patient means to invite or remove them from the NRL / GP Notifications list
 module.exports.submitPatient = function (nhsNumber, type) {
     console.log("PATIENT SUBMITTED")
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
@@ -541,6 +536,7 @@ module.exports.submitPatient = function (nhsNumber, type) {
     }
 };
 
+// reinstate a patient requires NHS Number and a NTDD
 module.exports.reinstatePatient = function (nhsNumber, ntdd) {
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
     if (ntdd != null) {
@@ -553,13 +549,15 @@ module.exports.reinstatePatient = function (nhsNumber, ntdd) {
     patient.pnl_reason = '';
 };
 
+
+// to add a test we pass in the NHS Number and the whole form data that is submitted
 module.exports.addTestResult = function (nhsNumber, data) {
     console.log("ATTEMPTING TO ADD A TEST RESULT")
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
 
     console.log(data['result.self-sample']);
 
-
+    // we created a new test and add all the form data into the new test piece by piece
     var newTest = [{
         "result_ID": Math.random().toString(16).slice(2),
         "action": data['action-text'], // to fill in
@@ -588,9 +586,10 @@ module.exports.addTestResult = function (nhsNumber, data) {
         
     }];
     
+    // we then push the new result into the patient.result data
     patient.results.push(newTest[0]);
-    //console.log(patient.results);
 
+    // we then sort all the patient results by order of the test date
     if (patient.results.length > 1) {
         patient.results.sort(function (a, b) {
             return  new Date(b.test_date) - new Date(a.test_date);
@@ -598,17 +597,18 @@ module.exports.addTestResult = function (nhsNumber, data) {
     }
 }
 
+
+// edit test requires the NHS Number and the form data
 module.exports.editTestResult = function (nhsNumber, data) {
     console.log("ATTEMPTING TO EDIT A TEST RESULT")
-    //console.log(data);
-    // find the patient
+    // first we find the patient
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
     
-    //console.log("result id: " + data['result_ID']);
-    // find the result to edit
+    // then we find the result to edit using a result_ID which is a generated on the results.js data file
     var result = patient.results.find((result) => result.result_ID == data['result_ID']);
-    // need some unique ID to make this easier
 
+    // here we map all the new data to the old result
+    // if adding any new data this needs to be added here to be updated
     result.action = data['action-text'] || ''; // not sure why this isn't working - need to double check it doesn't break anything
     result.action_code = data['result-action'] || '';
     result.infection_code = data['result-infection'] || '';
@@ -638,47 +638,36 @@ module.exports.editTestResult = function (nhsNumber, data) {
     }
 }
 
+
+// delete a test requires NHS Number and the form data
 module.exports.deleteTestResult = function (nhsNumber, data) {
     console.log("ATTEMPTING TO DELETE A TEST RESULT")
     
-    // find the patient
+    // first we find the patient
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
-    
     console.log("result id: " + data['result_ID']);
-    // find the result to delete
+
+    // we find the result to delete based on the result_ID
     var result = patient.results.find((result) => result.result_ID == data['result_ID']).is_deleted = true;
     // need some unique ID to make this easier
     console.log(patient.results)
-
-    // sort the results - incase the test date was changed
-    /*
-    if (patient.results.length > 1) {
-        patient.results.sort(function (a, b) {
-            return  new Date(b.test_date) - new Date(a.test_date);
-        });
-    }
-    */
 }
 
+
+// cancel a result letter takes the NHS Number and the form data
 module.exports.cancelResultLetter = function (nhsNumber, data) {
     console.log("ATTEMPTING TO CANCEL A RESULT LETTER")
-    //console.log("nhsnumber: " + nhsNumber)
-    // find the patient
-    var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
-    //console.log(patient)
-    //var allResults = results.getResults()
-    //console.log(allResults)
-    //console.log("result id: " + data['result_ID']);
-    // find the result to delete
-    var result = patient.results.find((result) => result.result_ID == data['result_ID']);
-    result.letter_status = "Cancelled";
-   // var result = allResults.find((result) => result.result_ID == data['result_ID']).letter_status = "Cancelled";
-    // need some unique ID to make this easier
-    console.log(result)
 
-   
+    // first we find the patient
+    var patient = patients.find((patient) => patient.nhs_number == nhsNumber);
+
+    // then we find the result to delete based on the result_ID
+    var result = patient.results.find((result) => result.result_ID == data['result_ID']);
+    result.letter_status = "Cancelled";   
 }
 
+
+// resend a result letter
 module.exports.resendResultLetter = function (nhsNumber, data) {
     console.log("ATTEMPTING TO CANCEL A RESULT LETTER")
     var patient = patients.find((patient) => patient.nhs_number == nhsNumber);

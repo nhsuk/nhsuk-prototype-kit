@@ -1,0 +1,355 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(4) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+  CARD components
+
+  <div class="nhsuk-card">
+    <div class="nhsuk-card__content">
+      <h3 class="nhsuk-card__heading">If you need help now, but it’s not an emergency</h3>
+      <p class="nhsuk-card__description">Go to <a href="#">111.nhs.uk</a> or <a href="#">call 111</a></p>
+    </div>
+  </div>
+
+<hr>
+
+  <ul class="nhsuk-grid-row nhsuk-card-group">
+  <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+    {{ card({
+      "clickable": "true",
+      "headingHtml": "<p class=\"nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1\">91 <span class=\"nhsuk-u-visually-hidden\">Applicants</span></p><a href=\"#\" class=\"nhsuk-card__link nhsuk-u-font-weight-normal nhsuk-u-font-size-19 nhsuk-link--no-visited-state\">Applicants</a>"
+    }) }}
+  </li>
+  <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+    {{ card({
+      "clickable": "true",
+      "headingHtml": "<p class=\"nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1\">23 <span class=\"nhsuk-u-visually-hidden\">Jobs</span></p><a href=\"#\" class=\"nhsuk-card__link nhsuk-u-font-weight-normal nhsuk-u-font-size-19 nhsuk-link--no-visited-state\">Jobs</a>"
+    }) }}
+  </li>
+  <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+    {{ card({
+      "clickable": "true",
+      "headingHtml": "<p class=\"nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1\">8 <span class=\"nhsuk-u-visually-hidden\">Services</span></p><a href=\"#\" class=\"nhsuk-card__link nhsuk-u-font-weight-normal nhsuk-u-font-size-19 nhsuk-link--no-visited-state\">Services</a>"
+    }) }}
+  </li>
+  <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+    {{ card({
+      "clickable": "true",
+      "headingHtml": "<p class=\"nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1\">33 <span class=\"nhsuk-u-visually-hidden\">Messages</span></p><a href=\"#\" class=\"nhsuk-card__link nhsuk-u-font-weight-normal nhsuk-u-font-size-19 nhsuk-link--no-visited-state\">Messages</a>"
+    }) }}
+  </li>
+</ul>
+
+
+    {{ backLink({
+      "href": "reports",
+      "text": "back to reports"
+    }) }}
+    <h1 class="nhsuk-heading-l">Report patterns</h1>
+    <h2 class="nhsuk-heading-m">Query Date</h2>
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-third">
+          {{ dateInput({
+            "id": "example",
+            "namePrefix": "example",
+            "fieldset": {
+              "legend": {
+                "text": "Enter a date",
+                "classes": "nhsuk-label--s",
+                "isPageHeading": false
+              }
+            },
+            "hint": {
+              "text": "For example, 15 3 1984"
+            },
+            "items": [
+              {
+                "name": "day",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "month",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "year",
+                "classes": "nhsuk-input--width-4"
+              }
+            ]
+          }) }}
+        </div>      
+      </div>
+    <button class="nhsuk-button nhsuk-button--ers">Query</button>
+
+    <hr>
+    <h2 class="nhsuk-heading-m">Query date range</h2>
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-third">
+          {{ dateInput({
+            "id": "example",
+            "namePrefix": "example",
+            "fieldset": {
+              "legend": {
+                "text": "Enter a date from",
+                "classes": "nhsuk-label--s",
+                "isPageHeading": false
+              }
+            },
+            "hint": {
+              "text": "For example, 15 3 1984"
+            },
+            "items": [
+              {
+                "name": "day",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "month",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "year",
+                "classes": "nhsuk-input--width-4"
+              }
+            ]
+          }) }}
+        </div>      
+        <div class="nhsuk-grid-column-one-third">
+          {{ dateInput({
+            "id": "example",
+            "namePrefix": "example",
+            "fieldset": {
+              "legend": {
+                "text": "Enter a date to",
+                "classes": "nhsuk-label--s",
+                "isPageHeading": false
+              }
+            },
+            "hint": {
+              "text": "For example, 15 3 1984"
+            },
+            "items": [
+              {
+                "name": "day",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "month",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "year",
+                "classes": "nhsuk-input--width-4"
+              }
+            ]
+          }) }}
+        </div>      
+      </div>
+    <button class="nhsuk-button nhsuk-button--ers">Query</button>
+
+    <hr>
+    <h2 class="nhsuk-heading-m">Filter some data</h2>
+    <p>Stick with radios if there's a fixed amount and you know there will be less than 5/6 options</p>
+    {{ radios({
+      "idPrefix": "example",
+      "name": "example",
+      "fieldset": {
+        "legend": {
+          "text": "Filter by:",
+          "classes": "nhsuk-label--s",
+          "isPageHeading": false
+        }
+      },
+      "items": [
+        {
+          "value": "yes",
+          "text": "Ceased"
+        },
+        {
+          "value": "no",
+          "text": "Deferred"
+        },
+        {
+          "value": "no",
+          "text": "Suspended"
+        },
+        {
+          "value": "no",
+          "text": "Suspended"
+        }
+      ]
+    }) }}
+    <button class="nhsuk-button nhsuk-button--ers">Filter</button>
+
+    <hr>
+    <h2 class="nhsuk-heading-m">Filter by more data</h2>
+    <p>Used as a last resort when there's no other way to break down the data or there is an unknown number of filters.</p>
+    <p>If there is a fixed amount then consider grouping and on prior pages triage a user to the info they need.</p>
+    {{ select({
+      "id": "select-1",
+      "name": "select-1",
+      "label": {
+        "text": "Filter by:"
+      },
+      "items": [
+        {
+          "value": 1,
+          "text": "Routine"
+        },
+        {
+          "value": 2,
+          "text": "Abnormal follow up",
+          "selected": true
+        },
+        {
+          "value": 3,
+          "text": "Suspended",
+          "disabled": true
+        },
+        {
+          "value": 4,
+          "text": "Repeat adviced",
+          "disabled": true
+        }
+      ]
+    }) }}
+
+    <hr>
+    <h2 class="nhsuk-heading-m">Pagination - when not needed</h2>
+    <p>If we know there are going to be less than 50 results on page then pagination is not required.</p>
+
+    <hr>
+    <h2 class="nhsuk-heading-m">Pagination - when required</h2>
+    <p>If we are unsure on the amount of rows of data then pagination can be added.</p>
+    <p>The simplest way is to use the pagination component from the service manual.</p>
+    {{ table({
+      panel: false,
+      caption: "Skin symptoms and possible causes",
+      firstCellIsHeader: false,
+      head: [
+        {
+          text: "Skin symptoms"
+        },
+        {
+          text: "Possible cause"
+        }
+      ],
+      rows: [
+        [
+          {
+            text: "Blisters on lips or around the mouth"
+          },
+          {
+            text: "cold sores"
+          }
+        ],
+        [
+          {
+            text: "Itchy, dry, cracked, sore"
+          },
+          {
+            text: "eczema"
+          }
+        ],
+        [
+          {
+            text: "Itchy blisters"
+          },
+          {
+            text: "shingles, chickenpox"
+          }
+        ]
+      ]
+    }) }}
+    {{ pagination({
+      "previousUrl": "#",
+      "previousPage": "Page 1",
+      "nextUrl": "#",
+      "nextPage": "Page 2"
+    }) }}
+
+    <hr>
+    <h2 class="nhsuk-heading-m">Lazy loading</h2>
+    <p>An alternative to pagination is to lazy load results</p>
+    <div class="table-foot">
+      <span class="load-more"><a class="nhsuk-button--ers toggleitbutton" href="#">Show 10 more</a></span>
+    </div>
+
+    <hr>
+    <h2 class="nhsuk-heading-m">Number of results</h2>
+    <p>If there is a need to show information about the number of results we can display more information.</p>
+    <div class="table-foot">
+      <span class="results-count">Showing 50 of 250 results</span>
+    </div>
+
+    <hr>
+    <h2 class="nhsuk-heading-m">Table footer - lazy load and result info</h2>
+    <p>The lazy loading button and result info can sit together in a table footer components</p>
+    {{ table({
+      panel: false,
+      caption: "Skin symptoms and possible causes",
+      firstCellIsHeader: false,
+      head: [
+        {
+          text: "Skin symptoms"
+        },
+        {
+          text: "Possible cause"
+        }
+      ],
+      rows: [
+        [
+          {
+            text: "Blisters on lips or around the mouth"
+          },
+          {
+            text: "cold sores"
+          }
+        ],
+        [
+          {
+            text: "Itchy, dry, cracked, sore"
+          },
+          {
+            text: "eczema"
+          }
+        ],
+        [
+          {
+            text: "Itchy blisters"
+          },
+          {
+            text: "shingles, chickenpox"
+          }
+        ]
+      ]
+    }) }}
+    <div class="table-foot">
+      <span class="load-more"><a class="nhsuk-button--ers toggleitbutton" href="#">Show 5 more</a></span>
+      <span class="results-count">Showing 1 of 1 results</span>
+    </div>
+
+    
+  </div>
+</div>
+{% endblock %}
