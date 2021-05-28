@@ -1,8 +1,16 @@
 {% extends "layout-v2.html" %}
-
+{#
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+  <script type="text/javascript" src="/js/action-menu.js"></script>
+  <script type="text/javascript" src="/js/sort.js"></script>
+{% endblock %}
+#}
 {% block pageScripts %}
 <script type="text/javascript" src="/js/search.js"></script>
 <script type="text/javascript" src="/js/auto.js"></script>
+<script type="text/javascript" src="/js/sort.js"></script>
 <style type="text/css" media="screen">
   .nhsuk-header__navigation-item:nth-child(4) {
     border-bottom: 4px solid #d8dde0;
@@ -22,50 +30,47 @@ NHS Cervical Screening
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
 
-  CARD components
-
-  <div class="nhsuk-card">
-    <div class="nhsuk-card__content">
-      <h3 class="nhsuk-card__heading">If you need help now, but it’s not an emergency</h3>
-      <p class="nhsuk-card__description">Go to <a href="#">111.nhs.uk</a> or <a href="#">call 111</a></p>
-    </div>
-  </div>
-
-<hr>
-
-  <ul class="nhsuk-grid-row nhsuk-card-group">
-  <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
-    {{ card({
-      "clickable": "true",
-      "headingHtml": "<p class=\"nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1\">91 <span class=\"nhsuk-u-visually-hidden\">Applicants</span></p><a href=\"#\" class=\"nhsuk-card__link nhsuk-u-font-weight-normal nhsuk-u-font-size-19 nhsuk-link--no-visited-state\">Applicants</a>"
-    }) }}
-  </li>
-  <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
-    {{ card({
-      "clickable": "true",
-      "headingHtml": "<p class=\"nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1\">23 <span class=\"nhsuk-u-visually-hidden\">Jobs</span></p><a href=\"#\" class=\"nhsuk-card__link nhsuk-u-font-weight-normal nhsuk-u-font-size-19 nhsuk-link--no-visited-state\">Jobs</a>"
-    }) }}
-  </li>
-  <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
-    {{ card({
-      "clickable": "true",
-      "headingHtml": "<p class=\"nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1\">8 <span class=\"nhsuk-u-visually-hidden\">Services</span></p><a href=\"#\" class=\"nhsuk-card__link nhsuk-u-font-weight-normal nhsuk-u-font-size-19 nhsuk-link--no-visited-state\">Services</a>"
-    }) }}
-  </li>
-  <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
-    {{ card({
-      "clickable": "true",
-      "headingHtml": "<p class=\"nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1\">33 <span class=\"nhsuk-u-visually-hidden\">Messages</span></p><a href=\"#\" class=\"nhsuk-card__link nhsuk-u-font-weight-normal nhsuk-u-font-size-19 nhsuk-link--no-visited-state\">Messages</a>"
-    }) }}
-  </li>
-</ul>
-
-
     {{ backLink({
       "href": "reports",
       "text": "back to reports"
     }) }}
-    <h1 class="nhsuk-heading-l">Report patterns</h1>
+    <h1 class="nhsuk-heading-l">Report patterns and guidance</h1>
+    <p>Report patterns that can be combined. Any ones that have an accessibility concern will be highlighted <span class="nhsuk-tag nhsuk-tag--red">accessibility concern</span></p>
+    <p><span class="nhsuk-tag nhsuk-tag--blue">design suggestion</span> Displaying all the data on one page is not ideal and if there is any exploration time then breaking up the data, grouping may make the final page of date less cluttered.</p>
+    
+    <hr>
+    <h2 class="nhsuk-heading-m">Totals or metric cards</h2>
+    <p>The card components has a metrics style card. This would be useful to bring out any table totals and bring them to the top of the page</p>
+    <p><span class="nhsuk-tag nhsuk-tag--blue">design suggestion</span> Considering bringing these to the page before as both an overview and a filter which can be clicked, reducing the need to filter on the data page and giving managers and snapshot.</p>
+    <p><a href="https://service-manual.nhs.uk/design-system/components/card">NHSUK Service manual - card component</a></p>
+    <ul class="nhsuk-grid-row nhsuk-card-group">
+      <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+        {{ card({
+          "clickable": "true",
+          "headingHtml": "<p class=\"nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1\">91 <span class=\"nhsuk-u-visually-hidden\">Applicants</span></p><a href=\"#\" class=\"nhsuk-card__link nhsuk-u-font-weight-normal nhsuk-u-font-size-19 nhsuk-link--no-visited-state\">Invited</a>"
+        }) }}
+      </li>
+      <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+        {{ card({
+          "clickable": "true",
+          "headingHtml": "<p class=\"nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1\">23 <span class=\"nhsuk-u-visually-hidden\">Jobs</span></p><a href=\"#\" class=\"nhsuk-card__link nhsuk-u-font-weight-normal nhsuk-u-font-size-19 nhsuk-link--no-visited-state\">Deferred</a>"
+        }) }}
+      </li>
+      <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+        {{ card({
+          "clickable": "true",
+          "headingHtml": "<p class=\"nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1\">8 <span class=\"nhsuk-u-visually-hidden\">Services</span></p><a href=\"#\" class=\"nhsuk-card__link nhsuk-u-font-weight-normal nhsuk-u-font-size-19 nhsuk-link--no-visited-state\">Ceased</a>"
+        }) }}
+      </li>
+      <li class="nhsuk-grid-column-one-quarter nhsuk-card-group__item">
+        {{ card({
+          "clickable": "true",
+          "headingHtml": "<p class=\"nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1\">33 <span class=\"nhsuk-u-visually-hidden\">Messages</span></p><a href=\"#\" class=\"nhsuk-card__link nhsuk-u-font-weight-normal nhsuk-u-font-size-19 nhsuk-link--no-visited-state\">Suspended</a>"
+        }) }}
+      </li>
+    </ul>
+    
+    <hr>
     <h2 class="nhsuk-heading-m">Query Date</h2>
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-one-third">
@@ -202,9 +207,9 @@ NHS Cervical Screening
     <button class="nhsuk-button nhsuk-button--ers">Filter</button>
 
     <hr>
-    <h2 class="nhsuk-heading-m">Filter by more data</h2>
+    <h2 class="nhsuk-heading-m">Filter by more data <span class="nhsuk-tag nhsuk-tag--red">accessibility concern</span></h2>
     <p>Used as a last resort when there's no other way to break down the data or there is an unknown number of filters.</p>
-    <p>If there is a fixed amount then consider grouping and on prior pages triage a user to the info they need.</p>
+    <p><span class="nhsuk-tag nhsuk-tag--blue">design suggestion</span> If there is a fixed amount then consider grouping and on prior pages triage a user to the info they need.</p>
     {{ select({
       "id": "select-1",
       "name": "select-1",
@@ -289,7 +294,7 @@ NHS Cervical Screening
     }) }}
 
     <hr>
-    <h2 class="nhsuk-heading-m">Lazy loading</h2>
+    <h2 class="nhsuk-heading-m">Lazy loading <span class="nhsuk-tag nhsuk-tag--red">accessibility concern</span></h2>
     <p>An alternative to pagination is to lazy load results</p>
     <div class="table-foot">
       <span class="load-more"><a class="nhsuk-button--ers toggleitbutton" href="#">Show 10 more</a></span>
@@ -349,7 +354,115 @@ NHS Cervical Screening
       <span class="results-count">Showing 1 of 1 results</span>
     </div>
 
+    <hr>
+    <h2 class="nhsuk-heading-m">Download buttons  </h2>
+    <p>For buttons if there is only one download option then a green button is fine. The file type will need to be clear - using 'download as [filetype] is standard</p>
+    <button class="nhsuk-button nhsuk-button--ers">Download as CSV</button>
+
+    <hr>
+    <h2 class="nhsuk-heading-m">Multple downloads options</h2>
+    <p>For multiple buttons, determine if there is a primary action and make this green, other buttons can be grey</p>
+    <p>A standard <a href="">link</a> can be used for secondary buttons as if it's looking too cluttered</p>
+    <p><button class="nhsuk-button nhsuk-button--ers">Query</button> <button class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary">Download as PDF</button></p>
+
+    <hr>
+    <h2 class="nhsuk-heading-m">Table sorting and scrolling <span class="nhsuk-tag nhsuk-tag--red">accessibility concern</span></h2>
+    <p>For more complex data sets of where the data needs to be sortable then the following table style has been used in ERS and was in early prototypes.</p>
+    <p>There may be additional options for sticky headers and sticky columns.</p>
+    <p><span class="nhsuk-tag nhsuk-tag--blue">design suggestion</span> If there is a logical order to the data then that would be preferred, most urgent at the top then this should be explored before adding this table.</p>
+
+    <div class="nhsuk-scrollable-pane">
+    <div class="nhsuk-scrollable-pane__wrapper">
+        <div id="table-scroll" class="table-scroll">
+          <div class="nhsuk-table-responsive nhsuk-u-margin-top-0 table-wrap">
+            <table id="sortable" class="nhsuk-table nhsuk-table-u-margin-0 nhsuk-table-clickable main-table">
+
+              <!-- TABLE START -->
+              <thead class="nhsuk-table__head">
+                <tr class="nhsuk-table__row">
+
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                    <button onclick="sortTable()" type="button" data-index="0">Test Date</button>
+                  </th>
+
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                    <button onclick="sortTable()" type="button" data-index="0">Test type</button>
+                  </th>
+
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">HPV infection</button>
+                  </th>
+
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Cytology result</button>
+                  </th>
+
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Action</button>
+                  </th>
+
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                  <button onclick="sortTable()" type="button" data-index="0">Repeat</button>
+                  </th>
+
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                    <button onclick="sortTable()" type="button" data-index="0">Screening lab</button>
+                  </th>
+
+                  <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                    <button onclick="sortTable()" type="button" data-index="0">Sample taker</button>
+                  </th>
+
+                  {% if data.role != 'sampleTaker' %}
+                    <th class="nhsuk-table__header fixed-side" aria-sort="none" scope="col">
+                      <button onclick="sortTable()" type="button" data-index="0">Slide no</button>
+                    </th>
+                  {% endif %}
+
+
+                </tr>
+              </thead>
+
+
+              <tbody class="nhsuk-table__body nhsuk-body-">
+                <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__cell fixed-side">01-Apr-2017</td>
+                <td class="nhsuk-table__cell">NHS</td>
+                <td class="nhsuk-table__cell">HPV Negative</td>
+                <td class="nhsuk-table__cell">No cytology result</td>
+                <td class="nhsuk-table__cell">Routine</td>
+                <td class="nhsuk-table__cell">36 months</td>
+                <td class="nhsuk-table__cell">Leeds General Infirmary</td>
+                <td class="nhsuk-table__cell">Serena Waldorv</td>
+                {% if data.role != 'sampleTaker' %}
+                  <td class="nhsuk-table__cell">1323</td>
+                {% endif %}
+
+              </tr>
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__cell fixed-side">10-Apr-2014</td>
+                <td class="nhsuk-table__cell">NHS</td>
+                <td class="nhsuk-table__cell">HPV Negative</td>
+                <td class="nhsuk-table__cell">No cytology result</td>
+                <td class="nhsuk-table__cell">Routine</td>
+                <td class="nhsuk-table__cell">36 months</td>
+                <td class="nhsuk-table__cell">Leeds General Infirmary</td>
+                <td class="nhsuk-table__cell">Dupreet Jawal</td>
+                {% if data.role != 'sampleTaker' %}
+                  <td class="nhsuk-table__cell">1323</td>
+                {% endif %}
+
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     
+    </div>
+  
+
   </div>
 </div>
 {% endblock %}
