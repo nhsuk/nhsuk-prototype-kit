@@ -1,0 +1,244 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(5) {
+    border-bottom: 4px solid #d8dde0;
+  }
+
+  .nhsuk-button, .nhsuk-button--ers, .dropdown .dropbtn, .nhsuk-button--ers_secondary, .nhsuk-button--ers_reverse, .nhsuk-button--ers_reverse:hover, .nhsuk-button--ers_reverse:focus, .nhsuk-button--ers_reject, .nhsuk-blue, .nhsuk-right  {
+    margin-bottom: 0;
+  }
+
+  .nhsuk-checkboxes__input + .nhsuk-checkboxes__label::before, .nhsuk-checkboxes__input  {
+    height: 20px;
+    width: 20px;
+  }
+
+  .nhsuk-checkboxes__label {
+    padding: 0px 12px 4px; 
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .nhsuk-checkboxes__item {
+    min-height: 20px;
+    padding: 0 0 0 20px;
+  }
+
+  .nhsuk-checkboxes__input:disabled + .nhsuk-checkboxes__label {
+    opacity: 1;
+  }
+
+
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    {{ backLink({
+      "href": "select-gp-practice",
+      "text": "Back to selecting a GP practice"
+    }) }}
+</div>
+</div>
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <h1 class="nhsuk-heading-l">Print patients due to be invited for {{ data['gp-code'] or 'A123456' }}</h1>
+    <p class="nhsuk-heading-xs">Address: 122  Farburn Terrace, CA10 0WP</p>
+    <p class="no-print"><a onclick="window.print(); " class="nhsuk-button nhsuk-button--ers">Print</a> <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary">Download as PDF</a></p>
+
+    <p>Use this list to review the patients at your GP surgery who are due to be invited for cervical screening.</p>
+    <p>You can cease them from screening or defer their invitation if needed. If you do not this before the review by date then the patient will be invited for cervical screening on their next test due date.</p>
+    <p>
+      To defer a patient for patient wishes to defer or to cease a patient by informed choice or under the mental capacity act:
+      <ul>
+        <li>download the correct cease or defer form from the Primary care support website (CSAS): <a href="https://www.csas.nhs.uk/support/">https://www.csas.nhs.uk/support/</a></li>
+        <mark>PHE were allowing digital signature so the following content is going to be more generic</mark>
+        <li>print the form</li>
+        <li>fill in and sign the form (needs to be done by a GP, nurse or clinician, or by the patient for the ‘Informed consent for withdrawal from the cervical screening programme’ form)</li>
+        <li>scan the form</li>
+        <li>submit it to the CSAS website: <a href="https://www.csas.nhs.uk/contact-us/">https://www.csas.nhs.uk/contact-us/</a></li>
+      </ul>
+    </p>
+{% if data['patients'] == null %} 
+<meta http-equiv="refresh" content="2;url=/v12/admin/print-notifications/print-patients-due-to-be-invited?paperpnl=true" />
+  <div class="styleguide-example">
+    <div class="nhsuk-loader__container">
+      <h1 class="nhsuk-heading-l">Loading patients</h1>
+    </div>
+    <div class="nhsuk-loader__container">
+      <div class="nhsuk-loader">
+      </div>
+    </div>
+  </div>
+{% else %}
+
+{% if data['patients'].length >= 1 %} 
+
+    <table id="sortable" class="nhsuk-table-clickable bna-table nhsuk-u-margin-top-0">
+      <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">Name</th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">Age</th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">Status</th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">Last result</th>
+          {# <th class="nhsuk-table__header" aria-sort="none" scope="col">Next test due date</th> #}
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">Review By</th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        {% for patient in data['patients'] %}
+          {% set rowId =  "selectRow" + loop.index %}
+          {% set detailsId =  "detailsRow" + loop.index %}
+          {% set buttonId =  "btnRow" + loop.index %}
+          {% set NameId =  "nameRow1" + loop.index %}
+          <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell" style="border-bottom: white">
+          {{ patient.first_name | capitalize }} {{ patient.last_name | capitalize }} 
+            <span class="nhsuk-table__cell--hint">NHS No: {{ patient.nhs_number | formatNHSNumber }}</span>
+          </td>
+          <td class="nhsuk-table__cell" style="border-bottom: white">
+            {{ patient.date_of_birth | returnAge }}
+            <span class="nhsuk-table__cell--hint">{{ patient.date_of_birth  | returnNumericDateFormat }}</span>
+          </td>
+          <td class="nhsuk-table__cell" style="border-bottom: white">
+            {% if patient.results[0] == null %} 
+              Called
+            {% else %}
+              {{ patient.results[0].action }}
+            {% endif %}
+            <span class="nhsuk-table__cell--hint">Recall</span>
+          </td>
+          <td style="border-bottom: white">
+            {% if patient.results[0] == null %} 
+              {% set resultDate = "no results" %} 
+            {% else %}
+              {% set result = "(" + (patient.results[0].result_code or "-" ) + (patient.results[0].infection_code or "") + (patient.results[0].action_code or "-") + ") " + (patient.results[0].result or "-") + ", " +(patient.results[0].infection_result or "No HPV data") + ", " +(patient.results[0].action or "-") %}
+              {% set resultDate = (patient.results[0].result_date | returnNumericDateFormat or "-") + " " + (patient.results[0].result_date | returnTimeDiff or "-") %}
+            {% endif %}
+            {% if patient.results[0] != null %}
+              {{ result }}
+            {% else %}
+              no results
+            {% endif %}
+            <span class="nhsuk-table__cell--hint">{{ resultDate }}</span>
+          </td>
+         {# <td class="nhsuk-table__cell">
+            {{ patient.next_test_due_date | returnNumericDateFormat }} 
+             <span class="nhsuk-table__cell--hint">{{ ((( patient.next_test_due_date | returnDateFormat) | returnTimeDiffDays) | removeBrackets) | capitalize }} </span>
+          </td>
+          #} 
+          <td class="nhsuk-table__cell" style="border-bottom: white">
+            {{ patient.next_test_due_date | returnInviteDateFormat }} 
+             <span class="nhsuk-table__cell--hint">{{ ((( patient.next_test_due_date | returnInviteDate) | returnTimeDiffDays) | removeBrackets) | capitalize }} </span>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2" style="vertical-align: top">
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                <p>Cease:</p>
+
+                <div class="nhsuk-checkboxes">
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email" disabled="disabled">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
+                      due to age
+                    </label>
+                  </div>
+
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="phone" disabled="disabled">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="example-2">
+                      no cervix
+                    </label>
+                  </div>
+
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="example-3" name="example" type="checkbox" value="text message" disabled="disabled">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="example-3">
+                      radiotherapy (to the pelvic area which affects the cervix) 
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+
+            </div>
+          </td>
+          <td colspan="2" style="vertical-align: top">
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                <p>Defer next due date until ______________:</p>
+
+                <div class="nhsuk-checkboxes nhsuk-checkboxes--print">
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email" disabled="disabled">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
+                      pregnancy
+                    </label>
+                  </div>
+
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="phone" disabled="disabled">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="example-2">
+                      recent test on ______________ Result ____________________________________
+                    </label>
+                  </div>
+
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="example-3" name="example" type="checkbox" value="text message" disabled="disabled">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="example-3">
+                      under care of colposcopy
+                    </label>
+                  </div>
+
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="example-3" name="example" type="checkbox" value="text message" disabled="disabled">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="example-3">
+                      undergoing treatment relevant to screening
+                    </label>
+                  </div>
+
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="example-3" name="example" type="checkbox" value="text message" disabled="disabled">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="example-3">
+                      discharge from colposcopy 
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </td>
+        </tr>
+
+        {% endfor %}
+      </tbody>   
+    </table>
+
+{% else %}
+  {{ panel({
+      "HTML": "<h2>Completed <svg style='vertical-align: text-top' class='nhsuk-icon nhsuk-icon__tick' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 21' fill='none' aria-hidden='true'>
+        <path stroke-width='4' stroke-linecap='round' d='M18.4 7.8l-8.5 8.4L5.6 12'></path>
+      </svg></h2>
+      <p>There are no more patients that need reviewing.</p>",
+      "classes" : "nhsuk-u-margin-top-0"
+    }) }}
+{% endif %}
+{% endif %}
+
+  </div>
+</div>
+{% endblock %}
