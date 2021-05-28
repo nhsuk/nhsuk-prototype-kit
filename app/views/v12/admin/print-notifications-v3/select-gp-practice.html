@@ -1,0 +1,208 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(5) {
+    border-bottom: 4px solid #d8dde0;
+  }
+
+  .nhsuk-button, .nhsuk-button--ers, .dropdown .dropbtn, .nhsuk-button--ers_secondary, .nhsuk-button--ers_reverse, .nhsuk-button--ers_reverse:hover, .nhsuk-button--ers_reverse:focus, .nhsuk-button--ers_reject, .nhsuk-blue, .nhsuk-right  {
+    margin-bottom: 0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full-width">
+    {{ backLink({
+      "href": "../index",
+      "text": "Back to Admin"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Choose a GP surgery to print notifications</h1>
+    
+    <p>Listed GP surgeries have not given an email address to receive notifications. Choose a GP surgery to print and send notifications to.</p>
+
+    <details class="nhsuk-details">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          How to find a GP surgery not on the list?
+        </span>
+      </summary>
+      <div class="nhsuk-details__text">
+        <form action="print-patients-due-to-be-invited" method="">
+          {{ input({
+            "label": {
+            "text": "Enter GP practice code to find a GP surgery"
+            },
+              "hint": {
+              "text": "GP practice codes have 1 letter followed by a 6 digit number, like A123456."
+            },
+            "id": "input-width-10",
+            "name": "gp-code",
+            "classes": "nhsuk-input--width-10"
+          }) }}
+
+          {{ radios({
+            "idPrefix": "example",
+            "name": "example",
+            "fieldset": {
+              "legend": {
+                "text": "Select a notification type to view",
+                "isPageHeading": false
+              }
+            },
+            "items": [
+              {
+                "value": "Patients due to be invited",
+                "text": "Patients due to be invited"
+              },
+              {
+                "value": "Patients who have not responded",
+                "text": "Patients who have not responded"
+              },
+              {
+                "value": "Patients to review",
+                "text": "Patients to review"
+              }
+            ]
+          }) }}
+
+
+          {{ button({
+            "text": "Submit",
+            "classes": "nhsuk-button nhsuk-button--ers"
+          }) }}
+        </form>
+      </div>
+    </details>
+
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption">Skin symptoms and possible causes</caption>
+      <thead role="rowgroup" class="nhsuk-table__head">
+        <tr role="row">
+          <th role="columnheader" class="" scope="col">
+            GP practice code
+          </th>
+          <th role="columnheader" class="" scope="col">
+            Address
+          </th>
+          <th role="columnheader" class="" scope="col">
+            Print preview
+          </th>
+          <th role="columnheader" class="" scope="col">
+            Downloaded/printed by
+          </th>
+          <th role="columnheader" class="" scope="col">
+            Last downloaded/print date
+          </th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">A123456</td>
+          <td class="nhsuk-table__cell ">122 Farburn Terrace, CA10 0WP</td>
+          <td class="nhsuk-table__cell "><a href="print-patients-due-to-be-invited">Patients due to be invited</a><br><a href="print-patients-who-have-not-responded">Patients who have not responded</a><br><a href="print-gp-notifications">GP notifications</a></td>
+          <td class="nhsuk-table__cell ">
+            Jane Smith</br>
+            -</br>
+            -</br>
+          </td>
+          <td class="nhsuk-table__cell ">
+            12-01-2020<br>
+            -</br>
+            -</br>
+          </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">B234567</td>
+          <td class="nhsuk-table__cell ">65 Chapel Lane, AB41 4YZ</td>
+          <td class="nhsuk-table__cell "><a href="print-patients-due-to-be-invited">Patients due to be invited</a><br><a href="print-patients-who-have-not-responded">Patients who have not responded</a><br><a href="print-gp-notifications">GP notifications</a></td>
+          <td class="nhsuk-table__cell ">
+            Jane Smith</br>
+            -</br>
+            -</br>
+          </td>
+          <td class="nhsuk-table__cell ">
+            12-01-2020<br>
+            -</br>
+            -</br>
+          </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">C345678</td>
+          <td class="nhsuk-table__cell ">78 Scotsburn Rd, RG20 5BX</td>
+          <td class="nhsuk-table__cell "><a href="print-patients-due-to-be-invited">Patients due to be invited</a><br><a href="print-patients-who-have-not-responded">Patients who have not responded</a><br><a href="print-gp-notifications">GP notifications</a></td>
+          <td class="nhsuk-table__cell ">
+            Jane Smith</br>
+            -</br>
+            -</br>
+          </td>
+          <td class="nhsuk-table__cell ">
+            12-01-2020<br>
+            -</br>
+            -</br>
+          </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">D456789</td>
+          <td class="nhsuk-table__cell ">81 Berkeley Rd, AB2 1ZB</td>
+          <td class="nhsuk-table__cell "><a href="print-patients-due-to-be-invited">Patients due to be invited</a><br><a href="print-patients-who-have-not-responded">Patients who have not responded</a><br><a href="print-gp-notifications">GP notifications</a></td>
+          <td class="nhsuk-table__cell ">
+            Jane Smith</br>
+            -</br>
+            -</br>
+          </td>
+          <td class="nhsuk-table__cell ">
+            12-01-2020<br>
+            -</br>
+            -</br>
+          </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">E567890</td>
+          <td class="nhsuk-table__cell ">91 Roker Terrace, PE6 7EW</td>
+          <td class="nhsuk-table__cell "><a href="print-patients-due-to-be-invited">Patients due to be invited</a><br><a href="print-patients-who-have-not-responded">Patients who have not responded</a><br><a href="print-gp-notifications">GP notifications</a></td>
+          <td class="nhsuk-table__cell ">
+            Jane Smith</br>
+            -</br>
+            -</br>
+          </td>
+          <td class="nhsuk-table__cell ">
+            12-01-2020<br>
+            -</br>
+            -</br>
+          </td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">F678901</td>
+          <td class="nhsuk-table__cell ">120 Preston Rd, BH20 8WG</td>
+          <td class="nhsuk-table__cell "><a href="print-patients-due-to-be-invited">Patients due to be invited</a><br><a href="print-patients-who-have-not-responded">Patients who have not responded</a><br><a href="print-gp-notifications">GP notifications</a></td>
+          <td class="nhsuk-table__cell ">
+            Jane Smith</br>
+            -</br>
+            -</br>
+          </td>
+          <td class="nhsuk-table__cell ">
+            12-01-2020<br>
+            -</br>
+            -</br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+{% endblock %}
