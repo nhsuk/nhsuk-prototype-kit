@@ -20,6 +20,24 @@
   }
 
 }
+
+.nhsuk-comment-container-bullet {
+  list-style: none;
+  text-indent: none;
+  margin:0;
+  margin-bottom: 32px;
+  padding: 0;
+  box-sizing: border-box;
+
+  li{
+    margin-left: 0;
+    span{
+      display: block;
+    }
+
+  }
+
+}
 p.nhsuk-message-name{
   font-size: .9em;
 }
