@@ -48,9 +48,19 @@ NHS Cervical Screening
   </div>
 </div>
 
+ <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review test result with missing data</h1>
+
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
 
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    <ul class="nhsuk-inset-text nhsuk-comment-container nhsuk-inset-text__screening nhsuk-inset-text__screening--success">
+      <li class="nhsuk-panel"> <strong>This test result has a missing test date.</strong> </span>
+      <p> <br> <span class="date" style="color:	#4c6272">Time recieved: 20 May 2021, 09:30am </span></li>
+    </ul>
+ </div>
+</div>
 
     <div class="nhsuk-panel-with-label">
       {% include '../components/patient-result-3.html' %}
@@ -58,26 +68,12 @@ NHS Cervical Screening
 
       <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-4" aria-describedby="example-hint">
-          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
             Test result details
           </legend>
 
           <dl class="nhsuk-summary-list">
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Error status</dt>
-              <dd class="nhsuk-summary-list__value"><span class="nhsuk-tag nhsuk-tag--red">Invalid data</span></dd>
-            </div>
-
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Error details</dt>
-              <dd class="nhsuk-summary-list__value">Invalid test date</dd>
-            </div>
-
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Time received</dt>
-              <dd class="nhsuk-summary-list__value">04-Feb-2020, 11:06 am</dd>
-            </div>
-
+            
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">National code</dt>
               <dd class="nhsuk-summary-list__value">312980</dd>
@@ -95,25 +91,26 @@ NHS Cervical Screening
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">Test date</dt>
-              <dd class="nhsuk-summary-list__value">62-Jan-2020</dd>
+              <dd class="nhsuk-summary-list__value"><span class="highlight">--</span></dd>
             </div>
 
             <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Cytology result</dt>
-              <dd class="nhsuk-summary-list__value">Negative (X0R)</dd>
+              <dt class="nhsuk-summary-list__key">Result</dt>
+              <dd class="nhsuk-summary-list__value">(19R) Inadequate cytology, HPV positive, Early Recall</dd>
             </div>
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">HPV Primary</dt>
-              <dd class="nhsuk-summary-list__value">HPV negative</dd>
+              <dd class="nhsuk-summary-list__value">Yes</dd>
             </div>
 
             <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Action</dt>
-              <dd class="nhsuk-summary-list__value">Early repeat</dd>
+              <dt class="nhsuk-summary-list__key">Repeat</dt>
+              <dd class="nhsuk-summary-list__value">36 months</dd>
             </div>
 
           </dl>
+          {% include '../components/comments-timeline-manual-match.html' %} 
           </div>
           </div>
           <div class="nhsuk-grid-row">
@@ -138,39 +135,15 @@ NHS Cervical Screening
                     Add comment explaining the action taken
                   </span>
                   <textarea class="nhsuk-textarea commentBox char-textarea" id="rejcomment3" value="rejcomment3" name="rejcomment3" rows="5" data-length=200 required></textarea>
-                  <p class="nhsuk-hint nhsuk-u-margin-top-2"><span class="char-count">250</span> characters remaining</p>
-                </div>
+                  
                 </fieldset>
 
-                <button class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3" role="button">Add comment</button>
+                
 
-                {% set name = "Josie Driver" %}
 
-                {% set commentDate = ("today" | returnDate) %}
-
-                <input type="hidden" id="name" name="name" value="{{commentName}}">
-
-                <input type="hidden" name="date" value={{commentDate}}>
-
-              </form>
-
-              <ul class="nhsuk-comment-container">
-                {% if data.rejcomment3 !=null %}
-
-                <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.rejcomment3}}</li>
-
-                {% endif %}
-              </ul>
-
-          <ul class="nhsuk-comment-container">
-            <li class="nhsuk-panel"><span class="name"> Josie Driver</span> <span class="date"><strong>03-Feb-2020</strong></span>Lab corrected date. Will re-send</li>
-          </ul>
-
-          </div>
-
-        </div>
+        
         <a href="manc-rejected" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and exit</a>
-        <a href="manc-rejected" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Delete from list</a>
+        <a href="rejected-delete" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Delete from list</a>
         <p><a href="manc-rejected">Exit without saving</a></p>
 
       </div>
