@@ -48,7 +48,7 @@ NHS Cervical Screening
   </div>
 </div>
 
- <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review test result with missing data</h1>
+ <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review test result </h1>
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
@@ -63,26 +63,53 @@ NHS Cervical Screening
 </div>
 
     <div class="nhsuk-panel-with-label">
-      {% include '../components/patient-result-3.html' %}
+      
 
-
+       <br>
+      
+     
       <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-4" aria-describedby="example-hint">
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-            Test result details
+            Patient demographics
           </legend>
 
           <dl class="nhsuk-summary-list">
-            
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">National code</dt>
-              <dd class="nhsuk-summary-list__value">312980</dd>
+
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">First name</dt>
+              <dd class="nhsuk-summary-list__value">Margery</dd>
             </div>
 
-           <div class="nhsuk-summary-list__row">
-             <dt class="nhsuk-summary-list__key">Sender code</dt>
-             <dd class="nhsuk-summary-list__value">431088</dd>
-           </div>
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Last name</dt>
+              <dd class="nhsuk-summary-list__value">Bowling</dd>
+            </div>
+
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">NHS number</dt>
+              <dd class="nhsuk-summary-list__value">111 453 7654</dd>
+            </div>
+         
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Address</dt>
+              <dd class="nhsuk-summary-list__value">53 cherry tree crescent
+              <p> Salthill</p>
+              <p> QT3 6KJ</p></dd>
+            </div>
+          
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Date of birth</dt>
+              <dd class="nhsuk-summary-list__value">09-Feb-1997</dd>
+            </div>
+
+          <br>
+          <br>
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+            Test result details
+          </legend>
+         
+           
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">Slide number</dt>
@@ -142,7 +169,7 @@ NHS Cervical Screening
 
 
         
-        <a href="manc-rejected" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and exit</a>
+        <a href="rejected-exceeds-letter-time" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and exit</a>
         <a href="rejected-delete" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Delete from list</a>
         <p><a href="manc-rejected">Exit without saving</a></p>
 

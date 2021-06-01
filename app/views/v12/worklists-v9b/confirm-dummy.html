@@ -100,13 +100,16 @@ NHS Cervical Screening
     {% endif %}
 
     {% if data['dummy-route'] == ['query-dummy'] %}
-        <a href="manc-query" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Exit</a>
+        <a href="manc-query" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Continue to next match</a>
     {% endif %}
 
     {% if data['dummy-route'] == null %}
-        <a href="manc-query" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Exit</a>
+        <a href="manc-query" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Continue to next match</a>
     {% endif %}
 
+    {% if data['dummy-route'] == null %}
+        <a href="manc-query" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Exit</a>
+    {% endif %}
 
 </div>
 

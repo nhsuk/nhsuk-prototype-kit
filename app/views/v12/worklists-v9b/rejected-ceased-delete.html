@@ -60,64 +60,32 @@ NHS Cervical Screening
     <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
     <div class="nhsuk-panel-with-label">
+    <class="nhsuk-panel-with-label__label">
+      {% include '../components/patient-result-1.html' %} 
+
       
-<br>
-      <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-4" aria-describedby="example-hint">
-          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-            Patient demographics
-          </legend>
-
-          <dl class="nhsuk-summary-list">
-
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">First name</dt>
-              <dd class="nhsuk-summary-list__value">Kate</dd>
-            </div>
-
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Last name</dt>
-              <dd class="nhsuk-summary-list__value">Roisin</dd>
-            </div>
-
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">NHS number</dt>
-              <dd class="nhsuk-summary-list__value">888 987 0987</dd>
-            </div>
-         
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Address</dt>
-              <dd class="nhsuk-summary-list__value">3 tree lane
-              <p> ketle way</p>
-              <p> KT7 6TE</p></dd>
-            </div>
-          
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Date of birth</dt>
-              <dd class="nhsuk-summary-list__value">23-Mar-1970</dd>
-            </div>
-
-          <br>
-          <br>
-          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
             Test result details
           </legend>
-         
-           
+      
+
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 ">
+        
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">Slide number</dt>
-              <dd class="nhsuk-summary-list__value">10328000</dd>
+              <dd class="nhsuk-summary-list__value">70406000</dd>
             </div>
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">Test date</dt>
-              <dd class="nhsuk-summary-list__value"><span class="highlight">67 May 2021</span></dd>
+              <dd class="nhsuk-summary-list__value">01-Jan-2021</dd>
             </div>
 
             <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Result</dt>
-              <dd class="nhsuk-summary-list__value"><span class="highlight">(XXX) </span></dd>
+              <dt class="nhsuk-summary-list__key">Test result</dt>
+              <dd class="nhsuk-summary-list__value">(X9A) Low-grade, HPV negative, dyskaryosis</dd>
             </div>
 
             <div class="nhsuk-summary-list__row">
@@ -129,9 +97,14 @@ NHS Cervical Screening
               <dt class="nhsuk-summary-list__key">Repeat</dt>
               <dd class="nhsuk-summary-list__value">36 months</dd>
             </div>
-
           </dl>
-          {% include '../components/comments-timeline-manual-match.html' %} 
+      
+
+      <div class="nhsuk-form-group">
+        
+
+            
+
           </div>
           </div>       
           

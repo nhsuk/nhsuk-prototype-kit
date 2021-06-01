@@ -49,10 +49,10 @@ NHS Cervical Screening
   </div>
 </div>
 
- <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review test result with multiple errors</h1>
+ <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review test result </h1>
 
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-three-quarters">
+  <div class="nhsuk-grid-column-two-thirds">
     <h3 class="nhsuk-inset-text nhsuk-comment-container-bullet nhsuk-inset-text__screening nhsuk-inset-text__screening--success">
       <div class="nhsuk-panel"> <strong>This test result has multiple errors.</strong> 
       <p>
@@ -68,49 +68,69 @@ NHS Cervical Screening
 </div>
 
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-three-quarters">
+  <div class="nhsuk-grid-column-two-thirds">
     <div class="nhsuk-panel-with-label">
-      <class="nhsuk-panel-with-label__label">
-      {% include '../components/patient-result-2.html' %} 
-
       
+
+       <br>
+      
+     
+      <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-4" aria-describedby="example-hint">
-          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+            Patient demographics
+          </legend>
+
+          <dl class="nhsuk-summary-list">
+
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">First name</dt>
+              <dd class="nhsuk-summary-list__value">Kate</dd>
+            </div>
+
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Last name</dt>
+              <dd class="nhsuk-summary-list__value">Roisin</dd>
+            </div>
+
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">NHS number</dt>
+              <dd class="nhsuk-summary-list__value">888 987 0987</dd>
+            </div>
+         
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Address</dt>
+              <dd class="nhsuk-summary-list__value">3 tree lane
+              <p> ketle way</p>
+              <p> KT7 6TE</p></dd>
+            </div>
+          
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Date of birth</dt>
+              <dd class="nhsuk-summary-list__value">23-Mar-1970</dd>
+            </div>
+
+          <br>
+          <br>
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
             Test result details
           </legend>
-      
-
-      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 ">
-        
-
-        <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">National code</dt>
-              <dd class="nhsuk-summary-list__value">676567</dd>
-            </div>
-
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Health authority</dt>
-              <dd class="nhsuk-summary-list__value">676567</dd>
-            </div>
-
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Sender code</dt>
-              <dd class="nhsuk-summary-list__value">131290</dd>
-            </div>
+         
+           
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">Slide number</dt>
-              <dd class="nhsuk-summary-list__value">70406000</dd>
+              <dd class="nhsuk-summary-list__value">10328000</dd>
             </div>
 
             <div class="nhsuk-summary-list__row">
               <dt class="nhsuk-summary-list__key">Test date</dt>
-              <dd class="nhsuk-summary-list__value"><span class="highlight">26-Jan-2020</span></dd>
+              <dd class="nhsuk-summary-list__value"><span class="highlight">67 May 2021</span></dd>
             </div>
 
             <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Test result</dt>
-              <dd class="nhsuk-summary-list__value"><span class="highlight">X9A, Low-grade dyskaryosis</span></dd>
+              <dt class="nhsuk-summary-list__key">Result</dt>
+              <dd class="nhsuk-summary-list__value"><span class="highlight">(XXX) </span></dd>
             </div>
 
             <div class="nhsuk-summary-list__row">
@@ -119,18 +139,15 @@ NHS Cervical Screening
             </div>
 
             <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Action</dt>
-              <dd class="nhsuk-summary-list__value">Repeat Advised months?</dd>
+              <dt class="nhsuk-summary-list__key">Repeat</dt>
+              <dd class="nhsuk-summary-list__value">36 months</dd>
             </div>
+
           </dl>
-
-      </dl>
-      {% include '../components/comments-timeline-manual-match.html' %} 
-    </div>
-  
-
-
- 
+          {% include '../components/comments-timeline-manual-match.html' %} 
+          </div>
+          </div>       
+          
  
 
 
@@ -165,26 +182,7 @@ NHS Cervical Screening
             </div>
           </fieldset>
 
-          
-
-          {% set name = "Josie Driver" %}
-
-          {% set commentDate = ("today" | returnDate) %}
-
-          <input type="hidden" id="name" name="name" value="{{commentName}}">
-
-          <input type="hidden" name="date" value={{commentDate}}>
-
-        </form>
-
-        <ul class="nhsuk-comment-container">
-          {% if data.rejcomment1 !=null %}
-
-          <li class="nhsuk-panel"><span class="name">{{ name }}</span> <span class="date"><strong>{{data.date}}</strong></span> {{data.rejcomment1}}</li>
-
-          {% endif %}
-        </ul>
-
+      
 
       </div>
     </div>

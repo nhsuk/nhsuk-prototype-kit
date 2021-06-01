@@ -1,0 +1,142 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/reveal.js"></script>
+<script type="text/javascript" src="/js/comments.js"></script>
+
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+
+    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-8">
+           <h3 class="nhsuk-heading-s">Test result successfully deleted</h3>
+        </div>
+
+
+    <div class="nhsuk-panel-with-label">
+<br>
+        <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-4" aria-describedby="example-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+            Patient demographics
+          </legend>
+
+          <dl class="nhsuk-summary-list">
+
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">First name</dt>
+              <dd class="nhsuk-summary-list__value">Kate</dd>
+            </div>
+
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Last name</dt>
+              <dd class="nhsuk-summary-list__value">Roisin</dd>
+            </div>
+
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">NHS number</dt>
+              <dd class="nhsuk-summary-list__value">888 987 0987</dd>
+            </div>
+         
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Address</dt>
+              <dd class="nhsuk-summary-list__value">3 tree lane
+              <p> ketle way</p>
+              <p> KT7 6TE</p></dd>
+            </div>
+          
+          <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Date of birth</dt>
+              <dd class="nhsuk-summary-list__value">23-Mar-1970</dd>
+            </div>
+
+          <br>
+          <br>
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+            Test result details
+          </legend>
+         
+           
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Slide number</dt>
+              <dd class="nhsuk-summary-list__value">10328000</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Test date</dt>
+              <dd class="nhsuk-summary-list__value"><span class="highlight">67 May 2021</span></dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Result</dt>
+              <dd class="nhsuk-summary-list__value"><span class="highlight">(XXX) </span></dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">HPV Primary</dt>
+              <dd class="nhsuk-summary-list__value">Yes</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Repeat</dt>
+              <dd class="nhsuk-summary-list__value">36 months</dd>
+            </div>
+
+          
+          </div>
+          </div>       
+          
+
+                 {% if (data['address-line-1'] != "" and data['address-line-1'] != null) %}
+                  {{ data['address-line-1'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-line-2'] != "" and data['address-line-2'] != null) %}
+                  {{ data['address-line-2'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-town'] != "" and data['address-town'] != null) %}
+                  {{ data['address-town'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-county'] != "" and data['address-county'] != null) %}
+                  {{ data['address-county'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-postcode'] != "" and data['address-postcode'] != null) %}
+                  {{ data['address-postcode'] }} <br>
+                  {% endif %}
+
+               
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+ 
+        <a href="rejected-missing" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Continue to next rejection</a>
+        <a href="manc-rejection" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Exit</a>
+   
+
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}
