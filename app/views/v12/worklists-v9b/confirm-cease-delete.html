@@ -1,0 +1,114 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/reveal.js"></script>
+<script type="text/javascript" src="/js/comments.js"></script>
+
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical Screening
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+
+    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-8">
+           <h3 class="nhsuk-heading-s">Test result successfully deleted</h3>
+        </div>
+
+
+    <div class="nhsuk-panel-with-label">
+    <class="nhsuk-panel-with-label__label">
+      {% include '../components/patient-result-1.html' %} 
+<br>
+        <div class="nhsuk-form-group">
+        <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-4" aria-describedby="example-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+           Test result details
+          </legend>
+
+          <dl class="nhsuk-summary-list">
+
+
+         
+           
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Slide number</dt>
+              <dd class="nhsuk-summary-list__value">70406000</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Test date</dt>
+              <dd class="nhsuk-summary-list__value">01-Jan-2021</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Test result</dt>
+              <dd class="nhsuk-summary-list__value">(X9A) Low-grade, HPV negative, dyskaryosis</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">HPV Primary</dt>
+              <dd class="nhsuk-summary-list__value">Yes</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Repeat</dt>
+              <dd class="nhsuk-summary-list__value">36 months</dd>
+            </div>
+          </dl>
+
+          
+          </div>
+          </div>       
+          
+
+                 {% if (data['address-line-1'] != "" and data['address-line-1'] != null) %}
+                  {{ data['address-line-1'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-line-2'] != "" and data['address-line-2'] != null) %}
+                  {{ data['address-line-2'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-town'] != "" and data['address-town'] != null) %}
+                  {{ data['address-town'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-county'] != "" and data['address-county'] != null) %}
+                  {{ data['address-county'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-postcode'] != "" and data['address-postcode'] != null) %}
+                  {{ data['address-postcode'] }} <br>
+                  {% endif %}
+
+               
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+ 
+        <!--<a href="rejected-missing" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Continue to next rejection</a>-->
+        <a href="manc-rejected-finish" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Back to rejected list</a>
+   
+
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}
