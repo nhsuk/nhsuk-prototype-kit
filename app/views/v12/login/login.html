@@ -1,0 +1,51 @@
+{% extends 'layout-v2.html' %}
+
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <div class="nhsuk-card">
+        <div class="nhsuk-card__content">
+          <h1 class="nhsuk-card__heading nhsuk-fieldset__legend--l">
+            Cervical Screening Mananagment System
+          </h1>
+          <p class="nhsuk-card__description">
+            To access the Cervical screening management system you will need an <a href="https://digital.nhs.uk/services/nhs-care-identity-service-2">NHS Identity Smartcard</a> and an associated role which is assigned by <a href="https://digital.nhs.uk/services/registration-authorities-and-smartcards">Registration authorities.</a> 
+            <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-6" href="smartcard" type="submit">
+              Login with NHS Identity
+            </a>
+          </p>
+        </div>
+      </div>
+
+      {{ details({
+        "text": "I don't have an NHS Identity Smartcard",
+        "HTML": "
+        <p>Information to add</p>
+        <a href=''>Help pages</a>
+        "
+      }) }}
+
+      {{ details({
+        "text": "I don't have access to the Cervical screening management system",
+        "HTML": "
+        <p>Information to add</p>
+        <a href=''>Help pages</a>
+        "
+      }) }}
+
+      {{ details({
+        "text": "I have an NHS Identity Smartcard but I have forgotten my 6 digit passcode",
+        "HTML": "
+        <p>Information to add</p>
+        <a href=''>Help pages</a>
+        "
+      }) }}
+      
+
+    </div>
+  </div>
+{% endblock %}

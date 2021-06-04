@@ -15,7 +15,7 @@
 
 <!-- Set the page title inside the pageTitle block -->
 {% block pageTitle %}
-  Cervical Screening
+  Cervical screening management system
 {% endblock %}
 
 <!-- Header goes inside the header block -->
@@ -23,7 +23,7 @@
 {% block header %}
   {{ header({
     "service": {
-        "name": "Cervical Screening",
+        "name": "Cervical screening management system",
         "href": "/"
       },
       "showNav": "false",
@@ -59,6 +59,10 @@
 
 {{ footer({
     "links": [
+      {
+        "URL": "/",
+        "label": "Help"
+      },
       {
         "URL": "/",
         "label": "NHS sites"
