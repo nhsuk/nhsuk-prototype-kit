@@ -11,6 +11,26 @@
   .nhsuk-button, .nhsuk-button--ers, .dropdown .dropbtn, .nhsuk-button--ers_secondary, .nhsuk-button--ers_reverse, .nhsuk-button--ers_reverse:hover, .nhsuk-button--ers_reverse:focus, .nhsuk-button--ers_reject, .nhsuk-blue, .nhsuk-right  {
     margin-bottom: 0;
   }
+
+  .nhsuk-checkboxes__input + .nhsuk-checkboxes__label::before, .nhsuk-checkboxes__input  {
+    height: 20px;
+    width: 20px;
+  }
+
+  .nhsuk-checkboxes__label {
+    padding: 0px 12px 4px; 
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .nhsuk-checkboxes__item {
+    min-height: 20px;
+    padding: 0 0 0 20px;
+  }
+
+  .nhsuk-checkboxes__input:disabled + .nhsuk-checkboxes__label {
+    opacity: 1;
+  }
 </style>
 {% endblock %}
 {% block pageTitle %}
@@ -34,6 +54,8 @@ NHS Cervical screening management system
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     <h1 class="nhsuk-heading-l">Print patients who have not responded for {{ data['gp-code'] or 'A123456' }}</h1>
+    <p class="nhsuk-heading-xs">Last viewed by: Jane Smith<br>
+    <p class="nhsuk-heading-xs">Last viewed date: 12-Jun-2021<br>
     <p class="nhsuk-heading-xs">Address: 122  Farburn Terrace, CA10 0WP</p>
     <p class="no-print"><a onclick="window.print(); " class="nhsuk-button nhsuk-button--ers">Print</a></p>
 
@@ -43,11 +65,9 @@ NHS Cervical screening management system
     <p>
       To cease or defer a patient:
       <ul>
-        <li>download the correct cease or defer form from the Primary care support website (CSAS): <a href="https://www.csas.nhs.uk/support/">https://www.csas.nhs.uk/support/</a></li>
-        <li>print the form</li>
-        <li>fill in and sign the form (needs to be done by a GP, nurse or clinician, or by the patient for the ‘Informed consent for withdrawal from the cervical screening programme’ form)</li>
-        <li>scan the form</li>
-        <li>submit it to the CSAS website: <a href="https://www.csas.nhs.uk/contact-us/">https://www.csas.nhs.uk/contact-us/</a></li>
+        <li>1. Find the correct form to cease or defer from the NHS Cervical Screening Administration Service (CSAS) website: https://www.csas.nhs.uk/support/.</li>
+        <li>2. Fill in and sign the form (the patient needs to sign to cease or defer for informed choice).</li>
+        <li>3. Submit the form using the CSAS website: https://www.csas.nhs.uk/contact-us/.</li>
       </ul>
     </p>
 {% if data['patients'] == null %} 
@@ -124,6 +144,92 @@ NHS Cervical screening management system
           </td>
           #}
         </tr>
+        <tr class="nhsuk-u-padding-bottom-0">
+          <td colspan="2" style="vertical-align: top; border-bottom: none">
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                <p>Cease:</p>
+
+                <div class="nhsuk-checkboxes">
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email" disabled="disabled">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
+                      due to age
+                    </label>
+                  </div>
+
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="phone" disabled="disabled">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="example-2">
+                      no cervix
+                    </label>
+                  </div>
+
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="example-3" name="example" type="checkbox" value="text message" disabled="disabled">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="example-3">
+                      radiotherapy (to the pelvic area which affects the cervix) 
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </td>
+          <td colspan="2" style="vertical-align: top; border-bottom: none">
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                <p>Defer next due date until ______________:</p>
+
+                <div class="nhsuk-checkboxes nhsuk-checkboxes--print">
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email" disabled="disabled">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
+                      pregnancy
+                    </label>
+                  </div>
+
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="phone" disabled="disabled">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="example-2">
+                      recent test on ______________ Result ____________________________________
+                    </label>
+                  </div>
+
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="example-3" name="example" type="checkbox" value="text message" disabled="disabled">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="example-3">
+                      under care of colposcopy
+                    </label>
+                  </div>
+
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="example-3" name="example" type="checkbox" value="text message" disabled="disabled">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="example-3">
+                      undergoing treatment relevant to screening
+                    </label>
+                  </div>
+
+                  <div class="nhsuk-checkboxes__item">
+                    <input class="nhsuk-checkboxes__input" id="example-3" name="example" type="checkbox" value="text message" disabled="disabled">
+                    <label class="nhsuk-label nhsuk-checkboxes__label" for="example-3">
+                      discharge from colposcopy 
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5" style="vertical-align: top">
+            <div class="nhsuk-form-group">
+              <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+                <p>Comments ______________________________________________________________________</p>
+              </fieldset>
+            </div>
+          </td>
+        </tr>
+
         {% endfor %}
       </tbody>   
     </table>

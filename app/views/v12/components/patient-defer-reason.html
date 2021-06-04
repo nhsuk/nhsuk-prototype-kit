@@ -4,21 +4,21 @@
   {# <form action="prior-notification-{{ data.pnlversion }}-defer-length" method="post"> #}
   <form action="/v12/choose-defer-reason" method="post">
 {% endif %}
-
+{% if data.role != 'csas' %}
 <details class="nhsuk-details">
       <summary class="nhsuk-details__summary">
-        <span class="nhsuk-details__summary-text">See how to defer for patient wishes to defer</span>
+        <span class="nhsuk-details__summary-text">See how to defer a patient who wishes to be deferred</span>
       </summary>
       <div class="nhsuk-details__text">
-        <p>To defer a patient for patient wishes to defer:</p>
+        <p>To defer a patient for informed choice:</p>
         <ul class="nhsuk-list">
-          <li>1. Download the correct defer form from the <a href="">Primary care support website (CSAS)</a></li>
-          <li>2. Print, fill in and sign the form (the patient needs to sign the form if wish to defer)</li>
-          <li>3. Scan in and submit the form using the <a href="">CSAS defer online form</a></li>
+          <li>1. Find the correct defer form in <a href="">primary care support on the NHS Cervical Screening Administration Service (CSAS) website</a>.</li>
+          <li>2. Fill in and sign the form (the patient needs to sign to defer for informed choice).</li>
+          <li>3. Submit the form using the <a href="">CSAS delay or defer online form</a>.</li>
         </ul>
       </div>
     </details>
-
+{% endif %}
 <div class="nhsuk-form-group">
   <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
