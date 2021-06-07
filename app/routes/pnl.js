@@ -82,12 +82,23 @@ router.get("/*/get-ceased-notifications*", function (req, res) {
     }
 
     getUpdatedPatients(req);
-
-   // req.session.data["ceased_patients"] = patient.getPatients("ceased");
-   // var patients = patient.getPatients("ceased");
-   // req.session.data["ceased_patients"] = patients;
-
     res.redirect("/" + getVersion(req) + "/non-responder/ceased-patients")
+});
+
+router.get("/*/get-paper-gp-notifications", function (req, res) {
+    console.log("GETTING CEASED NOTIFICATIONS");
+    //console.log(req.url)
+    if ((req.session.data["pnl_update_msg_show"] >= 1)) {
+
+        if (req.session.data["pnl_update_msg_show"] >= 2) {
+            req.session.data["pnl_update_msg"] = ""
+            req.session.data["pnl_update_msg_show"] = 0;
+        }
+        req.session.data["pnl_update_msg_show"]++;
+    }
+
+    getUpdatedPatients(req);
+    res.redirect("/" + getVersion(req) + "/admin/print-notifications-v3/print-gp-notifications")
 });
 
 

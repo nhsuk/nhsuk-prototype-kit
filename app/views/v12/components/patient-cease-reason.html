@@ -10,7 +10,7 @@
     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
       <h1 class="nhsuk-fieldset__heading">Choose a reason to cease the patient</h1>
     </legend>
-  {% if data.role == 'admin' %}
+  {% if data.role != 'csas' %}
 
     <details class="nhsuk-details">
       <summary class="nhsuk-details__summary">
@@ -19,9 +19,9 @@
       <div class="nhsuk-details__text">
         <p>To cease a patient by informed choice or under the mental capacity act:</p>
         <ul class="nhsuk-list">
-          <li>1. Download the correct cease form from the <a href="">Primary care support website (CSAS)</a></li>
-          <li>2. Print, fill in and sign the form (the patient needs to sign the form if they are ceasing by informed consent)</li>
-          <li>3. Scan in and submit the form using the <a href="">CSAS cease/opt out online form</a></li>
+          <li>1. Find the correct cease form in <a href="">primary care support on the NHS Cervical Screening Administration Service (CSAS) website</a>.</li>
+          <li>2. Fill in and sign the form (the patient needs to sign to cease for informed choice).</li>
+          <li>3. Submit the form using the <a href="">CSAS cease or opt out online form</a>.</li>
         </ul>
       </div>
     </details>

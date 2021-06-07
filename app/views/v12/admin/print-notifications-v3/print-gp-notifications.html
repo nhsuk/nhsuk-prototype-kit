@@ -14,7 +14,7 @@
 </style>
 {% endblock %}
 {% block pageTitle %}
-NHS Cervical Screening
+NHS Cervical screening management system
 {% endblock %}
 
 {% block header %}
@@ -34,6 +34,8 @@ NHS Cervical Screening
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     <h1 class="nhsuk-heading-l">Print GP notifications for {{ data['gp-code'] or 'A123456' }}</h1>
+    <p class="nhsuk-heading-xs">Last viewed by: Jane Smith<br>
+    <p class="nhsuk-heading-xs">Last viewed date: 12-Jun-2021<br>
     <p class="nhsuk-heading-xs">Address: 122  Farburn Terrace, CA10 0WP</p>
     <p class="no-print"><a onclick="window.print(); " class="nhsuk-button nhsuk-button--ers">Print</a></p>
 
@@ -47,11 +49,9 @@ NHS Cervical Screening
     <p>
       To cease or defer a patient:
       <ul>
-        <li>download the correct cease or defer form from the Primary care support website (CSAS): <a href="https://www.csas.nhs.uk/support/">https://www.csas.nhs.uk/support/</a></li>
-        <li>print the form</li>
-        <li>fill in and sign the form (needs to be done by a GP, nurse or clinician, or by the patient for the ‘Informed consent for withdrawal from the cervical screening programme’ form)</li>
-        <li>scan the form</li>
-        <li>submit it to the CSAS website: <a href="https://www.csas.nhs.uk/contact-us/">https://www.csas.nhs.uk/contact-us/</a></li>
+        <li>1. Find the correct form to cease or defer from the NHS Cervical Screening Administration Service (CSAS) website: https://www.csas.nhs.uk/support/.</li>
+        <li>2. Fill in and sign the form (the patient needs to sign to cease or defer for informed choice).</li>
+        <li>3. Submit the form using the CSAS website: https://www.csas.nhs.uk/contact-us/.</li>
       </ul>
     </p>
 {% if data['patients'] == null %} 
