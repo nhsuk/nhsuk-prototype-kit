@@ -28,7 +28,7 @@ NHS Cervical screening management system
     }) }}
 
     <h1 class="nhsuk-heading-l">Reports - Letters sent</h1>
-      <div class="nhsuk-grid-row">
+      <!--<div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-one-third">
           {{ dateInput({
             "id": "example",
@@ -59,7 +59,142 @@ NHS Cervical screening management system
             ]
           }) }}
         </div>      
+      </div>-->
+
+<h3> Search by date</h3>
+ <div class="nhsuk-form-group">
+               <label class="nhsuk-label nhsuk-label__strong" for="email">
+                 What would you like to search?
+               </label>
+       
+              <div class="nhsuk-radios nhsuk-radios--conditional">
+                 <div class="nhsuk-radios__item">
+                   <input class="nhsuk-radios__input" id="yes-selfsample" name="self-sample" value="Yes" type="radio" {{ checked("self-sample", "Yes") }} aria-controls="conditional-dateSearch-1" aria-expanded="false">
+                      <label class="nhsuk-label nhsuk-radios__label" for="yes-selfsample">
+                        View a single day
+                      </label>
+                  </div>
+                   
+                   <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-dateSearch-1">
+                   
+                                               <div class="nhsuk-form-group">
+                                                  <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
+                                                    <legend class="nhsuk-fieldset__legend nhsuk-label--s">
+                                                      <h1 class="nhsuk-fieldset__heading">
+                                                        Date?
+                                                      </h1>
+                                                    </legend>
+                                                    <div class="nhsuk-hint" id="example-hint">
+                                                      For example, 15 3 1984
+                                                    </div>
+                                                
+                                                    <div class="nhsuk-date-input" id="example">
+                                                      <div class="nhsuk-date-input__item">
+                                                        <div class="nhsuk-form-group">
+                                                          <label class="nhsuk-label nhsuk-date-input__label" for="example-day">
+                                                            Day
+                                                          </label>
+                                                          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="example-day" name="example-day" type="text" pattern="[0-9]*" inputmode="numeric">
+                                                        </div>
+                                                      </div>
+                                                      <div class="nhsuk-date-input__item">
+                                                        <div class="nhsuk-form-group">
+                                                          <label class="nhsuk-label nhsuk-date-input__label" for="example-month">
+                                                            Month
+                                                          </label>
+                                                          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="example-month" name="example-month" type="text" pattern="[0-9]*" inputmode="numeric">
+                                                        </div>
+                                                      </div>
+                                                      <div class="nhsuk-date-input__item">
+                                                        <div class="nhsuk-form-group">
+                                                          <label class="nhsuk-label nhsuk-date-input__label" for="example-year">
+                                                            Year
+                                                          </label>
+                                                          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="example-year" name="example-year" type="text" pattern="[0-9]*" inputmode="numeric">
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    
+                                                  </fieldset>
+
+                                                   </div>
+                                                   </div>
+      
+                  <div class="nhsuk-radios__item">
+                   <input class="nhsuk-radios__input" id="no-selfsample" name="self-sample" value="No" type="radio" {{ checked("self-sample", "No") }} aria-controls="conditional-dateSearch-2" aria-expanded="false">
+                       <label class="nhsuk-label nhsuk-radios__label" for="no-selfsample">
+                          View up to 7 days 
+                       </label>
+                  </div>
+                     <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-dateSearch-2">
+                   
+                         <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-third">
+          {{ dateInput({
+            "id": "example",
+            "namePrefix": "example",
+            "fieldset": {
+              "legend": {
+                "text": "Enter a date from",
+                "classes": "nhsuk-label--s",
+                "isPageHeading": false
+              }
+            },
+            "hint": {
+              "text": "For example, 15 3 1984"
+            },
+            "items": [
+              {
+                "name": "day",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "month",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "year",
+                "classes": "nhsuk-input--width-4"
+              }
+            ]
+          }) }}
+        </div>      
+        <div class="nhsuk-grid-column-one-third">
+          {{ dateInput({
+            "id": "example",
+            "namePrefix": "example",
+            "fieldset": {
+              "legend": {
+                "text": "Enter a date to",
+                "classes": "nhsuk-label--s",
+                "isPageHeading": false
+              }
+            },
+            "hint": {
+              "text": "For example, 15 3 1984"
+            },
+            "items": [
+              {
+                "name": "day",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "month",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "year",
+                "classes": "nhsuk-input--width-4"
+              }
+            ]
+          }) }}
+        </div>      
       </div>
+
+                                              
+    </div>
+    <br>
+      
     <button class="nhsuk-button nhsuk-button--ers">Query</button>
     <h2 class="nhsuk-heading-m">16 Dec 2020 - Files sent to CIC</h2>
     <table class="nhsuk-table">
