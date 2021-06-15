@@ -60,18 +60,19 @@ NHS Cervical screening management system
           }) }}
         </div>      
       </div>-->
-
-<h3> Search by date</h3>
+<br>
+<h3> Search for letters sent by date:</h3>
  <div class="nhsuk-form-group">
                <label class="nhsuk-label nhsuk-label__strong" for="email">
-                 What would you like to search?
+                 How would you like to search?
                </label>
+               <br>
        
               <div class="nhsuk-radios nhsuk-radios--conditional">
                  <div class="nhsuk-radios__item">
                    <input class="nhsuk-radios__input" id="yes-selfsample" name="self-sample" value="Yes" type="radio" {{ checked("self-sample", "Yes") }} aria-controls="conditional-dateSearch-1" aria-expanded="false">
                       <label class="nhsuk-label nhsuk-radios__label" for="yes-selfsample">
-                        View a single day
+                        See a single day
                       </label>
                   </div>
                    
@@ -81,7 +82,7 @@ NHS Cervical screening management system
                                                   <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
                                                     <legend class="nhsuk-fieldset__legend nhsuk-label--s">
                                                       <h1 class="nhsuk-fieldset__heading">
-                                                        Date?
+                                                        Enter date:
                                                       </h1>
                                                     </legend>
                                                     <div class="nhsuk-hint" id="example-hint">
@@ -123,7 +124,7 @@ NHS Cervical screening management system
                   <div class="nhsuk-radios__item">
                    <input class="nhsuk-radios__input" id="no-selfsample" name="self-sample" value="No" type="radio" {{ checked("self-sample", "No") }} aria-controls="conditional-dateSearch-2" aria-expanded="false">
                        <label class="nhsuk-label nhsuk-radios__label" for="no-selfsample">
-                          View up to 7 days 
+                          See up to 7 days 
                        </label>
                   </div>
                      <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-dateSearch-2">
@@ -135,7 +136,7 @@ NHS Cervical screening management system
             "namePrefix": "example",
             "fieldset": {
               "legend": {
-                "text": "Enter a date from",
+                "text": "Enter a date from:",
                 "classes": "nhsuk-label--s",
                 "isPageHeading": false
               }
@@ -165,7 +166,7 @@ NHS Cervical screening management system
             "namePrefix": "example",
             "fieldset": {
               "legend": {
-                "text": "Enter a date to",
+                "text": "Enter a date to:",
                 "classes": "nhsuk-label--s",
                 "isPageHeading": false
               }
@@ -193,6 +194,45 @@ NHS Cervical screening management system
 
                                               
     </div>
+    <br>
+   
+    <div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+      
+      <label class="nhsuk-label nhsuk-label__strong">
+                 Which letter type would you like to see?
+               </label>
+    </legend>
+
+    <div class="nhsuk-hint" id="example-hint">
+      Select all options that are relevant to you.
+    </div>
+
+    <div class="nhsuk-checkboxes">
+
+      <div class="nhsuk-checkboxes__item">
+        <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+        <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
+          Invitation and Reminder Letters
+        </label>
+      </div>
+
+      <div class="nhsuk-checkboxes__item">
+        <input class="nhsuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="phone">
+        <label class="nhsuk-label nhsuk-checkboxes__label" for="example-2">
+          Result and Cease Letters
+        </label>
+      </div>
+
+      
+
+    </div>
+  </fieldset>
+
+</div>
+    <br>
     <br>
       
     <button class="nhsuk-button nhsuk-button--ers">Query</button>
