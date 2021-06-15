@@ -170,6 +170,12 @@ router.post("/search-v2/", function (req, res) {
 
 router.post("/*/patient/search/search", function(req, res) {
   var nhsNumber = req.session.data["searchnhs"];
+
+  // Male not in cohort
+  if (nhsNumber == "8344690382") {
+    res.redirect("/" + getVersion(req) + "/pds/search/search-no-nhsnumber");
+  }
+
   req.session.data["addresult_update_msg_show"] = 0;
   if (getVersion(req) == 'v9' || 'v10' || 'v11' || 'v12') {
     console.log('try to get the patient out of the database')
@@ -219,8 +225,11 @@ router.post("/*/patient/search/search", function(req, res) {
       req.session.data["alreadyCeased"] = true;
       res.redirect("/" + getVersion(req) + "/patient/patient-summary");
     }
+
+     
   }
 
+   
   const patVersion = req.session.data["patversion"];
 
   if (patVersion >= '2') {

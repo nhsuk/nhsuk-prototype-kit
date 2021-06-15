@@ -1,0 +1,41 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+  <script type="text/javascript" src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/auto.js"></script>
+    <script type="text/javascript" src="/js/reveal.js"></script>
+{% endblock %}
+{% block pageTitle %}
+  NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <h1 class="nhsuk-heading-l">Search results</h1>
+    <p>
+      <span class="number-of-results">
+        <p> We couldn't find the NHS number provided, please <a href="search">refine your search.</a> </p>
+       
+        
+      </span>
+    </p>
+    
+
+
+                  </tbody>
+          </table>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
