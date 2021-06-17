@@ -59,16 +59,19 @@ NHS Cervical screening management system
     <p class="nhsuk-heading-xs">Last viewed by: Jane Smith<br>
     <p class="nhsuk-heading-xs">Last viewed date: 12-Jun-2021<br>
     <p class="nhsuk-heading-xs">Address: 122  Farburn Terrace, CA10 0WP</p>
-    <p class="no-print"><a onclick="window.print(); " class="nhsuk-button nhsuk-button--ers">Print</a></p>
+    <p>The list can be printed or downloaded by saving as a PDF.</p>
+    <p class="no-print"><a onclick="window.print(); " class="nhsuk-button nhsuk-button--ers">Print or download</a></p>
 
     <p>Use this list to review the patients at your GP surgery who are due to be invited for cervical screening.</p>
     <p>You can cease them from screening or defer their invitation if needed. If you do not this before the review by date then the patient will be invited for cervical screening on their next test due date.</p>
     <p>
       To cease or defer a patient:
       <ul>
-        <li>1. Find the correct form to cease or defer from the NHS Cervical Screening Administration Service (CSAS) website: https://www.csas.nhs.uk/support/.</li>
-        <li>2. Fill in and sign the form (the patient needs to sign to cease or defer for informed choice).</li>
-        <li>3. Submit the form using the CSAS website: https://www.csas.nhs.uk/contact-us/.</li>
+      <ol>
+        <li>Find the correct form to cease or defer from the NHS Cervical Screening Administration Service (CSAS) website: https://www.csas.nhs.uk/support/.</li>
+        <li>Fill in and sign the form (the patient needs to sign to cease or defer for informed choice).</li>
+        <li>Submit the form using the CSAS website: https://www.csas.nhs.uk/contact-us/.</li>
+      </ol>
       </ul>
     </p>
 {% if data['patients'] == null %} 
@@ -94,7 +97,7 @@ NHS Cervical screening management system
           <th class="nhsuk-table__header" aria-sort="none" scope="col">Status</th>
           <th class="nhsuk-table__header" aria-sort="none" scope="col">Last result</th>
           {# <th class="nhsuk-table__header" aria-sort="none" scope="col">Next test due date</th> #}
-          <th class="nhsuk-table__header" aria-sort="none" scope="col">Review By</th>
+          <th class="nhsuk-table__header" aria-sort="none" scope="col">Review</th>
         </tr>
       </thead>
       <tbody class="nhsuk-table__body">
