@@ -173,7 +173,7 @@ router.post("/*/patient/search/search", function(req, res) {
 
   // Male not in cohort
   if (nhsNumber == "8344690382") {
-    res.redirect("/" + getVersion(req) + "/pds/search/search-no-nhsnumber");
+    res.redirect("/" + getVersion(req) + "/pds/search/search-all-results-forNHSno");
   }
 
   req.session.data["addresult_update_msg_show"] = 0;
