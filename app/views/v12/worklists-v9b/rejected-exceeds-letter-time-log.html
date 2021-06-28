@@ -49,10 +49,11 @@ NHS Cervical screening management system
   </div>
 </div>
 
- <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review test result </h1>
+ <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Log test result to patient summary</h1>
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
+  
     <ul class="nhsuk-inset-text nhsuk-comment-container nhsuk-inset-text__screening nhsuk-inset-text__screening--success">
       <li class="nhsuk-panel"> <strong>This test result was taken more than 3 months ago and therefore a result letter will not be sent.</strong> </span>
       <p> <br> <span class="date" style="color:	#4c6272">Time recieved: 20 May 2021, 09:30am </span></li>
@@ -110,7 +111,7 @@ NHS Cervical screening management system
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
 
-        <!--<form action="rejected-p1" method="post">
+        <form action="rejected-p1" method="post">
           <fieldset class="nhsuk-fieldset">
             <div class="nhsuk-form-group">
               <label class="nhsuk-label nhsuk-label--s nhsuk-u-padding-top-6 nhsuk-u-margin-bottom-2" for="example-heading">
@@ -135,78 +136,8 @@ NHS Cervical screening management system
 
           <div class="nhsuk-form-group">
 
-  
-
-   <div class="nhsuk-form-group">
-   <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-1" for="rejcomment1">
-                Add result to patient summary?
-              </label>
-              <br>
-    
-          <div class="nhsuk-checkboxes">
-            <div class="nhsuk-checkboxes__item">
-            <input class="nhsuk-checkboxes__input" id="confirmAddTest" name="confirmAddTest" type="checkbox" value="confirmAddTest">
-            <label class="nhsuk-label nhsuk-checkboxes__label" for="confirmIdentity">
-              Result has been checked and can be added to patient summary 
-            </label>
-          </div>
-          </div>
-          <br>-->
-
-     <div class="nhsuk-form-group">
-     <form action="rejected-p1" method="post">
-
-          <fieldset class="nhsuk-fieldset">
-            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-              <h2 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong nhsuk-u-margin-top-4">
-                How do you want to action the result?
-              </h2>
-              <div class="nhsuk-hint" id="example-hints-1-item-hint">
-                 The action taken will be shown in the audit history.
-                </div>
-            </legend>
-
-            <div class="nhsuk-radios">
-
-            <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="current">
-                <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-                  Add result to patient summary
-                </label>
-                <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
-                 
-                </div>
-              </div>
-
-              <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="current">
-                <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-                  Log result to patient summary
-                </label>
-                <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
-                 
-                </div>
-              </div>  
-
-               <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="current">
-                <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-                  Delete result
-                </label>
-                <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
-                 
-                </div>
-              </div>  
-
-            </div>
-          </fieldset>
-
-       </div> 
-
-
       
-    <a href="rejected-ceased" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Continue</a>
-    <a href="rejected-delete" class="nhsuk-button nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Delete from list</a>
+    <a href="rejected-exceeds-letter-time-log-confirm" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Log result</a>
     <p><a href="manc-rejected">Exit without saving</a></p>
 
   

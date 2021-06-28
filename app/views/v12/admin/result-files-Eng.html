@@ -1,0 +1,182 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(5) {
+    border-bottom: 4px solid #d8dde0;
+  }
+
+  .nhsuk-button, .nhsuk-button--ers, .dropdown .dropbtn, .nhsuk-button--ers_secondary, .nhsuk-button--ers_reverse, .nhsuk-button--ers_reverse:hover, .nhsuk-button--ers_reverse:focus, .nhsuk-button--ers_reject, .nhsuk-blue, .nhsuk-right  {
+    margin-bottom: 0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    {{ backLink({
+      "href": "index",
+      "text": "Back to Admin"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Print files</h1>
+
+    {{ table({
+      panel: false,
+      caption: "Skin symptoms and possible causes",
+      firstCellIsHeader: false,
+      head: [
+        {
+          text: "Date"
+        },
+        {
+          text: "Letter type"
+        },
+        {
+          text: "Sent to print"
+        },
+        {
+          text: "Printed"
+        },
+        {
+          text: "Action"
+        }
+
+      ],
+      rows: [
+        [
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Invites and Reminders"
+          },
+          {
+            text: '100'
+          },
+          {
+            text: '100'
+          },
+          {
+            html: '<a href="">Download CSV</a>'
+          }
+        ],
+        [
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Cease and Results"
+          },
+          {
+            text: '105'
+          },
+          {
+            text: '304'
+          },
+          {
+            html: '<a href="">Download CSV</a>'
+          }
+        ],
+        [
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Cease and Results"
+          },
+          {
+            text: '600'
+          },
+          {
+            text: '400'
+          },
+          {
+            html: '<a href="">Download CSV</a>'
+          }
+        ],
+        [
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Invites and Reminders"
+          },
+          {
+            text: '-'
+          },
+          {
+            text: '-'
+          },
+          {
+            html: '<a href="">Download CSV</a>'
+          }
+        ],
+        [
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Invites and Reminders"
+          },
+          {
+            text: '55'
+          },
+          {
+            text: '55'
+          },
+          {
+            html: '<a href="">Download CSV</a>'
+          }
+        ],
+        [
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Invites and Reminders"
+          },
+          {
+            text: '199'
+          },
+          {
+            text: '199'
+          },
+          {
+            html: '<a href="">Download CSV</a>'
+          }
+        ],
+        [
+          {
+            text: "20-11-2020 16:38:37"
+          },
+          {
+            text: "Invites and Reminders"
+          },
+          {
+            text: '90'
+          },
+          {
+            text: '80'
+          },
+          {
+            html: '<a href="">Download CSV</a>'
+          }
+        ]
+      ]
+}) }}
+
+  </div>
+</div>
+{% endblock %}
