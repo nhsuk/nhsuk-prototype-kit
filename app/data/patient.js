@@ -310,7 +310,7 @@ var patients = [
             "postcode": "EX2 5SE"
         },
         "ceased_type": "Recently ceased",
-        "date_of_birth": "1964-10-06",
+        "date_of_birth": "1955-10-06",
         "date_of_birth_and_initial": "1954-10-06B",
         "date_of_birth_and_initial_and_postcode": "1954-10-06BEX25SE",
         "first_name": "Brenda",

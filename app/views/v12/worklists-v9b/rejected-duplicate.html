@@ -62,8 +62,9 @@ NHS Cervical screening management system
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
-
-    <div class="nhsuk-panel-with-label">
+ <div class="nhsuk-panel-with-label">
+    
+      {% include '../components/patient-result-2.html' %} 
      
     <br>
        <h2 class="nhsuk-heading-m">Result received 03 June 2021, 08:44am</h2>
@@ -71,72 +72,70 @@ NHS Cervical screening management system
 
       <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 ">
         
-           <div class="nhsuk-form-group">
-        <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-4" aria-describedby="example-hint">
-          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-            Patient demographics
-          </legend>
-
+        <div class="nhsuk-form-group">
           <dl class="nhsuk-summary-list">
 
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">First name</dt>
-              <dd class="nhsuk-summary-list__value">Jane</dd>
-            </div>
-
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Last name</dt>
-              <dd class="nhsuk-summary-list__value">Simmons</dd>
-            </div>
-
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">NHS number</dt>
-              <dd class="nhsuk-summary-list__value">987 654 7654</dd>
-            </div>
-         
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Address</dt>
-              <dd class="nhsuk-summary-list__value">11 Carage Road  
-              <p> Kent <p> KS7 9PT</p></dd>
-            </div>
-          
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Date of birth</dt>
-              <dd class="nhsuk-summary-list__value">08-Jun-1993</dd>
-            </div>
-
-          <br>
-          <br>
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
             Test result details
           </legend>
-         
-        
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Slide number</dt>
-              <dd class="nhsuk-summary-list__value"><span class="highlight">70406000</span></dd>
-            </div>
+<div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">National code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "-" }}</dd>
+  </div>
+    
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Health Authority</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or "-" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Self-sample</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['self-sample'] or "-" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Source code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['source-code'] or "-" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Sender code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or "-" }} </dd>
+  </div>
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Test date</dt>
-              <dd class="nhsuk-summary-list__value">26-Jan-2020</dd>
-            </div>
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Test result</dt>
-              <dd class="nhsuk-summary-list__value">(39S) Low-grade, HPV positive, dyskaryosis</dd>
-            </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Slide number</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] or "-" }}</dd>
+  </div>
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">HPV Primary</dt>
-              <dd class="nhsuk-summary-list__value">Yes</dd>
-            </div>
+  {% set nextTestDueDate = data['test_date'] %}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Test date</dt>
+    <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat }}</dd>
+  </div>
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Repeat</dt>
-              <dd class="nhsuk-summary-list__value">12 months</dd>
-            </div>
+ <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">HPV Primary</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] or "-" }} </dd>
+  </div>
+
+<div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Result</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['result-result'] }} {{ data['result-infection'] }} {{ data['result-action'] }}</dd>
+  </div>
+
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Repeat in months</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or "-" }} months</dd>
+  </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Next test due date</dt>
+      <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', data['test_date']) + ' ' + 3 | returnDate('years', data['test_date']) | returnTimeDiff }}</dd>
+    </div> 
 
             <br>
             
@@ -152,83 +151,84 @@ NHS Cervical screening management system
   <div class="nhsuk-grid-column-one-half">
     <div class="nhsuk-panel-with-label">
     
+      {% include '../components/patient-result-2.html' %} 
       <br>
     
-      <h2 class="nhsuk-heading-m"> Result received 02 June 2021, 09.30 am</h2>
+      <h2 class="nhsuk-heading-m"> Result received 18 June 2016, 09.30 am</h2>
                 
       <dl class="nhsuk-summary-list nhsuk-u-padding-top-3">
-          <div class="nhsuk-form-group">
-        <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-4" aria-describedby="example-hint">
-          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-            Patient demographics
-          </legend>
-
-          <dl class="nhsuk-summary-list">
-
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">First name</dt>
-              <dd class="nhsuk-summary-list__value">Jane</dd>
-            </div>
-
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Last name</dt>
-              <dd class="nhsuk-summary-list__value">Simmons</dd>
-            </div>
-
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">NHS number</dt>
-              <dd class="nhsuk-summary-list__value">987 654 7654</dd>
-            </div>
-         
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Address</dt>
-              <dd class="nhsuk-summary-list__value">11 Carage Road 
-              <p>  Kent <p> KS7 9PT</p></span></dd>
-            </div>
           
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Date of birth</dt>
-              <dd class="nhsuk-summary-list__value">08-Jun-1993</dd>
-            </div>
-
-          <br>
-          <br>
+          
+          
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
             Test result details
           </legend>
         
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Slide number</dt>
-              <dd class="nhsuk-summary-list__value"><span class="highlight">70406000</span></dd>
-            </div>
+           <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">National code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "-" }}</dd>
+  </div>
+    
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Health Authority</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or "-" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Self-sample</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['self-sample'] or "-" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Source code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['source-code'] or "-" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Sender code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or "-" }} </dd>
+  </div>
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Test date</dt>
-              <dd class="nhsuk-summary-list__value">-</dd>
-            </div>
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Test result</dt>
-              <dd class="nhsuk-summary-list__value">(39S) Low-grade, HPV positive, dyskaryosis</dd>
-            </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Slide number</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] or "-" }}</dd>
+  </div>
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">HPV Primary</dt>
-              <dd class="nhsuk-summary-list__value">Yes</dd>
-            </div>
+  {% set nextTestDueDate = data['test_date'] %}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Test date</dt>
+    <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat }}</dd>
+  </div>
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Repeat</dt>
-              <dd class="nhsuk-summary-list__value">12 months</dd>
-            </div>
-          </dl>
+ <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">HPV Primary</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] or "-" }} </dd>
+  </div>
+
+<div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Result</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['result-result'] }} {{ data['result-infection'] }} {{ data['result-action'] }}</dd>
+  </div>
+
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Repeat in months</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or "-" }} months</dd>
+  </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Next test due date</dt>
+      <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', data['test_date']) + ' ' + 3 | returnDate('years', data['test_date']) | returnTimeDiff }}</dd>
+    </div> 
+
        {% include '../components/comments-timeline-manual-match.html' %} 
     
   </div>
 </div>
 
-</div>
+
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
 
@@ -255,7 +255,7 @@ NHS Cervical screening management system
             <div class="nhsuk-radios__item">
                 <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="current">
                 <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-                  Use result received 03 June 2021, 08:44am
+                  Log result received 03 June 2021, 08:44am
                 </label>
                 <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
                  This will delete the result recieved 02 June 2021, 09.30 am
@@ -265,7 +265,7 @@ NHS Cervical screening management system
               <div class="nhsuk-radios__item">
                 <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="current">
                 <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-                  Use result received 02 June 2021, 09.30 am
+                  Delete result received 03 June 2021, 08.44 am
                 </label>
                 <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
                  This will delete the result recieved 03 June 2021, 08.44 am
@@ -277,28 +277,7 @@ NHS Cervical screening management system
 
         </div>
 
-        <!--<form action="rejected-p1" method="post">
-          <fieldset class="nhsuk-fieldset">
-            <div class="nhsuk-form-group">
-              <label class="nhsuk-label nhsuk-label--s nhsuk-u-padding-top-6 nhsuk-u-margin-bottom-2" for="example-heading">
-                Enter CRM case number (optional)
-              </label>
-              <span class="nhsuk-hint" id="example-hint">
-                For example, CAS-12345-ABCDE
-              </span>
-              <input class="nhsuk-input nhsuk-input--width-10" type="text" name="crm" autocomplete="off" value="{{ data.crm }}">
-            </div>
-
-            <div class="nhsuk-form-group">
-              <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-1" for="rejcomment1">
-                Comments
-              </label>
-              <span class="nhsuk-hint nhsuk-u-padding-top-2" id="example-hint" for="one-half">
-                 Add a comment explaining the action taken.
-              </span>
-              <textarea class="nhsuk-textarea commentBox char-textarea" id="rejcomment1" value="rejcomment1" name="rejcomment1" rows="5" data-length=200 required></textarea>
-            </div>
-          </fieldset>-->
+        
 
           
 
@@ -306,7 +285,7 @@ NHS Cervical screening management system
 
       </div>
     </div>
-    <a href="rejected-missing" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
+    <a href="rejected-missing" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Continue</a>
     
     <p><a href="manc-rejected">Exit without saving</a></p>
 

@@ -73,9 +73,10 @@ NHS Cervical screening management system
       
       <div class="nhsuk-details__text">
       <div class="nhsuk-hint" id="example-hint">
-      Enter the date rage you wish to search between;<br>
-      min<br>
-      max
+      What date range would you like to view?<br>
+      <br>
+      Minimum view 1 day.<br>
+      Maximum view is 7 days.
     </div>
         <form action="print-patients-due-to-be-invited" method="">
         <div class="nhsuk-grid-row">
@@ -108,7 +109,7 @@ NHS Cervical screening management system
               }
             ]
           }) }}
-        </div>      
+        </div>    
         <div class="nhsuk-grid-column-one-third">
           {{ dateInput({
             "id": "example",
@@ -121,7 +122,7 @@ NHS Cervical screening management system
               }
             },
             "hint": {
-              "text": "For example, 15 3 1984"
+              "text": "Leave blank if viewing 1 day"
             },
             "items": [
               {
@@ -141,13 +142,14 @@ NHS Cervical screening management system
         </div>      
       </div>
       <br>
+      
       <label class="nhsuk-label nhsuk-label__strong">
                  Which letter type would you like to see?
                </label>
     </legend>
 
     <div class="nhsuk-hint" id="example-hint">
-      Select all options that are relevant to you.
+      Select all options that are relevant to you:
     </div>
 
     <div class="nhsuk-checkboxes">
@@ -155,14 +157,14 @@ NHS Cervical screening management system
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
         <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
-          Invitation and Reminder Letters
+          Invite and reminder letters
         </label>
       </div>
 
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="phone">
         <label class="nhsuk-label nhsuk-checkboxes__label" for="example-2">
-          Result and Cease Letters
+          Result and cease letters
         </label>
       </div>
 

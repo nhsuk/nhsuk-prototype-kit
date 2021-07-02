@@ -395,6 +395,7 @@ router.post("/*/check-test-result", function (req, res) {
   res.redirect("/v12/patient/add-test-result/add-test-result-ntdd")
 });
 
+
 router.post("/*/cancel-result-letter", function (req, res) {
   //var cancelResult = req.session.data['cancel-result-letter'];
   var nhsNumber = req.session.data['nhsNumber'];
