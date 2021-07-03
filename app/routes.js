@@ -121,6 +121,20 @@ router.post("/*/hmr101/confirm-address", function (req, res) {
   }
 });
 
+router.post("/*/worklists-v9b/rejected-exceeds-letter-time", function (req, res) {
+  console.log('working')
+  var rejectAction = req.session.data["rejectAction"];
+
+  console.log("check reason: " + rejectAction);
+  if (rejectAction == "log") {
+    res.redirect("/v12/worklists-v9b/rejected-exceeds-letter-time-log");
+  }
+
+  if (rejectAction == "delete") {
+      res.redirect("/v12/worklists-v9b/rejected-delete");
+  }
+});
+
 router.post("/*/hmr101/cervix", function(req, res) {
   var reason = req.session.data["cervix"];
   console.log(reason);

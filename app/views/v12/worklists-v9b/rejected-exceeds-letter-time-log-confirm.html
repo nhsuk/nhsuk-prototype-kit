@@ -29,77 +29,87 @@ NHS Cervical screening management system
         </div>
 
 
-        <div class="nhsuk-panel-with-label">
-          <h3 class="nhsuk-panel-with-label__label">Patient details</h3>
+    <div class="nhsuk-panel-with-label">
+      <class="nhsuk-panel-with-label__label">
+      {% include '../components/patient-result-2.html' %} 
 
-          <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+      
+        <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-4" aria-describedby="example-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            Test result details
+          </legend>
+      
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Name
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                Charlotte Gravill
-              </dd>
-            </div>
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 ">
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Date of birth
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                11-04-1990
-              </dd>
-            </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">National code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "-" }}</dd>
+  </div>
+    
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Health Authority</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or "-" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Self-sample</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['self-sample'] or "-" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Source code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['source-code'] or "-" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Sender code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or "-" }} </dd>
+  </div>
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Patient reference
-              </dt>
-              <dd class="nhsuk-summary-list__value">
-                T123 456 7890
-              </dd>
-            </div>
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">
-                Contact information
-              </dt>
-              <dd class="nhsuk-summary-list__value">
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Slide number</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] or "-" }}</dd>
+  </div>
 
-                 {% if (data['address-line-1'] != "" and data['address-line-1'] != null) %}
-                  {{ data['address-line-1'] }} <br>
-                  {% endif %}
+  {% set nextTestDueDate = data['test_date'] %}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Test date</dt>
+    <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat }}</dd>
+  </div>
 
-                  {% if (data['address-line-2'] != "" and data['address-line-2'] != null) %}
-                  {{ data['address-line-2'] }} <br>
-                  {% endif %}
+ <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">HPV Primary</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] or "-" }} </dd>
+  </div>
 
-                  {% if (data['address-town'] != "" and data['address-town'] != null) %}
-                  {{ data['address-town'] }} <br>
-                  {% endif %}
+<div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Result</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['result-result'] }} {{ data['result-infection'] }} {{ data['result-action'] }}</dd>
+  </div>
 
-                  {% if (data['address-county'] != "" and data['address-county'] != null) %}
-                  {{ data['address-county'] }} <br>
-                  {% endif %}
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Repeat in months</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or "-" }} months</dd>
+  </div>
 
-                  {% if (data['address-postcode'] != "" and data['address-postcode'] != null) %}
-                  {{ data['address-postcode'] }} <br>
-                  {% endif %}
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Next test due date</dt>
+      <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', data['test_date']) + ' ' + 3 | returnDate('years', data['test_date']) | returnTimeDiff }}</dd>
+    </div> 
 
-                  {% if (data['address-line-1'] == "" or data['address-line-1'] == null) and (data['address-line-2'] == "" or data['address-line-2'] == null) and (data['address-town'] == "" or data['address-town'] == null) and (data['address-county'] == "" or data['address-county'] == null) and (data['address-postcode'] == "" or data['address-postcode'] == null) %}
-                  1 Westfield Place<br>Great Shelford<br> CB22 5JJ
-                  {% endif %} 
-              </dd>
-            </div>
-          </dl>
-        </div>
-
+      </dl>
+      {% include '../components/comments-timeline-manual-match.html' %} 
+    </div>
+</div>
+        
     
 
         <a href="manc-query" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Continue to next rejection</a>
     
-        <a href="manc-query" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">View patient summary</a>
+        <a href="/v12/patient/patient-summary-logged" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">View patient summary</a>
 
 
 </div>

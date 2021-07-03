@@ -147,7 +147,7 @@ NHS Cervical screening management system
 
        
   <div class="nhsuk-form-group">
-     <form action="rejected-p1" method="post">
+     <form action="/*/worklists-v9b/rejected-exceeds-letter-time" method="post">
 
           <fieldset class="nhsuk-fieldset">
             <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
@@ -159,9 +159,11 @@ NHS Cervical screening management system
                 </div>
             </legend>
 
+            <form class="nhsuk-form" action="/v12/worklists-v9b/rejected-exceeds-letter-time" method="post">
+
             <div class="nhsuk-radios">
               <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="current">
+                <input class="nhsuk-radios__input" id="example-2" name="rejectAction" type="radio" value="log">
                 <label class="nhsuk-label nhsuk-radios__label" for="example-1">
                   Log result to patient summary
                 </label>
@@ -171,7 +173,7 @@ NHS Cervical screening management system
               </div>  
 
                <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="current">
+                <input class="nhsuk-radios__input" id="example-1" name="rejectAction" type="radio" value="delete">
                 <label class="nhsuk-label nhsuk-radios__label" for="example-1">
                   Delete result
                 </label>
@@ -186,8 +188,9 @@ NHS Cervical screening management system
   
 
       
-    <a href="rejected-ceased" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Continue</a>
+    <button class="nhsuk-button nhsuk-u-margin-top-5 nhsuk-button--ers" type="submit">Continue</button>
     
+    </form>
     <p><a href="manc-rejected">Exit without saving</a></p>
 
   
