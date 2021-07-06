@@ -1,0 +1,151 @@
+{% extends "layout-v2.html" %}
+
+{% block pageTitle %}
+  NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header-3.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+  {% if data['edit-test'] != 'true' %}
+    <div class="nhsuk-back-link nhsuk-u-margin-bottom-4">
+      <a class="nhsuk-back-link__link" href="../patient-summary-7">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Back patient summary</a>
+    </div>
+  {% endif %}
+
+<div class="nhsuk-panel-with-label">
+    {% include '../../components/pnl-patient-2.html' %}
+    <span class="nhsuk-hint">Step 1 of 6</span>
+
+  <h1 class="nhsuk-heading-l">Log test type details</h1>
+
+     <div class="nhsuk-inset-text">
+       <span class="nhsuk-u-visually-hidden">Information: </span>
+       <p>If adding more than  test result, start with the most recent test. 
+       <br>Leave blank if there is no national code or health authority.</p>
+     </div>
+        
+    <form action="/v12/enter-logged-test-result" method="post">
+         <div class="nhsuk-form-group">
+             
+
+          <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+          
+
+          <form action="add-test-result-result" method="post">
+            
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-label__strong" for="example-with-hint-text">
+                National code
+              </label>
+              <div class="nhsuk-hint" id="example-with-hint-text-hint">
+                Also known as lab code. For example, T34KH.
+                <br> Leave blank for Scottish results.
+              </div>
+              <input class="nhsuk-input nhsuk-input--width-10" value="{{ data['national-code'] }}" id="national-code" name="national-code" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
+            </div>
+  
+          
+             {{ input({
+               "label": {
+                 "text": "Health authority",
+                "classes": "nhsuk-label nhsuk-label__strong"
+               },
+               hint: {
+                  html: "1 to 3 letters for example, A, DN or LNA. <br> 
+                  Enter health authority code if provided."
+               },
+                "id": "input-width-2",
+               "name": "health-authority",
+               "classes": "nhsuk-input--width-2",
+               "autocomplete": "off",
+               "value": data['health-authority']
+             }) }}
+            
+            <div class="nhsuk-form-group">
+               <label class="nhsuk-label nhsuk-label__strong" for="email">
+                 Is it a self-sample test?
+               </label>
+
+              <div class="nhsuk-radios nhsuk-radios--conditional">
+                 <div class="nhsuk-radios__item">
+                   <input class="nhsuk-radios__input" id="yes-selfsample" name="self-sample" value="Yes" type="radio" {{ checked("self-sample", "Yes") }} aria-controls="conditional-selfsample-1" aria-expanded="false">
+                      <label class="nhsuk-label nhsuk-radios__label" for="yes-selfsample">
+                        Yes, this is a self-sample test result
+                      </label>
+                  </div>
+                   
+                   <!--<div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-selfsample-1">
+                   
+                                               <div class="nhsuk-form-group">
+                                                <div class="nhsuk-hint" id="example-with-hint-text-hint">
+                                                  Please select the self-sample provider
+                                                </div>
+                                                   <div class="nhsuk-radios__item">
+                                                     <input class="nhsuk-radios__input" id="yes-selfsample" name="result-type" value="Self Sample"type="radio" {{ checked("result-type", "Self Sample") }}>
+                                                        <label class="nhsuk-label nhsuk-radios__label" for="yes-selfsample">
+                                                          YouScreen
+                                                        </label>
+                                                    </div>
+                                                    <div class="nhsuk-radios__item">
+                                                     <input class="nhsuk-radios__input" id="no-selfsample" name="result-type" value="English" type="radio" {{ checked("result-type", "English") }}>
+                                                         <label class="nhsuk-label nhsuk-radios__label" for="no-selfsample">
+                                                            Other
+                                                         </label>
+                                                    </div>
+                                                </div>
+                                              </div>
+                                      </div>-->
+      
+                  
+                   
+                  <div class="nhsuk-radios__item">
+                   <input class="nhsuk-radios__input" id="no-selfsample" name="self-sample" value="No" type="radio" {{ checked("self-sample", "No") }}>
+                       <label class="nhsuk-label nhsuk-radios__label" for="no-selfsample">
+                          No, this is not a self-sample test result
+                       </label>
+                  </div>
+              
+
+                
+             </fieldset>
+              <br>
+                </div>
+                  <button type="submit" class="nhsuk-button nhsuk-button--ers">
+                  Continue
+                </button>
+              </form>
+    
+    {% if data['edit-test'] != 'true' %}
+      <p><a href="../patient-summary-7">Exit without saving</a></p>
+    {% else %}
+      <p><a href="add-test-result-edit-3">Exit without saving</a></p>
+    {% endif %}
+    </form>
+  </div>
+
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+      <p><a href="/v12/reset-patient-data-12">Reset patient data</a></p>
+    </div>
+  </div>
+</footer>
+{% endblock %}

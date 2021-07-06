@@ -19,24 +19,30 @@ NHS Cervical screening management system
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
 
+    {{ backLink({
+      "href": "review-dummy",
+      "text": "Go back to patient details"
+    }) }}
+
     <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-8">
-           <h3 class="nhsuk-heading-s">Test result successfully deleted {{ hideDetails }}</h3>
+           <h3 class="nhsuk-heading-s">test result successfully logged to patient summary</h3>
         </div>
 
 
-     <div class="nhsuk-panel-with-label">
+    <div class="nhsuk-panel-with-label">
       <class="nhsuk-panel-with-label__label">
       {% include '../components/patient-result-2.html' %} 
+
       
-
-          <dl class="nhsuk-summary-list">
-
-          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+        <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-4" aria-describedby="example-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
             Test result details
           </legend>
-    
+      
 
- <div class="nhsuk-summary-list__row">
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 ">
+
+  <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">National code</dt>
     <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "12345" }}</dd>
   </div>
@@ -58,7 +64,7 @@ NHS Cervical screening management system
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or "A86020" }} </dd>
+    <dd class="nhsuk-summary-list__value"><span class="highlight">0000Y</span></dd>
   </div>
 
 
@@ -70,7 +76,7 @@ NHS Cervical screening management system
   {% set nextTestDueDate = data['test_date'] %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Test date</dt>
-    <dd class="nhsuk-summary-list__value"> <span class="highlight">-</span></dd>
+    <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat }}</dd>
   </div>
 
  <div class="nhsuk-summary-list__row">
@@ -91,7 +97,7 @@ NHS Cervical screening management system
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">Next test due date</dt>
-      <dd class="nhsuk-summary-list__value"><span class="highlight">-</span></dd>
+      <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', data['test_date']) + ' ' + 3 | returnDate('years', data['test_date']) | returnTimeDiff }}</dd>
     </div> 
 
     <div class="nhsuk-summary-list__row">
@@ -101,21 +107,25 @@ NHS Cervical screening management system
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">Comments</dt>
-      <dd class="nhsuk-summary-list__value">deleting this test as lab have stated they will be sending new test through</dd>
+      <dd class="nhsuk-summary-list__value">Logging test to patient, lab have been contacted to confirm correct sender code.</dd>
     </div> 
+
 
       </dl>
       {% include '../components/comments-timeline-manual-match.html' %} 
     </div>
   </div>
+        
+    
 
- 
-        <a href="rejected-invalid" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Continue to next rejection</a>
-        <a href="manc-rejection" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Exit</a>
-   
- <p><a href="manc-rejected-minus2">Back to rejected list</a></p>
+        <a href="manc-query" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Continue to next rejection</a>
+    
+        <a href="/v12/patient/patient-summary-logged" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">View patient summary</a>
+
+        <p><a href="manc-rejected-minus2">Back to rejected list</a></p>
+
+
 </div>
-
 
 
 

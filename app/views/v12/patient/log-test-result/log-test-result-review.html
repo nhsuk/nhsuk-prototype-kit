@@ -27,7 +27,7 @@
     <div class="nhsuk-form-group">
   <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-      Review test  
+      Review logged test  
     </legend>
 
 
@@ -35,7 +35,7 @@
             Edit result
          </a>
     
-    <form action="/v12/add-test-result?nhsNumber={{ data.pnl_patient.nhs_number }}&patversion=7" method="post">
+    <form action="../patient-summary-logged-oldtest-manual-log" method="post">
 
 <dl class="nhsuk-summary-list">
   
@@ -120,17 +120,18 @@
  <input type="hidden" id="infectionText" name="infection-text" value="{{ data['result-infection'] | returnInfectionText }}">
  <input type="hidden" id="resultText" name="result-text" value="{{ data['result-result'] | returnResultText }}">
 
-{% if data.patientSummary['pnl_action'] == 'Ceased' %}
+<!--{% if data.patientSummary['pnl_action'] == 'Ceased' %}
   <div class="nhsuk-inset-text">
        <span class="nhsuk-u-visually-hidden">Information: </span>
-       <p>Adding this test will reinstate the patient and set their next test due date.</p>
+       <p>Adding this test will reinstate the patient and set their next test due date.
     </div>
-{% endif %}
-
-
-
+{% endif %}-->
+<div class="nhsuk-inset-text">
+       <span class="nhsuk-u-visually-hidden">Information: </span>
+<p> Logging this result will not send out a results letter and will prevent recall letters from being sent to the patient.</p>
+</div>
          <button class="nhsuk-button nhsuk-button--ers" type="submit">
-            Submit
+            Log test
          </button>
 
          <p><a href="../patient-summary-7">Exit without saving</a></p>

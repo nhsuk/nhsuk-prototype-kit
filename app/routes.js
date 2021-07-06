@@ -135,6 +135,20 @@ router.post("/*/worklists-v9b/rejected-exceeds-letter-time", function (req, res)
   }
 });
 
+router.post("/*/worklists-v9b/rejected-invalid", function (req, res) {
+  console.log('working')
+  var rejectAction = req.session.data["rejectAction"];
+
+  console.log("check reason: " + rejectAction);
+  if (rejectAction == "log") {
+    res.redirect("/v12/worklists-v9b/rejected-invalid-log");
+  }
+
+  if (rejectAction == "delete") {
+      res.redirect("/v12/worklists-v9b/rejected-delete");
+  }
+});
+
 router.post("/*/hmr101/cervix", function(req, res) {
   var reason = req.session.data["cervix"];
   console.log(reason);
@@ -165,6 +179,15 @@ router.post("/*/enter-test-result", function (req, res) {
   }
 
   res.redirect("/" + getVersion(req) + "/patient/add-test-result/add-test-result-details");
+});
+router.post("/*/enter-logged-test-result", function (req, res) {
+  req.session.data["pnl_update_msg_show"] = 0;
+  var testType = req.session.data['result-type'];
+  if (testType == "Abroad") {
+    res.redirect("/" + getVersion(req) + "/patient/log-test-result/log-test-result-test-info");
+  }
+
+  res.redirect("/" + getVersion(req) + "/patient/log-test-result/log-test-result-details");
 });
 
 router.post("/search-v2/", function (req, res) {
@@ -335,6 +358,37 @@ router.get("/*/start-adding-test*", function (req, res) {
     res.redirect("/" + getVersion(req) + "/patient/add-test-result/add-test-result")
 })
 
+router.get("/*/start-logging-test*", function (req, res) {
+  console.log("START LOGGING TEST");
+  req.session.data["addresult_update_msg_show"] = 0;
+  const params = new URLSearchParams(req.query);
+  const nhsNumber = params.get('nhsNumber');
+  //const version = params.get('pnlversion');
+  //req.session.data["pnlversion"] = version;
+  var pnlPatient = patient.getPatient(nhsNumber);
+  req.session.data["pnl_patient"] = pnlPatient;
+  req.session.data['action-text'] = "";
+  req.session.data['result-action'] = "";
+  req.session.data['result-infection'] = "";
+  req.session.data['infection-text'] = "";
+  req.session.data['result-text'] = "";
+  req.session.data['result-result'] = "";
+  req.session.data['example-year'] = "";
+  req.session.data['example-month'] = "";
+  req.session.data['example-day'] = "";
+  req.session.data['sender-code'] = "";
+  req.session.data['national-code'] = "";
+  req.session.data['slide-number'] = "";
+  req.session.data['source-code'] = "";
+  req.session.data['result-type'] = "";
+  req.session.data['health-authority'] = "";
+  req.session.data['result-infection'] = "";
+  req.session.data['hpv-primary'] = "";
+  req.session.data['crm'] = "";
+  req.session.data['comments'] = "";
+
+  res.redirect("/" + getVersion(req) + "/patient/log-test-result/log-test-result")
+})
 
 router.post("/*/add-test-result", function (req, res) {
   console.log('ADDING-TEST-RESULT');
@@ -409,6 +463,20 @@ router.post("/*/check-test-result", function (req, res) {
   res.redirect("/v12/patient/add-test-result/add-test-result-ntdd")
 });
 
+router.post("/*/check-logged-test-result", function (req, res) {
+  var result = (req.session.data["result-result"] + req.session.data["result-infection"] + req.session.data["result-action"]).toUpperCase();
+  console.log("result : " + result)
+  if(result=="X0R"){ 
+    res.redirect("/v12/patient/log-test-result/log-test-result-repeat-in-months-x0r")
+  }
+  if(result=="09R" || result=="29R"){ 
+    res.redirect("/v12/patient/log-test-result/log-test-result-repeat-in-months-09r")
+  }
+  if(result=="0R" || result=="0S" || result=="1R" || result=="1S" || result=="2R" || result=="2S" || result=="3R" || result=="3S" || result=="4S" || result=="5S" || result=="6S" || result=="7S" || result=="8R" || result=="8S" || result=="9R" || result=="9S"){ 
+    res.redirect("/v12/patient/log-test-result/log-test-result-repeat-in-months-manual-input")
+  }
+  res.redirect("/v12/patient/log-test-result/log-test-result-ntdd")
+});
 
 router.post("/*/cancel-result-letter", function (req, res) {
   //var cancelResult = req.session.data['cancel-result-letter'];

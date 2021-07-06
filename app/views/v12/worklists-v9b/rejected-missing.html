@@ -63,119 +63,135 @@ NHS Cervical screening management system
 </div>
 
     <div class="nhsuk-panel-with-label">
-      
+      <class="nhsuk-panel-with-label__label">
+      {% include '../components/patient-result-2.html' %} 
 
-       <br>
       
-     
-      <div class="nhsuk-form-group">
         <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-4" aria-describedby="example-hint">
-          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-            Patient demographics
-          </legend>
-
-          <dl class="nhsuk-summary-list">
-
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">First name</dt>
-              <dd class="nhsuk-summary-list__value">Margery</dd>
-            </div>
-
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Last name</dt>
-              <dd class="nhsuk-summary-list__value">Bowling</dd>
-            </div>
-
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">NHS number</dt>
-              <dd class="nhsuk-summary-list__value">111 453 7654</dd>
-            </div>
-         
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Address</dt>
-              <dd class="nhsuk-summary-list__value">53 cherry tree crescent
-              <p> Salthill</p>
-              <p> QT3 6KJ</p></dd>
-            </div>
-          
-          <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Date of birth</dt>
-              <dd class="nhsuk-summary-list__value">09-Feb-1997</dd>
-            </div>
-
-          <br>
-          <br>
-          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
             Test result details
           </legend>
-         
-           
+      
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Slide number</dt>
-              <dd class="nhsuk-summary-list__value">10328000</dd>
-            </div>
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 ">
+     
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Test date</dt>
-              <dd class="nhsuk-summary-list__value"><span class="highlight">--</span></dd>
-            </div>
+<dl class="nhsuk-summary-list">
 
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Result</dt>
-              <dd class="nhsuk-summary-list__value">(19R) Inadequate cytology, HPV positive, Early Recall</dd>
-            </div>
-
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">HPV Primary</dt>
-              <dd class="nhsuk-summary-list__value">Yes</dd>
-            </div>
-
-            <div class="nhsuk-summary-list__row">
-              <dt class="nhsuk-summary-list__key">Repeat</dt>
-              <dd class="nhsuk-summary-list__value">36 months</dd>
-            </div>
-
-          </dl>
-          {% include '../components/comments-timeline-manual-match.html' %} 
-          </div>
-          
-          <div class="nhsuk-grid-row">
-            <div class="nhsuk-grid-column-full">
-
-              <form action="rejected-p3" method="post">
-                <fieldset class="nhsuk-fieldset">
-                  <div class="nhsuk-form-group">
-                    <label class="nhsuk-label nhsuk-label--s nhsuk-u-margin-bottom-2" for="example-heading">
-                      Enter CRM case number (optional)
-                    </label>
-                    <span class="nhsuk-hint" id="example-hint">
-                      For example, CAS-12345-ABCDE
-                    </span>
-                    <input class="nhsuk-input nhsuk-input--width-10" type="text" name="crm" autocomplete="off" value="{{ data.crm }}">
-                  </div>
-                <div class="nhsuk-form-group">
-                  <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-1" for="example">
-                    Comments
-                  </label>
-                  <span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
-                    Add comment explaining the action taken
-                  </span>
-                  <textarea class="nhsuk-textarea commentBox char-textarea" id="rejcomment3" value="rejcomment3" name="rejcomment3" rows="5" data-length=200 required></textarea>
-                  
-                </fieldset>
-
-                
+<div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">National code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "12345" }}</dd>
+  </div>
+    
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Health Authority</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or "-" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Self-sample</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['self-sample'] or "No" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Source code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['source-code'] or "G" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Sender code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or "A86020" }} </dd>
+  </div>
 
 
-        
-        <a href="rejected-exceeds-letter-time" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
-        <a href="rejected-delete" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-3">Delete from list</a>
-        <p><a href="manc-rejected">Exit without saving</a></p>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Slide number</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] or "21010009" }}</dd>
+  </div>
 
-      </div>
+  {% set nextTestDueDate = data['test_date'] %}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Test date</dt>
+    <dd class="nhsuk-summary-list__value"> <span class="highlight">-</span></dd>
+  </div>
+
+ <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">HPV Primary</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] or "Yes" }} </dd>
+  </div>
+
+<div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Result</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['result-result'] }} {{ data['result-infection'] }} {{ data['result-action'] or "X0A"}}</dd>
+  </div>
+
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Repeat in months</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or "36" }} months</dd>
+  </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Next test due date</dt>
+      <dd class="nhsuk-summary-list__value"><span class="highlight">-</span></dd>
+    </div> 
+
+      </dl>
+      {% include '../components/comments-timeline-manual-match.html' %} 
     </div>
   </div>
+ 
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+       
+  <div class="nhsuk-form-group">
+     <form action="/*/worklists-v9b/rejected-exceeds-letter-time" method="post">
+
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h2 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong nhsuk-u-margin-top-4">
+                How do you want to action the result?
+              </h2>
+              <div class="nhsuk-hint" id="example-hints-1-item-hint">
+                 The action taken will be shown in the audit history.
+                </div>
+            </legend>
+
+            <form class="nhsuk-form" action="/v12/worklists-v9b/rejected-exceeds-letter-time" method="post">
+
+            <div class="nhsuk-radios">
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-2" name="rejectAction" type="radio" value="log">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                  Log result to patient summary
+                </label>
+                <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
+                This will store the incomplete result and stop further invites being sent
+                </div>
+              </div>  
+
+               <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-1" name="rejectAction" type="radio" value="delete">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                  Delete result
+                </label>
+                <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
+                 This will remove the result from the system 
+                </div>
+              </div>
+          </fieldset>
+       </div> 
+       
+       
+  
+
+      
+    <button class="nhsuk-button nhsuk-u-margin-top-5 nhsuk-button--ers" type="submit">Continue</button>
+    
+    </form>
+    <p><a href="manc-rejected">Exit without saving</a></p>
 
 {% endblock %}
 
