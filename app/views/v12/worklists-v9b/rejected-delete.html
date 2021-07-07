@@ -53,11 +53,18 @@ NHS Cervical screening management system
 
 
     <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-two-thirds">
+  <div class="nhsuk-grid-column-three-quarters">
      <h1 class="nhsuk-heading-l"> Check test result before deleting</h1>
      
-
-   
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    <ul class="nhsuk-inset-text nhsuk-comment-container nhsuk-inset-text__screening nhsuk-inset-text__screening--success">
+      <li class="nhsuk-panel"> <strong>This test result was taken more than 3 months ago and therefore a result letter will not be sent.</strong> </span>
+      <p> <br> <span class="date" style="color:	#4c6272">Time recieved: 20 May 2021, 09:30am </span></li>
+    </ul>
+ </div>
+</div>
+  
      <div class="nhsuk-panel-with-label">
       <class="nhsuk-panel-with-label__label">
       {% include '../components/patient-result-2.html' %} 
@@ -107,7 +114,7 @@ NHS Cervical screening management system
   {% set nextTestDueDate = data['test_date'] %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Test date</dt>
-    <dd class="nhsuk-summary-list__value"> <span class="highlight">-</span></dd>
+    <dd class="nhsuk-summary-list__value"> <span class="highlight">01-April-2021</span></dd>
   </div>
 
  <div class="nhsuk-summary-list__row">
@@ -128,7 +135,7 @@ NHS Cervical screening management system
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">Next test due date</dt>
-      <dd class="nhsuk-summary-list__value"><span class="highlight">-</span></dd>
+      <dd class="nhsuk-summary-list__value">01-April-2024 (in 2 years and 275 days)</dd>
     </div> 
 
       </dl>

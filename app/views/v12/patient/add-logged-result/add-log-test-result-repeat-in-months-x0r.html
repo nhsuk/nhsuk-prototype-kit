@@ -1,0 +1,150 @@
+{% extends "layout-v2.html" %}
+
+{% block pageTitle %}
+  NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+  {% include '../../components/header-3.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+    <div class="nhsuk-back-link nhsuk-u-margin-bottom-4">
+      <a class="nhsuk-back-link__link" href="add-test-result-test-info">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Back to step 3 - Add test result</a>
+    </div>
+  <div class="nhsuk-panel-with-label">
+    {% include '../../components/pnl-patient-2.html' %}
+    <span class="nhsuk-hint">Step 4 of 6</span> 
+
+        {% set testResult = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
+        {% set resultText = 3 | returnDate('years', testResult) + ' ' + 3 | returnDate('years', testResult) | returnTimeDiff %}
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+
+        {% set newTestDate = (data['example-year'] + "-" + data['example-month'] + "-" + data['example-day']) | returnDateFormat %}
+        {% set oldTestDate = data.pnl_patient.results[0].result_date | returnDateFormat %}
+
+  
+    {% if data['edit-review'] == 'true' %}
+             <form action="add-test-result-crm-edit" method="POST"> 
+        {% else %}
+             <form action="add-test-result-crm" method="POST">
+        {% endif %}
+
+    <div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      <h1 class="nhsuk-fieldset__heading">
+        Choose when to repeat the test
+      </h1>
+    </legend>
+
+    <p>For the test result X0R you need to choose when to repeat the test in monhts.</p>
+
+    <div class="nhsuk-radios">
+
+                 <div class="nhsuk-radios__item">
+                   <input class="nhsuk-radios__input" id="36-months" name="repeat-months" type="radio" value="36">
+                   <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                     36 months (default)
+                   </label>
+                   {% if (newTestDate | returnUnixTime > oldTestDate | returnUnixTime) %}
+                     <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+                   The patient's next test due date will be {{ resultText }}
+                   </div>
+                   {% else %}
+                     <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+                   The patient's next test due date will not be affected.
+                   </div>
+                   {% endif %}
+                   </div>
+                
+
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="12-months" name="repeat-months" type="radio" value="12">
+                  <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                    12 months
+                  </label>
+                  {% if (newTestDate | returnUnixTime > oldTestDate | returnUnixTime) %}
+                    <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+                  The patient's next test due date will be {{ resultText }}
+                  </div>
+                  {% else %}
+                    <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+                  The patient's next test due date will not be affected.
+                  </div>
+                  {% endif %}
+                  </div>
+               
+           
+                <div class="nhsuk-radios__item">
+                  <input class="nhsuk-radios__input" id="6-months" name="repeat-months" type="radio" value="6">
+                  <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                    6 months
+                  </label>
+                  {% if (newTestDate | returnUnixTime > oldTestDate | returnUnixTime) %}
+                    <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+                  The patient's next test due date will be {{ resultText }}
+                  </div>
+                  {% else %}
+                    <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+                  The patient's next test due date will not be affected.
+                  </div>
+                  {% endif %}
+                  </div>
+                
+           
+              </div>
+            <br>
+              <p>The next test due date has been calculated using the patients most recent test results.</p>
+           
+          </div>
+
+        <!--{% if (newTestDate | returnUnixTime > oldTestDate | returnUnixTime) %}
+          <h1 class="nhsuk-heading-l">Check next test due date</h1>
+            {{ insetText({
+              "HTML": resultText
+            }) }}
+        <p>This next test due date has been calculated using the patients latest test results.</P>
+        {% else %}
+          <h1 class="nhsuk-heading-l">Next test due date unchanged</h1>
+            {{ insetText({
+              "HTML": "<p>The next test test due date will <strong>not</strong> be changed</p>"
+            }) }}
+        <p>The test entered is an older test and will not affect the next test due date.</P>
+
+        {% endif %}-->
+
+          <button class="nhsuk-button nhsuk-button--ers">Continue</button>
+        
+          <!-- <a href="add-test-result-crm" class="nhsuk-button nhsuk-button--ers">Ok, Continue</a>-->
+
+        </form>  
+        {% if data['edit-test'] != 'true' %}
+          <p><a href="../patient-summary-7">Exit without saving</a></p>
+        {% else %}
+          <p><a href="add-test-result-edit-3">Exit without saving</a></p>
+        {% endif %}
+      </fieldset>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+      <p><a href="/v12/reset-patient-data-12">Reset patient data</a></p>
+    </div>
+  </div>
+</footer>
+{% endblock %}

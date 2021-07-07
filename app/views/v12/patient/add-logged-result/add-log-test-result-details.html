@@ -22,7 +22,7 @@
     </div>
 
     <div class="nhsuk-panel-with-label">
-      {% include '../../components/pnl-patient-2.html' %}
+      {% include '../../components/patient-result-2-ntdd.html' %}
       <span class="nhsuk-hint">Step 2 of 6</span>  
   
       <div class="nhsuk-form-group">
@@ -37,9 +37,9 @@
            {% endif %}
 
 
-            log {{ resultType }} test details
+            Logged {{ resultType }} test details
           </legend>
-          <form action="log-test-result-result" method="post">
+          <form action="add-log-test-result-result" method="post">
             
 
 
@@ -68,7 +68,7 @@
            {% if data ['self-sample'] == 'Yes' %}
            {% set senderValue= 'SLFSMP' %}
            {% else %}
-           {% set senderValue= 'A86020' %}
+           {% set senderValue= '0000Y' %}
            {% endif %}
 
             <div class="nhsuk-form-group">

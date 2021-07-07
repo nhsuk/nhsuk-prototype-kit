@@ -20,14 +20,14 @@
         Back to step 5 - Add CRM case number</a>
     </div>
   <div class="nhsuk-panel-with-label">
-    {% include '../../components/pnl-patient-2.html' %}
+    {% include '../../components/patient-result-2-ntdd.html' %}
     <span class="nhsuk-hint">Step 6 of 6</span>
 
 
     <div class="nhsuk-form-group">
   <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-      Review logged test  
+      Review test result 
     </legend>
 
 
@@ -104,7 +104,7 @@
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">Next test due date</dt>
-      <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', nextTestDueDate) + ' ' + 3 | returnDate('years', nextTestDueDate) | returnTimeDiff }}</dd>
+      <dd class="nhsuk-summary-list__value">01-April-2024 (in 2 years and 275 days)</dd>
     </div> 
 
  <div class="nhsuk-summary-list__row">
@@ -130,10 +130,10 @@
 {% endif %}-->
 <div class="nhsuk-inset-text">
        <span class="nhsuk-u-visually-hidden">Information: </span>
-<p> Logging this result will not send out a results letter and will prevent recall letters from being sent to the patient.</p>
+<p> Adding this result will send out the patients result letter and invite them for their next screening session.</p>
 </div>
          <button class="nhsuk-button nhsuk-button--ers" type="submit">
-            Log test
+            Add test
          </button>
 
          <p><a href="../patient-summary-7">Exit without saving</a></p>

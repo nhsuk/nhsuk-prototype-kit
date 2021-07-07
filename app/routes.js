@@ -190,6 +190,16 @@ router.post("/*/enter-logged-test-result", function (req, res) {
   res.redirect("/" + getVersion(req) + "/patient/log-test-result/log-test-result-details");
 });
 
+router.post("/*/enter-add-logged-test-result", function (req, res) {
+  req.session.data["pnl_update_msg_show"] = 0;
+  var testType = req.session.data['result-type'];
+  if (testType == "Abroad") {
+    res.redirect("/" + getVersion(req) + "/patient/add-logged-result/add-log-test-result-test-info");
+  }
+
+  res.redirect("/" + getVersion(req) + "/patient/add-logged-result/add-log-test-result-details");
+});
+
 router.post("/search-v2/", function (req, res) {
   var nhsNumber = req.session.data["searchnhs"];
 
@@ -477,6 +487,22 @@ router.post("/*/check-logged-test-result", function (req, res) {
   }
   res.redirect("/v12/patient/log-test-result/log-test-result-ntdd")
 });
+
+router.post("/*/check-add-logged-test-result", function (req, res) {
+  var result = (req.session.data["result-result"] + req.session.data["result-infection"] + req.session.data["result-action"]).toUpperCase();
+  console.log("result : " + result)
+  if(result=="X0R"){ 
+    res.redirect("/v12/patient/add-log-test-result/add-log-test-result-repeat-in-months-x0r")
+  }
+  if(result=="09R" || result=="29R"){ 
+    res.redirect("/v12/patient/add-log-test-result/add-log-test-result-repeat-in-months-09r")
+  }
+  if(result=="0R" || result=="0S" || result=="1R" || result=="1S" || result=="2R" || result=="2S" || result=="3R" || result=="3S" || result=="4S" || result=="5S" || result=="6S" || result=="7S" || result=="8R" || result=="8S" || result=="9R" || result=="9S"){ 
+    res.redirect("/v12/patient/add-log-test-result/add-log-test-result-repeat-in-months-manual-input")
+  }
+  res.redirect("/v12/patient/add-logged-result/add-log-test-result-ntdd")
+});
+
 
 router.post("/*/cancel-result-letter", function (req, res) {
   //var cancelResult = req.session.data['cancel-result-letter'];

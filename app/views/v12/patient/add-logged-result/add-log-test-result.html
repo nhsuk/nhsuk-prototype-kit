@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block header %}
-  {% include '../components/header-3.html' %}
+  {% include '../../components/header-3.html' %}
 {% endblock %}
 
 {% block content %}
@@ -23,10 +23,10 @@
   {% endif %}
 
 <div class="nhsuk-panel-with-label">
-    {% include '../components/pnl-patient-2.html' %}
+    {% include '../../components/patient-result-2-ntdd.html' %}
     <span class="nhsuk-hint">Step 1 of 6</span>
 
-  <h1 class="nhsuk-heading-l">Log test type details</h1>
+  <h1 class="nhsuk-heading-l">Logged test type details</h1>
 
      <div class="nhsuk-inset-text">
        <span class="nhsuk-u-visually-hidden">Information: </span>
@@ -34,7 +34,7 @@
        <br>Leave blank if there is no national code or health authority.</p>
      </div>
         
-    <form action="/v12/enter-logged-test-result" method="post">
+    <form action="/v12/enter-add-logged-test-result" method="post">
          <div class="nhsuk-form-group">
              
 

@@ -383,8 +383,55 @@ var patients = [
         "sanitised_postcode": "EX25SE",
         "sort_key": "PARTICIPANT",
         "status": "Routine"
+    },
+
+    {
+        "address": {
+            "address_line_1": "Flat 5",
+            "address_line_2": "Leigh Road",
+            "address_line_3": "Hawkchurch",
+            "address_line_4": "EXETER",
+            "address_line_5": "Devon",
+            "postcode": "EX2 5SE"
+        },
+        "ceased_type": "Abnormal Follow-up",
+        "date_of_birth": "1993-09-18",
+        "date_of_birth_and_initial": "1993-09-18G",
+        "date_of_birth_and_initial_and_postcode": "1993-09-18GEX25SE",
+        "first_name": "Lucy",
+        "gender": "2",
+        "is_ceased": false,
+        "last_name": "Harper",
+        "migrated_1C_data": {
+            "received": "2018-05-28T16:33:37.877",
+            "value": "LL|1201379921|20060312|N|1|0|Y||||||D1|20010510"
+        },
+        "migrated_CSO1R": {
+            "received": "2018-05-28T16:29:10.249",
+            "value": "LL|1201379921|19510918|F|20010510|D1|W896|L83665|R|20040504|SCT||Harper|Lucy||Flat 5|Leigh Road|Hawkchurch|EXETER|Devon|EX2 5SE"
+        },
+        "next_test_due_date": moment().add(10, "weeks"),
+        "nrl_review_date": moment().add(8, "weeks"),
+        "nhs_number": "1201379921",
+        "nrl": true,
+        "participant_id": "b5a5bf31-5484-4ce2-8ad5-f1c1e0ac5086",
+        "pnl": true,
+        "pnl_action": "Ceased",
+        "pnl_reason": "Patient informed choice",
+        "registered_gp_practice_code": "L83665",
+        "results" : [],
+        "sanitised_first_name": "LUCY",
+        "sanitised_last_name": "HARPER",
+        "sanitised_nhs_number": "9100001740",
+        "sanitised_postcode": "EX25SE",
+        "sort_key": "PARTICIPANT",
+        "status": "Routine"
     }
+
+
+    
 ]
+
 
 module.exports = function () {
     console.log('getting patients')
