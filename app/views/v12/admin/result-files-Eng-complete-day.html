@@ -36,7 +36,7 @@ NHS Cervical screening management system
                  <span class="nhsuk-u-visually-hidden">Information: </span>
                  <p>View daily confirmation reports here.
                  <br>For weekly and monthly reports, contact the <a href="">service administration team</a>.</p>
-                
+    
 
         <div class="nhsuk-form-group">
          <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
@@ -46,14 +46,14 @@ NHS Cervical screening management system
           <div class="nhsuk-hint" id="example-hint">
             For example, 15 3 1984
           </div>
-           <form action="/v12/admin/result-files-Eng-complete-day" method="post">
+
                   <div class="nhsuk-date-input" id="example">
                     <div class="nhsuk-date-input__item">
                       <div class="nhsuk-form-group">
                         <label class="nhsuk-label nhsuk-date-input__label" for="example-day">
                           Day
                         </label>
-                        <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="example-day" name="example-day" value="15" type="text" pattern="[0-9]*" inputmode="numeric">
+                        <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="example-day" name="example-day" value="14" type="text" pattern="[0-9]*" inputmode="numeric">
                       </div>
                     </div>
                     <div class="nhsuk-date-input__item">
@@ -83,13 +83,13 @@ NHS Cervical screening management system
       
       </fieldset>
 
-     
+     <br>
 
 
-         <div class="nhsuk-inset-text">
+         <!--<div class="nhsuk-inset-text">
                  <span class="nhsuk-u-visually-hidden">Information: </span>
-                 <p>The full set of reports for today’s date will only be available after 7.00pm.</p>
-                </div>
+                 <p>The full set reports for today’s date will only be available after 4.00pm.</p>
+                </div>-->
 
     
 
@@ -113,7 +113,7 @@ NHS Cervical screening management system
       rows: [
         [
           {
-            text: "15-07-2021 11:00:00"
+            text: "14-07-2021 11:00:00"
           },
           {
             text: "CSAS_ScreeningLetters_DataProcessingReport_13072021_11.txt "
@@ -125,7 +125,7 @@ NHS Cervical screening management system
         ],
         [
           {
-            text: "15-07-2021 11:00:00"
+            text: "14-07-2021 11:00:00"
           },
           {
             text: "CSAS_EU-WEST-2_CP_Nor_13072021_11.txt"
@@ -137,7 +137,7 @@ NHS Cervical screening management system
         ],
         [
           {
-            text: "15-07-2021 11:00:00"
+            text: "14-07-2021 11:00:00"
           },
           {
             text: "CSAS_EU-WEST-2_RP_13072021_11.txt"
@@ -149,7 +149,7 @@ NHS Cervical screening management system
         ],
         [
           {
-            text: "15-07-2021 11:00:00"
+            text: "14-07-2021 11:00:00"
           },
           {
             text: "CSAS_ScreeningLetters_ErrorReport_13072021_11.txt"
@@ -158,9 +158,55 @@ NHS Cervical screening management system
           {
             html: '<a href="">Download txt</a>'
           }
-        ]
+        ],
+        [
+          {
+            text: "14-07-2021 15:00:00"
+          },
+          {
+            text: "CSAS_ScreeningLetters_DataProcessingReport_13072021_15.txt "
+          },
+          {
+            html: '<a href="">Download txt</a>'
+          }
+        ],
+        [
+          {
+            text: "14-07-2021 15:00:00"
+          },
+          {
+            text: "CSAS_EU-WEST-2_CP_Abn_13072021_15.txt"
+          },
           
+          {
+            html: '<a href="">Download txt</a>'
+          }
+        ],
+        [
+          {
+            text: "14-07-2021 15:00:00"
+          },
+          {
+            text: "CSAS_ScreeningLetters_ErrorReport_13072021_15.txt "
+          },
+         
+          {
+            html: '<a href="">Download txt</a>'
+          }
+        ],
+        [
+          {
+            text: "14-07-2021 19:00:00"
+          },
+          {
+            text: "CSAS_ScreeningLetters_EncloseReport_13072021_19.csv"
+          },
+         
+          {
+            html: '<a href="">Download CSV</a>'
+          }
         
+        ]
       ]
 }) }}
 

@@ -25,7 +25,7 @@ NHS Cervical screening management system
     }) }}
 
     <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-8">
-           <h3 class="nhsuk-heading-s">Dummy registration successfully created</h3>
+           <h3 class="nhsuk-heading-s">Dummy required successfully sent to checker</h3>
         </div>
 
 
@@ -100,11 +100,11 @@ NHS Cervical screening management system
     {% endif %}
 
     {% if data['dummy-route'] == ['query-dummy'] %}
-        <a href="manc-query" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Continue to next to check</a>
+        <a href="manc-query" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Continue to next match</a>
     {% endif %}
 
     {% if data['dummy-route'] == null %}
-        <a href="manc-query" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Continue to next to check</a>
+        <a href="manc-query" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Continue to next match</a>
     {% endif %}
 
     {% if data['dummy-route'] == null %}
