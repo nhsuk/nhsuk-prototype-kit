@@ -1,5 +1,11 @@
 # NHS.UK prototype kit Changelog
 
+## 4.5.0 - TBC
+
+:new: **New features**
+
+- Add NHS.UK page examples (homepage, health a-z, live well, mental health, care and support, pregnancy, NHS services, coronavirus hub) and Google homepage template ([Issue #183](https://github.com/nhsuk/nhsuk-prototype-kit/issues/183))
+
 ## 4.4.1 - 26 May 2021
 
 :wrench: **Fixes**
@@ -30,9 +36,9 @@
 :new: **New features**
 
 - Add `outerContent` block to page template.
-  
+
   Add content that needs to appear outside `<main>` element but inside the `<nhsuk-width-container>`.
-  
+
   For example: The back link component.
 
 - Update page template examples
