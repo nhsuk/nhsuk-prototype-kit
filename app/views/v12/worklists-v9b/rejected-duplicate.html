@@ -55,20 +55,17 @@ NHS Cervical screening management system
   <div class="nhsuk-grid-column-one-half">
     <ul class="nhsuk-inset-text nhsuk-comment-container nhsuk-inset-text__screening nhsuk-inset-text__screening--success">
       <li class="nhsuk-panel"> <strong>This test result has a duplicate slide number.</strong> </span>
-      <p> <br> <span class="date" style="color:	#4c6272">Time recieved: 20 May 2021, 09:30am </span></li>
+      <p> <br> <span class="date" style="color:	#4c6272"><a href="../pds/search/search-slide">Search slide number</a> to view duplicate test results.<br>Time recieved: 20 May 2021, 09:30am </span></li>
     </ul>
  </div>
 </div>
 
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-one-half">
+  <div class="nhsuk-grid-column-two-thirds">
  <div class="nhsuk-panel-with-label">
     
       {% include '../components/patient-result-2.html' %} 
      
-    <br>
-       <h2 class="nhsuk-heading-m">Result received 03 June 2021, 08:44am</h2>
-      
 
       <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 ">
         
@@ -145,92 +142,7 @@ NHS Cervical screening management system
        
     
   </div>
-  </div>
 
-
-  <div class="nhsuk-grid-column-one-half">
-    <div class="nhsuk-panel-with-label">
-    
-      {% include '../components/patient-result-2.html' %} 
-      <br>
-    
-      <h2 class="nhsuk-heading-m"> Result received 18 June 2016, 09.30 am</h2>
-                
-      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3">
-          
-          
-          
-          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-            Test result details
-          </legend>
-        
-
-           <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">National code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "-" }}</dd>
-  </div>
-    
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Health Authority</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or "-" }}</dd>
-  </div>
-  
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Self-sample</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['self-sample'] or "-" }}</dd>
-  </div>
-  
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Source code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['source-code'] or "-" }}</dd>
-  </div>
-  
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Sender code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or "-" }} </dd>
-  </div>
-
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Slide number</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] or "-" }}</dd>
-  </div>
-
-  {% set nextTestDueDate = data['test_date'] %}
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Test date</dt>
-    <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat }}</dd>
-  </div>
-
- <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">HPV Primary</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] or "-" }} </dd>
-  </div>
-
-<div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Result</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['result-result'] }} {{ data['result-infection'] }} {{ data['result-action'] }}</dd>
-  </div>
-
-  
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Repeat in months</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or "-" }} months</dd>
-  </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">Next test due date</dt>
-      <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', data['test_date']) + ' ' + 3 | returnDate('years', data['test_date']) | returnTimeDiff }}</dd>
-    </div> 
-
-       {% include '../components/comments-timeline-manual-match.html' %} 
-    
-  </div>
-</div>
-
-
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-two-thirds">
 
 
 
@@ -252,25 +164,25 @@ NHS Cervical screening management system
 
             <div class="nhsuk-radios">
 
-            <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="current">
-                <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-                  Log result received 03 June 2021, 08:44am
-                </label>
-                <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
-                 This will delete the result recieved 02 June 2021, 09.30 am
-                </div>
-              </div>
-
+           <div class="nhsuk-radios">
               <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="current">
+                <input class="nhsuk-radios__input" id="example-2" name="rejectAction" type="radio" value="log">
                 <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-                  Delete result received 03 June 2021, 08.44 am
+                  Log result to patient summary
                 </label>
                 <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
-                 This will delete the result recieved 03 June 2021, 08.44 am
+                Logging a test result will prevent further invites being sent
                 </div>
               </div>  
+
+               <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-1" name="rejectAction" type="radio" value="delete">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                  Remove result
+                </label>
+                <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
+                 This will remove test details form system
+                </div> 
 
             </div>
           </fieldset>

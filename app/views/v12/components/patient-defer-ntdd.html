@@ -10,13 +10,17 @@
       <p>If the next test due date sent by the colposcopy is earlier than {{ 71 | returnDate("days") | returnNumericDateFormat }}, enter it as a comment</p>
       <p>Maximum deferral can not exceed {{ data['pnl-defer-reason'] | returnReasonGuidance }} months</p>    
     {% else %}
-      <p>Maximum deferral can not exceed {{ data['pnl-defer-reason'] | returnReasonGuidance }} months</p> 
+      <p>Maximum deferral can not exceed {{ data['pnl-defer-reason'] | returnReasonGuidance }} moths</p> 
     {% endif %}
   {% else %}
     <p>Maximum deferral can not exceed X months</p> 
   {% endif %}
 {% endset %}
 
+ {% if data['pnl-defer-reason'] == 'Administrative' %}
+ <p>The earliest next test due date you can enter is (10 weeks from tomorrow).
+ <p>If the next test due date is supposed to be earlier than (10 weeks from tomorrow), enter it as a comment.</p> 
+  {% endif %}
 
   {{ insetText({
     "HTML":  message
