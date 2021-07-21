@@ -82,7 +82,7 @@
                {% if data['hpv-primary'] == 'Yes' or data['self-sample'] == 'Yes'%}
                <span class="nhsuk-hint" id="example-hint"> </span>
                {% else %}
-               <span class="nhsuk-hint" id="example-hint">Leave infection blank if no code given</span>
+               <span class="nhsuk-hint" id="example-hint">Leave HPV blank if no code given</span>
                {% endif %}
 
               <div class="nhsuk-date-input" id="example">
@@ -97,7 +97,7 @@
                 <div class="nhsuk-date-input__item">
                   <div class="nhsuk-form-group">
                     <label class="nhsuk-label nhsuk-date-input__label" for="example-infection">
-                      Infection
+                      HPV
                     </label>
                     <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="example-infection" name="result-infection" type="text" autocomplete="off" value="{{ data['result-infection'] }}">
                   </div>

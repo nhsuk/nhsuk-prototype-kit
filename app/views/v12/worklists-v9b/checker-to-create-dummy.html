@@ -51,9 +51,31 @@ NHS Cervical screening management system
     </div>
     
 
-       <p>Recommending a dummy registartion means it is sent to the checker to review.<br>
-       If they agree they can automatically generate a dummy registration using details provided by the lab.</p>
+       <p>Once a checker confirms your dummy registration recommendation it means:</p>
+          <ul>
+          <li>we will create a unique number to identify them</li>
+          <li>you can send this result to the patient</li>
+          <li>they will be invited for screening based on their recall status</li>
+          <li>you can view their patient summary on the system</li>
+          <li>you can add future test results to their record and view their screening history</li>
+          <li>you can cease and defer them from screening</li>
+        </ul>
 
+         <p>
+        Demographics data cannot be updated on dummy registrations.
+        <br><br>
+        This means if the patient’s details change, such as they move address or change GP, they will not be updated in the system and letters may not reach them.
+        </p>
+
+        <div class="nhsuk-form-group">
+          <div class="nhsuk-checkboxes">
+            <div class="nhsuk-checkboxes__item">
+            <input class="nhsuk-checkboxes__input" id="confirmIdentity" name="confirmIdentity" type="checkbox" value="confirmIdentity">
+            <label class="nhsuk-label nhsuk-checkboxes__label" for="confirmIdentity">
+              I confirm that I wish to recommend a dummy registration for this result
+            </label>
+          </div>
+          </div>
 
          <div class="nhsuk-form-group">
               <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
@@ -63,7 +85,7 @@ NHS Cervical screening management system
               <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" ></textarea>
               
             </div>
-        <a href="confirm-dummy-sent-to-checker" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-6 nhsuk-u-margin-right-6">Submit to checker</a>
+        <a href="dummy-address-rec" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-6 nhsuk-u-margin-right-6">Submit to checker</a>
         <p><a href="non-match-dummy">Exit without saving</a></p>
 
   </div>

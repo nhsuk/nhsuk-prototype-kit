@@ -33,7 +33,7 @@ NHS Cervical screening management system
 {% endblock %}
 
 {% block header %}
-{% include '../components/header.html' %}
+{% include '../../components/header.html' %}
 {% endblock %}
 
 {% block content %}
@@ -41,8 +41,8 @@ NHS Cervical screening management system
   <div class="nhsuk-grid-column-full">
 
     {{ backLink({
-      "href": "rejected-p1",
-      "text": "Go back to previous rejected result"
+      "href": "manage-sender-codes",
+      "text": "Go back to Mange sender codes"
     }) }}
 
   </div>
@@ -54,20 +54,20 @@ NHS Cervical screening management system
 
     <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
-     <h1 class="nhsuk-heading-l"> Check test result before removing</h1>
+     <h1 class="nhsuk-heading-l"> Check sender detials before deactivating</h1>
      
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-three-quarters">
-    <ul class="nhsuk-inset-text nhsuk-comment-container nhsuk-inset-text__screening nhsuk-inset-text__screening--success">
-      <li class="nhsuk-panel"> <strong>This test result was taken more than 3 months ago and therefore a result letter will not be sent.</strong> </span>
-      <p> <br> <span class="date" style="color:	#4c6272">Time recieved: 20 May 2021, 09:30am </span></li>
-    </ul>
- </div>
-</div>
+    <div class="nhsuk-inset-text">
+      <span class="nhsuk-u-visually-hidden" >Information: </span>
+      <p>Deactivating this sender means that any results submitted from this sender after today will be rejected.</p>
+    </div>
   
+  <div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
      <div class="nhsuk-panel-with-label">
       <class="nhsuk-panel-with-label__label">
-      {% include '../components/patient-result-2.html' %} 
+      <h3 class="nhsuk-panel-with-label__label">Sender code: 0000W
+  <span style= color:white; class="nhsuk-table__cell--hint"></span></h3>
+
       
 <br>
       <div class="nhsuk-form-group">
@@ -76,70 +76,56 @@ NHS Cervical screening management system
           <dl class="nhsuk-summary-list">
 
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-            Test result details
+            Sender details
           </legend>
     
 
   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">National code</dt>
+    <dt class="nhsuk-summary-list__key">Cipher</dt>
     <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "12345" }}</dd>
   </div>
     
   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Health Authority</dt>
+    <dt class="nhsuk-summary-list__key">Sender code</dt>
     <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or "-" }}</dd>
   </div>
   
   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Self-sample</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['self-sample'] or "No" }}</dd>
-  </div>
-  
-  <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Source code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['source-code'] or "G" }}</dd>
+    <dd class="nhsuk-summary-list__value">No</dd>
   </div>
   
   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Sender code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or "A86020" }} </dd>
+    <dt class="nhsuk-summary-list__key">Address</dt>
+    <dd class="nhsuk-summary-list__value">Birmingham Woman's Hospital, B1 2WM</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Active</dt>
+    <dd class="nhsuk-summary-list__value">N </dd>
   </div>
 
 
   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Slide number</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] or "21010009" }}</dd>
+    <dt class="nhsuk-summary-list__key">Inactive date</dt>
+    <dd class="nhsuk-summary-list__value">01-April-2021</dd>
   </div>
 
-  {% set nextTestDueDate = data['test_date'] %}
+  
   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Test date</dt>
-    <dd class="nhsuk-summary-list__value"> <span class="highlight">01-April-2021</span></dd>
+    <dt class="nhsuk-summary-list__key">CRM</dt>
+    <dd class="nhsuk-summary-list__value">CAS-12345-ABCDE</dd>
   </div>
 
  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">HPV Primary</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] or "Yes" }} </dd>
+    <dt class="nhsuk-summary-list__key">Comments</dt>
+    <dd class="nhsuk-summary-list__value"></dd>
   </div>
 
-<div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Result</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['result-result'] }} {{ data['result-infection'] }} {{ data['result-action'] or "X0A"}}</dd>
-  </div>
 
-  
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Repeat in months</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or "36" }} months</dd>
-  </div>
-
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">Next test due date</dt>
-      <dd class="nhsuk-summary-list__value">01-April-2024 (in 2 years and 275 days)</dd>
-    </div> 
 
       </dl>
-      {% include '../components/comments-timeline-manual-match.html' %} 
+      {% include '../../components/comments-timeline-manual-match.html' %} 
     </div>
   
 
@@ -148,21 +134,21 @@ NHS Cervical screening management system
 
 
 
-  <form action="confirm-delete" method="post"> <input type="hidden" name="hideDetails" value="true">
+  <form action="confirm-deactivate" method="post"> <input type="hidden" name="hideDetails" value="true">
     <div class="nhsuk-form-group">
       <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
         <legend class="nhsuk-fieldset__legend--m nhsuk-label__strong">
-          <h1 class="nhsuk-fieldset__heading">Are you sure you want to remove this test result?</h1>
+          <h1 class="nhsuk-fieldset__heading">Are you sure you want to deactivate this sender?</h1>
         </legend>
 
 <div class="nhsuk-checkboxes">
             <div class="nhsuk-checkboxes__item">
             <input class="nhsuk-checkboxes__input" id="confirmIdentity" name="confirmIdentity" type="checkbox" value="confirmIdentity">
             <label class="nhsuk-label nhsuk-checkboxes__label" for="confirmIdentity">
-              Yes, I want to remove this test result
+              Yes, I want to deactivate sender
             </label>
             <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
-             This will remove the test result from the rejected list and archive it
+             This will mean any future results submitted from this sender will be rejected
             </div>
           </div>
         

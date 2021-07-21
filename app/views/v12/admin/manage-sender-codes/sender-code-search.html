@@ -1,0 +1,182 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(5) {
+    border-bottom: 4px solid #d8dde0;
+  }
+
+  .nhsuk-button, .nhsuk-button--ers, .dropdown .dropbtn, .nhsuk-button--ers_secondary, .nhsuk-button--ers_reverse, .nhsuk-button--ers_reverse:hover, .nhsuk-button--ers_reverse:focus, .nhsuk-button--ers_reject, .nhsuk-blue, .nhsuk-right  {
+    margin-bottom: 0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    {{ backLink({
+      "href": "index",
+      "text": "Back to Admin"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Manage sender codes</h1>
+
+     
+                 <span class="nhsuk-u-visually-hidden">Information: </span>
+                 <p>
+                
+
+      
+     
+    <div class="nhsuk-form-group">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-quarter">
+        </div>
+        <div class="nhsuk-grid-column-one-quarter">
+          <div class="nhsuk-date-input__item">
+            <label class="nhsuk-label nhsuk-label__strong nhsuk-body-xs">
+              Sender code
+            </label>
+            <input id="searchfield" class="nhsuk-input" type="number" inputmode="numeric" name="searchnhs" value="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nhsuk-form-group">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <button class="nhsuk-button nhsuk-button--ers" type="submit">Search</button>
+        </div>
+      </div>
+    </div>
+  </form>
+<br>    
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-full">
+    <h2 id="testresults" class="nhsuk-heading-l">Exsisting senders</h2>
+
+  <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-4 no-print" href="/v12/add-sender"
+>Add sender</a>
+
+    {{ table({
+      panel: false,
+      caption: "Skin symptoms and possible causes",
+      firstCellIsHeader: false,
+      head: [
+        {
+          text: "Cipher"
+        },
+        {
+          text: "Sender code"
+        },
+        {
+          text: "Address"
+        },
+         {
+          text: "Active"
+        },
+         {
+          text: "Inactice date"
+        },
+         {
+          text: "Source type"
+        },
+         {
+          text: "Amend"
+        }
+
+
+      ],
+      rows: [
+        [
+          {
+            text: "BIR"
+          },
+          {
+            text: "COLP001"
+          },
+          {
+            text: "Birmingham Woman's Hospital, B1 2WM"
+          },
+          {
+            text: "Y"
+          },
+          {
+            text: "-"
+          },
+          {
+            text: "7"
+          },
+         
+          {
+            html: '<a href="edit-sender">Amend</a> <a href="edit-sender">Deactivate</a>'
+          }
+        ],
+        
+        [
+           {
+            text: "BIR"
+          },
+          {
+            text: "00001"
+          },
+          {
+            text: "Solihull GUM Clinic,B2 3ME"
+          },
+          {
+            text: "Y"
+          },
+          {
+            text: "-"
+          },
+          {
+            text: "3"
+          },
+         
+          {
+            html: '<a href="edit-sender">Amend</a> <a href="edit-sender">Deactivate</a>'
+          }
+        ],
+        [
+           {
+            text: "BIR"
+          },
+          {
+            text: "00002"
+          },
+          {
+            text: "Walkin Centre, B1 6WW"
+          },
+          {
+            text: "Y"
+          },
+          {
+            text: "-"
+          },
+          {
+            text: "4"
+          },
+         
+          {
+            html: '<a href="edit-sender">Amend</a> <a href="edit-sender">Deactivate</a>'
+          }
+        ]
+          
+        
+      ]
+}) }}
+
+  </div>
+</div>
+{% endblock %}
