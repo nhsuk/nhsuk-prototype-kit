@@ -4,7 +4,7 @@
 
 :new: **New features**
 
-- Add NHS.UK page examples (homepage, health a-z, live well, mental health, care and support, pregnancy, NHS services, coronavirus hub) and Google homepage template ([Issue #183](https://github.com/nhsuk/nhsuk-prototype-kit/issues/183))
+- Add NHS website (www.nhs.uk) page examples (homepage, health a-z, live well, mental health, care and support, pregnancy, NHS services, coronavirus hub) and Google homepage template ([Issue #183](https://github.com/nhsuk/nhsuk-prototype-kit/issues/183))
 
 ## 4.4.1 - 26 May 2021
 
