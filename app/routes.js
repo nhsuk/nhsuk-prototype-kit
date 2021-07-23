@@ -2,6 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const patient = require('./data/patient.js');
+const senders = require('./data/senders.js');
 const gpInfo = require('./data/gp-info.js');
 
 /* ---------------------------------------- */
@@ -526,6 +527,10 @@ router.post("/*/resend-result-letter", function (req, res) {
   res.redirect("/" + getVersion(req) + "/patient/patient-summary-7")
 });
 
-
+router.get("/get-senders", function (req, res) {
+  req.session.data["senders"] = senders.getSenders();
+  console.log(senders.getSenders())
+  
+});
 
 module.exports = router;
