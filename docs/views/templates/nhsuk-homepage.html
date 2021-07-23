@@ -1,0 +1,621 @@
+{% extends 'layout.html' %}
+
+<!-- some custom css for the home page only -->
+{% set containerClasses = 'app-width-container--full' %}
+{% set mainClasses = 'app-main-wrapper--no-padding app-homepage' %}
+
+{% block pageTitle %}
+  The NHS website - NHS
+{% endblock %}
+
+{% block headCSS %}
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/nhsuk.css" rel="stylesheet">
+{% endblock %}
+
+<!-- NHS.UK header -->
+{% block header %}
+<header class="nhsuk-header" role="banner">
+  <div class="nhsuk-width-container nhsuk-header__container">
+    <div class="nhsuk-header__logo">
+      <a class="nhsuk-header__link" href="/" aria-label="NHS homepage">
+        <svg class="nhsuk-logo nhsuk-logo--white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 16">
+          <path fill="#fff" d="M0 0h40v16H0z"></path>
+          <path fill="#005eb8" d="M3.9 1.5h4.4l2.6 9h.1l1.8-9h3.3l-2.8 13H9l-2.7-9h-.1l-1.8 9H1.1M17.3 1.5h3.6l-1 4.9h4L25 1.5h3.5l-2.7 13h-3.5l1.1-5.6h-4.1l-1.2 5.6h-3.4M37.7 4.4c-.7-.3-1.6-.6-2.9-.6-1.4 0-2.5.2-2.5 1.3 0 1.8 5.1 1.2 5.1 5.1 0 3.6-3.3 4.5-6.4 4.5-1.3 0-2.9-.3-4-.7l.8-2.7c.7.4 2.1.7 3.2.7s2.8-.2 2.8-1.5c0-2.1-5.1-1.3-5.1-5 0-3.4 2.9-4.4 5.8-4.4 1.6 0 3.1.2 4 .6"></path>
+        </svg>
+      </a>
+    </div>
+    <div class="nhsuk-header__content" id="content-header">
+      <div class="nhsuk-header__menu">
+        <button class="nhsuk-header__menu-toggle" id="toggle-menu" aria-controls="header-navigation" aria-label="Open menu">Menu</button>
+      </div>
+      <div class="nhsuk-header__search">
+        <div class="nhsuk-header__search-wrap beta-header__search-wrap js-show" id="wrap-search">
+          <form class="nhsuk-header__search-form beta-header__search-form" id="search" action="https://www.nhs.uk/search/" method="get" role="search">
+            <label class="nhsuk-u-visually-hidden" for="search-field">Search the NHS website</label>
+            <div class="autocomplete-container" id="autocomplete-container"></div>
+            <input class="nhsuk-search__input" id="search-field" name="q" type="search" placeholder="Search" autocomplete="off" >
+            <button class="nhsuk-search__submit beta-search__submit" type="submit">
+              <svg class="nhsuk-icon nhsuk-icon__search beta-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"></path>
+              </svg>
+              <span class="nhsuk-u-visually-hidden">Search</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="nhsuk-header__navigation" id="header-navigation" role="navigation" aria-label="Primary navigation" aria-labelledby="label-navigation">
+    <div class="nhsuk-width-container">
+      <p class="nhsuk-header__navigation-title"><span id="label-navigation">Menu</span>
+        <button class="nhsuk-header__navigation-close" id="close-menu">
+          <svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"></path>
+          </svg>
+          <span class="nhsuk-u-visually-hidden">Close menu</span>
+        </button>
+      </p>
+      <ul class="nhsuk-header__navigation-list">
+        <li class="nhsuk-header__navigation-item nhsuk-header__navigation-item--for-mobile">
+          <a class="nhsuk-header__navigation-link" href="">
+            Home
+            <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="nhsuk-header__navigation-item">
+          <a class="nhsuk-header__navigation-link" href="">
+            Health A-Z
+            <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="nhsuk-header__navigation-item">
+          <a class="nhsuk-header__navigation-link" href="">
+            Live Well
+            <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="nhsuk-header__navigation-item">
+          <a class="nhsuk-header__navigation-link" href="">
+            Mental health
+            <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="nhsuk-header__navigation-item">
+          <a class="nhsuk-header__navigation-link" href="">
+            Care and support
+            <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="nhsuk-header__navigation-item">
+          <a class="nhsuk-header__navigation-link" href="">
+            Pregnancy
+            <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="nhsuk-header__navigation-item">
+          <a class="nhsuk-header__navigation-link" href="">
+            NHS services
+            <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+{% endblock %}
+
+{% block beforeContent %}
+<!-- Coronavirus (COVID-19) banner -->
+<div class="app-global-alert" id="app-global-alert" role="complementary">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full">
+        <div class="app-global-alert__content">
+          <div class="app-global-alert__message">
+            <h2>Coronavirus (COVID-19)</h2>
+            <p><a href="">Get the latest advice about COVID-19</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+<!-- Homepage content -->
+{% block content %}
+
+<!-- hero image and "We're here for you" content -->
+<section class="nhsuk-hero nhsuk-hero--image nhsuk-hero--image-description">
+    <script>
+      function randomImage() {
+          var images =[
+            "/images/nhsuk/homepage/IS_0818_homepage_hero_2_831416400.width-1000.jpg",
+            "/images/nhsuk/homepage/IS_0818_homepage_hero_3_913783962.width-1000.jpg",
+            "/images/nhsuk/homepage/AS_0818_homepage_hero_4_169974765.width-1000.jpg",
+            "/images/nhsuk/homepage/A_0818_homepage_hero_5_KRK6T6.width-1000.jpg",
+            "/images/nhsuk/homepage/S_0818_homepage_hero_1_F0147446.width-1000.jpg",
+          ];
+          var size = images.length;
+          var x = Math.floor(size * Math.random());
+          var element = document.getElementsByClassName('nhsuk-hero--image');
+          if (element.length > 0) {
+              element[0].style["background-image"] = "url(" + images[x] + ")";
+          }
+      }
+      document.addEventListener("DOMContentLoaded", randomImage);
+  </script>
+  <div class="nhsuk-hero__overlay">
+    <div class="nhsuk-width-container">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <div class="nhsuk-hero-content">
+            <h1 class="nhsuk-u-margin-bottom-3">We’re here for you</h1>
+            <p class="nhsuk-body-l nhsuk-u-margin-bottom-0">Helping you take control of your health and wellbeing.</p>
+            <span class="nhsuk-hero__arrow" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Health A-Z and Medicines A-Z -->
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-half app-section__content">
+          <h2>Health A to Z</h2>
+          <p>Your complete guide to conditions, symptoms and treatments, including what to do and when to get help.</p>
+          <div class="nhsuk-action-link">
+            <a class="nhsuk-action-link__link" href="">
+              <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+              </svg>
+              <span class="nhsuk-action-link__text">Go to the Health A to Z</span>
+            </a>
+          </div>
+      </div>
+      <div class="nhsuk-grid-column-one-half app-section__content">
+        <h2>Medicines A to Z</h2>
+        <p>Find out how your medicine works, how and when to take it, possible side effects and answers to your common questions.</p>
+        <div class="nhsuk-action-link">
+          <a class="nhsuk-action-link__link" href="">
+            <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+            </svg>
+            <span class="nhsuk-action-link__text">Go to the Medicines A to Z</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Coronavirus content -->
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full app-section__content">
+        <div class="nhsuk-u-reading-width">
+          <h2>Coronavirus (COVID-19)</h2>
+          <p class="app-section__description">Get the latest advice about COVID-19, including information about symptoms, self-isolation and testing.</p>
+        </div>
+        <div class="nhsuk-action-link">
+          <a class="nhsuk-action-link__link" href="" >
+            <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+            </svg>
+            <span class="nhsuk-action-link__text">Find out about COVID-19</span>
+          </a>
+        </div>
+        <div class="nhsuk-action-link">
+          <a class="nhsuk-action-link__link" href="" >
+            <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+            </svg>
+            <span class="nhsuk-action-link__text">Find out about COVID-19 vaccination</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Help us help you get the treatment you need -->
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full app-section__content">
+        <div class="nhsuk-u-reading-width">
+          <h2>Help us help you get the treatment you need</h2>
+        </div>
+        <div class="nhsuk-u-reading-width">
+          <p>While everyone is being told to stay at home, it can be hard to know what to do if you&#x27;re unwell.</p>
+          <ul>
+            <li>For help from a GP – use your GP surgery&#x27;s website, use an online service or app, or call the surgery.</li>
+            <li>For urgent medical help – use the NHS 111 online service, or call 111 if you&#x27;re unable to get help online.</li>
+            <li>For life-threatening emergencies – call 999 for an ambulance.</li>
+          </ul>
+          <p>If you&#x27;re advised to go to hospital, it&#x27;s important to go.</p>
+        </div>
+        <div class="nhsuk-action-link">
+          <a class="nhsuk-action-link__link" href="" >
+            <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+            </svg>
+            <span class="nhsuk-action-link__text">Find out how to get medical help</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- NHS App -->
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full app-section__content">
+        <div class="nhsuk-u-reading-width">
+          <h2>NHS App</h2>
+          <p class="app-section__description">The NHS App lets you book GP appointments, order repeat prescriptions and access a range of other healthcare services.</p>
+        </div>
+        <div class="nhsuk-action-link">
+          <a class="nhsuk-action-link__link" href="">
+            <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+            </svg>
+            <span class="nhsuk-action-link__text">Find out more about the NHS App</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- NHS Services -->
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full app-section__content">
+        <div class="nhsuk-u-reading-width">
+          <h2>NHS services</h2>
+          <p class="app-section__description">Find the service you need and book appointments online.</p>
+        </div>
+        <ul class="app-list-signage app-list-signage--two-columns">
+          <li>
+            <a href="">
+              <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+              </svg>
+              Find a pharmacy
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+              </svg>
+              Find a dentist
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+              </svg>
+              Find a GP
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+              </svg>
+              Find your nearest A&amp;E
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+              </svg>
+              Find other urgent care services
+            </a>
+          </li>
+        </ul>
+        <div class="nhsuk-action-link">
+          <a class="nhsuk-action-link__link" href="">
+            <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+            </svg>
+            <span class="nhsuk-action-link__text">Find other NHS services</span>
+          </a>
+        </div>
+        <div class="nhsuk-card">
+          <div class="nhsuk-card__content">
+            <h3>If you need help now, but it’s not an emergency</h3>
+            <p>Go to <a href="">111.nhs.uk</a> or <a href="">call 111</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Focus on... -->
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-one-half app-section__content">
+        <div class="nhsuk-u-reading-width">
+          <h2>Focus on...</h2>
+        </div>
+        <ul class="app-list-signage nhsuk-list-links--one-column">
+          <li>
+            <a href="">
+              <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+              </svg>
+              Diabetes
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+              </svg>
+              Cancer
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+              </svg>
+              Care and support
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+              </svg>
+              Pregnancy
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+              </svg>
+              Mental health
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="nhsuk-grid-column-one-half app-section__content">
+        <div class="nhsuk-card  nhsuk-card--clickable  ">
+          <img class="nhsuk-card__img" src="/images/nhsuk/homepage/Health_and_care_videos.2e16d0ba.fill-720x405.jpg" alt="">
+          <div class="nhsuk-card__content">
+            <h3 class="nhsuk-card__heading"><a class="nhsuk-card__link" href="">
+        Health and care video library</a></h3>
+        <p class="nhsuk-card__description">Access to more than 600 videos used as part of the care offered by NHS doctors, made by Health and Care Innovations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Healthy living -->
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-one-half app-section__content">
+        <div class="nhsuk-u-reading-width">
+          <h2>Healthy living</h2>
+        </div>
+        <p>Advice, tips and tools to help you make the best choices about your health and wellbeing.</p>
+        <p><a href="">Lose weight</a></p>
+        <p><a href="">Eat well</a></p>
+        <p><a href="">Help with stress, anxiety and depression</a></p>
+        <p><a href="">Exercise</a></p>
+        <div class="nhsuk-action-link">
+          <a class="nhsuk-action-link__link" href="">
+            <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+            </svg>
+            <span class="nhsuk-action-link__text">Go to healthy living</span>
+          </a>
+        </div>
+      </div>
+      <div class="nhsuk-grid-column-one-half app-section__content">
+        <div class="nhsuk-card  nhsuk-card--clickable  ">
+          <img class="nhsuk-card__img" src="/images/nhsuk/homepage/020720_PHE_Barrington_5426_TRL3_CL.2e16d0ba.fill-720x405.jpg" alt="">
+          <div class="nhsuk-card__content">
+            <h3 class="nhsuk-card__heading"><a class="nhsuk-card__link" href="">
+        Kickstart your health</a></h3>
+            <p class="nhsuk-card__description">It&#x27;s never too late to get your health back on track. Eat well, move more and start losing weight with Better Health. Try our NHS weight loss plan to get you started.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Health Apps -->
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full app-section__content">
+        <div class="nhsuk-u-reading-width">
+          <h2>Health apps</h2>
+          <p class="app-section__description">From exercise apps to managing diabetes, find digital tools to help you manage and improve your health.</p>
+        </div>
+        <h3 class="nhsuk-heading-xs nhsuk-u-padding-top-2 nhsuk-u-margin-bottom-2">Recently added apps</h3>
+        <ul class="app-list-apps app-list-apps--two-columns">
+          <li class="app-list-apps__item">
+            <a class="app-list-apps__link" href="">
+              <img class="app-list-apps__icon" src="/images/nhsuk/homepage/MS_0619_NHSAPP_favicon_LOGO.2e16d0ba.fill-216x216.png" alt="">
+              <span class="app-list-apps__title">NHS App</span>
+              <span class="app-list-apps__category">NHS services</span>
+            </a>
+          </li>
+          <li class="app-list-apps__item">
+            <a class="app-list-apps__link" href="">
+              <img class="app-list-apps__icon" src="/images/nhsuk/homepage/nhsgo.original.2e16d0ba.fill-216x216.jpg" alt="">
+              <span class="app-list-apps__title">Health advice for young people</span>
+              <span class="app-list-apps__category">NHS services</span>
+            </a>
+          </li>
+          <li class="app-list-apps__item">
+            <a class="app-list-apps__link" href="">
+              <img class="app-list-apps__icon" src="/images/nhsuk/homepage/app-cv-19.2e16d0ba.fill-216x216.png" alt="">
+              <span class="app-list-apps__title">NHS COVID-19 contact tracing app</span>
+              <span class="app-list-apps__category">NHS services, COVID-19</span>
+            </a>
+          </li>
+          <li class="app-list-apps__item">
+            <a class="app-list-apps__link" href="">
+              <img class="app-list-apps__icon" src="/images/nhsuk/homepage/1090_health-unlocked-app.original.2e16d0ba.fill-216x216.jpg" alt="">
+              <span class="app-list-apps__title">Social network for health</span>
+              <span class="app-list-apps__category">Online communities</span>
+            </a>
+          </li>
+        </ul>
+        <div class="nhsuk-action-link">
+          <a class="nhsuk-action-link__link" href="" >
+            <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+            </svg>
+            <span class="nhsuk-action-link__text">Go to the NHS Apps Library</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Other cards -->
+<section class="nhsuk-section">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-full app-section__content">
+        <ul class="nhsuk-grid-row nhsuk-card-group">
+          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+            <div class="nhsuk-card  nhsuk-card--clickable  ">
+              <img class="nhsuk-card__img" src="/images/nhsuk/homepage/MS_1018_give_blood.2e16d0ba.fill-720x405.jpg" alt="">
+              <div class="nhsuk-card__content">
+                <h3 class="nhsuk-card__heading">
+                  <a class="nhsuk-card__link" href="">
+                    Save a life: give blood
+                  </a>
+                </h3>
+                <p class="nhsuk-card__description">Please register today. Donating blood is easy, and saves lives.</p>
+              </div>
+            </div>
+          </li>
+          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+            <div class="nhsuk-card  nhsuk-card--clickable  ">
+              <img class="nhsuk-card__img" src="/images/nhsuk/homepage/MS_1018_yes_i_donate_promo.2e16d0ba.fill-720x405.jpg" alt="">
+              <div class="nhsuk-card__content">
+                <h3 class="nhsuk-card__heading">
+                  <a class="nhsuk-card__link" href="">
+                    Become a donor
+                  </a>
+                </h3>
+                <p class="nhsuk-card__description">Give someone the gift of life: register as an NHS Organ Donor today.</p>
+              </div>
+            </div>
+          </li>
+          <li class="nhsuk-grid-column-one-third nhsuk-card-group__item">
+            <div class="nhsuk-card nhsuk-card--clickable">
+              <img class="nhsuk-card__img" src="/images/nhsuk/homepage/PHE_0119_Weaning_02jpg.2e16d0ba.fill-720x405.jpg" alt="">
+              <div class="nhsuk-card__content">
+                <h3 class="nhsuk-card__heading">
+                  <a class="nhsuk-card__link" href="">
+                    Is your baby ready for weaning?
+                  </a>
+                </h3>
+                <p class="nhsuk-card__description">Get expert advice, tips and healthy weaning recipes on Start4life.</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+
+<!-- NHS.UK footer -->
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container">
+      <h2 class="nhsuk-u-visually-hidden">Support links</h2>
+      <ul class="nhsuk-footer__list nhsuk-footer__list--three-columns">
+        <li class="nhsuk-footer__list-item"><a href="" class="nhsuk-footer__list-item-link">NHS sites</a></li>
+        <li class="nhsuk-footer__list-item"><a href="" class="nhsuk-footer__list-item-link">NHS App</a></li>
+        <li class="nhsuk-footer__list-item"><a href="" class="nhsuk-footer__list-item-link">About us</a></li>
+        <li class="nhsuk-footer__list-item"><a href="" class="nhsuk-footer__list-item-link">Contact us</a></li>
+        <li class="nhsuk-footer__list-item"><a href="" class="nhsuk-footer__list-item-link">Profile editor login</a></li>
+        <li class="nhsuk-footer__list-item"><a href="" class="nhsuk-footer__list-item-link">Site map</a></li>
+        <li class="nhsuk-footer__list-item"><a href="" class="nhsuk-footer__list-item-link">Accessibility statement</a></li>
+        <li class="nhsuk-footer__list-item"><a href="" class="nhsuk-footer__list-item-link">Our policies</a></li>
+        <li class="nhsuk-footer__list-item"><a href="" class="nhsuk-footer__list-item-link">Cookies</a></li>
+      </ul>
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+    </div>
+  </div>
+</footer>
+{% endblock %}
+
+
+<!-- JavaScript hack to do nothing if search button or link href="" clicked -->
+{% block pageScripts %}
+<script>
+  $( document ).ready(function() {
+    $('a[href=""], button.nhsuk-search__submit').click(function(e) {
+      e.preventDefault();
+    });
+  });
+</script>
+{% endblock %}
