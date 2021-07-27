@@ -36,7 +36,7 @@
 {%- from 'textarea/macro.njk' import textarea %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="{{ html_style }}">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -71,7 +71,7 @@
     {% endblock %}
 
     {% block head %}{% endblock %}
-    
+
   </head>
 
   <body class="{{ bodyClasses }}">
