@@ -55,7 +55,7 @@ NHS Cervical screening management system
         <div class="nhsuk-grid-column-one-quarter">
           <div class="nhsuk-date-input__item">
             <label class="nhsuk-label nhsuk-label__strong nhsuk-body-xs">
-              District health authority 
+              Cipher 
             </label>
             <input id="searchfield" class="nhsuk-input" type="number" inputmode="numeric" name="searchnhs" value="">
           </div>
@@ -84,14 +84,14 @@ NHS Cervical screening management system
       </div>
     </div>
   </form>
-  
+     
     </details>
 <br>  
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-full">
     <h2 id="testresults" class="nhsuk-heading-l">Exsisting senders</h2>
 
-    <p>
+<p>
       <span class="number-of-results">
         <h3 class="nhsuk-heading-xs">We found <b>1</b> result for senders with district health authority 07 and sender code GYNE</h3>
         <p>If this isn't the sender you're looking for you can refine search again.</p>
@@ -130,7 +130,7 @@ NHS Cervical screening management system
 
 
       ],
-      rows: [ 
+     rows: [ 
         [
            {
             text: "07"
@@ -146,17 +146,17 @@ NHS Cervical screening management system
             <br> IP4 5PD"
           },
           {
-            text: "Yes"
+            text: "No"
           },
           {
-            text: "-"
+            text: "28-07-2021"
           },
           {
             text: "4"
           },
          
           {
-            html: '<a href="edit-sender">Amend</a> <a href="deactivate-sender">Deactivate</a>'
+            html: '<a href="edit-sender">Amend</a> <a href="reactivate-sender">Reactivate</a>'
           }
         ]
           
@@ -166,4 +166,5 @@ NHS Cervical screening management system
 
   </div>
 </div>
+         
 {% endblock %}

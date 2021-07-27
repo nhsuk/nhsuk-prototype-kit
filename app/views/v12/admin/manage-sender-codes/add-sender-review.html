@@ -41,26 +41,27 @@
   
    
   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Cipher</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "12345" }}</dd>
+    <dt class="nhsuk-summary-list__key">District health authority</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "01" }}</dd>
     <dd class="nhsuk-summary-list__actions"><a href="add-sender">Change<span class="nhsuk-u-visually-hidden"> Cipher</span></a></dd>
   </div>
     
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or "-" }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or "ABCD" }}</dd>
     <dd class="nhsuk-summary-list__actions"><a href="add-sender">Change<span class="nhsuk-u-visually-hidden"> Sender code</span></a></dd>
   </div>
   
   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Source code</dt>
-    <dd class="nhsuk-summary-list__value">No</dd>
+    <dt class="nhsuk-summary-list__key">Source type</dt>
+    <dd class="nhsuk-summary-list__value">04</dd>
     <dd class="nhsuk-summary-list__actions"><a href="add-sender">Change<span class="nhsuk-u-visually-hidden"> Source code</span></a></dd>
   </div>
   
   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Address</dt>
-    <dd class="nhsuk-summary-list__value">Birmingham Woman's Hospital, B1 2WM</dd>
+    <dt class="nhsuk-summary-list__key">Name and address</dt>
+    <dd class="nhsuk-summary-list__value">Kent General hospital,
+    <br> Joy road,<br> Kent,<br> KT1 4JR</dd>
     <dd class="nhsuk-summary-list__actions"><a href="add-sender">Change<span class="nhsuk-u-visually-hidden"> Address</span></a></dd>
   </div>
   

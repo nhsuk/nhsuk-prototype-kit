@@ -20,7 +20,7 @@ NHS Cervical screening management system
   <div class="nhsuk-grid-column-two-thirds">
 
     <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-8">
-           <h3 class="nhsuk-heading-s">Sender successfully deactivated {{ hideDetails }}</h3>
+           <h3 class="nhsuk-heading-s">Sender successfully reactivated {{ hideDetails }}</h3>
         </div>
 
 
@@ -44,9 +44,9 @@ NHS Cervical screening management system
           </legend>
     
 
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">District health authority</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "07" }}</dd>
+   <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Cipher</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "01" }}</dd>
   </div>
     
   <div class="nhsuk-summary-list__row">
@@ -62,15 +62,21 @@ NHS Cervical screening management system
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Name and address</dt>
     <dd class="nhsuk-summary-list__value">Crarc Colposcopy clinic
-Ipswich hospital,<br>
-Heath centre,<br>
-Ipswich,<br>
-IP4 5PD</dd>
+            <br> Ipswich hospital,
+            <br> Heath centre,
+            <br> Ipswich,
+            <br> IP4 5PD"</dd>
   </div>
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Active</dt>
-    <dd class="nhsuk-summary-list__value">Yes </dd>
+    <dd class="nhsuk-summary-list__value">No </dd>
+  </div>
+
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Inactive date</dt>
+    <dd class="nhsuk-summary-list__value">28-July-2021</dd>
   </div>
 
   
@@ -83,10 +89,11 @@ IP4 5PD</dd>
     <dt class="nhsuk-summary-list__key">Comments</dt>
     <dd class="nhsuk-summary-list__value"></dd>
   </div>
- </div>
- </div> 
+</div>
+</div>
+  
 
-<a href="sender-code-search-reactive" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Exit</a>
+<a href="sender-code-search" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Exit</a>
    
  <p><a href="manage-sender-codes">Back to Manage sender codes</a></p>
 </div>

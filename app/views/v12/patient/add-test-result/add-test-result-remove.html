@@ -102,24 +102,26 @@
 
 {% include '../../components/comments-timeline.html' %}  
 
-
-  <form action="../v12/delete-test-result?nhsNumber={{ data.pnl_patient.nhs_number }}" method="post">
+ <form action="confirm-delete" method="post"> <input type="hidden" name="hideDetails" value="true">
     <div class="nhsuk-form-group">
       <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
         <legend class="nhsuk-fieldset__legend--m nhsuk-label__strong">
-          <h1 class="nhsuk-fieldset__heading">Are you sure you want to delete this test result?</h1>
+          <h1 class="nhsuk-fieldset__heading">Are you sure you want to remove this test result?</h1>
         </legend>
 
-        <div class="nhsuk-radios nhsuk-radios--conditional">
-          <div class="nhsuk-radios__item">
-            <input class="nhsuk-radios__input" id="example-1" name="result-type" type="radio" value="English" {{ checked("result-type", "English") }} aria-controls="conditional-example-1" aria-expanded="false">
-            <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-             Yes, I want to delete this test result
+<div class="nhsuk-checkboxes">
+            <div class="nhsuk-checkboxes__item">
+            <input class="nhsuk-checkboxes__input" id="confirmIdentity" name="confirmIdentity" type="checkbox" value="confirmIdentity">
+            <label class="nhsuk-label nhsuk-checkboxes__label" for="confirmIdentity">
+              Yes, I want to remove this test result
             </label>
             <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
-             The patient's next test due date will not be affected.
+             This will remove the test result from the patients result table and archive it
             </div>
-                        <div class="nhsuk-form-group">
+          </div>
+        
+            
+            <div class="nhsuk-form-group">
               <h1 class="nhsuk-label-wrapper">
                 <label class="nhsuk-fieldset__legend--s nhsuk-label__strong" for="example-heading">
                   Enter CRM case number
@@ -131,32 +133,25 @@
               <input class="nhsuk-input nhsuk-input--width-10" type="text" name="crm" autocomplete="off" value="{{ data.crm }}">
             </div>
             <div class="nhsuk-form-group">
+             
+            <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-three-quarters">
               <label class="nhsuk-label" for="example">
                 Comments 
               </label>
-                  <!--<span class="nhsuk-hint" id="example-hint">Do not include clinical information at this point.</span>-->
+                  <span class="nhsuk-hint" id="example-hint"> Add a comment explaining this action taken.</span>
                
-              <textarea class="nhsuk-textarea" id="example" name="comments" rows="3" aria-describedby="example-hint" autocomplete="off">{{ data.comments }}</textarea>
+              <textarea class="nhsuk-textarea" id="example" name="comments" rows="4" aria-describedby="example-hint" autocomplete="off">{{ data.comments }}</textarea>
             </div>
           </div>
         </div>
-    <br>
-        <div class="nhsuk-radios nhsuk-radios--conditional">
-          <div class="nhsuk-radios__item">
-            <input class="nhsuk-radios__input" id="example-1" name="result-type" type="radio" value="English" >
-            <label class="nhsuk-label nhsuk-radios__label" for="example-1">
-              No, return to patient summary.
-            </label>   
-          </div>   
-        </div> 
-      </fieldset> 
-    </div>
     <br>
     <button class="nhsuk-button nhsuk-button--ers" type="submit">Confirm</button>   
   </form>
 
  <p><a href="../patient-summary-7">Exit without saving</a></p> 
   </div>
+
 
 {% endblock %}
 

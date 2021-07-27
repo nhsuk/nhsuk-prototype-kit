@@ -32,13 +32,36 @@ NHS Cervical screening management system
 
     <h1 class="nhsuk-heading-l">Manage sender codes</h1>
 
-     
-                 <span class="nhsuk-u-visually-hidden">Information: </span>
-                 <p>
-                
+<p>View and manage all non GP senders. For GP senders, go to the <a href="https://odsportal.digital.nhs.uk/Organisation/Search">ODS Portal</a>.</p> 
 
-      
+     <details class="nhsuk-details">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+         Refine search by cipher and sender code
+        </span>
+      </summary>
+   
+   
+      <div class="nhsuk-details__text">
+      <div class="nhsuk-hint" id="example-hint">
+      Enter the sender details:
      
+    </div>
+        <form action="sender-code-search" method="post">
+    <div class="nhsuk-form-group">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-quarter">
+        </div>
+        <div class="nhsuk-grid-column-one-quarter">
+          <div class="nhsuk-date-input__item">
+            <label class="nhsuk-label nhsuk-label__strong nhsuk-body-xs">
+              District health authority 
+            </label>
+            <input id="searchfield" class="nhsuk-input" type="number" inputmode="numeric" name="searchnhs" value="">
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="nhsuk-form-group">
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-one-quarter">
@@ -56,32 +79,36 @@ NHS Cervical screening management system
     <div class="nhsuk-form-group">
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-full">
-          <button class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary" type="submit">Search</button>
+          <button class="nhsuk-button nhsuk-button--ers" type="submit">Search</button>
         </div>
       </div>
     </div>
   </form>
-<br>    
+     
+    </details>
+<br>  
+
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-full">
     <h2 id="testresults" class="nhsuk-heading-l">Exsisting senders</h2>
 
   <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-4 no-print" href="add-sender"
->Add sender</a>
+>Add non-GP sender</a>
+
 
     {{ table({
       panel: false,
-      caption: "Skin symptoms and possible causes",
+      caption: "",
       firstCellIsHeader: false,
       head: [
         {
-          text: "Cipher"
+          text: "District health authority"
         },
         {
           text: "Sender code"
         },
         {
-          text: "Address"
+          text: "Name and address"
         },
          {
           text: "Active"
@@ -101,16 +128,20 @@ NHS Cervical screening management system
       rows: [
         [
           {
-            text: "BIR"
+            text: "01"
           },
           {
-            text: "COLP001"
+            text: "Y05222"
           },
           {
-            text: "Birmingham Woman's Hospital, B1 2WM"
+            html: "Woodland Drive Medical Centre, 
+            <br>Woodland Drive,
+            <br>Barnsley, 
+            <br>South Yorkshire, 
+            <br>S70 6QW"
           },
           {
-            text: "Y"
+            text: "Yes"
           },
           {
             text: "-"
@@ -126,205 +157,206 @@ NHS Cervical screening management system
         
         [
            {
-            text: "BIR"
+            text: "01"
           },
           {
-            text: "00001"
+            text: "AHA"
           },
           {
-            text: "Solihull GUM Clinic,B2 3ME"
+            html: "Hillder House,
+            <br> Gawber Rd,
+            <br> Barnsley"
           },
           {
-            text: "Y"
+            text: "No"
           },
           {
-            text: "-"
+            text: "01-02-2010"
           },
           {
-            text: "3"
+            text: "2"
           },
          
           {
-           html: '<a href="review-edit-sender">Review</a> <a href="deactivate-sender">Deactivate</a>'
+           html: '<a href="review-edit-sender">Review</a> <a href="reactivate-sender">Reactivate</a>'
           }
         ],
         [
            {
-            text: "BIR"
+            text: "01"
           },
           {
-            text: "00002"
+            text: "ANC"
           },
           {
-            text: "Walkin Centre, B1 6WW"
+            html: "Barnsley District General Hospital,
+            <br> Gawber Rd,
+            <br> Barnsley"
           },
           {
-            text: "Y"
+            text: "No"
           },
           {
-            text: "-"
-          },
-          {
-            text: "4"
-          },
-         
-          {
-            html: '<a href="review-edit-sender">Review</a> <a href="deactivate-sender">Deactivate</a>'
-          }
-        ],
-          [
-           {
-            text: "BIR"
-          },
-          {
-            text: "00002"
-          },
-          {
-            text: "Walkin Centre, B1 6WW"
-          },
-          {
-            text: "Y"
-          },
-          {
-            text: "-"
+            text: "01-02-2010"
           },
           {
             text: "4"
           },
          
           {
-            html: '<a href="review-edit-sender">Review</a> <a href="deactivate-sender">Deactivate</a>'
+           html: '<a href="review-edit-sender">Review</a> <a href="reactivate-sender">Reactivate</a>'
           }
         ],
-          [
+
+        [
            {
-            text: "BIR"
+            text: "01"
           },
           {
-            text: "00002"
+            text: "ANCSHW"
           },
           {
-            text: "Walkin Centre, B1 6WW"
+            html: "A.N.C,
+            <br> Manygates,
+            <br> wakefeild"
           },
           {
-            text: "Y"
+            text: "No"
           },
           {
-            text: "-"
+            text: "01-02-2010"
           },
           {
-            text: "4"
+            text: "2"
           },
          
           {
-            html: '<a href="review-edit-sender">Review</a> <a href="deactivate-sender">Deactivate</a>'
+           html: '<a href="review-edit-sender">Review</a> <a href="reactivate-sender">Reactivate</a>'
           }
         ],
-            [
+
+        [
            {
-            text: "BIR"
+            text: "01"
           },
           {
-            text: "00002"
+            text: "BAACOL"
           },
           {
-            text: "Walkin Centre, B1 6WW"
+            html: "Bansley district general hospital
+            <br> Gawber Road,
+            <br> Barnsley
+            "
           },
           {
-            text: "Y"
+            text: "No"
           },
           {
-            text: "-"
-          },
-          {
-            text: "4"
-          },
-         
-          {
-            html: '<a href="review-edit-sender">Review</a> <a href="deactivate-sender">Deactivate</a>'
-          }
-        ],
-          [
-           {
-            text: "LNA"
-          },
-          {
-            text: "COLP001"
-          },
-          {
-            text: "London Woman's Hospital, W1A 2WM"
-          },
-          {
-            text: "Y"
-          },
-          {
-            text: "-"
-          },
-          {
-            text: "3"
-          },
-         
-          {
-            html: '<a href="review-edit-sender">Review</a> <a href="deactivate-sender">Deactivate</a>'
-          }
-        ],
-              [
-           {
-            text: "LNB"
-          },
-          {
-            text: "11111"
-          },
-          {
-            text: "Trafalgar Road walkin centre, SE2 8HG"
-          },
-          {
-            text: "N"
-          },
-          {
-            text: "05-05-1998"
+            text: "01-02-2010"
           },
           {
             text: "7"
           },
          
           {
-            html: ''
+            html: '<a href="review-edit-sender">Review</a> <a href="reactivate-sender">Reactivate</a>'
           }
         ],
-              [
+          [
            {
-            text: "LNB"
+            text: "EB"
           },
           {
-            text: "GUM01"
+            text: "Y00751"
           },
           {
-            text: "London Road GUM Clinic, N1 2EE"
+            html: "Inspired,
+            <br> Easthampstead Road,
+            <br> Barcknell,
+            <br> Berkshire,
+            <br> RG12 1YQ"
           },
           {
-            text: "Y"
+            text: "Yes"
           },
           {
             text: "-"
           },
           {
-            text: "3"
+            text: "1"
           },
-         
+          
+          {
+            html: '<a href="review-edit-sender">Review</a> <a href="deactivate-sender">Deactivate</a>'
+          }
+
+
+        ],
+
+         [
+           {
+            text: "EB"
+          },
+          {
+            text: "Y05157"
+          },
+          {
+            html: "Boundary House Surgery,
+            <br> Mount lane,
+            <br> Barcknell,
+            <br> Berkshire,
+            <br> RG12 9PG"
+          },
+          {
+            text: "Yes"
+          },
+          {
+            text: "-"
+          },
+          {
+            text: "1"
+          },
           {
             html: '<a href="review-edit-sender">Review</a> <a href="deactivate-sender">Deactivate</a>'
           }
         ],
+           [
+           {
+            text: "01"
+          },
+          {
+            text: "BHA"
+          },
+          {
+            html: "Hillder House,
+            <br> Gawber road,
+            <br> Barnsley"
+          },
+          {
+            text: "No"
+          },
+          {
+            text: "01-02-2010"
+          },
+          {
+            text: "2"
+          },
+          {
+            html: '<a href="review-edit-sender">Review</a> <a href="reactivate-sender">Reactivate</a>'
+          }
+        ],
               [
            {
-            text: "IM"
+            text: "EB"
           },
           {
-            text: "COLP001"
+            text: "Y05962"
           },
           {
-            text: "Isle of Man Hospital"
+            html: "Bharani Medical Centre,
+            <br> Lansdowne Avenue,
+            <br>Slough,
+            <br> SL1 3SJ"
           },
           {
             text: "Y"
@@ -339,14 +371,54 @@ NHS Cervical screening management system
           {
             html: '<a href="review-edit-sender">Review</a> <a href="deactivate-sender">Deactivate</a>'
           }
-        ]  
+        ],
+        [
+           {
+            text: "01"
+          },
+          {
+            text: "CASGOP"
+          },
+          {
+            html: "Castleford and Normanton,
+            <br> General hospital"
+          },
+          {
+            text: "-"
+          },
+          {
+            text: "-"
+          },
+          {
+            text: "-"
+          },
+         
+          {
+            html: '<a href="review-edit-sender">Review</a> <a href="deactivate-sender">Deactivate</a>'
+          }
+        ]    
+        
         
       ]
 }) }}
 
   </div>
 </div>
-
+<nav class="nhsuk-pagination" role="navigation" aria-label="Pagination">
+  <ul class="nhsuk-list nhsuk-pagination__list">
+   
+    <li class="nhsuk-pagination-item--next">
+      <a class="nhsuk-pagination__link nhsuk-pagination__link--next" href="#">
+        <span class="nhsuk-pagination__title">Next</span>
+        <span class="nhsuk-u-visually-hidden">:</span>
+        <span class="nhsuk-pagination__page">10 of 18029</span>
+        <svg class="nhsuk-icon nhsuk-icon__arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19.6 11.66l-2.73-3A.51.51 0 0 0 16 9v2H5a1 1 0 0 0 0 2h11v2a.5.5 0 0 0 .32.46.39.39 0 0 0 .18 0 .52.52 0 0 0 .37-.16l2.73-3a.5.5 0 0 0 0-.64z"></path>
+        </svg>
+      </a>
+    </li>
+  </ul>
+</nav>
 
 {% endblock %}
 

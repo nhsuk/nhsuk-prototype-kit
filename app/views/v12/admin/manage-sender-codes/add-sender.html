@@ -47,8 +47,7 @@
                 District health authority
               </label>
               <div class="nhsuk-hint" id="example-with-hint-text-hint">
-                Also known as NHAIS cipher.
-                <br> 1 to3 ltter for example, A,DN or LNA
+                 2 numbers or 2 letters for example, 01 or WS
               </div>
               <input class="nhsuk-input nhsuk-input--width-10" value="{{ data['national-code'] }}" id="national-code" name="national-code" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
             </div>
@@ -68,14 +67,14 @@
   
            {{ input({
                "label": {
-                 "text": "Source code",
+                 "text": "Source type",
                 "classes": "nhsuk-label nhsuk-label__strong"
                },
                hint: {
                   html: "For example, H, X, G or N "
                },
                "id": "input-width-2",
-               "name": "source-code",
+               "name": "source-type",
                "classes": "nhsuk-input--width-2",
                "autocomplete": "off",
                "value": sourceValue
@@ -85,11 +84,15 @@
             
                    <div class="nhsuk-form-group">
                 <label class="nhsuk-label nhsuk-label__strong" for="example-with-hint-text">
-                      Enter a sender address
+                      Enter a sender name and address
                     </label>
                  
                  
                     <div class="nhsuk-form-group">
+                    <label class="nhsuk-label" for="email">
+                        Sender name
+                      </label>
+                      <input class="nhsuk-input nhsuk-u-width-two-thirds" id="email" name="email" type="text">
                       <label class="nhsuk-label" for="email">
                         Building and street
                       </label>
