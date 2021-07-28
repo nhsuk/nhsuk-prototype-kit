@@ -2,6 +2,10 @@
 
 ## 4.5.1 - TBC
 
+:new: **New features**
+
+- Add missing coronavirus hub page example from the NHS website which should have been in the previous release
+
 :wrench: **Fixes**
 
 - Update CSS link colours for the NHS website page examples
