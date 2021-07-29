@@ -644,7 +644,28 @@
    }
  }
 
- // reset visited link colour
-main a[href=""] {
-  color: $color_nhsuk-blue;
+// reset visited link colour as all links are empty
+main a[href=""]:visited,
+main a[href=""]:visited .nhsuk-action-link__text {
+  color: $nhsuk-link-color;
+}
+// and hover link colour
+main a[href=""]:hover,
+main a[href=""]:hover .nhsuk-action-link__text {
+  color: $nhsuk-link-hover-color;
+}
+// and active link colour
+main a[href=""]:active,
+main a[href=""]:active .nhsuk-action-link__text {
+  color: $nhsuk-link-active-color;
+}
+// and focus link colour
+main a[href=""]:focus,
+main a[href=""]:focus .nhsuk-action-link__text,
+main .app-list-signage a[href=""]:focus {
+  color: $nhsuk-focus-text-color;
+}
+// except the links in blue blocks
+main .app-list-signage a[href=""] {
+  color: $color_nhsuk-white;
 }
