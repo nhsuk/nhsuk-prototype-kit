@@ -37,7 +37,7 @@ NHS Cervical screening management system
      <details class="nhsuk-details">
       <summary class="nhsuk-details__summary">
         <span class="nhsuk-details__summary-text">
-         Refine search by cipher and sender code
+         Refine search for sender
         </span>
       </summary>
    
@@ -55,7 +55,7 @@ NHS Cervical screening management system
         <div class="nhsuk-grid-column-one-quarter">
           <div class="nhsuk-date-input__item">
             <label class="nhsuk-label nhsuk-label__strong nhsuk-body-xs">
-              District health authority 
+              Cipher
             </label>
             <input id="searchfield" class="nhsuk-input" type="" inputmode="" name="searchnhs" value="">
           </div>
@@ -90,7 +90,7 @@ NHS Cervical screening management system
 
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-full">
-    <h2 id="testresults" class="nhsuk-heading-l">Existing senders</h2>
+   <!-- <h2 id="testresults" class="nhsuk-heading-l">Existing senders</h2>-->
 
   <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-4 no-print" href="add-sender"
 >Add non-GP sender</a>
@@ -102,7 +102,7 @@ NHS Cervical screening management system
       firstCellIsHeader: false,
       head: [
         {
-          text: "District health authority"
+          text: "Cipher"
         },
         {
           text: "Sender code"
@@ -128,7 +128,7 @@ NHS Cervical screening management system
       rows: [
         [
           {
-            text: "01"
+            text: "BAA"
           },
           {
             text: "Y05222"

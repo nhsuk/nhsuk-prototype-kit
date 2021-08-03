@@ -1,0 +1,139 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/reveal.js"></script>
+<script type="text/javascript" src="/js/comments.js"></script>
+
+<script type="text/javascript">
+
+
+</script>
+
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ backLink({
+      "href": "create-dummy",
+      "text": "Go back to dummy patient information"
+    }) }}
+
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review patient details</h1>
+
+    <div class="nhsuk-panel-with-label">
+       <h3 class="nhsuk-panel-with-label__label">Recommend dummy registation</h3>
+      <h3 class="nhsuk-heading-s nhsuk-u-padding-top-4">Test result details:</h3>
+
+      <dl class="nhsuk-summary-list nhsuk-u-margin-bottom-2">
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Next test due date</dt>
+          <dd class="nhsuk-summary-list__value">29-March-2023</dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Last test date</dt>
+          <dd class="nhsuk-summary-list__value">09-Dec-2020</dd>
+        </div>
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">Test result</dt>
+          <dd class="nhsuk-summary-list__value">(X9S) No cytology result, HPV Positive, Refer colposcopy</dd>
+        </div>
+      </dl>
+
+
+      <div class="nhsuk-form-group nhsuk-u-padding-top-6">
+        <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+          <legend class="nhsuk-fieldset__legend">
+            <h3 class="nhsuk-heading-s">Lab patient details to recommend dummy registration:</h3>
+          </legend>
+
+          <form action="confirm-dummy-rec" method="post">
+
+            <dl class="nhsuk-summary-list">
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Name</dt>
+                <dd class="nhsuk-summary-list__value">Charlotte Gravill</dd>
+                <dd class="nhsuk-summary-list__actions"><a href="#"><span class="nhsuk-u-visually-hidden">Name</span></a></dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Date of birth</dt>
+                <dd class="nhsuk-summary-list__value">11-04-1990</dd>
+                <dd class="nhsuk-summary-list__actions"><a href="#"><span class="nhsuk-u-visually-hidden">Date of birth</span></a></dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">NHS Number</dt>
+                <dd class="nhsuk-summary-list__value">T123 456 7890</dd>
+                <dd class="nhsuk-summary-list__actions"><a href="#"><span class="nhsuk-u-visually-hidden"> NHS number</span></a></dd>
+              </div>
+
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Contact information</dt>
+                <dd class="nhsuk-summary-list__value" id="address-info" name="address-info">
+
+                  {% if (data['address-line-1'] != "" and data['address-line-1'] != null) %}
+                  {{ data['address-line-1'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-line-2'] != "" and data['address-line-2'] != null) %}
+                  {{ data['address-line-2'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-town'] != "" and data['address-town'] != null) %}
+                  {{ data['address-town'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-county'] != "" and data['address-county'] != null) %}
+                  {{ data['address-county'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-postcode'] != "" and data['address-postcode'] != null) %}
+                  {{ data['address-postcode'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-line-1'] == "" or data['address-line-1'] == null) and (data['address-line-2'] == "" or data['address-line-2'] == null) and (data['address-town'] == "" or data['address-town'] == null) and (data['address-county'] == "" or data['address-county'] == null) and (data['address-postcode'] == "" or data['address-postcode'] == null) %}
+                  1 Westfield Place<br>Great Shelford<br> CB22 5JJ
+                  {% endif %} 
+
+
+                </dd>
+                <dd class="nhsuk-summary-list__actions"><a href="change-dummy-address">Change<span class="nhsuk-u-visually-hidden">Contact information</span></a></dd>
+              </div>
+              <div class="nhsuk-summary-list__row">
+                <dt class="nhsuk-summary-list__key">Comments </dt>
+                <dd class="nhsuk-summary-list__value">Used address sent by lab</dd>
+                <dd class="nhsuk-summary-list__actions"><a href="#">Change<span class="nhsuk-u-visually-hidden"> NHS number</span></a></dd>
+              </div>
+
+            </dl>
+  
+            <button class="nhsuk-button nhsuk-button--ers" type="submit">Save and submit</button>
+
+            <p><a href="non-match-dummy">Exit without saving</a></p>
+
+          </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

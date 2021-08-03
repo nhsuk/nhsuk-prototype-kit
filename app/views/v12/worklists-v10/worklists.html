@@ -1,0 +1,175 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(3) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-width-container">
+  <main class="nhsuk-main-wrapper" id="maincontent">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-">
+        <h1 class="nhsuk-heading-l">Results by lab</h1>
+      </div>
+
+      <span class="nhsuk-hint nhsuk-margin-bottom-4">
+        <p>Select a lab to view the results which need to be processed today.</p>
+        <p> All logged test results can be viewed and actioned in <a href="../worklists-v10/logged-results">logged results</a>.</p>
+      </span>
+
+
+
+      <div class="nhsuk-grid-row">
+
+        <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-panel nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-3">
+            <div class="nhsuk-action-link">
+              <a class="nhsuk-action-link__link" href="https://www.nhs.uk/service-search/minor-injuries-unit/locationsearch/551">
+                <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+                </svg>
+                <span class="nhsuk-action-link__text"> Bristol - (NBT3)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-panel nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-3">
+            <div class="nhsuk-action-link">
+              <a class="nhsuk-action-link__link" href="https://www.nhs.uk/service-search/minor-injuries-unit/locationsearch/551">
+                <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+                </svg>
+                <span class="nhsuk-action-link__text"> Berkshire - (RSH3)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-panel nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-3">
+            <div class="nhsuk-action-link">
+              <a class="nhsuk-action-link__link" href="https://www.nhs.uk/service-search/minor-injuries-unit/locationsearch/551">
+                <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+                </svg>
+                <span class="nhsuk-action-link__text"> Derby - (DBL3)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-panel nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-3">
+            <div class="nhsuk-action-link">
+              <a class="nhsuk-action-link__link" href="https://www.nhs.uk/service-search/minor-injuries-unit/locationsearch/551">
+                <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+                </svg>
+                <span class="nhsuk-action-link__text">Gateshead - (QEH3)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+       <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-panel nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-3">
+            <div class="nhsuk-action-link">
+              <a class="nhsuk-action-link__link" href="https://www.nhs.uk/service-search/minor-injuries-unit/locationsearch/551">
+                <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+                </svg>
+                <span class="nhsuk-action-link__text"> Isle of Man - (NOB3)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-panel nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-3">
+            <div class="nhsuk-action-link">
+              <a class="nhsuk-action-link__link" href="https://www.nhs.uk/service-search/minor-injuries-unit/locationsearch/551">
+                <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+                </svg>
+                <span class="nhsuk-action-link__text"> London - (NCL3)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-panel nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-3">
+            <div class="nhsuk-action-link">
+              <a class="nhsuk-action-link__link" href="manc-process">
+                <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+                </svg>
+                <span class="nhsuk-action-link__text"> Manchester - (CHR3)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-panel nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-3">
+            <div class="nhsuk-action-link">
+              <a class="nhsuk-action-link__link" href="manc-process">
+                <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+                </svg>
+                <span class="nhsuk-action-link__text"> Norwich - (NOR3)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="nhsuk-grid-column-one-third">
+          <div class="nhsuk-panel nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-3">
+            <div class="nhsuk-action-link">
+              <a class="nhsuk-action-link__link" href="manc-process">
+                <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+                </svg>
+                <span class="nhsuk-action-link__text"> Wolverhampton - (WOL3)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+  </main>
+</div>
+
+
+
+{% endblock %}

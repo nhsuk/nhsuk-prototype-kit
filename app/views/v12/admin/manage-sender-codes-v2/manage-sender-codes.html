@@ -1,0 +1,118 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(5) {
+    border-bottom: 4px solid #d8dde0;
+  }
+
+  .nhsuk-button, .nhsuk-button--ers, .dropdown .dropbtn, .nhsuk-button--ers_secondary, .nhsuk-button--ers_reverse, .nhsuk-button--ers_reverse:hover, .nhsuk-button--ers_reverse:focus, .nhsuk-button--ers_reject, .nhsuk-blue, .nhsuk-right  {
+    margin-bottom: 0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    {{ backLink({
+      "href": "index",
+      "text": "Back to Admin"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Manage sender codes</h1>
+
+<p>View and manage all non GP senders. For GP senders, go to the <a href="https://odsportal.digital.nhs.uk/Organisation/Search">ODS Portal</a>.</p> 
+
+
+
+    
+   <h2 id="testresults" class="nhsuk-heading-l">Search existing senders</h2>
+
+        <form action="sender-code-search" method="post">
+    <div class="nhsuk-form-group">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-quarter">
+        </div>
+        <div class="nhsuk-grid-column-one-quarter">
+          <div class="nhsuk-date-input__item">
+            <label class="nhsuk-label nhsuk-label__strong nhsuk-body-xs">
+              Cipher
+            </label>
+            <div class="nhsuk-hint" id="example-with-hint-text-hint">
+                Also known as NHAIS cipher
+              </div>
+            <input id="searchfield" class="nhsuk-input" type="" inputmode="" name="searchnhs" value="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nhsuk-form-group">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-quarter">
+        </div>
+        <div class="nhsuk-grid-column-one-quarter">
+          <div class="nhsuk-date-input__item">
+            <label class="nhsuk-label nhsuk-label__strong nhsuk-body-xs">
+              Sender code
+            </label>
+            <input id="searchfield" class="nhsuk-input" type="" inputmode="" name="searchnhs" value="">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+            <div class="nhsuk-form-group">
+               <label class="nhsuk-label nhsuk-label__strong" for="email">
+                 Active status
+               </label>
+               <div class="nhsuk-hint" id="example-with-hint-text-hint">
+                You need to enter a cipher to search by active status
+              </div>
+
+                 <div class="nhsuk-checkboxes__item">
+                   <input class="nhsuk-checkboxes__input" id="yes-selfsample" name="self-sample" value="Yes" type="checkbox" {{ checked("self-sample", "Yes") }} aria-controls="conditional-selfsample-1" aria-expanded="false">
+                      <label class="nhsuk-label nhsuk-checkboxes__label" for="yes-selfsample">
+                        Active senders
+                      </label>
+                  </div>
+                   
+                  <div class="nhsuk-checkboxes__item">
+                   <input class="nhsuk-checkboxes__input" id="no-selfsample" name="self-sample" value="No" type="checkbox" {{ checked("self-sample", "No") }}>
+                       <label class="nhsuk-label nhsuk-checkboxes__label" for="no-selfsample">
+                          Inactive senders
+                       </label>
+                  </div>
+<br>
+    <div class="nhsuk-form-group">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <button class="nhsuk-button nhsuk-button--ers" type="submit">Search</button>
+        </div>
+      </div>
+    </div>
+              
+  </form>
+     
+      <a class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-bottom-4 no-print" href="add-sender"
+>Add non-GP sender</a>
+   
+<br>  
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-full">
+  
+
+{% endblock %}
+
+

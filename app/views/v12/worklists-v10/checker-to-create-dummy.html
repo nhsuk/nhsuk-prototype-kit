@@ -1,0 +1,101 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/reveal.js"></script>
+<script type="text/javascript" src="/js/comments.js"></script>
+
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+
+    {% if data['dummy-route'] == ['process-dummy'] %}
+    {{ backLink({
+      "href": "manc-p4",
+      "text": "Go back to match"
+    }) }}
+    {% endif %}
+
+    {% if data['dummy-route'] == ['query-dummy'] %}
+    {{ backLink({
+      "href": "non-match-dummy",
+      "text": "Go back to non-match"
+    }) }}
+    {% endif %}
+
+    {% if data['dummy-route'] == null %}
+    {{ backLink({
+      "href": "non-match-dummy",
+      "text": "Go back to non-match"
+    }) }}
+    {% endif %}
+
+
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Recommend dummy registration to checker</h1>
+
+    <div class="nhsuk-warning-callout">
+      <h3 class="nhsuk-warning-callout__label">
+      Important<span class="nhsuk-u-visually-hidden">:</span>
+      </h3>
+      <p>You should only create a dummy registration as a last resort if a participant cannot be matched in the system</p>
+    </div>
+    
+
+       <p>Once a checker confirms your dummy registration recommendation it means:</p>
+          <ul>
+          <li>we will create a unique number to identify them</li>
+          <li>you can send this result to the patient</li>
+          <li>they will be invited for screening based on their recall status</li>
+          <li>you can view their patient summary on the system</li>
+          <li>you can add future test results to their record and view their screening history</li>
+          <li>you can cease and defer them from screening</li>
+        </ul>
+
+         <p>
+        Demographics data cannot be updated on dummy registrations.
+        <br><br>
+        This means if the patient’s details change, such as they move address or change GP, they will not be updated in the system and letters may not reach them.
+        </p>
+
+        <div class="nhsuk-form-group">
+          <div class="nhsuk-checkboxes">
+            <div class="nhsuk-checkboxes__item">
+            <input class="nhsuk-checkboxes__input" id="confirmIdentity" name="confirmIdentity" type="checkbox" value="confirmIdentity">
+            <label class="nhsuk-label nhsuk-checkboxes__label" for="confirmIdentity">
+              I confirm that I wish to recommend a dummy registration for this result
+            </label>
+          </div>
+          </div>
+
+         <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
+                Comments (optional)
+              </label>
+              
+              <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" ></textarea>
+              
+            </div>
+        <a href="dummy-address-rec" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-6 nhsuk-u-margin-right-6">Continue</a>
+        <p><a href="non-match-dummy">Exit without saving</a></p>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

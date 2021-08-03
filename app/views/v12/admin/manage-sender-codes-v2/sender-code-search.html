@@ -1,0 +1,114 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(5) {
+    border-bottom: 4px solid #d8dde0;
+  }
+
+  .nhsuk-button, .nhsuk-button--ers, .dropdown .dropbtn, .nhsuk-button--ers_secondary, .nhsuk-button--ers_reverse, .nhsuk-button--ers_reverse:hover, .nhsuk-button--ers_reverse:focus, .nhsuk-button--ers_reject, .nhsuk-blue, .nhsuk-right  {
+    margin-bottom: 0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    {{ backLink({
+      "href": "manage-sender-codes",
+      "text": "Back to Manage sender codes"
+    }) }}
+
+    
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-full">
+    <h2 id="testresults" class="nhsuk-heading-l">Existing senders</h2>
+
+    <p>
+      <span class="number-of-results">
+        <h3 class="nhsuk-heading-xs">We found <b>1</b> result for senders with district health authority 07 and sender code GYNE</h3>
+        <p>If this isn't the sender you're looking for you can <a href="manage-sender-codes">refine search</a> again.</p>
+      </span>
+    </p>
+<br>
+  <a class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-bottom-4 no-print" href="/v12/add-sender"
+>Add non-GP sender</a>
+
+    {{ table({
+      panel: false,
+      caption: "Skin symptoms and possible causes",
+      firstCellIsHeader: false,
+      head: [
+        {
+          text: "Cipher"
+        },
+        {
+          text: "Sender code"
+        },
+        {
+          text: "Name and address"
+        },
+         {
+          text: "Active"
+        },
+         {
+          text: "Inactive date"
+        },
+         {
+          text: "Source type"
+        },
+         {
+          text: "Amend"
+        }
+
+
+      ],
+      rows: [ 
+        [
+           {
+            text: "NF"
+          },
+          {
+            text: "GYNE"
+          },
+          {
+            html: "Crarc Colposcopy clinic
+            <br> Ipswich hospital,
+            <br> Heath road,
+            <br> Ipswich,
+            <br> IP4 5PD"
+          },
+          {
+            text: "Yes"
+          },
+          {
+            text: "-"
+          },
+          {
+            text: "4"
+          },
+         
+          {
+            html: '<a href="review-edit-sender">Review</a> <a href="deactivate-sender">Deactivate</a>'
+          }
+        ]
+          
+        
+      ]
+}) }}
+
+  </div>
+</div>
+{% endblock %}

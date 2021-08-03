@@ -1,0 +1,422 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/reveal.js"></script>
+<script type="text/javascript" src="/js/comments.js"></script>
+
+<script>
+  function closeRightMenu() {
+    document.getElementByClass("nhsuk-sidebar-hidden").style.display = "none";
+  }
+  $(document).ready(function() {
+    $(".sidebarbttn").click(function() {
+      $(".nhsuk-sidebar-hidden").toggle();
+    });
+
+  });
+</script>
+
+<script>
+  $(".char-textarea").on("keyup", function(event) {
+    checkTextAreaMaxLength(this, event);
+  });
+
+  function checkTextAreaMaxLength(textBox, e) {
+
+    var maxLength = parseInt($(textBox).data("length"));
+
+
+    if (!checkSpecialKeys(e)) {
+      if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
+    }
+    $(".char-count").html(maxLength - textBox.value.length);
+
+    return true;
+  }
+
+  function checkSpecialKeys(e) {
+    if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
+      return false;
+    else
+      return true;
+  }
+</script>
+
+<script>
+  function toggle(btnID, eIDs) {
+    // Feed the list of ids as a selector
+    var theRows = document.querySelectorAll(eIDs);
+    // Get the button that triggered this
+    var theButton = document.getElementById(btnID);
+    // If the button is not expanded...
+    if (theButton.getAttribute("aria-expanded") == "false") {
+      // Loop through the rows and show them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("shown");
+        theRows[i].classList.remove("hidden");
+      }
+      // Now set the button to expanded
+      theButton.setAttribute("aria-expanded", "true");
+      // Otherwise button is not expanded...
+    } else {
+      // Loop through the rows and hide them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("hidden");
+        theRows[i].classList.remove("shown");
+      }
+      // Now set the button to collapsed
+      theButton.setAttribute("aria-expanded", "false");
+    }
+    $('.expanderButton[aria-expanded="true"]').closest('tr').addClass('expandedRow');
+    $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
+  }
+</script>
+
+
+<!-- clickable rows with hover colour -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.clickable-table tr').click(function(event) {
+      if (event.target.type !== 'radio') {
+        $(':radio', this).trigger('click');
+      }
+    });
+
+    $("input[type='radio']").change(function(e) {
+      e.stopPropagation();
+      $('.clickable-table tr').removeClass("highlight_row");
+      if ($(this).is(":checked")) {
+        $(this).closest('tr').addClass("highlight_row");
+      }
+    });
+  });
+</script>
+
+
+<style media="screen">
+  .clickable-table tbody tr:hover {
+    cursor: pointer;
+  }
+</style>
+
+
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    {{ backLink({
+      "href": "non-match-p1",
+      "text": "Go back to previous non-match"
+    }) }}
+
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review unmatched patient</h1>
+
+    <h3 class="nhsuk-u-padding-top-4">Lab patient demographics</h3>
+
+    <a href="#" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-2">Create a dummy registration</a>
+
+    <table class="nhsuk-table-clickable bna-table">
+      <thead>
+        <tr>
+          <th>Name
+          </th>
+          <th>Date of birth
+          </th>
+          <th>NHS number
+          </th>
+          <th>View address
+          </th>
+        <tr>
+      </thead>
+
+      <tbody>
+        <!-- LAB DEMOGRAPHICS -->
+        <tr class="nhsuk-table__row">
+          <td>Claudia Beddis</td>
+          <td>19-09-1993</td>
+          <td>234 567 8901</td>
+          <td class="nhsuk-table__cell">
+            <button class="expanderButton" type="button" id="btn1" aria-expanded="false" onclick="toggle(this.id,'#row1');" aria-controls="row1" aria-label="More details for" aria-labelledby="row1"></button>
+          </td>
+        </tr>
+        <tr id="row1" class="hidden detailsRow">
+          <td colspan="5">
+            <div class="nhsuk-grid-row">
+              <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                <div id="reasons-step-0">
+                  <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Contact information
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      12 Poplars Close
+                      <br>
+                      Burwell
+                      <br>
+                      CB25 0ET
+                    </dd>
+                  </div>
+
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Sender
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      Brance Colposcopy Clinic
+                    </dd>
+                  </div>
+
+                  <div class="nhsuk-summary-list__row">
+                    <dt class="nhsuk-summary-list__key">
+                      Sender address
+                    </dt>
+                    <dd class="nhsuk-summary-list__value">
+                      RG12 1YQ
+                    </dd>
+                  </div>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <h3 class="nhsuk-u-margin-top-4">System patient demographics</h3>
+
+    <form action="non-match-p1" method="post">
+      <table class="nhsuk-table-clickable bna-table clickable-table">
+        <thead>
+          <tr>
+            <th style="width: 15%"></th>
+            <th>Name
+            </th>
+            <th>Date of birth
+            </th>
+            <th>NHS number
+            </th>
+            <th>View address</th>
+          <tr>
+        </thead>
+
+        <tbody class="nhsuk-table__body">
+          <!-- SYSTEM DEMOGRAPHICS -->
+          <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset" aria-describedby="system-patient-demographics">
+              <legend class="nhsuk-fieldset__legend">
+              </legend>
+              <div class="nhsuk-radios">
+                <tr role="row" class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell">
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="patient3a" name="system-dem-choice" type="radio" value="patient3a">
+                      <label class="nhsuk-label nhsuk-radios__label" for="patient3a"></label>
+                    </div>
+                  </td>
+                  <td>Claudia Jones Beddis</td>
+                  <td>19-09-1983</td>
+                  <td>234 567 8901</td>
+                  <td class="nhsuk-table__cell">
+                    <button class="expanderButton" type="button" id="btn2" aria-expanded="false" onclick="toggle(this.id,'#row2');" aria-controls="row2" aria-label="More details for" aria-labelledby="row2"></button>
+                  </td>
+                </tr>
+                <tr id="row2" class="hidden detailsRow">
+                  <td colspan="5">
+                    <div class="nhsuk-grid-row">
+                      <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                        <div id="reasons-step-0">
+                          <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
+                          <div class="nhsuk-summary-list__row">
+                            <dt class="nhsuk-summary-list__key">
+                              Contact information
+                            </dt>
+                            <dd class="nhsuk-summary-list__value">
+                              12 Poplars Close
+                              <br>
+                              Burwell
+                              <br>
+                              CB25 BOC
+                            </dd>
+                          </div>
+                          </dl>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr role="row" class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell">
+                    <div class="nhsuk-radios__item">
+                      <input class="nhsuk-radios__input" id="patient3b" name="system-dem-choice" type="radio" value="patient3b">
+                      <label class="nhsuk-label nhsuk-radios__label" for="patient3b"></label>
+                    </div>
+                  </td>
+                  <td>Claudette Beddis</td>
+                  <td>19-09-1993</td>
+                  <td>234 428 8901</td>
+                  <td class="nhsuk-table__cell">
+                    <button class="expanderButton" type="button" id="btn3" aria-expanded="false" onclick="toggle(this.id,'#row3');" aria-controls="row3" aria-label="More details for" aria-labelledby="row3"></button>
+                  </td>
+                </tr>
+                <tr id="row3" class="hidden detailsRow">
+                  <td colspan="5">
+                    <div class="nhsuk-grid-row">
+                      <div class="nhsuk-grid-column-three-quarters nhsuk-u-margin-left-3">
+                        <div id="reasons-step-0">
+                          <dl class="nhsuk-summary-list nhsuk-summary-list--no-border nhsuk-u-margin-bottom-2">
+                          <div class="nhsuk-summary-list__row">
+                            <dt class="nhsuk-summary-list__key">
+                              Contact information
+                            </dt>
+                            <dd class="nhsuk-summary-list__value">
+                              42 Mulehouse Road
+                              <br>
+                              Sheffield
+                              <br>
+                              S10 1TA
+                            </dd>
+                          </div>
+                          </dl>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </div>
+            </fieldset>
+          </div>
+        </tbody>
+      </table>
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-half">
+
+      <!-- OPTIONS -->
+      <div class="nhsuk-form-group">
+
+        <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            <h2 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong nhsuk-u-margin-top-4">
+              Choose where to send the result
+            </h2>
+          </legend>
+
+
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
+            <label class="nhsuk-label nhsuk-radios__label" for="system">
+              Send to system address
+            </label>
+          </div>
+
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="gp" name="how-to-resolve" type="radio" value="gp" aria-controls="gp" aria-expanded="false">
+            <label class="nhsuk-label nhsuk-radios__label" for="gp">
+              Send to lab address
+            </label>
+          </div>
+
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
+            <label class="nhsuk-label nhsuk-radios__label" for="system">
+              Send to sender address
+            </label>
+            <div class="nhsuk-hint nhsuk-radios__hint">
+             Use sender address when no correspondence to home
+            </div>
+          </div>
+
+
+          <div class="nhsuk-radios nhsuk-radios--conditional">
+            <div class="nhsuk-radios nhsuk-radios--conditional">
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="contact-1" name="how-to-resolve" type="radio" value="address" aria-controls="conditional-contact-1" aria-expanded="false">
+                <label class="nhsuk-label nhsuk-radios__label" for="contact-1">
+                  Enter a new address
+                </label>
+              </div>
+
+              <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
+
+                <div class="nhsuk-form-group">
+                  <label class="nhsuk-label" for="email">
+                    Building and street
+                  </label>
+                  <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
+                  <label class="nhsuk-label" for="email">
+                    Town or city
+                  </label>
+                  <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
+                  <label class="nhsuk-label" for="email">
+                    County
+                  </label>
+                  <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
+                  <label class="nhsuk-label" for="email">
+                    Postcode
+                  </label>
+                  <input class="nhsuk-input nhsuk-u-width-two-thirds nhsuk-u-margin-bottom-8" id="email" name="email" type="text">
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+        </fieldset>
+
+      </div>
+      </div>
+      </div>
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-half">
+
+      <form action="non-match-p1" method="post">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
+                Comments (optional)
+              </label>
+              
+              <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" ></textarea>
+              
+            </div>
+            
+          </form> 
+
+        </div>
+      </div>
+
+      <a href="non-match-dummy" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Save and next</a>
+      <a href="non-match-dummy" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-4">Save to lab query list</a>
+      <p><a href="manc-query">Exit without saving</a></p>
+
+    </form>
+  </div>
+
+</div>
+
+
+
+
+
+{% endblock %}

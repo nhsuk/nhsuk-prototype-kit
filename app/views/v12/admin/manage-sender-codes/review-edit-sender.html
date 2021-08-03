@@ -39,11 +39,6 @@
 
 <dl class="nhsuk-summary-list">
   
-   
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">District health authority</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "01" }}</dd>
-  </div>
     
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender code</dt>
@@ -54,6 +49,10 @@
     <dt class="nhsuk-summary-list__key">Source type</dt>
     <dd class="nhsuk-summary-list__value">7</dd>
   </div>
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Cipher</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "BAA" }}</dd>
+  </div>
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Address</dt>
@@ -63,7 +62,12 @@ Barnsley,<br>
 South Yorkshire,<br>
 S70 6QW</dd>
   </div>
-  
+
+   <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Telephone</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "01224 987560" }}</dd>
+    
+  </div>
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">CRM</dt>
@@ -75,7 +79,11 @@ S70 6QW</dd>
     <dd class="nhsuk-summary-list__value"></dd>
     
   </div>
-</div>
+
+   </dl>
+      {% include '../../components/comments-timeline-sender-audit.html' %} 
+    </div>
+
 
 
      <a href="add-sender-details" class="nhsuk-button nhsuk-button--ers">

@@ -150,6 +150,20 @@ router.post("/*/worklists-v9b/rejected-invalid", function (req, res) {
   }
 });
 
+router.post("/*/worklists-v10/rejected-invalid", function (req, res) {
+  console.log('working')
+  var rejectAction = req.session.data["rejectAction"];
+
+  console.log("check reason: " + rejectAction);
+  if (rejectAction == "log") {
+    res.redirect("/v12/worklists-v10/rejected-invalid-log");
+  }
+
+  if (rejectAction == "delete") {
+      res.redirect("/v12/worklists-v10/rejected-delete");
+  }
+});
+
 router.post("/*/hmr101/cervix", function(req, res) {
   var reason = req.session.data["cervix"];
   console.log(reason);

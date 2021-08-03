@@ -41,16 +41,7 @@
           
 
           <form action="add-crm-comments" method="post">
-            
-            <div class="nhsuk-form-group">
-              <label class="nhsuk-label nhsuk-label__strong" for="example-with-hint-text">
-                District health authority
-              </label>
-              <div class="nhsuk-hint" id="example-with-hint-text-hint">
-                 2 numbers or 2 letters for example, 01 or WS
-              </div>
-              <input class="nhsuk-input nhsuk-input--width-10" value="{{ data['national-code'] }}" id="national-code" name="national-code" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
-            </div>
+           
 
              <div class="nhsuk-form-group">
                 <label class="nhsuk-label nhsuk-label__strong" for="sender-code">
@@ -64,8 +55,7 @@
                 <input class="nhsuk-input nhsuk-input--width-4" value='{{ senderValue }}' id="sender-code" name="sender-code" type="text" aria-describedby="Sender code" inputmode="text" autocomplete="off">
             </div>
 
-  
-           {{ input({
+              {{ input({
                "label": {
                  "text": "Source type",
                 "classes": "nhsuk-label nhsuk-label__strong"
@@ -80,15 +70,26 @@
                "value": sourceValue
              }) }}
 
-
+ 
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-label__strong" for="example-with-hint-text">
+                Cipher (optional)
+              </label>
+              <div class="nhsuk-hint" id="example-with-hint-text-hint">
+                 For example, BAA or BE
+                <br>Formally NHAIS box.
+              </div>
+              <input class="nhsuk-input nhsuk-input--width-10" value="{{ data['national-code'] }}" id="national-code" name="national-code" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
+            </div>
+  
+     
             
                    <div class="nhsuk-form-group">
                 <label class="nhsuk-label nhsuk-label__strong" for="example-with-hint-text">
-                      Enter a sender name and address
+                      Enter sender name and address
                     </label>
                  
                  
-                    <div class="nhsuk-form-group">
                     <label class="nhsuk-label" for="email">
                         Sender name
                       </label>
@@ -109,9 +110,19 @@
                         Postcode
                       </label>
                       <input class="nhsuk-input nhsuk-u-width-one-third nhsuk-u-margin-bottom-8" id="email" name="email" type="text">
-
-                    </div>
-                  </div>
+                      
+                      
+              <label class="nhsuk-label nhsuk-label__strong" for="example-with-hint-text">
+               Enter sender telephone number (optional)
+              </label>
+              <div class="nhsuk-hint" id="example-with-hint-text-hint">
+                 
+              </div>
+              <input class="nhsuk-input nhsuk-input--width-10" value="{{ data['national-code'] }}" id="national-code" name="national-code" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
+            </div>
+                   
+                  
+                  <br>
                 
                 
           
