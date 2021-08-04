@@ -34,19 +34,15 @@ NHS Cervical screening management system
 
 <p>View and manage all logged test results</p>
 
-     <details class="nhsuk-details">
-      <summary class="nhsuk-details__summary">
-        <span class="nhsuk-details__summary-text">
-         Refine search by lab, NHS number or date
-        </span>
-      </summary>
+        <h2 id="testresults" class="nhsuk-heading-l">Search logged results</h2>
+         <p>
+                Enter the result details you wish to search by:
+              </p>
+        
    
    
-      <div class="nhsuk-details__text">
-      <div class="nhsuk-hint" id="example-hint">
-      Enter the result details you wish to search by:
-     
-    </div>
+      
+   
         <form action="logged-results-search" method="post">
     <div class="nhsuk-form-group">
       <div class="nhsuk-grid-row">
@@ -62,25 +58,17 @@ NHS Cervical screening management system
         </div>
       </div>
     </div>
-    <div class="nhsuk-form-group">
-      <div class="nhsuk-grid-row">
-        <div class="nhsuk-grid-column-one-quarter">
-        </div>
-        <div class="nhsuk-grid-column-one-quarter">
-          <div class="nhsuk-date-input__item">
-            <label class="nhsuk-label nhsuk-label__strong nhsuk-body-xs">
-              Enter lab:
-            </label>
-            <div class="nhsuk-hint" id="example-hint">
-            For example, Manchester
-            <br>Leave blank if lab unknown.
-          </div>
-            <input id="searchfield" class="nhsuk-input" type="" inputmode="" name="searchnhs" value="">
-          </div>
-        </div>
-      </div>
-    </div>
-     <div class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong nhsuk-u-margin-top-4">
+   <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-label__strong" for="example-with-hint-text">
+                National code
+              </label>
+              <div class="nhsuk-hint" id="example-with-hint-text-hint">
+                Also known as lab code. For example, T34KH.
+                <br> Leave blank if unknown or not English.
+              </div>
+              <input class="nhsuk-input nhsuk-input--width-10" value="{{ data['national-code'] }}" id="national-code" name="national-code" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
+            </div>
+  <!--  <div class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong nhsuk-u-margin-top-4">
             Enter date to view:</div>
           <div class="nhsuk-hint" id="example-hint">
             For example, 15 3 1984
@@ -111,7 +99,8 @@ NHS Cervical screening management system
                         <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="example-year" name="example-year" value="" type="text" pattern="[0-9]*" inputmode="numeric">
                       </div>
                     </div>
-                  </div>
+                  </div>-->
+                  <br>
       
     <div class="nhsuk-form-group">
       <div class="nhsuk-grid-row">
@@ -124,10 +113,10 @@ NHS Cervical screening management system
   
   </form>
      
-    </details>
+  
 <br>  
 
-<table class="order-table">
+<!--<table class="order-table">
       <thead>
         <tr>
           <th class="ten">Patient name
@@ -150,7 +139,7 @@ NHS Cervical screening management system
 
 
         <!-- REJECTED -->
-        <tr>
+        <!--<tr>
           <td>Jane Simmons</td>
           <td>308 219 3281</td>
        
@@ -178,28 +167,14 @@ NHS Cervical screening management system
          
        
       </tbody>
-    </table>
+    </table>-->
  
 
 
 
 
  
-<nav class="nhsuk-pagination" role="navigation" aria-label="Pagination">
-  <ul class="nhsuk-list nhsuk-pagination__list">
-   
-    <li class="nhsuk-pagination-item--next">
-      <a class="nhsuk-pagination__link nhsuk-pagination__link--next" href="#">
-        <span class="nhsuk-pagination__title">Next</span>
-        <span class="nhsuk-u-visually-hidden">:</span>
-        <span class="nhsuk-pagination__page">10 of 18029</span>
-        <svg class="nhsuk-icon nhsuk-icon__arrow-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M19.6 11.66l-2.73-3A.51.51 0 0 0 16 9v2H5a1 1 0 0 0 0 2h11v2a.5.5 0 0 0 .32.46.39.39 0 0 0 .18 0 .52.52 0 0 0 .37-.16l2.73-3a.5.5 0 0 0 0-.64z"></path>
-        </svg>
-      </a>
-    </li>
-  </ul>
-</nav>
+
 
 {% endblock %}
 
