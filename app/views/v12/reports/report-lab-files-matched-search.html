@@ -20,106 +20,31 @@ NHS Cervical screening management system
 
 {% block content %}
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-three-quarters">
+  <div class="nhsuk-grid-column-full">
 
     {{ backLink({
       "href": "reports",
-      "text": "back to reports"
+      "text": "back to search lab files"
     }) }}
 
-    <h1 class="nhsuk-heading-l">Reports - Lab files matched</h1>
 
-<p>View and download all lab files</p>
+ <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-full">
+    <h2 id="testresults" class="nhsuk-heading-l">Search results</h2>
+       <p>
+      <span class="number-of-results">
+        <h3 class="nhsuk-heading-xs">We found <b>4</b> lab files with national code XXXX and the date from 00-00-00.</h3>
+       <p>If you cannot find the file you're looking for <a href="report-lab-files-matched">refine search</a> again.</p> </p>
+      </span>
+    </p>
 
-        <h2 id="testresults" class="nhsuk-heading-l">Search Lab files</h2>
-         <p>
-                Enter the file details you wish to search by:
-              </p>
- <div class="nhsuk-form-group">
-          
-      <form action="report-lab-files-matched-search" method="post">
-      <label class="nhsuk-label nhsuk-label__strong" for="example-with-hint-text">
-                National code
-              </label>
-              <div class="nhsuk-hint" id="example-with-hint-text-hint">
-                Also known as lab code. For example, T34KH.
-                <br> Leave blank if unknown or not English.
-              </div>
-              <input class="nhsuk-input nhsuk-input--width-10" value="{{ data['national-code'] }}" id="national-code" name="national-code" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
-<br><br>
-        <div class="nhsuk-grid-row">
-        <div class="nhsuk-grid-column-one-third">
-          {{ dateInput({
-            "id": "example",
-            "namePrefix": "example",
-            "fieldset": {
-              "legend": {
-                "text": "Enter a date from:",
-                "classes": "nhsuk-label--s",
-                "isPageHeading": false
-              }
-            },
-            "hint": {
-              "text": "For example, 15 3 1984"
-            },
-            "items": [
-              {
-                "name": "day",
-                "classes": "nhsuk-input--width-2"
-              },
-              {
-                "name": "month",
-                "classes": "nhsuk-input--width-2"
-              },
-              {
-                "name": "year",
-                "classes": "nhsuk-input--width-4"
-              }
-            ]
-          }) }}
-        </div>    
-        <div class="nhsuk-grid-column-one-third">
-          {{ dateInput({
-            "id": "example",
-            "namePrefix": "example",
-            "fieldset": {
-              "legend": {
-                "text": "Enter a date to:",
-                "classes": "nhsuk-label--s",
-                "isPageHeading": false
-              }
-            },
-            "hint": {
-              "text": "Leave blank if viewing 1 day"
-            },
-            "items": [
-              {
-                "name": "day",
-                "classes": "nhsuk-input--width-2"
-              },
-              {
-                "name": "month",
-                "classes": "nhsuk-input--width-2"
-              },
-              {
-                "name": "year",
-                "classes": "nhsuk-input--width-4"
-              }
-            ]
-          }) }}
-        </div>      
-      </div>
-      <br>
-      <br>
-     
-      
-          <button class="nhsuk-button nhsuk-button--ers" type="submit">Search</button>
-        </div>
-      </div>
-      </div>
-    
+     <div class="nhsuk-inset-text">
+                 <span class="nhsuk-u-visually-hidden">Information: </span>
+                 <p>The full set of lab files for today’s date will only be available after 7.00pm.</p>
+                </div>
+<br>  
  
-<!--<div class="nhsuk-grid-row">
+<div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     <table class="nhsuk-table">
       <caption class="nhsuk-table__caption"></caption>
@@ -143,12 +68,12 @@ NHS Cervical screening management system
            <th role="columnheader" scope="col">
            Downloaded by
           </th>
-          <th role="columnheader" scope="col">
+          <!--<th role="columnheader" scope="col">
             Rejected
           </th>
           <th role="columnheader" scope="col">
             Logged
-          </th>
+          </th>-->
            <th role="columnheader" scope="col">
             Matching complete
           </th>
@@ -212,5 +137,5 @@ NHS Cervical screening management system
       </tbody>
     </table>
   </div>
-</div>-->
+</div>
 {% endblock %}

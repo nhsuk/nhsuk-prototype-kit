@@ -52,16 +52,16 @@ NHS Cervical screening management system
  <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review test result </h1>
 
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-one-half">
+  <div class="nhsuk-grid-column-three-quarters">
     <ul class="nhsuk-inset-text nhsuk-comment-container nhsuk-inset-text__screening nhsuk-inset-text__screening--success">
       <li class="nhsuk-panel"> <strong>This test result has a duplicate slide number.</strong> </span>
-      <p> <br> <span class="date" style="color:	#4c6272"><a href="../pds/search/search-slide">Search slide number</a> to view duplicate test results.<br>Time recieved: 20 May 2021, 09:30am </span></li>
+      <p> <br> <span class="date" style="color:	#4c6272"><a href="../pds/search/search-slide">Search slide number</a> to view added duplicate slide test results.<br>Time recieved: 08 August 2021, 09:30am </span></li>
     </ul>
  </div>
 </div>
 
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-one-half">
+  <div class="nhsuk-grid-column-two-thirds">
  <div class="nhsuk-panel-with-label">
     
       {% include '../components/patient-result-2.html' %} 
@@ -78,7 +78,7 @@ NHS Cervical screening management system
 
 <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">National code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "-" }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "CHR3" }}</dd>
   </div>
     
   <div class="nhsuk-summary-list__row">
@@ -88,45 +88,45 @@ NHS Cervical screening management system
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Self-sample</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['self-sample'] or "-" }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['self-sample'] or "No" }}</dd>
   </div>
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Source code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['source-code'] or "-" }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['source-code'] or "G" }}</dd>
   </div>
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or "-" }} </dd>
+    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or "A86020" }} </dd>
   </div>
 
 
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Slide number</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] or "-" }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] or "21010009" }}</dd>
   </div>
 
   {% set nextTestDueDate = data['test_date'] %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Test date</dt>
-    <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat }}</dd>
+    <dd class="nhsuk-summary-list__value">01-07-2021</dd>
   </div>
 
  <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">HPV Primary</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] or "-" }} </dd>
+    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] or "Yes" }} </dd>
   </div>
 
 <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Result</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['result-result'] }} {{ data['result-infection'] }} {{ data['result-action'] }}</dd>
+    <dd class="nhsuk-summary-list__value">X0A</dd>
   </div>
 
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Repeat in months</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or "-" }} months</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or "36" }} months</dd>
   </div>
 
     <div class="nhsuk-summary-list__row">
@@ -141,19 +141,6 @@ NHS Cervical screening management system
 </div>
 
       
-   
- 
-
-     
-
-      
-       
- 
-    
-
-  
-
-
 
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-full">
