@@ -1,0 +1,171 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+
+<script src="/js/results-filter.js"></script>
+
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(3) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+{% block content %}
+
+{{ backLink({
+  "href": "worklists",
+  "text": "Go back to results"
+}) }}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <h1 class="nhsuk-heading-l nhsuk-u-margin-top-2">Manchester</h1>
+  </div>
+</div>
+
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <nav class="nhsuk-sub-navigation">
+      <ul class="nhsuk-sub-navigation__list">
+        <li class="nhsuk-sub-navigation__item"><a href="manc-process" class="nhsuk-sub-navigation__link">To process <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">10</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="manc-query" class="nhsuk-sub-navigation__link">To query<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">3</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="manc-check" class="nhsuk-sub-navigation__link" aria-current="page">To check <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">11</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="manc-rejected" class="nhsuk-sub-navigation__link">Rejected<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">5</span></a></li>
+      </ul>
+    </nav>
+
+
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th class="ten">Patient name
+          </th>
+          <th class="ten">NHS number
+          </th>
+          <th class="ten">Status
+          </th>
+          <th class="ten">Checker
+          </th>
+          <th class="ten">Time received
+          </th>
+          <th class="ten"
+          </th>
+        <tr>
+      </thead>
+
+      <tbody>
+
+
+        <!-- TO CHECK -->
+        <tr>
+          <td>Claudia Beddis</td>
+          <td>234 567 8901</td>
+          <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not checked </span></td>
+          <td></td>
+          <td>08:44 am
+            <span class="nhsuk-table__cell--hint">04-Feb-2020</span></td>
+          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-3" href="check-p1">Check match</a></td>
+        </tr>
+        <tr>
+          <td>Marianne Newton</td>
+          <td>230 346 8210</td>
+          <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">with checker</span></td>
+          <td>Gina Barkley</td>
+          <td>09:01 am
+            <span class="nhsuk-table__cell--hint">04-Feb-2020</span></td>
+            <td class="nhsuk-u-margin-bottom-3"></td>
+        </tr>
+        <tr>
+          <td>Charlotte Gravill</td>
+          <td>T123 456 7890</td>
+          <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not checked </span></td>
+          <td></td>
+          <td>10:52 am
+            <span class="nhsuk-table__cell--hint">04-Feb-2020</span></td>
+          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-3" href="check-p2">Check match</a></td>
+        </tr>
+        <tr>
+          <td>Lydia Tay</td>
+          <td>206 283 5671</td>
+          <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not checked </span></td>
+          <td></td>
+          <td>11:27 am
+            <span class="nhsuk-table__cell--hint">04-Feb-2020</span></td>
+          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-3" href="#">Check match</a></td>
+        </tr>
+        <tr>
+          <td>Regina Ming</td>
+          <td>327 128 0893</td>
+          <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">with checker</span></td>
+          <td>Toby Senior</td>
+          <td>11:47 am
+            <span class="nhsuk-table__cell--hint">04-Feb-2020</span></td>
+            <td class="nhsuk-u-margin-bottom-3"></td>
+        </tr>
+        <tr>
+          <td>Pauline Johnson</td>
+          <td>331 383 4306</td>
+          <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not checked </span></td>
+          <td> </td>
+          <td>12:34 pm
+            <span class="nhsuk-table__cell--hint">04-Feb-2020</span></td>
+          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-3" href="#">Check match</a></td>
+        </tr>
+        <tr>
+          <td>Nazanin Bandera</td>
+          <td>381 203 3489</td>
+          <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not checked </span></td>
+          <td> </td>
+          <td>01:19 pm
+            <span class="nhsuk-table__cell--hint">04-Feb-2020</span></td>
+          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-3" href="#">Check match</a></td>
+        </tr>
+        <tr>
+          <td>Daisy Riles</td>
+          <td>201 382 0991</td>
+          <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">with checker</span></td>
+          <td> Josh Kaye</td>
+          <td>01:35 pm
+            <span class="nhsuk-table__cell--hint">04-Feb-2020</span></td>
+          <td class="nhsuk-u-margin-bottom-3"></td>
+        </tr>
+        <tr>
+          <td>June Angstrom</td>
+          <td>344 230 2881</td>
+          <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">not checked </span></td>
+          <td> </td>
+          <td>02:30 pm
+            <span class="nhsuk-table__cell--hint">04-Feb-2020</span></td>
+          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-3" href="#">Check match</a></td>
+        </tr>
+        <tr>
+          <td>Cornelia Wicks</td>
+          <td>130 348 2811</td>
+          <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">with checker</span></td>
+          <td> Samatha Cotton</td>
+          <td>03:50 pm
+            <span class="nhsuk-table__cell--hint">04-Feb-2020</span></td>
+          <td class="nhsuk-u-margin-bottom-3"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

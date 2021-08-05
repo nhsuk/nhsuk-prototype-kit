@@ -46,10 +46,14 @@
       <!-- want to add message to say result has gone for review and will be added to patient summary. -->
 
      
-        {{ insetText({
-          "HTML": "<p>Test result logged</p>",
-          "classes": "nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-0"
-        }) }}
+        <div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    <ul class="nhsuk-inset-text nhsuk-comment-container nhsuk-inset-text__screening nhsuk-inset-text__screening--success">
+      <li class="nhsuk-panel"> <p> Letters and notifications paused while <a href="../worklists-v11/manc-rejected">result is being resolved.</a> </span>
+      
+    </ul>
+ </div>
+</div>
      
 
 
@@ -154,34 +158,8 @@ crm=&
 comments="
 >Add result</a>
     {% endif %}
-    {% if data.role == 'csas' %}
-    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4 no-print" href="/v12/start-adding-test
-?nhsNumber={{ data.patientSummary.nhs_number }}&
-role=csas&
-edit-review=&
-edit-test=false&
-?result_ID=&
-slide-number=&
-result-type=&
-hpv-primary=&
-edit-review=&
-action-text=&
-result-action=&
-result-infection=&
-infection-text=&
-repeat-months=&
-result-text=&
-result-result=&
-sender-code=&
-national-code=&
-source-code=&
-test_date=&
-health-authority=&
-self-sample=&
-crm=& 
-comments="
->Log result</a>
-    {% endif %}
+
+   
 
     <div class="nhsuk-scrollable-pane">
     <div class="nhsuk-scrollable-pane__wrapper">
@@ -205,7 +183,7 @@ comments="
               </thead>
               <tbody class="nhsuk-table__body nhsuk-body-">
              
-              <tr class="nhsuk-table__row">
+             <tr class="nhsuk-table__row">
                   <td class="nhsuk-table__cell fixed-side">
                     01-April-2021
                     <span class="nhsuk-table__cell--hint">Health authority: {{ result.health_authority or "-" }}</span>

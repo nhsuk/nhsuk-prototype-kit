@@ -149,6 +149,7 @@
         </dd>
       </div>
     </dl>
+    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-3" href="pause-patient">Pause notifications and letters</a>
 
     {% if data.role == 'sampleTaker' %}
 
@@ -190,34 +191,7 @@ crm=&
 comments="
 >Add result</a>
     {% endif %}
-    {% if data.role == 'csas' %}
-    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-4 no-print" href="/v12/start-logging-test
-?nhsNumber={{ data.patientSummary.nhs_number }}&
-role=csas&
-edit-review=&
-edit-test=false&
-?result_ID=&
-slide-number=&
-result-type=&
-hpv-primary=&
-edit-review=&
-action-text=&
-result-action=&
-result-infection=&
-infection-text=&
-repeat-months=&
-result-text=&
-result-result=&
-sender-code=&
-national-code=&
-source-code=&
-test_date=&
-health-authority=&
-self-sample=&
-crm=& 
-comments="
->Log result</a>
-    {% endif %}
+   
 
     <div class="nhsuk-scrollable-pane">
     <div class="nhsuk-scrollable-pane__wrapper">

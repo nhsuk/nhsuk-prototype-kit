@@ -1,0 +1,175 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script>
+  $(".char-textarea").on("keyup", function(event) {
+    checkTextAreaMaxLength(this, event);
+  });
+
+  function checkTextAreaMaxLength(textBox, e) {
+
+    var maxLength = parseInt($(textBox).data("length"));
+
+
+    if (!checkSpecialKeys(e)) {
+      if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
+    }
+    $(".char-count").html(maxLength - textBox.value.length);
+
+    return true;
+  }
+
+  function checkSpecialKeys(e) {
+    if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
+      return false;
+    else
+      return true;
+  }
+</script>
+
+{% endblock %}
+
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    {{ backLink({
+      "href": "manc-rejected",
+      "text": "Go back to rejected results"
+    }) }}
+
+  </div>
+</div>
+
+ <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Add test result to patient summary</h1>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    <ul class="nhsuk-inset-text nhsuk-comment-container nhsuk-inset-text__screening nhsuk-inset-text__screening--success">
+      <li class="nhsuk-panel"> <strong>This test result was taken more than 3 months ago and therefore a result letter will not be sent.</strong> </span>
+      <p> <br> <span class="date" style="color:	#4c6272">Time recieved: 20 May 2021, 09:30am </span></li>
+    </ul>
+ </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <div class="nhsuk-panel-with-label">
+      <class="nhsuk-panel-with-label__label">
+      {% include '../components/patient-result-2.html' %} 
+
+      
+        <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-4" aria-describedby="example-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            Test result details
+          </legend>
+      
+
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 ">
+        
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Slide number</dt>
+              <dd class="nhsuk-summary-list__value">70406000</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Test date</dt>
+              <dd class="nhsuk-summary-list__value"><span class="highlight">26-Jan-2020</span></dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Test result</dt>
+              <dd class="nhsuk-summary-list__value">(X9A) Low-grade, HPV negative, dyskaryosis</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">HPV Primary</dt>
+              <dd class="nhsuk-summary-list__value">Yes</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Repeat</dt>
+              <dd class="nhsuk-summary-list__value">36 months</dd>
+            </div>
+          </dl>
+
+      </dl>
+      {% include '../components/comments-timeline-manual-match.html' %} 
+    </div>
+  
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+        <form action="rejected-p1" method="post">
+          <fieldset class="nhsuk-fieldset">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-label--s nhsuk-u-padding-top-6 nhsuk-u-margin-bottom-2" for="example-heading">
+                Enter CRM case number (optional)
+              </label>
+              <span class="nhsuk-hint" id="example-hint">
+                For example, CAS-12345-ABCDE
+              </span>
+              <input class="nhsuk-input nhsuk-input--width-10" type="text" name="crm" autocomplete="off" value="{{ data.crm }}">
+            </div>
+
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-1" for="rejcomment1">
+                Comments
+              </label>
+              <span class="nhsuk-hint nhsuk-u-padding-top-2" id="example-hint" for="one-half">
+                Please add a comment explaining the action taken.
+              </span>
+              <textarea class="nhsuk-textarea commentBox char-textarea" id="rejcomment1" value="rejcomment1" name="rejcomment1" rows="5" data-length=200 required></textarea>
+            </div>
+          </fieldset>
+
+          <div class="nhsuk-form-group">
+
+  
+
+   <div class="nhsuk-form-group">
+   <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-1" for="rejcomment1">
+                Add result to patient summary?
+              </label>
+              <br>
+    
+          <div class="nhsuk-checkboxes">
+            <div class="nhsuk-checkboxes__item">
+            <input class="nhsuk-checkboxes__input" id="confirmAddTest" name="confirmAddTest" type="checkbox" value="confirmAddTest">
+            <label class="nhsuk-label nhsuk-checkboxes__label" for="confirmIdentity">
+              Result has been checked and can be added to patient summary 
+            </label>
+          </div>
+          </div>
+          <br>
+
+     
+
+
+      
+    <a href="rejected-exceeds-letter-time-add-confirm" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Submit</a>
+    <p><a href="manc-rejected">Exit without saving</a></p>
+
+  
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+    </div>
+  </div>
+</footer>
+{% endblock %}

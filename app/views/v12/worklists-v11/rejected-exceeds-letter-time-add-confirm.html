@@ -1,0 +1,114 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/reveal.js"></script>
+<script type="text/javascript" src="/js/comments.js"></script>
+
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+
+    {{ backLink({
+      "href": "review-dummy",
+      "text": "Go back to patient details"
+    }) }}
+
+    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-8">
+           <h3 class="nhsuk-heading-s">result successfully added to patient summary</h3>
+        </div>
+
+
+        <div class="nhsuk-panel-with-label">
+          <h3 class="nhsuk-panel-with-label__label">Patient details</h3>
+
+          <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Name
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                Charlotte Gravill
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Date of birth
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                11-04-1990
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Patient reference
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+                T123 456 7890
+              </dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">
+                Contact information
+              </dt>
+              <dd class="nhsuk-summary-list__value">
+
+                 {% if (data['address-line-1'] != "" and data['address-line-1'] != null) %}
+                  {{ data['address-line-1'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-line-2'] != "" and data['address-line-2'] != null) %}
+                  {{ data['address-line-2'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-town'] != "" and data['address-town'] != null) %}
+                  {{ data['address-town'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-county'] != "" and data['address-county'] != null) %}
+                  {{ data['address-county'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-postcode'] != "" and data['address-postcode'] != null) %}
+                  {{ data['address-postcode'] }} <br>
+                  {% endif %}
+
+                  {% if (data['address-line-1'] == "" or data['address-line-1'] == null) and (data['address-line-2'] == "" or data['address-line-2'] == null) and (data['address-town'] == "" or data['address-town'] == null) and (data['address-county'] == "" or data['address-county'] == null) and (data['address-postcode'] == "" or data['address-postcode'] == null) %}
+                  1 Westfield Place<br>Great Shelford<br> CB22 5JJ
+                  {% endif %} 
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+    
+
+        <a href="manc-query" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Continue to next rejection</a>
+    
+        <a href="manc-query" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">View patient summary</a>
+
+
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

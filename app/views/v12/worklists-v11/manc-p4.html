@@ -1,0 +1,227 @@
+
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/reveal.js"></script>
+<script type="text/javascript" src="/js/comments.js"></script>
+
+<script>
+  function closeRightMenu() {
+    document.getElementByClass("nhsuk-sidebar-hidden").style.display = "none";
+  }
+  $(document).ready(function() {
+    $(".sidebarbttn").click(function() {
+      $(".nhsuk-sidebar-hidden").toggle();
+    });
+
+  });
+</script>
+
+<script>
+  $(".char-textarea").on("keyup", function(event) {
+    checkTextAreaMaxLength(this, event);
+  });
+
+  function checkTextAreaMaxLength(textBox, e) {
+
+    var maxLength = parseInt($(textBox).data("length"));
+
+
+    if (!checkSpecialKeys(e)) {
+      if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
+    }
+    $(".char-count").html(maxLength - textBox.value.length);
+
+    return true;
+  }
+
+  function checkSpecialKeys(e) {
+    if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
+      return false;
+    else
+      return true;
+  }
+</script>
+
+<!-- clickable rows with hover colour -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.clickable-table tr').click(function(event) {
+      if (event.target.type !== 'radio') {
+        $(':radio', this).trigger('click');
+      }
+    });
+
+    $("input[type='radio']").change(function(e) {
+      e.stopPropagation();
+      $('.clickable-table tr').removeClass("highlight_row");
+      if ($(this).is(":checked")) {
+        $(this).closest('tr').addClass("highlight_row");
+      }
+    });
+  });
+</script>
+
+<script>
+  function toggle(btnID, eIDs) {
+    // Feed the list of ids as a selector
+    var theRows = document.querySelectorAll(eIDs);
+    // Get the button that triggered this
+    var theButton = document.getElementById(btnID);
+    // If the button is not expanded...
+    if (theButton.getAttribute("aria-expanded") == "false") {
+      // Loop through the rows and show them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("shown");
+        theRows[i].classList.remove("hidden");
+      }
+      // Now set the button to expanded
+      theButton.setAttribute("aria-expanded", "true");
+      // Otherwise button is not expanded...
+    } else {
+      // Loop through the rows and hide them
+      for (var i = 0; i < theRows.length; i++) {
+        theRows[i].classList.add("hidden");
+        theRows[i].classList.remove("shown");
+      }
+      // Now set the button to collapsed
+      theButton.setAttribute("aria-expanded", "false");
+    }
+    $('.expanderButton[aria-expanded="true"]').closest('tr').addClass('expandedRow');
+    $('.expanderButton[aria-expanded="false"]').closest('tr').removeClass('expandedRow');
+  }
+</script>
+
+<style media="screen">
+  .clickable-table tbody tr:hover {
+    cursor: pointer;
+  }
+</style>
+
+
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    {{ backLink({
+      "href": "manc-p3",
+      "text": "Go back to previous match"
+    }) }}
+
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Start matching patient details</h1>
+    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-8 nhsuk-u-margin-bottom-8">
+           <h3 class="nhsuk-heading-s">No system match found</h3>
+        </div>
+
+    <h3>Lab patient demographics</h3>
+
+  
+
+      <table class="order-table" id="lab">
+        <thead>
+          <tr>
+            <th style="width: 25%">Name
+            </th>
+            <th style="width: 25%">Date of birth
+            </th>
+            <th style="width: 25%">NHS number
+            </th>
+            <th style="width: 25%"></th>
+          <tr>
+        </thead>
+
+        <tbody>
+          <!-- LAB DEMOGRAPHICS -->
+          <tr>
+            <td>Charlotte Gravill</td>
+            <td>11-04-1990</td>
+            <td>?00 000 0000</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </form>
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <h3 class="nhsuk-u-margin-top-4">System patient demographics</h3>
+    <p>Choose which system patient demographics to use. If no appropriate system match found, save to lab query list.</p>
+
+    <form action="manc-p2-step2" method="post">
+      <table class="clickable-table order-table">
+        <thead>
+          <tr>
+            <th style="width: 10%"></th>
+            <th>Name
+            </th>
+            <th>Date of birth
+            </th>
+            <th>NHS number
+            </th>
+          <tr>
+        </thead>
+
+        <tbody>
+          <!-- SYSTEM DEMOGRAPHICS -->
+          <div class="nhsuk-form-group">
+            <fieldset class="nhsuk-fieldset" aria-describedby="system-patient-demographics">
+              <legend class="nhsuk-fieldset__legend">
+              </legend>
+              <div class="nhsuk-radios">
+                <tr role="row" class="nhsuk-table__row">
+                  <td class="nhsuk-table__cell">
+                   
+                  <td><span class="highlight">No system match</span> </td>
+                  <td><span class="highlight">No system match</td>
+                  <td><span class="highlight">No system match</span></td>
+                </tr>
+                
+              </div>
+            </fieldset>
+          </div>
+        </tbody>
+      </table>
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-half">
+
+         <form action="manc-p1-step2" method="post">
+            <div class="nhsuk-form-group">
+             <label class="nhsuk-label" for="example">
+                Comments (optional)
+              </label>
+              <!--<span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+              </span>-->
+              <textarea class="nhsuk-textarea" id="example" name="comments" rows="5" aria-describedby="example-hint" autocomplete="off">{{ data.comments }}</textarea>
+            </div>
+
+          <a href="manc-p5" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Save to lab query list</a>
+          <p><a href="manc-process">Exit without saving</a></p>
+
+
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+{% endblock %}
