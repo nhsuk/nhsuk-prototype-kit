@@ -27,9 +27,21 @@
       
       <p>CSS lets you change how web pages look, for example text sizes, colours or spacing.</p>
       
-      <p>To add styles use:</p>
+      <p>To add universal styles use:</p>
       
-      <pre class="app-pre"><code class="app-code">/app/assets/sass/main.scss</code></pre><p>Do not edit the file <code class="app-code">/public/styles/main.css</code> because it’s deleted and rebuilt every time you make a change to your prototype.</p>
+      <pre class="app-pre"><code class="app-code">/app/assets/sass/main.scss</code></pre>
+
+      <p>Styles can also be added to individual templates via the "customStyles" template block:</p>
+
+      <pre class="app-pre">
+        <code class="app-code">{{'{% block customStyles %}'}}
+          &lt;STYLE type=&quot;text/css&quot;&gt;
+            body { background-color: pink; }
+          &lt;/STYLE&gt;
+        {{'{% endblock %}'}}</code></pre>
+        
+      
+      <p>Do not edit the file <code class="app-code">/public/styles/main.css</code> because it’s deleted and rebuilt every time you make a change to your prototype.</p>
       
       <p>The prototype kit uses <a href="https://sass-lang.com/guide">Sass</a>, which adds extra features to CSS.</p>
       

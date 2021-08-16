@@ -1,5 +1,11 @@
 # NHS.UK prototype kit Changelog
 
+## 4.6.0 - 16 August 2021
+
+:new: **New features**
+
+- Allow adding of custom styles on a per template basis with `customStyles` template block.
+
 ## 4.5.1 - 29 July 2021
 
 :new: **New features**
