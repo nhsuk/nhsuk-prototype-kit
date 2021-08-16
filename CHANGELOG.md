@@ -1,6 +1,6 @@
 # NHS.UK prototype kit Changelog
 
-## Latest
+## 4.6.0 - 16 August 2021
 
 :new: **New features**
 
