@@ -39,6 +39,8 @@
   </nav>
 {% endif %}
 
+
+
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-three-quarters">
     <h1 class="nhsuk-heading-l">Patient summary</h1>
@@ -49,7 +51,8 @@
         <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
     <ul class="nhsuk-inset-text nhsuk-comment-container nhsuk-inset-text__screening nhsuk-inset-text__screening--success">
-      <li class="nhsuk-panel"> <p> Letters and notifications paused while <a href="../worklists-v11/manc-rejected">result is being resolved.</a> </span>
+      <li class="nhsuk-panel"> <p> Letters and notifications paused while <a href="../worklists-v11/manc-rejected">result is being resolved.</a> <br>Result recieved: 08 August 2021, 09:30am  </span>
+      <p> The patient will be reinstated once the result is resolved.</p></li>
       
     </ul>
  </div>
@@ -117,6 +120,7 @@
         </dd>
       </div>
     </dl>
+      <a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-3" href="pause-patient">Unpause notifications and letters</a>
 
     {% if data.role == 'sampleTaker' %}
 
@@ -185,11 +189,11 @@ comments="
              
              <tr class="nhsuk-table__row">
                   <td class="nhsuk-table__cell fixed-side">
-                    01-April-2021
+                    01-June-2021
                     <span class="nhsuk-table__cell--hint">Health authority: {{ result.health_authority or "-" }}</span>
                   </td>
                   <td class="nhsuk-table__cell">
-                    {{ result.result_code | capitalize }}{{ result.infection_code | capitalize  }}{{ result.action_code | capitalize  }} X0R - {{ result.recall_months }} 36 Months - HPV Primary {% if result.hpv_primary == 'Yes' %} - HPV Primary{% endif %} {% if result.self_sample == 'Yes' %} - Self sample{% endif %}
+                    {{ result.result_code | capitalize }}{{ result.infection_code | capitalize  }}{{ result.action_code | capitalize  }} X0A - {{ result.recall_months }} 36 Months - HPV Primary {% if result.hpv_primary == 'Yes' %} - HPV Primary{% endif %} {% if result.self_sample == 'Yes' %} - Self sample{% endif %}
                     <span class="nhsuk-table__cell--hint">{{ result.result }} {{ result.infection_result }} {{ result.action }} Negative HPV negative Routine</span>
                   </td>
 
@@ -200,7 +204,7 @@ comments="
 
                   <td class="nhsuk-table__cell">
                     {{ result.slide_number  or "21010009" }}
-                    <span class="nhsuk-table__cell--hint"> Nat Code: {{ result.sending_lab  or "12345" }}</span>
+                    <span class="nhsuk-table__cell--hint"> Nat Code: {{ result.sending_lab  or "CHR3" }}</span>
                   </td>
 
                   {% if result.letter_status == "Processing" %}
@@ -212,11 +216,11 @@ comments="
                   {% endif %}
 
                   <td class="nhsuk-table__cell">
-                    <span class="nhsuk-tag nhsuk-tag--green">Pending - result Logged</span>
+                    <span class="nhsuk-tag nhsuk-tag--blue">Sent</span>
                   </td>
 
                     <td class="nhsuk-table__cell">  
-                      <a href="/v12/worklists-v10/logged-invalid?
+                      <a href="/v12/worklists-v11/logged-invalid?
 result_ID={{ result.result_ID }}&
 nhsNumber={{ data.patientSummary.nhs_number }}&
 slide-number={{ result.slide_number or '' }}&
@@ -310,8 +314,8 @@ comments={{ result.comments or '' }}">{{ letterLinkText }}</a>
                   </td>
 
                   <td class="nhsuk-table__cell">
-                    {{ result.slide_number  or "21010009" }}
-                    <span class="nhsuk-table__cell--hint"> Nat Code: {{ result.sending_lab  or "12345" }}</span>
+                    {{ result.slide_number  or "17010009" }}
+                    <span class="nhsuk-table__cell--hint"> Nat Code: {{ result.sending_lab  or "CHR3" }}</span>
                   </td>
 
                   {% if result.letter_status == "Processing" %}

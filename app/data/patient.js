@@ -422,7 +422,7 @@ var patients = [
         "results" : [],
         "sanitised_first_name": "LUCY",
         "sanitised_last_name": "HARPER",
-        "sanitised_nhs_number": "9100001740",
+        "sanitised_nhs_number": "1201379921",
         "sanitised_postcode": "EX25SE",
         "sort_key": "PARTICIPANT",
         "status": "Routine"

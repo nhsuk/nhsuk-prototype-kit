@@ -1,0 +1,93 @@
+{% extends "layout-v2.html" %}
+
+{% block pageTitle %}
+  NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+  {% include '../components/header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+    <div class="nhsuk-back-link nhsuk-u-margin-bottom-4">
+      <a class="nhsuk-back-link__link" href="add-test-result-repeat-in-months">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Back to patient summary</a>
+    </div>
+    <div class="nhsuk-panel-with-label">
+      {% include '../components/patient-result-4.html' %}
+     <span class="nhsuk-hint">Step 1 of 2</span>
+
+<form action="pause-patient-review" method="post"> <input type="hidden" name="hideDetails" value="true">
+    <div class="nhsuk-form-group">
+      <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+        <legend class="nhsuk-fieldset__legend--m nhsuk-label__strong">
+          <h1 class="nhsuk-fieldset__heading">Are you sure you want to pause this patient?</h1>
+        </legend>
+
+    <div class="nhsuk-checkboxes">
+            <div class="nhsuk-checkboxes__item">
+            <input class="nhsuk-checkboxes__input" id="confirmIdentity" name="confirmIdentity" type="checkbox" value="confirmIdentity">
+            <label class="nhsuk-label nhsuk-checkboxes__label" for="confirmIdentity">
+              Yes, I want to pause this patient.
+            </label>
+            <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+             This will pause all letters and notifications.
+            </div>
+          </div>
+        
+            
+            <div class="nhsuk-form-group">
+              <h1 class="nhsuk-label-wrapper">
+                <label class="nhsuk-fieldset__legend--s nhsuk-label__strong" for="example-heading">
+                  Enter CRM case number
+                </label>
+              </h1>
+              <span class="nhsuk-hint" id="example-hint">
+                For example, CAS-12345-ABCDE.
+              </span>
+              <input class="nhsuk-input nhsuk-input--width-10" type="text" name="crm" autocomplete="off" value="{{ data.crm }}">
+            </div>
+            <div class="nhsuk-form-group">
+             
+            <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-three-quarters">
+              <label class="nhsuk-label" for="example">
+                Comments 
+              </label>
+                  <span class="nhsuk-hint" id="example-hint"> Add a comment explaining this action taken.</span>
+               
+              <textarea class="nhsuk-textarea" id="example" name="comments" rows="4" aria-describedby="example-hint" autocomplete="off">{{ data.comments }}</textarea>
+            </div>
+          </div>
+        </div>
+   <br>
+    <button class="nhsuk-button nhsuk-button--ers" type="submit">Continue</button>   
+  </form>
+  </div>
+  </div>
+  
+
+  <p><a href="manc-rejected">Exit without saving</a></p>
+   
+        </fieldset>
+       
+
+{% endblock %}
+
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+      <p><a href="/v12/reset-patient-data-12">Reset patient data</a></p>
+    </div>
+  </div>
+</footer>
+{% endblock %}

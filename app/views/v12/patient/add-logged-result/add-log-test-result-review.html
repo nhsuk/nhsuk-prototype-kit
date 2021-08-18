@@ -35,13 +35,13 @@
             Edit result
          </a>
     
-    <form action="../patient-summary-logged-oldtest-manual-log" method="post">
+    <form action="../patient-summary-logged-invalid2" method="post">
 
 <dl class="nhsuk-summary-list">
   
    <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">National code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or '12345'}}</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or 'CHR3'}}</dd>
   </div>
 
   <div class="nhsuk-summary-list__row">
@@ -76,7 +76,7 @@
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Test date</dt>
     <!--<dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat}}</dd>-->
-    <dd class="nhsuk-summary-list__value">01-07-2021</dd>
+    <dd class="nhsuk-summary-list__value">01-06-2021</dd>
   </div>
   
   {% if data ['self-sample'] == 'Yes' %}
@@ -93,18 +93,18 @@
 <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Result</dt>
     <!--<dd class="nhsuk-summary-list__value">({{ data['result-result'] | capitalize }}{{ data['result-infection'] | capitalize }}{{ data['result-action'] | capitalize }}) {{ data['result-result'] | returnResultText }}, {{ data['result-infection'] | returnInfectionText }}, {{ data['result-action'] | returnActionText }}</dd>-->
-  <dd class="nhsuk-summary-list__value">X0A</dd>
+  <dd class="nhsuk-summary-list__value">X0R</dd>
   </div>
 
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Repeat in months</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or '36' }} months</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or '12' }} months</dd>
   </div>
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">Next test due date</dt>
-      <dd class="nhsuk-summary-list__value">01-April-2024 (in 2 years and 275 days)</dd>
+      <dd class="nhsuk-summary-list__value">01-June-2023 (in 275 days)</dd>
     </div> 
 
  <div class="nhsuk-summary-list__row">
@@ -128,12 +128,9 @@
        <p>Adding this test will reinstate the patient and set their next test due date.
     </div>
 {% endif %}-->
-<div class="nhsuk-inset-text">
-       <span class="nhsuk-u-visually-hidden">Information: </span>
-<p> Adding this result will send out the patients result letter and invite them for their next screening session.</p>
-</div>
+
          <button class="nhsuk-button nhsuk-button--ers" type="submit">
-            Add test
+           Save
          </button>
 
          <p><a href="../patient-summary-7">Exit without saving</a></p>

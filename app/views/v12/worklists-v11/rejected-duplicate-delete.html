@@ -2,30 +2,31 @@
 
 {% block pageScripts %}
 <script>
-  $(".char-textarea").on("keyup",function(event){
-  checkTextAreaMaxLength(this,event);
-});
+  $(".char-textarea").on("keyup", function(event) {
+    checkTextAreaMaxLength(this, event);
+  });
 
-function checkTextAreaMaxLength(textBox, e) {
+  function checkTextAreaMaxLength(textBox, e) {
 
     var maxLength = parseInt($(textBox).data("length"));
 
 
     if (!checkSpecialKeys(e)) {
-        if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
-   }
-  $(".char-count").html(maxLength - textBox.value.length);
+      if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
+    }
+    $(".char-count").html(maxLength - textBox.value.length);
 
     return true;
-}
+  }
 
-function checkSpecialKeys(e) {
+  function checkSpecialKeys(e) {
     if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
-        return false;
+      return false;
     else
-        return true;
-}
+      return true;
+  }
 </script>
+
 {% endblock %}
 
 {% block pageTitle %}
@@ -41,34 +42,28 @@ NHS Cervical screening management system
   <div class="nhsuk-grid-column-full">
 
     {{ backLink({
-      "href": "rejected-p1",
-      "text": "Go back to rejected"
+      "href": "manc-rejected",
+      "text": "Go back to rejected results"
     }) }}
 
   </div>
 </div>
 
-<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-full">
+ <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review test result </h1>
 
-
-   
-     <h1 class="nhsuk-heading-l"> Check test result before removing</h1>
-     
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-two-thirds">
+  <div class="nhsuk-grid-column-three-quarters">
     <ul class="nhsuk-inset-text nhsuk-comment-container nhsuk-inset-text__screening nhsuk-inset-text__screening--success">
-      <li class="nhsuk-panel"> <strong>This test result has an invalid sender code.</strong></p>
-      <p> All letters and notifications will be paused for this patient until the result is resolved.<br>Time recieved: 08 August 2021, 09:30am </span></li>
+      <li class="nhsuk-panel"> <strong>This test result has a duplicate slide number.</strong>
+      <p><br> All letters and notifications will be paused for this patient until the result is resolved.<br>Time recieved: 08 August 2021, 09:30am </span></li>
     </ul>
  </div>
 </div>
 
-   
+ 
 
-      
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-two-thirds">
+  <div class="nhsuk-grid-column-one-half">
  <div class="nhsuk-panel-with-label">
     
       {% include '../components/patient-result-2.html' %} 
@@ -80,12 +75,12 @@ NHS Cervical screening management system
           <dl class="nhsuk-summary-list">
 <div class="nhsuk-grid-column-full">
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-            Test result details
+            Duplicate test result details
           </legend>
 
 <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">National code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "12345" }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "CHR3" }}</dd>
   </div>
     
   <div class="nhsuk-summary-list__row">
@@ -105,7 +100,7 @@ NHS Cervical screening management system
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender code</dt>
-    <dd class="nhsuk-summary-list__value"><span class="highlight">0000Y</span></dd>
+    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or "A86020" }} </dd>
   </div>
 
 
@@ -127,34 +122,109 @@ NHS Cervical screening management system
 
 <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Result</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['result-result'] }} {{ data['result-infection'] }} {{ data['result-action'] or "X0A"}}</dd>
+    <dd class="nhsuk-summary-list__value">X0R</dd>
   </div>
 
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Repeat in months</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or "36" }} months</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or "12" }} months</dd>
   </div>
 
-    <div class="nhsuk-summary-list__row">
-      <dt class="nhsuk-summary-list__key">Next test due date</dt>
-      <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', data['test_date']) + ' ' + 3 | returnDate('years', data['test_date']) | returnTimeDiff }}</dd>
-    </div> 
-
+    
 
     </dl>
      {% include '../components/comments-timeline-manual-match.html' %} 
-   
-      </dl>
+  
+  
 </dl>
 </div>
+</div>
+      
+   
+ 
+<div class="nhsuk-grid-column-one-half">
+ <div class="nhsuk-panel-with-label">
+    
+      {% include '../components/patient-result-2.html' %} 
+     
 
-          
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 ">
+        
+        <div class="nhsuk-form-group">
+          <dl class="nhsuk-summary-list">
+<div class="nhsuk-grid-column-full">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+            Original test result details
+          </legend>
+
+<div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">National code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "CHR3" }}</dd>
+  </div>
+    
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Health Authority</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or "-" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Self-sample</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['self-sample'] or "No" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Source code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['source-code'] or "G" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Sender code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or "A86020" }} </dd>
+  </div>
 
 
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Slide number</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] or "21010009" }}</dd>
+  </div>
 
+  {% set nextTestDueDate = data['test_date'] %}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Test date</dt>
+    <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat }}</dd>
+  </div>
 
-  <form action="confirm-delete" method="post"> <input type="hidden" name="hideDetails" value="true">
+ <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">HPV Primary</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] or "Yes" }} </dd>
+  </div>
+
+<div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Result</dt>
+<dd class="nhsuk-summary-list__value">X0A</dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Repeat in months</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or "36" }} months</dd>
+  </div>
+
+    
+    </dl>
+     {% include '../components/comments-timeline-manual-match.html' %} 
+  
+  
+   
+
+       
+    
+</dl>
+      
+  </div>
+  </div>  
+    </div>  
+     <form action="confirm-delete-dup" method="post"> <input type="hidden" name="hideDetails" value="true">
     <div class="nhsuk-form-group">
       <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
         <legend class="nhsuk-fieldset__legend--m nhsuk-label__strong">
@@ -165,7 +235,7 @@ NHS Cervical screening management system
             <div class="nhsuk-checkboxes__item">
             <input class="nhsuk-checkboxes__input" id="confirmIdentity" name="confirmIdentity" type="checkbox" value="confirmIdentity">
             <label class="nhsuk-label nhsuk-checkboxes__label" for="confirmIdentity">
-              Yes, I want to remove this test result
+              Yes, I want to remove the duplicate test result
             </label>
             <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
              This will remove the test result from the rejected list and archive it
@@ -187,7 +257,7 @@ NHS Cervical screening management system
             <div class="nhsuk-form-group">
              
             <div class="nhsuk-grid-row">
-            <div class="nhsuk-grid-column-three-quarters">
+            <div class="nhsuk-grid-column-one-half">
               <label class="nhsuk-label" for="example">
                 Comments 
               </label>
@@ -201,12 +271,17 @@ NHS Cervical screening management system
     <button class="nhsuk-button nhsuk-button--ers" type="submit">Confirm</button>   
   </form>
 
- <p><a href="manc-rejected">Exit without saving</a></p> 
+    
+    <p><a href="manc-rejected">Exit without saving</a></p>
+
   </div>
 
+
+
+</div>
+</div>
+
 {% endblock %}
-
-
 
 {% block footer %}
 <footer role="contentinfo">

@@ -78,7 +78,7 @@ const results = [
         "action_code": "A",
         "created": "2020-05-28T16:35:45.883",
         "is_deleted": false,
-        "letter_status": "Sent",
+        "letter_status": "Processing",
         "nhs_number": "9100002798",
         "participant_id": "527087fc-4372-4949-b50e-e1b3b9f3e15a",
         "recall_months": "60",
@@ -86,11 +86,11 @@ const results = [
         "result_code": "2",
         "result_date": moment().subtract(148, "weeks"), 
         "result-type": "English",
-        "sending_lab": "XXXXX",
+        "sending_lab": "CHR3",
         "slide_number": "88011206",
         "sort_key": "RESULT#1988-06-22#2020-05-28T16:35:45.883",
-        "source_code": "X",
-        "test_date": moment().subtract(148, "weeks")
+        "source_code": "G",
+        "test_date": moment().subtract(0, "weeks")
     },
     {
         "result_ID": Math.random().toString(16).slice(2),
@@ -106,8 +106,8 @@ const results = [
         "result_code": "2",
         "result_date": moment().subtract(146, "weeks"), 
         "result-type": "English",
-        "sending_lab": "XXXXX",
-        "slide_number": "88011206",
+        "sending_lab": "XXXXY",
+        "slide_number": "21011206",
         "sort_key": "RESULT#1988-06-22#2020-05-28T16:35:49.199",
         "source_code": "X",
         "test_date": moment().subtract(146, "weeks")
@@ -181,7 +181,7 @@ const results = [
         "slide_number": "92023780",
         "sort_key": "RESULT#1992-11-04#2020-05-28T16:35:45.700",
         "source_code": "N",
-        "test_date": moment().subtract(13, "weeks")
+        "test_date": moment().subtract(130, "weeks")
     },
     {
         "result_ID": Math.random().toString(16).slice(2),

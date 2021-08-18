@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block header %}
-  {% include '../components/header-3.html' %}
+  {% include '../components/header.html' %}
 {% endblock %}
 
 {% block content %}
@@ -13,23 +13,13 @@
   <div class="nhsuk-grid-column-three-quarters">
 
 {{ backLink({
-  "href": "manc-logged",
-  "text": "Back to logged results",
+  "href": "../patient-summary-7",
+  "text": "Back to Patient Summary",
   "classes" : "nhsuk-u-margin-bottom-4"
   }) }}
-
-  <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-three-quarters">
-  
-    <ul class="nhsuk-inset-text nhsuk-comment-container nhsuk-inset-text__screening nhsuk-inset-text__screening--success">
-      <li class="nhsuk-panel"> <strong>This test result has an invalid sender code.</strong> </span>
-      <p> <br> <span class="date" style="color:	#4c6272">Time recieved: 20 May 2021, 09:30am </span></li>
-    </ul>
- </div>
-</div>
   
   <div class="nhsuk-panel-with-label">
-    {% include '../components/patient-result-2.html' %}
+    {% include '../components/patient-result-2-ntdd.html' %}
 
     {% if data.letter_status == "Processing" %}
       <div class="nhsuk-inset-text nhsuk-u-margin-top-2" style="border-color: #ffb81C">
@@ -44,85 +34,101 @@
     {% else %}
       {% set letterLinkText = "" %}
     {% endif %}
-
+<br>
     <div class="nhsuk-form-group">
   <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-      Review logged test result 
+      Review test result 
     </legend>
+     
 
+    <a href="../patient/add-logged-result/add-log-test-result?edit-test=true" class="nhsuk-button nhsuk-button--ers">
+            Edit result
+         </a>
+    <a href="add-test-result-crm-edit" class="nhsuk-button nhsuk-button--secondary nhsuk-button--ers">
+            Add new CRM and comments
+         </a>
     
-    
-    
- 
+    <form action="../v12/edit-test-result?nhsNumber={{ data.pnl_patient.nhs_number }}" method="post">
 
 <dl class="nhsuk-summary-list">
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">National code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "12345" }}</dd>
-  </div>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "CHR3" }}</dd>
     
+  </div>
+
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Health Authority</dt>
     <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or "-" }}</dd>
+    
   </div>
-  
+ 
+
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Self-sample</dt>
     <dd class="nhsuk-summary-list__value">{{ data['self-sample'] or "No" }}</dd>
+   
   </div>
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Source code</dt>
     <dd class="nhsuk-summary-list__value">{{ data['source-code'] or "G" }}</dd>
+    
   </div>
   
+ 
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender code</dt>
-    <dd class="nhsuk-summary-list__value"><span class="highlight">0000Y</span></dd>
+    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or "A86020" }} </dd>
+   
   </div>
-
+  
 
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Slide number</dt>
     <dd class="nhsuk-summary-list__value">{{ data['slide-number'] or "21010009" }}</dd>
+    
   </div>
 
-  {% set nextTestDueDate = data['test_date'] %}
+  {% set nextTestDueDate = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Test date</dt>
-    <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat }}</dd>
+    <dd class="nhsuk-summary-list__value">01-June-2021 </dd>
+   
   </div>
 
  <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">HPV Primary</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] or "Yes" }} </dd>
+    <dd class="nhsuk-summary-list__value">Yes </dd>
+   
   </div>
 
 <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Result</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['result-result'] }} {{ data['result-infection'] }} {{ data['result-action'] or "X0A"}}</dd>
+    <dd class="nhsuk-summary-list__value">X0A</dd>
   </div>
-
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Repeat in months</dt>
     <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or "36" }} months</dd>
+    
   </div>
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">Next test due date</dt>
-      <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', data['test_date']) + ' ' + 3 | returnDate('years', data['test_date']) | returnTimeDiff }}</dd>
+      <dd class="nhsuk-summary-list__value">01-June-2024 (In 2 years and 364 days)</dd>
+      
     </div> 
 
  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">CRM</dt>
+    <dt class="nhsuk-summary-list__key">New CRM</dt>
     <dd class="nhsuk-summary-list__value">{{ data['crm'] or "-" }}</dd>
    
   </div>
   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Comments</dt>
+    <dt class="nhsuk-summary-list__key">New Comments</dt>
     <dd class="nhsuk-summary-list__value">{{ data['comments'] or "-" }}</dd>                          
     
   </div>
@@ -134,15 +140,11 @@
  <input type="hidden" id="resultText" name="result-text" value="{{ data['result-result'] | returnResultText }}">
 
 
- <a href="../patient/add-logged-result/add-log-test-result" class="nhsuk-button nhsuk-button--ers">
-            Update and add result
-         </a>
-    <a href="log-test-result-crm-edit" class="nhsuk-button nhsuk-button--secondary nhsuk-button--ers">
-            Add new CRM and comments
-         </a>
+        <button class="nhsuk-button nhsuk-button--ers" type="submit">
+            Save Changes
+         </button>
 
-
-         <p><a href="../patient-summary-7">Exit without saving</a></p>
+         <p><a href="../patient/patient-summary-logged-invalid">Exit without saving</a></p>
 
      </form>
   </div>
@@ -150,6 +152,7 @@
 
   </div>
 </div>
+
 
 {% endblock %}
 

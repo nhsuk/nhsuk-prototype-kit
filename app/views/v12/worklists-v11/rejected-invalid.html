@@ -53,36 +53,34 @@ NHS Cervical screening management system
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
     <ul class="nhsuk-inset-text nhsuk-comment-container nhsuk-inset-text__screening nhsuk-inset-text__screening--success">
-      <li class="nhsuk-panel"> <strong>This test result has an invalid sender code.</p>
-      <p> All letters and notifications will be paused for this patient until the result is resolved.</strong> </span>
-      <p> <br> <span class="date" style="color:	#4c6272">Time recieved: 20 May 2021, 09:30am </span></li>
+      <li class="nhsuk-panel"> <strong>This test result has an invalid sender code.</strong></p>
+      <p> All letters and notifications will be paused for this patient until the result is resolved.<br>Time recieved: 08 August 2021, 09:30am </span></li>
     </ul>
  </div>
 </div>
 
    
 
+      
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
-    <div class="nhsuk-panel-with-label">
-      <class="nhsuk-panel-with-label__label">
+ <div class="nhsuk-panel-with-label">
+    
       {% include '../components/patient-result-2.html' %} 
-
-      
-        <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-4" aria-describedby="example-hint">
-          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-            Test result details
-          </legend>
-      
-
-      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 ">
      
 
-<dl class="nhsuk-summary-list">
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 ">
+        
+        <div class="nhsuk-form-group">
+          <dl class="nhsuk-summary-list">
+<div class="nhsuk-grid-column-full">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+            Test result details
+          </legend>
 
 <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">National code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "12345" }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "CHR3" }}</dd>
   </div>
     
   <div class="nhsuk-summary-list__row">
@@ -137,18 +135,26 @@ NHS Cervical screening management system
       <dt class="nhsuk-summary-list__key">Next test due date</dt>
       <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', data['test_date']) + ' ' + 3 | returnDate('years', data['test_date']) | returnTimeDiff }}</dd>
     </div> 
-</dl>
-      <a href="add-test-result-crm-edit" class="nhsuk-button nhsuk-button--secondary nhsuk-button--ers">
+
+
+    </dl>
+  
+  <dl>
+  <a href="add-test-result?edit-test=true" class="nhsuk-button nhsuk-button--ers">
+            Edit and add result
+         </a>
+    <a href="add-crm-comments" class="nhsuk-button nhsuk-button--secondary nhsuk-button--ers">
             Add new CRM and comments
          </a>
 
-      
-      {% include '../components/comments-timeline-manual-match.html' %} 
-    </div>
-  </div>
- 
+            <br>
+            
+      </dl>
+</dl>
+</div>
 
-<div class="nhsuk-grid-row">
+      
+<!--div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
 
        
@@ -198,7 +204,7 @@ NHS Cervical screening management system
      
      
     
-    </form>
+    </form>-->
     <p><a href="manc-rejected">Exit without saving</a></p>
 
 {% endblock %}

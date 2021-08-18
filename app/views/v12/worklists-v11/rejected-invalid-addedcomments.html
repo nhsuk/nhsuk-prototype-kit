@@ -2,31 +2,30 @@
 
 {% block pageScripts %}
 <script>
-  $(".char-textarea").on("keyup", function(event) {
-    checkTextAreaMaxLength(this, event);
-  });
+  $(".char-textarea").on("keyup",function(event){
+  checkTextAreaMaxLength(this,event);
+});
 
-  function checkTextAreaMaxLength(textBox, e) {
+function checkTextAreaMaxLength(textBox, e) {
 
     var maxLength = parseInt($(textBox).data("length"));
 
 
     if (!checkSpecialKeys(e)) {
-      if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
-    }
-    $(".char-count").html(maxLength - textBox.value.length);
+        if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
+   }
+  $(".char-count").html(maxLength - textBox.value.length);
 
     return true;
-  }
+}
 
-  function checkSpecialKeys(e) {
+function checkSpecialKeys(e) {
     if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
-      return false;
+        return false;
     else
-      return true;
-  }
+        return true;
+}
 </script>
-
 {% endblock %}
 
 {% block pageTitle %}
@@ -42,24 +41,27 @@ NHS Cervical screening management system
   <div class="nhsuk-grid-column-full">
 
     {{ backLink({
-      "href": "manc-rejected",
-      "text": "Go back to rejected results"
+      "href": "manc-rejected-inval-started",
+      "text": "Go back to previous rejected result"
     }) }}
 
   </div>
 </div>
 
- <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review test result </h1>
+ <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Review rejected test result </h1>
 
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-three-quarters">
+  <div class="nhsuk-grid-column-two-thirds">
     <ul class="nhsuk-inset-text nhsuk-comment-container nhsuk-inset-text__screening nhsuk-inset-text__screening--success">
-      <li class="nhsuk-panel"> <strong>This test result has a duplicate slide number.</strong><span class="date" style="color:	#4c6272"></p><p><a href="../pds/search/search-slide">Search slide number</a> to view added duplicate slide test results.</p> </span>
-      <p> <br> All letters and notifications will be paused for this patient until the result is resolved.<br>Time recieved: 08 August 2021, 09:30am </span></li>
+      <li class="nhsuk-panel"> <strong>This test result has an invalid sender code.</strong></p>
+      <p> All letters and notifications will be paused for this patient until the result is resolved.<br>Time recieved: 08 August 2021, 09:30am </span></li>
     </ul>
  </div>
 </div>
 
+   
+
+      
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-two-thirds">
  <div class="nhsuk-panel-with-label">
@@ -71,7 +73,7 @@ NHS Cervical screening management system
         
         <div class="nhsuk-form-group">
           <dl class="nhsuk-summary-list">
-
+<div class="nhsuk-grid-column-full">
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
             Test result details
           </legend>
@@ -98,7 +100,7 @@ NHS Cervical screening management system
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or "A86020" }} </dd>
+    <dd class="nhsuk-summary-list__value"><span class="highlight">0000Y</span></dd>
   </div>
 
 
@@ -110,7 +112,7 @@ NHS Cervical screening management system
   {% set nextTestDueDate = data['test_date'] %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Test date</dt>
-    <dd class="nhsuk-summary-list__value">01-07-2021</dd>
+    <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat }}</dd>
   </div>
 
  <div class="nhsuk-summary-list__row">
@@ -120,7 +122,7 @@ NHS Cervical screening management system
 
 <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Result</dt>
-    <dd class="nhsuk-summary-list__value">X0A</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['result-result'] }} {{ data['result-infection'] }} {{ data['result-action'] or "X0A"}}</dd>
   </div>
 
   
@@ -134,24 +136,77 @@ NHS Cervical screening management system
       <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', data['test_date']) + ' ' + 3 | returnDate('years', data['test_date']) | returnTimeDiff }}</dd>
     </div> 
 
-           
-</dl>
+
+    </dl>
+     {% include '../components/comments-timeline-manual-match.html' %} 
+  
+  <dl>
   <a href="add-test-result?edit-test=true" class="nhsuk-button nhsuk-button--ers">
             Edit and add result
          </a>
-    <a href="add-test-result-crm-edit" class="nhsuk-button nhsuk-button--secondary nhsuk-button--ers">
+    <a href="add-crm-comments" class="nhsuk-button nhsuk-button--secondary nhsuk-button--ers">
             Add new CRM and comments
          </a>
 
+            <br>
+            
+      </dl>
+</dl>
+</div>
+
+      
+<!--div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+       
+  <div class="nhsuk-form-group">
+     <form action="/*/worklists-v10/rejected-invalid" method="post">
+
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h2 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong nhsuk-u-margin-top-4">
+                How do you want to resolve the result?
+              </h2>
+              <div class="nhsuk-hint" id="example-hints-1-item-hint">
+                 The action taken will be shown in the audit history.
+                </div>
+            </legend>
+
+            <form class="nhsuk-form" action="/v12/worklists-v9b/rejected-exceeds-letter-time" method="post">
+
+            <div class="nhsuk-radios">
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-2" name="rejectAction" type="radio" value="log">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                  Edit and add result
+                </label>
+                <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
+               This will resolve the result and add it to the patient summary 
+                </div>
+              </div>  
+
+               <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-1" name="rejectAction" type="radio" value="delete">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                  Remove result
+                </label>
+                <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
+                This will remove the test result from the rejected list and archive it 
+                </div>
+              </div>
+          </fieldset>
+       </div> 
+       
+       
+  
+
+      
+    <button class="nhsuk-button nhsuk-u-margin-top-5 nhsuk-button--ers" type="submit">Continue</button>
+     
+     
     
-    <p><a href="manc-rejected">Exit without saving</a></p>
-
-  </div>
-
-
-
-</div>
-</div>
+    </form>-->
+    <p><a href="manc-rejected-inval-started">Exit without saving</a></p>
 
 {% endblock %}
 
