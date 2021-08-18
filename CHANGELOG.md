@@ -1,5 +1,11 @@
 # NHS.UK prototype kit Changelog
 
+## 4.6.1 - 18 August 2021
+
+:wrench: **Fixes**
+
+- Swap outdated `panel` for `card` on `clear-data.html` page.
+
 ## 4.6.0 - 16 August 2021
 
 :new: **New features**
