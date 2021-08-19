@@ -140,89 +140,17 @@ NHS Cervical screening management system
 </dl>
 </div>
 </div>
-      
+  
    
  
-<div class="nhsuk-grid-column-one-half">
- <div class="nhsuk-panel-with-label">
-    
-      {% include '../components/patient-result-2.html' %} 
-     
 
-      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 ">
-        
-        <div class="nhsuk-form-group">
-          <dl class="nhsuk-summary-list">
-<div class="nhsuk-grid-column-full">
-          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-            Original test result details
-          </legend>
-
-<div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">National code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "CHR3" }}</dd>
-  </div>
-    
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Health Authority</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or "-" }}</dd>
-  </div>
-  
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Self-sample</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['self-sample'] or "No" }}</dd>
-  </div>
-  
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Source code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['source-code'] or "G" }}</dd>
-  </div>
-  
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Sender code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or "A86020" }} </dd>
-  </div>
-
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Slide number</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] or "21010009" }}</dd>
-  </div>
-
-  {% set nextTestDueDate = data['test_date'] %}
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Test date</dt>
-    <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat }}</dd>
-  </div>
-
- <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">HPV Primary</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] or "Yes" }} </dd>
-  </div>
-
-<div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Result</dt>
-<dd class="nhsuk-summary-list__value">X0A</dd>
-  </div>
-
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Repeat in months</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or "36" }} months</dd>
-  </div>
-
-    
-    </dl>
-     {% include '../components/comments-timeline-manual-match.html' %} 
-  
-  
-   
 
        
     
 </dl>
       
-  </div>
-  </div>  
+ 
+  
     </div>  
      <form action="confirm-delete-dup" method="post"> <input type="hidden" name="hideDetails" value="true">
     <div class="nhsuk-form-group">
