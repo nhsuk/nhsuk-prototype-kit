@@ -9,8 +9,7 @@
     "start": "node app.js",
     "test": "",
     "prewatch": "gulp build",
-    "watch": "gulp",
-    "build-gh-release": "gulp zip"
+    "watch": "gulp"
   },
   "author": "https://github.com/nhsuk/",
   "license": "MIT",
