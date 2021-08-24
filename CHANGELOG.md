@@ -3,6 +3,8 @@
 ## 4.6.4 - 25 August 2021
 
 - Add script to fix bug with unchecked checkboxes and separate bug when only one checkbox is selected.
+- Update package dependencies to latest versions
+
 ## 4.6.3 - 24 August 2021
 
 :wrench: **Fixes**
