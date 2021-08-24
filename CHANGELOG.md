@@ -1,5 +1,12 @@
 # NHS.UK prototype kit Changelog
 
+## 4.6.3 - 24 August 2021
+
+:wrench: **Fixes**
+
+- Use the correct name for the NHS digital service manual Slack instance
+- Fix GitHub actions/Azure DevOps release pipelines [Issue 180](https://github.com/nhsuk/nhsuk-prototype-kit/issues/180)
+
 ## 4.6.2 - 24 August 2021
 
 :wrench: **Fixes**
