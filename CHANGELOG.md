@@ -1,5 +1,11 @@
 # NHS.UK prototype kit Changelog
 
+## 4.6.2 - 24 August 2021
+
+:wrench: **Fixes**
+
+- Correct slack channel links on the `About` page.
+
 ## 4.6.1 - 18 August 2021
 
 :wrench: **Fixes**
