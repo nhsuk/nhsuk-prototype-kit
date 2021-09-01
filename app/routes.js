@@ -164,6 +164,20 @@ router.post("/*/worklists-v10/rejected-invalid", function (req, res) {
   }
 });
 
+router.post("/*/worklists-v12/rejected-invalid", function (req, res) {
+  console.log('working')
+  var rejectAction = req.session.data["rejectAction"];
+
+  console.log("check reason: " + rejectAction);
+  if (rejectAction == "add") {
+    res.redirect("/v12/patient/add-rejected-result/add-rej-test-result");
+  }
+
+  if (rejectAction == "remove") {
+      res.redirect("/v12/worklists-v12/rejected-delete");
+  }
+});
+
 router.post("/*/hmr101/cervix", function(req, res) {
   var reason = req.session.data["cervix"];
   console.log(reason);

@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block header %}
-  {% include '../../components/header-3.html' %}
+  {% include '../components/header.html' %}
 {% endblock %}
 
 {% block content %}
@@ -19,7 +19,7 @@
   }) }}
   
   <div class="nhsuk-panel-with-label">
-    {% include '../../components/pnl-patient-2.html' %}
+    {% include '../components/patient-result-2-ntdd.html' %}
 
     {% if data.letter_status == "Processing" %}
       <div class="nhsuk-inset-text nhsuk-u-margin-top-2" style="border-color: #ffb81C">
@@ -34,7 +34,7 @@
     {% else %}
       {% set letterLinkText = "" %}
     {% endif %}
-
+<br>
     <div class="nhsuk-form-group">
   <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
@@ -42,7 +42,7 @@
     </legend>
      
 
-    <a href="add-test-result?edit-test=true" class="nhsuk-button nhsuk-button--ers">
+    <a href="../patient/add-logged-result/add-log-test-result?edit-test=true" class="nhsuk-button nhsuk-button--ers">
             Edit result
          </a>
     <a href="add-test-result-crm-edit" class="nhsuk-button nhsuk-button--secondary nhsuk-button--ers">
@@ -55,7 +55,7 @@
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">National code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "-" }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "CHR3" }}</dd>
     
   </div>
 
@@ -68,64 +68,57 @@
 
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Self-sample</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['self-sample'] or "-" }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['self-sample'] or "No" }}</dd>
    
   </div>
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Source code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['source-code'] or "-" }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['source-code'] or "G" }}</dd>
     
   </div>
   
  
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or "-" }} </dd>
+    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or "A86020" }} </dd>
    
   </div>
-
-<!--ONLY FOR MIGRATED RESULTS THAT USED TO HAVE A GNC CODE
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">GNC code</dt>
-    <dd class="nhsuk-summary-list__value">621312</dd>
-   
-  </div>-->
   
 
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Slide number</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] or "-" }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] or "21010009" }}</dd>
     
   </div>
 
   {% set nextTestDueDate = data['example-year'] + "-" + data['example-month'] + "-" + data['example-day'] %}
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Test date</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['test_date'] | returnDateFormat }}</dd>
+    <dd class="nhsuk-summary-list__value">01-June-2021 </dd>
    
   </div>
 
  <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">HPV Primary</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] or "-" }} </dd>
+    <dd class="nhsuk-summary-list__value">Yes </dd>
    
   </div>
 
 <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Result</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['result-result'] }} {{ data['result-infection'] or "" }} {{ data['result-action'] }}</dd>
+    <dd class="nhsuk-summary-list__value">X0A</dd>
   </div>
   
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Repeat in months</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or "-" }} months</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or "36" }} months</dd>
     
   </div>
 
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">Next test due date</dt>
-      <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', data['test_date']) + ' ' + 3 | returnDate('years', data['test_date']) | returnTimeDiff }}</dd>
+      <dd class="nhsuk-summary-list__value">01-June-2024 (In 2 years and 364 days)</dd>
       
     </div> 
 
@@ -140,7 +133,7 @@
     
   </div>
 </dl>
-{% include '../../components/comments-timeline.html' %}  
+{% include '../components/comments-timeline.html' %}  
 
  <input type="hidden" id="actionText" name="action-text" value="{{ data['result-action'] | returnActionText }}">
  <input type="hidden" id="infectionText" name="infection-text" value="{{ data['result-infection'] | returnInfectionText }}">
@@ -151,7 +144,7 @@
             Save Changes
          </button>
 
-         <p><a href="../patient-summary-7">Exit without saving</a></p>
+         <p><a href="../patient/patient-summary-logged-invalid">Exit without saving</a></p>
 
      </form>
   </div>
@@ -159,6 +152,7 @@
 
   </div>
 </div>
+
 
 {% endblock %}
 

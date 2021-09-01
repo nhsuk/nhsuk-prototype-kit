@@ -1,0 +1,379 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/reveal.js"></script>
+<script type="text/javascript" src="/js/comments.js"></script>
+
+<script>
+  function closeRightMenu() {
+    document.getElementByClass("nhsuk-sidebar-hidden").style.display = "none";
+  }
+  $(document).ready(function() {
+    $(".sidebarbttn").click(function() {
+      $(".nhsuk-sidebar-hidden").toggle();
+    });
+
+  });
+</script>
+
+<script>
+  $(".char-textarea").on("keyup", function(event) {
+    checkTextAreaMaxLength(this, event);
+  });
+
+  function checkTextAreaMaxLength(textBox, e) {
+
+    var maxLength = parseInt($(textBox).data("length"));
+
+
+    if (!checkSpecialKeys(e)) {
+      if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
+    }
+    $(".char-count").html(maxLength - textBox.value.length);
+
+    return true;
+  }
+
+  function checkSpecialKeys(e) {
+    if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
+      return false;
+    else
+      return true;
+  }
+</script>
+
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    {{ backLink({
+      "href": "manc-p1",
+      "text": "Go back to match patient details"
+    }) }}
+
+    <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Choose where to send the result</h1>
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">Patient demographics selected</h3>
+
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+        {% if data['system-dem-choice'] ==  'patient1a' %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Jane Alma Smith
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            01-01-1970
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            NHS number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class=""> 234 567 8901 </span>
+          </dd>
+        </div>
+        {% endif %}
+
+        {% if data['system-dem-choice'] ==  'patient1b' %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Jude Smith
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            01-01-1970
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            NHS number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class=""> 234 567 8902 </span>
+          </dd>
+        </div>
+        {% endif %}
+
+        {% if data['system-dem-choice'] ==  'patient1c' %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Name
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Jane Smithson
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Date of birth
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            10-01-1970
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            NHS number
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class=""> 234 567 8901 </span>
+          </dd>
+        </div>
+        {% endif %}
+
+
+      </dl>
+    </div>
+  </div>
+</div>
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">Lab address</h3>
+
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Contact information
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            20 Thornhill Street
+            <br>
+            Pudsey
+            <br>
+            LS28 7PB
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Sender
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            Brance Colposcopy Clinic
+          </dd>
+        </div>
+
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Sender address
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            RG12 1YQ
+          </dd>
+        </div>
+
+      </dl>
+    </div>
+  </div>
+
+
+  <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-panel-with-label">
+      <h3 class="nhsuk-panel-with-label__label">System address</h3>
+
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 nhsuk-summary-list--no-border">
+
+        {% if data['system-dem-choice'] ==  'patient1a' %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Contact information
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            20 Thornhill Street
+            <br>
+            Pudsey
+            <br>
+            LS28 <span class="highlight">7ED</span>
+          </dd>
+        </div>
+        {% endif %}
+
+        {% if data['system-dem-choice'] ==  'patient1b' %}
+        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Contact information
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="highlight">462 Cottingham Road
+            <br>
+            Hull
+            <br>
+            HU7 8QR</span>
+          </dd>
+        </div>
+        {% endif %}
+
+<!--        <div class="nhsuk-summary-list__row">
+          <dt class="nhsuk-summary-list__key">
+            Contact information
+          </dt>
+          <dd class="nhsuk-summary-list__value">
+            <span class="highlight">38 Saxon Road
+            <br>
+            York
+            <br>
+            YO41 1BY</span>
+          </dd>
+        </div> -->
+
+
+      </dl>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+    <!-- OPTIONS -->
+    <div class="nhsuk-form-group">
+
+      <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+          <h1 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong">
+            Choose address
+          </h1>
+          <p class="nhsuk-hint">If no appropriate address available, save to lab query list</p>
+        </legend>
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
+          <label class="nhsuk-label nhsuk-radios__label" for="system">
+            Send to system address
+          </label>
+        </div>
+
+
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
+          <label class="nhsuk-label nhsuk-radios__label" for="system">
+            Send to lab address
+          </label>
+        </div>
+
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="system" name="how-to-resolve" type="radio" value="system" aria-controls="system" aria-expanded="false">
+          <label class="nhsuk-label nhsuk-radios__label" for="system">
+            Send to sender address
+          </label>
+          <div class="nhsuk-hint nhsuk-radios__hint">
+           Use sender address when no correspondence to home
+          </div>
+        </div>
+
+
+        <div class="nhsuk-radios nhsuk-radios--conditional">
+          <div class="nhsuk-radios nhsuk-radios--conditional">
+
+            <div class="nhsuk-radios__item">
+              <input class="nhsuk-radios__input" id="contact-1" name="how-to-resolve" type="radio" value="address" aria-controls="conditional-contact-1" aria-expanded="false">
+              <label class="nhsuk-label nhsuk-radios__label" for="contact-1">
+                Enter a new address
+              </label>
+            </div>
+
+            <div class="nhsuk-radios__conditional nhsuk-radios__conditional--hidden" id="conditional-contact-1">
+
+              <div class="nhsuk-form-group">
+                <label class="nhsuk-label" for="email">
+                  Building and street
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
+                <label class="nhsuk-label" for="email">
+                  Town or city
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
+                <label class="nhsuk-label" for="email">
+                  County
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-one-thirds" id="email" name="email" type="text">
+                <label class="nhsuk-label" for="email">
+                  Postcode
+                </label>
+                <input class="nhsuk-input nhsuk-u-width-two-thirds nhsuk-u-margin-bottom-8" id="email" name="email" type="text">
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </fieldset>
+
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+
+          <form action="manc-p1-step2" method="post">
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label nhsuk-label__strong nhsuk-u-padding-top-6" for="example">
+                Comments (optional)
+              </label>
+              <!--<span class="nhsuk-hint nhsuk-u-padding-top-3" id="example-hint" for="one-half">
+              </span>-->
+              <textarea class="nhsuk-textarea commentBox char-textarea" id="commentsa" value="commentsa" name="commentsa" rows="5" ></textarea>
+              <br>
+
+            
+
+        </div>
+      </div>
+
+
+    </div>
+    <a href="manc-p2" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save and next</a>
+    <a href="manc-p2" class="nhsuk-button--secondary nhsuk-button--ers nhsuk-u-margin-top-3 nhsuk-u-margin-right-6">Save to lab query list</a>
+    <p><a href="manc-process">Exit without saving</a></p>
+
+  </div>
+
+</div>
+
+
+
+{% endblock %}

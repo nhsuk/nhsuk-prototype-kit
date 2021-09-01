@@ -1,0 +1,188 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script>
+  $(".char-textarea").on("keyup",function(event){
+  checkTextAreaMaxLength(this,event);
+});
+
+function checkTextAreaMaxLength(textBox, e) {
+
+    var maxLength = parseInt($(textBox).data("length"));
+
+
+    if (!checkSpecialKeys(e)) {
+        if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
+   }
+  $(".char-count").html(maxLength - textBox.value.length);
+
+    return true;
+}
+
+function checkSpecialKeys(e) {
+    if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
+        return false;
+    else
+        return true;
+}
+</script>
+{% endblock %}
+
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    {{ backLink({
+      "href": "rejected-p1",
+      "text": "Go back to previous rejected result"
+    }) }}
+
+  </div>
+</div>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+
+    <div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+     <h1 class="nhsuk-heading-l"> Check test result selected before deleting</h1>
+     
+
+    <div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    <div class="nhsuk-panel-with-label">
+    <class="nhsuk-panel-with-label__label">
+      {% include '../components/patient-result-1.html' %} 
+
+      
+        <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-4" aria-describedby="example-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            Test result details
+          </legend>
+      
+
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 ">
+        
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Slide number</dt>
+              <dd class="nhsuk-summary-list__value">70406000</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Test date</dt>
+              <dd class="nhsuk-summary-list__value">01-Jan-2021</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Test result</dt>
+              <dd class="nhsuk-summary-list__value">(X9A) Low-grade, HPV negative, dyskaryosis</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">HPV Primary</dt>
+              <dd class="nhsuk-summary-list__value">Yes</dd>
+            </div>
+
+            <div class="nhsuk-summary-list__row">
+              <dt class="nhsuk-summary-list__key">Repeat</dt>
+              <dd class="nhsuk-summary-list__value">36 months</dd>
+            </div>
+          </dl>
+      
+
+      <div class="nhsuk-form-group">
+        
+
+            
+
+          </div>
+          </div>       
+          
+
+
+
+
+  <form action="confirm-cease-delete" method="post">
+    <div class="nhsuk-form-group">
+      <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+        <legend class="nhsuk-fieldset__legend--m nhsuk-label__strong">
+          <h1 class="nhsuk-fieldset__heading">Are you sure you want to delete this test result?</h1>
+        </legend>
+
+        <div class="nhsuk-radios nhsuk-radios--conditional">
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="example-1" name="result-type" type="radio" value="English" {{ checked("result-type", "English") }} aria-controls="conditional-example-1" aria-expanded="false">
+            <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+             Yes, I want to delete this test result
+            </label>
+            <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+             This action will remove the result fromt he rejected lab list.
+            </div>
+            
+            <div class="nhsuk-form-group">
+              <h1 class="nhsuk-label-wrapper">
+                <label class="nhsuk-fieldset__legend--s nhsuk-label__strong" for="example-heading">
+                  Enter CRM case number
+                </label>
+              </h1>
+              <span class="nhsuk-hint" id="example-hint">
+                For example, CAS-12345-ABCDE.
+              </span>
+              <input class="nhsuk-input nhsuk-input--width-10" type="text" name="crm" autocomplete="off" value="{{ data.crm }}">
+            </div>
+            <div class="nhsuk-form-group">
+             
+
+              <label class="nhsuk-label" for="example">
+                Comments 
+              </label>
+                  <span class="nhsuk-hint" id="example-hint"> Add a comment explaining this action taken.</span>
+               
+              <textarea class="nhsuk-textarea" id="example" name="comments" rows="4" aria-describedby="example-hint" autocomplete="off">{{ data.comments }}</textarea>
+            </div>
+          </div>
+        </div>
+    <br>
+        <div class="nhsuk-radios nhsuk-radios--conditional">
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="example-1" name="result-type" type="radio" value="English" >
+            <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+              No, return back to rejected lab list.
+            </label> 
+            <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
+             The result will stay on the rejected lab list.
+            </div>  
+          </div>   
+        </div> 
+      </fieldset> 
+    </div>
+    <br>
+    <button class="nhsuk-button nhsuk-button--ers" type="submit">Confirm</button>   
+  </form>
+
+ <p><a href="manc-rejected">Exit without saving</a></p> 
+  </div>
+
+{% endblock %}
+
+
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+    </div>
+  </div>
+</footer>
+{% endblock %}

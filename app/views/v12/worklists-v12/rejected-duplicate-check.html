@@ -1,0 +1,298 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script>
+  $(".char-textarea").on("keyup", function(event) {
+    checkTextAreaMaxLength(this, event);
+  });
+
+  function checkTextAreaMaxLength(textBox, e) {
+
+    var maxLength = parseInt($(textBox).data("length"));
+
+
+    if (!checkSpecialKeys(e)) {
+      if (textBox.value.length > maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
+    }
+    $(".char-count").html(maxLength - textBox.value.length);
+
+    return true;
+  }
+
+  function checkSpecialKeys(e) {
+    if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
+      return false;
+    else
+      return true;
+  }
+</script>
+
+{% endblock %}
+
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    {{ backLink({
+      "href": "manc-rejected",
+      "text": "Go back to rejected results"
+    }) }}
+
+  </div>
+</div>
+
+ <h1 class="nhsuk-heading-l nhsuk-u-padding-top-2">Check recommendation </h1>
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+    <ul class="nhsuk-inset-text nhsuk-comment-container nhsuk-inset-text__screening nhsuk-inset-text__screening--success">
+      <li class="nhsuk-panel"> <strong>This test result has a duplicate slide number.</strong>
+      <p><br> All letters and notifications will be paused for this patient until the result is resolved.<br>Time recieved: 08 August 2021, 09:30am </span></li>
+    </ul>
+ </div>
+</div>
+
+<fieldset class="nhsuk-fieldset">
+           <!-- <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h2 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong nhsuk-u-margin-top-4">
+                What action do you recommend for this result? 
+              </h2>
+              <div class="nhsuk-hint" id="example-hints-1-item-hint">
+                 The action chosen will be saved and wait for a checker's approval.
+                </div>
+            </legend>-->
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+ <div class="nhsuk-panel-with-label">
+    
+      {% include '../components/patient-result-2.html' %} 
+     
+
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 ">
+        
+        <div class="nhsuk-form-group">
+          <dl class="nhsuk-summary-list">
+<div class="nhsuk-grid-column-full">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+            Duplicate test result details
+          </legend>
+
+<div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">National code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "CHR3" }}</dd>
+  </div>
+    
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Health Authority</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or "-" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Self-sample</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['self-sample'] or "No" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Source code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['source-code'] or "G" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Sender code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or "A86020" }} </dd>
+  </div>
+
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Slide number</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] or "21010009" }}</dd>
+  </div>
+
+  {% set nextTestDueDate = data['test_date'] %}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Test date</dt>
+    <dd class="nhsuk-summary-list__value">1-June-2021</dd>
+  </div>
+
+ <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">HPV Primary</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] or "Yes" }} </dd>
+  </div>
+
+<div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Result</dt>
+    <dd class="nhsuk-summary-list__value">X0R</dd>
+  </div>
+
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Repeat in months</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or "12" }} months</dd>
+  </div>
+
+
+    </dl>
+     {% include '../components/comments-timeline-manual-match.html' %} 
+  
+  <dl>
+ 
+
+   
+            
+      </dl>
+</dl>
+</div>
+</div>
+      
+   
+ 
+<div class="nhsuk-grid-column-one-half">
+ <div class="nhsuk-panel-with-label">
+    
+      {% include '../components/patient-result-2.html' %} 
+     
+
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 ">
+        
+        <div class="nhsuk-form-group">
+          <dl class="nhsuk-summary-list">
+<div class="nhsuk-grid-column-full">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+            Original test result details
+          </legend>
+
+<div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">National code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "CHR3" }}</dd>
+  </div>
+    
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Health Authority</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or "-" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Self-sample</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['self-sample'] or "No" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Source code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['source-code'] or "G" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Sender code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or "A86020" }} </dd>
+  </div>
+
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Slide number</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] or "21010009" }}</dd>
+  </div>
+
+  {% set nextTestDueDate = data['test_date'] %}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Test date</dt>
+    <dd class="nhsuk-summary-list__value">1-June-2021</dd>
+  </div>
+
+ <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">HPV Primary</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] or "Yes" }} </dd>
+  </div>
+
+<div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Result</dt>
+<dd class="nhsuk-summary-list__value">X0A</dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Repeat in months</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or "36" }} months</dd>
+  </div>
+
+  
+    </dl>
+     {% include '../components/comments-timeline-manual-match.html' %} 
+  
+ 
+   
+   
+
+       
+    
+</dl>
+      
+  </div>
+  </div>  
+ 
+
+     <div class="nhsuk-form-group">
+          
+          <dl class="nhsuk-summary-list">
+          <div class="nhsuk-grid-column-full">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+            Review action chosen: 
+          </legend>
+
+<div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Action</dt>
+    <dd class="nhsuk-summary-list__value">Replace original test details with duplicate test details</dd>
+  </div>
+    
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">CRM</dt>
+    <dd class="nhsuk-summary-list__value">CAS-12345-ABCDE</dd>
+  </div>
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Comments</dt>
+    <dd class="nhsuk-summary-list__value">Duplicate has corrected test date for this test result. </dd>
+  </div>
+
+           
+
+        </div>
+</div></div>
+      
+
+       
+
+             <a href="add-test-result?edit-test=true" class="nhsuk-button nhsuk-button--ers">
+           Accept action</a>
+         <a href="manc-query" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary">Send back to processor</a>
+
+   
+       
+    
+    <p><a href="manc-rejected">Exit without saving</a></p>
+
+  </div>
+
+
+
+</div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<footer role="contentinfo">
+  <div class="nhsuk-footer" id="nhsuk-footer">
+    <div class="nhsuk-width-container nhsuk-width-container-fluid">
+      <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
+    </div>
+  </div>
+</footer>
+{% endblock %}

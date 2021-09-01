@@ -14,7 +14,7 @@ NHS Cervical screening management system
 {% endblock %}
 
 {% block header %}
-{% include '../../components/header.html' %}
+{% include '../components/header.html' %}
 {% endblock %}
 
 
@@ -60,26 +60,26 @@ NHS Cervical screening management system
           Number of results received
           </th>
           <th role="columnheader" scope="col">
-           To process outstanding
+           Automatically matched
           </th>
           <th role="columnheader" scope="col">
-           To check outstanding
+           Manually matched
           </th>
            <th role="columnheader" scope="col">
-           Download CSVs 
+           PID CSV Downloaded by
           </th>
           <!--<th role="columnheader" scope="col">
             Rejected
           </th>
           <th role="columnheader" scope="col">
             Logged
-          </th>
+          </th>-->
            <th role="columnheader" scope="col">
-            PID 
+            Matching complete
           </th>
         <th role="columnheader" scope="col">
-            Outstanding rejections 
-          </th>-->
+            Download
+          </th>
         </tr>
       </thead>
       <tbody class="nhsuk-table__body">
@@ -88,26 +88,30 @@ NHS Cervical screening management system
           <td class="nhsuk-table__cell ">16-09-2021
            <span class="nhsuk-table__cell--hint">11:30</span></td>
           <td class="nhsuk-table__cell ">100</td>
-          <td class="nhsuk-table__cell ">0
-          
-          <td class="nhsuk-table__cell ">0
-          
-         
-        <td class="nhsuk-table__cell "><a href="preview-summary-csv">Summry CSV</a><br><a href="preview-pid-csv">PID CSV</a><br><a href="preview-pid-csv">Outstanding rejections CSV</a>
+          <td class="nhsuk-table__cell ">70
+          <span class="nhsuk-table__cell--hint">70%</span></td>
+          <td class="nhsuk-table__cell ">20
+          <span class="nhsuk-table__cell--hint">20%</span></td>
+          <td class="nhsuk-table__cell ">
+          <span class="nhsuk-table__cell--hint"></span></td>
+          <td class="nhsuk-table__cell ">No</td>
+          <td class="nhsuk-table__cell "><a href="preview-summary-csv">Summary CSV</a>
+          <br><a href="preview-pid-csv">PID CSV</a></td>
         </tr>
         <tr role="row" class="nhsuk-table__row">
           <td class="nhsuk-table__cell">File 2</td>
           <td class="nhsuk-table__cell ">16-09-2021
           <span class="nhsuk-table__cell--hint">11:30</span></td>
           <td class="nhsuk-table__cell ">234</td>
-          
-        <td class="nhsuk-table__cell ">12
-          
-          <td class="nhsuk-table__cell ">14
-          
-         
-          <td class="nhsuk-table__cell "><a href="preview-summary-csv">Summry CSV</a><br><a href="preview-pid-csv">PID CSV</a><br><a href="preview-pid-csv">Outstanding rejections CSV</a>
-          
+           <td class="nhsuk-table__cell ">205
+           <span class="nhsuk-table__cell--hint">87.61%</span></td>
+          <td class="nhsuk-table__cell ">33
+          <span class="nhsuk-table__cell--hint">14.1%</span></td>
+          <td class="nhsuk-table__cell ">Joanna Jones
+          <span class="nhsuk-table__cell--hint">17-09-21</span></td>
+          <td class="nhsuk-table__cell ">Yes</td>
+          <td class="nhsuk-table__cell "><a href="preview-summary-csv">Summary CSV</a>
+          <br><a href="preview-pid-csv">PID CSV</a></td>
         </tr>
         <tr role="row" class="nhsuk-table__row">
           <td class="nhsuk-table__cell">File 3</td>
@@ -115,11 +119,14 @@ NHS Cervical screening management system
            <span class="nhsuk-table__cell--hint">11:30</span></td>
           <td class="nhsuk-table__cell ">300</td>
           <td class="nhsuk-table__cell ">300
-          
+          <span class="nhsuk-table__cell--hint">100%</span></td>
           <td class="nhsuk-table__cell ">0
-          
+          <span class="nhsuk-table__cell--hint">0%</span></td>
+         <td class="nhsuk-table__cell ">Joanna Jones
+          <span class="nhsuk-table__cell--hint">17-09-21</span></td>
+           <td class="nhsuk-table__cell ">Yes</td>
           <td class="nhsuk-table__cell "><a href="preview-summary-csv">Summary CSV</a>
-          <br><a href="preview-pid-csv">PID CSV</a><br><a href="preview-pid-csv">Outstanding rejections CSV</a></td>
+          <br><a href="preview-pid-csv">PID CSV</a></td>
         </tr>
         <tr role="row" class="nhsuk-table__row">
           <td class="nhsuk-table__cell">File 4</td>
@@ -127,11 +134,14 @@ NHS Cervical screening management system
            <span class="nhsuk-table__cell--hint">11:30</span></td>
           <td class="nhsuk-table__cell ">10</td>
            <td class="nhsuk-table__cell ">9
-           
+           <span class="nhsuk-table__cell--hint">90%</span></td>
           <td class="nhsuk-table__cell ">1
-          
+          <span class="nhsuk-table__cell--hint">10%</span></td>
+         <td class="nhsuk-table__cell ">Joanna Jones
+          <span class="nhsuk-table__cell--hint">17-09-21</span></td>
+           <td class="nhsuk-table__cell ">Yes</td>
          <td class="nhsuk-table__cell "><a href="preview-summary-csv">Summary CSV</a>
-          <br><a href="preview-pid-csv">PID CSV</a><br><a href="preview-pid-csv">Outstanding rejections CSV</a></td>
+          <br><a href="preview-pid-csv">PID CSV</a></td>
         </tr>
         
       </tbody>

@@ -1,0 +1,94 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(5) {
+    border-bottom: 4px solid #d8dde0;
+  }
+
+  .nhsuk-button, .nhsuk-button--ers, .dropdown .dropbtn, .nhsuk-button--ers_secondary, .nhsuk-button--ers_reverse, .nhsuk-button--ers_reverse:hover, .nhsuk-button--ers_reverse:focus, .nhsuk-button--ers_reject, .nhsuk-blue, .nhsuk-right  {
+    margin-bottom: 0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    {{ backLink({
+      "href": "logged-results",
+      "text": "Back to search logged results"
+    }) }}
+
+
+  
+    <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-full">
+    <h2 id="testresults" class="nhsuk-heading-l">Search logged results</h2>
+       <p>
+      <span class="number-of-results">
+        <h3 class="nhsuk-heading-xs">We found <b>1</b> logged result with NHS number 308 219 3281.</h3>
+       <p>If you cannot find the test result you're looking for <a href="manage-sender-codes">refine search</a> again or search by <a href="../pds/search/search-slide">slide number</a>.</p> </p>
+      </span>
+    </p>
+<br>  
+
+
+<table class="order-table">
+      <thead>
+        <tr>
+          <th class="ten">Patient name
+          </th>
+          <th class="ten">NHS number
+          </th>
+          
+          <th class="ten">Test date
+          </th>
+           <th class="ten">National code
+          </th>
+          <th class="ten">Processor
+          </th>
+          <th class="ten">Error
+          </th>
+          <th class="ten">
+          </th>
+        <tr>
+      </thead>
+
+      <tbody>
+
+
+        <!-- SLIDE SEARCH TABLE -->
+        <tr>
+          <td>Lucy Harper</td>
+          <td>999 102 3867</td>
+          <td>04-08-2021</td>
+           <td>907690</td>
+          <td>Alison Johnson</td>
+          <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Invalid data</span></td>
+          <td><a class="nhsuk-button nhsuk-button--ers nhsuk-button--secondary nhsuk-u-margin-bottom-3" href="../patient/patient-summary-logged-invalid">View patient summary</a></td>
+        </tr>
+      
+    
+        
+      
+         
+         
+       
+      </tbody>
+    </table>
+ 
+
+{% endblock %}
+
+

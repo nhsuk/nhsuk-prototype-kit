@@ -1,0 +1,146 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/reveal.js"></script>
+<script type="text/javascript" src="/js/comments.js"></script>
+
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    {{ backLink({
+      "href": "review-dummy",
+      "text": "Go back to patient details"
+    }) }}
+
+    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-8">
+           <h3 class="nhsuk-heading-s">test result successfully logged to patient summary</h3>
+        </div>
+
+
+    <div class="nhsuk-panel-with-label">
+      <class="nhsuk-panel-with-label__label">
+      {% include '../components/patient-result-2.html' %} 
+
+      
+        <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-4" aria-describedby="example-hint">
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            Test result details
+          </legend>
+      
+
+      <dl class="nhsuk-summary-list nhsuk-u-padding-top-3 ">
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">National code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "12345" }}</dd>
+  </div>
+    
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Health Authority</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or "-" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Self-sample</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['self-sample'] or "No" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Source code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['source-code'] or "G" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Sender code</dt>
+    <dd class="nhsuk-summary-list__value"><span class="highlight">0000Y</span></dd>
+  </div>
+
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Slide number</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] or "21010009" }}</dd>
+  </div>
+
+  {% set nextTestDueDate = data['test_date'] %}
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Test date</dt>
+    <dd class="nhsuk-summary-list__value">{{ nextTestDueDate | returnDateFormat }}</dd>
+  </div>
+
+ <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">HPV Primary</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['hpv-primary'] or "Yes" }} </dd>
+  </div>
+
+<div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Result</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['result-result'] }} {{ data['result-infection'] }} {{ data['result-action'] or "X0A"}}</dd>
+  </div>
+
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Repeat in months</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or "36" }} months</dd>
+  </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Next test due date</dt>
+      <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', data['test_date']) + ' ' + 3 | returnDate('years', data['test_date']) | returnTimeDiff }}</dd>
+    </div> 
+
+    <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">CRM</dt>
+    <dd class="nhsuk-summary-list__value">CAS-12345-ABCDE</dd>
+  </div>
+
+    <div class="nhsuk-summary-list__row">
+      <dt class="nhsuk-summary-list__key">Comments</dt>
+      <dd class="nhsuk-summary-list__value">Logging test to patient, lab have been contacted to confirm correct sender code.</dd>
+    </div> 
+
+
+      </dl>
+      {% include '../components/comments-timeline-manual-match.html' %} 
+    </div>
+  </div>
+        
+  <div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+        <h3>What happens next</h3>
+        <p>test around how to find the logged results and a link to the logged table.
+
+  </div>
+  </div>
+  <br>
+       
+
+   
+        <a href="rejected-missing" class="nhsuk-button nhsuk-button--ers nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Continue to next rejection</a>
+    
+        <a href="../patient/patient-summary-logged-invalid" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">View patient summary</a>
+
+        <p><a href="manc-rejected-minus2">Back to rejected list</a></p>
+
+
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

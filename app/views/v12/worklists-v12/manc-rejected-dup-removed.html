@@ -1,0 +1,143 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+
+<script src="/js/results-filter.js"></script>
+
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(3) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+{% block content %}
+
+{{ backLink({
+  "href": "worklists",
+  "text": "Go back to results"
+}) }}
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    <h1 class="nhsuk-heading-l nhsuk-u-margin-top-2">Manchester</h1>
+  </div>
+</div>
+
+
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <nav class="nhsuk-sub-navigation">
+      <ul class="nhsuk-sub-navigation__list">
+        <li class="nhsuk-sub-navigation__item"><a href="manc-process" class="nhsuk-sub-navigation__link">To process<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">10</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="manc-query" class="nhsuk-sub-navigation__link">To query<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">3</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="manc-check" class="nhsuk-sub-navigation__link">To check <span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">11</span></a></li>
+        <li class="nhsuk-sub-navigation__item"><a href="manc-rejected" class="nhsuk-sub-navigation__link" aria-current="page">Rejected<span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-left-2">5</span></a></li>
+      </ul>
+    </nav>
+
+
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th class="ten">Patient name
+          </th>
+          <th class="ten">NHS number
+          </th>
+          <th class="ten">Status
+          </th>
+          <th class="ten">Processor
+          </th>
+          <th class="fifteen">Error
+          </th>
+          <th class="ten">Time received
+          </th>
+          <th class="ten">
+          </th>
+         
+        <tr>
+      </thead>
+
+      <tbody>
+
+
+        <!-- REJECTED -->
+        
+        <tr>
+         <td>Lucy Harper</td>
+          <td>209 137 9921</td>
+          <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">with processor</span></td>
+          <td>Joanna Jones</td>
+          <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Older than 3 months</span></td>
+          <td>11:06 am
+            <span class="nhsuk-table__cell--hint">08-August-2021</span></td>
+           <td><a href="rejected-duplicate-sidebyside">Review</a>
+          <a href="rejected-duplicate-delete">Remove</a></td>
+        </tr>
+         
+        <tr>
+          <td>Janet Fraser</td>
+          <td>998 666 1234</td>
+          <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">Not Started</span></td>
+          <td>Joanna Jones</td>
+          <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Invalid data</span></td>
+          <td>11:06 am
+            <span class="nhsuk-table__cell--hint">08-August-2021</span></td>
+          <td><a href="rejected-invalid">Review</a>
+         <a href="rejected-delete">Remove</a</td>
+        </tr>
+              <tr>
+         <td>Lucy Harper</td>
+          <td>209 137 9921</td>
+          <td><span class="nhsuk-tag nhsuk-tag--blue nhsuk-u-margin-bottom-2">Not started</span></td>
+          <td>Joanna Jones</td>
+          <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Previous result</span></td>
+          <td>11:06 am
+            <span class="nhsuk-table__cell--hint">08-August-2021</span></td>
+           <td><a href="rejected-awaiting-sidebyside">Review</a>
+          <a href="rejected-duplicate-delete">Remove</a></td>
+        </tr>
+        <tr>
+          <td>Margery Bowling</td>
+          <td>239 138 9920</td>
+          <td><span class="nhsuk-tag nhsuk-tag--green nhsuk-u-margin-bottom-2">started</span></td>
+          <td>Joanna Jones</td>
+          <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Missing data</span></td>
+          <td>11:06 am
+            <span class="nhsuk-table__cell--hint">08-August-2021</span></td>
+          <td><a href="rejected-invalid">Review</a>
+         <a href="rejected-delete">Remove</a</td>
+        </tr>
+         </tr>
+          <td>Hannah Jones</td>
+          <td>546 837 2943</td>
+          <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-2">with processor</span></td>
+          <td>Josie Driver</td>
+          <td><span class="nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-2">Ceased</span></td>
+          <td>11:06 am
+            <span class="nhsuk-table__cell--hint">08-August-2021</span></td>
+          <td><a href="rejected-invalid">Review</a>
+         <a href="rejected-delete">Remove</a</td>
+        </tr>
+         
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}
