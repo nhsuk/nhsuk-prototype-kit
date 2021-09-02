@@ -144,15 +144,12 @@ NHS Cervical screening management system
     </dl>
      {% include '../components/comments-timeline-manual-match.html' %} 
   
-  <dl>
-  <a href="add-test-result?edit-test=true" class="nhsuk-button nhsuk-button--ers">
-            Edit and add result
-         </a>
-    <a href="add-test-result-crm-edit" class="nhsuk-button nhsuk-button--secondary nhsuk-button--ers">
+
+        <a href="add-crm-comments" class="nhsuk-button nhsuk-button--secondary nhsuk-button--ers">
             Add new CRM and comments
          </a>
 
-      </dl>
+    
 </dl>
 </div>
 </div>
@@ -231,16 +228,62 @@ NHS Cervical screening management system
     </dl>
      {% include '../components/comments-timeline-manual-match.html' %} 
   
-   <a href="add-test-result-crm-edit" class="nhsuk-button  nhsuk-button--ers">
-            View patient summary
-         </a>
    
     
 </dl>
       
   </div>
   </div>  
-    </div>  
+    </div> 
+
+    <div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+       
+  <div class="nhsuk-form-group">
+     <form action="/*/worklists-v12/rejected-invalid" method="post">
+
+          <fieldset class="nhsuk-fieldset">
+            <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h2 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong nhsuk-u-margin-top-4">
+                How do you want to resolve the result?
+              </h2>
+              <div class="nhsuk-hint" id="example-hints-1-item-hint">
+                 The action will be sent as a recommendation to a checker before being processed.
+                </div>
+            </legend>
+
+           
+
+            <div class="nhsuk-radios">
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-2" name="rejectAction" type="radio" value="add">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                  Edit and add result
+                </label>
+                <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
+               This will resolve the result and add it to the patient summary 
+                </div>
+              </div>  
+
+               <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-1" name="rejectAction" type="radio" value="remove">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-1">
+                  Remove result
+                </label>
+                <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
+                This will remove the test result from the rejected list and archive it 
+                </div>
+              </div>
+          </fieldset>
+       </div> 
+       
+       
+  
+
+      
+    <button class="nhsuk-button nhsuk-u-margin-top-5 nhsuk-button--ers" type="submit">Continue</button>
+      
     
     <p><a href="manc-rejected-inval-started">Exit without saving</a></p>
 

@@ -60,7 +60,15 @@ NHS Cervical screening management system
  </div>
 </div>
 
- 
+<fieldset class="nhsuk-fieldset">
+           <!-- <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+              <h2 class="nhsuk-fieldset__heading nhsuk-label nhsuk-label__strong nhsuk-u-margin-top-4">
+                What action do you recommend for this result? 
+              </h2>
+              <div class="nhsuk-hint" id="example-hints-1-item-hint">
+                 The action chosen will be saved and wait for a checker's approval.
+                </div>
+            </legend>-->
 
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-one-half">
@@ -228,33 +236,24 @@ NHS Cervical screening management system
       
   </div>
   </div>  
-  
-   
  
 
-
-       
-    
-</dl>
-      
- 
-  
-    </div>  
-     <form action="manc-rejected-checkdup" method="post"> <input type="hidden" name="hideDetails" value="true">
+   </div>  
+     <form action="confirm-delete-dup" method="post"> <input type="hidden" name="hideDetails" value="true">
     <div class="nhsuk-form-group">
       <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
         <legend class="nhsuk-fieldset__legend--m nhsuk-label__strong">
-          <h1 class="nhsuk-fieldset__heading">Are you sure you want to remove this test result?</h1>
+          <h1 class="nhsuk-fieldset__heading">Are you sure you want to replace this test result?</h1>
         </legend>
 
 <div class="nhsuk-checkboxes">
             <div class="nhsuk-checkboxes__item">
             <input class="nhsuk-checkboxes__input" id="confirmIdentity" name="confirmIdentity" type="checkbox" value="confirmIdentity">
             <label class="nhsuk-label nhsuk-checkboxes__label" for="confirmIdentity">
-              Yes, I want to remove the duplicate test result
+              Yes, I want to replace the original test result with the duplicate.
             </label>
             <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-2-item-hint">
-             This will remove the test result from the rejected list and archive it
+             This will update the patient summary.
             </div>
           </div>
         
@@ -283,10 +282,20 @@ NHS Cervical screening management system
             </div>
           </div>
         </div>
-   <br>
-    <button class="nhsuk-button nhsuk-button--ers" type="submit">Send to checker</button>   
-  </form>
+           
 
+        </div>
+</div>
+      
+
+       
+
+             <a href="manc-rejected" class="nhsuk-button nhsuk-button--ers">
+          Send to checker</a>
+         
+
+   
+       
     
     <p><a href="manc-rejected">Exit without saving</a></p>
 

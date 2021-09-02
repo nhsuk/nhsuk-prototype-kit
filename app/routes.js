@@ -178,6 +178,20 @@ router.post("/*/worklists-v12/rejected-invalid", function (req, res) {
   }
 });
 
+router.post("/*/worklists-v12/rejected-dup", function (req, res) {
+  console.log('working')
+  var rejectAction = req.session.data["rejectAction"];
+
+  console.log("check reason: " + rejectAction);
+  if (rejectAction == "replace") {
+    res.redirect("/v12/worklists-v12/rejected-duplicate-replace");
+  }
+
+  if (rejectAction == "remove") {
+      res.redirect("/v12/worklists-v12/rejected-duplicate-delete");
+  }
+});
+
 router.post("/*/hmr101/cervix", function(req, res) {
   var reason = req.session.data["cervix"];
   console.log(reason);

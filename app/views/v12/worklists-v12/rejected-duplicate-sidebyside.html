@@ -114,7 +114,7 @@ NHS Cervical screening management system
 
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Slide number</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] or "21010009" }}</dd>
+    <dd class="nhsuk-summary-list__value"><span class="highlight">{{ data['slide-number'] or "21010009" }}</span></dd>
   </div>
 
   {% set nextTestDueDate = data['test_date'] %}
@@ -142,6 +142,10 @@ NHS Cervical screening management system
 
     </dl>
      {% include '../components/comments-timeline-manual-match.html' %} 
+
+     <a href="add-crm-comments" class="nhsuk-button nhsuk-button--secondary nhsuk-button--ers">
+            Add new CRM and comments
+         </a>
   
   <dl>
  
@@ -198,7 +202,7 @@ NHS Cervical screening management system
 
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Slide number</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['slide-number'] or "21010009" }}</dd>
+    <dd class="nhsuk-summary-list__value"><span class="highlight">{{ data['slide-number'] or "21010009" }}</span></dd>
   </div>
 
   {% set nextTestDueDate = data['test_date'] %}
@@ -239,6 +243,8 @@ NHS Cervical screening management system
     </div>  
 
      <div class="nhsuk-form-group">
+          <form action="/*/worklists-v12/rejected-dup" method="post">
+
 
           <fieldset class="nhsuk-fieldset">
             <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
@@ -250,7 +256,7 @@ NHS Cervical screening management system
             <div class="nhsuk-radios">
 
               <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="example-1" name="example" type="radio" value="current">
+                <input class="nhsuk-radios__input" id="example-1" name="rejectAction" type="radio" value="replace">
                 <label class="nhsuk-label nhsuk-radios__label" for="example-1">
                   Replace original test details with duplicate test details
                 </label>
@@ -260,21 +266,24 @@ NHS Cervical screening management system
               </div>
 
               <div class="nhsuk-radios__item">
-                <input class="nhsuk-radios__input" id="example-2" name="example" type="radio" value="past">
+                <input class="nhsuk-radios__input" id="example-2" name="rejectAction" type="radio" value="remove">
                 <label class="nhsuk-label nhsuk-radios__label" for="example-2">
                   Remove duplicate
                 </label>
                 <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
-                 This is shown in the audit history
+                 This will remove the test result from the rejected list and archive it 
                 </div>
               </div>
 
             </div>
           </fieldset>
 
+           <button class="nhsuk-button nhsuk-u-margin-top-5 nhsuk-button--ers" type="submit">Continue</button>
+          </form>
+
         </div>
 
-        <form action="rejected-p1" method="post">
+      <!--  <form action="rejected-p1" method="post">
           <fieldset class="nhsuk-fieldset">
           <div class="nhsuk-grid-column-two-thirds">
             <div class="nhsuk-form-group">
@@ -296,11 +305,9 @@ NHS Cervical screening management system
               </span>
               <textarea class="nhsuk-textarea commentBox char-textarea" id="rejcomment1" value="rejcomment1" name="rejcomment1" rows="5"></textarea>
               
-            </div>
+            </div>-->
 <br>
-             <a href="add-test-result?edit-test=true" class="nhsuk-button nhsuk-button--ers">
-           Save for checker
-         </a>
+            
    
        
     
