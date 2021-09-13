@@ -21,6 +21,7 @@
     </div>
   <div class="nhsuk-panel-with-label">
     {% include '../../components/patient-result-2-ntdd.html' %}
+    <br>
     <span class="nhsuk-hint">Step 6 of 6</span>
 
 
@@ -31,11 +32,11 @@
     </legend>
 
 
-     <a href="add-test-result" class="nhsuk-button nhsuk-button--ers">
+     <a href="add-rej-test-result" class="nhsuk-button nhsuk-button--ers">
             Edit result
          </a>
     
-    <form action="../patient-summary-logged-invalid2" method="post">
+    <form action="../../worklists-v12/manc-rejected-checkinvalid" method="post">
 
 <dl class="nhsuk-summary-list">
   
@@ -129,8 +130,13 @@
     </div>
 {% endif %}-->
 
+<div class="nhsuk-inset-text">
+       <span class="nhsuk-u-visually-hidden">Information: </span>
+    <p>This needs to be reviewed by a checker. Once the checker confirms your recommendations the test result will be added to the patient summary page.</p>
+</div>
+
          <button class="nhsuk-button nhsuk-button--ers" type="submit">
-           Save
+           Send to checker
          </button>
 
          <p><a href="../patient-summary-7">Exit without saving</a></p>

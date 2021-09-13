@@ -27,26 +27,58 @@ NHS Cervical screening management system
       "text": "back to reports"
     }) }}
 
-    <h1 class="nhsuk-heading-l">Reports - Demographic</h1>
+    <h1 class="nhsuk-heading-l">Reports - Letters sent</h1>
+      <!--<div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-third">
+          {{ dateInput({
+            "id": "example",
+            "namePrefix": "example",
+            "fieldset": {
+              "legend": {
+                "text": "Enter a date",
+                "classes": "nhsuk-label--s",
+                "isPageHeading": false
+              }
+            },
+            "hint": {
+              "text": "For example, 15 3 1984"
+            },
+            "items": [
+              {
+                "name": "day",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "month",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "year",
+                "classes": "nhsuk-input--width-4"
+              }
+            ]
+          }) }}
+        </div>      
+      </div>-->
 
-<p>View and download all lab files</p>
-
-        <h2 id="testresults" class="nhsuk-heading-l">Search files</h2>
-         <p>
-                Enter the file details you wish to search by:
-              </p>
  <div class="nhsuk-form-group">
           
-      <form action="report-demographics-search" method="post">
-      <label class="nhsuk-label nhsuk-label__strong" for="example-with-hint-text">
-                National code
-              </label>
-              <div class="nhsuk-hint" id="example-with-hint-text-hint">
-                Also known as lab code. For example, T34KH.
-                <br> Leave blank if unknown or not English.
-              </div>
-              <input class="nhsuk-input nhsuk-input--width-10" value="{{ data['national-code'] }}" id="national-code" name="national-code" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
-<br><br>
+
+    <details class="nhsuk-details">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          Refine search by demographic chnage and date
+        </span>
+      </summary>
+      
+      <div class="nhsuk-details__text">
+      <div class="nhsuk-hint" id="example-hint">
+      What date range would you like to view?<br>
+      <br>
+      Minimum view 1 day.<br>
+      Maximum view is 7 days.
+    </div>
+        <form action="print-patients-due-to-be-invited" method="">
         <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-one-third">
           {{ dateInput({
@@ -110,107 +142,71 @@ NHS Cervical screening management system
         </div>      
       </div>
       <br>
-      <br>
-     
       
-          <button class="nhsuk-button nhsuk-button--ers" type="submit">Search</button>
-        </div>
+      <label class="nhsuk-label nhsuk-label__strong">
+                 Which letter type would you like to see?
+               </label>
+    </legend>
+
+    <div class="nhsuk-hint" id="example-hint">
+      Select all options that are relevant to you:
+    </div>
+
+    <div class="nhsuk-checkboxes">
+
+      <div class="nhsuk-checkboxes__item">
+        <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+        <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
+          Invite and reminder letters
+        </label>
       </div>
+
+      <div class="nhsuk-checkboxes__item">
+        <input class="nhsuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="phone">
+        <label class="nhsuk-label nhsuk-checkboxes__label" for="example-2">
+          Result and cease letters
+        </label>
       </div>
-    
- 
-<!--<div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-full">
+
+                                              
+    </div>
+    <br>
+   
+
+      {{ button({
+            "text": "Query",
+            "classes": "nhsuk-button nhsuk-button--ers"
+          }) }}
+        </form>
+      </div>
+    </details>
+  
+   <h2 class="nhsuk-heading-m">10 Sep 2021 - Files sent to CIC</h2>
+      
     <table class="nhsuk-table">
-      <caption class="nhsuk-table__caption"></caption>
+      <caption class="nhsuk-table__caption">10 Sep 2021 - Files sent to CIC</caption>
       <thead role="rowgroup" class="nhsuk-table__head">
         <tr role="row">
-          <th role="columnheader" scope="col">
-            File name
+          <th role="columnheader" class="" scope="col">
+            Time
           </th>
-          <th role="columnheader" scope="col">
-            Date and time received
+          <th role="columnheader" class="" scope="col">
+            File type
           </th>
-          <th role="columnheader" scope="col" width="200">
-          Number of results received
-          </th>
-          <th role="columnheader" scope="col">
-           Automatically matched
-          </th>
-          <th role="columnheader" scope="col">
-           Manually matched
-          </th>
-           <th role="columnheader" scope="col">
-           Downloaded by
-          </th>
-          <th role="columnheader" scope="col">
-            Rejected
-          </th>
-          <th role="columnheader" scope="col">
-            Logged
-          </th>
-           <th role="columnheader" scope="col">
-            Matching complete
-          </th>
-        <th role="columnheader" scope="col">
-            Download
+          <th role="columnheader" class="" scope="col">
+            Volume of letters
           </th>
         </tr>
       </thead>
       <tbody class="nhsuk-table__body">
         <tr role="row" class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">File 1</td>
-          <td class="nhsuk-table__cell ">16-12-2020
-           <span class="nhsuk-table__cell--hint">11:30</span></td>
-          <td class="nhsuk-table__cell ">100</td>
-          <td class="nhsuk-table__cell ">70
-          <span class="nhsuk-table__cell--hint">70%</span></td>
-          <td class="nhsuk-table__cell ">20
-          <span class="nhsuk-table__cell--hint">20%</span></td>
-          <td class="nhsuk-table__cell ">person name
-          <span class="nhsuk-table__cell--hint">date</span></td>
-          <td class="nhsuk-table__cell ">No</td>
-          <td class="nhsuk-table__cell "><a href="">Download CSV</a></td>
+          <td class="nhsuk-table__cell">05:30</td>
+          <td class="nhsuk-table__cell "><a href="report-letters-sent-drilldown">Invite and reminder letters</a></td>
+          <td class="nhsuk-table__cell">7200</td>
         </tr>
-        <tr role="row" class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">File 2</td>
-          <td class="nhsuk-table__cell ">16-12-2020
-          <span class="nhsuk-table__cell--hint">11:30</span></td>
-          <td class="nhsuk-table__cell ">100</td>
-           <td class="nhsuk-table__cell ">70</td>
-          <td class="nhsuk-table__cell ">20</td>
-          <td class="nhsuk-table__cell ">person name
-          <span class="nhsuk-table__cell--hint">date</span></td>
-          <td class="nhsuk-table__cell ">Yes</td>
-          <td class="nhsuk-table__cell "><a href="">Download CSV</a></td>
-        </tr>
-        <tr role="row" class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">File 3</td>
-          <td class="nhsuk-table__cell ">16-12-2020
-           <span class="nhsuk-table__cell--hint">11:30</span></td>
-          <td class="nhsuk-table__cell ">100</td>
-          <td class="nhsuk-table__cell ">70</td>
-          <td class="nhsuk-table__cell ">20</td>
-         <td class="nhsuk-table__cell ">person name
-          <span class="nhsuk-table__cell--hint">date</span></td>
-           <td class="nhsuk-table__cell ">Yes</td>
-          <td class="nhsuk-table__cell "><a href="">Download CSV</a></td>
-        </tr>
-        <tr role="row" class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">File 4</td>
-          <td class="nhsuk-table__cell ">16-12-2020
-           <span class="nhsuk-table__cell--hint">11:30</span></td>
-          <td class="nhsuk-table__cell ">100</td>
-           <td class="nhsuk-table__cell ">70</td>
-          <td class="nhsuk-table__cell ">20</td>
-         <td class="nhsuk-table__cell ">person name
-          <span class="nhsuk-table__cell--hint">date</span></td>
-           <td class="nhsuk-table__cell ">Yes</td>
-          <td class="nhsuk-table__cell "><a href="">Download CSV</a></td>
-        </tr>
-        
+       
       </tbody>
-    </table>
+    </table>   
   </div>
-</div>-->
+</div>
 {% endblock %}

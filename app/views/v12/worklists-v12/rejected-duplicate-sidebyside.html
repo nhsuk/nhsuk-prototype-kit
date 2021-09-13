@@ -135,9 +135,7 @@ NHS Cervical screening management system
     </dl>
      {% include '../components/comments-timeline-manual-match.html' %} 
 
-     <a href="add-crm-comments" class="nhsuk-button nhsuk-button--secondary nhsuk-button--ers">
-            Add new CRM and comments
-         </a>
+
   
   <dl>
  
@@ -266,6 +264,16 @@ NHS Cervical screening management system
                 </label>
                 <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
                  This will remove the test result from the rejected list and archive it 
+                </div>
+              </div>
+
+              <div class="nhsuk-radios__item">
+                <input class="nhsuk-radios__input" id="example-2" name="rejectAction" type="radio" value="comment">
+                <label class="nhsuk-label nhsuk-radios__label" for="example-2">
+                  Add CRM and comments 
+                </label>
+                <div class="nhsuk-hint nhsuk-radios__hint" id="example-hints-1-item-hint">
+                 This will add a new CRM and comments to the rejected result. 
                 </div>
               </div>
 

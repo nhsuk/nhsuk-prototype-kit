@@ -34,14 +34,14 @@
        <br>Leave blank if there is no national code or health authority.</p>
      </div>
         
-    <form action="/v12/enter-add-logged-test-result" method="post">
+  <form action="add-rej-test-result-details" method="post">
          <div class="nhsuk-form-group">
              
 
           <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
           
 
-          <form action="add-test-result-result" method="post">
+         
             
             <div class="nhsuk-form-group">
               <label class="nhsuk-label nhsuk-label__strong" for="example-with-hint-text">
@@ -123,7 +123,7 @@
                   <button type="submit" class="nhsuk-button nhsuk-button--ers">
                   Continue
                 </button>
-              </form>
+  </form>
     
     {% if data['edit-test'] != 'true' %}
       <p><a href="../patient-summary-7">Exit without saving</a></p>

@@ -21,7 +21,7 @@
     </div>
     <div class="nhsuk-panel-with-label">
       {% include '../components/patient-result-2.html' %}
-      <span class="nhsuk-hint">Step 5 of 6</span> 
+      
 
       <!--<div class="nhsuk-form-group">-->
         <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
@@ -29,7 +29,7 @@
           Add {{ data['result-type'] }} test details
         </legend>-->
         
-             <form action="rejected-invalid-addedcomments" method="post">
+             <form action="manc-rejected" method="post">
         
             <div class="nhsuk-form-group">
               <h1 class="nhsuk-label-wrapper">
@@ -55,7 +55,7 @@
               <textarea class="nhsuk-textarea" id="example" name="comments" rows="5" aria-describedby="example-hint" autocomplete="off">{{ data.comments }}</textarea>
             </div>
 
-            <button class="nhsuk-button nhsuk-button--ers" type="submit">Continue</button>
+            <button class="nhsuk-button nhsuk-button--ers" type="submit">Save</button>
             {% if data['edit-test'] != 'true' %}
               <p><a href="../patient-summary-7">Exit without saving</a></p>
             {% else %}

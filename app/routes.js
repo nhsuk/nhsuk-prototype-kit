@@ -176,6 +176,10 @@ router.post("/*/worklists-v12/rejected-invalid", function (req, res) {
   if (rejectAction == "remove") {
       res.redirect("/v12/worklists-v12/rejected-delete");
   }
+
+  if (rejectAction == "comment") {
+    res.redirect("/v12/worklists-v12/add-crm-comments");
+}
 });
 
 router.post("/*/worklists-v12/rejected-dup", function (req, res) {
@@ -190,6 +194,10 @@ router.post("/*/worklists-v12/rejected-dup", function (req, res) {
   if (rejectAction == "remove") {
       res.redirect("/v12/worklists-v12/rejected-duplicate-delete");
   }
+
+  if (rejectAction == "comment") {
+    res.redirect("/v12/worklists-v12/add-crm-comments");
+}
 });
 
 router.post("/*/hmr101/cervix", function(req, res) {
