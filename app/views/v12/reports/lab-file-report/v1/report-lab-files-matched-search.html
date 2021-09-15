@@ -1,0 +1,151 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(4) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+
+    {{ backLink({
+      "href": "reports",
+      "text": "back to search lab files"
+    }) }}
+
+
+ <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-full">
+    <h2 id="testresults" class="nhsuk-heading-l">Search results</h2>
+       <p>
+      <span class="number-of-results">
+        <h3 class="nhsuk-heading-xs">We found <b>4</b> lab files with national code CHR3 and the date from 16 August 21.</h3>
+       <p>If you cannot find the file you're looking for <a href="report-lab-files-matched">refine search</a> again.</p> </p>
+      </span>
+    </p>
+
+<!-- <div class="nhsuk-inset-text">
+                 <span class="nhsuk-u-visually-hidden">Information: </span>
+                 <p>Downloads available when process and check have nothing outstanding.</p>
+                </div>-->
+<br>  
+ 
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption"></caption>
+      <thead role="rowgroup" class="nhsuk-table__head">
+        <tr role="row">
+          <th role="columnheader" scope="col">
+            File name
+          </th>
+          <th role="columnheader" scope="col">
+            Date and time received
+          </th>
+          <th role="columnheader" scope="col" width="200">
+          Number of results received
+          </th>
+          <th role="columnheader" scope="col">
+           To process outstanding
+          </th>
+          <th role="columnheader" scope="col">
+           To query outstanding
+          </th>
+          <th role="columnheader" scope="col">
+           To check outstanding
+          </th>
+          <th role="columnheader" scope="col">
+           Rejected outstanding
+          </th>
+           <th role="columnheader" scope="col" width="200">
+           Download CSVs 
+          </th>
+          <!--<th role="columnheader" scope="col">
+            Rejected
+          </th>
+          <th role="columnheader" scope="col">
+            Logged
+          </th>
+           <th role="columnheader" scope="col">
+            PID 
+          </th>
+        <th role="columnheader" scope="col">
+            Outstanding rejections 
+          </th>-->
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">File 1</td>
+          <td class="nhsuk-table__cell ">16-09-2021
+           <span class="nhsuk-table__cell--hint">11:30</span></td>
+          <td class="nhsuk-table__cell ">100</td>
+          <td class="nhsuk-table__cell ">0
+          <td class="nhsuk-table__cell ">0
+          <td class="nhsuk-table__cell ">0
+          <td class="nhsuk-table__cell ">0
+          
+         
+        <td class="nhsuk-table__cell "><a href="preview-summary-csv">Summary CSV</a><br><a href="preview-pid-csv">PID CSV</a><br><a href="preview-pid-csv">Rejections CSV</a>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">File 2</td>
+          <td class="nhsuk-table__cell ">16-09-2021
+          <span class="nhsuk-table__cell--hint">11:30</span></td>
+          <td class="nhsuk-table__cell ">234</td>
+          
+        <td class="nhsuk-table__cell ">12
+          <td class="nhsuk-table__cell ">0
+          <td class="nhsuk-table__cell ">0
+          <td class="nhsuk-table__cell ">14
+          
+         
+          <td class="nhsuk-table__cell "><a href="preview-summary-csv">Summary CSV</a><br><a href="preview-pid-csv">PID CSV</a><br><a href="preview-pid-csv"> Rejections CSV</a>
+          
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">File 3</td>
+          <td class="nhsuk-table__cell ">16-09-2021
+           <span class="nhsuk-table__cell--hint">11:30</span></td>
+          <td class="nhsuk-table__cell ">300</td>
+          <td class="nhsuk-table__cell ">300
+          <td class="nhsuk-table__cell ">0
+          <td class="nhsuk-table__cell ">0
+          <td class="nhsuk-table__cell ">0
+          
+          <td class="nhsuk-table__cell "><a href="preview-summary-csv">Summary CSV</a>
+          <br><a href="preview-pid-csv">PID CSV</a><br><a href="preview-pid-csv">Rejections CSV</a></td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">File 4</td>
+          <td class="nhsuk-table__cell ">16-09-2021
+           <span class="nhsuk-table__cell--hint">11:30</span></td>
+          <td class="nhsuk-table__cell ">10</td>
+           <td class="nhsuk-table__cell ">9
+           <td class="nhsuk-table__cell ">0
+           <td class="nhsuk-table__cell ">0
+          <td class="nhsuk-table__cell ">1
+          
+         <td class="nhsuk-table__cell "><a href="preview-summary-csv">Summary CSV</a>
+          <br><a href="preview-pid-csv">PID CSV</a><br><a href="preview-pid-csv">Rejections CSV</a></td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

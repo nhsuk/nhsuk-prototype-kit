@@ -1,0 +1,87 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(4) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+    {{ backLink({
+      "href": "reports",
+      "text": "back to reports"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Reports - Lab files received</h1>
+
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption">16 Dec 2020 - Lab files receieved (yesterday and today)</caption>
+      <thead role="rowgroup" class="nhsuk-table__head">
+        <tr role="row">
+          <th role="columnheader" scope="col">
+            Date
+          </th>
+          <th role="columnheader" scope="col">
+            Lab
+          </th>
+          <th role="columnheader" scope="col" width="300">
+            File
+          </th>
+          <th role="columnheader" scope="col">
+            Accept?
+          </th>
+          <th role="columnheader" scope="col">
+            Action
+          </th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">16-12-2020</td>
+          <td class="nhsuk-table__cell ">Manchester</td>
+          <td class="nhsuk-table__cell ">001</td>
+          <td class="nhsuk-table__cell ">Y</td>
+          <td class="nhsuk-table__cell "><a href="">Download CSV</a></td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">16-12-2020</td>
+          <td class="nhsuk-table__cell ">Manchester</td>
+          <td class="nhsuk-table__cell ">002</td>
+          <td class="nhsuk-table__cell ">Y</td>
+          <td class="nhsuk-table__cell "><a href="">Download CSV</a></td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">16-12-2020</td>
+          <td class="nhsuk-table__cell ">Manchester</td>
+          <td class="nhsuk-table__cell ">004</td>
+          <td class="nhsuk-table__cell ">Y</td>
+          <td class="nhsuk-table__cell "><a href="">Download CSV</a></td>
+        </tr>
+        <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">16-12-2020</td>
+          <td class="nhsuk-table__cell ">Manchester</td>
+          <td class="nhsuk-table__cell ">???</td>
+          <td class="nhsuk-table__cell ">N</td>
+          <td class="nhsuk-table__cell "><a href="">Download CSV</a></td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

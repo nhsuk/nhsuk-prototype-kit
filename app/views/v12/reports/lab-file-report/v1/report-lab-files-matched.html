@@ -31,23 +31,11 @@ NHS Cervical screening management system
 
 <p>View and download all lab files</p>
 
-        
- <div class="nhsuk-form-group">
- 
-          
-
-    <details class="nhsuk-details">
-      <summary class="nhsuk-details__summary">
-        <span class="nhsuk-details__summary-text">
-          Refine search by lab and date
-        </span>
-      </summary>
-
-    <div class="nhsuk-details__text">
-    
-           <div class="nhsuk-hint" id="example-hint">
+        <h2 id="testresults" class="nhsuk-heading-l">Search Lab files</h2>
+         <p>
                 Enter the file details you wish to search by:
               </p>
+ <div class="nhsuk-form-group">
           
       <form action="report-lab-files-matched-search" method="post">
       <label class="nhsuk-label nhsuk-label__strong" for="example-with-hint-text">
@@ -59,7 +47,7 @@ NHS Cervical screening management system
               </div>
               <input class="nhsuk-input nhsuk-input--width-10" value="{{ data['national-code'] }}" id="national-code" name="national-code" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
 <br><br>
-      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-one-third">
           {{ dateInput({
             "id": "example",
@@ -126,31 +114,17 @@ NHS Cervical screening management system
      
       
           <button class="nhsuk-button nhsuk-button--ers" type="submit">Search</button>
-      
-  </details>
-      
+        </div>
+      </div>
+      </div>
     
- <br>
-<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
  
-    <h2 class="nhsuk-heading-m">Lab files receieved - 15-September-2021 </h2>
-       <p>
-      <span class="number-of-results">
-        
-       <p>If you cannot find the file you're looking for refine the search.</p>
-      </span>
-    </p>
-<br>  
- 
-<div class="nhsuk-grid-row">
+<!--<div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     <table class="nhsuk-table">
       <caption class="nhsuk-table__caption"></caption>
       <thead role="rowgroup" class="nhsuk-table__head">
         <tr role="row">
-         <th role="columnheader" scope="col">
-            Laboratory
-          </th>
           <th role="columnheader" scope="col">
             File name
           </th>
@@ -160,82 +134,83 @@ NHS Cervical screening management system
           <th role="columnheader" scope="col" width="200">
           Number of results received
           </th>
-           <th role="columnheader" scope="col" width="200">
-           View summary and download CSVs 
+          <th role="columnheader" scope="col">
+           Automatically matched
+          </th>
+          <th role="columnheader" scope="col">
+           Manually matched
+          </th>
+           <th role="columnheader" scope="col">
+           Downloaded by
+          </th>
+          <th role="columnheader" scope="col">
+            Rejected
+          </th>
+          <th role="columnheader" scope="col">
+            Logged
+          </th>
+           <th role="columnheader" scope="col">
+            Matching complete
+          </th>
+        <th role="columnheader" scope="col">
+            Download
           </th>
         </tr>
       </thead>
-      
       <tbody class="nhsuk-table__body">
         <tr role="row" class="nhsuk-table__row">
-        <td class="nhsuk-table__cell">London</td>
           <td class="nhsuk-table__cell">File 1</td>
-          <td class="nhsuk-table__cell ">16-09-2021
-           <span class="nhsuk-table__cell--hint">11:30:10</span></td>
+          <td class="nhsuk-table__cell ">16-12-2020
+           <span class="nhsuk-table__cell--hint">11:30</span></td>
           <td class="nhsuk-table__cell ">100</td>
-         
-        <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="preview-summary-csv">View summary</a></td>
+          <td class="nhsuk-table__cell ">70
+          <span class="nhsuk-table__cell--hint">70%</span></td>
+          <td class="nhsuk-table__cell ">20
+          <span class="nhsuk-table__cell--hint">20%</span></td>
+          <td class="nhsuk-table__cell ">person name
+          <span class="nhsuk-table__cell--hint">date</span></td>
+          <td class="nhsuk-table__cell ">No</td>
+          <td class="nhsuk-table__cell "><a href="">Download CSV</a></td>
         </tr>
         <tr role="row" class="nhsuk-table__row">
-         <td class="nhsuk-table__cell">Manchester</td>
-          <td class="nhsuk-table__cell">File 1</td>
-          <td class="nhsuk-table__cell ">16-09-2021
-          <span class="nhsuk-table__cell--hint">11:30:10</span></td>
-          <td class="nhsuk-table__cell ">234</td>
- 
-          <td class="nhsuk-table__cell "><a href="preview-summary-csv">Summary CSV</a><br><a href="preview-pid-csv">PID CSV</a><br><a href="preview-pid-csv"> Rejections CSV</a>
-          
-        </tr>
-        <tr role="row" class="nhsuk-table__row">
-         <td class="nhsuk-table__cell">Bristol</td>
-          <td class="nhsuk-table__cell">File 1</td>
-          <td class="nhsuk-table__cell ">16-09-2021
-           <span class="nhsuk-table__cell--hint">11:30:10</span></td>
-          <td class="nhsuk-table__cell ">300</td>
-      
-          <td class="nhsuk-table__cell "><a href="preview-summary-csv">Summary CSV</a>
-          <br><a href="preview-pid-csv">PID CSV</a><br><a href="preview-pid-csv">Rejections CSV</a></td>
-        </tr>
-
-        <tr role="row" class="nhsuk-table__row">
-         <td class="nhsuk-table__cell">Bristol</td>
           <td class="nhsuk-table__cell">File 2</td>
-          <td class="nhsuk-table__cell ">16-09-2021
-           <span class="nhsuk-table__cell--hint">11:30:10</span></td>
-          <td class="nhsuk-table__cell ">10</td>
-     
-         <td class="nhsuk-table__cell "><a href="preview-summary-csv">Summary CSV</a>
-          <br><a href="preview-pid-csv">PID CSV</a><br><a href="preview-pid-csv">Rejections CSV</a></td>
+          <td class="nhsuk-table__cell ">16-12-2020
+          <span class="nhsuk-table__cell--hint">11:30</span></td>
+          <td class="nhsuk-table__cell ">100</td>
+           <td class="nhsuk-table__cell ">70</td>
+          <td class="nhsuk-table__cell ">20</td>
+          <td class="nhsuk-table__cell ">person name
+          <span class="nhsuk-table__cell--hint">date</span></td>
+          <td class="nhsuk-table__cell ">Yes</td>
+          <td class="nhsuk-table__cell "><a href="">Download CSV</a></td>
         </tr>
-
         <tr role="row" class="nhsuk-table__row">
-         <td class="nhsuk-table__cell">Bristol</td>
           <td class="nhsuk-table__cell">File 3</td>
-          <td class="nhsuk-table__cell ">16-09-2021
-           <span class="nhsuk-table__cell--hint">11:30:10</span></td>
-          <td class="nhsuk-table__cell ">10</td>
-     
-         <td class="nhsuk-table__cell "><a href="preview-summary-csv">Summary CSV</a>
-          <br><a href="preview-pid-csv">PID CSV</a><br><a href="preview-pid-csv">Rejections CSV</a></td>
+          <td class="nhsuk-table__cell ">16-12-2020
+           <span class="nhsuk-table__cell--hint">11:30</span></td>
+          <td class="nhsuk-table__cell ">100</td>
+          <td class="nhsuk-table__cell ">70</td>
+          <td class="nhsuk-table__cell ">20</td>
+         <td class="nhsuk-table__cell ">person name
+          <span class="nhsuk-table__cell--hint">date</span></td>
+           <td class="nhsuk-table__cell ">Yes</td>
+          <td class="nhsuk-table__cell "><a href="">Download CSV</a></td>
         </tr>
-
         <tr role="row" class="nhsuk-table__row">
-         <td class="nhsuk-table__cell">Bristol</td>
           <td class="nhsuk-table__cell">File 4</td>
-          <td class="nhsuk-table__cell ">16-09-2021
-           <span class="nhsuk-table__cell--hint">11:30:10</span></td>
-          <td class="nhsuk-table__cell ">10</td>
-     
-         <td class="nhsuk-table__cell "><a href="preview-summary-csv">Summary CSV</a>
-          <br><a href="preview-pid-csv">PID CSV</a><br><a href="preview-pid-csv">Rejections CSV</a></td>
+          <td class="nhsuk-table__cell ">16-12-2020
+           <span class="nhsuk-table__cell--hint">11:30</span></td>
+          <td class="nhsuk-table__cell ">100</td>
+           <td class="nhsuk-table__cell ">70</td>
+          <td class="nhsuk-table__cell ">20</td>
+         <td class="nhsuk-table__cell ">person name
+          <span class="nhsuk-table__cell--hint">date</span></td>
+           <td class="nhsuk-table__cell ">Yes</td>
+          <td class="nhsuk-table__cell "><a href="">Download CSV</a></td>
         </tr>
         
       </tbody>
     </table>
   </div>
-</div>
-
-  
-
-
+</div>-->
 {% endblock %}

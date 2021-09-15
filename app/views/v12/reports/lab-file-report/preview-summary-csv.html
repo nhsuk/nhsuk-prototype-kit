@@ -22,17 +22,140 @@
     <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
     </svg>
-    Go back to search results</a>
+    Go back to lab files receieved</a>
 </div>
 
 
-  <h1 id="" class="nhsuk-heading-l">Summary CSV </h1>
-  <p>Data on the summary table may change until the file is completed.</p>
-   <a class ="nhsuk-button--ers" href="#">Print CSV</a>
+  <h1 id="" class="nhsuk-heading-l">Lab file summary - London - 15-September-2021</h1>
+ 
+       <p>Data on the summary table may change until the file is completed.</p>
 
-  <div id="boxshadow">
-    <img src="/images/summary-csv.png" alt="HMR101 form">
+ <a class ="nhsuk-button--ers" href="#">Print summary CSV</a>  <a class ="nhsuk-button--ers" href="#">Print PID CSV</a>  <a class ="nhsuk-button--ers" href="#">Print laboratory CSV</a>
+       
+   <br>    
+   <h2 class="nhsuk-heading-m">Automatic summary report</h2>
+  
+
+
+   <div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption"></caption>
+      <thead role="rowgroup" class="nhsuk-table__head">
+        <tr role="row">
+         <th role="columnheader" scope="col" width="200">
+            Lab code
+          </th>
+          <th role="columnheader" scope="col" width="200">
+            Date and time
+          </th>
+          <th role="columnheader" scope="col" width="200">
+            File name
+          </th>
+          <th role="columnheader" scope="col" width="200">
+          Total results received
+          </th>
+          <th role="columnheader" scope="col" width="200">
+           Total results automatic matched
+          </th>
+          <th role="columnheader" scope="col" width="200">
+           Total partial hits
+          </th>
+          <th role="columnheader" scope="col" width="200">
+           Total non hits
+          </th>
+          <th role="columnheader" scope="col" width="200">
+           Total error rejections
+          </th><th role="columnheader" scope="col" width="200">
+           Total policy rejections
+          </th>
+          </th><th role="columnheader" scope="col" width="200">
+           Automatic QA check
+          </th>
+        </tr>
+      </thead>
+      
+      <tbody class="nhsuk-table__body">
+        <tr role="row" class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">12345</td>
+          <td class="nhsuk-table__cell ">16-09-2021
+           <span class="nhsuk-table__cell--hint">11:30:10</span></td>
+           <td class="nhsuk-table__cell">File 1</td>
+           <td class="nhsuk-table__cell">8000</td>
+            <td class="nhsuk-table__cell ">5600
+           <span class="nhsuk-table__cell--hint">70%</span></td>
+          <td class="nhsuk-table__cell ">2340</td>
+           <td class="nhsuk-table__cell ">33</td>
+            <td class="nhsuk-table__cell ">12</td>
+             <td class="nhsuk-table__cell ">15</td>
+              <td class="nhsuk-table__cell ">CORRECT</td>
+         
+      </tbody>
+    </table>
   </div>
 </div>
+
+<br>    
+   <h2 class="nhsuk-heading-m">Manual summary report</h2>
+
+
+   <div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption"></caption>
+      <thead role="rowgroup" class="nhsuk-table__head">
+        <tr role="row">
+         <th role="columnheader" scope="col" width="200">
+            Total results to process
+          </th>
+          <th role="columnheader" scope="col" width="200">
+            To process outstanding 
+          </th>
+          <th role="columnheader" scope="col" width="200">
+            To query outstanding 
+          </th>
+          <th role="columnheader" scope="col" width="200">
+         To check outstanding 
+          </th>
+          <th role="columnheader" scope="col" width="200">
+           Rejected outstanding 
+          </th>
+          <th role="columnheader" scope="col" width="200">
+           Total checked manual matches
+          </th>
+          <th role="columnheader" scope="col" width="200">
+           Total checked dummy registrations
+          </th>
+          <th role="columnheader" scope="col" width="200">
+           Total checked rejections removed
+          </th><th role="columnheader" scope="col" width="200">
+           Total checked rejections resolved
+          </th>
+        </tr>
+      </thead>
+      
+      <tbody class="nhsuk-table__body">
+        <tr role="row" class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">2400</td>
+          <td class="nhsuk-table__cell ">0</td>
+           <td class="nhsuk-table__cell">3</td>
+           <td class="nhsuk-table__cell">0</td>
+          <td class="nhsuk-table__cell ">6</td>
+          <td class="nhsuk-table__cell ">2368
+           <span class="nhsuk-table__cell--hint">29.6%</span></td>
+           <td class="nhsuk-table__cell ">11</td>
+            <td class="nhsuk-table__cell ">7</td>
+             <td class="nhsuk-table__cell ">5</td>
+          
+         
+      </tbody>
+    </table>
+  </div>
+</div>
+
+ <!--<div id="boxshadow">
+    <img src="/images/summary-csv.png" alt="HMR101 form">
+  </div>
+</div>-->
 
 {% endblock %}
