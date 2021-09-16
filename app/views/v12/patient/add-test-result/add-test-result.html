@@ -31,7 +31,7 @@
      <div class="nhsuk-inset-text">
        <span class="nhsuk-u-visually-hidden">Information: </span>
        <p>If adding more than  test result, start with the most recent test. 
-       <br>Leave blank if there is no national code or health authority.</p>
+       
      </div>
         
     <form action="/v12/enter-test-result" method="post">
@@ -44,15 +44,20 @@
           <form action="add-test-result-result" method="post">
             
             <div class="nhsuk-form-group">
+              <div class="nhsuk-grid-row">
+               <div class="nhsuk-grid-column-three-quarters">
               <label class="nhsuk-label nhsuk-label__strong" for="example-with-hint-text">
                 National code
               </label>
               <div class="nhsuk-hint" id="example-with-hint-text-hint">
-                Also known as lab code. For example, T34KH.
-                <br> Leave blank for Scottish results.
+                Also known as lab code. 5 Digits for example, 61234.
+                <br> Enter XXXXX if no nationalk code provided (for example for historic, Scottish, abroard or unknown tests).
               </div>
               <input class="nhsuk-input nhsuk-input--width-10" value="{{ data['national-code'] }}" id="national-code" name="national-code" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
             </div>
+
+          </div>
+          </div>
   
           
              {{ input({
@@ -62,7 +67,7 @@
                },
                hint: {
                   html: "1 to 3 letters for example, A, DN or LNA. <br> 
-                  Enter health authority code if provided."
+                  Enter health authority code if provided. Leave blank if not provided"
                },
                 "id": "input-width-2",
                "name": "health-authority",
