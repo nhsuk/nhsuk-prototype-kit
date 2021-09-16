@@ -20,7 +20,7 @@ NHS Cervical screening management system
 
 {% block content %}
 <div class="nhsuk-grid-row">
-  
+
 
     {{ backLink({
       "href": "reports",
@@ -58,20 +58,20 @@ NHS Cervical screening management system
               }
             ]
           }) }}
-        </div>      
+        </div>
       </div>-->
 
  <div class="nhsuk-form-group">
-          
+
 
     <details class="nhsuk-details">
       <summary class="nhsuk-details__summary">
         <span class="nhsuk-details__summary-text">
-          Refine search by country and date.
+          Refine search by country and date
         </span>
       </summary>
 
-       
+
     </legend>
 
       <div class="nhsuk-details__text">
@@ -138,7 +138,7 @@ NHS Cervical screening management system
               }
             ]
           }) }}
-        </div>    
+        </div>
         <div class="nhsuk-grid-column-one-third">
           {{ dateInput({
             "id": "example",
@@ -168,7 +168,7 @@ NHS Cervical screening management system
               }
             ]
           }) }}
-        </div>      
+        </div>
       </div>
       <br>
 
@@ -178,13 +178,13 @@ NHS Cervical screening management system
          <div class="nhsuk-hint" id="example-hint">
       Select all options that are relevant to you:
     </div>
-      
+
  <div class="nhsuk-checkboxes">
 
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
         <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
-          Tranfer not confimred
+          Tranfer not confirmed
         </label>
       </div>
 
@@ -202,16 +202,16 @@ NHS Cervical screening management system
         </form>
       </div>
     </details>
-  
-   <h2 class="nhsuk-heading-m">Out of bound tranfsers <!--- 13 September 2021--></h2>
-  
+
+   <h2 class="nhsuk-heading-m">Out of bound transfers <!--- 13 September 2021--></h2>
+
+
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     <table class="nhsuk-table">
       <caption class="nhsuk-table__caption"></caption>
       <thead role="rowgroup" class="nhsuk-table__head">
         <tr role="row">
-
           <th role="columnheader" scope="col" width="150">
             Transfer date
           </th>
@@ -228,7 +228,7 @@ NHS Cervical screening management system
             Patient summary
           </th>
           <th role="columnheader" scope="col"  width="150">
-            Actioned by 
+            Actioned by
           </th>
           <th role="columnheader" scope="col"  width="200">
             Confirmation status
@@ -244,7 +244,7 @@ NHS Cervical screening management system
           <td class="nhsuk-table__cell "><a href="">View patient summary</a></td>
           <td class="nhsuk-table__cell"></td>
           <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="">confirm transfer</a></td>
-          
+
         </tr>
         <tr role="row" class="nhsuk-table__row">
           <td class="nhsuk-table__cell">11-09-21</td>
@@ -263,7 +263,7 @@ NHS Cervical screening management system
           <td class="nhsuk-table__cell "><a href="">View patient summary</a></td>
           <td class="nhsuk-table__cell">Jane Smith
           <span class="nhsuk-table__cell--hint">11-09-21</span></td>
-          <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-6">transfer confirmed</span></td>transfer</a></td>
+          <td><span class="nhsuk-tag nhsuk-tag--grey nhsuk-u-margin-bottom-6">transfer confirmed</span></td></a></td>
         </tr>
            <tr role="row" class="nhsuk-table__row">
           <td class="nhsuk-table__cell">11-09-21</td>
@@ -275,9 +275,10 @@ NHS Cervical screening management system
           <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="">confirm transfer</a></td>
         </tr>
       </tbody>
-    </table>   
+    </table>
   </div>
 </div>
+</div>
 
-   
+
 {% endblock %}

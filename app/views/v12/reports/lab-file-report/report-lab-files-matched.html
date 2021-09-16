@@ -20,7 +20,6 @@ NHS Cervical screening management system
 
 {% block content %}
 <div class="nhsuk-grid-row">
-  <div class="nhsuk-grid-column-three-quarters">
 
     {{ backLink({
       "href": "reports",
@@ -31,10 +30,9 @@ NHS Cervical screening management system
 
 <p>View and download all lab files</p>
 
-        
- <div class="nhsuk-form-group">
- 
-          
+
+
+
 
     <details class="nhsuk-details">
       <summary class="nhsuk-details__summary">
@@ -43,19 +41,20 @@ NHS Cervical screening management system
         </span>
       </summary>
 
+
     <div class="nhsuk-details__text">
-    
+
            <div class="nhsuk-hint" id="example-hint">
                 Enter the file details you wish to search by:
               </p>
-          
+
       <form action="report-lab-files-matched-search" method="post">
       <label class="nhsuk-label nhsuk-label__strong" for="example-with-hint-text">
                 National code
               </label>
               <div class="nhsuk-hint" id="example-with-hint-text-hint">
                 Also known as lab code. For example, T34KH.
-                <br> 
+                <br>
               </div>
               <input class="nhsuk-input nhsuk-input--width-10" value="{{ data['national-code'] }}" id="national-code" name="national-code" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
 <br><br>
@@ -89,7 +88,7 @@ NHS Cervical screening management system
               }
             ]
           }) }}
-        </div>    
+        </div>
         <div class="nhsuk-grid-column-one-third">
           {{ dateInput({
             "id": "example",
@@ -119,33 +118,36 @@ NHS Cervical screening management system
               }
             ]
           }) }}
-        </div>      
+        </div>
       </div>
       <br>
       <br>
-     
-      
+
+
           <button class="nhsuk-button nhsuk-button--ers" type="submit">Search</button>
-      
+
   </details>
-      
-    
+
+
  <br>
+ <div class="nhsuk-grid-column-three-quarters">
+
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
- 
+
     <h2 class="nhsuk-heading-m">Lab files receieved - 15-September-2021 </h2>
        <p>
       <span class="number-of-results">
-        
+
        <p>If you cannot find the file you're looking for refine the search.</p>
       </span>
     </p>
-<br>  
- 
+<br>
+
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     <table class="nhsuk-table">
-      <caption class="nhsuk-table__caption"></caption>
+      <caption class="nhsuk-table__caption">
+      </caption>
       <thead role="rowgroup" class="nhsuk-table__head">
         <tr role="row">
          <th role="columnheader" scope="col">
@@ -161,11 +163,11 @@ NHS Cervical screening management system
           Number of results received
           </th>
            <th role="columnheader" scope="col" width="200">
-           View summary and download CSVs 
+           View summary and download CSVs
           </th>
         </tr>
       </thead>
-      
+
       <tbody class="nhsuk-table__body">
         <tr role="row" class="nhsuk-table__row">
         <td class="nhsuk-table__cell">London</td>
@@ -173,7 +175,7 @@ NHS Cervical screening management system
           <td class="nhsuk-table__cell ">15-09-2021
            <span class="nhsuk-table__cell--hint">11:30:10</span></td>
           <td class="nhsuk-table__cell ">8000</td>
-         
+
         <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="preview-summary-csv">View summary</a></td>
         </tr>
         <tr role="row" class="nhsuk-table__row">
@@ -182,9 +184,9 @@ NHS Cervical screening management system
           <td class="nhsuk-table__cell ">15-09-2021
           <span class="nhsuk-table__cell--hint">11:30:10</span></td>
           <td class="nhsuk-table__cell ">1200</td>
- 
+
         <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="preview-summary-csv">View summary</a></td>
-          
+
         </tr>
         <tr role="row" class="nhsuk-table__row">
          <td class="nhsuk-table__cell">Bristol</td>
@@ -192,7 +194,7 @@ NHS Cervical screening management system
           <td class="nhsuk-table__cell ">15-09-2021
            <span class="nhsuk-table__cell--hint">11:30:10</span></td>
           <td class="nhsuk-table__cell ">890</td>
-      
+
                   <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="preview-summary-csv">View summary</a></td>
 
 
@@ -202,7 +204,7 @@ NHS Cervical screening management system
           <td class="nhsuk-table__cell ">15-09-2021
            <span class="nhsuk-table__cell--hint">11:30:10</span></td>
           <td class="nhsuk-table__cell ">70</td>
-     
+
                 <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="preview-summary-csv">View summary</a></td>
 
 
@@ -212,7 +214,7 @@ NHS Cervical screening management system
           <td class="nhsuk-table__cell ">15-09-2021
            <span class="nhsuk-table__cell--hint">11:30:10</span></td>
           <td class="nhsuk-table__cell ">543</td>
-     
+
                  <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="preview-summary-csv">View summary</a></td>
 
 
@@ -222,7 +224,7 @@ NHS Cervical screening management system
           <td class="nhsuk-table__cell ">15-09-2021
            <span class="nhsuk-table__cell--hint">11:30:10</span></td>
           <td class="nhsuk-table__cell ">890</td>
-     
+
                  <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="preview-summary-csv">View summary</a></td>
          </tr>
         <tr role="row" class="nhsuk-table__row">
@@ -231,9 +233,9 @@ NHS Cervical screening management system
           <td class="nhsuk-table__cell ">15-09-2021
            <span class="nhsuk-table__cell--hint">11:30:10</span></td>
           <td class="nhsuk-table__cell ">300</td>
-      
+
                   <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="preview-summary-csv">View summary</a></td>
- 
+
      </tr>
         <tr role="row" class="nhsuk-table__row">
          <td class="nhsuk-table__cell">Derby</td>
@@ -241,7 +243,7 @@ NHS Cervical screening management system
           <td class="nhsuk-table__cell ">15-09-2021
            <span class="nhsuk-table__cell--hint">11:30:10</span></td>
           <td class="nhsuk-table__cell ">1000</td>
-      
+
                   <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="preview-summary-csv">View summary</a></td>
 
          </tr>
@@ -251,7 +253,7 @@ NHS Cervical screening management system
           <td class="nhsuk-table__cell ">15-09-2021
            <span class="nhsuk-table__cell--hint">11:30:10</span></td>
           <td class="nhsuk-table__cell ">600</td>
-      
+
                   <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="preview-summary-csv">View summary</a></td>
 
    </tr>
@@ -261,7 +263,7 @@ NHS Cervical screening management system
           <td class="nhsuk-table__cell ">15-09-2021
            <span class="nhsuk-table__cell--hint">11:30:10</span></td>
           <td class="nhsuk-table__cell ">190</td>
-      
+
                   <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="preview-summary-csv">View summary</a></td>
 
  </tr>
@@ -271,7 +273,7 @@ NHS Cervical screening management system
           <td class="nhsuk-table__cell ">15-09-2021
            <span class="nhsuk-table__cell--hint">11:30:10</span></td>
           <td class="nhsuk-table__cell ">679</td>
-      
+
                   <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="preview-summary-csv">View summary</a></td>
 
       </tbody>
@@ -279,7 +281,7 @@ NHS Cervical screening management system
   </div>
 </div>
 
-  
+
 
 
 {% endblock %}
