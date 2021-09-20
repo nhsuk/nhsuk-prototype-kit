@@ -9,7 +9,8 @@
     "start": "node app.js",
     "test": "",
     "prewatch": "gulp build",
-    "watch": "gulp"
+    "watch": "gulp",
+    "lint:js": "eslint -c ./linters/.eslintrc.js app.js middleware/**/*.js lib/**/*.js app/*.js docs/*.js"
   },
   "author": "https://github.com/nhsuk/",
   "license": "MIT",
@@ -36,5 +37,9 @@
     "path": "^0.12.7",
     "sass": "^1.38.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.1"
+  }
 }
