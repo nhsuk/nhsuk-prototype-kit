@@ -33,10 +33,10 @@
 
 }
 
-@media print {   
+@media print {
     a, p, h1, h2, h3, h4, h5, h6 {
       color: black !important;
-    } 
+    }
 
     .no-print, .no-print *
     {
@@ -49,7 +49,7 @@
     }
 
   .nhsuk-checkboxes__label {
-    padding: 0px 12px 4px; 
+    padding: 0px 12px 4px;
     font-size: 1rem;
     line-height: 1.2;
   }
@@ -76,4 +76,23 @@
 
 
 
+}
+
+
+
+.nhsuk-header__logout {
+  float: right;
+  padding-top: 5px;
+  margin-right: 10px;
+
+
+  @include mq($until: tablet) {
+    padding-right: nhsuk-spacing(3);
+  }
+}
+
+.nhsuk-header__logout--link,
+.nhsuk-header__logout--link:visited,
+.nhsuk-header__logout--link:active {
+  color: $color_nhsuk-white;
 }
