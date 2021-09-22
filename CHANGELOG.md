@@ -1,6 +1,14 @@
 # NHS.UK prototype kit Changelog
 
+## 4.7.0 - 22 September 2021
+
+:new: **New features**
+
+- Install latest version of NHS.UK frontend (5.2.0) which includes "None of these" Checkboxes JavaScript behaviour
+
 ## 4.6.4 - 25 August 2021
+
+:wrench: **Fixes**
 
 - Add script to fix bug with unchecked checkboxes and separate bug when only one checkbox is selected.
 - Update package dependencies to latest versions
