@@ -36,22 +36,22 @@
     <dt class="nhsuk-summary-list__key">National code</dt>
     <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "-" }}</dd>
   </div>
-    
+
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Health Authority</dt>
     <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or "-" }}</dd>
   </div>
-  
+
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Self-sample</dt>
     <dd class="nhsuk-summary-list__value">{{ data['self-sample'] or "-" }}</dd>
   </div>
-  
+
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Source code</dt>
     <dd class="nhsuk-summary-list__value">{{ data['source-code'] or "-" }}</dd>
   </div>
-  
+
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender code</dt>
     <dd class="nhsuk-summary-list__value">{{ data['sender-code'] or "-" }} </dd>
@@ -79,7 +79,7 @@
     <dd class="nhsuk-summary-list__value">{{ data['result-result'] }} {{ data['result-infection'] }} {{ data['result-action'] }}</dd>
   </div>
 
-  
+
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Repeat in months</dt>
     <dd class="nhsuk-summary-list__value">{{ data['repeat-months'] or "-" }} months</dd>
@@ -88,7 +88,7 @@
     <div class="nhsuk-summary-list__row">
       <dt class="nhsuk-summary-list__key">Next test due date</dt>
       <dd class="nhsuk-summary-list__value">{{ 3 | returnDate('years', data['test_date']) + ' ' + 3 | returnDate('years', data['test_date']) | returnTimeDiff }}</dd>
-    </div> 
+    </div>
 
  <!--<div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">CRM</dt>
@@ -100,9 +100,9 @@
   </div>-->
 </dl>
 
-{% include '../../components/comments-timeline.html' %}  
+{% include '../../components/comments-timeline.html' %}
 
- <form action="confirm-delete" method="post"> <input type="hidden" name="hideDetails" value="true">
+ <form action="/v12/patient/patient-summary-7" method="post"> <input type="hidden" name="hideDetails" value="true">
     <div class="nhsuk-form-group">
       <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
         <legend class="nhsuk-fieldset__legend--m nhsuk-label__strong">
@@ -119,8 +119,8 @@
              This will remove the test result from the patients result table and archive it
             </div>
           </div>
-        
-            
+
+
             <div class="nhsuk-form-group">
               <h1 class="nhsuk-label-wrapper">
                 <label class="nhsuk-fieldset__legend--s nhsuk-label__strong" for="example-heading">
@@ -133,23 +133,23 @@
               <input class="nhsuk-input nhsuk-input--width-10" type="text" name="crm" autocomplete="off" value="{{ data.crm }}">
             </div>
             <div class="nhsuk-form-group">
-             
+
             <div class="nhsuk-grid-row">
             <div class="nhsuk-grid-column-three-quarters">
               <label class="nhsuk-label" for="example">
-                Comments 
+                Comments
               </label>
                   <span class="nhsuk-hint" id="example-hint"> Add a comment explaining this action taken.</span>
-               
+
               <textarea class="nhsuk-textarea" id="example" name="comments" rows="4" aria-describedby="example-hint" autocomplete="off">{{ data.comments }}</textarea>
             </div>
           </div>
         </div>
     <br>
-    <button class="nhsuk-button nhsuk-button--ers" type="submit">Confirm</button>   
+    <button class="nhsuk-button nhsuk-button--ers" type="submit">Confirm</button>
   </form>
 
- <p><a href="../patient-summary-7">Exit without saving</a></p> 
+ <p><a href="../patient-summary-7">Exit without saving</a></p>
   </div>
 
 

@@ -27,7 +27,7 @@ NHS Cervical screening management system
       "text": "back to reports"
     }) }}
 
-    <h1 class="nhsuk-heading-l">Reports - Letters sent</h1>
+    <h1 class="nhsuk-heading-l">Reports - Demographic changes</h1>
       <!--<div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-one-third">
           {{ dateInput({
@@ -67,7 +67,7 @@ NHS Cervical screening management system
     <details class="nhsuk-details">
       <summary class="nhsuk-details__summary">
         <span class="nhsuk-details__summary-text">
-          Refine search by demographic chnage and date
+          Refine search by demographic change and date
         </span>
       </summary>
 
@@ -77,7 +77,7 @@ NHS Cervical screening management system
       <div class="nhsuk-details__text">
 
      <label class="nhsuk-label nhsuk-label__strong">
-                 Which letter type would you like to see?
+                 Which demographic change would you like to see?
                </label>
          <div class="nhsuk-hint" id="example-hint">
       Select all options that are relevant to you:
@@ -88,23 +88,32 @@ NHS Cervical screening management system
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
         <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
-          Invite and reminder letters
+          Gender change
         </label>
       </div>
 
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="phone">
         <label class="nhsuk-label nhsuk-checkboxes__label" for="example-2">
-          Result and cease letters
+          NHS Number change
         </label>
       </div>
 
-      <div class="nhsuk-hint" id="example-hint">
-      What date range would you like to view?<br>
-      <br>
-      Minimum view 1 day.<br>
-      Maximum view is 7 days.
-    </div>
+      <div class="nhsuk-checkboxes__item">
+        <input class="nhsuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="phone">
+        <label class="nhsuk-label nhsuk-checkboxes__label" for="example-2">
+          Date of birth change
+        </label>
+      </div>
+
+      <div class="nhsuk-checkboxes__item">
+        <input class="nhsuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="phone">
+        <label class="nhsuk-label nhsuk-checkboxes__label" for="example-2">
+         Incorrectly ceased due to age (due to age change)
+        </label>
+      </div>
+      <br> 
+
         <form action="print-patients-due-to-be-invited" method="">
         <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-one-third">
@@ -171,7 +180,7 @@ NHS Cervical screening management system
       <br>
       
       <label class="nhsuk-label nhsuk-label__strong">
-                 Which letter type would you like to see?
+                 Which download status type would you like to see?
                </label>
     </legend>
 
@@ -184,14 +193,14 @@ NHS Cervical screening management system
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input" id="example-1" name="example" type="radio" value="email">
         <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
-          Invite and reminder letters
+          Downloaded
         </label>
       </div>
 
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="phone">
         <label class="nhsuk-label nhsuk-checkboxes__label" for="example-2">
-          Result and cease letters
+          Not downloaded
         </label>
       </div>
 
@@ -199,8 +208,7 @@ NHS Cervical screening management system
     </div>
     <br>
 
-    
-   
+
 
       {{ button({
             "text": "Query",
@@ -209,29 +217,65 @@ NHS Cervical screening management system
         </form>
       </div>
     </details>
+
+    
   
-   <h2 class="nhsuk-heading-m">10 Sep 2021 - Files sent to CIC</h2>
+   <h2 class="nhsuk-heading-m">Demographic changes - 10 September 2021 </h2>
+
+    <p>If you cannot find the report you're looking for refine the search.</p>
+      </span>
+    </p>
       
     <table class="nhsuk-table">
       <caption class="nhsuk-table__caption">10 Sep 2021 - Files sent to CIC</caption>
       <thead role="rowgroup" class="nhsuk-table__head">
         <tr role="row">
           <th role="columnheader" class="" scope="col">
-            Time
+           Date
           </th>
           <th role="columnheader" class="" scope="col">
-            File type
+            Demographic change type
           </th>
           <th role="columnheader" class="" scope="col">
-            Volume of letters
+            Downloaded by and date
+          </th>
+          <th role="columnheader" class="" scope="col">
+            View and download
           </th>
         </tr>
       </thead>
       <tbody class="nhsuk-table__body">
         <tr role="row" class="nhsuk-table__row">
-          <td class="nhsuk-table__cell">05:30</td>
-          <td class="nhsuk-table__cell "><a href="report-letters-sent-drilldown">Invite and reminder letters</a></td>
-          <td class="nhsuk-table__cell">7200</td>
+          <td class="nhsuk-table__cell">10-09-2021</td>
+          <td class="nhsuk-table__cell ">Gender change</a></td>
+          <td class="nhsuk-table__cell"></td>
+          <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="preview-gender-change-report">View report</a></td>
+
+
+        </tr>
+             <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">10-09-2021</td>
+          <td class="nhsuk-table__cell ">NHS number change</a></td>
+          <td class="nhsuk-table__cell"></td>
+           <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="preview-nhsno-change-report">View report</a></td>
+
+
+        </tr>
+             <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">10-09-2021</td>
+          <td class="nhsuk-table__cell ">Date of birth change</a></td>
+          <td class="nhsuk-table__cell"></td>
+          <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="preview-dob-change-report">View report</a></td>
+
+
+        </tr>
+             <tr role="row" class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">10-09-2021</td>
+          <td class="nhsuk-table__cell ">Age change</a></td>
+          <td class="nhsuk-table__cell"></td>
+          <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="preview-age-change-report">View report</a></td>
+
+
         </tr>
        
       </tbody>
