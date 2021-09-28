@@ -52,6 +52,7 @@
   </nav>
 {% endif %}
 
+
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-three-quarters">
     <h1 class="nhsuk-heading-l">Patient summary</h1>
@@ -177,6 +178,7 @@
 
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-full">
+
     <h2 id="testresults" class="nhsuk-heading-l">Test results</h2>
 
     {% if data.role == 'csas' %}
@@ -361,136 +363,145 @@ comments={{ result.comments or '' }}">{{ letterLinkText }}</a>
       </div>
     </div>
 
-    {# {% include '../components/hpv-results.html' %}#}
-
 
 
     {% if data.patientSummary.nhs_number == '9991023867' %}
 
-    <h2>HPV vaccine record</h2>
 
-    <table role="table" class="nhsuk-table-responsive">
-      <caption class="nhsuk-table__caption">HPV vaccine record</caption>
-      <thead role="rowgroup" class="nhsuk-table__head">
-        <tr role="row">
-          <th role="columnheader" class="" scope="col">
-            Vaccine date
-          </th>
-          <th role="columnheader" class="" scope="col">
-            Type of vaccine
-          </th>
-          <th role="columnheader" class="" scope="col">
-            Batch number
-          </th>
-          <th role="columnheader" class="" scope="col">
-            Dose number
-          </th>
-        </tr>
-      </thead>
-      <tbody class="nhsuk-table__body">
-        <tr role="row" class="nhsuk-table__row">
-          <td role="cell" class="nhsuk-table__cell">
-            11-December-2015
-          </td>
-          <td role="cell" class="nhsuk-table__cell">
-            Cervarix
-          </td>
-          <td role="cell" class="nhsuk-table__cell">
-            AHPV5884BB
-          </td>
-          <td role="cell" class="nhsuk-table__cell">
-            2
-          </td>
-        </tr>
-        <tr role="row" class="nhsuk-table__row">
-          <td role="cell" class="nhsuk-table__cell">
-            1-February-2015
-          </td>
-          <td role="cell" class="nhsuk-table__cell">
-            Cervarix
-          </td>
-          <td role="cell" class="nhsuk-table__cell">
-            CHPV5687AA
-          </td>
-          <td role="cell" class="nhsuk-table__cell">
-            1
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <h2>HPV vaccination record</h2>
+
+                    <table role="table" class="nhsuk-table-responsive">
+                        <caption class="nhsuk-table__caption"><h2>HPV vaccination record</h2></caption>
+            <thead role="rowgroup" class="nhsuk-table__head">
+                        <tr role="row">
+                          <th role="columnheader" class="" scope="col">
+                            Date given
+                          </th>
+                          <th role="columnheader" class="" scope="col">
+                            Vaccine name
+                          </th>
+                          <th role="columnheader" class="" scope="col">
+                            Batch number
+                          </th>
+                          <th role="columnheader" class="" scope="col">
+                            Dose
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody class="nhsuk-table__body">
+                        <tr role="row" class="nhsuk-table__row">
+                          <td role="cell" class="nhsuk-table__cell">
+                            11-Dec-2015
+                          </td>
+                          <td role="cell" class="nhsuk-table__cell">
+                            Cervarix
+                          </td>
+                          <td role="cell" class="nhsuk-table__cell">
+                            AHPV5884BB
+                          </td>
+                          <td role="cell" class="nhsuk-table__cell">
+                            2
+                          </td>
+                        </tr>
+                        <tr role="row" class="nhsuk-table__row">
+                          <td role="cell" class="nhsuk-table__cell">
+                            1-Feb-2015
+                          </td>
+                          <td role="cell" class="nhsuk-table__cell">
+                            Cervarix
+                          </td>
+                          <td role="cell" class="nhsuk-table__cell">
+                            CHPV5687AA
+                          </td>
+                          <td role="cell" class="nhsuk-table__cell">
+                            1
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
 
 
     {% elif data.patientSummary.nhs_number == '9100002801' %}
 
     <div class="nhsuk-u-reading-width">
-    <h2>HPV vaccine record</h2>
+    <h2>HPV vaccination record</h2>
 
-      <p>We could not find any HPV vaccination details for this patient.</p>
+    <p>There is no HPV vaccination information for this patient.</p>
 
-      <p>This can be for one of the following reasons:</p>
+    <details class="nhsuk-details">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      Why there is no HVP vaccination information
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <p>There might be no HPV vaccination information if:</p>
+    <ul>
+      <li>the patient has not had the HPV vaccination</li>
+      <li>the patient did not have the HPV vaccination in England, the Isle of Man or while serving in the armed forces</li>
+      <li>the patient’s vaccination record is not up to date or cannot be found</li>
+    </ul>
 
-      <ul>
-        <li>we cannot find the patient’s vaccine record</li>
-        <li>the patient refused a HPV vaccination</li>
-        <li>the patient has not had a HPV vaccination</li>
-        <li>the patient's vaccine record is not up to date</li>
-        <li>the patient did not have a HPV vaccination in England, the Isle of Man or whilst serving overseas in the armed forces</li>
-      </ul>
-    </div>
+  </div>
+</details>
+
 
     {% else %}
 
-    <h2>HPV vaccine record</h2>
+    <h2>HPV vaccination record</h2>
 
-    <table role="table" class="nhsuk-table-responsive">
-      <caption class="nhsuk-table__caption">HPV vaccine record</caption>
-      <thead role="rowgroup" class="nhsuk-table__head">
-        <tr role="row">
-          <th role="columnheader" class="" scope="col">
-            Vaccine date
-          </th>
-          <th role="columnheader" class="" scope="col">
-            Type of vaccine
-          </th>
-          <th role="columnheader" class="" scope="col">
-            Batch number
-          </th>
-          <th role="columnheader" class="" scope="col">
-            Dose number
-          </th>
-        </tr>
-      </thead>
-      <tbody class="nhsuk-table__body">
-        <tr role="row" class="nhsuk-table__row">
-          <td role="cell" class="nhsuk-table__cell">
-            11-December-2015
-          </td>
-          <td role="cell" class="nhsuk-table__cell">
-            Cervarix
-          </td>
-          <td role="cell" class="nhsuk-table__cell">
-            AHPV5884BB
-          </td>
-          <td role="cell" class="nhsuk-table__cell">
-            2
-          </td>
-        </tr>
-        <tr role="row" class="nhsuk-table__row">
-          <td role="cell" class="nhsuk-table__cell">
-            1-February-2015
-          </td>
-          <td role="cell" class="nhsuk-table__cell">
-            Cervarix
-          </td>
-          <td role="cell" class="nhsuk-table__cell">
-            CHPV5687AA
-          </td>
-          <td role="cell" class="nhsuk-table__cell">
-            1
-          </td>
-        </tr>
-      </tbody>
-    </table>
+                    <table role="table" class="nhsuk-table-responsive">
+                        <caption class="nhsuk-table__caption"><h2>HPV vaccination record</h2></caption>
+            <thead role="rowgroup" class="nhsuk-table__head">
+                        <tr role="row">
+                          <th role="columnheader" class="" scope="col">
+                            Date given
+                          </th>
+                          <th role="columnheader" class="" scope="col">
+                            Vaccine name
+                          </th>
+                          <th role="columnheader" class="" scope="col">
+                            Batch number
+                          </th>
+                          <th role="columnheader" class="" scope="col">
+                            Dose
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody class="nhsuk-table__body">
+                        <tr role="row" class="nhsuk-table__row">
+                          <td role="cell" class="nhsuk-table__cell">
+                            11-Dec-2015
+                          </td>
+                          <td role="cell" class="nhsuk-table__cell">
+                            Cervarix
+                          </td>
+                          <td role="cell" class="nhsuk-table__cell">
+                            AHPV5884BB
+                          </td>
+                          <td role="cell" class="nhsuk-table__cell">
+                            2
+                          </td>
+                        </tr>
+                        <tr role="row" class="nhsuk-table__row">
+                          <td role="cell" class="nhsuk-table__cell">
+                            1-Feb-2015
+                          </td>
+                          <td role="cell" class="nhsuk-table__cell">
+                            Cervarix
+                          </td>
+                          <td role="cell" class="nhsuk-table__cell">
+                            CHPV5687AA
+                          </td>
+                          <td role="cell" class="nhsuk-table__cell">
+                            1
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+
 
 
       {% endif %}
