@@ -1,4 +1,4 @@
-$('form[name="radio-buttons"]').submit(function(e){
+$('form[name="choice"]').submit(function(e){
     var dataHref = $('input[type="radio"]:checked').attr('data-href');
 
     if(dataHref)

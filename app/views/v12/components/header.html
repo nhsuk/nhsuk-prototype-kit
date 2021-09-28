@@ -2,7 +2,7 @@
 {% if data.role == 'sampleTaker' %}
 {{ header({
     "service": {
-      "name": "Cervical Screening",
+      "name": "Cervical Screening Management System",
       "longName": "false"
     },
     "showNav": "true",
@@ -25,7 +25,7 @@
 
 {{ header({
     "service": {
-      "name": "Cervical Screening",
+      "name": "Cervical Screening Management System",
       "longName": "false"
     },
     "showNav": "true",
@@ -38,6 +38,10 @@
       {
         'url' : '/v12/get-prior-notifications-12',
         'label' : 'Notifications'
+      },
+      {
+        'url'  : '/v12/reports-gp',
+        'label' : 'Reports'
       }
     ]
   })
@@ -46,7 +50,7 @@
 {% else %}
 {{ header({
     "service": {
-      "name": "Cervical Screening",
+      "name": "Cervical Screening Management System",
       "longName": "false"
     },
     "showNav": "true",

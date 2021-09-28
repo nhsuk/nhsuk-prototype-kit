@@ -1,0 +1,72 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(4) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+
+    <div class="nhsuk-back-link">
+      <a class="nhsuk-back-link__link" href="/v12/reports-gp">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+        Go back to Reports</a>
+    </div>
+
+
+
+
+    <form action="/v12/reports-gp/history-batch" method="post">
+
+      {% call fieldset({
+        legend: {
+          text: "Choose how to select participants to include in the history batch download report",
+          classes: "nhsuk-fieldset__legend--l",
+          isPageHeading: true
+        }
+      }) %}
+
+      {{ radios({
+        "idPrefix": "choose-method",
+        "name": "choose-method",
+        "items": [
+          {
+            "value": "Yes",
+            "text": "Manually add one or more NHS numbers"
+          },
+          {
+            "value": "No",
+            "text": "Upload a file of NHS numbers"
+          }
+        ]
+      }) }}
+
+      {% endcall %}
+
+      {{ button({
+        "text": "Continue"
+      }) }}
+
+    </form>
+    
+  </div>
+</div>
+{% endblock %}
