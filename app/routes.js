@@ -583,4 +583,24 @@ router.get("/get-senders", function (req, res) {
   
 });
 
+// Branching example
+router.post('/v12/reports-gp/history-batch', function (req, res) {
+
+  // Make a variable and give it the value from 'know-nhs-number'
+  var reportMethod = req.session.data['choose-method']
+
+  // Check whether the variable matches a condition
+  if (reportMethod == "Yes"){
+    // Send user to next page
+    res.redirect('/v12/reports-gp/history-batch/manual')
+  }
+  else {
+    // Send user to ineligible page
+    res.redirect('/v12/reports-gp/history-batch/upload')
+  }
+
+})
+
+
+
 module.exports = router;
