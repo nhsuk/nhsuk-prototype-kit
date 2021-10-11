@@ -1,5 +1,6 @@
 // External dependencies
 const express = require('express');
+const packageJson = require('../package.json');
 
 const router = express.Router();
 
@@ -33,12 +34,12 @@ router.post('/install/mac', (req, res) => {
   }
 });
 
-router.get('/download', function (req, res) {
-  const version = require('../package.json').version
+router.get('/download', (req, res) => {
+  const { version } = packageJson;
   res.redirect(
-    `https://github.com/nhsuk/nhsuk-prototype-kit/archive/refs/tags/v${version}.zip`
-  )
-})
+    `https://github.com/nhsuk/nhsuk-prototype-kit/archive/refs/tags/v${version}.zip`,
+  );
+});
 
 // Branching example
 router.post('/examples/branching/answer', (req, res) => {
