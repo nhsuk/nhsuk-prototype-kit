@@ -1,6 +1,6 @@
 # NHS.UK prototype kit Changelog
 
-## 4.7.1 - TBC
+## 4.7.1 - 12 October 2021
 
 :wrench: **Fixes**
 
