@@ -1,5 +1,12 @@
 # NHS.UK prototype kit Changelog
 
+## 4.7.1 - TBC
+
+:wrench: **Fixes**
+
+- Update download link for the prototype-kit to use the latest release instead of the master branch
+
+
 ## 4.7.0 - 22 September 2021
 
 :new: **New features**
