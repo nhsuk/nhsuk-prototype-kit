@@ -1,0 +1,109 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/reveal.js"></script>
+<script type="text/javascript" src="/js/comments.js"></script>
+
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <div class="nhsuk-inset-text nhsuk-inset-text__screening nhsuk-inset-text__screening--success nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-8">
+           <h3 class="nhsuk-heading-s">Sender successfully reactivated {{ hideDetails }}</h3>
+        </div>
+
+
+
+     <div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-three-quarters">
+     <div class="nhsuk-panel-with-label">
+      <class="nhsuk-panel-with-label__label">
+      <h3 class="nhsuk-panel-with-label__label">Sender code: GYNE
+  <span style= color:white; class="nhsuk-table__cell--hint"></span></h3>
+
+      
+<br>
+      <div class="nhsuk-form-group">
+       
+
+          <dl class="nhsuk-summary-list">
+
+          <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+            Sender details
+          </legend>
+  
+    
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Sender code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or "GYNE" }}</dd>
+  </div>
+
+   <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Area code</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "NF" }}</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Source type</dt>
+    <dd class="nhsuk-summary-list__value">4</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Name and address</dt>
+    <dd class="nhsuk-summary-list__value">Crarc Colposcopy clinic
+            <br> Ipswich hospital,
+            <br> Heath centre,
+            <br> Ipswich,
+            <br> IP4 5PD"</dd>
+  </div>
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Active</dt>
+    <dd class="nhsuk-summary-list__value">Yes </dd>
+  </div>
+
+
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Inactive date</dt>
+    <dd class="nhsuk-summary-list__value">28-July-2021</dd>
+  </div>
+
+  
+  <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">CRM</dt>
+    <dd class="nhsuk-summary-list__value">CAS-12345-ABCDE</dd>
+  </div>
+
+ <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Comments</dt>
+    <dd class="nhsuk-summary-list__value"></dd>
+  </div>
+</div>
+</div>
+  
+
+<a href="sender-code-search" class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-top-4 nhsuk-u-margin-right-6">Exit</a>
+   
+ <!--<p><a href="manage-sender-codes">Back to Manage sender codes</a></p>-->
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "layout-v2.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(5) {
+    border-bottom: 4px solid #d8dde0;
+  }
+
+  .nhsuk-button, .nhsuk-button--ers, .dropdown .dropbtn, .nhsuk-button--ers_secondary, .nhsuk-button--ers_reverse, .nhsuk-button--ers_reverse:hover, .nhsuk-button--ers_reverse:focus, .nhsuk-button--ers_reject, .nhsuk-blue, .nhsuk-right  {
+    margin-bottom: 0;
+  }
+</style>
+{% endblock %}
+{% block pageTitle %}
+NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../../components/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+    {{ backLink({
+      "href": "index",
+      "text": "Back to Admin"
+    }) }}
+
+    <h1 class="nhsuk-heading-l">Manage sender codes</h1>
+
+<p>Add or manage all non GP senders. For GP senders, go to the <a href="https://odsportal.digital.nhs.uk/Organisation/Search">ODS Portal</a>.</p> 
+
+   <a class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-bottom-4 no-print" href="add-sender"
+>Add new non-GP sender</a>
+   
+<br>  
+<br>
+
+    
+   <h2 id="testresults" class="nhsuk-heading-l">Search existing senders</h2>
+
+   <p>text about the report with link to it.</p>
+
+        <form action="sender-code-search" method="post">
+     <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-label__strong" for="sender-code">
+                  Sender code
+                </label>
+                <div class="nhsuk-hint" id="example-with-hint-text-hint">
+                  Also known as Practice code, non GP sender code or GNC number.
+                  <br>
+                  For example, A86020
+
+                </div>
+                <input class="nhsuk-input nhsuk-input--width-5" value='{{ senderValue }}' id="sender-code" name="sender-code" type="text" aria-describedby="Sender code" inputmode="text" autocomplete="off">
+            </div>
+
+            <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-label__strong" for="sender-code">
+                   Area code
+                </label>
+                <div class="nhsuk-hint" id="example-with-hint-text-hint">
+                  Also known as NHAIS cipher. 
+                <br> Enter 2 to 3 letters for example, BD or LNA.
+
+                </div>
+                <input class="nhsuk-input nhsuk-input--width-4" value='{{ senderValue }}' id="sender-code" name="sender-code" type="text" aria-describedby="Sender code" inputmode="text" autocomplete="off">
+            </div>
+   
+    
+
+<br>
+    <div class="nhsuk-form-group">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <button class="nhsuk-button nhsuk-button--ers" type="submit">Search</button>
+        </div>
+      </div>
+    </div>
+              
+  </form>
+     
+   
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+  <div class="nhsuk-grid-column-full">
+  
+
+{% endblock %}
+
+
