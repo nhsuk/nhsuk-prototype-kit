@@ -39,17 +39,18 @@
 
 <dl class="nhsuk-summary-list">
   
-   
- <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Cipher</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "BAA" }}</dd>
-    <dd class="nhsuk-summary-list__actions"><a href="add-sender">Change<span class="nhsuk-u-visually-hidden"> Cipher</span></a></dd>
-  </div>
+  
     
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender code</dt>
     <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or "ABCD" }}</dd>
     <dd class="nhsuk-summary-list__actions"><a href="add-sender">Change<span class="nhsuk-u-visually-hidden"> Sender code</span></a></dd>
+  </div>
+
+   <div class="nhsuk-summary-list__row">
+    <dt class="nhsuk-summary-list__key">Area</dt>
+    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "BAA" }}</dd>
+    <dd class="nhsuk-summary-list__actions"><a href="add-sender">Change<span class="nhsuk-u-visually-hidden"> Cipher</span></a></dd>
   </div>
   
   <div class="nhsuk-summary-list__row">
