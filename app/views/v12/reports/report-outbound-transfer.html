@@ -24,7 +24,7 @@ NHS Cervical screening management system
 
     {{ backLink({
       "href": "reports",
-      "text": "back to reports"
+      "text": "Back to reports"
     }) }}
 
     <h1 class="nhsuk-heading-l">Reports - Outbound transfer</h1>
@@ -107,7 +107,31 @@ NHS Cervical screening management system
       </div>
 
 <br>
-       <label class="nhsuk-label nhsuk-label__strong">
+
+<label class="nhsuk-label nhsuk-label__strong">
+  Which transfer options would you like to see?
+</label>
+<div class="nhsuk-hint" id="example-hint">
+Select all options that are relevant to you:
+</div>
+
+<div class="nhsuk-checkboxes nhsuk-u-margin-bottom-6">
+
+<div class="nhsuk-checkboxes__item">
+<input class="nhsuk-checkboxes__input" id="example-1" name="example" type="checkbox" value="email">
+<label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
+Transfer confirmed
+</label>
+</div>
+
+<div class="nhsuk-checkboxes__item">
+<input class="nhsuk-checkboxes__input" id="example-2" name="example" type="checkbox" value="phone">
+<label class="nhsuk-label nhsuk-checkboxes__label" for="example-2">
+Awaiting transfer
+</label>
+</div>
+</div>
+<label class="nhsuk-label nhsuk-label__strong">
                   What date range would you like to view?
                </label>
      <!-- Minimum view 1 day.<br>
@@ -247,7 +271,7 @@ NHS Cervical screening management system
           <td class="nhsuk-table__cell">10-09-21</td>
           <td class="nhsuk-table__cell">Lucy Harper</td>
           <td class="nhsuk-table__cell">098 987 0987</td>
-          <td class="nhsuk-table__cell">Grampian, Scotland</td>
+          <td class="nhsuk-table__cell">Grampian, Scotland (N)</td>
           <td class="nhsuk-table__cell "><a href="">View patient summary</a></td>
           <td class="nhsuk-table__cell"></td>
           <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="">Confirm transfer</a></td>
@@ -266,7 +290,7 @@ NHS Cervical screening management system
           <td class="nhsuk-table__cell">11-09-21</td>
           <td class="nhsuk-table__cell">Hannah Rowley</td>
           <td class="nhsuk-table__cell">098 987 0987</td>
-          <td class="nhsuk-table__cell">Fife, Scotland</td>
+          <td class="nhsuk-table__cell">Fife, Scotland (F)</td>
           <td class="nhsuk-table__cell "><a href="">View patient summary</a></td>
           <td class="nhsuk-table__cell"></td>
           <td class="nhsuk-table__cell"><a class= "nhsuk-button nhsuk-button--ers" href="">confirm transfer</a></td>
@@ -277,7 +301,7 @@ NHS Cervical screening management system
           <td class="nhsuk-table__cell">11-09-21</td>
           <td class="nhsuk-table__cell">Mary Homes</td>
           <td class="nhsuk-table__cell">098 987 0987</td>
-          <td class="nhsuk-table__cell">Lothian, Scotland</td>
+          <td class="nhsuk-table__cell">Lothian, Scotland (S)</td>
           <td class="nhsuk-table__cell "><a href="">View patient summary</a></td>
           <td class="nhsuk-table__cell">Jane Smith
           <span class="nhsuk-table__cell--hint">11-09-21</span></td>
