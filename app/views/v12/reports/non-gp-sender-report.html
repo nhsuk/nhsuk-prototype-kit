@@ -1,0 +1,98 @@
+{% extends "layout-v2-patient.html" %}
+
+{% block pageScripts %}
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/javascript" src="/js/auto.js"></script>
+<style type="text/css" media="screen">
+  .nhsuk-header__navigation-item:nth-child(4) {
+    border-bottom: 4px solid #d8dde0;
+  }
+</style>
+{% endblock %}
+
+{% block pageTitle %}
+  NHS Cervical screening management system
+{% endblock %}
+
+{% block header %}
+{% include '../components/header.html' %}
+{% endblock %}
+
+
+
+
+{% block content %}
+
+
+
+
+<div class="nhsuk-grid-row nhsuk-u-margin-top-4">
+    <div class="nhsuk-grid-column-two-thirds">
+
+
+  <div class="nhsuk-back-link nhsuk-u-margin-bottom-4">
+      <a class="nhsuk-back-link__link" href="reports">
+        <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+        </svg>
+
+          Back to reports</a>
+
+    </div>
+
+    <h1 class="nhsuk-heading-l">Non GP sender report</h1>
+
+    <p class="nhsuk-body">Download CSV report to view all non GP sender details.</p>
+
+    <p class="nhsuk-body">To deactivate, reactivate or add new non GP sender codes use the <a href="../admin/manage-sender-codes-v2/manage-sender-codes">manage sender codes tool.</a></p>
+
+        <h2 class="nhsuk-heading-m">Refine report</h2>
+
+        <div class="nhsuk-form-group">
+
+  <fieldset class="nhsuk-fieldset" aria-describedby="contact-hint">
+
+    <div class="nhsuk-hint" id="contact-hint">
+      Select all options that are relevant to you.
+    </div>
+
+    <div class="nhsuk-checkboxes">
+
+      <div class="nhsuk-checkboxes__item">
+        <input class="nhsuk-checkboxes__input" id="contact" name="contact" type="checkbox" value="email">
+        <label class="nhsuk-label nhsuk-checkboxes__label" for="contact">
+          Active
+        </label>
+      </div>
+
+      <div class="nhsuk-checkboxes__item">
+        <input class="nhsuk-checkboxes__input" id="contact-2" name="contact" type="checkbox" value="phone">
+        <label class="nhsuk-label nhsuk-checkboxes__label" for="contact-2">
+          Inactive
+        </label>
+      </div>
+
+    </div>
+    </div>
+  </fieldset>
+
+  <form action="data:text/csv;charset=utf-8,Area/Cipher,Sender Code,Name,Address,Active/Not Active,Date code set up,Date code last used, Sender inactive date,Source type,CRM number
+NEW,Y05157,New Croft Centre,Market St Newcastle upon Tyne NE1 6ND,Active,7-01-2012,5-07-2021,-,03,CAS-12345-ABCDE
+BAA,Y05222,Woodland Drive Medical Centre,Woodland Drive Barnsley South Yorkshire S70 6QW,Active,15-09-2015,17-06-2021,-,07,CAS-12345-ALFYB
+BAA,Y00751,Hillder House,Gawber Rd Barnsley,Active,1-02-2010,6-11-2021,-,2,CAS-12345-AKFHGY
+WAK,ANCSHW,Manygates Clinic,Belle Isle Health Park Portobello Road Wakefield WF1 5PN,Active,18-02-2009,17-12-2021,-,3,CAS-12345-AGJJH
+LA,Y05962,Royal Preston Hospital,Sharoe Green Lane North Fulwood Preston Lancashire PR2 9HT,Active,13-10-2007,15-05-2021,-,7,-
+NF,GYNE,Crarc Colposcopy clinic,Ipswich hospital Heath road Ipswich IP4 5PD,Active,13-10-2007,15-05-2019,-,4,-
+NEW,Y05222,New Croft Centre,Market St Newcastle upon Tyne NE1 6ND,Active,7-01-2012,5-07-2021,-,3,CAS-12345-ABCDE">
+  <button class="nhsuk-button" download="data.csv" >
+  Download CSV
+</button>
+</form>
+
+</div>
+
+
+
+
+
+    {% endblock %}
