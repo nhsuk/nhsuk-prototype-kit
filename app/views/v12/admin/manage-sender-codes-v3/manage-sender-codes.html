@@ -26,24 +26,24 @@ NHS Cervical screening management system
 <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-full">
     {{ backLink({
-      "href": "index",
+      "href": "../../admin",
       "text": "Back to Admin"
     }) }}
 
     <h1 class="nhsuk-heading-l">Manage sender codes</h1>
 
-<p>Add or manage all non GP senders. For GP senders, go to the <a href="https://odsportal.digital.nhs.uk/Organisation/Search">ODS Portal</a>.</p> 
+<p>Add or manage all non GP senders. For GP senders, go to the <a href="https://odsportal.digital.nhs.uk/Organisation/Search">ODS Portal</a>.</p>
 
    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-bottom-4 no-print" href="add-sender"
 >Add new non GP sender</a>
-   
-<br>  
+
+<br>
 <br>
 
-    
+
    <h2 id="testresults" class="nhsuk-heading-l">Search existing senders</h2>
 
-   <p>If not known, use the non GP sender details report (link) to find sender details</p>
+   <p>If not known, use the <a href="../../reports/non-gp-sender-report">non GP sender details report</a> to find sender details</p>
 
         <form action="sender-code-search" method="post">
      <div class="nhsuk-form-group">
@@ -61,17 +61,17 @@ NHS Cervical screening management system
 
             <div class="nhsuk-form-group">
                 <label class="nhsuk-label nhsuk-label__strong" for="sender-code">
-                   Area 
+                   Area
                 </label>
                 <div class="nhsuk-hint" id="example-with-hint-text-hint">
-                  Also known as NHAIS cipher. 
+                  Also known as NHAIS cipher.
                 <br> Enter 2 to 3 letters for example, BD or LNA.
 
                 </div>
                 <input class="nhsuk-input nhsuk-input--width-4" value='{{ senderValue }}' id="sender-code" name="sender-code" type="text" aria-describedby="Sender code" inputmode="text" autocomplete="off">
             </div>
-   
-    
+
+
 
 <br>
     <div class="nhsuk-form-group">
@@ -81,15 +81,13 @@ NHS Cervical screening management system
         </div>
       </div>
     </div>
-              
+
   </form>
-     
-   
+
+
 
 <div class="nhsuk-grid-row nhsuk-u-margin-top-4">
   <div class="nhsuk-grid-column-full">
-  
+
 
 {% endblock %}
-
-
