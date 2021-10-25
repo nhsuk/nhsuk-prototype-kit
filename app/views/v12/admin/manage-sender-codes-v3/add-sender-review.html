@@ -61,8 +61,8 @@
 
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Name and address</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['senderName'] or "Kent General Hospital" }}
-    <br>{{ data['buildingName'] or "Hospital" }}<br>{{ data['streetName'] or "1 yemen road" }}<br>{{ data['townName'] or "Yemen" }}<br>{{ data['countyName'] or "Tyne and wear" }}<br>{{ data['postcodeName'] or "NE34 7EN" }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['senderName'] or "Kent & Canterbury Hospital" }}
+    <br>{{ data['buildingName'] or "Hospital" }}<br>{{ data['streetName'] or "Ethelbert Rd" }}<br>{{ data['townName'] or "Canterbury" }}<br>{{ data['countyName'] or "Kent" }}<br>{{ data['postcodeName'] or "CT1 3NG" }}</dd>
     <dd class="nhsuk-summary-list__actions"><a href="add-sender">Change<span class="nhsuk-u-visually-hidden"> Address</span></a></dd>
   </div>
 
@@ -74,13 +74,13 @@
 
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">CRM</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['addCrm'] or "01224 987560" }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['addCrm'] or "CAS-12345-ABCDE" }}</dd>
     <dd class="nhsuk-summary-list__actions"><a href="add-sender-crm">Change<span class="nhsuk-u-visually-hidden"> CRM</span></a></dd>
   </div>
 
  <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Comments</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['addSenderComments'] or "example" }}</dd>
+    <dd class="nhsuk-summary-list__value">{{ data['addSenderComments'] or "" }}</dd>
     <dd class="nhsuk-summary-list__actions"><a href="add-sender-crm">Change<span class="nhsuk-u-visually-hidden"> Comments</span></a></dd>
   </div>
 </div>

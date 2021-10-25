@@ -49,7 +49,7 @@
                 For example, CAS-12345-ABCDE.
                 <br>Enter CRM case number if provided.
               </span>
-              <input class="nhsuk-input nhsuk-input--width-10" type="text" name="addCrm" autocomplete="off" value="{{ addCrm }}">
+              <input class="nhsuk-input nhsuk-input--width-10" type="text" name="addCrm" autocomplete="off" value="{{ data['addCrm'] }}">
             </div>
             <div class="nhsuk-form-group">
               <label class="nhsuk-label" for="example">
@@ -58,7 +58,7 @@
 
                   <span class="nhsuk-hint" id="example-hint"></span>
 
-              <textarea class="nhsuk-textarea" id="example" name="addSenderComments" rows="5" aria-describedby="example-hint" autocomplete="off" {{ addSenderComments }}></textarea>
+              <textarea class="nhsuk-textarea" id="example" name="addSenderComments" rows="5" aria-describedby="example-hint" autocomplete="off" value="{{ data['addSenderComments'] }}"></textarea>
               </div>
 
             <button class="nhsuk-button nhsuk-button--ers" type="submit">Continue</button>
