@@ -55,12 +55,12 @@ NHS Cervical screening management system
     <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
      <h1 class="nhsuk-heading-l"> Check sender detials before deactivating</h1>
-     
+
     <div class="nhsuk-inset-text">
       <span class="nhsuk-u-visually-hidden" >Information: </span>
       <p>Deactivating this sender means that any results submitted from this sender after today will be rejected.</p>
     </div>
-  
+
   <div class="nhsuk-grid-row">
   <div class="nhsuk-grid-column-three-quarters">
      <div class="nhsuk-panel-with-label">
@@ -68,18 +68,18 @@ NHS Cervical screening management system
       <h3 class="nhsuk-panel-with-label__label">Sender code: GYNE
   <span style= color:white; class="nhsuk-table__cell--hint"></span></h3>
 
-      
+
 <br>
       <div class="nhsuk-form-group">
-       
+
 
           <dl class="nhsuk-summary-list">
 
           <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
             Sender details
           </legend>
-    
-    
+
+
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Sender code</dt>
     <dd class="nhsuk-summary-list__value">{{ data['health-authority'] or "GYNE" }}</dd>
@@ -89,12 +89,12 @@ NHS Cervical screening management system
     <dt class="nhsuk-summary-list__key">Area</dt>
     <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "NF" }}</dd>
   </div>
-  
+
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Source type</dt>
     <dd class="nhsuk-summary-list__value">4</dd>
   </div>
-  
+
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Name and address</dt>
     <dd class="nhsuk-summary-list__value">Crarc Colposcopy clinic
@@ -103,13 +103,13 @@ Heath road,<br>
 Ipswich,<br>
 IP4 5PD</dd>
   </div>
-  
+
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">Active</dt>
     <dd class="nhsuk-summary-list__value">Yes </dd>
   </div>
 
-  
+
   <div class="nhsuk-summary-list__row">
     <dt class="nhsuk-summary-list__key">CRM</dt>
     <dd class="nhsuk-summary-list__value">CAS-12345-ABCDE</dd>
@@ -123,11 +123,11 @@ IP4 5PD</dd>
 
 
       </dl>
-      {% include '../../components/comments-timeline-sender-audit.html' %} 
+      {% include '../../components/comments-timeline-sender-audit.html' %}
     </div>
   </div>
 
-          
+
 
 
 
@@ -149,8 +149,8 @@ IP4 5PD</dd>
              This will mean any future results submitted from this sender will be rejected
             </div>
           </div>
-        
-            
+
+
             <div class="nhsuk-form-group">
               <h1 class="nhsuk-label-wrapper">
                 <label class="nhsuk-fieldset__legend--s nhsuk-label__strong" for="example-heading">
@@ -163,23 +163,23 @@ IP4 5PD</dd>
               <input class="nhsuk-input nhsuk-input--width-10" type="text" name="crm" autocomplete="off" value="{{ data.crm }}">
             </div>
             <div class="nhsuk-form-group">
-             
+
             <div class="nhsuk-grid-row">
             <div class="nhsuk-grid-column-three-quarters">
-              <label class="nhsuk-label" for="example">
-                Comments 
+              <label class=" nhsuk-fieldset__legend--s  nhsuk-label__strong" for="example">
+                Comments
               </label>
                   <span class="nhsuk-hint" id="example-hint"> Add a comment explaining this action taken.</span>
-               
+
               <textarea class="nhsuk-textarea" id="example" name="comments" rows="4" aria-describedby="example-hint" autocomplete="off">{{ data.comments }}</textarea>
             </div>
           </div>
         </div>
    <br>
-    <button class="nhsuk-button nhsuk-button--ers" type="submit">Confirm</button>   
+    <button class="nhsuk-button nhsuk-button--ers" type="submit">Confirm</button>
   </form>
 
- <p><a href="manc-rejected">Exit without saving</a></p> 
+ <p><a href="manc-rejected">Exit without saving</a></p>
   </div>
 
 {% endblock %}

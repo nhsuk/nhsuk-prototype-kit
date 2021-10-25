@@ -27,7 +27,7 @@
      <div class="nhsuk-panel-with-label">
       <class="nhsuk-panel-with-label__label">
       <h3 class="nhsuk-panel-with-label__label">Add new sender
-  <span style= color:white; class="nhsuk-table__cell--hint"></span></h3>
+  <span style= "color:white; class="nhsuk-table__cell--hint"></span></h3>
     <span class="nhsuk-hint">Step 1 of 3</span>
 
   <h1 class="nhsuk-heading-l">Add sender details</h1>
@@ -53,7 +53,7 @@
                   <br>
                   For example, A86020
                 </div>
-                <input class="nhsuk-input nhsuk-input--width-4" value='{{ senderValue }}' id="sender-code" name="sender-code" type="text" aria-describedby="Sender code" inputmode="text" autocomplete="off">
+                <input class="nhsuk-input nhsuk-input--width-4" value="{{ data['senderCode'] }}" id="senderCode" name="senderCode" type="text" aria-describedby="Sender code" inputmode="text" autocomplete="off">
             </div>
 
 
@@ -65,7 +65,7 @@
                  Enter 2 to 3 letters for example, BD or LNA.
                 <br>Also known as NHAIS cipher or NHAIS box.
               </div>
-              <input class="nhsuk-input nhsuk-input--width-10" value="{{ data['national-code'] }}" id="national-code" name="national-code" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
+              <input class="nhsuk-input nhsuk-input--width-10" value="{{ inputArea }}" id="inputArea" name="inputArea" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
             </div>
 
               {{ input({
@@ -76,11 +76,11 @@
                hint: {
                   html: "A number between 2 and 7"
                },
-               "id": "input-width-2",
-               "name": "source-type",
+               "id": "sourceType",
+               "name": "sourceType",
                "classes": "nhsuk-input--width-2",
                "autocomplete": "off",
-               "value": sourceValue
+               "value": sourceType
              }) }}
 
 
@@ -93,39 +93,38 @@
                     <label class="nhsuk-label" for="email">
                         Sender name
                       </label>
-                      <input class="nhsuk-input nhsuk-u-width-two-thirds" id="email" name="email" type="text">
+                      <input class="nhsuk-input nhsuk-u-width-two-thirds" id="address" name="senderName" type="text">
                       <div class="nhsuk-u-padding-bottom-4"></div>
                       <label class="nhsuk-label" for="email">
                         Building and street
                       </label>
-                      <input class="nhsuk-input nhsuk-u-width-two-thirds" id="email" name="email" type="text">
+                      <input class="nhsuk-input nhsuk-u-width-two-thirds" id="address" name="buildingName" type="text">
                       <div class="nhsuk-u-padding-bottom-5"></div>
 
-                      <input class="nhsuk-input nhsuk-u-width-two-thirds" id="email" name="email" type="text">
+                      <input class="nhsuk-input nhsuk-u-width-two-thirds" id="address" name="streetName" type="text">
                       <div class="nhsuk-u-padding-bottom-4"></div>
                       <label class="nhsuk-label" for="email">
                         Town or city
                       </label>
-                      <input class="nhsuk-input nhsuk-u-width-two-thirds" id="email" name="email" type="text">
+                      <input class="nhsuk-input nhsuk-u-width-two-thirds" id="address" name="townName" type="text">
                       <div class="nhsuk-u-padding-bottom-4"></div>
                       <label class="nhsuk-label" for="email">
                         County (optional)
                       </label>
-                      <input class="nhsuk-input nhsuk-u-width-two-thirds" id="email" name="email" type="text">
+                      <input class="nhsuk-input nhsuk-u-width-two-thirds" id="address" name="countyName" type="text">
                       <div class="nhsuk-u-padding-bottom-4"></div>
                       <label class="nhsuk-label" for="email">
                         Postcode
                       </label>
-                      <input class="nhsuk-input nhsuk-u-width-one-third nhsuk-u-margin-bottom-8" id="email" name="email" type="text">
+                      <input class="nhsuk-input nhsuk-u-width-one-third nhsuk-u-margin-bottom-8" id="address" name="postcodeName" type="text">
 
 
               <label class="nhsuk-label nhsuk-label__strong" for="example-with-hint-text">
                Enter sender telephone number (optional)
               </label>
               <div class="nhsuk-hint" id="example-with-hint-text-hint">
-
               </div>
-              <input class="nhsuk-input nhsuk-input--width-10" value="{{ data['national-code'] }}" id="national-code" name="national-code" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
+              <input class="nhsuk-input nhsuk-input--width-10" value="{{ data['senderTelephone'] }}" id="senderTelephone" name="senderTelephone" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
             </div>
 
 
