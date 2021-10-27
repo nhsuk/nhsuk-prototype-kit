@@ -67,20 +67,17 @@
               <input class="nhsuk-input nhsuk-input--width-10" value="{{ data['inputArea'] or "NF"}}" id="inputArea" name="inputArea" type="text" aria-describedby="example-with-hint-text-hint" inputmode="numeric">
             </div>
 
-              {{ input({
-               "label": {
-                 "text": "Source type",
-                "classes": "nhsuk-label nhsuk-label__strong"
-               },
-               hint: {
-                  html: "A number between 2 and 7"
-               },
-               "id": "sourceType",
-               "name": "sourceType",
-               "classes": "nhsuk-input--width-2",
-               "autocomplete": "off",
-               "value": data.sourceType
-             }) }}
+
+
+             <div class="nhsuk-form-group">
+                <label class="nhsuk-label nhsuk-label nhsuk-label__strong" for="sourceType">
+                  Source type
+                </label>
+                <span class="nhsuk-hint" id="sourceType-hint">
+                  A number between 2 and 7
+                </span>
+                <input class="nhsuk-input nhsuk-input--width-2" value="{{ data['sourceType'] or '04'}}" id="sourceType" name="sourceType" type="text" aria-describedby="sourceType-hint" autocomplete="off">
+              </div>
 
 
                    <div class="nhsuk-form-group">
