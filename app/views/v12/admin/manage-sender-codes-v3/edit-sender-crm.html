@@ -23,7 +23,7 @@
       <class="nhsuk-panel-with-label__label">
       <h3 class="nhsuk-panel-with-label__label">Edit sender details
   <span style= color:white; class="nhsuk-table__cell--hint"></span></h3>
-    <span class="nhsuk-hint">Step 2 of 2</span>
+
 
       <!--<div class="nhsuk-form-group">-->
         <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
@@ -33,7 +33,7 @@
         {% if data['edit-review'] == 'true' %}
              <form action="review-edit-sender-changes" method="post">
         {% else %}
-             <form action="add-sender-review" method="post">
+             <form action="review-edit-sender-changes" method="post">
         {% endif %}
             <div class="nhsuk-form-group">
               <h1 class="nhsuk-label-wrapper">
