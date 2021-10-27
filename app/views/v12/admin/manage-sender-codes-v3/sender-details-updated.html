@@ -33,65 +33,67 @@
     </legend>
 <br>
 
+<ul class="nhsuk-inset-text nhsuk-comment-container nhsuk-inset-text__screening nhsuk-inset-text__screening--success">
+  <li class="nhsuk-panel"> <strong>Sender details have been updated</strong></p>
 
+</ul>
 
-    <form action="manage-sender-codes" method="post">
+<form action="manage-sender-codes" method="post">
 
 <dl class="nhsuk-summary-list">
 
 
 
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Sender code</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['senderCode'] or "GYNE" }}</dd>
-  </div>
+<div class="nhsuk-summary-list__row">
+<dt class="nhsuk-summary-list__key">Sender code</dt>
+<dd class="nhsuk-summary-list__value">{{ data['senderCode'] or "GYNE" }}</dd>
+</div>
 
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Area</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "NF" }}</dd>
-  </div>
+<div class="nhsuk-summary-list__row">
+<dt class="nhsuk-summary-list__key">Area</dt>
+<dd class="nhsuk-summary-list__value">{{ data['national-code'] or "NF" }}</dd>
+</div>
 
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Source type</dt>
-    <dd class="nhsuk-summary-list__value">04</dd>
-  </div>
+<div class="nhsuk-summary-list__row">
+<dt class="nhsuk-summary-list__key">Source type</dt>
+<dd class="nhsuk-summary-list__value">04</dd>
+</div>
 
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Address</dt>
-    <dd class="nhsuk-summary-list__value">	Crarc Colposcopy clinic, <br>
+<div class="nhsuk-summary-list__row">
+<dt class="nhsuk-summary-list__key">Address</dt>
+<dd class="nhsuk-summary-list__value">	Crarc Colposcopy clinic, <br>
 Ipswich hospital,<br>
 Heath road,<br>
 Ipswich,<br>
 IP4 5PD</dd>
-  </div>
+</div>
 
-   <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Telephone</dt>
-    <dd class="nhsuk-summary-list__value">{{ data['national-code'] or "01224 987560" }}</dd>
+<div class="nhsuk-summary-list__row">
+<dt class="nhsuk-summary-list__key">Telephone</dt>
+<dd class="nhsuk-summary-list__value">{{ data['national-code'] or "01224 987560" }}</dd>
 
-  </div>
+</div>
 
-  <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">CRM</dt>
-    <dd class="nhsuk-summary-list__value">CAS-12345-ABCDE</dd>
-  </div>
+<div class="nhsuk-summary-list__row">
+<dt class="nhsuk-summary-list__key">CRM</dt>
+<dd class="nhsuk-summary-list__value">CAS-12345-ABCDE</dd>
+</div>
 
- <div class="nhsuk-summary-list__row">
-    <dt class="nhsuk-summary-list__key">Comments</dt>
-    <dd class="nhsuk-summary-list__value"></dd>
+<div class="nhsuk-summary-list__row">
+<dt class="nhsuk-summary-list__key">Comments</dt>
+<dd class="nhsuk-summary-list__value"></dd>
 
-  </div>
+</div>
 
-   </dl>
-      {% include '../../components/comments-timeline-sender-audit.html' %}
-    </div>
-
+</dl>
+  {% include '../../components/comments-timeline-sender-audit.html' %}
+</div>
 
 
      <a href="edit-sender" class="nhsuk-button nhsuk-button--ers">
             Edit
          </a>
-    <a href="edit-sender-crm" class="nhsuk-button nhsuk-button--secondary nhsuk-button--ers">
+    <a href="add-sender-crm-edit" class="nhsuk-button nhsuk-button--secondary nhsuk-button--ers">
             Add new CRM and comments
          </a>
 
