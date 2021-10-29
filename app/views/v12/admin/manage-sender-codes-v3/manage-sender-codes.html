@@ -32,7 +32,23 @@ NHS Cervical screening management system
 
     <h1 class="nhsuk-heading-l">Manage sender codes</h1>
 
-<p>Add or manage all non GP senders. For GP senders, go to the <a href="https://odsportal.digital.nhs.uk/Organisation/Search">ODS Portal</a>.</p>
+    <p>
+      You can use this to:
+      </p>
+
+    <ul>
+        <li>
+          View all GP and no GP senders
+          </li>
+          <li>
+            Add new non GP senders
+            </li>
+            <li>
+              Edit, deactivate or reactivate non GP senders
+              </li>
+      </ul>
+
+<p>To manage GP senders, go to the <a href="https://odsportal.digital.nhs.uk/Organisation/Search">ODS Portal</a>.</p>
 
    <a class="nhsuk-button nhsuk-button--ers nhsuk-button--ers_secondary nhsuk-u-margin-bottom-4 no-print" href="add-sender"
 >Add new non GP sender</a>
@@ -41,9 +57,9 @@ NHS Cervical screening management system
 <br>
 
 
-   <h2 id="testresults" class="nhsuk-heading-l">Search existing senders</h2>
+   <h2 id="testresults" class="nhsuk-heading-l">Find existing senders</h2>
 
-   <p>If not known, use the <a href="../../reports/non-gp-sender-report">non GP sender details report</a> to find sender details.</p>
+   <p>If you do not know the sender code or area for a non GP sender, use the <a href="../../reports/non-gp-sender-report">non GP sender details report</a> to find sender details.</p>
 
         <form action="sender-code-search" method="post">
      <div class="nhsuk-form-group">
@@ -67,6 +83,7 @@ NHS Cervical screening management system
                   Also known as NHAIS cipher or NHAIS box.
 
                 <br>Enter 2 to 3 letters for example, BD or LNA.
+                <br>You need to enter a valid area to find a sender.
 
 
                 </div>
@@ -79,7 +96,7 @@ NHS Cervical screening management system
     <div class="nhsuk-form-group">
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-full">
-          <button class="nhsuk-button nhsuk-button--ers" type="submit">Search</button>
+          <button class="nhsuk-button nhsuk-button--ers" type="submit">Find sender</button>
         </div>
       </div>
     </div>
