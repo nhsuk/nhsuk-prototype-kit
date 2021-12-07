@@ -1,5 +1,12 @@
 # NHS.UK prototype kit Changelog
 
+## Unreleased 
+
+:wrench: **Fixes**
+
+- Install NHS.UK frontend v6.0.1
+- Update Health A-Z with new components
+
 ## 4.7.2 - 28 October 2021
 
 :wrench: **Fixes**
