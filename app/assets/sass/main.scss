@@ -3,13 +3,9 @@
 
 // Components that are not in the NHS.UK frontend library
 @import 'components/related-nav';
+@import 'components/list-border';
 
 ///////////////////////////////////////////
 // Add your custom CSS/Sass styles below...
 ///////////////////////////////////////////
-
-.nhsuk-list--border li {
-    border-bottom: 1px solid $color_nhsuk-grey-4;
-    padding: 8px 0 16px;
-  }
   
