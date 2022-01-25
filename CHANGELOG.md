@@ -1,5 +1,11 @@
 # NHS.UK prototype kit Changelog
 
+## 4.7.4 - TBC
+
+:wrench: **Fixes**
+
+- Fix some `no-console` JS linting warnings
+
 ## 4.7.3 - 8 December 2021
 
 :wrench: **Fixes**

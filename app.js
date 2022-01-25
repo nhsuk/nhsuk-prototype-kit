@@ -101,7 +101,7 @@ if (useAutoStoreData === 'true') {
 function checkFiles() {
   const nodeModulesExists = fs.existsSync(path.join(__dirname, '/node_modules'));
   if (!nodeModulesExists) {
-    console.error('ERROR: Node module folder missing. Try running `npm install`');
+    console.error('ERROR: Node module folder missing. Try running `npm install`'); // eslint-disable-line no-console
     process.exit(0);
   }
 
@@ -122,7 +122,7 @@ const sessionDataDefaultsFile = path.join(dataDirectory, '/session-data-defaults
 const sessionDataDefaultsFileExists = fs.existsSync(sessionDataDefaultsFile);
 
 if (!sessionDataDefaultsFileExists) {
-  console.log('Creating session data defaults file');
+  console.log('Creating session data defaults file'); // eslint-disable-line no-console
   if (!fs.existsSync(dataDirectory)) {
     fs.mkdirSync(dataDirectory);
   }
@@ -226,7 +226,7 @@ app.use((req, res, next) => {
 
 // Display error
 app.use((err, req, res) => {
-  console.error(err.message);
+  console.error(err.message); // eslint-disable-line no-console
   res.status(err.status || 500);
   res.send(err.message);
 });
