@@ -1,5 +1,9 @@
 # NHS.UK prototype kit Changelog
 
+## 4.8.0 - 2 February 2022
+
+- Install NHS.UK frontend v6.1.0 which includes text align utility class
+
 ## 4.7.3 - 8 December 2021
 
 :wrench: **Fixes**
