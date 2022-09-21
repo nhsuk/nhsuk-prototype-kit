@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  This is my page
+{% endblock %}
+
+{% block content %}
+
+<h1>HELLO THERE!</h1>
+
+<p>this is some paragraph text</p>
+
+{{ dateInput({
+  "id": "example",
+  "namePrefix": "example",
+  "fieldset": {
+    "legend": {
+      "text": "When was your favourite album released?",
+      "classes": "nhsuk-label--l",
+      "isPageHeading": true
+    }
+  },
+  "hint": {
+    "text": "For example, 15 3 1984"
+  },
+  "items": [
+    {
+      "name": "day",
+      "classes": "nhsuk-input--width-2"
+    },
+    {
+      "name": "month",
+      "classes": "nhsuk-input--width-2"
+    },
+    {
+      "name": "year",
+      "classes": "nhsuk-input--width-4"
+    }
+  ]
+}) }}
+
+<p>Hello!</p>
+
+{% endblock %}
