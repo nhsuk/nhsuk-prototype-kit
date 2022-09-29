@@ -1,89 +1,44 @@
-<!-- Use this page as the index for your project -->
-
-<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-
-<!-- Extends the layout from /views/layout.html -->
 {% extends 'layout.html' %}
-<!-- 
-  In /views/layout.html you can:
-    - change the header and footer 
-    - add custom CSS and JavaScript
--->
 
-<!-- Set the page title -->
 {% block pageTitle %}
-  NHS.UK prototype kit
+  Make a new ticket request
 {% endblock %}
 
-<!-- For adding a breadcrumb -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
-{% block beforeContent %}
-{% endblock %}
-
-<!-- For adding a back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
-{% block outerContent %}
-{% endblock %}
-
-<!-- For adding page content -->
-<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
-  <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
 
-      <!-- Change the page title here -->
-      <h1>
-        NHS.UK prototype kit
-        <span class="nhsuk-caption-xl nhsuk-caption--bottom">Version {{version}}</span>
-      </h1>
+<h1>Ticket request</h1>
 
-      <!-- Add your content here -->
-      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
+<form method="POST">
 
-      <p class="nhsuk-lede-text">
-        This kit lets you rapidly create HTML prototypes of NHS services.
-      </p>
+{{ input({
+  "label": {
+    "text": "What is your first name?"
+  },
+  "id": "firstname",
+  "name": "firstname",
+  "attributes": "required"
+}) }}
 
-      <hr>
+<div class="nhsuk-form-group">
+  <label class="nhsuk-label" for="example-with-hint-text">
+    What is your NHS number?
+  </label>
+  <input required class="nhsuk-input nhsuk-input--width-10" id="example-with-hint-text" name="example-with-hint-text" type="text" inputmode="numeric">
+</div>
 
-      <h2>
-        About this page about prototypes
-      </h2>
+{{ input({
+  "label": {
+    "text": "What is your age?"
+  },
+  "id": "age",
+  "name": "age",
+  "classes": "nhsuk-input--width-2"
+}) }}
 
-      <p>
-        Use this page as the index for your project.
-      </p>
-      
-      <p>
-        You'll find the code for this page at <strong>/app/views/index.html</strong>.
-      </p>
+{{ button({
+  "text": "Submit"
+}) }}
 
-      <p>
-        There is also an <a href="/page-example">example page</a>, which contains a selection of NHS.UK frontend styles and components.
-      </p>
+</form>
 
-      <hr>
-
-      <h2>
-        Get started
-      </h2>
-
-      <p>Get started by using the:</p>
-
-      <ul>
-        <li>
-          <a href="/docs/how-tos">how to guides</a>
-        </li>
-        <li>
-          <a href="/docs/page-templates">page templates</a>
-        </li>
-        <li>
-          code snippets for styles and components from the <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a>
-        </li>
-      </ul>
-
-      <!-- End of content -->
-
-    </div>
-  </div>
 {% endblock %}

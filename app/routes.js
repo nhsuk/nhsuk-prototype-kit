@@ -2,9 +2,26 @@
 const express = require('express');
 
 const router = express.Router();
-router.get("/newprototype", (request, response) => {
-    response.send("LOL");
-    })
-// Add your routes here - above the module.exports line
+
+router.post("/", (request, response) => {
+    const incomingAge = request.session.data.age;
+    if (incomingAge < 16) {
+        response.redirect("/fail");
+    } else { 
+        response.redirect("/choose-event");
+    }
+});
+
+router.post("/choose-event", (request, response) => {
+    const chosenNight = request.session.data.nightselection;
+    switch (chosenNight) {
+        case 'thursday':
+            response.redirect("/event-details/thursday");
+                break;
+        case 'friday':
+            response.redirect("/event-details/friday");
+                break;
+      }
+});
 
 module.exports = router;

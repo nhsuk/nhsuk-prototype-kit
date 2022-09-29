@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Choose event
+{% endblock %}
+
+{% block content %}
+
+<h1>Hi {{data.firstname}}, you can now choose an event</h1>
+
+<form method="post">
+  
+{{ radios({
+  "idPrefix": "example",
+  "name": "nightselection",
+  "fieldset": {
+    "legend": {
+      "text": "Select night",
+      "classes": "nhsuk-fieldset__legend--l",
+      "isPageHeading": true
+    }
+  },
+  "items": [
+    {
+      "value": "thursday",
+      "text": "Thursday at 8pm"
+    },
+    {
+      "value": "friday",
+      "text": "Friday at 8pm"
+    }
+  ]
+}) }}
+
+{{ button({
+  "text": "Continue"
+}) }}
+
+</form>
+
+{% endblock %}

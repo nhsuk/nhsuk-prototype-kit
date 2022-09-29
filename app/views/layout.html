@@ -5,7 +5,7 @@
 -->
 
 <!-- Extends the layout from /docs/views/template.html -->
-{% extends "template.html" %}
+{% extends "./template.html" %}
 
 <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 {% block headCSS %}
@@ -14,7 +14,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  NHS.UK prototype kit
+  Ticket request
 {% endblock %}
 
 <!-- Edit the header -->
@@ -22,7 +22,7 @@
 {% block header %}
   {{ header({
     "service": {
-        "name": "Prototype kit",
+        "name": "Ticket request system",
         "href": "/"
       },
       "showNav": "false",

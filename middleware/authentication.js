@@ -16,21 +16,21 @@ const basicAuth = require('basic-auth');
 
 module.exports = function (req, res, next) { /* eslint-disable-line consistent-return */
   // Set configuration variables
-  const env = (process.env.NODE_ENV || 'development').toLowerCase();
-  const username = process.env.PROTOTYPE_USERNAME;
-  const password = process.env.PROTOTYPE_PASSWORD;
+  // const env = (process.env.NODE_ENV || 'development').toLowerCase();
+  // const username = process.env.PROTOTYPE_USERNAME;
+  // const password = process.env.PROTOTYPE_PASSWORD;
 
-  if (env === 'production' || env === 'staging') {
-    if (!username || !password) {
-      return res.send('<p>Username or password not set in environment variables.</p>');
-    }
+  // if (env === 'production' || env === 'staging') {
+  //   if (!username || !password) {
+  //     return res.send('<p>Username or password not set in environment variables.</p>');
+  //   }
 
-    const user = basicAuth(req);
+  //   const user = basicAuth(req);
 
-    if (!user || user.name !== username || user.pass !== password) {
-      res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
-      return res.sendStatus(401);
-    }
-  }
+  //   if (!user || user.name !== username || user.pass !== password) {
+  //     res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
+  //     return res.sendStatus(401);
+  //   }
+  // }
   next();
 };
