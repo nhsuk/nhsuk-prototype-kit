@@ -27,6 +27,8 @@ If you want to contribute to the NHS.UK prototype kit, by reporting bugs, fixing
 
 ## Versioning and deploying the prototype kit
 
+> The below is only for maintainers of the prototype kit source code - these instructions aren't relevant if you're building your own protoype using the kit.
+
 - Merge required changes via PR into `main` branch
   - Ensure the version number in `package.json` and `CHANGELOG.md` match, with a summary of the changes included in the changelog
 - Pull down merged `main` branch to your local repository
