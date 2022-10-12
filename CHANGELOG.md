@@ -1,5 +1,11 @@
 # NHS.UK prototype kit Changelog
 
+## 4.8.4 - 12 October 2022
+
+:pencil2: **Content**
+
+- Fixed typo in readme
+
 ## 4.8.3 - 5 September 2022
 
 :arrow_up: **Version bump**
