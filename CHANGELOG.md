@@ -1,5 +1,15 @@
 # NHS.UK prototype kit Changelog
 
+## 4.8.5 - 12 December 2022
+
+:wrench: Fixes
+
+- Update package dependencies `decode-uri-component`and `engine.io`.
+
+:pencil2: **Content**
+
+- Added deployment instructions and test note to readme.
+
 ## 4.8.4 - 12 October 2022
 
 :pencil2: **Content**
