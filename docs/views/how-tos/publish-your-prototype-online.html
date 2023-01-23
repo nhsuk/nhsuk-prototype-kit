@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Publish your prototype online - NHS.UK prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "how-tos/includes/breadcrumb.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>Publish your prototype online</h1>
+      <p>Publishing your prototype online means you can:</p>
+      <ul>
+        <li>share it with others, such as colleagues</li>
+        <li>test it with users</li>
+      </ul>
+      <p>You'll need a hosting service to publish prototypes online.</p>
+      
+      <h2>Hosting services</h2>
+      <p>The NHS.UK prototype kit runs on any hosting service that supports Node.js.</p>
+      <p>Your organisation may already use a hosting service for the prototype kit. Check with your digital team about which platform to use.</p>
+      <p>For example:</p>
+      <ul>
+      <li>Heroku (requires payment) – see <a href="https://devcenter.heroku.com/articles/github-integration">GitHub integration on Heroku website</a></li>
+      <li>Railway – see <a href="https://railway.app/new/github">Deploy repository on Railway website</a></li>
+      </ul>
+      <p>Some hosting services may automatically update your prototype every time you merge new changes in the connected GitHub repository. If it doesn't automatically update your prototype, you will need to do this manually.</p>
+      
+      <h2>Setting a password</h2>
+      <p>When running the prototype kit online, you must set a username and password. This is to stop anyone accidentally finding your prototype and mistaking it for a real service.</p>
+      <p>To set a password, check your hosting services documentation on how to set "environment variables". (It may have a slightly different name like "config vars" or "variables".)</p>
+
+      {% include "how-tos/includes/back-button.html" %}
+
+    </div>
+
+  </div>
+{% endblock %}
