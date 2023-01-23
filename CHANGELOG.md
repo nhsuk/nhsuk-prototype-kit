@@ -5,6 +5,7 @@
 :pencil2: **Content**
 
 - Add new 'Publish your prototype online' guidance
+- Replace Atom with Visual Studio Code on HTML text editor page
 
 ## 4.8.5 - 12 December 2022
 
