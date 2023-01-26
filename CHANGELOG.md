@@ -10,7 +10,6 @@
 :wrench: **Maintenance**
 
 - Install NHS.UK frontend v6.2.0
-- Added SonarQube analysis to pipeline
 
 ## 4.8.5 - 12 December 2022
 
