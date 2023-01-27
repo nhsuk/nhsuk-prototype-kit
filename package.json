@@ -7,7 +7,7 @@
     "build": "gulp build",
     "postinstall": "npm run build",
     "start": "node app.js",
-    "test": "jest",
+    "test": "jest --coverage=true",
     "prewatch": "gulp build",
     "watch": "gulp",
     "lint:js": "eslint -c ./linters/.eslintrc.js app.js middleware/**/*.js lib/**/*.js app/*.js docs/*.js"
