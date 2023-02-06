@@ -1,6 +1,16 @@
 pool:
   vmImage: 'ubuntu-latest'
 
+- task: SonarQubePrepare@5
+  displayName: 'Prepare analysis on SonarQube'
+  inputs:
+    SonarQube: 'nhsuk-prototype-kit'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'nhsuk-prototype-kit'
+    extraProperties: |
+        sonar.javascript.lcov.reportPaths=coverage/lcov.info
+
 steps:
 - task: Npm@1
   displayName: 'npm install'
@@ -20,16 +30,6 @@ steps:
     command: 'custom'
     customCommand: run test
     verbose: true
-
-- task: SonarQubePrepare@5
-  displayName: 'Prepare analysis on SonarQube'
-  inputs:
-    SonarQube: 'nhsuk-prototype-kit'
-    scannerMode: 'CLI'
-    configMode: 'manual'
-    cliProjectKey: 'nhsuk-prototype-kit'
-    extraProperties: |
-        sonar.javascript.lcov.reportPaths=coverage/lcov.info
 
 - task: SonarQubeAnalyze@5
   displayName: 'Run code analysis' 
