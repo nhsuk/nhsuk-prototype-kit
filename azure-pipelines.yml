@@ -14,6 +14,13 @@ steps:
     customCommand: run build
     verbose: true
 
+- task: Npm@1
+  displayName: 'npm run test'
+  inputs:
+    command: 'custom'
+    customCommand: run test
+    verbose: true
+
 - task: SonarQubePrepare@5
   displayName: 'Prepare analysis on SonarQube'
   inputs:
@@ -36,7 +43,6 @@ steps:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
 
     includeRootFolder: false
-
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish artifacts: drop'
