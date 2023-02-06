@@ -28,6 +28,8 @@ steps:
     scannerMode: 'CLI'
     configMode: 'manual'
     cliProjectKey: 'nhsuk-prototype-kit'
+    extraProperties: |
+        sonar.javascript.lcov.reportPaths=coverage/lcov.info
 
 - task: SonarQubeAnalyze@5
   displayName: 'Run code analysis' 
