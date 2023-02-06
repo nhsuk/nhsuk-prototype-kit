@@ -1,7 +1,18 @@
 pool:
   vmImage: 'ubuntu-latest'
 
+
 steps:
+- task: SonarQubePrepare@5
+  displayName: 'Prepare analysis on SonarQube'
+  inputs:
+    SonarQube: 'nhsuk-prototype-kit'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'nhsuk-prototype-kit'
+    extraProperties: |
+        sonar.javascript.lcov.reportPaths=coverage/lcov.info
+
 - task: Npm@1
   displayName: 'npm install'
   inputs:
@@ -14,13 +25,12 @@ steps:
     customCommand: run build
     verbose: true
 
-- task: SonarQubePrepare@5
-  displayName: 'Prepare analysis on SonarQube'
+- task: Npm@1
+  displayName: 'npm run test'
   inputs:
-    SonarQube: 'nhsuk-prototype-kit'
-    scannerMode: 'CLI'
-    configMode: 'manual'
-    cliProjectKey: 'nhsuk-prototype-kit'
+    command: 'custom'
+    customCommand: run test
+    verbose: true
 
 - task: SonarQubeAnalyze@5
   displayName: 'Run code analysis' 
@@ -36,7 +46,6 @@ steps:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
 
     includeRootFolder: false
-
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish artifacts: drop'

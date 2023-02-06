@@ -65,3 +65,6 @@ Thumbs.db
 
 # SonarQube
 .scannerwork
+
+# Code coverage
+coverage
