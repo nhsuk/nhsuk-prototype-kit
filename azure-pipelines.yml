@@ -1,6 +1,8 @@
 pool:
   vmImage: 'ubuntu-latest'
 
+
+steps:
 - task: SonarQubePrepare@5
   displayName: 'Prepare analysis on SonarQube'
   inputs:
@@ -11,7 +13,6 @@ pool:
     extraProperties: |
         sonar.javascript.lcov.reportPaths=coverage/lcov.info
 
-steps:
 - task: Npm@1
   displayName: 'npm install'
   inputs:
