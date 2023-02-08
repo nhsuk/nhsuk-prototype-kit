@@ -1,5 +1,12 @@
 # NHS.UK prototype kit Changelog
 
+## 4.8.7 - TBC February 2023
+
+:pencil2: **Content**
+
+- Enhanced deployment instructions and test note in readme
+- Fixed link in readme.
+
 ## 4.8.6 - 24 January 2023
 
 :pencil2: **Content**
