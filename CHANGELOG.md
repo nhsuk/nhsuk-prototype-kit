@@ -4,8 +4,8 @@
 
 :pencil2: **Content**
 
-- Enhanced deployment instructions and test note in readme
-- Fixed link in readme.
+- Enhance deployment instructions and test note in readme
+- Fix link in readme.
 
 ## 4.8.6 - 24 January 2023
 

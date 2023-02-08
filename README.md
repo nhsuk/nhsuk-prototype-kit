@@ -64,7 +64,7 @@ __Note:__ Live is behind a server side cache which results in changes not appear
     - `git tag v1.2.3`
     - `git push --tags`
 - [Github actions](https://github.com/nhsuk/nhsuk-prototype-kit/actions/workflows/release.yml) will spring to life and create a release which will be visible on the [releases tab](https://github.com/nhsuk/nhsuk-prototype-kit/releases) of the repository.
-- Finally, edit the description of the release to match the content entered into the changelog
+- Finally, edit the description of the release to match the content entered into the changelog.
 - To deploy the changes to Live, the promotion to Live from the Preview environment must have the appropriate approval in Azure.
 
 ### Code Analysis
