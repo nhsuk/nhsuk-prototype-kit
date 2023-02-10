@@ -8,7 +8,7 @@ The NHS.UK prototype kit enables you to make interactive prototypes that will lo
 
 ## Security
 
-If you publish your prototypes online, they must be protected by a <a href="http://nhsuk-prototype-kit.azurewebsites.net/docs/how-tos/heroku">username and password</a>. This is to prevent members of the public finding prototypes and thinking they are real services.
+If you publish your prototypes online, they must be protected by a <a href="https://nhsuk-prototype-kit.azurewebsites.net/docs/how-tos/publish-your-prototype-online">username and password</a>. This is to prevent members of the public finding prototypes and thinking they are real services.
 
 You must protect user privacy at all times, even when using prototypes. Prototypes made with the kit look like NHS.UK, but do not have the same security provisions. Always make sure you are handling user data appropriately.
 
@@ -17,23 +17,47 @@ You must protect user privacy at all times, even when using prototypes. Prototyp
 - <a href="http://nhsuk-prototype-kit.azurewebsites.net/docs/install/simple">Install guide (non technical)</a>
 - <a href="http://nhsuk-prototype-kit.azurewebsites.net/docs/install/advanced">Developer friendly install guide (technical)</a>
 
-### Testing
-There is currently no automated testing included with this product.
-
 ## Contribute
 
 If you want to contribute to the NHS.UK prototype kit, by reporting bugs, fixing bugs, suggesting new features or writing documentation, then read our [contributing guidelines](CONTRIBUTING.md).
 
 ## Development environment
 
+Before running Gitpod, you must <a href="https://github.com/apps/gitpod-io/installations/new">install the Gitpod.io application on your GitHub account</a>.
+
+Gitpod also requires access to public repositories. Enable this via <a href="https://gitpod.io/integrations">Gitpod integrations</a>. (Click on the 3 dots to edit permissions for your GitHub account. Gitpod may pre-select permissions. You need read/write access to code in the repos.)
+
+Using your own GitHub credentials you can create, change, commit and push to branches on our Gitpod container via the "ready to code" button below.
+
 [![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/nhsuk/nhsuk-prototype-kit)
 
-## Versioning and deploying the prototype kit
+Read an <a href="https://www.gitpod.io/docs">introduction to Gitpod (on Gitpod's website)</a>.
 
-> The below is only for maintainers of the prototype kit source code - these instructions aren't relevant if you're building your own protoype using the kit.
+## Release lifecycle
+
+> The below is only for maintainers of the prototype kit source code - these instructions aren't relevant if you're building your own prototype using the kit.
+
+### Testing
+
+Run unit tests locally with `npm run test`.
+
+### Environments
+
+#### Preview environment
+
+Code pushed to the `main` branch will deploy on the [Preview environment](http://nhsuk-prototype-kit-preview.azurewebsites.net/).
+
+#### Live
+
+The live NHS.UK prototype kit [Live environment](https://nhsuk-prototype-kit.azurewebsites.net), accessible to the public.
+
+__Note:__ Live is behind a server side cache which results in changes not appearing immediately.
+
+### Versioning and deploying to live
 
 - Merge required changes via PR into `main` branch
   - Ensure the version number in `package.json` and `CHANGELOG.md` match, with a summary of the changes included in the changelog
+- Verify the changes in the [Preview environment](http://nhsuk-prototype-kit-preview.azurewebsites.net/)
 - Pull down merged `main` branch to your local repository
 - Create a tag with the version number from the latest commit on `main`
   - If the latest version you're looking to push is version "1.2.3", you can do this on the command line with
@@ -41,6 +65,7 @@ If you want to contribute to the NHS.UK prototype kit, by reporting bugs, fixing
     - `git push --tags`
 - [Github actions](https://github.com/nhsuk/nhsuk-prototype-kit/actions/workflows/release.yml) will spring to life and create a release which will be visible on the [releases tab](https://github.com/nhsuk/nhsuk-prototype-kit/releases) of the repository.
 - Finally, edit the description of the release to match the content entered into the changelog.
+- To deploy the changes to Live, the promotion to Live from the Preview environment must have the appropriate approval in Azure.
 
 ### Code Analysis
 
