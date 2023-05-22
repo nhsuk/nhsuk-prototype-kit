@@ -29,12 +29,28 @@
       <li>Heroku (requires payment) – see <a href="https://devcenter.heroku.com/articles/github-integration">GitHub integration on Heroku website</a></li>
       <li>Railway – see <a href="https://railway.app/new/github">Deploy repository on Railway website</a></li>
       </ul>
-      <p>Some hosting services may automatically update your prototype every time you merge new changes in the connected GitHub repository. If it doesn't automatically update your prototype, you will need to do this manually.</p>
+      <p>In Railway, you need to set the command to get started. Go to Settings > Deploy and set it to <code class="app-code">npm run start</code>.</p>
+      <p>Some hosting services may automatically deploy your prototype every time you merge new changes in the connected GitHub repository. You may be able to enable automatic deploys. If it hasn't automatically update your prototype, you will need to do this manually.</p>
       
       <h2>Setting a password</h2>
       <p>When running the prototype kit online, you must set a username and password. This is to stop anyone accidentally finding your prototype and mistaking it for a real service.</p>
       <p>To set a password, check your hosting services documentation on how to set "environment variables". (It may have a slightly different name like "config vars" or "variables".)</p>
+      <p>Set environment variables. For example:</p>
+      <p><code class="app-code">PROTOTYPE_USERNAME</code><code class="app-code">nameofservice</code></p> 
+      <p><code class="app-code">PROTOTYPE_PASSWORD</code><code class="app-code">yourpassword123</code></p>
 
+      <p>In Railway, you also need to create:</p> 
+      <ul>
+        <li>a variable called <code class="app-code">NODE-ENV</code> and set the value to <code class="app-code">production</code></li>
+        <li>a variable called <code class="app-code">USE_AUTH</code> with the value of <code class="app-code">true</code></li>
+      </ul>
+
+      <p>Read more about:</p>
+      <ul>
+        <li><a href="https://catalins.tech/heroku-environment-variables/">How to set environment variables on Heroku, on the Catalin's Tech website</a></li>
+        <li><a href="https://docs.railway.app/develop/variables">Variables, on Railway's website</a></li>
+      </ul>
+    
       {% include "how-tos/includes/back-button.html" %}
 
     </div>
