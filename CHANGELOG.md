@@ -11,6 +11,10 @@
 - Enhance deployment instructions and test note in README
 - Fix link in README
 
+:wrench: **Maintenance**
+
+- Install NHS.UK frontend v7..0
+
 ## 4.8.6 - 24 January 2023
 
 :pencil2: **Content**
