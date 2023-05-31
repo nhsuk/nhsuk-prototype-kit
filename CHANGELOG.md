@@ -1,9 +1,11 @@
 # NHS.UK prototype kit Changelog
 
-## 4.8.7 - TBC May 2023
+## 4.8.7 - 31 May 2023
 
 :pencil2: **Content**
 
+- Fix styling on confirmation page
+- Add character count and tab components
 - Update guidance on setting a password in 'Publish your prototype online'
 - Change references to NHS Digital to NHS England
 - Enhance deployment instructions and test note in README
