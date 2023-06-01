@@ -1,6 +1,6 @@
 # NHS.UK prototype kit Changelog
 
-## 4.8.7 - 31 May 2023
+## 4.9.0 - 1 June 2023
 
 :pencil2: **Content**
 
