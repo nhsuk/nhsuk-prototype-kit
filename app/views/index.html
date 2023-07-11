@@ -3,7 +3,7 @@
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
 <!-- Extends the layout from /views/layout.html -->
-{% extends 'layout.html' %}
+{% extends 'layout_SFL.html' %}
 <!-- 
   In /views/layout.html you can:
     - change the header and footer 
@@ -25,65 +25,107 @@
 {% block outerContent %}
 {% endblock %}
 
+{% block navigation %}
+
+{% endblock %}
+
+
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
-  <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
 
-      <!-- Change the page title here -->
-      <h1>
-        NHS.UK prototype kit
-        <span class="nhsuk-caption-xl nhsuk-caption--bottom">Version {{version}}</span>
-      </h1>
-
-      <!-- Add your content here -->
-      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
-
-      <p class="nhsuk-lede-text">
-        This kit lets you rapidly create HTML prototypes of NHS services.
-      </p>
-
-      <hr>
-
-      <h2>
-        About this page
-      </h2>
-
-      <p>
-        Use this page as the index for your project.
-      </p>
+<section class="nhsuk-section app-section--white " id="intro">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-grid-row">
       
-      <p>
-        You'll find the code for this page at <strong>/app/views/index.html</strong>.
-      </p>
+        <div class="nhsuk-grid-column-full nhsuk-section__content">
+          
+          <div class="nhsuk-u-reading-width">
+                    <!-- Change the page heading -->
+                    <h1>
+                      Prototype kit
+                      <span class="nhsuk-caption-m nhsuk-caption--bottom ">Better health – Start for life version {{version}}</span>
+                    </h1>
 
-      <p>
-        There is also an <a href="/page-example">example page</a>, which contains a selection of NHS.UK frontend styles and components.
-      </p>
+  <!-- Add content here -->
+  <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
 
-      <hr>
+  <br>
+  <p class="nhsuk-lede-text">
+    This kit lets you rapidly create HTML prototypes of Better health - Start for Life
+  </p>
+  
+  <hr>
+  <h2>List of links</h2>
 
-      <h2>
-        Get started
-      </h2>
+  <p>
+    <ul>
+      <li><a href="start-for-life/home"><b>Home</b></a></li>
+        <br>
+      <li><a href="start-for-life/pregnancy"><b>Pregnancy</b></a></li>
+      <li><a href="start-for-life/pregnancy/week-by-week-guide-to-pregnancy">Pregnancy > Week-by-week guide to pregnancy</a></li>
+      <li><a href="start-for-life/pregnancy/week-by-week-guide-to-pregnancy/1st-trimester/week-4">Pregnancy > Week-by-week guide to pregnancy > Week 4</a></li>
+      <li><a href="start-for-life/pregnancy/week-by-week-guide-to-pregnancy/1st-trimester/week-13">Pregnancy > Week-by-week guide to pregnancy > Week 13</a></li>
+      <li><a href="start-for-life/pregnancy/week-by-week-guide-to-pregnancy/1st-trimester/week-28">Pregnancy > Week-by-week guide to pregnancy > Week 28</a></li>
+      <li><a href="start-for-life/pregnancy/preparing-for-labour-and-birth">Pregnancy > Preparing for labour and birth</a></li>
+      <li><a href="start-for-life/pregnancy/smoking-and-alcohol-during-pregnancy">Pregnancy > Smoking and alcohol during pregnancy</a></li>
+      <li><a href="start-for-life/pregnancy/vitamins-and-supplements-in-pregnancy">Pregnancy > Vitamins and supplements in pregnancy</a></li>
+      <li><a href="start-for-life/pregnancy/healthy-eating-in-pregnancy">Pregnancy > Healthy eating in pregnancy</a></li>
+      <li><a href="start-for-life/pregnancy/mental-health-and-pregnancy">Pregnancy > Mental health and pregnancy</a></li>
+      <br>
 
-      <p>Get started by using the:</p>
+      <li><a href="start-for-life/pregnancy/preparing-for-labour-and-birth/pain-relief-and-medication-during-labour">Pregnancy > Preparing for labour and birth > Pain relief and medication during labour</a></li>
+      <li><a href="start-for-life/pregnancy/preparing-for-labour-and-birth/signs-of-going-into-labour">Pregnancy > Preparing for labour and birth > Signs of going into labour</a></li>
+      <li><a href="start-for-life/pregnancy/preparing-for-labour-and-birth/hospital-bag-checklist.html">Pregnancy > Preparing for labour and birth > Hospital bag checklist</a></li>
+      <li><a href="start-for-life/pregnancy/preparing-for-labour-and-birth/choosing-where-to-give-birth">Pregnancy > Preparing for labour and birth > Choosing where to give birth</a></li>
+      <li><a href="start-for-life/pregnancy/preparing-for-labour-and-birth/giving-birth">Pregnancy > Preparing for labour and birth >  Giving birth</a></li>
+      <br>
 
-      <ul>
-        <li>
-          <a href="/docs/how-tos">how to guides</a>
-        </li>
-        <li>
-          <a href="/docs/page-templates">page templates</a>
-        </li>
-        <li>
-          code snippets for styles and components from the <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a>
-        </li>
-      </ul>
+      <li><a href="start-for-life/baby"><b>Baby</b></a></li>
+      <li><a href="start-for-life/baby/weaning">Baby > Weaning</a></li>
+      <li><a href="start-for-life/baby/weaning/ready-or-not-weaning-quiz">Baby > Weaning > Ready or not weaning quiz</a> -- UNDONE styling quiz and quiz questions</li>
+      <li><a href="start-for-life/baby/weaning/how-to-start-weaning-your-baby">Baby > Weaning > How to start weaning your baby</a></li>
+      <li><a href="start-for-life/baby/weaning/what-to-feed-your-baby/from-around-6-months">Baby > Weaning > What to feed your baby > From around 6 months</a></li>
+      <li><a href="start-for-life/baby/weaning/what-to-feed-your-baby/7-to-9-months">Baby > Weaning > What to feed your baby > 7 to 9 months</a></li>
+      <li><a href="start-for-life/baby/weaning/choking-and-gagging-on-food">Baby > Weaning > Choking and gagging on food</a></li>
+      <li><a href="start-for-life/baby/weaning/ready-or-not-weaning-quiz">Weaning quiz</a></li>
 
-      <!-- End of content -->
 
+      <li><a href="start-for-life/baby/recipes-and-meal-ideas/">Baby > Recipes and meal ideas</a></li>
+      <li><a href="start-for-life/baby/recipes-and-meal-ideas/ham-flatbread">Baby > Recipes and meal ideas > Ham flatbread</a></li>
+      <li><a href="start-for-life/baby/weaning/what-to-feed-your-baby/from-around-6-months">Baby > Weaning > What to feed your baby > From around 6 months</a></li>
+      <li><a href="start-for-life/baby/feeding-your-baby">Baby > Feeding your baby</a></li>
+
+      <li><a href="start-for-life/baby/baby-moves">Baby > Baby moves</a></li>
+      <li><a href="start-for-life/baby/baby-basics">Baby > Baby basics</a></li>
+      <li><a href="start-for-life/baby/baby-vitamins">Baby > Baby vitamins</a></li>
+      <li><a href="start-for-life/baby/mental-health">Baby > Your mental health</a></li>
+      <li><a href="start-for-life/baby/learning-to-talk/learning-to-talk-0-to-6-months">Baby > Learning to talk > Learning to talk: 0 to 6 months</a></li>
+
+      <br>
+
+      <li><a href="start-for-life/toddler"><b>Toddler</b></a></li>
+      <li><a href="start-for-life/toddler/learning-to-talk/learning-to-talk-1-to-2-years">Toddler > Learning to talk 1 to 2 years</a></li>
+      <li><a href="start-for-life/toddler/learning-to-talk/learning-to-talk-2-to-3-years">Toddler > Learning to talk 2 to 3 years</a></li>
+      <li><a href="start-for-life/toddler/learning-to-talk/learning-to-talk-3-to-5-years">Toddler > Learning to talk 3 to 5 years</a></li>
+      <br>
+
+     
+
+
+    </ul>
+
+
+  </p>
+
+
+
+  <!-- End of content -->
+          </div>
+              
+        </div>
+      
     </div>
   </div>
+</section>
 {% endblock %}

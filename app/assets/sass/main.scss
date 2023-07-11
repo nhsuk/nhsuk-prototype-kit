@@ -8,4 +8,48 @@
 ///////////////////////////////////////////
 // Add your custom CSS/Sass styles below...
 ///////////////////////////////////////////
-  
+@import 'components/_design';
+@import 'components/_font';
+@import 'components/_nhsuk';
+@import 'components/SFL';
+
+
+
+// Social media styling
+.social-media ul {
+    list-style: none;
+    //list-style-image: url ('../images/social_facebook-with-circle.svg');
+    padding: 0 0 0 0px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.social-media h2 {
+    color:#4C6272;
+}
+
+.social-media li a {
+    font-weight: 500;
+    color: #4C6272;
+}
+
+.social-media li svg {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.social-media li a:hover {
+    color:#0d1115;
+}
+
+.social-media li a:hover .social-media-icon {
+    fill:#0d1115;
+}
+
+@media (max-width:40.0625em) {
+    .social-media li svg {
+        width: 24px;
+        height: 24px;
+        
+    }
+}
