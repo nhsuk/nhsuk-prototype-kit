@@ -12,9 +12,9 @@
 {% endblock %}
 
 {% block header %}
-  <header class="nhsuk-header nhsuk-header--logo-only" role="banner">
-    <div class="nhsuk-width-container nhsuk-header__container">
-      <div class="nhsuk-header__logo">
+  <header class="nhsuk-header" role="banner">
+    <div class="nhsuk-header__container">
+      <div class="nhsuk-header__logo nhsuk-header__logo--only">
         <a class="nhsuk-header__link nhsuk-header__link--service" href="/docs" aria-label="NHS.UK prototype kit home">
           <svg class="nhsuk-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 16" height="40" width="100">
             <path class="nhsuk-logo__background" fill="#005eb8" d="M0 0h40v16H0z"></path>
@@ -30,9 +30,8 @@
 {% endblock %}
 
 {% block footer %}
-
   <footer role="contentinfo">
-    <div class="nhsuk-footer-container" id="nhsuk-footer-container">
+    <div class="nhsuk-footer-container">
       <div class="nhsuk-width-container">
         <div class="nhsuk-grid-row">
           <div class="nhsuk-grid-column-full">
@@ -40,11 +39,17 @@
           </div>
         </div>
         <h2 class="nhsuk-u-visually-hidden">Support links</h2>
-        <div class="nhsuk-footer" id="nhsuk-footer">
+        <div class="nhsuk-footer">
           <ul class="nhsuk-footer__list">
-            <li class="nhsuk-footer__list-item nhsuk-footer-default__list-item"><a class="nhsuk-footer__list-item-link" href="/docs">Home</a></li>
-            <li class="nhsuk-footer__list-item nhsuk-footer-default__list-item"><a class="nhsuk-footer__list-item-link" href="/docs/about">About and support</a></li>
-            <li class="nhsuk-footer__list-item nhsuk-footer-default__list-item"><a class="nhsuk-footer__list-item-link" href="https://github.com/nhsuk/nhsuk-prototype-kit">NHS.UK prototype kit - GitHub</a></li>
+            <li class="nhsuk-footer__list-item nhsuk-footer-default__list-item">
+              <a class="nhsuk-footer__list-item-link" href="/docs">Home</a>
+            </li>
+            <li class="nhsuk-footer__list-item nhsuk-footer-default__list-item">
+              <a class="nhsuk-footer__list-item-link" href="/docs/about">About and support</a>
+            </li>
+            <li class="nhsuk-footer__list-item nhsuk-footer-default__list-item">
+              <a class="nhsuk-footer__list-item-link" href="https://github.com/nhsuk/nhsuk-prototype-kit">NHS.UK prototype kit - GitHub</a>
+            </li>
           </ul>
           <div>
             <p class="nhsuk-footer__copyright">&copy; Crown copyright</p>
@@ -53,7 +58,6 @@
       </div>
     </div>
   </footer>
-
 {% endblock %}
 
 {% block bodyEnd %}
