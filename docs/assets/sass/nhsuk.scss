@@ -1,57 +1,6 @@
 @import 'node_modules/nhsuk-frontend/packages/core/settings/colours';
 
 // ==========================================================================
-// New 'beta' header
-// exposing search on mobile
-// ==========================================================================
-@media (max-width: 40.0525em) {
-  .beta-header__search-form {
-    padding: 0 16px 17px;
-    position: relative;
-  }
-  .beta-header__search-wrap::after {
-    background: #005eb8;
-    content: ' ';
-    height: 57px;
-    left: -16px;
-    position: absolute;
-    width: calc(100% + 32px);
-  }
-  .beta-search__submit {
-    background-color: #f0f4f5;
-    border: 0;
-    height: 40px;
-    z-index: 1;
-  }
-  .beta-search__submit .beta-icon__search {
-    fill: #005eb8;
-    height: 27px;
-    width: 27px;
-  }
-  .beta-search__submit:hover {
-    background-color: #003d78;
-    border: 1px solid #ffffff;
-  }
-  .beta-search__submit:hover .nhsuk-icon {
-    fill: #ffffff;
-  }
-  .nhsuk-header__menu-toggle {
-    right: 0;
-  }
-  .nhsuk-search__input {
-    border: 1px solid #ffffff;
-    height: 40px;
-  }
-}
-
-@media (min-width: 48.0625em) {
-  .nhsuk-header__navigation {
-    max-width: 960px;
-  }
-}
-
-
-// ==========================================================================
 // Log in link
 // ==========================================================================
 .nhsuk-header__content--container {
@@ -143,25 +92,7 @@
   }
  }
 
-
-// ==========================================================================
-// NHS.UK 3 column footer links (non mobile view)
-// ==========================================================================
-@media (min-width:48.0625em) {
-  .nhsuk-footer__list--three-columns {
-   -moz-column-count:3;
-   -moz-column-gap:24px;
-   -webkit-column-count:3;
-   -webkit-column-gap:24px;
-   column-count:3;
-   column-gap:24px
-  }
-  .nhsuk-footer__list--three-columns li {
-   float:none
-  }
-}
-
-
+ 
 // ==========================================================================
 // Feedback form
 // ==========================================================================
