@@ -1,17 +1,19 @@
 pool:
   vmImage: 'ubuntu-latest'
 
-
 steps:
-- task: SonarQubePrepare@5
-  displayName: 'Prepare analysis on SonarQube'
+- task: SonarCloudPrepare@1
   inputs:
-    SonarQube: 'nhsuk-prototype-kit'
+    SonarCloud: 'SonarCloud'
+    organization: 'nhsdigital'
     scannerMode: 'CLI'
-    configMode: 'manual'
-    cliProjectKey: 'nhsuk-prototype-kit'
+    configMode: 'file'
     extraProperties: |
-        sonar.javascript.lcov.reportPaths=coverage/lcov.info
+      sonar.javascript.lcov.reportPaths=coverage/lcov.info
+      sonar.language=js
+      sonar.projectKey=nhsuk-prototype-kit
+      sonar.sourceEncoding=UTF-8
+      sonar.dependencyCheck.htmlReportPath=$(System.DefaultWorkingDirectory)/dependency-scan-results/dependency-check-report.html
 
 - task: Npm@1
   displayName: 'npm install'
@@ -39,6 +41,7 @@ steps:
     scanPath: '$(Build.SourcesDirectory)'
     format: 'HTML, JUNIT'
     reportsDirectory: '$(System.DefaultWorkingDirectory)/dependency-scan-results'
+    dependencyCheckVersion: '8.4.3'
 
 - task: PublishTestResults@2
   displayName: 'Publish OWASP Dependency Check Results'
@@ -48,13 +51,17 @@ steps:
     testRunTitle: 'Dependency check'
     searchFolder: '$(Common.TestResultsDirectory)'
 
-- task: SonarQubeAnalyze@5
-  displayName: 'Run code analysis' 
+- task: SonarCloudAnalyze@1
+  displayName: 'Run SonarCloud Code Analysis'
 
-- task: SonarQubePublish@5
-  displayName: 'Publish quality gate result'
+- task: SonarCloudPublish@1
+  displayName: 'Publish Quality Gate Result'
+
+- task: sonarcloud-buildbreaker@2
+  displayName: "Break the build if the quality gate fails"
   inputs:
-    pollingTimeoutSec: '300'
+    SonarCloud: 'SonarCloud'
+    organization: 'nhsdigital'
 
 - task: ArchiveFiles@2
   displayName: 'Archive files'
