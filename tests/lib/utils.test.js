@@ -1,5 +1,4 @@
-import utils from 'gulp-clean/utils';
-import { addNunjucksFilters, renderPath, matchRoutes, addCheckedFunction, autoStoreData } from '../../lib/utils';
+import { addNunjucksFilters, matchRoutes, autoStoreData } from '../../lib/utils';
 
 const coreFilters = require('../../lib/core_filters');
 jest.mock('../../lib/core_filters');
