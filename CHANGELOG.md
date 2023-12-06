@@ -1,5 +1,11 @@
 # NHS.UK prototype kit Changelog
 
+## TBC
+
+:wrench: Fixes
+
+- Add aria-label to coronavirus hub page navigation links
+
 ## 4.9.0 - 1 June 2023
 
 :pencil2: **Content**
