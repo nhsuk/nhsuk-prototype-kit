@@ -5,6 +5,7 @@
 :wrench: Fixes
 
 - Add aria-label to coronavirus hub page navigation links
+- Add aria-label to mental health page navigation links
 
 ## 4.9.0 - 1 June 2023
 
