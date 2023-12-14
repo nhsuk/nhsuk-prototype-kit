@@ -6,6 +6,7 @@
 
 - Add aria-label to coronavirus hub page navigation links
 - Add aria-label to mental health page navigation links
+- Removed the duplicate selector in '\_related-nav.scss'
 
 ## 4.9.0 - 1 June 2023
 
