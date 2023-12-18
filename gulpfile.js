@@ -5,7 +5,7 @@ const gulp = require('gulp');
 const babel = require('gulp-babel');
 const browserSync = require('browser-sync');
 const clean = require('gulp-clean');
-var sass = require('gulp-sass')(require('sass'));
+const sass = require('gulp-sass')(require('sass'));
 const nodemon = require('gulp-nodemon');
 
 // Local dependencies
