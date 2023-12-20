@@ -9,6 +9,7 @@
 - Removed the duplicate selector in '\_related-nav.scss'
 - Use 'String#startsWith' method instead of getting the index of a substring in utils.js
 - Change unexpected var for const in gulpfile.js
+- Upgrade node version to v20 (nunjucks v3.2.4, gulp-rename v3.2.4, gulp-sass v3.2.4, keypather v3.2.4, express v4.18.2, express-session v1.17.3)
 
 ## 4.9.0 - 1 June 2023
 
