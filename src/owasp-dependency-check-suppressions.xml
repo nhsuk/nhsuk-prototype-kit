@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+    <suppress>
+        <notes><![CDATA[ file name: Microsoft Packages && Azure ]]></notes>
+        <cpe>CVE-2014-9152</cpe>
+        <cve>CVE-2023-44487</cve>
+        <cve>CVE-2021-3918</cve>
+        <cve>CVE-2023-36052</cve>
+        <cve>CVE-2023-36415</cve>
+        <cve>CVE-2020-12762</cve>
+        <cpe>cpe:/a:microsoft:.net_core</cpe>
+        <cpe>cpe:/a:microsoft:asp.net</cpe>
+        <cpe>cpe:/a:microsoft:nuget</cpe>
+        <cpe>cpe:/a:microsoft:azure_cli</cpe>
+        <cpe>cpe:/a:microsoft:azure_sdk_for_.net</cpe>
+        <cpe>cpe:/a:json-c:json-c</cpe>
+        <cpe>cpe:/a:wiremock:wiremock</cpe>
+        <vulnerabilityName>CVE-2023-36414</vulnerabilityName>
+        <vulnerabilityName>CVE-2022-38900</vulnerabilityName>
+        <vulnerabilityName>GHSA-w573-4hg7-7wgq</vulnerabilityName>
+        <vulnerabilityName>CVE-2020-28469</vulnerabilityName>
+        <vulnerabilityName>GHSA-ww39-953v-wcq6</vulnerabilityName>
+        <vulnerabilityName>GHSA-cwcx-rxgc-cmw3</vulnerabilityName>
+        <vulnerabilityName>CVE-2022-25844</vulnerabilityName>
+        <vulnerabilityName>CVE-2021-25943</vulnerabilityName>
+        <vulnerabilityName>CVE-2022-25883</vulnerabilityName>
+    </suppress>
+</suppressions>
