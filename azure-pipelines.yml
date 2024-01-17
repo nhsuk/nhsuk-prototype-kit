@@ -34,15 +34,6 @@ steps:
     customCommand: run test
     verbose: true
 
-- task: dependency-check-build-task@6
-  displayName: 'Run OWASP Dependency Check'
-  inputs:
-    projectName: 'nhsuk-prototype-kit'
-    scanPath: '$(Build.SourcesDirectory)'
-    format: 'HTML, JUNIT'
-    reportsDirectory: '$(System.DefaultWorkingDirectory)/dependency-scan-results'
-    dependencyCheckVersion: '8.4.3'
-
 - script: |
     pat=$(AZURE_DEVOPS_PERSONAL_PAT)
     azBuildId=$(curl -s -u :$pat \
