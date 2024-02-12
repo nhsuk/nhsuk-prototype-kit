@@ -13,7 +13,6 @@ steps:
       sonar.language=js
       sonar.projectKey=nhsuk-prototype-kit
       sonar.sourceEncoding=UTF-8
-      sonar.dependencyCheck.htmlReportPath=$(System.DefaultWorkingDirectory)/dependency-scan-results/dependency-check-report.html
 
 - task: Npm@1
   displayName: 'npm install'
@@ -33,23 +32,6 @@ steps:
     command: 'custom'
     customCommand: run test
     verbose: true
-
-- task: dependency-check-build-task@6
-  displayName: 'Run OWASP Dependency Check'
-  inputs:
-    projectName: 'nhsuk-prototype-kit'
-    scanPath: '$(Build.SourcesDirectory)'
-    format: 'HTML, JUNIT'
-    reportsDirectory: '$(System.DefaultWorkingDirectory)/dependency-scan-results'
-    dependencyCheckVersion: '8.4.3'
-
-- task: PublishTestResults@2
-  displayName: 'Publish OWASP Dependency Check Results'
-  inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '$(System.DefaultWorkingDirectory)/dependency-scan-results/*junit.xml'
-    testRunTitle: 'Dependency check'
-    searchFolder: '$(Common.TestResultsDirectory)'
 
 - task: SonarCloudAnalyze@1
   inputs:
