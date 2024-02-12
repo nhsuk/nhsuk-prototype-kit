@@ -2,6 +2,11 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- script: |
+    echo $JAVA_HOME
+    $(JAVA_HOME)
+  displayName: Hello world
+  
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'SonarCloud'
