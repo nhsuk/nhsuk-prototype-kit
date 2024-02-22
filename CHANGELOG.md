@@ -1,15 +1,17 @@
 # NHS.UK prototype kit Changelog
 
-## TBC
+## 4.10.0 - 22 February 2024
 
 :wrench: Fixes
 
-- Add aria-label to coronavirus hub page navigation links
-- Add aria-label to mental health page navigation links
+- Add aria-labels to coronavirus hub page and mental health pagenavigation links
 - Removed the duplicate selector in '\_related-nav.scss'
+- Removed Covid banner from 'Social care and support guide' and 'NHS Services' templates 
 - Use 'String#startsWith' method instead of getting the index of a substring in utils.js
 - Change unexpected var for const in gulpfile.js
-- Upgrade node version to v20 (nunjucks v3.2.4, gulp-rename v3.2.4, gulp-sass v3.2.4, keypather v3.2.4, express v4.18.2, express-session v1.17.3)
+- Update 'Social care and support guide' template to use primary cards with chevrons
+- Upgrade node version to v20
+- Update NHS.UK frontend to [v8.1.0](https://github.com/nhsuk/nhsuk-frontend/releases/tag/v8.1.0), includes updates to header and footer components
 
 ## 4.9.0 - 1 June 2023
 
