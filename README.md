@@ -19,7 +19,7 @@ You must protect user privacy at all times, even when using prototypes. Prototyp
 
 ### Running the kit
 
-Start the kit with `npm run watch`
+Start the kit with `npm run watch`.
 
 ## Contribute
 
