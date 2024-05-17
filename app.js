@@ -51,6 +51,7 @@ const appViews = [
 
 const nunjucksConfig = {
   autoescape: true,
+  noCache: true,
 };
 
 nunjucksConfig.express = app;
