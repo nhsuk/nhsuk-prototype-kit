@@ -1,5 +1,9 @@
 # NHS.UK prototype kit Changelog
 
+## Unreleased
+
+- Disable nunjucks caching so changes to templates show immediately
+
 ## 4.10.0 - 22 February 2024
 
 :wrench: Fixes
