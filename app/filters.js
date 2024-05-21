@@ -1,4 +1,4 @@
-module.exports = function (env) { /* eslint-disable-line no-unused-vars */
+module.exports = function (env) { /* eslint-disable-line func-names,no-unused-vars */
   /**
    * Instantiate object used to store the methods registered as a
    * 'filter' (of the same name) within nunjucks. You can override

@@ -32,7 +32,7 @@ function renderPath(path, res, next) {
   });
 }
 
-exports.matchRoutes = function (req, res, next) {
+exports.matchRoutes = function (req, res, next) { /* eslint-disable-line func-names */
   let { path } = req;
 
   path = path.substr(1); // [6] //
