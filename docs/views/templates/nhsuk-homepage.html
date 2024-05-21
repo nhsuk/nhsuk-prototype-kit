@@ -18,7 +18,7 @@
 <header class="nhsuk-header" role="banner">
   <div class="nhsuk-header__container">
     <div class="nhsuk-header__logo">
-      <a class="nhsuk-header__link" href="/" aria-label="NHS homepage">      
+      <a class="nhsuk-header__link" href="/" aria-label="NHS homepage">
         <svg class="nhsuk-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 16" height="40" width="100">
           <path class="nhsuk-logo__background" fill="#005eb8" d="M0 0h40v16H0z"></path>
           <path class="nhsuk-logo__text" fill="#fff" d="M3.9 1.5h4.4l2.6 9h.1l1.8-9h3.3l-2.8 13H9l-2.7-9h-.1l-1.8 9H1.1M17.3 1.5h3.6l-1 4.9h4L25 1.5h3.5l-2.7 13h-3.5l1.1-5.6h-4.1l-1.2 5.6h-3.4M37.7 4.4c-.7-.3-1.6-.6-2.9-.6-1.4 0-2.5.2-2.5 1.3 0 1.8 5.1 1.2 5.1 5.1 0 3.6-3.3 4.5-6.4 4.5-1.3 0-2.9-.3-4-.7l.8-2.7c.7.4 2.1.7 3.2.7s2.8-.2 2.8-1.5c0-2.1-5.1-1.3-5.1-5 0-3.4 2.9-4.4 5.8-4.4 1.6 0 3.1.2 4 .6"></path>
@@ -96,24 +96,6 @@
 </header>
 {% endblock %}
 
-{% block beforeContent %}
-<!-- Coronavirus (COVID-19) banner -->
-<div class="app-global-alert" id="app-global-alert" role="complementary">
-  <div class="nhsuk-width-container">
-    <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-full">
-        <div class="app-global-alert__content">
-          <div class="app-global-alert__message">
-            <h2>Coronavirus (COVID-19)</h2>
-            <p><a href="">Get the latest advice about COVID-19</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-{% endblock %}
-
 
 <!-- Homepage content -->
 {% block content %}
@@ -189,14 +171,14 @@
 </section>
 
 
-<!-- Coronavirus content -->
+<!-- Women's health content -->
 <section class="nhsuk-section">
   <div class="nhsuk-width-container">
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-full app-section__content">
         <div class="nhsuk-u-reading-width">
-          <h2>Coronavirus (COVID-19)</h2>
-          <p class="app-section__description">Get the latest advice about COVID-19, including information about symptoms, self-isolation and testing.</p>
+          <h2>Women's health</h2>
+          <p class="app-section__description">Find information about women's health, including periods, contraception, conditions and screening</p>
         </div>
         <div class="nhsuk-action-link">
           <a class="nhsuk-action-link__link" href="" >
@@ -204,48 +186,7 @@
               <path d="M0 0h24v24H0z" fill="none"></path>
               <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
             </svg>
-            <span class="nhsuk-action-link__text">Find out about COVID-19</span>
-          </a>
-        </div>
-        <div class="nhsuk-action-link">
-          <a class="nhsuk-action-link__link" href="" >
-            <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
-            </svg>
-            <span class="nhsuk-action-link__text">Find out about COVID-19 vaccination</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- Help us help you get the treatment you need -->
-<section class="nhsuk-section">
-  <div class="nhsuk-width-container">
-    <div class="nhsuk-grid-row">
-      <div class="nhsuk-grid-column-full app-section__content">
-        <div class="nhsuk-u-reading-width">
-          <h2>Help us help you get the treatment you need</h2>
-        </div>
-        <div class="nhsuk-u-reading-width">
-          <p>While everyone is being told to stay at home, it can be hard to know what to do if you&#x27;re unwell.</p>
-          <ul>
-            <li>For help from a GP – use your GP surgery&#x27;s website, use an online service or app, or call the surgery.</li>
-            <li>For urgent medical help – use the NHS 111 online service, or call 111 if you&#x27;re unable to get help online.</li>
-            <li>For life-threatening emergencies – call 999 for an ambulance.</li>
-          </ul>
-          <p>If you&#x27;re advised to go to hospital, it&#x27;s important to go.</p>
-        </div>
-        <div class="nhsuk-action-link">
-          <a class="nhsuk-action-link__link" href="" >
-            <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
-            </svg>
-            <span class="nhsuk-action-link__text">Find out how to get medical help</span>
+            <span class="nhsuk-action-link__text">Go to women's health</span>
           </a>
         </div>
       </div>
@@ -261,10 +202,12 @@
       <div class="nhsuk-grid-column-full app-section__content">
         <div class="nhsuk-u-reading-width">
           <h2>NHS App</h2>
-          <p class="app-section__description">The NHS App lets you book GP appointments, order repeat prescriptions and access a range of other healthcare services.</p>
+        </div>
+        <div class="nhsuk-u-reading-width">
+          <p>Use the NHS App to book GP appointments, order repeat prescriptions and access a range of other healthcare services.</p>
         </div>
         <div class="nhsuk-action-link">
-          <a class="nhsuk-action-link__link" href="">
+          <a class="nhsuk-action-link__link" href="" >
             <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M0 0h24v24H0z" fill="none"></path>
               <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
@@ -276,7 +219,6 @@
     </div>
   </div>
 </section>
-
 
 <!-- NHS Services -->
 <section class="nhsuk-section">
@@ -317,15 +259,7 @@
               <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
               </svg>
-              Find your nearest A&amp;E
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
-              </svg>
-              Find other urgent care services
+              Find urgent and emergency care
             </a>
           </li>
         </ul>
@@ -356,7 +290,7 @@
     <div class="nhsuk-grid-row">
       <div class="nhsuk-grid-column-one-half app-section__content">
         <div class="nhsuk-u-reading-width">
-          <h2>Focus on...</h2>
+          <h2>Health conditions</h2>
         </div>
         <ul class="app-list-signage nhsuk-list-links--one-column">
           <li>
@@ -400,16 +334,6 @@
             </a>
           </li>
         </ul>
-      </div>
-      <div class="nhsuk-grid-column-one-half app-section__content">
-        <div class="nhsuk-card  nhsuk-card--clickable  ">
-          <img class="nhsuk-card__img" src="/images/nhsuk/homepage/Health_and_care_videos.2e16d0ba.fill-720x405.jpg" alt="">
-          <div class="nhsuk-card__content">
-            <h3 class="nhsuk-card__heading"><a class="nhsuk-card__link" href="">
-        Health and care video library</a></h3>
-        <p class="nhsuk-card__description">Access to more than 600 videos used as part of the care offered by NHS doctors, made by Health and Care Innovations.</p>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -602,12 +526,12 @@
             <a class="nhsuk-footer__list-item-link" href="">Cookies</a>
           </li>
         </ul>
-      </div> 
+      </div>
       <div>
         <p class="nhsuk-footer__copyright">© Crown copyright</p>
       </div>
-    </div> 
-  </div> 
+    </div>
+  </div>
 </footer>
 {% endblock %}
 
