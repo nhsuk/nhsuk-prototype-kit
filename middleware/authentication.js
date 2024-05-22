@@ -14,7 +14,7 @@
 // External dependencies
 const basicAuth = require('basic-auth');
 
-module.exports = function (req, res, next) { /* eslint-disable-line consistent-return */
+module.exports = function (req, res, next) { /* eslint-disable-line func-names,consistent-return */
   // Set configuration variables
   const env = (process.env.NODE_ENV || 'development').toLowerCase();
   const username = process.env.PROTOTYPE_USERNAME;
