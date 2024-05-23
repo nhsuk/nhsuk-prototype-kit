@@ -62,7 +62,7 @@ function startNodemon(done) {
   const server = nodemon({
     script: 'app.js',
     stdout: false,
-    ext: 'scss js html',
+    ext: 'scss js',
     quiet: true,
   });
   let starting = false;
