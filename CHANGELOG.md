@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Disable nunjucks caching so changes to templates show immediately
+- Stop watching .html files and restarting the server whenever they are changed
 
 ## 4.10.0 - 22 February 2024
 
