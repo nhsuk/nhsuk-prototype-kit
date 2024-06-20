@@ -1,9 +1,18 @@
 # NHS.UK prototype kit Changelog
 
-## Unreleased
+## 4.11.0 - 26 June 2024
+
+:wrench: **Fixes**
 
 - Disable nunjucks caching so changes to templates show immediately
-- Stop watching .html files and restarting the server whenever they are changed
+- Stop watching .html and .scss files and restarting the server whenever they are changed
+- Ignore eslint warnings
+
+:pencil2: **Content**
+
+- Update README with start script
+- Fix a typo in setup docs
+- Update NHS website page template to be closer to live
 
 ## 4.10.0 - 22 February 2024
 
