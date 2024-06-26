@@ -1,6 +1,6 @@
 # NHS.UK prototype kit Changelog
 
-## 4.11.0 - 26 June 2024
+## 4.11.0 - 27 June 2024
 
 :wrench: **Fixes**
 
