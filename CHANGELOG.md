@@ -1,6 +1,6 @@
 # NHS.UK prototype kit Changelog
 
-## 4.11.0 - 26 June 2024
+## 4.11.0 - 27 June 2024
 
 :wrench: **Fixes**
 
@@ -13,6 +13,7 @@
 - Update README with start script
 - Fix a typo in setup docs
 - Update NHS website page template to be closer to live
+- Remove Covid banner from 'Health A-Z', 'Live Well', 'Mental Health' and 'Pregnancy' templates
 
 ## 4.10.0 - 22 February 2024
 
