@@ -5,6 +5,7 @@
 :wrench:
 
 - Enable console logging for nodemon
+- Fix ghostMode not being disabled correctly
 
 ## 4.11.0 - 27 June 2024
 
