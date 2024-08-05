@@ -17,10 +17,10 @@
   "dependencies": {
     "@babel/core": "^7.24.7",
     "@babel/preset-env": "^7.24.7",
-    "basic-auth": "^2.0.1",
     "body-parser": "^1.20.2",
     "browser-sync": "^3.0.2",
     "client-sessions": "^0.8.0",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
