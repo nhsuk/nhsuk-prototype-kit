@@ -93,7 +93,7 @@ function startBrowserSync(done) {
       port: port + 1000,
       ui: false,
       files: ['app/views/**/*.*', 'docs/views/**/*.*'],
-      ghostmode: false,
+      ghostMode: false,
       open: false,
       notify: true,
       watch: true,
