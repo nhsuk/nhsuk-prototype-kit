@@ -16,54 +16,50 @@ const port = process.env.PORT || config.port;
 
 // Delete all the files in /public build directory
 function cleanPublic() {
-  return gulp.src('public', { allowEmpty: true})
-  .pipe(clean());
+  return gulp.src('public', { allowEmpty: true }).pipe(clean());
 }
 
 sass.compiler = require('sass');
 
 // Compile SASS to CSS
 function compileStyles() {
-  return gulp.src([
-    'app/assets/sass/**/*.scss',
-    'docs/assets/sass/**/*.scss'
-  ])
+  return gulp
+    .src(['app/assets/sass/**/*.scss', 'docs/assets/sass/**/*.scss'])
     .pipe(sass())
     .pipe(gulp.dest('public/css'))
     .on('error', (err) => {
-      console.log(err)
-      process.exit(1)
+      console.log(err);
+      process.exit(1);
     });
 }
 
 // Compile JavaScript (with ES6 support)
 function compileScripts() {
-  return gulp.src([
-    'app/assets/javascript/**/*.js',
-    'docs/assets/javascript/**/*.js'
-  ])
-  .pipe(babel())
-  .pipe(gulp.dest('public/js'));
+  return gulp
+    .src(['app/assets/javascript/**/*.js', 'docs/assets/javascript/**/*.js'])
+    .pipe(babel())
+    .pipe(gulp.dest('public/js'));
 }
 
 // Compile assets
 function compileAssets() {
-  return gulp.src([
-    'app/assets/**/**/*.*',
-    'docs/assets/**/**/*.*',
-    '!**/assets/**/**/*.js', // Don't copy JS files
-    '!**/assets/**/**/*.scss', // Don't copy SCSS files
-  ])
-  .pipe(gulp.dest('public'));
+  return gulp
+    .src([
+      'app/assets/**/**/*.*',
+      'docs/assets/**/**/*.*',
+      '!**/assets/**/**/*.js', // Don't copy JS files
+      '!**/assets/**/**/*.scss', // Don't copy SCSS files
+    ])
+    .pipe(gulp.dest('public'));
 }
 
 // Start nodemon
 function startNodemon(done) {
   const server = nodemon({
     script: 'app.js',
-    stdout: false,
+    stdout: true,
     ext: 'js',
-    quiet: true,
+    quiet: false,
   });
   let starting = false;
 
@@ -90,18 +86,21 @@ function reload() {
 }
 
 // Start browsersync
-function startBrowserSync(done){
-  browserSync.init({
-    proxy: 'localhost:' + port,
-    port: port + 1000,
-    ui: false,
-    files: ['app/views/**/*.*', 'docs/views/**/*.*'],
-    ghostmode: false,
-    open: false,
-    notify: true,
-    watch: true,
-  }, done);
-  gulp.watch("public/**/*.*").on("change", reload);
+function startBrowserSync(done) {
+  browserSync.init(
+    {
+      proxy: 'localhost:' + port,
+      port: port + 1000,
+      ui: false,
+      files: ['app/views/**/*.*', 'docs/views/**/*.*'],
+      ghostMode: false,
+      open: false,
+      notify: true,
+      watch: true,
+    },
+    done
+  );
+  gulp.watch('public/**/*.*').on('change', reload);
 }
 
 // Watch for changes within assets/
@@ -119,5 +118,8 @@ exports.compileStyles = compileStyles;
 exports.compileScripts = compileScripts;
 exports.cleanPublic = cleanPublic;
 
-gulp.task('build', gulp.series(cleanPublic, compileStyles, compileScripts, compileAssets));
+gulp.task(
+  'build',
+  gulp.series(cleanPublic, compileStyles, compileScripts, compileAssets)
+);
 gulp.task('default', gulp.series(startNodemon, startBrowserSync, watch));

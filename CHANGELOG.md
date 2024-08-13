@@ -1,5 +1,11 @@
 # NHS.UK prototype kit Changelog
 
+## 4.12.0 - Unreleased
+
+:wrench:
+
+- Enable console logging for nodemon
+
 ## 4.11.0 - 27 June 2024
 
 :wrench: **Fixes**
@@ -21,7 +27,7 @@
 
 - Add aria-labels to coronavirus hub page and mental health pagenavigation links
 - Removed the duplicate selector in '\_related-nav.scss'
-- Removed Covid banner from 'Social care and support guide' and 'NHS Services' templates 
+- Removed Covid banner from 'Social care and support guide' and 'NHS Services' templates
 - Use 'String#startsWith' method instead of getting the index of a substring in utils.js
 - Change unexpected var for const in gulpfile.js
 - Update 'Social care and support guide' template to use primary cards with chevrons
