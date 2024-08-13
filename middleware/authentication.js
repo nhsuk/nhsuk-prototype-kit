@@ -11,7 +11,7 @@ const allowedPathsWhenUnauthenticated = [
 ];
 
 const encryptedPassword = encryptPassword(process.env.PASSWORD);
-const nodeEnv = process.env.NODE_ENV || 'test';
+const nodeEnv = process.env.NODE_ENV || 'development';
 
 // Redirect the user to the password page, with
 // the current page path set as the returnURL in a query
