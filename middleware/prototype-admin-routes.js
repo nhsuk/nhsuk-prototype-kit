@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const password = process.env.PASSWORD;
+const password = process.env.PROTOTYPE_PASSWORD;
 
 const { encryptPassword } = require('../lib/utils');
 

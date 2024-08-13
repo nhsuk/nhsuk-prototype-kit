@@ -10,7 +10,7 @@ const allowedPathsWhenUnauthenticated = [
   '/js/main.js',
 ];
 
-const encryptedPassword = encryptPassword(process.env.PASSWORD);
+const encryptedPassword = encryptPassword(process.env.PROTOTYPE_PASSWORD);
 const nodeEnv = process.env.NODE_ENV || 'development';
 
 // Redirect the user to the password page, with
@@ -37,7 +37,7 @@ function showNoPasswordError(res) {
 function authentication(req, res, next) {
   if (nodeEnv !== 'production') {
     next();
-  } else if (!process.env.PASSWORD) {
+  } else if (!process.env.PROTOTYPE_PASSWORD) {
     showNoPasswordError(res);
   } else if (allowedPathsWhenUnauthenticated.includes(req.path)) {
     next();
