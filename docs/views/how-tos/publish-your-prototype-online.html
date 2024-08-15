@@ -33,13 +33,13 @@
       <p>Some hosting services may automatically deploy your prototype every time you merge new changes in the connected GitHub repository. You may be able to enable automatic deploys. If it hasn't automatically update your prototype, you will need to do this manually.</p>
       
       <h2>Setting a password</h2>
-      <p>When running the prototype kit online, you must set a username and password. This is to stop anyone accidentally finding your prototype and mistaking it for a real service.</p>
+      <p>When running the prototype kit online, you must set a password. This is to stop anyone accidentally finding your prototype and mistaking it for a real service.</p>
       <p>To set a password, check your hosting services documentation on how to set "environment variables". (It may have a slightly different name like "config vars" or "variables".)</p>
-      <p>Set environment variables. For example:</p>
-      <p><code class="app-code">PROTOTYPE_USERNAME</code><code class="app-code">nameofservice</code></p> 
-      <p><code class="app-code">PROTOTYPE_PASSWORD</code><code class="app-code">yourpassword123</code></p>
+      <p>The password should be set using the variable <code class="app-code">PROTOTYPE_PASSWORD</code>.</p>
 
-      <p>In Railway, you also need to create:</p> 
+      <p>If you are using an older version of the prototype kit (before v4.12.0) you will also need to set a username using the variable <code class="app-code">PROTOTYPE_USERNAME</code>.</p>
+
+      <p>In Railway, you also need to create:</p>
       <ul>
         <li>a variable called <code class="app-code">NODE-ENV</code> and set the value to <code class="app-code">production</code></li>
         <li>a variable called <code class="app-code">USE_AUTH</code> with the value of <code class="app-code">true</code></li>

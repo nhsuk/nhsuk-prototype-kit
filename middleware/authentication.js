@@ -1,36 +1,51 @@
-/**
- * Simple basic auth middleware for use with Express 4.x.
- *
- * Based on template found at: http://www.danielstjules.com/2014/08/03/basic-auth-with-express-4/
- *
- * @example
- * const authentication = required('authentication');
- * app.use(authentication);
- *
- * @param   {string}   req Express Request object
- * @param   {string}   res Express Response object
- * @returns {function} Express 4 middleware requiring the given credentials
- */
-// External dependencies
-const basicAuth = require('basic-auth');
+const url = require('url');
+const { encryptPassword } = require('../lib/utils');
 
-module.exports = function (req, res, next) { /* eslint-disable-line func-names,consistent-return */
-  // Set configuration variables
-  const env = (process.env.NODE_ENV || 'development').toLowerCase();
-  const username = process.env.PROTOTYPE_USERNAME;
-  const password = process.env.PROTOTYPE_PASSWORD;
+const allowedPathsWhenUnauthenticated = [
+  '/prototype-admin/password',
+  '/css/main.css',
+  '/nhsuk-frontend/nhsuk.min.js',
+  '/js/auto-store-data.js',
+  '/js/jquery-3.5.1.min.js',
+  '/js/main.js',
+];
 
-  if (env === 'production' || env === 'staging') {
-    if (!username || !password) {
-      return res.send('<p>Username or password not set in environment variables.</p>');
-    }
+const encryptedPassword = encryptPassword(process.env.PROTOTYPE_PASSWORD);
+const nodeEnv = process.env.NODE_ENV || 'development';
 
-    const user = basicAuth(req);
+// Redirect the user to the password page, with
+// the current page path set as the returnURL in a query
+// string so the user can be redirected back after successfully
+// entering a password
+function sendUserToPasswordPage(req, res) {
+  const returnURL = url.format({
+    pathname: req.path,
+    query: req.query,
+  });
+  const passwordPageURL = url.format({
+    pathname: '/prototype-admin/password',
+    query: { returnURL },
+  });
+  res.redirect(passwordPageURL);
+}
 
-    if (!user || user.name !== username || user.pass !== password) {
-      res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
-      return res.sendStatus(401);
-    }
+// Give the user some instructions on how to set a password
+function showNoPasswordError(res) {
+  return res.send('<h1>Error:</h1><p>Password not set. <a href="https://nhsuk-prototype-kit.azurewebsites.net/docs/how-tos/publish-your-prototype-online">See guidance for setting a password</a>.</p>');
+}
+
+function authentication(req, res, next) {
+  if (nodeEnv !== 'production') {
+    next();
+  } else if (!process.env.PROTOTYPE_PASSWORD) {
+    showNoPasswordError(res);
+  } else if (allowedPathsWhenUnauthenticated.includes(req.path)) {
+    next();
+  } else if (req.cookies.authentication === encryptedPassword) {
+    next();
+  } else {
+    sendUserToPasswordPage(req, res);
   }
-  next();
-};
+}
+
+module.exports = authentication;
