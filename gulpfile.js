@@ -12,7 +12,7 @@ const nodemon = require('gulp-nodemon');
 const config = require('./app/config');
 
 // Set configuration variables
-const port = process.env.PORT || config.port;
+const port = parseInt(process.env.PORT) || config.port;
 
 // Delete all the files in /public build directory
 function cleanPublic() {
