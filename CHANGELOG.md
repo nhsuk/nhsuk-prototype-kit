@@ -7,6 +7,7 @@
 - Enable console logging for nodemon
 - Replace basic auth with a custom authentication process
 - Update NHS.UK frontend to [v8.3.0](https://github.com/nhsuk/nhsuk-frontend/releases/tag/v8.3.0)
+- Fix setting PORT via the command line ([PR 347](https://github.com/nhsuk/nhsuk-prototype-kit/pull/347))
 
 ## 4.11.0 - 27 June 2024
 
