@@ -27,7 +27,7 @@ const utils = require('./lib/utils');
 const prototypeAdminRoutes = require('./middleware/prototype-admin-routes');
 
 // Set configuration variables
-const port = process.env.PORT || config.port;
+const port = parseInt(process.env.PORT) || config.port;
 const useDocumentation = process.env.SHOW_DOCS || config.useDocumentation;
 const onlyDocumentation = process.env.DOCS_ONLY;
 
