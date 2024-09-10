@@ -22,7 +22,7 @@
     "client-sessions": "^0.8.0",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2",
+    "express": "^4.20.0",
     "express-session": "^1.18.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
