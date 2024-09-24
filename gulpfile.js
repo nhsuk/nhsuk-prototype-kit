@@ -49,7 +49,7 @@ function compileAssets() {
       'docs/assets/**/**/*.*',
       '!**/assets/**/**/*.js', // Don't copy JS files
       '!**/assets/**/**/*.scss', // Don't copy SCSS files
-    ])
+    ], { encoding: false })
     .pipe(gulp.dest('public'));
 }
 
