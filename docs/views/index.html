@@ -1,6 +1,7 @@
 {% extends 'layout.html' %}
 
-{% block beforeContent %}
+{% block header %}
+  {{ header({}) }}
   {{ hero({
     "heading": "NHS.UK prototype kit",
     "text": "Rapidly create HTML prototypes of NHS.UK services."
