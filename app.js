@@ -51,9 +51,10 @@ app.use(cookieParser());
 // Nunjucks configuration for application
 const appViews = [
   path.join(__dirname, 'app/views/'),
-  path.join(__dirname, 'node_modules/nhsuk-frontend/packages/components'),
   path.join(__dirname, 'docs/views/'),
   path.join(__dirname, 'lib/prototype-admin/'),
+  path.join(__dirname, 'node_modules/nhsuk-frontend/packages/components'),
+  path.join(__dirname, 'node_modules/nhsuk-frontend/packages/macros'),
 ];
 
 const nunjucksConfig = {
@@ -179,6 +180,7 @@ if (useDocumentation || onlyDocumentation === 'true') {
   const docViews = [
     path.join(__dirname, 'docs/views/'),
     path.join(__dirname, 'node_modules/nhsuk-frontend/packages/components'),
+    path.join(__dirname, 'node_modules/nhsuk-frontend/packages/macros')
   ];
 
   nunjucksAppEnv = nunjucks.configure(docViews, {

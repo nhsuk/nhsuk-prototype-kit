@@ -1,5 +1,12 @@
 # NHS.UK prototype kit Changelog
 
+## Unreleased
+
+:new: **New features**
+
+- Update to NHS.UK frontend v9.0.1 - see [version 9.0.0 release notes](https://github.com/nhsuk/nhsuk-frontend/releases/tag/v9.0.0) for details on the breaking changes
+- Drop `outerContent` block and use `beforeContent` block for both breadcrumbs and back links
+
 ## 4.12.0 - 15 August 2024
 
 :wrench:
