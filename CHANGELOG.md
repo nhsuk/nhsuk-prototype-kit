@@ -1,5 +1,9 @@
 # NHS.UK prototype kit Changelog
 
+## Unreleased
+
+- Remove guidance and tutorials - these can now be found online on the [NHS Prototype Kit website](https://prototype-kit.service-manual.nhs.uk) - ([PR 385](https://github.com/nhsuk/nhsuk-prototype-kit/pull/385))
+
 ## 5.0.0 - 15 October 2024
 
 :new: **New features**
