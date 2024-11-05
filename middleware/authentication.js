@@ -31,7 +31,7 @@ function sendUserToPasswordPage(req, res) {
 
 // Give the user some instructions on how to set a password
 function showNoPasswordError(res) {
-  return res.send('<h1>Error:</h1><p>Password not set. <a href="https://nhsuk-prototype-kit.azurewebsites.net/docs/how-tos/publish-your-prototype-online">See guidance for setting a password</a>.</p>');
+  return res.send('<h1>Error:</h1><p>Password not set. <a href="https://prototype-kit.service-manual.nhs.uk/how-tos/publish-your-prototype-online">See guidance for setting a password</a>.</p>');
 }
 
 function authentication(req, res, next) {

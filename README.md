@@ -1,6 +1,6 @@
 # NHS.UK prototype kit
 
-Visit the <a href="http://nhsuk-prototype-kit.azurewebsites.net/docs">NHS.UK prototype kit site</a> to download the latest version and read the documentation.
+Visit the <a href="https://prototype-kit.service-manual.nhs.uk">NHS.UK prototype kit site</a> to download the latest version and read the documentation.
 
 ## About the NHS.UK prototype kit
 
@@ -8,14 +8,14 @@ The NHS.UK prototype kit enables you to make interactive prototypes that will lo
 
 ## Security
 
-If you publish your prototypes online, they must be protected by a <a href="https://nhsuk-prototype-kit.azurewebsites.net/docs/how-tos/publish-your-prototype-online">username and password</a>. This is to prevent members of the public finding prototypes and thinking they are real services.
+If you publish your prototypes online, they must be protected by a <a href="https://prototype-kit.service-manual.nhs.uk/how-tos/publish-your-prototype-online">username and password</a>. This is to prevent members of the public finding prototypes and thinking they are real services.
 
 You must protect user privacy at all times, even when using prototypes. Prototypes made with the kit look like NHS.UK, but do not have the same security provisions. Always make sure you are handling user data appropriately.
 
 ## Installation instructions
 
-- <a href="http://nhsuk-prototype-kit.azurewebsites.net/docs/install/simple">Install guide (non technical)</a>
-- <a href="http://nhsuk-prototype-kit.azurewebsites.net/docs/install/advanced">Developer friendly install guide (technical)</a>
+- <a href="https://prototype-kit.service-manual.nhs.uk/install/simple">Install guide (non technical)</a>
+- <a href="https://prototype-kit.service-manual.nhs.uk/install/advanced">Developer friendly install guide (technical)</a>
 
 ### Running the kit
 
@@ -47,21 +47,10 @@ Run unit tests locally with `npm run test`.
 
 ### Environments
 
-#### Preview environment
-
-Code pushed to the `main` branch will deploy on the [Preview environment](http://nhsuk-prototype-kit-preview.azurewebsites.net/).
-
-#### Live
-
-The live NHS.UK prototype kit [Live environment](https://nhsuk-prototype-kit.azurewebsites.net), accessible to the public.
-
-__Note:__ Live is behind a server side cache which results in changes not appearing immediately.
-
-### Versioning and deploying to live
+### Versioning and releasing
 
 - Merge required changes via PR into `main` branch
   - Ensure the version number in `package.json` and `CHANGELOG.md` match, with a summary of the changes included in the changelog
-- Verify the changes in the [Preview environment](http://nhsuk-prototype-kit-preview.azurewebsites.net/)
 - Pull down merged `main` branch to your local repository
 - Create a tag with the version number from the latest commit on `main`
   - If the latest version you're looking to push is version "1.2.3", you can do this on the command line with
