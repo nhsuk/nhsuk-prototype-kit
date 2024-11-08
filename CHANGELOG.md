@@ -1,5 +1,9 @@
 # NHS.UK prototype kit Changelog
 
+## Unreleased
+
+- Update NHS frontend to 9.1.0
+
 ## 5.0.0 - 15 October 2024
 
 :new: **New features**
