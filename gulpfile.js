@@ -36,7 +36,7 @@ function compileStyles() {
 // Compile JavaScript (with ES6 support)
 function compileScripts() {
   return gulp
-    .src(['app/assets/javascript/**/*.js', 'docs/assets/javascript/**/*.js'])
+    .src(['app/assets/javascript/**/*.js'])
     .pipe(babel())
     .pipe(gulp.dest('public/js'));
 }
