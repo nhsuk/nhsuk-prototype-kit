@@ -180,7 +180,7 @@ if (useDocumentation || onlyDocumentation === 'true') {
   const docViews = [
     path.join(__dirname, 'docs/views/'),
     path.join(__dirname, 'node_modules/nhsuk-frontend/packages/components'),
-    path.join(__dirname, 'node_modules/nhsuk-frontend/packages/macros')
+    path.join(__dirname, 'node_modules/nhsuk-frontend/packages/macros'),
   ];
 
   nunjucksAppEnv = nunjucks.configure(docViews, {
@@ -212,7 +212,6 @@ if (useDocumentation || onlyDocumentation === 'true') {
     automaticRouting.matchRoutes(req, res, next);
   });
 }
-
 
 app.use('/prototype-admin', prototypeAdminRoutes);
 
