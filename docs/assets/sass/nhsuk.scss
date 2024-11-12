@@ -1,98 +1,14 @@
 @import 'node_modules/nhsuk-frontend/packages/core/settings/colours';
 
-// ==========================================================================
-// Log in link
-// ==========================================================================
-.nhsuk-header__content--container {
-  float: left;
-}
-@media (max-width: 40.0525em) {
-  .nhsuk-header__content--container {
-    float: right;
-  }
-}
-
-.nhsuk-header__login {
-  float: left;
-  padding-top: .5em;
-  position: relative;
-  z-index: 2;
-}
-
-.nhsuk-header__login--link,
-.nhsuk-header__login--link:visited {
-  color: #ffffff;
-  margin-right: 1em;
-}
+// CSS used by NHS website templates
+//
+// See docs/views/templates
+//
+// If you use any of these templates as part of your prototype,
+// you should copy across the relevant bits of CSS into
+// app/assets/sass/main.scss
 
 
-// ==========================================================================
-// Coronavirus banner
-// ==========================================================================
-.app-global-alert {
-  background-color:#ffeb3b;
-  padding-bottom:24px;
-  padding-top:24px
- }
- @media print {
-  .app-global-alert {
-   display:none
-  }
- }
- .app-global-alert a {
-  color:#005eb8
- }
- .app-global-alert a:focus {
-  background-color:#003d78;
-  box-shadow:0 0 0 4px #003d78;
-  color:#fff;
-  outline:4px solid transparent;
-  outline-offset:4px
- }
- .app-global-alert a:hover {
-  background-color:#005eb8;
-  box-shadow:0 0 0 4px #005eb8;
-  color:#fff
- }
- .app-global-alert a:active {
-  background-color:#002f5c;
-  box-shadow:0 0 0 4px #003d78;
-  color:#fff
- }
- .app-global-alert__content {
-  position:relative
- }
- .app-global-alert__content>:first-child {
-  margin-top:0
- }
- .app-global-alert__content>:last-child {
-  margin-bottom:0
- }
- .app-global-alert__message h2,
- .app-global-alert__message h3 {
-  font-size:24px;
-  line-height:1.33333;
-  margin:0
- }
- .app-global-alert__message p {
-  margin-top:8px;
-  display:block;
-  font-size:16px;
-  line-height:1.5;
-  margin-bottom:0
- }
- @media (min-width:40.0625em) {
-  .app-global-alert__message p {
-   margin-top:8px
-  }
- }
- @media (min-width:40.0625em) {
-  .app-global-alert__message p {
-   font-size:19px
-  }
- }
-
- 
 // ==========================================================================
 // Feedback form
 // ==========================================================================
