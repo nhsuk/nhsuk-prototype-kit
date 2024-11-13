@@ -1,15 +1,13 @@
 {% extends 'layout.html' %}
 
-{% set mainClasses = "nhsuk-main-wrapper--s" %}
-
 {% block pageTitle %}
-  Blank transactional template - NHS.UK prototype kit
+  Blank template - NHS.UK prototype kit
 {% endblock %}
 
 {% block beforeContent %}
-  {{ backLink({
-    "href": "/templates/start-page",
-    "text": "Back"
+  {{ breadcrumb({
+    href: "#",
+    text: "Home"
   }) }}
 {% endblock %}
 
@@ -20,7 +18,7 @@
 
       <!-- Add your content here -->
 
-    </div>  
+    </div>
 
   </div>
 {% endblock %}
