@@ -234,9 +234,12 @@ app.use((err, req, res) => {
   res.send(err.message);
 });
 
-if (process.env.WATCH !== 'true') {
-  console.log(`Running at http://localhost:${port}/`); // eslint-disable-line no-console
-  console.log('\x1b[36m \nIf you are working on this prototype now, press Control-c to stop the server and \ntype \x1b[34mnpm run watch\x1b[36m instead to run the prototype in development mode.\x1b[0m'); // eslint-disable-line no-console
+if (
+  process.env.WATCH !== 'true' // If the user isn’t running watch
+  && process.env.NODE_ENV !== 'production' // and it’s not in production mode
+) {
+  console.info(`Running at http://localhost:${port}/`); // eslint-disable-line no-console
+  console.warn('\x1b[36m \nIf you are working on this prototype now, press Control-c to stop the server and \ntype \x1b[34mnpm run watch\x1b[36m instead to run the prototype in development mode.\x1b[0m'); // eslint-disable-line no-console
 }
 
 // Run the application
