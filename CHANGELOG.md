@@ -4,6 +4,7 @@
 
 - Updated start page template to use the `serviceName` variable in the h1 and title tag ([PR 414](https://github.com/nhsuk/nhsuk-prototype-kit/pull/414))
 - Update Header to use the `serviceName` variable ([PR 417](https://github.com/nhsuk/nhsuk-prototype-kit/pull/417))
+- Update default service name ([PR 419](https://github.com/nhsuk/nhsuk-prototype-kit/pull/419))
 
 ## 5.1.0 - 12 November 2024
 
