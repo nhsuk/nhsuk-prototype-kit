@@ -215,6 +215,15 @@ if (useDocumentation || onlyDocumentation === 'true') {
 
 app.use('/prototype-admin', prototypeAdminRoutes);
 
+if (process.env.NODE_ENV === 'production') {
+  app.use((req, res, next) => {
+    // Set Strict-Transport-Security header to
+    // ensure that browsers only use HTTPS
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000; preload');
+    next();
+  });
+}
+
 // Redirect all POSTs to GETs - this allows users to use POST for autoStoreData
 app.post(/^\/([^.]+)$/, (req, res) => {
   res.redirect(`/${req.params[0]}`);
