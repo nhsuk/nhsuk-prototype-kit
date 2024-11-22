@@ -1,10 +1,10 @@
-# NHS.UK prototype kit
+# NHS prototype kit
 
-Visit the <a href="https://prototype-kit.service-manual.nhs.uk">NHS.UK prototype kit site</a> to download the latest version and read the documentation.
+Visit the <a href="https://prototype-kit.service-manual.nhs.uk">NHS prototype kit site</a> to download the latest version and read the documentation.
 
-## About the NHS.UK prototype kit
+## About the NHS prototype kit
 
-The NHS.UK prototype kit enables you to make interactive prototypes that will look like pages on NHS.UK. The prototypes you make are a great way to show ideas to others and for conducting user research.
+The NHS prototype kit enables you to make interactive prototypes that will look like pages on NHS.UK. The prototypes you make are a great way to show ideas to others and for conducting user research.
 
 ## Security
 
@@ -23,7 +23,7 @@ Start the kit with `npm run watch`.
 
 ## Contribute
 
-If you want to contribute to the NHS.UK prototype kit, by reporting bugs, fixing bugs, suggesting new features or writing documentation, then read our [contributing guidelines](CONTRIBUTING.md).
+If you want to contribute to the NHS prototype kit, by reporting bugs, fixing bugs, suggesting new features or writing documentation, then read our [contributing guidelines](CONTRIBUTING.md).
 
 ## Development environment
 
@@ -66,4 +66,4 @@ Code analysis results can be found in [SonarQube](https://sonar.nhswebsite.nhs.u
 
 ## Support
 
-The NHS.UK prototype kit is maintained by NHS England. [Email us](mailto:service-manual@nhs.net), open a [Github issue](https://github.com/nhsuk/nhsuk-prototype-kit/issues/new) or get in touch on the [NHS digital service manual Slack workspace](https://join.slack.com/t/nhs-service-manual/shared_invite/enQtNTIyOTEyNjU3NDkyLTk4NDQ3YzkwYzk1Njk5YjAxYTI5YTVkZmUxMGQ0ZjA3NjMyM2ZkNjBlMWMxODVjZjYzNzg1ZmU4MWY1NmE2YzE).
+The NHS prototype kit is maintained by NHS England. [Email us](mailto:service-manual@nhs.net), open a [Github issue](https://github.com/nhsuk/nhsuk-prototype-kit/issues/new) or get in touch on the [NHS digital service manual Slack workspace](https://join.slack.com/t/nhs-service-manual/shared_invite/enQtNTIyOTEyNjU3NDkyLTk4NDQ3YzkwYzk1Njk5YjAxYTI5YTVkZmUxMGQ0ZjA3NjMyM2ZkNjBlMWMxODVjZjYzNzg1ZmU4MWY1NmE2YzE).
