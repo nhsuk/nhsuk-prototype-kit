@@ -1,11 +1,14 @@
-# NHS.UK prototype kit Changelog
+# NHS prototype kit Changelog
 
 ## Unreleased
 
 - Updated start page template to use the `serviceName` variable in the h1 and title tag ([PR 414](https://github.com/nhsuk/nhsuk-prototype-kit/pull/414))
 - Update Header to use the `serviceName` variable ([PR 417](https://github.com/nhsuk/nhsuk-prototype-kit/pull/417))
 - Remove example page template with lots of content examples on it ([PR 420](https://github.com/nhsuk/nhsuk-prototype-kit/pull/420))
+- Update default service name ([PR 419](https://github.com/nhsuk/nhsuk-prototype-kit/pull/419))
+- Changed all references from 'NHS.UK prototype kit' to 'NHS prototype kit'
 - Use strict https in production mode - ([PR 410](https://github.com/nhsuk/nhsuk-prototype-kit/pull/410))
+
 
 ## 5.1.0 - 12 November 2024
 
