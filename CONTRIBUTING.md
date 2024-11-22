@@ -1,6 +1,6 @@
 # Contribution guidelines
 
-Thank you for your interest in contributing to NHS.UK prototype kit, we really appreciate it. There are a number of ways that you can contribute – reporting bugs, fixing bugs, suggesting new features or writing documentation.
+Thank you for your interest in contributing to NHS prototype kit, we really appreciate it. There are a number of ways that you can contribute – reporting bugs, fixing bugs, suggesting new features or writing documentation.
 
 ## Contributing
 
