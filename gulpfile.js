@@ -24,7 +24,7 @@ sass.compiler = require('sass');
 // Compile SASS to CSS
 function compileStyles() {
   return gulp
-    .src(['app/assets/sass/**/*.scss', 'lib/assets/sass/**/*.scss'])
+    .src(['app/assets/sass/**/*.scss'])
     .pipe(sass())
     .pipe(gulp.dest('public/css'))
     .on('error', (err) => {
@@ -46,7 +46,6 @@ function compileAssets() {
   return gulp
     .src([
       'app/assets/**/**/*.*',
-      'lib/assets/**/**/*.*',
       '!**/assets/**/**/*.js', // Don't copy JS files
       '!**/assets/**/**/*.scss', // Don't copy SCSS files
     ], { encoding: false })
@@ -108,9 +107,6 @@ function watch() {
   gulp.watch('app/assets/sass/**/*.scss', compileStyles);
   gulp.watch('app/assets/javascript/**/*.js', compileScripts);
   gulp.watch('app/assets/**/**/*.*', compileAssets);
-  gulp.watch('lib/assets/sass/**/*.scss', compileStyles);
-  gulp.watch('lib/assets/javascript/**/*.js', compileScripts);
-  gulp.watch('lib/assets/**/**/*.*', compileAssets);
 }
 
 exports.watch = watch;
