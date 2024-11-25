@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Mini hub - Page two
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/",
+        text: "Home"
+      }
+    ],
+    href: "/templates/mini-hub",
+    text: "Main page"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>
+        Page two heading
+        <span class="nhsuk-caption-xl nhsuk-caption--bottom ">
+          Section title
+        </span>
+      </h1>
+
+      {{ contentsList({
+        items: [
+          {
+            href: "/templates/mini-hub",
+            text: "Main page"
+          },
+          {
+            href: "/templates/mini-hub/page-2",
+            text: "Page two",
+            current: "true"
+          },
+          {
+            href: "/templates/mini-hub/page-3",
+            text: "Page three"
+          }
+        ]
+      }) }}
+
+      <p>
+        [Page content goes here]
+      </p>
+
+      <p>
+        [Visit the
+        <a href="https://service-manual.nhs.uk">NHS digital service manual</a>
+        for guidance and examples.]
+      </p>
+
+      {{ pagination({
+        "previousUrl": "/templates/mini-hub",
+        "previousPage": "Main page",
+        "nextUrl": "/templates/mini-hub/page-3",
+        "nextPage": "Page two"
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
