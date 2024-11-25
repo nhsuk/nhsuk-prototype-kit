@@ -14,7 +14,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  NHS.UK prototype kit
+  NHS prototype kit
 {% endblock %}
 
 <!-- Edit the header -->
@@ -22,7 +22,7 @@
 {% block header %}
   {{ header({
     "service": {
-        "name": "Prototype kit",
+        "name": serviceName,
         "href": "/"
       },
       "showNav": "false",
@@ -41,8 +41,8 @@
         "label": "Home"
       },
       {
-        "URL": "/page-example",
-        "label": "Example page"
+        "URL": "/docs/page-templates",
+        "label": "Example page templates"
       }
     ]
   })}}

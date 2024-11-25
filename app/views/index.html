@@ -2,17 +2,17 @@
 
 <!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/assets/sass/main.scss -->
 
-<!-- Extends the layout from /views/layout.html -->
+<!-- Extends the layout from /app/views/layout.html -->
 {% extends 'layout.html' %}
 <!--
-  In /views/layout.html you can:
+  In /app/views/layout.html you can:
     - change the header and footer
     - add custom CSS and JavaScript
 -->
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  NHS.UK prototype kit
+  {{ serviceName }}
 {% endblock %}
 
 <!-- For adding a breadcrumb or back link -->
@@ -20,60 +20,51 @@
 {% block beforeContent %}
 {% endblock %}
 
-
 <!-- For adding page content -->
 <!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <!-- Change the page title here -->
-      <h1>
-        NHS.UK prototype kit
+      <!-- You can delete the lines below -->
+      <h2 class="nhsuk-heading-l">
+        NHS prototype kit
         <span class="nhsuk-caption-xl nhsuk-caption--bottom">Version {{version}}</span>
-      </h1>
+      </h2>
+      <hr>
+
 
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
 
-      <p class="nhsuk-lede-text">
-        This kit lets you rapidly create HTML prototypes of NHS services.
+      <h1 class="nhsuk-heading-xl">
+        {{ serviceName }}
+      </h1>
+
+      <p>Set the service name for your prototype by editing <strong>/app/config.js</strong>.</p>
+
+      <p>
+        This is the index page for your prototype. You can find it at <strong>/app/views/index.html</strong>.
       </p>
 
       <hr>
 
-      <h2>
-        About this page
-      </h2>
-
-      <p>
-        Use this page as the index for your project.
-      </p>
-
-      <p>
-        You'll find the code for this page at <strong>/app/views/index.html</strong>.
-      </p>
-
-      <p>
-        There is also an <a href="/page-example">example page</a>, which contains a selection of NHS.UK frontend styles and components and some <a href="/example-templates">page templates</a>.
-      </p>
-
-      <hr>
-
-      <h2>
+      <h2 class="nhsuk-heading-l">
         Get started
       </h2>
 
-      <p>Get started by using the:</p>
-
-      <ul>
+      <ul class="nhsuk-list nhsuk-list--bullet">
         <li>
-          <a href="https://prototype-kit.service-manual.nhs.uk/how-tos">how to guides</a>
+          <a href="https://prototype-kit.service-manual.nhs.uk/how-tos">NHS prototype kit guides</a> – including a tutorial
         </li>
         <li>
-          code snippets for styles and components from the <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a>
+          <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a> – for code snippets and guidance on using NHS styles, components and patterns
         </li>
       </ul>
+
+      <p>
+        There is a selection of <a href="/example-templates">example page templates</a> in <strong>/lib/example-templates/views/</strong>. To use these, copy and paste them into <strong>/app/views/</strong>.
+      </p>
 
       <!-- End of content -->
 
