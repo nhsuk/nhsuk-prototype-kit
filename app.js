@@ -21,19 +21,17 @@ const automaticRouting = require('./middleware/auto-routing');
 const config = require('./app/config');
 const locals = require('./app/locals');
 const routes = require('./app/routes');
-const documentationRoutes = require('./docs/documentation_routes');
 const utils = require('./lib/utils');
 
 const prototypeAdminRoutes = require('./middleware/prototype-admin-routes');
+const exampleTemplatesRoutes = require('./lib/example_templates_routes');
 
 // Set configuration variables
 const port = parseInt(process.env.PORT, 10) || config.port;
-const useDocumentation = process.env.SHOW_DOCS || config.useDocumentation;
-const onlyDocumentation = process.env.DOCS_ONLY;
 
 // Initialise applications
 const app = express();
-const documentationApp = express();
+const exampleTemplatesApp = express();
 
 // Set up configuration variables
 const useAutoStoreData = process.env.USE_AUTO_STORE_DATA || config.useAutoStoreData;
@@ -51,7 +49,7 @@ app.use(cookieParser());
 // Nunjucks configuration for application
 const appViews = [
   path.join(__dirname, 'app/views/'),
-  path.join(__dirname, 'docs/views/'),
+  path.join(__dirname, 'lib/example-templates/'),
   path.join(__dirname, 'lib/prototype-admin/'),
   path.join(__dirname, 'node_modules/nhsuk-frontend/packages/components'),
   path.join(__dirname, 'node_modules/nhsuk-frontend/packages/macros'),
@@ -83,7 +81,7 @@ const sessionOptions = {
 app.use(authentication);
 
 // Support session data in cookie or memory
-if (useCookieSessionStore === 'true' && !onlyDocumentation) {
+if (useCookieSessionStore === 'true') {
   app.use(sessionInCookie(Object.assign(sessionOptions, {
     cookieName: sessionName,
     proxy: true,
@@ -148,20 +146,12 @@ app.use(locals(config));
 
 // View engine
 app.set('view engine', 'html');
-documentationApp.set('view engine', 'html');
+exampleTemplatesApp.set('view engine', 'html');
 
 // Middleware to serve static assets
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/nhsuk-frontend', express.static(path.join(__dirname, 'node_modules/nhsuk-frontend/packages')));
 app.use('/nhsuk-frontend', express.static(path.join(__dirname, 'node_modules/nhsuk-frontend/dist')));
-
-// Check if the app is documentation only
-if (onlyDocumentation === 'true') {
-  app.get('/', (req, res) => {
-    // Redirect to the documentation pages if it is
-    res.redirect('/docs');
-  });
-}
 
 // Use custom application routes
 app.use('/', routes);
@@ -171,47 +161,31 @@ app.get(/^([^.]+)$/, (req, res, next) => {
   automaticRouting.matchRoutes(req, res, next);
 });
 
-// Check if the app is using documentation
-if (useDocumentation || onlyDocumentation === 'true') {
-  // Documentation routes
-  app.use('/docs', documentationApp);
+// Example template routes
+app.use('/example-templates', exampleTemplatesApp);
 
-  // Nunjucks configuration for documentation
-  const docViews = [
-    path.join(__dirname, 'docs/views/'),
-    path.join(__dirname, 'node_modules/nhsuk-frontend/packages/components'),
-    path.join(__dirname, 'node_modules/nhsuk-frontend/packages/macros'),
-  ];
+// Nunjucks configuration for example templates
+const exampleTemplateViews = [
+  path.join(__dirname, 'lib/example-templates/'),
+  path.join(__dirname, 'node_modules/nhsuk-frontend/packages/components'),
+  path.join(__dirname, 'node_modules/nhsuk-frontend/packages/macros'),
+];
 
-  nunjucksAppEnv = nunjucks.configure(docViews, {
-    autoescape: true,
-    express: documentationApp,
-  });
-  nunjucksAppEnv.addGlobal('version', packageInfo.version);
+nunjucksAppEnv = nunjucks.configure(exampleTemplateViews, {
+  autoescape: true,
+  express: exampleTemplatesApp,
+});
+nunjucksAppEnv.addGlobal('version', packageInfo.version);
 
-  // Add Nunjucks filters
-  utils.addNunjucksFilters(nunjucksAppEnv);
+// Add Nunjucks filters
+utils.addNunjucksFilters(nunjucksAppEnv);
 
-  // Automatically store all data users enter
-  if (useAutoStoreData === 'true') {
-    documentationApp.use(utils.autoStoreData);
-    utils.addCheckedFunction(nunjucksAppEnv);
-  }
+exampleTemplatesApp.use('/', exampleTemplatesRoutes);
 
-  // Support for parsing data in POSTs
-  documentationApp.use(bodyParser.json());
-  documentationApp.use(bodyParser.urlencoded({
-    extended: true,
-  }));
-
-  // Custom documentation routes
-  documentationApp.use('/', documentationRoutes);
-
-  // Automatically route documentation pages
-  documentationApp.get(/^([^.]+)$/, (req, res, next) => {
-    automaticRouting.matchRoutes(req, res, next);
-  });
-}
+// Automatically route example template pages
+exampleTemplatesApp.get(/^([^.]+)$/, (req, res, next) => {
+  automaticRouting.matchRoutes(req, res, next);
+});
 
 app.use('/prototype-admin', prototypeAdminRoutes);
 

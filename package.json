@@ -11,7 +11,7 @@
     "test:ci": "jest --ci",
     "prewatch": "gulp build",
     "watch": "gulp",
-    "lint:js": "eslint -c ./linters/.eslintrc.js app.js middleware/**/*.js lib/**/*.js app/*.js docs/*.js"
+    "lint:js": "eslint -c ./linters/.eslintrc.js app.js middleware/**/*.js lib/**/*.js app/*.js"
   },
   "author": "https://github.com/nhsuk/",
   "license": "MIT",

@@ -6,7 +6,6 @@ const allowedPathsWhenUnauthenticated = [
   '/css/main.css',
   '/nhsuk-frontend/nhsuk.min.js',
   '/js/auto-store-data.js',
-  '/js/jquery-3.5.1.min.js',
   '/js/main.js',
 ];
 

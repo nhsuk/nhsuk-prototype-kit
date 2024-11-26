@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Page templates - NHS prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    href: "/",
+    text: "Home"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>Page templates</h1>
+
+      <p>You can find these templates in the <strong>/lib/example-templates</strong> folder.</p>
+
+      <p>You can copy and paste the templates in any folder within <strong>/app/views</strong>.</p>
+
+      <h2>Content pages</h2>
+
+      <ul>
+        <li><a href="/example-templates/content-page">Blank content page</a></li>
+        <li><a href="/example-templates/mini-hub">Mini hub</a></li>
+      </ul>
+
+      <h2>Transactional journeys</h2>
+
+      <ul>
+        <li><a href="/example-templates/blank-transactional">Blank transactional</a></li>
+        <li><a href="/example-templates/start-page">Start page</a></li>
+        <li><a href="/example-templates/question-page">Question page</a></li>
+        <li><a href="/example-templates/check-your-answers">Check your answers</a></li>
+        <li><a href="/example-templates/confirmation-page">Confirmation</a></li>
+      </ul>
+    </div>
+
+  </div>
+{% endblock %}
