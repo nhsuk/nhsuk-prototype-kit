@@ -1,13 +1,19 @@
 {% extends 'layout.html' %}
 
 {% block pageTitle %}
-  Mini hub - Main page
+  Mini hub - Page two
 {% endblock %}
 
 {% block beforeContent %}
   {{ breadcrumb({
-    href: "/",
-    text: "Home"
+    items: [
+      {
+        href: "/",
+        text: "Home"
+      }
+    ],
+    href: "/example-templates/mini-hub",
+    text: "Main page"
   }) }}
 {% endblock %}
 
@@ -16,7 +22,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1>
-        Main page heading
+        Page two heading
         <span class="nhsuk-caption-xl nhsuk-caption--bottom ">
           Section title
         </span>
@@ -25,16 +31,16 @@
       {{ contentsList({
         items: [
           {
-            href: "/templates/mini-hub/page-1",
-            text: "Main page",
+            href: "/example-templates/mini-hub",
+            text: "Main page"
+          },
+          {
+            href: "/example-templates/mini-hub/page-2",
+            text: "Page two",
             current: "true"
           },
           {
-            href: "/templates/mini-hub/page-2",
-            text: "Page two"
-          },
-          {
-            href: "/templates/mini-hub/page-3",
+            href: "/example-templates/mini-hub/page-3",
             text: "Page three"
           }
         ]
@@ -51,7 +57,9 @@
       </p>
 
       {{ pagination({
-        "nextUrl": "/templates/mini-hub/page-2",
+        "previousUrl": "/example-templates/mini-hub",
+        "previousPage": "Main page",
+        "nextUrl": "/example-templates/mini-hub/page-3",
         "nextPage": "Page two"
       }) }}
 
