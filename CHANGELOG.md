@@ -8,6 +8,7 @@
 - Update default service name ([PR 419](https://github.com/nhsuk/nhsuk-prototype-kit/pull/419))
 - Changed all references from 'NHS.UK prototype kit' to 'NHS prototype kit'
 - Update default index page ([PR 423](https://github.com/nhsuk/nhsuk-prototype-kit/pull/423))
+- Import task list component ([PR 437](https://github.com/nhsuk/nhsuk-prototype-kit/pull/437))
 
 ## 5.1.0 - 12 November 2024
 
