@@ -1,10 +1,4 @@
 module.exports = function (env) { /* eslint-disable-line func-names,no-unused-vars */
-  /**
-   * Instantiate object used to store the methods registered as a
-   * 'filter' (of the same name) within nunjucks. You can override
-   * gov.uk core filters by creating filter methods of the same name.
-   * @type {Object}
-   */
   const filters = {};
 
   /* ------------------------------------------------------------------
@@ -38,8 +32,6 @@ module.exports = function (env) { /* eslint-disable-line func-names,no-unused-va
 
   ------------------------------------------------------------------ */
 
-  /* ------------------------------------------------------------------
-    keep the following line to return your filters to the app
-  ------------------------------------------------------------------ */
+  /* keep the following line to return your filters to the app  */
   return filters;
 };

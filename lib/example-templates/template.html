@@ -28,8 +28,9 @@
 {%- from 'radios/macro.njk' import radios %}
 {%- from 'select/macro.njk' import select %}
 {%- from 'summary-list/macro.njk' import summaryList %}
-{%- from 'tabs/macro.njk' import tabs %} 
+{%- from 'tabs/macro.njk' import tabs %}
 {%- from 'tag/macro.njk' import tag %}
+{%- from 'task-list/macro.njk' import taskList %}
 {%- from 'textarea/macro.njk' import textarea %}
 
 <!DOCTYPE html>
@@ -71,7 +72,7 @@
     {% endblock %}
 
     {% block head %}{% endblock %}
-    
+
   </head>
 
   <body class="{{ bodyClasses }}">

@@ -8,6 +8,8 @@
 - Update default service name ([PR 419](https://github.com/nhsuk/nhsuk-prototype-kit/pull/419))
 - Changed all references from 'NHS.UK prototype kit' to 'NHS prototype kit'
 - Update default index page ([PR 423](https://github.com/nhsuk/nhsuk-prototype-kit/pull/423))
+- Import task list component ([PR 437](https://github.com/nhsuk/nhsuk-prototype-kit/pull/437))
+- The example page templates have moved from the `docs` folder to `lib/example-templates` - ([PR 409](https://github.com/nhsuk/nhsuk-prototype-kit/pull/409))
 - Added a devcontainer.json file to configure Github Codespaces for use of the kit ([PR 428])(https://github.com/nhsuk/nhsuk-prototype-kit/pull/428))
 
 
