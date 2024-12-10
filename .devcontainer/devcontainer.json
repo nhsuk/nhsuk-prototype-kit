@@ -1,0 +1,65 @@
+{
+  "name": "NHS Prototype Kit",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  // codespaces seems to have an issue using port 2000 so setting to 2001 for the NHS Prototype Kit
+  "runArgs": ["--env", "PORT=2001"],
+  "portsAttributes": {
+    "3001": {
+      "label": "Running prototype",
+      // --------------------------------
+      // onAutoForward possible options
+      // --------------------------------
+      // you can change the value to one of the following possible options:
+      // 'notify' (shows a prompt),
+      // 'silent' (does nothing)
+      // 'openBrowser' (opens the prototype URL in a browser window/tab)
+      // 'openPrview' (opens the codespaces preview window to present the running prototype to the user)
+      "onAutoForward": "openPreview"
+    }
+  },
+  // forward the port for the browersync process
+  "forwardPorts": [3001],
+  "otherPortsAttributes": { "onAutoForward": "ignore" },
+  // when created - sets the git merge statergy to rebase to hopefully make easier time of merging
+  "onCreateCommand": "git config --global pull.rebase true",
+  // after creation - installs the node packages
+  "postCreateCommand": "npm install",
+  // A command to run each time a tool has successfully attached to the container
+  "postAttachCommand": {
+    "server": "npm run watch"
+  },
+  // codespace customisations
+  "customizations": {
+    // Configure properties specific to VS Code web-basde IDE used within codespaces.
+    "vscode": {
+      // editor settings
+      "settings": {
+        // uncomment the following lines to hide files not needed to update content
+        // "files.exclude": {
+        //   "{docs,lib,linters,middleware,node_modules,public,tests,NHS111.Shared.Frontend}/": true,
+        //   "*{CHANGELOG,CONTRIBUTING}.md": true,
+        //   "app/{data,assets}/": true,
+        //   "app/*.js": true,
+        //   "*.{js,yml,json}": true,
+        //   ".*": true,
+        //   "LICENSE": true
+        // },
+        // make emmet work within nunjucks
+        "emmet.includeLanguages": {
+          "njk": "html",
+          "nunjucks": "html",
+          "erb": "html",
+          "jinja": "html",
+          "jinja-html": "html",
+          "markdown": "html"
+        },
+        "html.suggest.html5": true
+      },
+      // bundle the following editor extensions
+      "extensions": [
+        // nunjuck syntax highlighting
+        "douglaszaltron.nunjucks-vscode-extensionpack"
+      ]
+    }
+  }
+}
