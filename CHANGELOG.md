@@ -7,8 +7,9 @@
 - Remove example page template with lots of content examples on it ([PR 420](https://github.com/nhsuk/nhsuk-prototype-kit/pull/420))
 - Update default service name ([PR 419](https://github.com/nhsuk/nhsuk-prototype-kit/pull/419))
 - Changed all references from 'NHS.UK prototype kit' to 'NHS prototype kit'
+- Update default index page ([PR 423](https://github.com/nhsuk/nhsuk-prototype-kit/pull/423))
+- Import task list component ([PR 437](https://github.com/nhsuk/nhsuk-prototype-kit/pull/437))
 - Use strict https in production mode - ([PR 410](https://github.com/nhsuk/nhsuk-prototype-kit/pull/410))
-
 
 ## 5.1.0 - 12 November 2024
 
