@@ -208,15 +208,19 @@ app.use((err, req, res) => {
   res.send(err.message);
 });
 
+// Run the application
+app.listen(port);
+
 if (
   process.env.WATCH !== 'true' // If the user isn’t running watch
   && process.env.NODE_ENV !== 'production' // and it’s not in production mode
 ) {
-  console.info(`Running at http://localhost:${port}/`); // eslint-disable-line no-console
-  console.warn('\x1b[36m \nIf you are working on this prototype now, press Control-c to stop the server and \ntype \x1b[34mnpm run watch\x1b[36m instead to run the prototype in development mode.\x1b[0m'); // eslint-disable-line no-console
+  /* eslint-disable no-console */
+  console.info(`Running at http://localhost:${port}/`);
+  console.info('');
+  console.warn('Warning: It looks like you may have run the command `npm start` locally.');
+  console.warn('Press `Ctrl+C` and then run `npm run watch` instead');
+  /* eslint-enable no-console */
 }
-
-// Run the application
-app.listen(port);
 
 module.exports = app;
