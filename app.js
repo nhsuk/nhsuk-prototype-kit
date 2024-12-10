@@ -16,14 +16,14 @@ dotenv.config();
 
 // Local dependencies
 const packageInfo = require('./package.json');
-const authentication = require('./middleware/authentication');
-const automaticRouting = require('./middleware/auto-routing');
+const authentication = require('./lib/middleware/authentication');
+const automaticRouting = require('./lib/middleware/auto-routing');
 const config = require('./app/config');
 const locals = require('./app/locals');
 const routes = require('./app/routes');
 const utils = require('./lib/utils');
 
-const prototypeAdminRoutes = require('./middleware/prototype-admin-routes');
+const prototypeAdminRoutes = require('./lib/middleware/prototype-admin-routes');
 const exampleTemplatesRoutes = require('./lib/example_templates_routes');
 
 // Set configuration variables
