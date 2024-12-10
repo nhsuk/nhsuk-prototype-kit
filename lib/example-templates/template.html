@@ -28,8 +28,9 @@
 {%- from 'radios/macro.njk' import radios %}
 {%- from 'select/macro.njk' import select %}
 {%- from 'summary-list/macro.njk' import summaryList %}
-{%- from 'tabs/macro.njk' import tabs %} 
+{%- from 'tabs/macro.njk' import tabs %}
 {%- from 'tag/macro.njk' import tag %}
+{%- from 'task-list/macro.njk' import taskList %}
 {%- from 'textarea/macro.njk' import textarea %}
 
 <!DOCTYPE html>
@@ -40,7 +41,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
 
-    <title>{% block pageTitle %}NHS.UK prototype kit{% endblock %}</title>
+    <title>{% block pageTitle %}NHS prototype kit{% endblock %}</title>
 
     <link href="https://www.nhs.uk/" rel="preconnect">
     <link href="https://assets.nhs.uk/" rel="preconnect" crossorigin>
@@ -71,7 +72,7 @@
     {% endblock %}
 
     {% block head %}{% endblock %}
-    
+
   </head>
 
   <body class="{{ bodyClasses }}">

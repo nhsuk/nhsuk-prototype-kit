@@ -1,10 +1,10 @@
-<!-- 
+<!--
   This is the main layout where you can:
-    - change the header and footer 
+    - change the header and footer
     - add custom CSS and JavaScript
 -->
 
-<!-- Extends the layout from /docs/views/template.html -->
+<!-- Extends the layout from /lib/example-templates/template.html -->
 {% extends "template.html" %}
 
 <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
@@ -14,7 +14,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-  NHS.UK prototype kit
+  NHS prototype kit
 {% endblock %}
 
 <!-- Edit the header -->
@@ -22,7 +22,7 @@
 {% block header %}
   {{ header({
     "service": {
-        "name": "Prototype kit",
+        "name": serviceName,
         "href": "/"
       },
       "showNav": "false",
@@ -41,8 +41,8 @@
         "label": "Home"
       },
       {
-        "URL": "/page-example",
-        "label": "Example page"
+        "URL": "/example-templates",
+        "label": "Page templates"
       }
     ]
   })}}
