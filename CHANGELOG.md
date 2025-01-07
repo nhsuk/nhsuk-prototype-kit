@@ -1,5 +1,11 @@
 # NHS prototype kit Changelog
 
+## [Unreleased]
+
+### Updated
+
+- Updated .devcontainer to remove the image attribute ([PR 451](https://github.com/nhsuk/nhsuk-prototype-kit/pull/451))
+
 ## 5.2.0 - 13 December 2024
 
 - Updated start page template to use the `serviceName` variable in the h1 and title tag ([PR 414](https://github.com/nhsuk/nhsuk-prototype-kit/pull/414))
