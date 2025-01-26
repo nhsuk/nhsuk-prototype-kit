@@ -16,14 +16,14 @@ dotenv.config();
 
 // Local dependencies
 const packageInfo = require('./package.json');
-const authentication = require('./middleware/authentication');
-const automaticRouting = require('./middleware/auto-routing');
+const authentication = require('./lib/middleware/authentication');
+const automaticRouting = require('./lib/middleware/auto-routing');
 const config = require('./app/config');
 const locals = require('./app/locals');
 const routes = require('./app/routes');
 const utils = require('./lib/utils');
 
-const prototypeAdminRoutes = require('./middleware/prototype-admin-routes');
+const prototypeAdminRoutes = require('./lib/middleware/prototype-admin-routes');
 const exampleTemplatesRoutes = require('./lib/example_templates_routes');
 
 // Set configuration variables
@@ -219,5 +219,17 @@ app.use((err, req, res) => {
 
 // Run the application
 app.listen(port);
+
+if (
+  process.env.WATCH !== 'true' // If the user isn’t running watch
+  && process.env.NODE_ENV !== 'production' // and it’s not in production mode
+) {
+  /* eslint-disable no-console */
+  console.info(`Running at http://localhost:${port}/`);
+  console.info('');
+  console.warn('Warning: It looks like you may have run the command `npm start` locally.');
+  console.warn('Press `Ctrl+C` and then run `npm run watch` instead');
+  /* eslint-enable no-console */
+}
 
 module.exports = app;
