@@ -17,6 +17,7 @@ dotenv.config();
 // Local dependencies
 const packageInfo = require('./package.json');
 const authentication = require('./lib/middleware/authentication');
+const production = require('./lib/middleware/production');
 const automaticRouting = require('./lib/middleware/auto-routing');
 const config = require('./app/config');
 const locals = require('./app/locals');
