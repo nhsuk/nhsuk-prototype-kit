@@ -1,12 +1,10 @@
 # NHS prototype kit Changelog
 
-## [Unreleased]
+## 5.3.0 - 14 February 2025
 
+- Update NHS Frontend to version 9.3.0, which includes a new Panel component
 - Use strict https and automatic http to https redirects in production mode - ([PR 410](https://github.com/nhsuk/nhsuk-prototype-kit/pull/410))
-
-### Updated
-
-- Updated .devcontainer to remove the image attribute ([PR 451](https://github.com/nhsuk/nhsuk-prototype-kit/pull/451))
+- Update .devcontainer to remove the image attribute ([PR 451](https://github.com/nhsuk/nhsuk-prototype-kit/pull/451))
 
 ## 5.2.0 - 13 December 2024
 
