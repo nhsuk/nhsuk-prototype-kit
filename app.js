@@ -17,6 +17,7 @@ dotenv.config();
 // Local dependencies
 const packageInfo = require('./package.json');
 const authentication = require('./lib/middleware/authentication');
+const production = require('./lib/middleware/production');
 const automaticRouting = require('./lib/middleware/auto-routing');
 const config = require('./app/config');
 const locals = require('./app/locals');
@@ -77,8 +78,10 @@ const sessionOptions = {
   },
 };
 
-// Authentication
-app.use(authentication);
+if (process.env.NODE_ENV === 'production') {
+  app.use(production);
+  app.use(authentication);
+}
 
 // Support session data in cookie or memory
 if (useCookieSessionStore === 'true') {
@@ -147,6 +150,12 @@ app.use(locals(config));
 // View engine
 app.set('view engine', 'html');
 exampleTemplatesApp.set('view engine', 'html');
+
+// This setting trusts the X-Forwarded headers set by
+// a proxy and uses them to set the standard header in
+// req. This is needed for hosts like Heroku.
+// See https://expressjs.com/en/guide/behind-proxies.html
+app.set('trust proxy', 1);
 
 // Middleware to serve static assets
 app.use(express.static(path.join(__dirname, 'public')));

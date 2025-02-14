@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Use strict https and automatic http to https redirects in production mode - ([PR 410](https://github.com/nhsuk/nhsuk-prototype-kit/pull/410))
+
 ### Updated
 
 - Updated .devcontainer to remove the image attribute ([PR 451](https://github.com/nhsuk/nhsuk-prototype-kit/pull/451))
