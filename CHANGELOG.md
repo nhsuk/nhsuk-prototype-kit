@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-- Use strict https in production mode - ([PR 410](https://github.com/nhsuk/nhsuk-prototype-kit/pull/410))
+- Use strict https and automatic http to https redirects in production mode - ([PR 410](https://github.com/nhsuk/nhsuk-prototype-kit/pull/410))
 
 ### Updated
 
