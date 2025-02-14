@@ -151,6 +151,12 @@ app.use(locals(config));
 app.set('view engine', 'html');
 exampleTemplatesApp.set('view engine', 'html');
 
+// This setting trusts the X-Forwarded headers set by
+// a proxy and uses them to set the standard header in
+// req. This is needed for hosts like Heroku.
+// See https://expressjs.com/en/guide/behind-proxies.html
+app.set('trust proxy', 1);
+
 // Middleware to serve static assets
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/nhsuk-frontend', express.static(path.join(__dirname, 'node_modules/nhsuk-frontend/packages')));
