@@ -8,6 +8,7 @@ const clean = require('gulp-clean');
 const gulpSass = require('gulp-sass')
 const dartSass = require('sass-embedded')
 const nodemon = require('gulp-nodemon');
+const PluginError = require('plugin-error')
 
 // Local dependencies
 const config = require('./app/config');
@@ -23,15 +24,20 @@ function cleanPublic() {
 const sass = gulpSass(dartSass)
 
 // Compile SASS to CSS
-function compileStyles() {
+function compileStyles(done) {
   return gulp
     .src(['app/assets/sass/**/*.scss'])
-    .pipe(sass())
+    .pipe(
+      sass()
+      .on('error', (error) => {
+        done(
+          new PluginError('compileCSS', error.messageFormatted, {
+            showProperties: false
+          })
+        )
+      })
+    )
     .pipe(gulp.dest('public/css'))
-    .on('error', (err) => {
-      console.log(err);
-      process.exit(1);
-    });
 }
 
 // Compile JavaScript (with ES6 support)
