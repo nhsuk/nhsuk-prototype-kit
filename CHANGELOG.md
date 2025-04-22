@@ -1,5 +1,10 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+- Update NHS.UK frontend to 9.4.1
+- Switch to using the `template.njk` that is now included within NHS Frontend ([PR 499](https://github.com/nhsuk/nhsuk-prototype-kit/pull/499))
+
 ## 5.3.0 - 14 February 2025
 
 - Update NHS Frontend to version 9.3.0, which includes a new Panel component

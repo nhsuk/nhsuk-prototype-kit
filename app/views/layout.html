@@ -4,11 +4,11 @@
     - add custom CSS and JavaScript
 -->
 
-<!-- Extends the layout from /lib/example-templates/template.html -->
-{% extends "template.html" %}
+<!-- Extends the prototype kit template which in turn extends the NHS.UK frontend template -->
+{% extends "prototype-kit-template.njk" %}
 
 <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-{% block headCSS %}
+{% block head %}
   <link href="/css/main.css" rel="stylesheet">
 {% endblock %}
 
