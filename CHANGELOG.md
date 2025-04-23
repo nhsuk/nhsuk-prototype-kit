@@ -5,6 +5,7 @@
 - Update NHS.UK frontend to 9.4.1
 - Switch to using the `template.njk` that is now included within NHS Frontend ([PR 499](https://github.com/nhsuk/nhsuk-prototype-kit/pull/499))
 - Remove ‘Check your answers’ example template, as this is now available on the NHS design system website ([PR 503](https://github.com/nhsuk/nhsuk-prototype-kit/pull/503))
+- Remove Confirmation page example template, as this is now available on the NHS design system website as a pattern ([PR 504](https://github.com/nhsuk/nhsuk-prototype-kit/pull/504))
 
 ## 5.3.0 - 14 February 2025
 
