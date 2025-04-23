@@ -11,7 +11,9 @@
     "test:ci": "jest --ci",
     "prewatch": "gulp build",
     "watch": "gulp",
-    "lint:js": "eslint -c ./linters/.eslintrc.js app.js lib/**/*.js app/*.js"
+    "lint:js": "eslint -c ./linters/.eslintrc.js app.js lib/**/*.js app/*.js",
+    "lint:js:fix": "eslint -c ./linters/.eslintrc.js app.js lib/**/*.js app/*.js --fix",
+    "lint:fix": "npm run lint:js:fix"
   },
   "author": "https://github.com/nhsuk/",
   "license": "MIT",
@@ -23,7 +25,7 @@
     "client-sessions": "^0.8.0",
     "cookie-parser": "^1.4.7",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2",
+    "express": "^5.1.0",
     "express-session": "^1.18.1",
     "gulp": "^5.0.0",
     "gulp-babel": "^8.0.0",
@@ -33,10 +35,11 @@
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.1.0",
     "lodash": "^4.17.21",
-    "nhsuk-frontend": "^9.3.0",
+    "nhsuk-frontend": "^9.4.1",
     "nunjucks": "^3.2.4",
+    "plugin-error": "^2.0.1",
     "path": "^0.12.7",
-    "sass": "^1.79.5"
+    "sass-embedded": "1.77.5"
   },
   "devDependencies": {
     "eslint": "^8.56.0",

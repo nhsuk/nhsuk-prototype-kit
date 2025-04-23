@@ -8,3 +8,7 @@ updates:
     directory: '/'
     schedule:
       interval: 'daily'
+    ignore:
+      # SASS updates will be done manually in sync with
+      # NHS Frontend to avoid deprecation warnings.
+      - dependency-name: 'sass-embedded'
