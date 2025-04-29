@@ -2,8 +2,36 @@
 
 ## Unreleased
 
-- Update NHS.UK frontend to 9.4.1
-- Switch to using the `template.njk` that is now included within NHS Frontend ([PR 499](https://github.com/nhsuk/nhsuk-prototype-kit/pull/499))
+### Breaking changes
+
+- Upgrades NHS.UK frontend to 9.4.1 and switches to using a new `prototype-kit-template.njk` within `lib/templates/` which itself uses the `template.njk` that is now included within NHS Frontend ([PR 499](https://github.com/nhsuk/nhsuk-prototype-kit/pull/499))
+
+In your `layout.html`, change
+
+```njk
+{% extends "template.html" %}
+```
+
+to:
+
+```njk
+{% extends "prototype-kit-template.njk" %}
+```
+
+and change:
+
+```njk
+{% block headCSS %}
+```
+
+to
+
+```njk
+{% block head %}
+```
+
+### Other changes
+
 - Remove ‘Check your answers’ example template, as this is now available on the NHS design system website ([PR 503](https://github.com/nhsuk/nhsuk-prototype-kit/pull/503))
 - Remove Confirmation page example template, as this is now available on the NHS design system website as a pattern ([PR 504](https://github.com/nhsuk/nhsuk-prototype-kit/pull/504))
 
