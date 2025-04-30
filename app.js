@@ -112,6 +112,8 @@ if (useAutoStoreData === 'true') {
   utils.addCheckedFunction(nunjucksAppEnv);
 }
 
+app.use(utils.setLocals);
+
 // Warn if node_modules folder doesn't exist
 function checkFiles() {
   const nodeModulesExists = fs.existsSync(path.join(__dirname, '/node_modules'));
