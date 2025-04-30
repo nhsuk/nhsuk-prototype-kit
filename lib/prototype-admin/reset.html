@@ -7,7 +7,7 @@
 {% block beforeContent %}
   {{ backLink({
     "text": "Back",
-    "href": backHref
+    "href": returnPage
   }) }}
 {% endblock %}
 
@@ -19,7 +19,7 @@
       <p class="nhsuk-body">This will reset all of the data entered in this session.</p>
 
       <form action="/prototype-admin/reset-session-data" method="post">
-        <input type="hidden" name="previousPath" value="{{ backHref }}">
+        <input type="hidden" name="returnPage" value="{{ returnPage }}">
         {{ button({
           text: "Reset all data"
         }) }}
