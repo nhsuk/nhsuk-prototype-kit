@@ -7,7 +7,7 @@
     "build": "gulp build",
     "postinstall": "npm run build",
     "start": "node app.js",
-    "test": "jest --coverage=true",
+    "test": "jest app.js lib/**/*.js",
     "test:ci": "jest --ci",
     "prewatch": "gulp build",
     "watch": "gulp",
