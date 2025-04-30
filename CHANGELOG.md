@@ -4,6 +4,23 @@
 
 ### Breaking changes
 
+- Adds a new 'Reset data' feature ([PR 482](https://github.com/nhsuk/nhsuk-prototype-kit/pull/482)).
+
+If upgrading, add this link to your footer links in `app/views/layout.html`:
+
+```njk
+{
+  "URL": "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
+  "label": "Reset data"
+}
+```
+
+and add this line to `app.js`:
+
+```js
+app.use(utils.setLocals);
+```
+
 - Switches to a new template included within NHS.UK frontend 9.4.1 to make future updates easier ([PR 499](https://github.com/nhsuk/nhsuk-prototype-kit/pull/499)).
 
 To update, first follow the instructions in [Updating the kit](https://prototype-kit.service-manual.nhs.uk/how-tos/updating-the-kit) to update all the files in `lib/`, as well as `app.js` and `package.json`.
