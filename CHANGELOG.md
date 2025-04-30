@@ -4,7 +4,7 @@
 
 ### Breaking changes
 
-- Upgrades NHS.UK frontend to 9.4.1 and switches to using a new `prototype-kit-template.njk` within `lib/templates/` which itself uses the `template.njk` that is now included within NHS Frontend ([PR 499](https://github.com/nhsuk/nhsuk-prototype-kit/pull/499))
+- Switches to a new template included within NHS.UK frontend 9.4.1 to make future updates easier ([PR 499](https://github.com/nhsuk/nhsuk-prototype-kit/pull/499))
 
 In your `layout.html`, change
 
