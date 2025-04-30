@@ -38,7 +38,6 @@ to
 - Remove Confirmation page example template, as this is now available on the NHS design system website as a pattern ([PR 504](https://github.com/nhsuk/nhsuk-prototype-kit/pull/504))
 - Added a way to reset any data entered back to the default - ([PR 482](https://github.com/nhsuk/nhsuk-prototype-kit/pull/482))
 
-
 ## 5.3.0 - 14 February 2025
 
 - Update NHS Frontend to version 9.3.0, which includes a new Panel component
