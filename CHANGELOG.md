@@ -1,6 +1,6 @@
 # NHS prototype kit Changelog
 
-## Unreleased
+## 6.0.0 - 6 May 2025
 
 ### Breaking changes
 
