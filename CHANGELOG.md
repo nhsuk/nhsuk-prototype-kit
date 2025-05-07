@@ -1,6 +1,6 @@
 # NHS prototype kit Changelog
 
-## Unreleased
+## 6.0.0 - 7 May 2025
 
 ### Breaking changes
 
@@ -53,7 +53,6 @@ to
 
 - Remove ‘Check your answers’ example template, as this is now available on the NHS design system website ([PR 503](https://github.com/nhsuk/nhsuk-prototype-kit/pull/503))
 - Remove Confirmation page example template, as this is now available on the NHS design system website as a pattern ([PR 504](https://github.com/nhsuk/nhsuk-prototype-kit/pull/504))
-- Added a way to reset any data entered back to the default - ([PR 482](https://github.com/nhsuk/nhsuk-prototype-kit/pull/482))
 
 ## 5.3.0 - 14 February 2025
 
