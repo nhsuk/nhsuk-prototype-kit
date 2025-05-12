@@ -1,5 +1,9 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+- Fix to include the NHS javascript in the default template ([PR 518](https://github.com/nhsuk/nhsuk-prototype-kit/pull/518)).
+
 ## 6.0.0 - 7 May 2025
 
 ### Breaking changes
