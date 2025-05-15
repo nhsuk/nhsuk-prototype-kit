@@ -35,7 +35,7 @@
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.1.0",
     "lodash": "^4.17.21",
-    "nhsuk-frontend": "^9.4.1",
+    "nhsuk-frontend": "^9.5.2",
     "nunjucks": "^3.2.4",
     "plugin-error": "^2.0.1",
     "path": "^0.12.7",
