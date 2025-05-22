@@ -1,6 +1,7 @@
 // Core dependencies
 const path = require('path');
 const fs = require('fs');
+const url = require('url');
 
 // External dependencies
 const bodyParser = require('body-parser');
@@ -197,7 +198,10 @@ app.use('/prototype-admin', prototypeAdminRoutes);
 
 // Redirect all POSTs to GETs - this allows users to use POST for autoStoreData
 app.post(/^\/([^.]+)$/, (req, res) => {
-  res.redirect(`/${req.params[0]}`);
+  res.redirect(url.format({
+    pathname: `/${req.params[0]}`,
+    query: req.query,
+  }));
 });
 
 // Catch 404 and forward to error handler

@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Remove duplicate import from default template ([PR #526)(https://github.com/nhsuk/nhsuk-prototype-kit/pull/526))
+- Preserve query when redirecting POSTs to GETs ([PR #527](https://github.com/nhsuk/nhsuk-prototype-kit/pull/527))
 
 ## 6.1.0 - 16 May 2025
 
