@@ -113,6 +113,8 @@ if (useAutoStoreData === 'true') {
   utils.addCheckedFunction(nunjucksAppEnv);
 }
 
+app.use(utils.setLocals);
+
 // Warn if node_modules folder doesn't exist
 function checkFiles() {
   const nodeModulesExists = fs.existsSync(path.join(__dirname, '/node_modules'));
@@ -176,14 +178,7 @@ app.get(/^([^.]+)$/, (req, res, next) => {
 // Example template routes
 app.use('/example-templates', exampleTemplatesApp);
 
-// Nunjucks configuration for example templates
-const exampleTemplateViews = [
-  path.join(__dirname, 'lib/example-templates/'),
-  path.join(__dirname, 'node_modules/nhsuk-frontend/packages/components'),
-  path.join(__dirname, 'node_modules/nhsuk-frontend/packages/macros'),
-];
-
-nunjucksAppEnv = nunjucks.configure(exampleTemplateViews, {
+nunjucksAppEnv = nunjucks.configure(appViews, {
   autoescape: true,
   express: exampleTemplatesApp,
 });

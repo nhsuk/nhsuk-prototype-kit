@@ -2,8 +2,66 @@
 
 ## Unreleased
 
-- Update NHS.UK frontend to 9.4.1
-- Switch to using the `template.njk` that is now included within NHS Frontend ([PR 499](https://github.com/nhsuk/nhsuk-prototype-kit/pull/499))
+- Remove duplicate import from default template ([PR #526)(https://github.com/nhsuk/nhsuk-prototype-kit/pull/526))
+
+## 6.1.0 - 16 May 2025
+
+- Fix to include the NHS javascript in the default template ([PR 518](https://github.com/nhsuk/nhsuk-prototype-kit/pull/518)).
+- Update to NHS frontend 9.5.2 ([PR 521](https://github.com/nhsuk/nhsuk-prototype-kit/pull/521))
+
+## 6.0.0 - 7 May 2025
+
+### Breaking changes
+
+- Adds a new 'Reset data' feature ([PR 482](https://github.com/nhsuk/nhsuk-prototype-kit/pull/482)).
+
+If upgrading, add this link to your footer links in `app/views/layout.html`:
+
+```njk
+{
+  "URL": "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
+  "label": "Reset data"
+}
+```
+
+and add this line to `app.js`:
+
+```js
+app.use(utils.setLocals);
+```
+
+- Switches to a new template included within NHS.UK frontend 9.4.1 to make future updates easier ([PR 499](https://github.com/nhsuk/nhsuk-prototype-kit/pull/499)).
+
+To update, first follow the instructions in [Updating the kit](https://prototype-kit.service-manual.nhs.uk/how-tos/updating-the-kit) to update all the files in `lib/`, as well as `app.js` and `package.json`.
+
+Then in your `app/layout.html` file, change
+
+```njk
+{% extends "template.html" %}
+```
+
+to:
+
+```njk
+{% extends "prototype-kit-template.njk" %}
+```
+
+and change:
+
+```njk
+{% block headCSS %}
+```
+
+to
+
+```njk
+{% block head %}
+```
+
+### Other changes
+
+- Remove ‘Check your answers’ example template, as this is now available on the NHS design system website ([PR 503](https://github.com/nhsuk/nhsuk-prototype-kit/pull/503))
+- Remove Confirmation page example template, as this is now available on the NHS design system website as a pattern ([PR 504](https://github.com/nhsuk/nhsuk-prototype-kit/pull/504))
 
 ## 5.3.0 - 14 February 2025
 

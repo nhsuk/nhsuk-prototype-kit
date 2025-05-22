@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block pageTitle %}
+  Reset data - NHS prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ backLink({
+    "text": "Back",
+    "href": returnPage
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-l">Reset data</h1>
+
+      <p class="nhsuk-body">This will reset all of the data entered in this session.</p>
+
+      <form action="/prototype-admin/reset-session-data" method="post">
+        <input type="hidden" name="returnPage" value="{{ returnPage }}">
+        {{ button({
+          text: "Reset all data"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
