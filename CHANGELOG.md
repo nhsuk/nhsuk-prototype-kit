@@ -1,5 +1,9 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+- Remove duplicate import from default template ([PR #526)(https://github.com/nhsuk/nhsuk-prototype-kit/pull/526))
+
 ## 6.1.0 - 16 May 2025
 
 - Fix to include the NHS javascript in the default template ([PR 518](https://github.com/nhsuk/nhsuk-prototype-kit/pull/518)).
