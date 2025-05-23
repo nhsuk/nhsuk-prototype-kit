@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Mark the kit as compatible with Node 22 as well as Node 20 ([PR #531)(https://github.com/nhsuk/nhsuk-prototype-kit/pull/531))
 - Remove duplicate import from default template ([PR #526)(https://github.com/nhsuk/nhsuk-prototype-kit/pull/526))
 - Preserve query when redirecting POSTs to GETs ([PR #527](https://github.com/nhsuk/nhsuk-prototype-kit/pull/527))
 
