@@ -10,10 +10,14 @@
     - add custom CSS and JavaScript
 -->
 
-<!-- Set the page title -->
-{% block pageTitle %}
-  {{ serviceName }}
-{% endblock %}
+<!--
+  Use this to set the page name which will appear at the
+  start of the <title> tag, followed by the service name.
+  This can be set to false on a homepage, where only the
+  service name is needed. You can also reuse this variable
+  within the <h1>, where they should be the same.
+-->
+{% set pageName = false %}
 
 <!-- For adding a breadcrumb or back link -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
