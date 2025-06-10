@@ -1,5 +1,9 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+- Update to NHS frontend 9.6.2 ([PR #540](https://github.com/nhsuk/nhsuk-prototype-kit/pull/540))
+
 ## 6.2.0 - 23 May 2025
 
 - Update to NHS frontend 9.6.1 ([PR #528](https://github.com/nhsuk/nhsuk-prototype-kit/pull/528))
