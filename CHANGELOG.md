@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Make it easier to set page titles ([PR #541](https://github.com/nhsuk/nhsuk-prototype-kit/pull/541))
 - Update to NHS frontend 9.6.2 ([PR #540](https://github.com/nhsuk/nhsuk-prototype-kit/pull/540))
 
 ## 6.2.0 - 23 May 2025

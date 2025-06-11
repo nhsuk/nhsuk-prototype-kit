@@ -1,8 +1,6 @@
 {% extends 'layout.html' %}
 
-{% block pageTitle %}
-  Content page template - NHS prototype kit
-{% endblock %}
+{% set pageName = "Example content page" %}
 
 {% block beforeContent %}
   {{ breadcrumb({
@@ -17,7 +15,7 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1>
-        Page heading goes here
+        {{ pageName }}
       </h1>
 
       <p>
