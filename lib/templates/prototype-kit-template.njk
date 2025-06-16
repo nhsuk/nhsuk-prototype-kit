@@ -36,7 +36,7 @@
 {%- from 'warning-callout/macro.njk' import warningCallout %}
 
 {% block pageTitle -%}
-  {%- if errors == true or (errors | length) %}Error: {% endif -%}
+  {%- if errors === true or (errors | length) %}Error: {% endif -%}
   {%- if pageName %}{{ pageName }} – {% endif -%}
   {{ serviceName }} – NHS
 {%- endblock %}
