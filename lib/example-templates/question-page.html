@@ -2,9 +2,7 @@
 
 {% set mainClasses = "nhsuk-main-wrapper--s" %}
 
-{% block pageTitle %}
-  Question page
-{% endblock %}
+{% set pageName = "Question goes here" %}
 
 {% block beforeContent %}
   {{ backLink({
@@ -24,7 +22,7 @@
           "name": "example",
           "fieldset": {
             "legend": {
-              "text": "Heading or question goes here",
+              "text": pageName,
               "classes": "nhsuk-fieldset__legend--l",
               "isPageHeading": true
             }

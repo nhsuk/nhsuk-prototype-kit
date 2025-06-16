@@ -1,13 +1,11 @@
 {% extends 'layout.html' %}
 
-{% block pageTitle %}
-  Data reset - NHS prototype kit
-{% endblock %}
+{% set pageName = "Data reset" %}
 
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      <h1 class="nhsuk-heading-l">Data reset</h1>
+      <h1 class="nhsuk-heading-l">{{ pageName }}</h1>
 
       <p class="nhsuk-body">The session data has been reset.</p>
 
