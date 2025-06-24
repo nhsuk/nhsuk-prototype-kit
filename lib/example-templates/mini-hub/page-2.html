@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends "layout.html" %}
 
 {% set pageName = "Mini hub - Page two" %}
 
@@ -55,10 +55,10 @@
       </p>
 
       {{ pagination({
-        "previousUrl": "/example-templates/mini-hub",
-        "previousPage": "Main page",
-        "nextUrl": "/example-templates/mini-hub/page-3",
-        "nextPage": "Page two"
+        previousUrl: "/example-templates/mini-hub",
+        previousPage: "Main page",
+        nextUrl: "/example-templates/mini-hub/page-3",
+        nextPage: "Page two"
       }) }}
 
     </div>

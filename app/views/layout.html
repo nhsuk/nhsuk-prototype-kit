@@ -16,33 +16,32 @@
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
 {% block header %}
   {{ header({
-    "service": {
-        "text": serviceName,
-        "href": "/"
-      }
-    })
-  }}
+    service: {
+      text: serviceName,
+      href: "/"
+    }
+  }) }}
 {% endblock %}
 
 <!-- Edit the footer -->
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 {% block footer %}
   {{ footer({
-    "links": [
+    links: [
       {
-        "URL": "/",
-        "label": "Home"
+        URL: "/",
+        label: "Home"
       },
       {
-        "URL": "/example-templates",
-        "label": "Page templates"
+        URL: "/example-templates",
+        label: "Page templates"
       },
       {
-        "URL": "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
-        "label": "Reset data"
+        URL: "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
+        label: "Reset data"
       }
     ]
-  })}}
+  }) }}
 {% endblock %}
 
 {% block bodyEnd %}
@@ -54,7 +53,7 @@
   {% block scripts %}
     <!-- Custom JavaScript files can be added to this file -->
     {% include "includes/scripts.html" %}
-    <!-- For adding page specific JavsScript -->
+    <!-- For adding page specific JavaScript -->
     {% block pageScripts %}{% endblock %}
   {% endblock %}
 {% endblock %}
