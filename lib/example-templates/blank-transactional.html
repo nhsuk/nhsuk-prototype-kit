@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends "layout.html" %}
 
 {% set mainClasses = "nhsuk-main-wrapper--s" %}
 
@@ -6,8 +6,8 @@
 
 {% block beforeContent %}
   {{ backLink({
-    "href": "#",
-    "text": "Back"
+    href: "#",
+    text: "Back"
   }) }}
 {% endblock %}
 

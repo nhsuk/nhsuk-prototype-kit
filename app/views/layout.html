@@ -17,35 +17,34 @@
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
 {% block header %}
   {{ header({
-    "service": {
-        "name": serviceName,
-        "href": "/"
-      },
-      "showNav": "false",
-      "showSearch": "false"
-    })
-  }}
+    service: {
+      name: serviceName,
+      href: "/"
+    },
+    showNav: "false",
+    showSearch: "false"
+  }) }}
 {% endblock %}
 
 <!-- Edit the footer -->
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 {% block footer %}
   {{ footer({
-    "links": [
+    links: [
       {
-        "URL": "/",
-        "label": "Home"
+        URL: "/",
+        label: "Home"
       },
       {
-        "URL": "/example-templates",
-        "label": "Page templates"
+        URL: "/example-templates",
+        label: "Page templates"
       },
       {
-        "URL": "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
-        "label": "Reset data"
+        URL: "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
+        label: "Reset data"
       }
     ]
-  })}}
+  }) }}
 {% endblock %}
 
 {% block bodyEnd %}
