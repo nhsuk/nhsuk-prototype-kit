@@ -1,12 +1,12 @@
-{% extends 'layout.html' %}
+{% extends "layout.html" %}
 
 {% set pageName = serviceName %}
 
 {% block beforeContent %}
-{{ breadcrumb({
-  href: "/",
-  text: "Home"
-}) }}
+  {{ breadcrumb({
+    href: "/",
+    text: "Home"
+  }) }}
 {% endblock %}
 
 {% block content %}
