@@ -54,9 +54,10 @@ const appViews = [
   path.join(__dirname, 'lib/example-templates/'),
   path.join(__dirname, 'lib/prototype-admin/'),
   path.join(__dirname, 'lib/templates/'),
-  path.join(__dirname, 'node_modules/nhsuk-frontend/packages/components'),
-  path.join(__dirname, 'node_modules/nhsuk-frontend/packages/macros'),
-  path.join(__dirname, 'node_modules/nhsuk-frontend/packages'),
+  path.join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/components'),
+  path.join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/macros'),
+  path.join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'),
+  path.join(__dirname, 'node_modules/nhsuk-frontend/dist'),
 ];
 
 const nunjucksConfig = {
