@@ -9,12 +9,10 @@ const gulpSass = require('gulp-sass')
 const dartSass = require('sass-embedded')
 const nodemon = require('gulp-nodemon');
 const PluginError = require('plugin-error')
+const findAvailablePort = require('./lib/utils/find-available-port');
 
 // Local dependencies
 const config = require('./app/config');
-
-// Set configuration variables
-const port = parseInt(process.env.PORT) || config.port;
 
 // Delete all the files in /public build directory
 function cleanPublic() {
@@ -87,16 +85,28 @@ function startNodemon(done) {
   });
 }
 
+function setAvailablePort(done) {
+  const defaultPort = parseInt(process.env.PORT) || config.port;
+
+  findAvailablePort(function(port) {
+    process.env.PORT = port
+    done()
+  }, {defaultPort: defaultPort})
+}
+
 function reload() {
   browserSync.reload();
 }
 
 // Start browsersync
 function startBrowserSync(done) {
+  const proxyPort = parseInt(process.env.PORT)
+  const port = proxyPort + 1000
+
   browserSync.init(
     {
-      proxy: 'localhost:' + port,
-      port: port + 1000,
+      proxy: 'localhost:' + proxyPort,
+      port: port,
       ui: false,
       files: ['app/views/**/*.*', 'lib/example-templates/**/*.*'],
       ghostMode: false,
@@ -131,4 +141,4 @@ gulp.task(
   'build',
   gulp.series(cleanPublic, compileStyles, compileScripts, compileAssets)
 );
-gulp.task('default', gulp.series(setWatchEnv, startNodemon, startBrowserSync, watch));
+gulp.task('default', gulp.series(setWatchEnv, setAvailablePort, startNodemon, startBrowserSync, watch));

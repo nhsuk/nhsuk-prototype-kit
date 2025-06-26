@@ -20,6 +20,7 @@
   "dependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.27.2",
+    "@inquirer/prompts": "^7.5.3",
     "body-parser": "^2.2.0",
     "browser-sync": "^3.0.4",
     "client-sessions": "^0.8.0",
@@ -39,6 +40,7 @@
     "nunjucks": "^3.2.4",
     "path": "^0.12.7",
     "plugin-error": "^2.0.1",
+    "portscanner": "^2.2.0",
     "sass-embedded": "1.77.5"
   },
   "devDependencies": {
