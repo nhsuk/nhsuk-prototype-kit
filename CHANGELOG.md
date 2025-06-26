@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### New features
+
+- Use a different port if something is running on the default on ([PR #557](https://github.com/nhsuk/nhsuk-prototype-kit/pull/557))
+
 ### Breaking changes
 
 - The jQuery javascript library is no longer included ([PR #556](https://github.com/nhsuk/nhsuk-prototype-kit/pull/556))
