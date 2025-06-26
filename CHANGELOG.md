@@ -1,5 +1,9 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+- Use a different port if something is running on the default on ([PR #557](https://github.com/nhsuk/nhsuk-prototype-kit/pull/557))
+
 ## 6.3.0 - 26 June 2025
 
 - Make it easier to set page titles ([PR #541](https://github.com/nhsuk/nhsuk-prototype-kit/pull/541))
