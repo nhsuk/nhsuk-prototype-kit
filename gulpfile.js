@@ -9,10 +9,10 @@ const gulpSass = require('gulp-sass')
 const dartSass = require('sass-embedded')
 const nodemon = require('gulp-nodemon');
 const PluginError = require('plugin-error')
-const findAvailablePort = require('./lib/utils/find-available-port');
 
 // Local dependencies
 const config = require('./app/config');
+const findAvailablePort = require('./lib/utils/find-available-port');
 
 // Delete all the files in /public build directory
 function cleanPublic() {
