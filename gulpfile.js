@@ -85,10 +85,10 @@ function startNodemon(done) {
   });
 }
 
-function setAvailablePort(done) {
+async function setAvailablePort() {
   const defaultPort = parseInt(process.env.PORT) || config.port;
 
-  findAvailablePort(function(port) {
+  return findAvailablePort(function(port) {
     process.env.PORT = port
     done()
   }, { defaultPort })
