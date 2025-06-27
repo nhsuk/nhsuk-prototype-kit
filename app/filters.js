@@ -1,3 +1,6 @@
+/**
+ * @param {Environment} env
+ */
 module.exports = function (env) {
   const filters = {};
 
@@ -35,3 +38,7 @@ module.exports = function (env) {
   /* keep the following line to return your filters to the app  */
   return filters;
 };
+
+/**
+ * @import { Environment } from 'nunjucks'
+ */

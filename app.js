@@ -60,6 +60,9 @@ const appViews = [
   path.join(__dirname, 'node_modules/nhsuk-frontend/dist'),
 ];
 
+/**
+ * @type {ConfigureOptions}
+ */
 const nunjucksConfig = {
   autoescape: true,
   noCache: true,
@@ -234,3 +237,7 @@ if (
 }
 
 module.exports = app;
+
+/**
+ * @import { ConfigureOptions } from 'nunjucks'
+ */
