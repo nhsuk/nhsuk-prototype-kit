@@ -9,7 +9,7 @@ test('addNunjucksFilters filter added', () => {
     coreFilters.mockImplementation(() => {return {1: "core-filter"};});
     customFilters.mockImplementation(() => {return {2: "custom-filter"};});
     const mockEnv = {
-        addFilter: jest.fn((filter) => {
+        addFilter: jest.fn(() => {
             return;
         }),
     };
