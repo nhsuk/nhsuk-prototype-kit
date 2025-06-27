@@ -41,6 +41,18 @@ module.exports = {
         'jest-dom'
       ],
       rules: {
+        // Always import Node.js packages from `node:*`
+        'import/enforce-node-protocol-usage': ['error', 'always'],
+
+        // Check import or require statements are A-Z ordered
+        'import/order': [
+          'error',
+          {
+            'alphabetize': { order: 'asc' },
+            'newlines-between': 'always'
+          }
+        ],
+
         // Check for valid formatting
         'jsdoc/check-line-alignment': [
           'warn',
@@ -83,6 +95,41 @@ module.exports = {
           mode: 'typescript'
         }
       }
+    },
+    {
+      // CommonJS modules allow require statements
+      files: ['**/*.{cjs,js}'],
+      rules: {
+        '@typescript-eslint/no-require-imports': 'off',
+        '@typescript-eslint/no-var-requires': 'off'
+      }
+    },
+    {
+      // ES modules mandatory file extensions
+      files: ['**/*.mjs'],
+      rules: {
+        'import/extensions': [
+          'error',
+          'always',
+          {
+            ignorePackages: true,
+            pattern: {
+              cjs: 'always',
+              js: 'always',
+              mjs: 'always'
+            }
+          }
+        ]
+      }
+    },
+    {
+      // Configure ESLint in test files
+      files: ['**/*.test.{cjs,js,mjs}'],
+      extends: ['plugin:jest/recommended', 'plugin:jest/style'],
+      env: {
+        'jest/globals': true
+      },
+      plugins: ['jest']
     }
   ],
   root: true
