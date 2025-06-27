@@ -12,7 +12,7 @@ const PluginError = require('plugin-error')
 
 // Local dependencies
 const config = require('./app/config');
-const findAvailablePort = require('./lib/utils/find-available-port');
+const { findAvailablePort } = require('./lib/utils');
 
 // Delete all the files in /public build directory
 function cleanPublic() {
