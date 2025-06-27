@@ -2,6 +2,7 @@
  * @type {ESLint.ConfigData}
  */
 module.exports = {
+  extends: ['prettier'],
   ignorePatterns: [
     '**/public/**',
 
@@ -25,7 +26,8 @@ module.exports = {
         'plugin:n/recommended',
         'plugin:promise/recommended',
         'plugin:@typescript-eslint/strict',
-        'plugin:@typescript-eslint/stylistic'
+        'plugin:@typescript-eslint/stylistic',
+        'prettier'
       ],
       parser: '@typescript-eslint/parser',
       parserOptions: {
