@@ -1,0 +1,13 @@
+# Temporary only
+.cache/
+
+# Node.js modules
+node_modules/
+
+# Build output
+public/
+
+# Files to ignore
+*.html
+*.min.js
+package-lock.json
