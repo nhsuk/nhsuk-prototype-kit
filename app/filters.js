@@ -2,7 +2,7 @@
  * @param {Environment} env
  */
 module.exports = function (env) {
-  const filters = {};
+  const filters = {}
 
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
@@ -36,8 +36,8 @@ module.exports = function (env) {
   ------------------------------------------------------------------ */
 
   /* keep the following line to return your filters to the app  */
-  return filters;
-};
+  return filters
+}
 
 /**
  * @import { Environment } from 'nunjucks'
