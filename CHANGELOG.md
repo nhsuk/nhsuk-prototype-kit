@@ -1,5 +1,9 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+- Remove unused CSS ([PR #555](https://github.com/nhsuk/nhsuk-prototype-kit/pull/555))
+
 ## 6.3.0 - 26 June 2025
 
 - Make it easier to set page titles ([PR #541](https://github.com/nhsuk/nhsuk-prototype-kit/pull/541))
