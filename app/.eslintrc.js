@@ -2,7 +2,7 @@
  * @type {ESLint.ConfigData}
  */
 module.exports = {
-  ignorePatterns: ['**/*.min.*'],
+  ignorePatterns: ['**/*'],
   overrides: [
     {
       files: ['**/*.{cjs,js,mjs}'],
