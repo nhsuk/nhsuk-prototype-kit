@@ -122,8 +122,7 @@ app.use(utils.setLocals);
 function checkFiles() {
   const nodeModulesExists = fs.existsSync(path.join(__dirname, '/node_modules'));
   if (!nodeModulesExists) {
-    console.error('ERROR: Node module folder missing. Try running `npm install`')
-    process.exit(0);
+    throw new Error('ERROR: Node module folder missing. Try running `npm install`')
   }
 
   // Create template .env file if it doesn't exist
