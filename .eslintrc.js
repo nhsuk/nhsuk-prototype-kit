@@ -2,9 +2,20 @@
  * @type {ESLint.ConfigData}
  */
 module.exports = {
+  ignorePatterns: [
+    '**/public/**',
+
+    // Enable dotfile linting
+    '!.*',
+    'node_modules',
+    'node_modules/.*',
+
+    // Prevent CHANGELOG history changes
+    'CHANGELOG.md'
+  ],
   overrides: [
     {
-      files: ['**/*.js'],
+      files: ['**/*.{cjs,js,mjs}'],
       extends: [
         'eslint:recommended',
         'plugin:import/recommended',
