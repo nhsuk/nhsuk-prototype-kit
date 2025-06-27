@@ -39,7 +39,50 @@ module.exports = {
         'promise',
         'jest',
         'jest-dom'
-      ]
+      ],
+      rules: {
+        // Check for valid formatting
+        'jsdoc/check-line-alignment': [
+          'warn',
+          'never',
+          {
+            wrapIndent: '  '
+          }
+        ],
+
+        // JSDoc blocks are optional by default
+        'jsdoc/require-jsdoc': 'off',
+
+        // Require hyphens before param description
+        // Aligns with TSDoc style: https://tsdoc.org/pages/tags/param/
+        'jsdoc/require-hyphen-before-param-description': 'warn',
+
+        // JSDoc @param required in (optional) blocks but
+        // @param description is not necessary by default
+        'jsdoc/require-param-description': 'off',
+        'jsdoc/require-param-type': 'error',
+        'jsdoc/require-param': 'off',
+
+        // JSDoc @returns is optional
+        'jsdoc/require-returns-description': 'off',
+        'jsdoc/require-returns-type': 'off',
+        'jsdoc/require-returns': 'off',
+
+        // Maintain new line after description
+        'jsdoc/tag-lines': [
+          'warn',
+          'never',
+          {
+            startLines: 1
+          }
+        ]
+      },
+      settings: {
+        jsdoc: {
+          // Allows us to use type declarations that exist in our dependencies
+          mode: 'typescript'
+        }
+      }
     }
   ],
   root: true
