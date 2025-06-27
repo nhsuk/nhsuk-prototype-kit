@@ -1,9 +1,9 @@
-import { addNunjucksFilters, matchRoutes, autoStoreData } from '../../lib/utils';
-
-const coreFilters = require('../../lib/core_filters');
-jest.mock('../../lib/core_filters');
 const customFilters = require('../../app/filters');
+const coreFilters = require('../../lib/core_filters');
+const { addNunjucksFilters, matchRoutes, autoStoreData } = require('../../lib/utils');
+
 jest.mock('../../app/filters');
+jest.mock('../../lib/core_filters');
 
 test('addNunjucksFilters filter added', () => {
     coreFilters.mockImplementation(() => {return {1: "core-filter"};});
@@ -13,7 +13,7 @@ test('addNunjucksFilters filter added', () => {
             return;
         }),
     };
-    
+
     addNunjucksFilters(mockEnv);
 
     expect(coreFilters).toHaveBeenCalledTimes(1);
