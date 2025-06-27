@@ -1,5 +1,11 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+### Breaking changes
+
+- The jQuery javascript library is no longer included ([PR #556](https://github.com/nhsuk/nhsuk-prototype-kit/pull/556))
+
 ## 6.3.0 - 26 June 2025
 
 - Make it easier to set page titles ([PR #541](https://github.com/nhsuk/nhsuk-prototype-kit/pull/541))
