@@ -14,6 +14,9 @@ const PluginError = require('plugin-error')
 const config = require('./app/config');
 const { findAvailablePort } = require('./lib/utils');
 
+// Set configuration variables
+const port = parseInt(process.env.PORT || config.port, 10);
+
 // Delete all the files in /public build directory
 function cleanPublic() {
   return gulp.src('public', { allowEmpty: true }).pipe(clean());
@@ -58,13 +61,23 @@ function compileAssets() {
 }
 
 // Start nodemon
-function startNodemon(done) {
+async function startNodemon(done) {
+  const availablePort = await findAvailablePort(port);
+  if (!availablePort) {
+    done(new PluginError('startNodemon', `Port ${port} in use`));
+    return;
+  }
+
+  process.env.PORT = availablePort;
+  process.env.WATCH = 'true'
+
   const server = nodemon({
     script: 'app.js',
     stdout: true,
     ext: 'js',
     quiet: false,
   });
+
   let starting = false;
 
   const onReady = () => {
@@ -85,28 +98,14 @@ function startNodemon(done) {
   });
 }
 
-async function setAvailablePort() {
-  const defaultPort = parseInt(process.env.PORT) || config.port;
-
-  return findAvailablePort(function(port) {
-    process.env.PORT = port
-    done()
-  }, { defaultPort })
-}
-
-function reload() {
-  browserSync.reload();
-}
-
 // Start browsersync
-function startBrowserSync(done) {
-  const proxyPort = parseInt(process.env.PORT)
-  const port = proxyPort + 1000
+async function startBrowserSync(done) {
+  const proxyPort = parseInt(process.env.PORT, 10)
 
   browserSync.init(
     {
-      proxy: 'localhost:' + proxyPort,
-      port: port,
+      proxy: `localhost:${proxyPort}`,
+      port: proxyPort + 1000,
       ui: false,
       files: ['app/views/**/*.*', 'lib/example-templates/**/*.*'],
       ghostMode: false,
@@ -114,9 +113,10 @@ function startBrowserSync(done) {
       notify: true,
       watch: true,
     },
-    done
+    done,
   );
-  gulp.watch('public/**/*.*').on('change', reload);
+
+  gulp.watch('public/**/*.*').on('change', browserSync.reload);
 }
 
 // Watch for changes within assets/
@@ -126,19 +126,14 @@ function watch() {
   gulp.watch('app/assets/**/**/*.*', compileAssets);
 }
 
-function setWatchEnv(done) {
-  process.env.WATCH = 'true';
-  done();
-}
-
 exports.watch = watch;
 exports.compileStyles = compileStyles;
 exports.compileScripts = compileScripts;
 exports.cleanPublic = cleanPublic;
-exports.setWatchEnv = setWatchEnv;
 
 gulp.task(
   'build',
-  gulp.series(cleanPublic, compileStyles, compileScripts, compileAssets)
+  gulp.series(cleanPublic, compileStyles, compileScripts, compileAssets),
 );
-gulp.task('default', gulp.series(setWatchEnv, setAvailablePort, startNodemon, startBrowserSync, watch));
+
+gulp.task('default', gulp.series(startNodemon, startBrowserSync, watch));
