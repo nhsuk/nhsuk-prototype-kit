@@ -17,7 +17,7 @@ Use the following headings as a guide.
 ## What is the issue?
 
 <!-- Provide a detailed description of what the issue is, including what you
-expected to happen as well as what actually happened. 
+expected to happen as well as what actually happened.
 -->
 
 ## What steps are required to reproduce the issue?
@@ -36,9 +36,9 @@ Include the following as a minimum e.g.
 * Browser: Google Chrome
 -->
 
-* Device:
-* Operating System:
-* Browser:
+- Device:
+- Operating System:
+- Browser:
 
 ## Is there anything else you think would be useful in recreating the issue?
 

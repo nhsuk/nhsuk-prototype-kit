@@ -9,9 +9,9 @@ module.exports =
    * @param {NextFunction} next
    */
   (req, res, next) => {
-    res.locals.serviceName = config.serviceName;
-    next();
-  };
+    res.locals.serviceName = config.serviceName
+    next()
+  }
 
 /**
  * @import { NextFunction, Request, Response } from 'express'
