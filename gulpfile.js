@@ -91,7 +91,7 @@ function setAvailablePort(done) {
   findAvailablePort(function(port) {
     process.env.PORT = port
     done()
-  }, {defaultPort: defaultPort})
+  }, { defaultPort })
 }
 
 function reload() {
