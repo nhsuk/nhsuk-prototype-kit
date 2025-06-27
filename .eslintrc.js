@@ -1,3 +1,6 @@
+/**
+ * @type {ESLint.ConfigData}
+ */
 module.exports = {
   overrides: [
     {
@@ -8,7 +11,7 @@ module.exports = {
         'plugin:@typescript-eslint/strict',
         'plugin:@typescript-eslint/stylistic'
       ],
-      parser: "@typescript-eslint/parser",
+      parser: '@typescript-eslint/parser',
       parserOptions: {
         ecmaVersion: 'latest'
       },
@@ -22,5 +25,10 @@ module.exports = {
         'jest-dom'
       ]
     }
-  ]
-};
+  ],
+  root: true
+}
+
+/**
+ * @import { ESLint } from 'eslint'
+ */
