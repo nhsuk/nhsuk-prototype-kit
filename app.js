@@ -163,9 +163,10 @@ exampleTemplatesApp.set('view engine', 'html');
 // See https://expressjs.com/en/guide/behind-proxies.html
 app.set('trust proxy', 1);
 
-// Middleware to serve static assets
+// Use public folder for static assets
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/nhsuk-frontend', express.static(path.join(__dirname, 'node_modules/nhsuk-frontend/packages')));
+
+// Use assets from NHS frontend
 app.use('/nhsuk-frontend', express.static(path.join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk')));
 
 // Use custom application routes
