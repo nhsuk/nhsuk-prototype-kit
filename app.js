@@ -29,7 +29,7 @@ const prototypeAdminRoutes = require('./lib/middleware/prototype-admin-routes');
 const exampleTemplatesRoutes = require('./lib/example_templates_routes');
 
 // Set configuration variables
-const port = parseInt(process.env.PORT || config.port, 10);
+const port = parseInt(process.env.PORT || config.port, 10) || 2000;
 
 // Initialise applications
 const app = express();
