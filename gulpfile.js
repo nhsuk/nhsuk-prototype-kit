@@ -62,9 +62,15 @@ function compileAssets() {
 
 // Start nodemon
 async function startNodemon(done) {
-  const availablePort = await findAvailablePort(port);
-  if (!availablePort) {
-    done(new PluginError('startNodemon', `Port ${port} in use`));
+  let availablePort
+
+  try {
+    availablePort = await findAvailablePort(port);
+    if (!availablePort) {
+      throw new Error(`Port ${port} in use`);
+    }
+  } catch (error) {
+    done(new PluginError('startNodemon', error));
     return;
   }
 
