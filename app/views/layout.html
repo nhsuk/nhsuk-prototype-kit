@@ -27,20 +27,22 @@
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 {% block footer %}
   {{ footer({
-    links: [
-      {
-        URL: "/",
-        label: "Home"
-      },
-      {
-        URL: "/example-templates",
-        label: "Page templates"
-      },
-      {
-        URL: "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
-        label: "Reset data"
-      }
-    ]
+    meta: {
+      items: [
+        {
+          href: "/",
+          text: "Home"
+        },
+        {
+          href: "/example-templates",
+          text: "Page templates"
+        },
+        {
+          href: "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
+          text: "Reset data"
+        }
+      ]
+    }
   }) }}
 {% endblock %}
 
