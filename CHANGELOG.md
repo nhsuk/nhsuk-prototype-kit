@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Breaking changes
+
+- The jQuery javascript library is no longer included ([PR #556](https://github.com/nhsuk/nhsuk-prototype-kit/pull/556))
+- Remove unused CSS ([PR #555](https://github.com/nhsuk/nhsuk-prototype-kit/pull/555))
 - Removed question page template as this is now available on the NHS Service manual website ([PR #568](https://github.com/nhsuk/nhsuk-prototype-kit/pull/568))
 
 ## 6.3.0 - 26 June 2025
