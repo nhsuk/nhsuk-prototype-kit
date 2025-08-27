@@ -99,16 +99,16 @@ module.exports = {
       }
     },
     {
-      // CommonJS modules allow require statements
-      files: ['**/*.{cjs,js}'],
+      // CommonJS modules allow require statements (only .cjs files now)
+      files: ['**/*.cjs'],
       rules: {
         '@typescript-eslint/no-require-imports': 'off',
         '@typescript-eslint/no-var-requires': 'off'
       }
     },
     {
-      // ES modules mandatory file extensions
-      files: ['**/*.mjs'],
+      // ES modules mandatory file extensions (now applies to .js files too)
+      files: ['**/*.{js,mjs}'],
       rules: {
         'import/extensions': [
           'error',

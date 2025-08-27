@@ -3,12 +3,11 @@ import {
   createReadStream,
   createWriteStream,
   existsSync,
-  mkdirSync
+  mkdirSync,
+  readFileSync
 } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath, format as urlFormat } from 'node:url'
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
 
 // External dependencies
 import bodyParser from 'body-parser'
@@ -18,9 +17,6 @@ import dotenv from 'dotenv'
 import express from 'express'
 import sessionInMemory from 'express-session'
 import nunjucks from 'nunjucks'
-
-// Run before other code to make sure variables from .env are available
-dotenv.config()
 
 // Local dependencies
 import config from './app/config.js'
@@ -32,7 +28,12 @@ import { matchRoutes as automaticRouting } from './lib/middleware/auto-routing.j
 import production from './lib/middleware/production.js'
 import prototypeAdminRoutes from './lib/middleware/prototype-admin-routes.js'
 import * as utils from './lib/utils.js'
-import { readFileSync } from 'node:fs'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+// Run before other code to make sure variables from .env are available
+dotenv.config()
+
 const packageInfo = JSON.parse(readFileSync('./package.json', 'utf8'))
 
 // Set configuration variables
