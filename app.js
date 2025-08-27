@@ -120,7 +120,7 @@ app.use(utils.setLocals);
 function checkFiles() {
   const nodeModulesExists = fs.existsSync(path.join(__dirname, '/node_modules'));
   if (!nodeModulesExists) {
-    console.error('ERROR: Node module folder missing. Try running `npm install`'); // eslint-disable-line no-console
+    console.error('ERROR: Node module folder missing. Try running `npm install`')
     process.exit(0);
   }
 
@@ -141,7 +141,7 @@ const sessionDataDefaultsFile = path.join(dataDirectory, '/session-data-defaults
 const sessionDataDefaultsFileExists = fs.existsSync(sessionDataDefaultsFile);
 
 if (!sessionDataDefaultsFileExists) {
-  console.log('Creating session data defaults file'); // eslint-disable-line no-console
+  console.log('Creating session data defaults file');
   if (!fs.existsSync(dataDirectory)) {
     fs.mkdirSync(dataDirectory);
   }
@@ -208,14 +208,14 @@ app.post(/^\/([^.]+)$/, (req, res) => {
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
-  const err = new Error(`Page not found: ${req.path}`); // eslint-disable-line no-console
+  const err = new Error(`Page not found: ${req.path}`);
   err.status = 404;
   next(err);
 });
 
 // Display error
 app.use((err, req, res) => {
-  console.error(err.message); // eslint-disable-line no-console
+  console.error(err.message);
   res.status(err.status || 500);
   res.send(err.message);
 });
@@ -227,12 +227,10 @@ if (
   process.env.WATCH !== 'true' // If the user isn’t running watch
   && process.env.NODE_ENV !== 'production' // and it’s not in production mode
 ) {
-  /* eslint-disable no-console */
   console.info(`Running at http://localhost:${port}/`);
   console.info('');
   console.warn('Warning: It looks like you may have run the command `npm start` locally.');
   console.warn('Press `Ctrl+C` and then run `npm run watch` instead');
-  /* eslint-enable no-console */
 }
 
 module.exports = app;
