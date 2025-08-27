@@ -20,14 +20,21 @@ function cleanPublic() {
   return gulp.src('public', { allowEmpty: true }).pipe(clean())
 }
 
+// Set Sass compiler
 const sass = gulpSass(dartSass)
 
 // Compile SASS to CSS
 function compileStyles(done) {
   return gulp
-    .src(['app/assets/sass/**/*.scss'])
+    .src(['app/assets/sass/**/*.scss'], {
+      sourcemaps: true
+    })
     .pipe(
-      sass().on('error', (error) => {
+      sass({
+        loadPaths: ['node_modules'],
+        sourceMap: true,
+        sourceMapIncludeSources: true
+      }).on('error', (error) => {
         done(
           new PluginError('compileCSS', error.messageFormatted, {
             showProperties: false
@@ -35,15 +42,25 @@ function compileStyles(done) {
         )
       })
     )
-    .pipe(gulp.dest('public/css'))
+    .pipe(
+      gulp.dest('public/css', {
+        sourcemaps: '.'
+      })
+    )
 }
 
 // Compile JavaScript (with ES6 support)
 function compileScripts() {
   return gulp
-    .src(['app/assets/javascript/**/*.js'])
+    .src(['app/assets/javascript/**/*.js'], {
+      sourcemaps: true
+    })
     .pipe(babel())
-    .pipe(gulp.dest('public/js'))
+    .pipe(
+      gulp.dest('public/js', {
+        sourcemaps: '.'
+      })
+    )
 }
 
 // Compile assets
