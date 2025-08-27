@@ -13,7 +13,8 @@ const config = require('./app/config')
 const { findAvailablePort } = require('./lib/utils')
 
 // Set configuration variables
-const port = parseInt(process.env.PORT || config.port, 10) || 2000
+const browserPort = parseInt(process.env.PORT || config.port, 10) || 3000
+const nodemonPort = Math.max(1024, browserPort - 1000) // Ensure port is >= 1024
 
 // Delete all the files in /public build directory
 function cleanPublic() {
@@ -82,9 +83,15 @@ async function startNodemon(done) {
   let availablePort
 
   try {
-    availablePort = await findAvailablePort(port)
+    availablePort = await findAvailablePort(nodemonPort)
     if (!availablePort) {
-      throw new Error(`Port ${port} in use`)
+      throw new Error(`Port ${nodemonPort} in use`)
+    }
+    
+    // Also check if the browser port is available
+    const { checkPortStatus } = require('portscanner')
+    if ((await checkPortStatus(browserPort, '127.0.0.1')) === 'open') {
+      throw new Error(`Browser port ${browserPort} in use`)
     }
   } catch (error) {
     done(new PluginError('startNodemon', error))
@@ -128,7 +135,7 @@ async function startBrowserSync(done) {
   browserSync.init(
     {
       proxy: `localhost:${proxyPort}`,
-      port: proxyPort + 1000,
+      port: browserPort,
       ui: false,
       files: ['app/views/**/*.*', 'lib/example-templates/**/*.*'],
       ghostMode: false,
