@@ -1,4 +1,4 @@
-import { addNunjucksFilters, matchRoutes, autoStoreData } from '../../lib/utils';
+const { addNunjucksFilters, matchRoutes, autoStoreData } = require('../../lib/utils');
 
 const coreFilters = require('../../lib/core_filters');
 jest.mock('../../lib/core_filters');
