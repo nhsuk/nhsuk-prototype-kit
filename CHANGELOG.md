@@ -103,7 +103,6 @@ to
 - The middleware folder has been moved into the `lib` folder - ([PR 440](https://github.com/nhsuk/nhsuk-prototype-kit/pull/440))
 - Added a devcontainer.json file to configure Github Codespaces for use of the kit ([PR 428](https://github.com/nhsuk/nhsuk-prototype-kit/pull/428))
 
-
 ## 5.1.0 - 12 November 2024
 
 - Remove guidance and tutorials - these can now be found online on the [NHS Prototype Kit website](https://prototype-kit.service-manual.nhs.uk) - ([PR 385](https://github.com/nhsuk/nhsuk-prototype-kit/pull/385))
