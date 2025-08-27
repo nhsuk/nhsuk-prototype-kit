@@ -1,7 +1,12 @@
 // Core dependencies
-const fs = require('node:fs')
-const path = require('node:path')
-const url = require('node:url')
+const {
+  createReadStream,
+  createWriteStream,
+  existsSync,
+  mkdirSync
+} = require('node:fs')
+const { join } = require('node:path')
+const { format: urlFormat } = require('node:url')
 
 // External dependencies
 const bodyParser = require('body-parser')
@@ -51,14 +56,14 @@ app.use(cookieParser())
 
 // Nunjucks configuration for application
 const appViews = [
-  path.join(__dirname, 'app/views/'),
-  path.join(__dirname, 'lib/example-templates/'),
-  path.join(__dirname, 'lib/prototype-admin/'),
-  path.join(__dirname, 'lib/templates/'),
-  path.join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/components'),
-  path.join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/macros'),
-  path.join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'),
-  path.join(__dirname, 'node_modules/nhsuk-frontend/dist')
+  join(__dirname, 'app/views/'),
+  join(__dirname, 'lib/example-templates/'),
+  join(__dirname, 'lib/prototype-admin/'),
+  join(__dirname, 'lib/templates/'),
+  join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/components'),
+  join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/macros'),
+  join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'),
+  join(__dirname, 'node_modules/nhsuk-frontend/dist')
 ]
 
 /**
@@ -132,7 +137,7 @@ app.use(utils.setLocals)
 
 // Warn if node_modules folder doesn't exist
 function checkFiles() {
-  const nodeModulesExists = fs.existsSync(path.join(__dirname, '/node_modules'))
+  const nodeModulesExists = existsSync(join(__dirname, '/node_modules'))
   if (!nodeModulesExists) {
     throw new Error(
       'ERROR: Node module folder missing. Try running `npm install`'
@@ -140,10 +145,10 @@ function checkFiles() {
   }
 
   // Create template .env file if it doesn't exist
-  const envExists = fs.existsSync(path.join(__dirname, '/.env'))
+  const envExists = existsSync(join(__dirname, '/.env'))
   if (!envExists) {
-    fs.createReadStream(path.join(__dirname, '/lib/template.env')).pipe(
-      fs.createWriteStream(path.join(__dirname, '/.env'))
+    createReadStream(join(__dirname, '/lib/template.env')).pipe(
+      createWriteStream(join(__dirname, '/.env'))
     )
   }
 }
@@ -152,22 +157,19 @@ function checkFiles() {
 checkFiles()
 
 // Create template session data defaults file if it doesn't exist
-const dataDirectory = path.join(__dirname, '/app/data')
-const sessionDataDefaultsFile = path.join(
-  dataDirectory,
-  '/session-data-defaults.js'
-)
-const sessionDataDefaultsFileExists = fs.existsSync(sessionDataDefaultsFile)
+const dataDirectory = join(__dirname, '/app/data')
+const sessionDataDefaultsFile = join(dataDirectory, '/session-data-defaults.js')
+const sessionDataDefaultsFileExists = existsSync(sessionDataDefaultsFile)
 
 if (!sessionDataDefaultsFileExists) {
   console.log('Creating session data defaults file')
-  if (!fs.existsSync(dataDirectory)) {
-    fs.mkdirSync(dataDirectory)
+  if (!existsSync(dataDirectory)) {
+    mkdirSync(dataDirectory)
   }
 
-  fs.createReadStream(
-    path.join(__dirname, '/lib/template.session-data-defaults.js')
-  ).pipe(fs.createWriteStream(sessionDataDefaultsFile))
+  createReadStream(
+    join(__dirname, '/lib/template.session-data-defaults.js')
+  ).pipe(createWriteStream(sessionDataDefaultsFile))
 }
 
 // Local variables
@@ -184,12 +186,12 @@ exampleTemplatesApp.set('view engine', 'html')
 app.set('trust proxy', 1)
 
 // Use public folder for static assets
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(join(__dirname, 'public')))
 
 // Use assets from NHS frontend
 app.use(
   '/nhsuk-frontend',
-  express.static(path.join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'))
+  express.static(join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'))
 )
 
 // Use custom application routes
@@ -224,7 +226,7 @@ app.use('/prototype-admin', prototypeAdminRoutes)
 // Redirect all POSTs to GETs - this allows users to use POST for autoStoreData
 app.post(/^\/([^.]+)$/, (req, res) => {
   res.redirect(
-    url.format({
+    urlFormat({
       pathname: `/${req.params[0]}`,
       query: req.query
     })
