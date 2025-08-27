@@ -12,9 +12,10 @@ const PluginError = require('plugin-error')
 
 // Local dependencies
 const config = require('./app/config');
+const { findAvailablePort } = require('./lib/utils');
 
 // Set configuration variables
-const port = parseInt(process.env.PORT) || config.port;
+const port = parseInt(process.env.PORT || config.port, 10) || 2000;
 
 // Delete all the files in /public build directory
 function cleanPublic() {
@@ -60,13 +61,29 @@ function compileAssets() {
 }
 
 // Start nodemon
-function startNodemon(done) {
+async function startNodemon(done) {
+  let availablePort
+
+  try {
+    availablePort = await findAvailablePort(port);
+    if (!availablePort) {
+      throw new Error(`Port ${port} in use`);
+    }
+  } catch (error) {
+    done(new PluginError('startNodemon', error));
+    return;
+  }
+
+  process.env.PORT = availablePort;
+  process.env.WATCH = 'true'
+
   const server = nodemon({
     script: 'app.js',
     stdout: true,
     ext: 'js',
     quiet: false,
   });
+
   let starting = false;
 
   const onReady = () => {
@@ -87,16 +104,14 @@ function startNodemon(done) {
   });
 }
 
-function reload() {
-  browserSync.reload();
-}
-
 // Start browsersync
-function startBrowserSync(done) {
+async function startBrowserSync(done) {
+  const proxyPort = parseInt(process.env.PORT, 10)
+
   browserSync.init(
     {
-      proxy: 'localhost:' + port,
-      port: port + 1000,
+      proxy: `localhost:${proxyPort}`,
+      port: proxyPort + 1000,
       ui: false,
       files: ['app/views/**/*.*', 'lib/example-templates/**/*.*'],
       ghostMode: false,
@@ -104,9 +119,10 @@ function startBrowserSync(done) {
       notify: true,
       watch: true,
     },
-    done
+    done,
   );
-  gulp.watch('public/**/*.*').on('change', reload);
+
+  gulp.watch('public/**/*.*').on('change', browserSync.reload);
 }
 
 // Watch for changes within assets/
@@ -116,19 +132,14 @@ function watch() {
   gulp.watch('app/assets/**/**/*.*', compileAssets);
 }
 
-function setWatchEnv(done) {
-  process.env.WATCH = 'true';
-  done();
-}
-
 exports.watch = watch;
 exports.compileStyles = compileStyles;
 exports.compileScripts = compileScripts;
 exports.cleanPublic = cleanPublic;
-exports.setWatchEnv = setWatchEnv;
 
 gulp.task(
   'build',
-  gulp.series(cleanPublic, compileStyles, compileScripts, compileAssets)
+  gulp.series(cleanPublic, compileStyles, compileScripts, compileAssets),
 );
-gulp.task('default', gulp.series(setWatchEnv, startNodemon, startBrowserSync, watch));
+
+gulp.task('default', gulp.series(startNodemon, startBrowserSync, watch));
