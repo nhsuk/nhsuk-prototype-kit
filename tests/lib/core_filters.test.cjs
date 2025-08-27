@@ -1,11 +1,11 @@
-const core_filters = require('../../lib/core_filters')
+const coreFilters = require('../../lib/core_filters')
 
 test('core_filters returns correct values', () => {
   const mockEnv = {
     getFilter: jest.fn()
   }
 
-  const result = core_filters(mockEnv)
+  const result = coreFilters(mockEnv)
 
   expect(typeof result.log).toBe('function')
 })

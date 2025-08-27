@@ -1,8 +1,8 @@
 // External dependencies
-const express = require('express')
+import express from 'express'
 
 const router = express.Router()
 
-// Add your routes here - above the module.exports line
+// Add your routes here - above the export line
 
-module.exports = router
+export default router

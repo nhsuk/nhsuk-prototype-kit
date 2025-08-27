@@ -1,36 +1,39 @@
 // Core dependencies
-const {
+import {
   createReadStream,
   createWriteStream,
   existsSync,
   mkdirSync
-} = require('node:fs')
-const { join } = require('node:path')
-const { format: urlFormat } = require('node:url')
+} from 'node:fs'
+import { dirname, join } from 'node:path'
+import { fileURLToPath, format as urlFormat } from 'node:url'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 // External dependencies
-const bodyParser = require('body-parser')
-const sessionInCookie = require('client-sessions')
-const cookieParser = require('cookie-parser')
-const dotenv = require('dotenv')
-const express = require('express')
-const sessionInMemory = require('express-session')
-const nunjucks = require('nunjucks')
+import bodyParser from 'body-parser'
+import sessionInCookie from 'client-sessions'
+import cookieParser from 'cookie-parser'
+import dotenv from 'dotenv'
+import express from 'express'
+import sessionInMemory from 'express-session'
+import nunjucks from 'nunjucks'
 
 // Run before other code to make sure variables from .env are available
 dotenv.config()
 
 // Local dependencies
-const config = require('./app/config')
-const locals = require('./app/locals')
-const routes = require('./app/routes')
-const exampleTemplatesRoutes = require('./lib/example_templates_routes')
-const authentication = require('./lib/middleware/authentication')
-const automaticRouting = require('./lib/middleware/auto-routing')
-const production = require('./lib/middleware/production')
-const prototypeAdminRoutes = require('./lib/middleware/prototype-admin-routes')
-const utils = require('./lib/utils')
-const packageInfo = require('./package.json')
+import config from './app/config.js'
+import locals from './app/locals.js'
+import routes from './app/routes.js'
+import exampleTemplatesRoutes from './lib/example_templates_routes.js'
+import authentication from './lib/middleware/authentication.js'
+import { matchRoutes as automaticRouting } from './lib/middleware/auto-routing.js'
+import production from './lib/middleware/production.js'
+import prototypeAdminRoutes from './lib/middleware/prototype-admin-routes.js'
+import * as utils from './lib/utils.js'
+import { readFileSync } from 'node:fs'
+const packageInfo = JSON.parse(readFileSync('./package.json', 'utf8'))
 
 // Set configuration variables
 const port = parseInt(process.env.PORT || config.port, 10) || 2000
@@ -262,7 +265,7 @@ if (
   console.warn('Press `Ctrl+C` and then run `npm run watch` instead')
 }
 
-module.exports = app
+export default app
 
 /**
  * @import { ConfigureOptions } from 'nunjucks'
