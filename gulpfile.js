@@ -20,6 +20,7 @@ function cleanPublic() {
   return gulp.src('public', { allowEmpty: true }).pipe(clean())
 }
 
+// Set Sass compiler
 const sass = gulpSass(dartSass)
 
 // Compile SASS to CSS
@@ -30,6 +31,7 @@ function compileStyles(done) {
     })
     .pipe(
       sass({
+        loadPaths: ['node_modules'],
         sourceMap: true,
         sourceMapIncludeSources: true
       }).on('error', (error) => {
