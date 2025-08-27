@@ -203,7 +203,7 @@ app.use('/', routes)
 
 // Automatically route pages
 app.get(/^([^.]+)$/, (req, res, next) => {
-  automaticRouting.matchRoutes(req, res, next)
+  automaticRouting(req, res, next)
 })
 
 // Example template routes
