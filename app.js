@@ -1,32 +1,31 @@
 // Core dependencies
-const path = require('path');
-const fs = require('fs');
-const url = require('url');
+const fs = require('node:fs');
+const path = require('node:path');
+const url = require('node:url');
 
 // External dependencies
 const bodyParser = require('body-parser');
+const sessionInCookie = require('client-sessions');
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 const express = require('express');
-const nunjucks = require('nunjucks');
-const sessionInCookie = require('client-sessions');
 const sessionInMemory = require('express-session');
+const nunjucks = require('nunjucks');
 
 // Run before other code to make sure variables from .env are available
 dotenv.config();
 
 // Local dependencies
-const packageInfo = require('./package.json');
-const authentication = require('./lib/middleware/authentication');
-const production = require('./lib/middleware/production');
-const automaticRouting = require('./lib/middleware/auto-routing');
 const config = require('./app/config');
 const locals = require('./app/locals');
 const routes = require('./app/routes');
-const utils = require('./lib/utils');
-
-const prototypeAdminRoutes = require('./lib/middleware/prototype-admin-routes');
 const exampleTemplatesRoutes = require('./lib/example_templates_routes');
+const authentication = require('./lib/middleware/authentication');
+const automaticRouting = require('./lib/middleware/auto-routing');
+const production = require('./lib/middleware/production');
+const prototypeAdminRoutes = require('./lib/middleware/prototype-admin-routes');
+const utils = require('./lib/utils');
+const packageInfo = require('./package.json');
 
 // Set configuration variables
 const port = parseInt(process.env.PORT || config.port, 10) || 2000;

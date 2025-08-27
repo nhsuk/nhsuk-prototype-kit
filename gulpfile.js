@@ -1,14 +1,12 @@
-// Core dependencies
-const gulp = require('gulp');
-
 // External dependencies
-const babel = require('gulp-babel');
 const browserSync = require('browser-sync');
+const gulp = require('gulp');
+const babel = require('gulp-babel');
 const clean = require('gulp-clean');
-const gulpSass = require('gulp-sass')
-const dartSass = require('sass-embedded')
 const nodemon = require('gulp-nodemon');
+const gulpSass = require('gulp-sass')
 const PluginError = require('plugin-error')
+const dartSass = require('sass-embedded')
 
 // Local dependencies
 const config = require('./app/config');

@@ -1,11 +1,11 @@
+const customFilters = require('../../app/filters');
+const coreFilters = require('../../lib/core_filters');
 const { addNunjucksFilters, matchRoutes, autoStoreData } = require('../../lib/utils');
 
-const coreFilters = require('../../lib/core_filters');
 jest.mock('../../lib/core_filters');
-const customFilters = require('../../app/filters');
 jest.mock('../../app/filters');
 
-test('test addNunjucksFilters filter added', () => {
+test('addNunjucksFilters filter added', () => {
     coreFilters.mockImplementation(() => {return {1: "core-filter"};});
     customFilters.mockImplementation(() => {return {2: "custom-filter"};});
     const mockEnv = {
@@ -21,7 +21,7 @@ test('test addNunjucksFilters filter added', () => {
     expect(mockEnv.addFilter).toHaveBeenCalledTimes(2);
 });
 
-test('test matchRoutes no error', () => {
+test('matchRoutes no error', () => {
     const mockRequest = {
         path: "http://www.example.com",
     };
@@ -45,7 +45,7 @@ test('test matchRoutes no error', () => {
     expect(mockNext).not.toHaveBeenCalled();
 });
 
-test('test matchRoutes with other error', () => {
+test('matchRoutes with other error', () => {
     const mockRequest = {
         path: "http://www.example.com",
     };
@@ -69,7 +69,7 @@ test('test matchRoutes with other error', () => {
     expect(mockNext).toHaveBeenCalled();
 });
 
-test('test matchRoutes with template error', () => {
+test('matchRoutes with template error', () => {
     const mockRequest = {
         path: "http://www.example.com",
     };
@@ -93,7 +93,7 @@ test('test matchRoutes with template error', () => {
     expect(mockNext).toHaveBeenCalled();
 });
 
-test('test matchRoutes with empty path', () => {
+test('matchRoutes with empty path', () => {
     const mockRequest = {
         path: "",
     };
