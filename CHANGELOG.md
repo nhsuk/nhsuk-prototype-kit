@@ -4,7 +4,7 @@
 
 ### New features
 
-- Use a different port if something is running on the default on ([PR #557](https://github.com/nhsuk/nhsuk-prototype-kit/pull/557))
+- Use a different port if something is running on the default one ([PR #557](https://github.com/nhsuk/nhsuk-prototype-kit/pull/557))
 
 ### Breaking changes
 
