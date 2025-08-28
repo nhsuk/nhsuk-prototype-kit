@@ -98,6 +98,8 @@ async function startNodemon(done) {
     script: 'app.js',
     stdout: true,
     ext: 'js',
+    watch: ['.env', 'app.js', 'app', 'lib'],
+    ignore: ['app/assets', '**.test.*'],
     quiet: false
   })
 
