@@ -1,40 +1,36 @@
 // Core dependencies
-import {
+const {
   createReadStream,
   createWriteStream,
   existsSync,
-  mkdirSync,
-  readFileSync
-} from 'node:fs'
-import { dirname, join } from 'node:path'
-import { fileURLToPath, format as urlFormat } from 'node:url'
+  mkdirSync
+} = require('node:fs')
+const { join } = require('node:path')
+const { format: urlFormat } = require('node:url')
 
 // External dependencies
-import bodyParser from 'body-parser'
-import sessionInCookie from 'client-sessions'
-import cookieParser from 'cookie-parser'
-import dotenv from 'dotenv'
-import express from 'express'
-import sessionInMemory from 'express-session'
-import nunjucks from 'nunjucks'
-
-// Local dependencies
-import config from './app/config.js'
-import locals from './app/locals.js'
-import routes from './app/routes.js'
-import exampleTemplatesRoutes from './lib/example_templates_routes.js'
-import authentication from './lib/middleware/authentication.js'
-import { matchRoutes as automaticRouting } from './lib/middleware/auto-routing.js'
-import production from './lib/middleware/production.js'
-import prototypeAdminRoutes from './lib/middleware/prototype-admin-routes.js'
-import * as utils from './lib/utils.js'
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
+const bodyParser = require('body-parser')
+const sessionInCookie = require('client-sessions')
+const cookieParser = require('cookie-parser')
+const dotenv = require('dotenv')
+const express = require('express')
+const sessionInMemory = require('express-session')
+const nunjucks = require('nunjucks')
 
 // Run before other code to make sure variables from .env are available
 dotenv.config()
 
-const packageInfo = JSON.parse(readFileSync('./package.json', 'utf8'))
+// Local dependencies
+const config = require('./app/config')
+const locals = require('./app/locals')
+const routes = require('./app/routes')
+const exampleTemplatesRoutes = require('./lib/example_templates_routes')
+const authentication = require('./lib/middleware/authentication')
+const automaticRouting = require('./lib/middleware/auto-routing')
+const production = require('./lib/middleware/production')
+const prototypeAdminRoutes = require('./lib/middleware/prototype-admin-routes')
+const utils = require('./lib/utils')
+const packageInfo = require('./package.json')
 
 // Set configuration variables
 const port = parseInt(process.env.PORT || config.port, 10) || 2000
@@ -203,7 +199,7 @@ app.use('/', routes)
 
 // Automatically route pages
 app.get(/^([^.]+)$/, (req, res, next) => {
-  automaticRouting(req, res, next)
+  automaticRouting.matchRoutes(req, res, next)
 })
 
 // Example template routes
@@ -266,7 +262,7 @@ if (
   console.warn('Press `Ctrl+C` and then run `npm run watch` instead')
 }
 
-export default app
+module.exports = app
 
 /**
  * @import { ConfigureOptions } from 'nunjucks'

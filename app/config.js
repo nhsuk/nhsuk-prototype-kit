@@ -1,6 +1,6 @@
 // Use this file to change prototype configuration.
 
-export default {
+module.exports = {
   // Service name
   serviceName: 'Service name goes here',
 

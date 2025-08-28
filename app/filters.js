@@ -1,7 +1,7 @@
 /**
  * @param {Environment} env
  */
-export default function (env) {
+module.exports = function (env) {
   const filters = {}
 
   /* ------------------------------------------------------------------
