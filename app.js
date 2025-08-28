@@ -101,23 +101,21 @@ if (process.env.NODE_ENV === 'production') {
 // Support session data in cookie or memory
 if (useCookieSessionStore === 'true') {
   app.use(
-    sessionInCookie(
-      Object.assign(sessionOptions, {
-        cookieName: sessionName,
-        proxy: true,
-        requestKey: 'session'
-      })
-    )
+    sessionInCookie({
+      ...sessionOptions,
+      cookieName: sessionName,
+      proxy: true,
+      requestKey: 'session'
+    })
   )
 } else {
   app.use(
-    sessionInMemory(
-      Object.assign(sessionOptions, {
-        name: sessionName,
-        resave: false,
-        saveUninitialized: false
-      })
-    )
+    sessionInMemory({
+      ...sessionOptions,
+      name: sessionName,
+      resave: false,
+      saveUninitialized: false
+    })
   )
 }
 
