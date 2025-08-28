@@ -16,7 +16,7 @@ module.exports = {
   ],
   overrides: [
     {
-      files: ['**/*.{cjs,js,mjs}'],
+      files: ['**/*.{cjs,js}'],
       extends: [
         'eslint:recommended',
         'plugin:import/recommended',
@@ -108,7 +108,14 @@ module.exports = {
     },
     {
       // ES modules mandatory file extensions
-      files: ['**/*.mjs'],
+      files: [
+        'app.js',
+        'gulpfile.js',
+        'app/**/*.js',
+        'lib/**/*.js',
+        'tests/**/*.js'
+      ],
+      excludedFiles: ['app/assets/**/*.js'],
       rules: {
         'import/extensions': [
           'error',
@@ -125,8 +132,22 @@ module.exports = {
       }
     },
     {
+      // Browser-side JavaScript files
+      files: ['app/assets/**/*.js'],
+      env: {
+        browser: true,
+        node: false
+      },
+      rules: {
+        '@typescript-eslint/no-require-imports': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
+        'n/no-unsupported-features/es-syntax': 'off',
+        'import/extensions': 'off'
+      }
+    },
+    {
       // Configure ESLint in test files
-      files: ['**/*.test.{cjs,js,mjs}'],
+      files: ['**/*.test.{cjs,js}'],
       extends: ['plugin:jest/recommended', 'plugin:jest/style'],
       env: {
         'jest/globals': true

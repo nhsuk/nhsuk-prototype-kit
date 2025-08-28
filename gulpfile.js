@@ -1,16 +1,16 @@
 // External dependencies
-const browserSync = require('browser-sync')
-const gulp = require('gulp')
-const babel = require('gulp-babel')
-const clean = require('gulp-clean')
-const nodemon = require('gulp-nodemon')
-const gulpSass = require('gulp-sass')
-const PluginError = require('plugin-error')
-const dartSass = require('sass-embedded')
+import browserSync from 'browser-sync'
+import gulp from 'gulp'
+import babel from 'gulp-babel'
+import clean from 'gulp-clean'
+import nodemon from 'gulp-nodemon'
+import gulpSass from 'gulp-sass'
+import PluginError from 'plugin-error'
+import dartSass from 'sass-embedded'
 
 // Local dependencies
-const config = require('./app/config')
-const { findAvailablePort } = require('./lib/utils')
+import config from './app/config.js'
+import { findAvailablePort } from './lib/utils/find-available-port.js'
 
 // Set configuration variables
 const port = parseInt(process.env.PORT || config.port, 10) || 2000
@@ -97,7 +97,7 @@ async function startNodemon(done) {
   const server = nodemon({
     script: 'app.js',
     stdout: true,
-    ext: 'js',
+    ext: 'js,mjs',
     quiet: false
   })
 
@@ -149,10 +149,7 @@ function watch() {
   gulp.watch('app/assets/**/**/*.*', compileAssets)
 }
 
-exports.watch = watch
-exports.compileStyles = compileStyles
-exports.compileScripts = compileScripts
-exports.cleanPublic = cleanPublic
+export { watch, compileStyles, compileScripts, cleanPublic }
 
 gulp.task(
   'build',

@@ -1,8 +1,7 @@
 /**
  * @param {typeof config} config
  */
-module.exports =
-  (config) =>
+export default (config) =>
   /**
    * @param {Request} req
    * @param {Response} res

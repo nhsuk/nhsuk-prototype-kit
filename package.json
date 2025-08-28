@@ -2,15 +2,16 @@
   "name": "nhsuk-prototype-kit",
   "version": "7.0.0",
   "description": "Rapidly create HTML prototypes of NHS websites and services.",
-  "main": "app.mjs",
+  "type": "module",
+  "main": "app.js",
   "scripts": {
-    "build": "gulp build --gulpfile gulpfile.mjs",
+    "build": "gulp build",
     "postinstall": "npm run build",
-    "start": "node app.mjs",
-    "test": "jest",
-    "test:ci": "jest --ci",
-    "prewatch": "gulp build --gulpfile gulpfile.mjs",
-    "watch": "gulp --gulpfile gulpfile.mjs",
+    "start": "node app.js",
+    "test": "NODE_OPTIONS=\"--experimental-vm-modules\" jest",
+    "test:ci": "NODE_OPTIONS=\"--experimental-vm-modules\" jest --ci",
+    "prewatch": "gulp build",
+    "watch": "gulp",
     "lint": "npm run lint:js && npm run lint:prettier",
     "lint:fix": "npm run lint:js:fix && npm run lint:prettier:fix",
     "lint:prettier": "prettier --cache --cache-location .cache/prettier --cache-strategy content --check .",
@@ -65,6 +66,10 @@
     "node": "^20.9.0 || ^22.11.0"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/*.test.cjs"
+    ],
+    "transform": {}
   }
 }
