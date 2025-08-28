@@ -26,129 +26,114 @@ const locals = require('./app/locals')
 const routes = require('./app/routes')
 const exampleTemplatesRoutes = require('./lib/example_templates_routes')
 const authentication = require('./lib/middleware/authentication')
+const automaticRouting = require('./lib/middleware/auto-routing')
 const production = require('./lib/middleware/production')
 const prototypeAdminRoutes = require('./lib/middleware/prototype-admin-routes')
+const utils = require('./lib/utils')
 const packageInfo = require('./package.json')
 
-// ES modules imported dynamically
-let automaticRouting, utils
+// Set configuration variables
+const port = parseInt(process.env.PORT || config.port, 10) || 2000
 
-// Initialize ES modules
-async function initializeESModules() {
-  const { default: autoRoutingModule } = await import('./lib/middleware/auto-routing.mjs')
-  automaticRouting = autoRoutingModule
-  
-  const { default: utilsModule } = await import('./lib/utils.mjs')
-  utils = utilsModule
+// Initialise applications
+const app = express()
+const exampleTemplatesApp = express()
+
+// Set up configuration variables
+const useAutoStoreData =
+  process.env.USE_AUTO_STORE_DATA || config.useAutoStoreData
+const useCookieSessionStore =
+  process.env.USE_COOKIE_SESSION_STORE || config.useCookieSessionStore
+
+// Add variables that are available in all views
+app.locals.asset_path = '/public/'
+app.locals.useAutoStoreData = useAutoStoreData === 'true'
+app.locals.useCookieSessionStore = useCookieSessionStore === 'true'
+app.locals.serviceName = config.serviceName
+
+// Use cookie middleware to parse cookies
+app.use(cookieParser())
+
+// Nunjucks configuration for application
+const appViews = [
+  join(__dirname, 'app/views/'),
+  join(__dirname, 'lib/example-templates/'),
+  join(__dirname, 'lib/prototype-admin/'),
+  join(__dirname, 'lib/templates/'),
+  join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/components'),
+  join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/macros'),
+  join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'),
+  join(__dirname, 'node_modules/nhsuk-frontend/dist')
+]
+
+/**
+ * @type {ConfigureOptions}
+ */
+const nunjucksConfig = {
+  autoescape: true,
+  noCache: true
 }
 
-// Main application initialization
-async function initializeApp() {
-  // Load ES modules first
-  await initializeESModules()
+nunjucksConfig.express = app
 
-  // Set configuration variables
-  const port = parseInt(process.env.PORT || config.port, 10) || 2000
+let nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig)
+nunjucksAppEnv.addGlobal('version', packageInfo.version)
 
-  // Initialise applications
-  const app = express()
-  const exampleTemplatesApp = express()
+// Add Nunjucks filters
+utils.addNunjucksFilters(nunjucksAppEnv)
 
-  // Set up configuration variables
-  const useAutoStoreData =
-    process.env.USE_AUTO_STORE_DATA || config.useAutoStoreData
-  const useCookieSessionStore =
-    process.env.USE_COOKIE_SESSION_STORE || config.useCookieSessionStore
-
-  // Add variables that are available in all views
-  app.locals.asset_path = '/public/'
-  app.locals.useAutoStoreData = useAutoStoreData === 'true'
-  app.locals.useCookieSessionStore = useCookieSessionStore === 'true'
-  app.locals.serviceName = config.serviceName
-
-  // Use cookie middleware to parse cookies
-  app.use(cookieParser())
-
-  // Nunjucks configuration for application
-  const appViews = [
-    join(__dirname, 'app/views/'),
-    join(__dirname, 'lib/example-templates/'),
-    join(__dirname, 'lib/prototype-admin/'),
-    join(__dirname, 'lib/templates/'),
-    join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/components'),
-    join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/macros'),
-    join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'),
-    join(__dirname, 'node_modules/nhsuk-frontend/dist')
-  ]
-
-  /**
-   * @type {ConfigureOptions}
-   */
-  const nunjucksConfig = {
-    autoescape: true,
-    noCache: true
+// Session uses service name to avoid clashes with other prototypes
+const sessionName = `nhsuk-prototype-kit-${Buffer.from(config.serviceName, 'utf8').toString('hex')}`
+const sessionOptions = {
+  secret: sessionName,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 4 // 4 hours
   }
+}
 
-  nunjucksConfig.express = app
+if (process.env.NODE_ENV === 'production') {
+  app.use(production)
+  app.use(authentication)
+}
 
-  let nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig)
-  nunjucksAppEnv.addGlobal('version', packageInfo.version)
-
-  // Add Nunjucks filters (now async)
-  await utils.addNunjucksFilters(nunjucksAppEnv)
-
-  // Session uses service name to avoid clashes with other prototypes
-  const sessionName = `nhsuk-prototype-kit-${Buffer.from(config.serviceName, 'utf8').toString('hex')}`
-  const sessionOptions = {
-    secret: sessionName,
-    cookie: {
-      maxAge: 1000 * 60 * 60 * 4 // 4 hours
-    }
-  }
-
-  if (process.env.NODE_ENV === 'production') {
-    app.use(production)
-    app.use(authentication)
-  }
-
-  // Support session data in cookie or memory
-  if (useCookieSessionStore === 'true') {
-    app.use(
-      sessionInCookie(
-        Object.assign(sessionOptions, {
-          cookieName: sessionName,
-          proxy: true,
-          requestKey: 'session'
-        })
-      )
-    )
-  } else {
-    app.use(
-      sessionInMemory(
-        Object.assign(sessionOptions, {
-          name: sessionName,
-          resave: false,
-          saveUninitialized: false
-        })
-      )
-    )
-  }
-
-  // Support for parsing data in POSTs
-  app.use(bodyParser.json())
+// Support session data in cookie or memory
+if (useCookieSessionStore === 'true') {
   app.use(
-    bodyParser.urlencoded({
-      extended: true
-    })
+    sessionInCookie(
+      Object.assign(sessionOptions, {
+        cookieName: sessionName,
+        proxy: true,
+        requestKey: 'session'
+      })
+    )
   )
+} else {
+  app.use(
+    sessionInMemory(
+      Object.assign(sessionOptions, {
+        name: sessionName,
+        resave: false,
+        saveUninitialized: false
+      })
+    )
+  )
+}
 
-  // Automatically store all data users enter
-  if (useAutoStoreData === 'true') {
-    app.use(utils.autoStoreData)
-    utils.addCheckedFunction(nunjucksAppEnv)
-  }
+// Support for parsing data in POSTs
+app.use(bodyParser.json())
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+)
 
-  app.use(utils.setLocals)
+// Automatically store all data users enter
+if (useAutoStoreData === 'true') {
+  app.use(utils.autoStoreData)
+  utils.addCheckedFunction(nunjucksAppEnv)
+}
+
+app.use(utils.setLocals)
 
 // Warn if node_modules folder doesn't exist
 function checkFiles() {

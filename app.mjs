@@ -1,52 +1,52 @@
 // Core dependencies
-const {
+import {
   createReadStream,
   createWriteStream,
   existsSync,
   mkdirSync
-} = require('node:fs')
-const { join } = require('node:path')
-const { format: urlFormat } = require('node:url')
+} from 'node:fs'
+import { join, dirname } from 'node:path'
+import { format as urlFormat } from 'node:url'
+import { fileURLToPath } from 'node:url'
 
 // External dependencies
-const bodyParser = require('body-parser')
-const sessionInCookie = require('client-sessions')
-const cookieParser = require('cookie-parser')
-const dotenv = require('dotenv')
-const express = require('express')
-const sessionInMemory = require('express-session')
-const nunjucks = require('nunjucks')
+import bodyParser from 'body-parser'
+import sessionInCookie from 'client-sessions'
+import cookieParser from 'cookie-parser'
+import dotenv from 'dotenv'
+import express from 'express'
+import sessionInMemory from 'express-session'
+import nunjucks from 'nunjucks'
+
+// Get ES module equivalents of __dirname
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 // Run before other code to make sure variables from .env are available
 dotenv.config()
 
-// Local dependencies
-const config = require('./app/config')
-const locals = require('./app/locals')
-const routes = require('./app/routes')
-const exampleTemplatesRoutes = require('./lib/example_templates_routes')
-const authentication = require('./lib/middleware/authentication')
-const production = require('./lib/middleware/production')
-const prototypeAdminRoutes = require('./lib/middleware/prototype-admin-routes')
-const packageInfo = require('./package.json')
+// Local dependencies (using dynamic import for CommonJS modules)
+const config = (await import('./app/config.js')).default
+const locals = (await import('./app/locals.js')).default
+const routes = (await import('./app/routes.js')).default
+const exampleTemplatesRoutes = (
+  await import('./lib/example_templates_routes.js')
+).default
+const authentication = (await import('./lib/middleware/authentication.js'))
+  .default
+const production = (await import('./lib/middleware/production.js')).default
+const prototypeAdminRoutes = (
+  await import('./lib/middleware/prototype-admin-routes.js')
+).default
+const packageInfo = (await import('./package.json', { with: { type: 'json' } }))
+  .default
 
-// ES modules imported dynamically
-let automaticRouting, utils
-
-// Initialize ES modules
-async function initializeESModules() {
-  const { default: autoRoutingModule } = await import('./lib/middleware/auto-routing.mjs')
-  automaticRouting = autoRoutingModule
-  
-  const utilsModule = await import('./lib/utils.mjs')
-  utils = utilsModule.default
-}
+// ES modules
+import automaticRouting from './lib/middleware/auto-routing.mjs'
+import utils from './lib/utils.mjs'
 
 // Main application initialization
 async function initializeApp() {
-  // Load ES modules first
-  await initializeESModules()
-
   // Set configuration variables
   const port = parseInt(process.env.PORT || config.port, 10) || 2000
 
@@ -173,7 +173,10 @@ async function initializeApp() {
 
   // Create template session data defaults file if it doesn't exist
   const dataDirectory = join(__dirname, '/app/data')
-  const sessionDataDefaultsFile = join(dataDirectory, '/session-data-defaults.js')
+  const sessionDataDefaultsFile = join(
+    dataDirectory,
+    '/session-data-defaults.js'
+  )
   const sessionDataDefaultsFileExists = existsSync(sessionDataDefaultsFile)
 
   if (!sessionDataDefaultsFileExists) {
@@ -284,7 +287,7 @@ async function initializeApp() {
 initializeApp().catch(console.error)
 
 // Export the initialization function for testing
-module.exports = initializeApp
+export default initializeApp
 
 /**
  * @import { ConfigureOptions } from 'nunjucks'
