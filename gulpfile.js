@@ -97,7 +97,7 @@ async function startNodemon(done) {
   const server = nodemon({
     script: 'app.js',
     stdout: true,
-    ext: 'js',
+    ext: 'js json',
     watch: ['.env', 'app.js', 'app', 'lib'],
     ignore: ['app/assets', '**.test.*'],
     quiet: false
