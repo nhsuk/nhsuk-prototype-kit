@@ -87,7 +87,7 @@ async function startNodemon(done) {
     if (!availablePort) {
       throw new Error(`Port ${nodemonPort} in use`)
     }
-    
+
     // Also check if the browser port is available
     const { checkPortStatus } = require('portscanner')
     if ((await checkPortStatus(browserPort, '127.0.0.1')) === 'open') {
