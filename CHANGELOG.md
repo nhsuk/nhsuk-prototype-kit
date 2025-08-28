@@ -5,6 +5,7 @@
 :wrench: **Fixes**
 
 - Fix NHS.UK frontend allowed paths on password page
+- Prevent unnecessary console logging from dotenv
 
 ## 7.0.0 - 27 August 2025
 
