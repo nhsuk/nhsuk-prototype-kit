@@ -1,6 +1,9 @@
 # Temporary only
 .cache/
 
+# Application
+app/
+
 # Node.js modules
 node_modules/
 
