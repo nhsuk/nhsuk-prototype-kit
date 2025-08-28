@@ -18,7 +18,9 @@ const sessionInMemory = require('express-session')
 const nunjucks = require('nunjucks')
 
 // Run before other code to make sure variables from .env are available
-dotenv.config()
+dotenv.config({
+  quiet: true
+})
 
 // Local dependencies
 const config = require('./app/config')
