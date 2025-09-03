@@ -4,8 +4,8 @@ module.exports = {
   // Service name
   serviceName: 'Service name goes here',
 
-  // Port to run nodemon on locally
-  port: 2000,
+  // Port to run the prototype on (the port you'll see in your browser)
+  port: 3000,
 
   // Automatically stores form data, and send to all views
   useAutoStoreData: 'true',
