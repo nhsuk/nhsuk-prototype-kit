@@ -1,6 +1,6 @@
-const core_filters = require('../../lib/core_filters')
+test('core_filters returns correct values', async () => {
+  const core_filters = (await import('../../lib/core_filters.js')).default
 
-test('core_filters returns correct values', () => {
   const mockEnv = {
     getFilter: jest.fn()
   }
