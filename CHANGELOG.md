@@ -9,6 +9,7 @@
 - Prevent unnecessary console logging from dotenv
 - Configure Nodemon to ignore browser JavaScript
 - Exclude app code from linters by default
+- Adds an .editorconfig file
 
 ## 7.0.0 - 27 August 2025
 
