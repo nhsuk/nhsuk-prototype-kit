@@ -4,6 +4,7 @@
 module.exports = {
   extends: ['prettier'],
   ignorePatterns: [
+    '**/app/**',
     '**/public/**',
 
     // Enable dotfile linting
@@ -153,6 +154,18 @@ module.exports = {
         'jest/globals': true
       },
       plugins: ['jest']
+    },
+    {
+      // Configure ESLint in browser JavaScript
+      files: ['app/assets/**/*.{cjs,js,mjs}'],
+      excludedFiles: ['app/assets/**/*.test.{cjs,js,mjs}'],
+      env: {
+        browser: true
+      },
+      parserOptions: {
+        // Note: Allow ES2015 for import/export syntax
+        ecmaVersion: '2015'
+      }
     }
   ],
   root: true

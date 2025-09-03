@@ -1,5 +1,16 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+:wrench: **Fixes**
+
+- Fix NHS.UK frontend allowed paths on password page
+- Fix reset session data route via GET request
+- Prevent unnecessary console logging from dotenv
+- Configure Nodemon to ignore browser JavaScript
+- Exclude app code from linters by default
+- Adds an .editorconfig file
+
 ## 7.0.0 - 27 August 2025
 
 ### New features

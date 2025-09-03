@@ -23,7 +23,9 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 // Run before other code to make sure variables from .env are available
-dotenv.config()
+dotenv.config({
+  quiet: true
+})
 
 // Local dependencies
 import config from './app/config.js'
