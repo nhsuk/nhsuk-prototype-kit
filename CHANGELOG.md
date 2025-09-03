@@ -6,6 +6,7 @@
 
 - Fix NHS.UK frontend allowed paths on password page
 - Fix reset session data route via GET request
+- Improve Sass error handling when watching for changes
 - Prevent unnecessary console logging from dotenv
 - Preserve defaults when merging filters or session options
 - Configure Nodemon to ignore browser JavaScript
