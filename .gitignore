@@ -53,7 +53,7 @@ jspm_packages/
 # Output of 'npm pack'
 *.tgz
 
-# dotenv environment variables file
+# Environment variables file
 .env
 
 # System Files
