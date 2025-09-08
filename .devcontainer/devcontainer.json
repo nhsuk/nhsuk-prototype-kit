@@ -57,7 +57,9 @@
       // bundle the following editor extensions
       "extensions": [
         // nunjuck syntax highlighting
-        "douglaszaltron.nunjucks-vscode-extensionpack"
+        "ginfuru.better-nunjucks",
+        // File utilities like duplicate, move, rename, delete files
+        "sleistner.vscode-fileutils"
       ]
     }
   }
