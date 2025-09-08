@@ -55,12 +55,19 @@
         "files.associations": {
           "*.html": "nunjucks"
         },
-        "html.suggest.html5": true
+        "html.suggest.html5": true,
+        // Ensure Prettier is the default formatter and is used for javascript files
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[javascript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        }
       },
       // bundle the following editor extensions
       "extensions": [
         // nunjuck syntax highlighting
         "ginfuru.better-nunjucks",
+        // Prettier code formatter
+        "esbenp.prettier-vscode",
         // File utilities like duplicate, move, rename, delete files
         "sleistner.vscode-fileutils"
       ]
