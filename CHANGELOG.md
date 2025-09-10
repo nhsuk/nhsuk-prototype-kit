@@ -7,7 +7,7 @@
 - Fix NHS.UK frontend allowed paths on password page
 - Fix reset session data route via GET request
 - Improve Sass error handling when watching for changes
-- Prevent unnecessary console logging from dotenv
+- Use Node.js built in `.env` support (requires v20.12.0+)
 - Preserve defaults when merging filters or session options
 - Configure Nodemon to ignore browser JavaScript
 - Exclude app code from linters by default
