@@ -13,7 +13,7 @@
       // 'silent' (does nothing)
       // 'openBrowser' (opens the prototype URL in a browser window/tab)
       // 'openPrview' (opens the codespaces preview window to present the running prototype to the user)
-      "onAutoForward": "openPreview"
+      "onAutoForward": "openBrowser"
     }
   },
   // forward the port for the browersync process
