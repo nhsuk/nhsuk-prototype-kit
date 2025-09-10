@@ -33,6 +33,8 @@
     "vscode": {
       // editor settings
       "settings": {
+        // Turn on word wrapping by default
+        "editor.wordWrap": "on",
         // uncomment the following lines to hide files not needed to update content
         // "files.exclude": {
         //   "{docs,lib,linters,middleware,node_modules,public,tests,NHS111.Shared.Frontend}/": true,
