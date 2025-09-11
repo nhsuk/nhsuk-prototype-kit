@@ -1,3 +1,5 @@
+const { join } = require('node:path')
+
 // External dependencies
 const browserSync = require('browser-sync')
 const gulp = require('gulp')
@@ -5,6 +7,7 @@ const babel = require('gulp-babel')
 const clean = require('gulp-clean')
 const nodemon = require('gulp-nodemon')
 const gulpSass = require('gulp-sass')
+const { createProxyMiddleware } = require('http-proxy-middleware')
 const PluginError = require('plugin-error')
 const dartSass = require('sass-embedded')
 
@@ -127,14 +130,24 @@ async function startBrowserSync(done) {
 
   browserSync.init(
     {
-      proxy: `localhost:${proxyPort}`,
       port: proxyPort + 1000,
       ui: false,
       files: ['app/views/**/*.*', 'lib/example-templates/**/*.*'],
       ghostMode: false,
       open: false,
       notify: true,
-      watch: true
+      watch: true,
+
+      // Proxy to Node.js server
+      middleware: createProxyMiddleware({
+        changeOrigin: true,
+        target: `http://localhost:${proxyPort}`
+      }),
+
+      // Serve static assets
+      server: {
+        baseDir: join(__dirname, 'public')
+      }
     },
     done
   )
