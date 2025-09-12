@@ -21,7 +21,7 @@
   "author": "https://github.com/nhsuk/",
   "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.28.3",
+    "@babel/core": "^7.28.4",
     "@babel/preset-env": "^7.28.3",
     "@inquirer/prompts": "^7.5.3",
     "body-parser": "^2.2.0",
