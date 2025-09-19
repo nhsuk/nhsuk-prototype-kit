@@ -179,6 +179,10 @@ app.use(locals(config))
 app.set('view engine', 'html')
 exampleTemplatesApp.set('view engine', 'html')
 
+// Support for parsing nested query strings
+// https://github.com/nhsuk/nhsuk-prototype-kit/issues/644
+app.set('query parser', 'extended')
+
 // This setting trusts the X-Forwarded headers set by
 // a proxy and uses them to set the standard header in
 // req. This is needed for hosts like Heroku.
