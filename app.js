@@ -127,6 +127,10 @@ app.use(
   })
 )
 
+// Support for parsing nested query strings
+// https://github.com/nhsuk/nhsuk-prototype-kit/issues/644
+app.set('query parser', 'extended')
+
 // Automatically store all data users enter
 if (useAutoStoreData === 'true') {
   app.use(utils.autoStoreData)

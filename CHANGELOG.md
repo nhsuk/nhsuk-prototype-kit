@@ -5,6 +5,7 @@
 :wrench: **Fixes**
 
 - Fix Browsersync in Codespaces
+- Fix nested query strings not saving correctly (PR, Fixes [#644](https://github.com/nhsuk/nhsuk-prototype-kit/issues/644))
 
 ## 7.0.1 - 5 September 2025
 
