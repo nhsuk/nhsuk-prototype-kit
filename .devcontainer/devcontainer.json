@@ -35,6 +35,22 @@
       "settings": {
         // Turn on word wrapping by default
         "editor.wordWrap": "on",
+        // Set default tab size to 2 spaces and use spaces not tabs
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        "[nunjucks]": {
+          "editor.tabSize": 2
+        },
+        "[html]": {
+          "editor.tabSize": 2
+        },
+        "[css]": {
+          "editor.tabSize": 2
+        },
+        "[javascript]": {
+          "editor.tabSize": 2
+        },
         // uncomment the following lines to hide files not needed to update content
         // "files.exclude": {
         //   "{docs,lib,linters,middleware,node_modules,public,tests,NHS111.Shared.Frontend}/": true,
