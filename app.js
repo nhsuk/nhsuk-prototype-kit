@@ -6,21 +6,26 @@ const {
   mkdirSync
 } = require('node:fs')
 const { join } = require('node:path')
+const process = require('node:process')
 const { format: urlFormat } = require('node:url')
 
 // External dependencies
 const bodyParser = require('body-parser')
 const sessionInCookie = require('client-sessions')
 const cookieParser = require('cookie-parser')
-const dotenv = require('dotenv')
 const express = require('express')
 const sessionInMemory = require('express-session')
 const nunjucks = require('nunjucks')
 
-// Run before other code to make sure variables from .env are available
-dotenv.config({
-  quiet: true
-})
+/**
+ * Add environment variables from .env file
+ * (Requires Node.js v20.12.0 or later)
+ *
+ * @see {@link https://nodejs.org/api/process.html#processloadenvfilepath}
+ */
+if ('loadEnvFile' in process) {
+  process.loadEnvFile()
+}
 
 // Local dependencies
 const config = require('./app/config')
