@@ -2,7 +2,11 @@
 
 ## Unreleased
 
-:wrench: **Fixes**
+### :new: **New features**
+
+- Add a filter for formatting NHS numbers with spaces ([PR ](https://github.com/nhsuk/nhsuk-prototype-kit/pull/663))
+
+### :wrench: **Fixes**
 
 - Fix Browsersync in Codespaces
 - Fix nested query strings not saving correctly ([PR #645](https://github.com/nhsuk/nhsuk-prototype-kit/pull/645), Fixes [#644](https://github.com/nhsuk/nhsuk-prototype-kit/issues/644))
