@@ -17,11 +17,11 @@ test('formatNhsNumber with a string of 10 digits and other characters', () => {
 })
 
 test('formatNhsNumber with a string of less than 10 digits', () => {
-  expect(formatNhsNumber('123456789')).toBe('123456789')
+  expect(formatNhsNumber('99912345')).toBe('99912345')
 })
 
 test('formatNhsNumber with a string of more than 10 digits', () => {
-  expect(formatNhsNumber('12345678901')).toBe('12345678901')
+  expect(formatNhsNumber('9991234567123')).toBe('9991234567123')
 })
 
 test('formatNhsNumber with null', () => {
