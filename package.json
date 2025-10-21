@@ -41,6 +41,7 @@
     "http-proxy-middleware": "^3.0.5",
     "lodash": "^4.17.21",
     "nhsuk-frontend": "^10.0.0",
+    "nhsuk-prototype-kit": "nhsuk/nhsuk-prototype-kit-package",
     "nunjucks": "^3.2.4",
     "path": "^0.12.7",
     "plugin-error": "^2.0.1",

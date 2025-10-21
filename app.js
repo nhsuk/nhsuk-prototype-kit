@@ -9,13 +9,14 @@ const { join } = require('node:path')
 const { format: urlFormat } = require('node:url')
 
 // External dependencies
-const bodyParser = require('body-parser')
 const sessionInCookie = require('client-sessions')
 const cookieParser = require('cookie-parser')
 const dotenv = require('dotenv')
 const express = require('express')
 const sessionInMemory = require('express-session')
 const nunjucks = require('nunjucks')
+
+const NHSPrototypeKit = require('nhsuk-prototype-kit')
 
 // Run before other code to make sure variables from .env are available
 dotenv.config({
@@ -26,12 +27,6 @@ dotenv.config({
 const config = require('./app/config')
 const locals = require('./app/locals')
 const routes = require('./app/routes')
-const exampleTemplatesRoutes = require('./lib/example_templates_routes')
-const authentication = require('./lib/middleware/authentication')
-const automaticRouting = require('./lib/middleware/auto-routing')
-const production = require('./lib/middleware/production')
-const prototypeAdminRoutes = require('./lib/middleware/prototype-admin-routes')
-const utils = require('./lib/utils')
 const packageInfo = require('./package.json')
 
 // Set configuration variables
@@ -42,14 +37,11 @@ const app = express()
 const exampleTemplatesApp = express()
 
 // Set up configuration variables
-const useAutoStoreData =
-  process.env.USE_AUTO_STORE_DATA || config.useAutoStoreData
 const useCookieSessionStore =
   process.env.USE_COOKIE_SESSION_STORE || config.useCookieSessionStore
 
 // Add variables that are available in all views
 app.locals.asset_path = '/public/'
-app.locals.useAutoStoreData = useAutoStoreData === 'true'
 app.locals.useCookieSessionStore = useCookieSessionStore === 'true'
 app.locals.serviceName = config.serviceName
 
@@ -59,9 +51,7 @@ app.use(cookieParser())
 // Nunjucks configuration for application
 const appViews = [
   join(__dirname, 'app/views/'),
-  join(__dirname, 'lib/example-templates/'),
-  join(__dirname, 'lib/prototype-admin/'),
-  join(__dirname, 'lib/templates/'),
+  join(__dirname, 'node_modules/nhsuk-prototype-kit/lib/views/'),
   join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/components'),
   join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/macros'),
   join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'),
@@ -80,9 +70,6 @@ nunjucksConfig.express = app
 
 let nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig)
 nunjucksAppEnv.addGlobal('version', packageInfo.version)
-
-// Add Nunjucks filters
-utils.addNunjucksFilters(nunjucksAppEnv)
 
 // Session uses service name to avoid clashes with other prototypes
 const sessionName = `nhsuk-prototype-kit-${Buffer.from(config.serviceName, 'utf8').toString('hex')}`
@@ -118,22 +105,6 @@ if (useCookieSessionStore === 'true') {
     })
   )
 }
-
-// Support for parsing data in POSTs
-app.use(bodyParser.json())
-app.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
-)
-
-// Automatically store all data users enter
-if (useAutoStoreData === 'true') {
-  app.use(utils.autoStoreData)
-  utils.addCheckedFunction(nunjucksAppEnv)
-}
-
-app.use(utils.setLocals)
 
 // Warn if node_modules folder doesn't exist
 function checkFiles() {
@@ -201,55 +172,7 @@ app.use(
 // Use custom application routes
 app.use('/', routes)
 
-// Automatically route pages
-app.get(/^([^.]+)$/, (req, res, next) => {
-  automaticRouting.matchRoutes(req, res, next)
-})
-
-// Example template routes
-app.use('/example-templates', exampleTemplatesApp)
-
-nunjucksAppEnv = nunjucks.configure(appViews, {
-  autoescape: true,
-  express: exampleTemplatesApp
-})
-nunjucksAppEnv.addGlobal('version', packageInfo.version)
-
-// Add Nunjucks filters
-utils.addNunjucksFilters(nunjucksAppEnv)
-
-exampleTemplatesApp.use('/', exampleTemplatesRoutes)
-
-// Automatically route example template pages
-exampleTemplatesApp.get(/^([^.]+)$/, (req, res, next) => {
-  automaticRouting.matchRoutes(req, res, next)
-})
-
-app.use('/prototype-admin', prototypeAdminRoutes)
-
-// Redirect all POSTs to GETs - this allows users to use POST for autoStoreData
-app.post(/^\/([^.]+)$/, (req, res) => {
-  res.redirect(
-    urlFormat({
-      pathname: `/${req.params[0]}`,
-      query: req.query
-    })
-  )
-})
-
-// Catch 404 and forward to error handler
-app.use((req, res, next) => {
-  const err = new Error(`Page not found: ${req.path}`)
-  err.status = 404
-  next(err)
-})
-
-// Display error
-app.use((err, req, res) => {
-  console.error(err.message)
-  res.status(err.status || 500)
-  res.send(err.message)
-})
+NHSPrototypeKit.init(app, nunjucksAppEnv)
 
 // Run the application
 app.listen(port)
