@@ -28,7 +28,7 @@
     "browser-sync": "^3.0.4",
     "client-sessions": "^0.8.0",
     "cookie-parser": "^1.4.7",
-    "dotenv": "^17.2.2",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "express-session": "^1.18.2",
     "gulp": "^5.0.1",
