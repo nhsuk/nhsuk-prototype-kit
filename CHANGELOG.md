@@ -1,5 +1,9 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+- Upgrade NHS frontend from 10.0 to 10.1
+
 ## 7.1.0 - 20 October 2025
 
 ### :new: **New features**
