@@ -22,7 +22,10 @@ const { findAvailablePort } = require('./lib/utils')
  * @see {@link https://nodejs.org/api/process.html#processloadenvfilepath}
  */
 if ('loadEnvFile' in process) {
-  process.loadEnvFile()
+  try {
+    process.loadEnvFile()
+  } catch (error) {
+  }
 }
 
 // Set configuration variables
