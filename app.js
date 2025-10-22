@@ -72,11 +72,6 @@ const sessionOptions = {
   }
 }
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(production)
-  app.use(authentication)
-}
-
 app.use(
   expressSession({
     ...sessionOptions,
