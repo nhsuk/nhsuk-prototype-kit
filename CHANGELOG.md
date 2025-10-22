@@ -1,5 +1,9 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+- Use Node.js built in `.env` support (requires v20.12.0+)
+
 ## 7.1.0 - 20 October 2025
 
 ### :new: **New features**
