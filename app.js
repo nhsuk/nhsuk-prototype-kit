@@ -9,7 +9,6 @@ const { join } = require('node:path')
 const { format: urlFormat } = require('node:url')
 
 // External dependencies
-const sessionInCookie = require('client-sessions')
 const cookieParser = require('cookie-parser')
 const dotenv = require('dotenv')
 const express = require('express')
