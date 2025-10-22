@@ -45,9 +45,6 @@ app.locals.asset_path = '/public/'
 app.locals.useCookieSessionStore = useCookieSessionStore === 'true'
 app.locals.serviceName = config.serviceName
 
-// Use cookie middleware to parse cookies
-app.use(cookieParser())
-
 // Nunjucks configuration for application
 const appViews = [
   join(__dirname, 'app/views/'),
