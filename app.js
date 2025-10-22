@@ -13,7 +13,7 @@ const sessionInCookie = require('client-sessions')
 const cookieParser = require('cookie-parser')
 const dotenv = require('dotenv')
 const express = require('express')
-const sessionInMemory = require('express-session')
+const expressSession = require('express-session')
 const nunjucks = require('nunjucks')
 
 const NHSPrototypeKit = require('nhsuk-prototype-kit')
@@ -36,13 +36,8 @@ const port = parseInt(process.env.PORT || config.port, 10) || 2000
 const app = express()
 const exampleTemplatesApp = express()
 
-// Set up configuration variables
-const useCookieSessionStore =
-  process.env.USE_COOKIE_SESSION_STORE || config.useCookieSessionStore
-
 // Add variables that are available in all views
 app.locals.asset_path = '/public/'
-app.locals.useCookieSessionStore = useCookieSessionStore === 'true'
 app.locals.serviceName = config.serviceName
 
 // Nunjucks configuration for application
@@ -82,26 +77,14 @@ if (process.env.NODE_ENV === 'production') {
   app.use(authentication)
 }
 
-// Support session data in cookie or memory
-if (useCookieSessionStore === 'true') {
-  app.use(
-    sessionInCookie({
-      ...sessionOptions,
-      cookieName: sessionName,
-      proxy: true,
-      requestKey: 'session'
-    })
-  )
-} else {
-  app.use(
-    sessionInMemory({
-      ...sessionOptions,
-      name: sessionName,
-      resave: false,
-      saveUninitialized: false
-    })
-  )
-}
+app.use(
+  expressSession({
+    ...sessionOptions,
+    name: sessionName,
+    resave: false,
+    saveUninitialized: false
+  })
+)
 
 // Warn if node_modules folder doesn't exist
 function checkFiles() {
