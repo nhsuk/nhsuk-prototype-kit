@@ -17,16 +17,6 @@ const express = require('express')
 const sessionInMemory = require('express-session')
 const nunjucks = require('nunjucks')
 
-/**
- * Add environment variables from .env file
- * (Requires Node.js v20.12.0 or later)
- *
- * @see {@link https://nodejs.org/api/process.html#processloadenvfilepath}
- */
-if ('loadEnvFile' in process) {
-  process.loadEnvFile()
-}
-
 // Local dependencies
 const config = require('./app/config')
 const locals = require('./app/locals')
