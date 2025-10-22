@@ -17,7 +17,6 @@
     "@inquirer/prompts": "^7.9.0",
     "browser-sync": "^3.0.4",
     "client-sessions": "^0.8.0",
-    "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "express-session": "^1.18.2",
