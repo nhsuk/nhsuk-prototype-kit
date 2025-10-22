@@ -13,7 +13,7 @@
       // 'silent' (does nothing)
       // 'openBrowser' (opens the prototype URL in a browser window/tab)
       // 'openPrview' (opens the codespaces preview window to present the running prototype to the user)
-      "onAutoForward": "openPreview"
+      "onAutoForward": "openBrowser"
     }
   },
   // forward the port for the browersync process
@@ -33,6 +33,24 @@
     "vscode": {
       // editor settings
       "settings": {
+        // Turn on word wrapping by default
+        "editor.wordWrap": "on",
+        // Set default tab size to 2 spaces and use spaces not tabs
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        "[nunjucks]": {
+          "editor.tabSize": 2
+        },
+        "[html]": {
+          "editor.tabSize": 2
+        },
+        "[css]": {
+          "editor.tabSize": 2
+        },
+        "[javascript]": {
+          "editor.tabSize": 2
+        },
         // uncomment the following lines to hide files not needed to update content
         // "files.exclude": {
         //   "{docs,lib,linters,middleware,node_modules,public,tests,NHS111.Shared.Frontend}/": true,
@@ -52,12 +70,17 @@
           "jinja-html": "html",
           "markdown": "html"
         },
+        "files.associations": {
+          "*.html": "nunjucks"
+        },
         "html.suggest.html5": true
       },
       // bundle the following editor extensions
       "extensions": [
         // nunjuck syntax highlighting
-        "douglaszaltron.nunjucks-vscode-extensionpack"
+        "ginfuru.better-nunjucks",
+        // File utilities like duplicate, move, rename, delete files
+        "sleistner.vscode-fileutils"
       ]
     }
   }
