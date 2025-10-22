@@ -25,6 +25,12 @@ if ('loadEnvFile' in process) {
   try {
     process.loadEnvFile()
   } catch (error) {
+    if (error.code === 'ENOENT') {
+      // File not found - this is fine
+    } else {
+      // Some other error occurred
+      throw error
+    }
   }
 }
 
