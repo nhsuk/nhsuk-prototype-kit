@@ -13,7 +13,7 @@ const dartSass = require('sass-embedded')
 
 // Local dependencies
 const config = require('./app/config')
-const { findAvailablePort } = require('./lib/utils')
+const findAvailablePort = require('./app/find-available-port')
 
 // Set configuration variables
 const port = parseInt(process.env.PORT || config.port, 10) || 2000

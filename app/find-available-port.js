@@ -34,6 +34,4 @@ async function findAvailablePort(startPort = 3000) {
   return undefined
 }
 
-module.exports = {
-  findAvailablePort
-}
+module.exports = findAvailablePort
