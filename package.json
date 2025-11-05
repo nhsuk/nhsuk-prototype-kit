@@ -27,7 +27,6 @@
     "gulp-rename": "^2.1.0",
     "gulp-sass": "^6.0.1",
     "http-proxy-middleware": "^3.0.5",
-    "lodash": "^4.17.21",
     "nhsuk-frontend": "^10.1.0",
     "nhsuk-prototype-kit": "nhsuk/nhsuk-prototype-kit-package",
     "nunjucks": "^3.2.4",
