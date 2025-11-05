@@ -10,17 +10,11 @@ const { format: urlFormat } = require('node:url')
 
 // External dependencies
 const cookieParser = require('cookie-parser')
-const dotenv = require('dotenv')
 const express = require('express')
 const expressSession = require('express-session')
 const nunjucks = require('nunjucks')
 
 const NHSPrototypeKit = require('nhsuk-prototype-kit')
-
-// Run before other code to make sure variables from .env are available
-dotenv.config({
-  quiet: true
-})
 
 // Local dependencies
 const config = require('./app/config')

@@ -1,4 +1,5 @@
 const { join } = require('node:path')
+const process = require('node:process')
 
 // External dependencies
 const browserSync = require('browser-sync')
@@ -14,6 +15,26 @@ const dartSass = require('sass-embedded')
 // Local dependencies
 const config = require('./app/config')
 const findAvailablePort = require('./app/find-available-port')
+
+
+/**
+ * Add environment variables from .env file
+ * (Requires Node.js v20.12.0 or later)
+ *
+ * @see {@link https://nodejs.org/api/process.html#processloadenvfilepath}
+ */
+if ('loadEnvFile' in process) {
+  try {
+    process.loadEnvFile()
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      // File not found - this is fine
+    } else {
+      // Some other error occurred
+      throw error
+    }
+  }
+}
 
 // Set configuration variables
 const port = parseInt(process.env.PORT || config.port, 10) || 2000
