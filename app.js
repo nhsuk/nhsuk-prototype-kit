@@ -12,7 +12,6 @@ const NHSPrototypeKit = require('nhsuk-prototype-kit')
 const config = require('./app/config')
 const locals = require('./app/locals')
 const routes = require('./app/routes')
-const packageInfo = require('./package.json')
 
 // Set configuration variables
 const port = parseInt(process.env.PORT || config.port, 10) || 2000
@@ -44,7 +43,6 @@ const nunjucksConfig = {
 nunjucksConfig.express = app
 
 let nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig)
-nunjucksAppEnv.addGlobal('version', packageInfo.version)
 
 // Session uses service name to avoid clashes with other prototypes
 const sessionName = `nhsuk-prototype-kit-${Buffer.from(config.serviceName, 'utf8').toString('hex')}`
