@@ -32,17 +32,7 @@ const appViews = [
   join(__dirname, 'node_modules/nhsuk-frontend/dist')
 ]
 
-/**
- * @type {ConfigureOptions}
- */
-const nunjucksConfig = {
-  autoescape: true,
-  noCache: true
-}
-
-nunjucksConfig.express = app
-
-let nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig)
+let nunjucksAppEnv = nunjucks.configure(appViews, { express: app })
 
 // Session uses service name to avoid clashes with other prototypes
 const sessionName = `nhsuk-prototype-kit-${Buffer.from(config.serviceName, 'utf8').toString('hex')}`
