@@ -72,27 +72,6 @@ app.use(
   })
 )
 
-// Warn if node_modules folder doesn't exist
-function checkFiles() {
-  const nodeModulesExists = existsSync(join(__dirname, '/node_modules'))
-  if (!nodeModulesExists) {
-    throw new Error(
-      'ERROR: Node module folder missing. Try running `npm install`'
-    )
-  }
-
-  // Create template .env file if it doesn't exist
-  const envExists = existsSync(join(__dirname, '/.env'))
-  if (!envExists) {
-    createReadStream(join(__dirname, '/lib/template.env')).pipe(
-      createWriteStream(join(__dirname, '/.env'))
-    )
-  }
-}
-
-// initial checks
-checkFiles()
-
 // Create template session data defaults file if it doesn't exist
 const dataDirectory = join(__dirname, '/app/data')
 const sessionDataDefaultsFile = join(dataDirectory, '/session-data-defaults.js')
