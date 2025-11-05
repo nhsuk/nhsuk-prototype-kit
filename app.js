@@ -1,10 +1,3 @@
-// Core dependencies
-const {
-  createReadStream,
-  createWriteStream,
-  existsSync,
-  mkdirSync
-} = require('node:fs')
 const { join } = require('node:path')
 const { format: urlFormat } = require('node:url')
 
@@ -71,22 +64,6 @@ app.use(
     saveUninitialized: false
   })
 )
-
-// Create template session data defaults file if it doesn't exist
-const dataDirectory = join(__dirname, '/app/data')
-const sessionDataDefaultsFile = join(dataDirectory, '/session-data-defaults.js')
-const sessionDataDefaultsFileExists = existsSync(sessionDataDefaultsFile)
-
-if (!sessionDataDefaultsFileExists) {
-  console.log('Creating session data defaults file')
-  if (!existsSync(dataDirectory)) {
-    mkdirSync(dataDirectory)
-  }
-
-  createReadStream(
-    join(__dirname, '/lib/template.session-data-defaults.js')
-  ).pipe(createWriteStream(sessionDataDefaultsFile))
-}
 
 // Local variables
 app.use(locals(config))
