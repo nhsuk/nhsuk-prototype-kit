@@ -3,7 +3,6 @@ const { format: urlFormat } = require('node:url')
 
 // External dependencies
 const express = require('express')
-const expressSession = require('express-session')
 const nunjucks = require('nunjucks')
 
 const NHSPrototypeKit = require('nhsuk-prototype-kit')
@@ -12,6 +11,7 @@ const NHSPrototypeKit = require('nhsuk-prototype-kit')
 const config = require('./app/config')
 const locals = require('./app/locals')
 const routes = require('./app/routes')
+const sessionDataDefaults = require('./app/data/session-data-defaults')
 
 // Set configuration variables
 const port = parseInt(process.env.PORT || config.port, 10) || 2000
@@ -32,25 +32,10 @@ const appViews = [
   join(__dirname, 'node_modules/nhsuk-frontend/dist')
 ]
 
-let nunjucksAppEnv = nunjucks.configure(appViews, { express: app })
-
-// Session uses service name to avoid clashes with other prototypes
-const sessionName = `nhsuk-prototype-kit-${Buffer.from(config.serviceName, 'utf8').toString('hex')}`
-const sessionOptions = {
-  secret: sessionName,
-  cookie: {
-    maxAge: 1000 * 60 * 60 * 4 // 4 hours
-  }
-}
-
-app.use(
-  expressSession({
-    ...sessionOptions,
-    name: sessionName,
-    resave: false,
-    saveUninitialized: false
-  })
-)
+let nunjucksAppEnv = nunjucks.configure(appViews, {
+  express: app,
+  noCache: true
+})
 
 // Local variables
 app.use(locals(config))
@@ -64,10 +49,12 @@ app.use(
   express.static(join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'))
 )
 
-// Use custom application routes
-app.use('/', routes)
-
-NHSPrototypeKit.init(app, nunjucksAppEnv)
+NHSPrototypeKit.init({
+  express: app,
+  nunjucks: nunjucksAppEnv,
+  routes: routes,
+  sessionDataDefaults: sessionDataDefaults
+})
 
 // Run the application
 app.listen(port)
