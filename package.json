@@ -28,7 +28,6 @@
     "nhsuk-frontend": "^10.1.0",
     "nhsuk-prototype-kit": "nhsuk/nhsuk-prototype-kit-package",
     "nunjucks": "^3.2.4",
-    "path": "^0.12.7",
     "plugin-error": "^2.0.1",
     "portscanner": "^2.2.0",
     "sass-embedded": "1.77.5"
