@@ -37,9 +37,6 @@ let nunjucksAppEnv = nunjucks.configure(appViews, {
   noCache: true
 })
 
-// Local variables
-app.use(locals(config))
-
 // Use public folder for static assets
 app.use(express.static(join(__dirname, 'public')))
 
@@ -50,9 +47,11 @@ app.use(
 )
 
 NHSPrototypeKit.init({
+  serviceName: config.serviceName,
   express: app,
   nunjucks: nunjucksAppEnv,
   routes: routes,
+  locals: locals,
   sessionDataDefaults: sessionDataDefaults
 })
 
