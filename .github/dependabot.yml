@@ -26,10 +26,13 @@ updates:
 
       lint:
         patterns:
-          - '@typescript-eslint/*'
+          - '@eslint/*'
           - 'eslint'
           - 'eslint-*'
+          - 'globals'
           - 'prettier'
+          - 'typescript'
+          - 'typescript-*'
 
       test:
         patterns:

@@ -21,7 +21,7 @@
     "lint:fix": "npm run lint:js:fix && npm run lint:prettier:fix",
     "lint:prettier": "prettier --cache --cache-location .cache/prettier --cache-strategy content --check .",
     "lint:prettier:fix": "prettier --write .",
-    "lint:js": "eslint --cache --cache-location .cache/eslint --cache-strategy content --color --ignore-path .gitignore \"**/*.js\"",
+    "lint:js": "eslint --cache --cache-location .cache/eslint --cache-strategy content --color .",
     "lint:js:fix": "npm run lint:js -- --fix"
   },
   "author": "https://github.com/nhsuk/",
@@ -54,19 +54,21 @@
     "sass-embedded": "1.77.5"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.46.1",
-    "@typescript-eslint/parser": "^8.43.0",
-    "eslint": "^8.57.1",
+    "@eslint/compat": "^1.4.1",
+    "@eslint/js": "^9.36.0",
+    "eslint": "^9.38.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-config-standard": "^17.1.0",
+    "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jest": "^29.0.1",
     "eslint-plugin-jest-dom": "^5.5.0",
-    "eslint-plugin-jsdoc": "^61.1.5",
-    "eslint-plugin-n": "^16.6.2",
-    "eslint-plugin-promise": "^6.6.0",
+    "eslint-plugin-jsdoc": "^61.1.12",
+    "eslint-plugin-n": "^17.23.1",
+    "eslint-plugin-promise": "^7.2.1",
+    "globals": "^16.4.0",
     "jest": "^30.1.3",
-    "prettier": "^3.6.2"
+    "prettier": "^3.6.2",
+    "typescript-eslint": "^8.46.2"
   },
   "engines": {
     "node": "^20.9.0 || ^22.11.0"
