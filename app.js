@@ -245,8 +245,15 @@ app.use((req, res, next) => {
 })
 
 // Display error
-app.use((err, req, res) => {
-  console.error(err.message)
+app.use((err, req, res, next) => {
+  if (res.headersSent) {
+    return next(err)
+  }
+
+  if (err.status !== 404) {
+    console.error(err)
+  }
+
   res.status(err.status || 500)
   res.send(err.message)
 })
