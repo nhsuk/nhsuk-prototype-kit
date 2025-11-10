@@ -4,7 +4,7 @@
     "checkJs": true,
     "lib": ["ESNext", "DOM"],
     "target": "ES2015",
-    "types": ["node"]
+    "types": ["node", "typed-query-selector"]
   },
   "include": ["./app/assets/**/*.js"],
   "exclude": ["**/*.test.js"]
