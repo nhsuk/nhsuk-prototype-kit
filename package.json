@@ -3,6 +3,12 @@
   "version": "7.1.0",
   "description": "Rapidly create HTML prototypes of NHS websites and services.",
   "main": "app.js",
+  "files": [
+    "app",
+    "app.js",
+    "lib",
+    "!**/*.test.*"
+  ],
   "scripts": {
     "build": "gulp build",
     "postinstall": "npm run build",
