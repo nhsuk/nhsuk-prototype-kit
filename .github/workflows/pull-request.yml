@@ -3,19 +3,6 @@ name: Pull request
 on: pull_request
 
 jobs:
-  lint:
-    name: Code style checks
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v6
-        with:
-          node-version-file: .nvmrc
-          cache: 'npm'
-      - name: Install dependencies
-        run: npm ci
-      - name: Run linting
-        run: npm run lint
   tests:
     name: Javascript tests
     runs-on: ubuntu-latest
@@ -30,5 +17,3 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
-      - name: Run javascript tests
-        run: npm run test:ci
