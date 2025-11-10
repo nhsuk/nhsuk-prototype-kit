@@ -250,7 +250,10 @@ app.use((err, req, res, next) => {
     return next(err)
   }
 
-  console.error(err.message)
+  if (err.status !== 404) {
+    console.error(err)
+  }
+
   res.status(err.status || 500)
   res.send(err.message)
 })
