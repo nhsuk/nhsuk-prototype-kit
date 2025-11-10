@@ -5,6 +5,7 @@
 ### :wrench: **Maintenance**
 
 - Upgrade NHS frontend from 10.0 to 10.1
+- Upgrade to Node.js 24 with backwards compatibility
 
 ## 7.1.0 - 20 October 2025
 
