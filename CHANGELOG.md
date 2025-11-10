@@ -5,6 +5,7 @@
 ### :wrench: **Maintenance**
 
 - Upgrade NHS frontend from 10.0 to 10.1
+- Add Dependabot groups with monthly checks
 
 ## 7.1.0 - 20 October 2025
 
