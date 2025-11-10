@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### :wrench: **Fixes**
+
+- Fix ES module imports in browser JavaScript
+
 ### :wrench: **Maintenance**
 
 - Upgrade NHS frontend from 10.0 to 10.1
