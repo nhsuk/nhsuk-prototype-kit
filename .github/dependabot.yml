@@ -1,14 +1,59 @@
 version: 2
+
 updates:
-  - package-ecosystem: 'github-actions'
-    directory: '/'
+  # Update npm packages
+  - package-ecosystem: npm
+    directory: /
+
+    # Group packages into shared PR
+    groups:
+      application:
+        patterns:
+          - 'body-parser'
+          - 'client-sessions'
+          - 'cookie-parser'
+          - 'dotenv'
+          - 'express'
+          - 'express-*'
+          - 'lodash'
+          - 'nhsuk-frontend'
+          - 'nunjucks'
+
+      build:
+        patterns:
+          - '@babel/*'
+          - 'sass-embedded'
+
+      lint:
+        patterns:
+          - '@typescript-eslint/*'
+          - 'eslint'
+          - 'eslint-*'
+          - 'prettier'
+
+      test:
+        patterns:
+          - 'jest'
+          - 'jest-*'
+
+      tools:
+        patterns:
+          - '@inquirer/prompts'
+          - 'browser-sync'
+          - 'gulp'
+          - 'gulp-*'
+          - 'http-proxy-middleware'
+          - 'plugin-error'
+          - 'portscanner'
+
     schedule:
-      interval: 'daily'
-  - package-ecosystem: 'npm'
-    directory: '/'
+      interval: monthly
+
+    versioning-strategy: increase
+
+  # Update GitHub Actions
+  - package-ecosystem: github-actions
+    directory: /
+
     schedule:
-      interval: 'daily'
-    ignore:
-      # SASS updates will be done manually in sync with
-      # NHS Frontend to avoid deprecation warnings.
-      - dependency-name: 'sass-embedded'
+      interval: 'monthly'
