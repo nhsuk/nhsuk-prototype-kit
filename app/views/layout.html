@@ -47,11 +47,6 @@
 {% endblock %}
 
 {% block bodyEnd %}
-  <script type="module" src="/nhsuk-frontend/nhsuk-frontend.min.js"></script>
-  <script type="module">
-    import { initAll } from '/nhsuk-frontend/nhsuk-frontend.min.js'
-    initAll()
-  </script>
   {% block scripts %}
     <!-- Custom JavaScript files can be added to this file -->
     {% include "includes/scripts.html" %}

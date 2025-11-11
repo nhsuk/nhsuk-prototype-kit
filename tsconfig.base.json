@@ -5,6 +5,9 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "noEmit": true,
+    "paths": {
+      "/nhsuk-frontend/nhsuk-frontend.min.js": ["./node_modules/nhsuk-frontend"]
+    },
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "target": "ESNext",
