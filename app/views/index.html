@@ -1,31 +1,7 @@
-<!-- Use this page as the index for your project -->
+{% extends "layout.html" %}
 
-<!-- ADDING CUSTOM CSS - Add your custom CSS or Sass in /app/stylesheets/main.scss -->
+{% set pageName = "SVG test" %}
 
-<!-- Extends the layout from /app/views/layout.html -->
-{% extends 'layout.html' %}
-<!--
-  In /app/views/layout.html you can:
-    - change the header and footer
-    - add custom CSS and JavaScript
--->
-
-<!--
-  Use this to set the page name which will appear at the
-  start of the <title> tag, followed by the service name.
-  This is often not needed on the homepage, where only the
-  service name is needed. You can also reuse this variable
-  within the <h1>, where they are the same.
--->
-{% set pageName = "" %}
-
-<!-- For adding a breadcrumb or back link -->
-<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
-{% block beforeContent %}
-{% endblock %}
-
-<!-- For adding page content -->
-<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
@@ -37,26 +13,48 @@
         {{ serviceName }}
       </h1>
 
-      <p>Set the service name for your prototype by editing <strong>/app/config.js</strong>.</p>
+      <svg
+        aria-hidden="true"
+        focusable="false"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 32 30"
+        height="600"
+        width="640"
+      >
 
-      <p>
-        This is the index page for your prototype. You can find it at <strong>/app/views/index.html</strong>.
-      </p>
+        <!-- Cross, left side -->
+        <path fill="#ed8b00" fill-rule="evenodd" d="M16 0v11.79c-.09 0-.18 0-.27-.02h-.05c-1.05-.16-1.86-1.06-1.86-2.15 0-.22.03-.44.1-.64v-.02l1.34-4.04c-.09-.07-.17-.15-.24-.24S12.69 5.9 12.69 5.9V2.46l2.33.74c.06-.09.14-.17.23-.24S14.31 0 14.31 0h1.68Z"/>
 
-      <hr>
+        <!-- Cross, right side -->
+        <path fill="#ffb81c" fill-rule="evenodd" d="M16 0v11.79c.09 0 .18 0 .27-.02h.05c1.05-.16 1.86-1.06 1.86-2.15 0-.22-.03-.44-.1-.64v-.02l-1.34-4.04c.09-.07.17-.15.24-.24S19.31 5.9 19.31 5.9V2.46l-2.33.74c-.06-.09-.14-.17-.23-.24S17.69 0 17.69 0h-1.68Z"/>
 
-      <h2 class="nhsuk-heading-l">
-        Get started
-      </h2>
+        <!-- Crown, left side -->
+        <path fill="#7c2855" fill-rule="evenodd" d="M13.33 18.89s1.7 1.9 2.08 3.05c-1.11-.04-2.12-.25-3.22-1.4l.37 4.28c1.02-1.42 2.20-2.04 2.87-1.92-.07 1.54-.23 3.39-2.92 3.63-1.88.16-3.38-.76-3.54-1.9-.19-1.31.99-2.18 1.88-.8.69-2.28-1.23-3.04-2.46-1.63.95-2.25.93-3.85-1.19-5.47-1.52 2.02-1.3 3.68.58 5.56-1.22-.68-3.13.04-2 2.32.59-1.42 1.84-1.1 2.1.12.18.86-.35 1.88-1.49 2.09-.93.17-2.38-.47-3.53-2.95.65.02 1.22.34 1.96.85l-1.21-4.04c-.31 1.13-.7 1.88-1.11 2.28-.28-.82-.24-1.41 0-2.68l-2.5.89c1.33 1.81 2.62 4.36 3.67 8.81 3.73-.53 7.91-.83 12.32-.83V18.87h-2.67Z"/>
 
-      <ul class="nhsuk-list nhsuk-list--bullet">
-        <li>
-          <a href="https://prototype-kit.service-manual.nhs.uk/how-tos">NHS prototype kit guides</a> – including a tutorial
-        </li>
-        <li>
-          <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a> – for code snippets and guidance on using NHS styles, components and patterns
-        </li>
-      </ul>
+        <!-- Crown, right side -->
+        <path fill="#ae2573" fill-rule="evenodd" d="M18.67 18.89s-1.7 1.9-2.08 3.05c1.11-.04 2.12-.25 3.22-1.4l-.37 4.28c-1.02-1.42-2.20-2.04-2.87-1.92.07 1.54.23 3.39 2.92 3.63 1.88.16 3.38-.76 3.54-1.9.19-1.31-.99-2.18-1.88-.8-.69-2.28 1.23-3.04 2.46-1.63-.95-2.25-.93-3.85 1.19-5.47 1.52 2.02 1.3 3.68-.58 5.56 1.22-.68 3.13.04 2 2.32-.59-1.42-1.84-1.1-2.1.12-.18.86.35 1.88 1.49 2.09.93.17 2.38-.47 3.53-2.95-.65.02-1.22.34-1.96.85l1.21-4.04c.31 1.13.7 1.88 1.11 2.28.28-.82.24-1.41 0-2.68l2.5.89c-1.33 1.81-2.62 4.36-3.67 8.81-3.73-.53-7.91-.83-12.32-.83V18.87h2.67Z"/>
+
+        <!-- Jewel 1, left side -->
+        <circle fill="#aeb7bd" fill-rule="evenodd" cx="1.85" cy="16.55" r="1.85"/>
+
+        <!-- Jewel 2, left side -->
+        <circle fill="#aeb7bd" fill-rule="evenodd" cx="5.15" cy="11.65" r="1.85"/>
+
+        <!-- Jewel 3, left side -->
+        <circle fill="#aeb7bd" fill-rule="evenodd" cx="10.11" cy="8.7" r="1.85"/>
+
+        <!-- Jewel 4, middle -->
+        <circle fill="#aeb7bd" fill-rule="evenodd" cx="16" cy="15.37" r="1.85"/>
+
+        <!-- Jewel 5, right side -->
+        <circle fill="#aeb7bd" fill-rule="evenodd" cx="21.89" cy="8.7" r="1.85"/>
+
+        <!-- Jewel 6, right side -->
+        <circle fill="#aeb7bd" fill-rule="evenodd" cx="26.85" cy="11.65" r="1.85"/>
+
+        <!-- Jewel 7, right side -->
+        <circle fill="#aeb7bd" fill-rule="evenodd" cx="30.15" cy="16.55" r="1.85"/>
+      </svg>
 
     </div>
   </div>
