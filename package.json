@@ -26,7 +26,7 @@
     "gulp-sass": "^6.0.1",
     "http-proxy-middleware": "^3.0.5",
     "nhsuk-frontend": "^10.1.0",
-    "nhsuk-prototype-kit": "nhsuk/nhsuk-prototype-kit-package",
+    "nhsuk-prototype-kit": "8.0.0-internal.0",
     "nunjucks": "^3.2.4",
     "plugin-error": "^2.0.1",
     "portscanner": "^2.2.0",
