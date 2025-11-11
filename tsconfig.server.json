@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "checkJs": true
+  },
+  "include": [
+    "./app.js",
+    "./app/**/*.js",
+    "./lib/**/*.js",
+    "./typings/**/*.d.ts"
+  ],
+  "exclude": ["./app/assets", "**/*.test.js"]
+}

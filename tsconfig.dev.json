@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["jest", "node"]
+  },
+  "include": [
+    "./*.config.js",
+    "./*.config.mjs",
+    "./.prettierrc.js",
+    "./gulpfile.js",
+    "./tests/**/*.test.js",
+    "./typings/**/*.d.ts"
+  ]
+}

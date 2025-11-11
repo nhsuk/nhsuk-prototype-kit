@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "checkJs": true,
+    "lib": ["ESNext", "DOM"],
+    "target": "ES2015",
+    "types": ["node"]
+  },
+  "include": ["./app/assets/**/*.js"],
+  "exclude": ["**/*.test.js"]
+}
