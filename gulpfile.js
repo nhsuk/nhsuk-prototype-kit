@@ -11,10 +11,10 @@ const gulpSass = require('gulp-sass')
 const { createProxyMiddleware } = require('http-proxy-middleware')
 const PluginError = require('plugin-error')
 const dartSass = require('sass-embedded')
+const NHSPrototypeKit = require('nhsuk-prototype-kit')
 
 // Local dependencies
 const config = require('./app/config')
-const findAvailablePort = require('./app/find-available-port')
 
 
 /**
@@ -104,7 +104,7 @@ async function startNodemon(done) {
   let availablePort
 
   try {
-    availablePort = await findAvailablePort(port)
+    availablePort = await NHSPrototypeKit.utils.findAvailablePort(port)
     if (!availablePort) {
       throw new Error(`Port ${port} in use`)
     }
