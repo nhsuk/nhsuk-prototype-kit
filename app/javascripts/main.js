@@ -1,1 +1,4 @@
-// ES6 or Vanilla JavaScript
+import { ImageMap } from './image-map.js'
+import { createAll } from '/nhsuk-frontend/nhsuk-frontend.min.js'
+
+createAll(ImageMap)

@@ -77,6 +77,38 @@
             Click on the crown to select a component part
           </figcaption>
         </figure>
+
+        {{ summaryList({
+          rows: [
+            {
+              key: {
+                text: "Image location"
+              },
+              value: {
+                text: "N/A",
+                classes: "app-js-image-location"
+              }
+            },
+            {
+              key: {
+                text: "Image viewBox X"
+              },
+              value: {
+                text: "N/A",
+                classes: "app-js-image-x"
+              }
+            },
+            {
+              key: {
+                text: "Image viewBox Y"
+              },
+              value: {
+                text: "N/A",
+                classes: "app-js-image-y"
+              }
+            }
+          ]
+        }) }}
       </div>
 
     </div>
