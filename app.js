@@ -13,7 +13,7 @@ const locals = require('./app/locals')
 const routes = require('./app/routes')
 const sessionDataDefaults = require('./app/data/session-data-defaults')
 
-// Set configuration variables
+// Set the port the app should run on
 const port = parseInt(process.env.PORT || config.port, 10) || 2000
 
 // Initialise application
