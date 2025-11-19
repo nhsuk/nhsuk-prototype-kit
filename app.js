@@ -48,7 +48,6 @@ const useCookieSessionStore =
   process.env.USE_COOKIE_SESSION_STORE || config.useCookieSessionStore
 
 // Add variables that are available in all views
-app.locals.asset_path = '/public/'
 app.locals.useAutoStoreData = useAutoStoreData === 'true'
 app.locals.useCookieSessionStore = useCookieSessionStore === 'true'
 app.locals.serviceName = config.serviceName
