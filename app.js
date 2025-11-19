@@ -70,7 +70,3 @@ if (
 }
 
 module.exports = app
-
-/**
- * @import { ConfigureOptions } from 'nunjucks'
- */
