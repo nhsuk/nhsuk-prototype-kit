@@ -1,5 +1,4 @@
 const { join } = require('node:path')
-const { format: urlFormat } = require('node:url')
 
 // External dependencies
 const express = require('express')
