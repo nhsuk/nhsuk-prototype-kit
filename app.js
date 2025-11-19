@@ -21,7 +21,6 @@ const app = express()
 
 // Add variables that are available in all views
 app.locals.asset_path = '/public/'
-app.locals.serviceName = config.serviceName
 
 // Nunjucks configuration for application
 const appViews = [
