@@ -16,7 +16,7 @@ const sessionDataDefaults = require('./app/data/session-data-defaults')
 // Set configuration variables
 const port = parseInt(process.env.PORT || config.port, 10) || 2000
 
-// Initialise applications
+// Initialise application
 const app = express()
 
 // Nunjucks configuration for application
