@@ -19,9 +19,6 @@ const port = parseInt(process.env.PORT || config.port, 10) || 2000
 // Initialise applications
 const app = express()
 
-// Add variables that are available in all views
-app.locals.asset_path = '/public/'
-
 // Nunjucks configuration for application
 const appViews = [
   join(__dirname, 'app/views/'),
