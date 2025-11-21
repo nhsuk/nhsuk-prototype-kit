@@ -41,7 +41,7 @@ app.use(
   express.static(join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'))
 )
 
-NHSPrototypeKit.init({
+const prototype = NHSPrototypeKit.init({
   serviceName: config.serviceName,
   express: app,
   nunjucks: nunjucksAppEnv,
@@ -50,19 +50,5 @@ NHSPrototypeKit.init({
   sessionDataDefaults: sessionDataDefaults
 })
 
-// Run the application
-app.listen(port)
-
-if (
-  process.env.WATCH !== 'true' && // If the user isn’t running watch
-  process.env.NODE_ENV !== 'production' // and it’s not in production mode
-) {
-  console.info(`Running at http://localhost:${port}/`)
-  console.info('')
-  console.warn(
-    'Warning: It looks like you may have run the command `npm start` locally.'
-  )
-  console.warn('Press `Ctrl+C` and then run `npm run watch` instead')
-}
-
-module.exports = app
+// Run the prototype
+prototype.start(config.port)
