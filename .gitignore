@@ -22,6 +22,7 @@ pids
 *.launch
 .settings/
 *.sublime-workspace
+*.tsbuildinfo
 
 # IDE - VSCode
 .vscode/*
