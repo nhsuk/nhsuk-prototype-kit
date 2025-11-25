@@ -8,6 +8,8 @@ updates:
     directory: '/'
     schedule:
       interval: 'daily'
+    cooldown:
+      default-days: 4
     ignore:
       # SASS updates will be done manually in sync with
       # NHS Frontend to avoid deprecation warnings.
