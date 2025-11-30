@@ -49,7 +49,7 @@ const prototype = NHSPrototypeKit.init({
   locals: locals,
   sessionDataDefaults: sessionDataDefaults,
   buildOptions: {
-    entryPoints: ['app/assets/sass/main.scss']
+    entryPoints: ['app/assets/sass/main.scss', 'app/assets/javascript/main.js']
   }
 })
 
