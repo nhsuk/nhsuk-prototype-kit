@@ -47,7 +47,10 @@ const prototype = NHSPrototypeKit.init({
   nunjucks: nunjucksAppEnv,
   routes: routes,
   locals: locals,
-  sessionDataDefaults: sessionDataDefaults
+  sessionDataDefaults: sessionDataDefaults,
+  buildOptions: {
+    entryPoints: ['app/assets/sass/main.scss']
+  }
 })
 
 // Run the prototype
