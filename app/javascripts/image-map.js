@@ -23,11 +23,14 @@ export class ImageMap extends Component {
       })
     }
 
-    const $paths = $image.querySelectorAll('path')
+    /** @type {NodeListOf<SVGPathElement | SVGPolygonElement>} */
+    const $paths = $image.querySelectorAll(
+      '.app-breast-diagram__regions path, .app-breast-diagram__regions polygon'
+    )
     if (!$paths.length) {
       throw new ElementError({
         component: ImageMap,
-        identifier: 'Image paths (`<path>`)'
+        identifier: 'Image paths and polygons (`<path>`, `<polygon>`)'
       })
     }
 
@@ -64,11 +67,11 @@ export class ImageMap extends Component {
    * @param {number} clientY - Pointer Y coordinate in screen pixels
    * @returns {string | undefined}
    */
-  getTitle(clientX, clientY) {
+  getLabel(clientX, clientY) {
     this.point = this.getPoint(clientX, clientY)
 
     const $path = this.$paths.find(($path) => $path.isPointInFill(this.point))
-    return $path?.querySelector('title')?.textContent
+    return $path?.getAttribute('aria-label')
   }
 
   /**
@@ -98,7 +101,7 @@ export class ImageMap extends Component {
    */
   onPointerMove(event) {
     const { clientX, clientY } = event
-    const title = this.getTitle(clientX, clientY)
+    const title = this.getLabel(clientX, clientY)
 
     this.$debugLocation.textContent = title ?? 'Background'
     this.$debugX.textContent = this.point.x.toString()
