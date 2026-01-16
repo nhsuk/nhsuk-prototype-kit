@@ -125,7 +125,7 @@
       {% endset %}
 
       <form class="app-image-map" method="post" data-module="app-image-map" novalidate>
-        <input type="hidden" name="imageMapRegion">
+        <input type="hidden" name="imageMapRegion" value="{{ data.imageMapRegion }}">
 
         {{ summaryList({
           card: {

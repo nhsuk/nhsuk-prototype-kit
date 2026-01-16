@@ -20,6 +20,11 @@ export class ImageMap extends Component {
   point
 
   /**
+   * @type {ImageMapRegion['$path'] | undefined}
+   */
+  $path
+
+  /**
    * @type {Element | undefined}
    */
   $debugX
@@ -82,15 +87,35 @@ export class ImageMap extends Component {
     this.$image.addEventListener('pointermove', this.onPointerMove.bind(this))
     this.$image.addEventListener('pointerout', this.onPointerOut.bind(this))
     this.$image.addEventListener('click', this.onClick.bind(this))
+
+    // Init from saved input value
+    if (this.$input.value) {
+      const $pathActive = this.$root.querySelector(`.${this.$input.value}`)
+      if (
+        !(
+          $pathActive instanceof SVGPathElement ||
+          $pathActive instanceof SVGPolygonElement
+        )
+      ) {
+        return
+      }
+
+      // Save active region
+      this.$path = $pathActive
+      this.regionActive = this.getRegion(this.$path)
+
+      this.updateForm()
+      this.updateStatus()
+    }
   }
 
   /**
-   * Get SVG path region at pointer coordinates
+   * Get region object
    *
+   * @property {ImageMapRegion['$path']} [$path] - SVG path at pointer coordinates
    * @returns {ImageMapRegion | undefined}
    */
-  getRegion() {
-    const $path = this.$paths.find(($path) => $path.isPointInFill(this.point))
+  getRegion($path) {
     if (!$path) {
       return
     }
@@ -100,6 +125,20 @@ export class ImageMap extends Component {
       label: $path.getAttribute('aria-label'),
       $path
     }
+  }
+
+  /**
+   * Get SVG path at pointer coordinates
+   *
+   * @property {DOMPoint} [point] - SVG point at pointer coordinates
+   * @returns {ImageMapRegion['$path'] | undefined}
+   */
+  getPath(point) {
+    if (!point) {
+      return
+    }
+
+    return this.$paths.find(($path) => $path.isPointInFill(point))
   }
 
   /**
@@ -149,17 +188,9 @@ export class ImageMap extends Component {
 
     const { $debugX, $debugY, $debugRegion, $debugInput } = this
 
-    if (!this.point || !this.region) {
-      $debugX.textContent = 'N/A'
-      $debugY.textContent = 'N/A'
-      $debugRegion.textContent = 'N/A'
-
-      return
-    }
-
-    $debugX.textContent = this.point.x.toString()
-    $debugY.textContent = this.point.y.toString()
-    $debugRegion.textContent = this.region.label
+    $debugX.textContent = this.point?.x.toString() ?? 'N/A'
+    $debugY.textContent = this.point?.y.toString() ?? 'N/A'
+    $debugRegion.textContent = this.region?.label ?? 'N/A'
 
     if (this.regionActive) {
       $debugInput.textContent = this.regionActive.label
@@ -173,7 +204,8 @@ export class ImageMap extends Component {
     const { clientX, clientY } = event
 
     this.point = this.getPoint(clientX, clientY)
-    this.region = this.getRegion()
+    this.$path = this.getPath(this.point)
+    this.region = this.getRegion(this.$path)
 
     // Set path highlight states
     for (const $path of this.$paths) {
@@ -187,6 +219,7 @@ export class ImageMap extends Component {
 
   onPointerOut() {
     this.point = undefined
+    this.$path = undefined
     this.region = undefined
 
     // Remove path highlight states
