@@ -13,7 +13,7 @@
         {{ serviceName }}
       </h1>
 
-      <div class="app-image-map" data-module="app-image-map">
+      {% set imageHtml %}
         <figure class="nhsuk-image nhsuk-u-width-full">
           <!-- Source: breast-features-diagram-1.0.svg -->
           <!-- Processed by process-exported-svg.js - do not edit manually -->
@@ -119,24 +119,42 @@
           </svg>
 
           <figcaption class="nhsuk-image__caption">
-            Click on the crown to select a component part
+            Click on the diagram to select a location
           </figcaption>
         </figure>
+      {% endset %}
+
+      <form class="app-image-map" method="post" data-module="app-image-map" novalidate>
+        <input type="hidden" name="imageMapRegion">
 
         {{ summaryList({
+          card: {
+            image: {
+              html: imageHtml
+            }
+          },
           rows: [
             {
               key: {
-                text: "Image location"
+                text: "Input value"
               },
               value: {
                 text: "N/A",
-                classes: "app-js-image-location"
+                classes: "app-js-image-input"
               }
             },
             {
               key: {
-                text: "Image viewBox X"
+                text: "Image region"
+              },
+              value: {
+                text: "N/A",
+                classes: "app-js-image-region"
+              }
+            },
+            {
+              key: {
+                text: "Image X"
               },
               value: {
                 text: "N/A",
@@ -145,16 +163,23 @@
             },
             {
               key: {
-                text: "Image viewBox Y"
+                text: "Image Y"
               },
               value: {
                 text: "N/A",
                 classes: "app-js-image-y"
-              }
+              },
+              classes: "nhsuk-summary-list__row--no-border"
             }
           ]
         }) }}
-      </div>
+
+        <div class="nhsuk-button-group">
+          {{ button({
+            text: "Save and continue"
+          }) }}
+        </div>
+      </form>
 
     </div>
   </div>

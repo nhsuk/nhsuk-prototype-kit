@@ -1,0 +1,34 @@
+@use "sass:color";
+@use "nhsuk-frontend/dist/nhsuk/core/helpers" as *;
+
+$state-highlight: nhsuk-tint(nhsuk-colour("yellow"), 50%);
+$state-active: nhsuk-tint(nhsuk-colour("blue"), 50%);
+
+.app-breast-diagram__svg {
+  cursor: pointer;
+}
+
+.app-breast-diagram__regions path,
+.app-breast-diagram__regions polygon {
+  // Slow fade out (default)
+  transition: fill 0.3s ease-in;
+}
+
+.app-breast-diagram__regions [data-highlight],
+.app-breast-diagram__regions [data-active] {
+  // Fast fade in (on hover)
+  transition-duration: 0.05s;
+  transition-timing-function: ease-out;
+}
+
+.app-breast-diagram__regions [data-highlight] {
+  fill: $state-highlight;
+}
+
+.app-breast-diagram__regions [data-active] {
+  fill: $state-active;
+}
+
+.app-breast-diagram__regions [data-active][data-highlight] {
+  fill: color.adjust(color.mix($state-active, $state-highlight, 75%), $lightness: 10%, $saturation: 25%);
+}
