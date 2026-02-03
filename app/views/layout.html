@@ -9,7 +9,7 @@
 
 {% block head %}
   <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-  <link href="/main.css" rel="stylesheet">
+  <link href="/assets/sass/main.css" rel="stylesheet">
 {% endblock %}
 
 <!-- Edit the header -->
@@ -47,11 +47,7 @@
 {% endblock %}
 
 {% block bodyEnd %}
-  {% block scripts %}
-    <!-- Custom JavaScript files can be added to this file -->
-    {% include "includes/scripts.html" %}
-    <!-- For adding page specific JavaScript -->
-    {% block pageScripts %}{% endblock %}
-  {% endblock %}
   {{ super() }}
+  <script type="module" src="/assets/javascript/application.js"></script>
+  {% block pageScripts %}{% endblock %}
 {% endblock %}
