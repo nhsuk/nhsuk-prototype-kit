@@ -3,7 +3,8 @@
   "description": "Rapidly create HTML prototypes of NHS websites and services.",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node .",
+    "watch": "echo 'run this instead: npm start'"
   },
   "author": "https://github.com/nhsuk/",
   "license": "MIT",
