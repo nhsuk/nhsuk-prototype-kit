@@ -25,7 +25,7 @@
   "postCreateCommand": "npm install",
   // A command to run each time a tool has successfully attached to the container
   "postAttachCommand": {
-    "server": "npm run watch"
+    "server": "npm start"
   },
   // codespace customisations
   "customizations": {
