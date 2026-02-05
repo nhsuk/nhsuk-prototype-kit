@@ -10,9 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "nhsuk-frontend": "^10.3.1",
-    "nhsuk-prototype-kit": "^8.0.0"
-  },
-  "devDependencies": {
+    "nhsuk-prototype-kit": "github:nhsuk/nhsuk-prototype-kit-package#b12d995dc3b5530a7988e44d0dd2506e16e7702c"
   },
   "engines": {
     "node": "^22.11.0 || ^24.11.0"
