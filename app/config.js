@@ -5,5 +5,5 @@ module.exports = {
   serviceName: 'Service name goes here',
 
   // Port to run the prototype on locally
-  port: 2000
+  port: 3000
 }
