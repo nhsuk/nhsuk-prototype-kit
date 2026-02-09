@@ -1,7 +1,6 @@
 {
   "name": "Service name goes here",
-  // codespaces seems to have an issue using port 2000 so setting to 2001 for the NHS Prototype Kit
-  "runArgs": ["--env", "PORT=2001"],
+  "runArgs": ["--env", "PORT=3001"],
   "portsAttributes": {
     "3001": {
       "label": "Running prototype",
