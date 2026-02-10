@@ -14,7 +14,7 @@
       </h1>
 
       {% set imageHtml %}
-        <figure class="nhsuk-image nhsuk-u-width-full">
+        <figure class="nhsuk-image nhsuk-u-width-full" data-module="app-image-map">
           <!-- Source: breast-features-diagram-1.0.svg -->
           <!-- Processed by process-exported-svg.js - do not edit manually -->
 
@@ -124,8 +124,8 @@
         </figure>
       {% endset %}
 
-      <form class="app-image-map" method="post" data-module="app-image-map" novalidate>
-        <input type="hidden" name="imageMapRegion" value="{{ data.imageMapRegion }}">
+      <form class="app-breast-diagram" method="post" data-module="app-breast-diagram" novalidate>
+        <input type="hidden" name="region" value="{{ data.region }}">
 
         {{ summaryList({
           card: {

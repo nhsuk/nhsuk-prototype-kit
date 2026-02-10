@@ -1,54 +1,32 @@
-import { Component, ElementError } from '/nhsuk-frontend/nhsuk-frontend.min.js'
+import {
+  ConfigurableComponent,
+  ElementError
+} from '/nhsuk-frontend/nhsuk-frontend.min.js'
 
 /**
  * Image map component
+ *
+ * @augments {ConfigurableComponent<ImageMapConfig>}
  */
-export class ImageMap extends Component {
+export class ImageMap extends ConfigurableComponent {
   /**
-   * @type {ImageMapRegion | undefined}
+   * @type {typeof this.onUpdate | null}
    */
-  region
-
-  /**
-   * @type {ImageMapRegion | undefined}
-   */
-  regionActive
-
-  /**
-   * @type {SVGPoint | undefined}
-   */
-  point
-
-  /**
-   * @type {ImageMapRegion['$path'] | undefined}
-   */
-  $path
-
-  /**
-   * @type {Element | undefined}
-   */
-  $debugX
-
-  /**
-   * @type {Element | undefined}
-   */
-  $debugY
-
-  /**
-   * @type {Element | undefined}
-   */
-  $debugInput
-
-  /**
-   * @type {Element | undefined}
-   */
-  $debugRegion
+  onUpdateHandler = null
 
   /**
    * @param {Element | null} $root - HTML element to use for component
+   * @param {Partial<ImageMapConfig>} [config] - Image map config
    */
-  constructor($root) {
-    super($root)
+  constructor($root, config = {}) {
+    super($root, config)
+
+    const { selectors } = this.config
+
+    const selectorsQuery = selectors.join(', ')
+    const selectorsFormatted = selectors
+      .map((selector) => `\`${selector}\``)
+      .join(', ')
 
     const $image = this.$root.querySelector('.nhsuk-image__img')
     if (!$image || !($image instanceof SVGSVGElement)) {
@@ -58,71 +36,77 @@ export class ImageMap extends Component {
       })
     }
 
-    /** @type {NodeListOf<ImageMapRegion['$path']>} */
-    const $paths = $image.querySelectorAll(
-      '.app-breast-diagram__regions path, .app-breast-diagram__regions polygon'
+    const $paths = /** @type {NodeListOf<SVGGeometryElement>} */ (
+      $image.querySelectorAll(selectorsQuery)
     )
+
     if (!$paths.length) {
       throw new ElementError({
         component: ImageMap,
-        identifier: 'Image paths and polygons (`<path>`, `<polygon>`)'
-      })
-    }
-
-    const $input = this.$root.querySelector('input[name="imageMapRegion"]')
-    if (!($input instanceof HTMLInputElement)) {
-      throw new ElementError({
-        component: ImageMap,
-        element: $input,
-        expectedType: 'HTMLInputElement',
-        identifier: 'Image map region (`input[name="imageMapRegion"]`)'
+        identifier: `Image paths and polygons (${selectorsFormatted})`
       })
     }
 
     // Reverse paths to pick frontmost path first
     this.$paths = Array.from($paths).reverse()
     this.$image = $image
-    this.$input = $input
 
     this.$image.addEventListener('pointermove', this.onPointerMove.bind(this))
     this.$image.addEventListener('pointerout', this.onPointerOut.bind(this))
     this.$image.addEventListener('click', this.onClick.bind(this))
+  }
 
-    // Init from saved input value
-    if (this.$input.value) {
-      const $pathActive = this.$root.querySelector(`.${this.$input.value}`)
-      if (
-        !(
-          $pathActive instanceof SVGPathElement ||
-          $pathActive instanceof SVGPolygonElement
-        )
-      ) {
-        return
-      }
-
-      // Save active region
-      this.$path = $pathActive
-      this.regionActive = this.getRegion(this.$path)
-
-      this.updateForm()
-      this.updateStatus()
-    }
+  get onUpdate() {
+    return this.onUpdateHandler ?? (() => undefined)
   }
 
   /**
-   * Get region object
+   * @param {ImageMapStateCallback} callback
+   */
+  set onUpdate(callback) {
+    this.onUpdateHandler = callback
+  }
+
+  /**
+   * Set state to active path only
    *
-   * @property {ImageMapRegion['$path']} [$path] - SVG path at pointer coordinates
+   * - If state is 'active', multiple paths can be active
+   * - If state is 'highlight', only one path can be active
+   *
+   * @param {ImageMapState} state - State to set, e.g. 'highlight'
+   * @param {ImageMapRegion | undefined} [region] - Image map region
+   */
+  setState(state = 'highlight', region) {
+    for (const $path of this.$paths) {
+      if ($path === region?.$path) {
+        $path.setAttribute(`data-${state}`, 'true')
+      } else if (state === 'highlight') {
+        $path.removeAttribute(`data-${state}`)
+      }
+    }
+
+    this.onUpdate(state, region)
+  }
+
+  /**
+   * Get image map region at SVG point
+   *
+   * @param {SVGGeometryElement} [$path] - SVG path at pointer coordinates
+   * @param {DOMPoint} [point] - SVG point at pointer coordinates
    * @returns {ImageMapRegion | undefined}
    */
-  getRegion($path) {
-    if (!$path) {
+  getRegion($path, point) {
+    const id = $path?.classList.value
+    const label = $path?.getAttribute('aria-label')
+
+    if (!$path || !id || !label) {
       return
     }
 
     return {
-      id: $path.classList.value,
-      label: $path.getAttribute('aria-label'),
+      id,
+      label,
+      point,
       $path
     }
   }
@@ -130,8 +114,8 @@ export class ImageMap extends Component {
   /**
    * Get SVG path at pointer coordinates
    *
-   * @property {DOMPoint} [point] - SVG point at pointer coordinates
-   * @returns {ImageMapRegion['$path'] | undefined}
+   * @param {DOMPoint} [point] - SVG point at pointer coordinates
+   * @returns {SVGGeometryElement | undefined}
    */
   getPath(point) {
     if (!point) {
@@ -164,70 +148,20 @@ export class ImageMap extends Component {
   }
 
   /**
-   * Update form inputs
-   */
-  updateForm() {
-    this.$input.setAttribute('value', this.regionActive?.id ?? '')
-
-    // Set path active states
-    for (const $path of this.$paths) {
-      $path === this.regionActive?.$path
-        ? $path.setAttribute('data-active', 'true')
-        : $path.removeAttribute('data-active')
-    }
-  }
-
-  /**
-   * Update status messages
-   */
-  updateStatus() {
-    this.$debugX ??= this.$root.querySelector('.app-js-image-x')
-    this.$debugY ??= this.$root.querySelector('.app-js-image-y')
-    this.$debugRegion ??= this.$root.querySelector('.app-js-image-region')
-    this.$debugInput ??= this.$root.querySelector('.app-js-image-input')
-
-    const { $debugX, $debugY, $debugRegion, $debugInput } = this
-
-    $debugX.textContent = this.point?.x.toString() ?? 'N/A'
-    $debugY.textContent = this.point?.y.toString() ?? 'N/A'
-    $debugRegion.textContent = this.region?.label ?? 'N/A'
-
-    if (this.regionActive) {
-      $debugInput.textContent = this.regionActive.label
-    }
-  }
-
-  /**
    * @param {PointerEvent | MouseEvent} event
    */
   onPointerMove(event) {
     const { clientX, clientY } = event
 
-    this.point = this.getPoint(clientX, clientY)
-    this.$path = this.getPath(this.point)
-    this.region = this.getRegion(this.$path)
+    const point = this.getPoint(clientX, clientY)
+    const $path = this.getPath(point)
+    const region = this.getRegion($path, point)
 
-    // Set path highlight states
-    for (const $path of this.$paths) {
-      $path === this.region.$path
-        ? $path.setAttribute('data-highlight', 'true')
-        : $path.removeAttribute('data-highlight')
-    }
-
-    this.updateStatus()
+    this.setState('highlight', region)
   }
 
   onPointerOut() {
-    this.point = undefined
-    this.$path = undefined
-    this.region = undefined
-
-    // Remove path highlight states
-    for (const $path of this.$paths) {
-      $path.removeAttribute('data-highlight')
-    }
-
-    this.updateStatus()
+    this.setState('highlight')
   }
 
   /**
@@ -236,25 +170,77 @@ export class ImageMap extends Component {
   onClick(event) {
     event.preventDefault()
 
-    // Trigger X/Y and region update
-    this.onPointerMove(event)
+    const { clientX, clientY } = event
 
-    // Save active region
-    this.regionActive = this.region
+    const point = this.getPoint(clientX, clientY)
+    const $path = this.getPath(point)
+    const region = this.getRegion($path, point)
 
-    this.updateStatus()
-    this.updateForm()
+    this.setState('active', region)
   }
 
   /**
    * Name for the component used when initialising using data-module attributes
    */
   static moduleName = 'app-image-map'
+
+  /**
+   * Image map default config
+   *
+   * @see {@link ImageMapConfig}
+   * @constant
+   * @type {ImageMapConfig}
+   */
+  static defaults = Object.freeze({
+    selectors: ['path', 'polygon']
+  })
+
+  /**
+   * Image map config schema
+   *
+   * @constant
+   * @satisfies {Schema<ImageMapConfig>}
+   */
+  static schema = Object.freeze({
+    properties: {
+      selectors: { type: 'array' }
+    }
+  })
 }
 
 /**
+ * Image map config
+ *
+ * @see {@link ImageMap.defaults}
+ * @typedef {object} ImageMapConfig
+ * @property {string[]} selectors - Image map region selectors
+ */
+
+/**
+ * Image map region
+ *
  * @typedef {object} ImageMapRegion
  * @property {string} id - Image map region ID
  * @property {string} label - Region map region label
- * @property {SVGPathElement | SVGPolygonElement} $path - Image map region element
+ * @property {DOMPoint} [point] - SVG point at pointer coordinates
+ * @property {SVGGeometryElement} $path - SVG path at pointer coordinates
+ */
+
+/**
+ * Image map state
+ *
+ * @typedef {'highlight' | 'active'} ImageMapState
+ */
+
+/**
+ * Image map state callback
+ *
+ * @callback ImageMapStateCallback
+ * @param {ImageMapState} state - State to set, e.g. 'highlight'
+ * @param {ImageMapRegion | undefined} [region] - Image map region
+ * @returns {void}
+ */
+
+/**
+ * @import { Schema } from 'nhsuk-frontend/dist/nhsuk/common/configuration/index.mjs'
  */
