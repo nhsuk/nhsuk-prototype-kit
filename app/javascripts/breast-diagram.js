@@ -1,5 +1,6 @@
 import {
   createAll,
+  isObject,
   Component,
   ElementError
 } from '/nhsuk-frontend/nhsuk-frontend.min.js'
@@ -7,21 +8,35 @@ import { ImageMap } from './image-map.js'
 
 /**
  * Breast diagram component
+ *
+ * @augments {Component<HTMLFormElement>}
  */
 export class BreastDiagram extends Component {
+  static elementType = HTMLFormElement
+
+  /**
+   * @type {HTMLInputElement}
+   */
+  $input
+
+  /**
+   * @type {BreastFeatureValue[] | null}
+   */
+  values = null
+
   /**
    * @param {Element | null} $root - HTML element to use for component
    */
   constructor($root) {
     super($root)
 
-    const $input = this.$root.querySelector('input[name="region"]')
+    const $input = this.$root.querySelector('input[name="features"]')
     if (!($input instanceof HTMLInputElement)) {
       throw new ElementError({
         component: BreastDiagram,
         element: $input,
         expectedType: 'HTMLInputElement',
-        identifier: 'Breast diagram region (`input[name="region"]`)'
+        identifier: 'Breast diagram feature values (`input[name="features"]`)'
       })
     }
 
@@ -46,23 +61,60 @@ export class BreastDiagram extends Component {
     }
 
     this.$imageMap = $imageMap
-    this.$imageMap.onState = this.onState.bind(this)
+    this.$imageMap.onUpdate = this.onUpdate.bind(this)
 
-    // Init from saved input value
-    if (this.$input.value) {
-      const $pathActive = this.$root.querySelector(`.${this.$input.value}`)
-      if (
-        !(
-          $pathActive instanceof SVGPathElement ||
-          $pathActive instanceof SVGPolygonElement
+    // Render diagram features
+    this.render()
+    this.debug()
+  }
+
+  /**
+   * Get diagram features
+   */
+  get features() {
+    if (!this.values) {
+      try {
+        this.values ??= /** @type {BreastFeatureValue[]} */ (
+          JSON.parse(decodeURIComponent(this.$input.value), getArrayValue) ?? []
         )
-      ) {
-        return
+      } catch {
+        throw new ElementError({
+          component: BreastDiagram,
+          identifier: 'Breast diagram feature JSON (`input[name="features"]`)'
+        })
       }
-
-      // Save active region
-      $imageMap.setState('active', $imageMap.getRegion($pathActive))
     }
+
+    return this.values
+      .map(({ id, name, x, y }) => {
+        const $path = this.$imageMap.getPathById(id)
+        const point = this.$imageMap.createPoint(x, y, id)
+        return { name, region: this.$imageMap.createRegion($path, point) }
+      })
+      .filter(
+        /** @returns {feature is BreastFeature} */
+        (feature) => !!feature.region
+      )
+  }
+
+  /**
+   * Render diagram features
+   */
+  render() {
+    for (const feature of this.features) {
+      this.$imageMap.setState('active', feature.region, null)
+    }
+  }
+
+  /**
+   * Write diagram features to hidden input
+   */
+  write() {
+    this.$input.value = JSON.stringify(this.values ?? [])
+      .replaceAll('<', '\\u003c')
+      .replaceAll('>', '\\u003e')
+      .replaceAll('&', '\\u0026')
+      .replaceAll("'", '\\u0027')
   }
 
   /**
@@ -93,23 +145,38 @@ export class BreastDiagram extends Component {
     $debugX.textContent = point?.x.toString() ?? 'N/A'
     $debugY.textContent = point?.y.toString() ?? 'N/A'
     $debugRegion.textContent = label ?? 'N/A'
-    $debugInput.textContent = this.$input.value || 'N/A'
+    $debugInput.textContent =
+      this.values?.map(({ id }) => id).join(', ') || 'N/A'
   }
 
   /**
    * Update form inputs
    *
    * @param {ImageMapState} state - State to set, e.g. 'highlight'
-   * @param {ImageMapRegion | undefined} [region] - Image map region
+   * @param {ImageMapRegion} [region] - Image map region
    */
-  onState(state, region) {
-    switch (state) {
-      case 'active':
-        this.$input.setAttribute('value', region?.id ?? '')
-        break
+  onUpdate(state, region) {
+    this.debug(region)
+
+    if (!region) {
+      return
     }
 
-    this.debug(region)
+    switch (state) {
+      case 'active':
+        this.values ??= []
+        this.values.push({
+          id: region.id,
+          name: 'Pending',
+          x: region.point.x,
+          y: region.point.y
+        })
+
+        this.write()
+        this.debug(region)
+
+        break
+    }
   }
 
   /**
@@ -117,6 +184,74 @@ export class BreastDiagram extends Component {
    */
   static moduleName = 'app-breast-diagram'
 }
+
+/**
+ * Accept valid array values only
+ *
+ * Used as reviver function in `JSON.parse()`
+ *
+ * @this {unknown}
+ * @param {string} key
+ * @param {unknown} value
+ */
+function getArrayValue(key, value) {
+  return isValid(value) ||
+    isValidObject(value) ||
+    (key === '' && Array.isArray(value))
+    ? value
+    : undefined
+}
+
+/**
+ * Whether feature object is valid
+ *
+ * @param {unknown | BreastFeatureValue} value
+ * @returns {value is BreastFeatureValue}
+ */
+function isValidObject(value) {
+  if (!isObject(value)) {
+    return false
+  }
+
+  return (
+    Object.keys(value).every((key) => ['id', 'name', 'x', 'y'].includes(key)) &&
+    typeof value.id === 'string' &&
+    typeof value.name === 'string' &&
+    typeof value.x === 'number' &&
+    typeof value.y === 'number'
+  )
+}
+
+/**
+ * Whether feature nested value is valid
+ *
+ * @param {unknown} value
+ */
+function isValid(value) {
+  return (
+    typeof value === 'string' ||
+    typeof value === 'number' ||
+    typeof value === 'boolean'
+  )
+}
+
+/**
+ * Breast feature with image map region
+ *
+ * @typedef {object} BreastFeature
+ * @property {string} name - Breast feature name
+ * @property {ImageMapRegion} region - Image map region
+ */
+
+/**
+ * Breast feature input value
+ *
+ * @typedef {object} BreastFeatureValue
+ * @property {string} id - Image map region ID
+ * @property {string} name - Breast feature name
+ * @property {number} x - X coordinate of breast feature
+ * @property {number} y - Y coordinate of breast feature
+ */
 
 /**
  * @import { ImageMapRegion, ImageMapState } from './image-map.js'

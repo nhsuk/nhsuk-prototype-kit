@@ -6,11 +6,9 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <!-- Add your content here -->
-      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
-
-      <h1 class="nhsuk-heading-xl">
-        {{ serviceName }}
+      <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-6">
+        Breast features diagram
+        <span class="nhsuk-caption-xl nhsuk-caption--bottom">SVG image map</span>
       </h1>
 
       {% set imageHtml %}
@@ -125,7 +123,16 @@
       {% endset %}
 
       <form class="app-breast-diagram" method="post" data-module="app-breast-diagram" novalidate>
-        <input type="hidden" name="region" value="{{ data.region }}">
+        <input {{- nhsukAttributes({
+          name: "features",
+          value: {
+            value: data.features
+              if data.features | length and data.features is iterable
+              else [],
+            type: "array"
+          },
+          type: "hidden"
+        }) }}>
 
         {{ summaryList({
           card: {
@@ -134,24 +141,6 @@
             }
           },
           rows: [
-            {
-              key: {
-                text: "Input value"
-              },
-              value: {
-                text: "N/A",
-                classes: "app-js-image-input"
-              }
-            },
-            {
-              key: {
-                text: "Image region"
-              },
-              value: {
-                text: "N/A",
-                classes: "app-js-image-region"
-              }
-            },
             {
               key: {
                 text: "Image X"
@@ -168,6 +157,24 @@
               value: {
                 text: "N/A",
                 classes: "app-js-image-y"
+              }
+            },
+            {
+              key: {
+                text: "Image region"
+              },
+              value: {
+                text: "N/A",
+                classes: "app-js-image-region"
+              }
+            },
+            {
+              key: {
+                text: "Input values"
+              },
+              value: {
+                text: "N/A",
+                classes: "app-js-image-input"
               },
               classes: "nhsuk-summary-list__row--no-border"
             }
