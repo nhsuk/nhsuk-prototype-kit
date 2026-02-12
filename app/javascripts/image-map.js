@@ -46,8 +46,8 @@ export class ImageMap extends ConfigurableComponent {
     this.$paths = Array.from($paths).reverse()
     this.$image = $image
 
-    this.$image.addEventListener('pointermove', this.onPointerMove.bind(this))
-    this.$image.addEventListener('pointerout', this.onPointerOut.bind(this))
+    this.$image.addEventListener('mousemove', this.onMouseMove.bind(this))
+    this.$image.addEventListener('mouseleave', this.onMouseLeave.bind(this))
     this.$image.addEventListener('click', this.onClick.bind(this))
   }
 
@@ -197,9 +197,9 @@ export class ImageMap extends ConfigurableComponent {
   }
 
   /**
-   * @param {PointerEvent | MouseEvent} event
+   * @param {MouseEvent} event
    */
-  onPointerMove(event) {
+  onMouseMove(event) {
     const { clientX, clientY } = event
 
     const point = this.getPoint(clientX, clientY)
@@ -209,7 +209,7 @@ export class ImageMap extends ConfigurableComponent {
     this.setState('highlight', region)
   }
 
-  onPointerOut() {
+  onMouseLeave() {
     this.setState('highlight')
   }
 
