@@ -16,18 +16,18 @@ export class ImageMap extends ConfigurableComponent {
 
   /**
    * @param {Element | null} $root - HTML element to use for component
-   * @param {Partial<Pick<ImageMapConfig, 'selectors'>>} [config] - Image map config
+   * @param {Partial<Pick<ImageMapConfig, 'imageClass' | 'selectors'>>} [config] - Image map config
    */
   constructor($root, config = {}) {
     super($root, config)
 
-    const { selectorsQuery, selectorsFormatted } = this.config
+    const { imageClass, selectorsQuery, selectorsFormatted } = this.config
 
-    const $image = this.$root.querySelector('.nhsuk-image__img')
+    const $image = this.$root.querySelector(`.${imageClass}`)
     if (!$image || !($image instanceof SVGSVGElement)) {
       throw new ElementError({
         component: ImageMap,
-        identifier: 'Image (`<svg class="nhsuk-image__img">`)'
+        identifier: `Image (\`<svg class="${imageClass}">\`)`
       })
     }
 
@@ -241,6 +241,7 @@ export class ImageMap extends ConfigurableComponent {
    * @type {ImageMapConfig}
    */
   static defaults = Object.freeze({
+    imageClass: 'nhsuk-image__img',
     selectors: ['path', 'polygon'],
     selectorsQuery: '',
     selectorsFormatted: ''
@@ -254,6 +255,7 @@ export class ImageMap extends ConfigurableComponent {
    */
   static schema = Object.freeze({
     properties: {
+      imageClass: { type: 'string' },
       selectors: { type: 'array' },
       selectorsQuery: { type: 'string' },
       selectorsFormatted: { type: 'string' }
@@ -266,6 +268,7 @@ export class ImageMap extends ConfigurableComponent {
  *
  * @see {@link ImageMap.defaults}
  * @typedef {object} ImageMapConfig
+ * @property {string} imageClass - Image class
  * @property {string[]} selectors - Image map region selectors
  * @property {string} selectorsQuery - Image map region selectors (for DOM query selector)
  * @property {string} selectorsFormatted - Image map region selectors (formatted for error messages)

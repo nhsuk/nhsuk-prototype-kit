@@ -45,6 +45,7 @@ export class BreastDiagram extends Component {
     const [$imageMap] = createAll(
       ImageMap,
       {
+        imageClass: 'app-breast-diagram__svg',
         selectors: [
           '.app-breast-diagram__regions path',
           '.app-breast-diagram__regions polygon'
