@@ -1,5 +1,5 @@
 @use "sass:color";
-@use "nhsuk-frontend/dist/nhsuk/core/helpers" as *;
+@use "../vendor/nhsuk-frontend" as *;
 
 $state-highlight: nhsuk-tint(nhsuk-colour("yellow"), 50%);
 $state-active: nhsuk-tint(nhsuk-colour("blue"), 50%);

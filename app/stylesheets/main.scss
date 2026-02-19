@@ -1,7 +1,6 @@
 // Import NHS.UK frontend library
-@forward "nhsuk-frontend/dist/nhsuk" with (
-  $nhsuk-assets-path: "/nhsuk-frontend/assets/"
-);
+@use "vendor/nhsuk-frontend" as *;
+@forward "vendor/nhsuk-frontend";
 
 // Add your custom CSS/Sass styles below.
 @forward "breast-diagram";
