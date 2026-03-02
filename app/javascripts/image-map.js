@@ -92,7 +92,7 @@ export class ImageMap extends ConfigurableComponent {
    * @param {ImageMapRegion | undefined} [region] - Image map region
    * @param {ImageMapStateCallback | null} [callback] - Set state callback
    */
-  setState(state = 'highlight', region, callback = this.onUpdate) {
+  setState(state, region, callback = this.onUpdate) {
     for (const $path of this.$paths) {
       if ($path === region?.$path) {
         $path.setAttribute(`data-${state}`, 'true')

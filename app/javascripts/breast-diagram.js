@@ -20,9 +20,9 @@ export class BreastDiagram extends Component {
   $input
 
   /**
-   * @type {BreastFeatureValue[] | null}
+   * @type {BreastFeatureValue[]}
    */
-  values = null
+  values
 
   /**
    * @param {Element | null} $root - HTML element to use for component
@@ -42,7 +42,18 @@ export class BreastDiagram extends Component {
 
     this.$input = $input
 
-    const [$imageMap] = createAll(
+    try {
+      this.values = /** @type {BreastFeatureValue[]} */ (
+        JSON.parse(decodeURIComponent(this.$input.value), getArrayValue) ?? []
+      )
+    } catch {
+      throw new ElementError({
+        component: BreastDiagram,
+        identifier: 'Breast diagram feature JSON (`input[name="features"]`)'
+      })
+    }
+
+    const $imageMaps = createAll(
       ImageMap,
       {
         imageClass: 'app-breast-diagram__svg',
@@ -55,14 +66,14 @@ export class BreastDiagram extends Component {
       { scope: this.$root }
     )
 
-    if (!$imageMap) {
+    if (!$imageMaps.length || !($imageMaps[0].$root instanceof HTMLElement)) {
       throw new ElementError({
         component: BreastDiagram,
         identifier: `Image map (\`[data-module="${ImageMap.moduleName}"]\`)`
       })
     }
 
-    this.$imageMap = $imageMap
+    this.$imageMap = $imageMaps[0]
     this.$imageMap.onUpdate = this.onUpdate.bind(this)
 
     // Render diagram features
@@ -74,19 +85,6 @@ export class BreastDiagram extends Component {
    * Get diagram features
    */
   get features() {
-    if (!this.values) {
-      try {
-        this.values ??= /** @type {BreastFeatureValue[]} */ (
-          JSON.parse(decodeURIComponent(this.$input.value), getArrayValue) ?? []
-        )
-      } catch {
-        throw new ElementError({
-          component: BreastDiagram,
-          identifier: 'Breast diagram feature JSON (`input[name="features"]`)'
-        })
-      }
-    }
-
     return this.values
       .map(({ id, name, x, y }) => {
         const $path = this.$imageMap.getPathById(id)
@@ -112,11 +110,7 @@ export class BreastDiagram extends Component {
    * Write diagram features to hidden input
    */
   write() {
-    this.$input.value = JSON.stringify(this.values ?? [])
-      .replaceAll('<', '\\u003c')
-      .replaceAll('>', '\\u003e')
-      .replaceAll('&', '\\u0026')
-      .replaceAll("'", '\\u0027')
+    this.$input.value = JSON.stringify(this.values)
   }
 
   /**
@@ -148,7 +142,7 @@ export class BreastDiagram extends Component {
     $debugY.textContent = point?.y.toString() ?? 'N/A'
     $debugRegion.textContent = label ?? 'N/A'
     $debugInput.textContent =
-      this.values?.map(({ id }) => id).join(', ') || 'N/A'
+      this.values.map(({ id }) => id).join(', ') || 'N/A'
   }
 
   /**
@@ -166,7 +160,6 @@ export class BreastDiagram extends Component {
 
     switch (state) {
       case 'active':
-        this.values ??= []
         this.values.push({
           id: region.id,
           name: 'Pending',
