@@ -91,13 +91,13 @@ export class ImageMap extends ConfigurableComponent {
   }
 
   /**
-   * Set state to active path only
+   * Set image map region state
    *
    * - If state is 'active', multiple paths can be active
    * - If state is 'highlight', only one path can be active
    *
    * @param {ImageMapRegion | undefined} region - Image map region
-   * @param {ImageMapState} state - State to set, e.g. 'highlight'
+   * @param {ImageMapState} state - State updated, e.g. 'highlight', 'active'
    * @param {ImageMapStateCallback | null} [callback] - Set state callback
    */
   setState(region, state, callback = this.onUpdate) {
@@ -339,7 +339,7 @@ export class ImageMap extends ConfigurableComponent {
  *
  * @callback ImageMapStateCallback
  * @param {ImageMapRegion | undefined} region - Image map region
- * @param {ImageMapState} state - State to set, e.g. 'highlight'
+ * @param {ImageMapState} state - State updated, e.g. 'highlight', 'active'
  * @returns {void}
  */
 

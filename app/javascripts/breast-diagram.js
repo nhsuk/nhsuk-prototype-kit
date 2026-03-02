@@ -163,7 +163,7 @@ export class BreastDiagram extends Component {
   }
 
   /**
-   * Update form inputs
+   * Update region state and write to form input
    *
    * @type {ImageMapStateCallback}
    */
