@@ -33,5 +33,5 @@ export const sessionDataDefaults = {
       y: 300.3309020996094
     }
   ],
-  readOnly: true
+  readOnly: false
 }
