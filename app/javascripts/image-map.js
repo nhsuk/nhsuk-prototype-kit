@@ -110,7 +110,7 @@ export class ImageMap extends ConfigurableComponent {
    */
   createRegion($path, point) {
     const id = $path?.classList.value
-    const label = $path?.getAttribute('aria-label')
+    const label = $path?.querySelector('title')?.textContent
 
     if (!$path || !point || !id || !label) {
       return
