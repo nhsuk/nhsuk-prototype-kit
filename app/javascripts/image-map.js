@@ -96,11 +96,11 @@ export class ImageMap extends ConfigurableComponent {
    * - If state is 'active', multiple paths can be active
    * - If state is 'highlight', only one path can be active
    *
+   * @param {ImageMapRegion | undefined} region - Image map region
    * @param {ImageMapState} state - State to set, e.g. 'highlight'
-   * @param {ImageMapRegion | undefined} [region] - Image map region
    * @param {ImageMapStateCallback | null} [callback] - Set state callback
    */
-  setState(state, region, callback = this.onUpdate) {
+  setState(region, state, callback = this.onUpdate) {
     for (const $path of this.$paths) {
       if ($path === region?.$path) {
         $path.setAttribute(`data-${state}`, 'true')
@@ -109,7 +109,7 @@ export class ImageMap extends ConfigurableComponent {
       }
     }
 
-    callback?.(state, region)
+    callback?.(region, state)
   }
 
   /**
@@ -247,11 +247,11 @@ export class ImageMap extends ConfigurableComponent {
     const $path = this.getPath(point)
     const region = this.createRegion($path, point)
 
-    this.setState('highlight', region)
+    this.setState(region, 'highlight')
   }
 
   onMouseLeave() {
-    this.setState('highlight')
+    this.setState(undefined, 'highlight')
   }
 
   /**
@@ -266,7 +266,7 @@ export class ImageMap extends ConfigurableComponent {
     const $path = this.getPath(point)
     const region = this.createRegion($path, point)
 
-    this.setState('active', region)
+    this.setState(region, 'active')
   }
 
   /**
@@ -338,8 +338,8 @@ export class ImageMap extends ConfigurableComponent {
  * Image map state callback
  *
  * @callback ImageMapStateCallback
+ * @param {ImageMapRegion | undefined} region - Image map region
  * @param {ImageMapState} state - State to set, e.g. 'highlight'
- * @param {ImageMapRegion} [region] - Image map region
  * @returns {void}
  */
 

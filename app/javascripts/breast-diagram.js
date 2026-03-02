@@ -119,7 +119,7 @@ export class BreastDiagram extends Component {
 
     // Set active regions
     for (const feature of features) {
-      $imageMap.setState('active', feature.region)
+      $imageMap.setState(feature.region, 'active')
     }
   }
 
@@ -167,7 +167,7 @@ export class BreastDiagram extends Component {
    *
    * @type {ImageMapStateCallback}
    */
-  onUpdate(state, region) {
+  onUpdate(region, state) {
     const { values } = this
 
     this.debug(region)
