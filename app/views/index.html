@@ -6,13 +6,29 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-6">
-        Breast features diagram
-        <span class="nhsuk-caption-xl nhsuk-caption--bottom">SVG image map</span>
-      </h1>
+      <form class="app-breast-diagram" method="post" data-module="app-breast-diagram" novalidate>
+        <input {{- nhsukAttributes({
+          name: "features",
+          value: {
+            value: data.features
+              if data.features | length and data.features is iterable
+              else [],
+            type: "array"
+          },
+          type: "hidden"
+        }) }}>
 
-      {% set imageHtml %}
-        <figure class="nhsuk-image nhsuk-u-width-full" data-module="app-image-map">
+        <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-6">
+          Breast features diagram
+          <span class="nhsuk-caption-xl nhsuk-caption--bottom">SVG image map</span>
+        </h1>
+
+        <div class="app-breast-diagram__side-labels">
+          <span>Right</span>
+          <span>Left</span>
+        </div>
+
+        <figure class="app-breast-diagram__image-map nhsuk-u-width-full" data-module="app-image-map">
           <!-- Source: breast-features-diagram-1.0.svg -->
           <!-- Processed by process-exported-svg.js - do not edit manually -->
 
@@ -115,31 +131,9 @@
               <circle data-side="right" aria-label="right nipple outline" vector-effect="non-scaling-stroke" cx="239.68" cy="200" r="22.8" fill="none" stroke="#212b32" stroke-width="3"/>
             </g>
           </svg>
-
-          <figcaption class="nhsuk-image__caption">
-            Click on the diagram to select a location
-          </figcaption>
         </figure>
-      {% endset %}
-
-      <form class="app-breast-diagram" method="post" data-module="app-breast-diagram" novalidate>
-        <input {{- nhsukAttributes({
-          name: "features",
-          value: {
-            value: data.features
-              if data.features | length and data.features is iterable
-              else [],
-            type: "array"
-          },
-          type: "hidden"
-        }) }}>
 
         {{ summaryList({
-          card: {
-            image: {
-              html: imageHtml
-            }
-          },
           rows: [
             {
               key: {

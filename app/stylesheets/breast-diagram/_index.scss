@@ -4,8 +4,29 @@
 $state-highlight: nhsuk-tint(nhsuk-colour("yellow"), 50%);
 $state-active: nhsuk-tint(nhsuk-colour("blue"), 50%);
 
+.app-breast-diagram__image-map {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border: 3px solid $nhsuk-text-colour;
+  background: nhsuk-colour("white");
+
+  @include nhsuk-responsive-margin(4, "bottom");
+}
+
+.app-breast-diagram__side-labels {
+  display: flex;
+  justify-content: space-between;
+
+  @include nhsuk-text-colour;
+  @include nhsuk-font($size: 19, $weight: bold);
+  @include nhsuk-responsive-margin(2, "bottom");
+}
+
 .app-breast-diagram__svg {
-  cursor: pointer;
+  display: block;
+  pointer-events: all;
+  cursor: crosshair;
 }
 
 .app-breast-diagram__regions path,
