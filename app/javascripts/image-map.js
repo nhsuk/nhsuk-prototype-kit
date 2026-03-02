@@ -230,7 +230,7 @@ export class ImageMap extends ConfigurableComponent {
     if (!$path || $path !== this.getPathById(id)) {
       throw new ElementError({
         component: ImageMap,
-        identifier: `Image path or polygon by ID (\`${id}\`) with SVG point (${pointX}, ${pointY})`
+        identifier: `Image path or polygon (\`class="${id}"\`) with SVG point (${pointX}, ${pointY})`
       })
     }
 
