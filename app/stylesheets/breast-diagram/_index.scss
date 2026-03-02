@@ -29,6 +29,11 @@ $state-active: nhsuk-tint(nhsuk-colour("blue"), 50%);
   cursor: crosshair;
 }
 
+input[readonly] ~ .app-breast-diagram__image-map .app-breast-diagram__svg {
+  pointer-events: auto;
+  cursor: default;
+}
+
 .app-breast-diagram__regions path,
 .app-breast-diagram__regions polygon {
   // Slow fade out (default)

@@ -46,6 +46,7 @@ export class BreastDiagram extends Component {
       ImageMap,
       {
         imageClass: 'app-breast-diagram__svg',
+        readOnly: $input.readOnly,
         selectors: [
           '.app-breast-diagram__regions path',
           '.app-breast-diagram__regions polygon'

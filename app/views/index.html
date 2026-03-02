@@ -15,7 +15,11 @@
               else [],
             type: "array"
           },
-          type: "hidden"
+          type: "hidden",
+          readonly: {
+            value: data.readOnly,
+            optional: true
+          }
         }) }}>
 
         <h1 class="nhsuk-heading-l nhsuk-u-margin-bottom-6">
