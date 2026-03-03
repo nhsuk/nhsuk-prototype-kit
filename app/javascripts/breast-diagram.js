@@ -5,6 +5,7 @@ import {
   ElementError
 } from '/nhsuk-frontend/nhsuk-frontend.min.js'
 import { ImageMap } from './image-map.js'
+import { ImageMarker } from './image-marker.js'
 
 /**
  * Breast diagram component
@@ -18,6 +19,11 @@ export class BreastDiagram extends Component {
    * @type {HTMLInputElement}
    */
   $input
+
+  /**
+   * @type {ImageMarker[]}
+   */
+  markers
 
   /**
    * @type {BreastFeatureValue[]}
@@ -41,6 +47,7 @@ export class BreastDiagram extends Component {
     }
 
     this.$input = $input
+    this.markers = []
 
     try {
       this.values = /** @type {BreastFeatureValue[]} */ (
@@ -85,11 +92,19 @@ export class BreastDiagram extends Component {
    * Get diagram features
    */
   get features() {
-    return this.values
-      .map(({ id, name, x, y }) => {
-        const $path = this.$imageMap.getPathById(id)
-        const point = this.$imageMap.createPoint(x, y, id)
-        return { name, region: this.$imageMap.createRegion($path, point) }
+    const { $imageMap, markers, values } = this
+
+    return values
+      .map(({ id, name, x, y }, index) => {
+        const $path = $imageMap.getPathById(id)
+        const point = $imageMap.createPoint(x, y, id)
+        const region = $imageMap.createRegion($path, point)
+
+        if (region) {
+          markers[index] = this.setMarker(region, index)
+        }
+
+        return { name, region, marker: markers[index] }
       })
       .filter(
         /** @returns {feature is BreastFeature} */
@@ -101,8 +116,16 @@ export class BreastDiagram extends Component {
    * Render diagram features
    */
   render() {
-    for (const feature of this.features) {
-      this.$imageMap.setState('active', feature.region, null)
+    const { $imageMap, features, markers } = this
+
+    // Remove excess markers
+    for (const marker of markers.splice(features.length)) {
+      marker.$root.remove()
+    }
+
+    // Set active regions
+    for (const feature of features) {
+      $imageMap.setState('active', feature.region)
     }
   }
 
@@ -152,26 +175,67 @@ export class BreastDiagram extends Component {
    * @param {ImageMapRegion} [region] - Image map region
    */
   onUpdate(state, region) {
+    const { values } = this
+
     this.debug(region)
 
     if (!region) {
       return
     }
 
-    switch (state) {
-      case 'active':
-        this.values.push({
+    if (state === 'active') {
+      const entry = values.find(
+        (value) =>
+          value.id === region.id &&
+          value.x === region.point.x &&
+          value.y === region.point.y
+      )
+
+      if (!entry) {
+        values.push({
           id: region.id,
           name: 'Pending',
           x: region.point.x,
           y: region.point.y
         })
 
+        this.setMarker(region, values.length - 1)
         this.write()
         this.debug(region)
-
-        break
+      }
     }
+  }
+
+  /**
+   * Set marker for image map region
+   *
+   * @param {ImageMapRegion} region - Image map region
+   * @param {number} index - Image marker index
+   */
+  setMarker(region, index) {
+    const { $imageMap, $input, markers } = this
+    const { width, height } = $imageMap
+
+    if (!markers[index]) {
+      markers[index] = new ImageMarker(null, {
+        href: $input.readOnly ? undefined : `#${region.id}`,
+        width: width,
+        height: height
+      })
+    }
+
+    const marker = markers[index]
+
+    // Set marker properties
+    marker.textContent = `${index + 1}`
+    marker.point = region.point
+
+    // Append new markers only
+    if (!marker.$root.parentElement) {
+      $imageMap.$root.appendChild(marker.$root)
+    }
+
+    return marker
   }
 
   /**

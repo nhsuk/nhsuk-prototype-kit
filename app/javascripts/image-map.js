@@ -71,6 +71,14 @@ export class ImageMap extends ConfigurableComponent {
     }
   }
 
+  get width() {
+    return this.$image.viewBox.baseVal.width
+  }
+
+  get height() {
+    return this.$image.viewBox.baseVal.height
+  }
+
   get onUpdate() {
     return this.onUpdateHandler ?? (() => undefined)
   }
