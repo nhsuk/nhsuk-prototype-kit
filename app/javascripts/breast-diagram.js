@@ -167,11 +167,8 @@ export class BreastDiagram extends Component {
    *
    * @type {ImageMapStateCallback}
    */
-  onUpdate(region, state) {
-    const { values } = this
-
-    this.debug(region)
-
+  onUpdate(region, state, value) {
+    const { markers, values } = this
     if (!region) {
       return
     }
@@ -184,7 +181,7 @@ export class BreastDiagram extends Component {
           value.y === region.point.y
       )
 
-      if (!entry) {
+      if (value && !entry) {
         values.push({
           id: region.id,
           name: 'Pending',
@@ -193,9 +190,16 @@ export class BreastDiagram extends Component {
         })
 
         this.setMarker(region, values.length - 1)
-        this.write()
-        this.debug(region)
+      } else if (!value && entry) {
+        const index = values.indexOf(entry)
+
+        markers[index].$root.remove()
+        markers.splice(index, 1)
+        values.splice(index, 1)
       }
+
+      this.write()
+      this.debug(region)
     }
   }
 

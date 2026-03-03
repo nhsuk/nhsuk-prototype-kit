@@ -98,18 +98,18 @@ export class ImageMap extends ConfigurableComponent {
    *
    * @param {ImageMapRegion | undefined} region - Image map region
    * @param {ImageMapState} state - State updated, e.g. 'highlight', 'active'
-   * @param {ImageMapStateCallback | null} [callback] - Set state callback
+   * @param {boolean} [value] - Set state value
    */
-  setState(region, state, callback = this.onUpdate) {
+  setState(region, state, value = true) {
     for (const $path of this.$paths) {
-      if ($path === region?.$path) {
-        $path.setAttribute(`data-${state}`, 'true')
-      } else if (state === 'highlight') {
+      if ($path === region?.$path && value) {
+        $path.setAttribute(`data-${state}`, `${value}`)
+      } else if (($path === region?.$path && !value) || state === 'highlight') {
         $path.removeAttribute(`data-${state}`)
       }
     }
 
-    callback?.(region, state)
+    this.onUpdate(region, state, value)
   }
 
   /**
@@ -251,7 +251,7 @@ export class ImageMap extends ConfigurableComponent {
   }
 
   onMouseLeave() {
-    this.setState(undefined, 'highlight')
+    this.setState(undefined, 'highlight', false)
   }
 
   /**
@@ -340,6 +340,7 @@ export class ImageMap extends ConfigurableComponent {
  * @callback ImageMapStateCallback
  * @param {ImageMapRegion | undefined} region - Image map region
  * @param {ImageMapState} state - State updated, e.g. 'highlight', 'active'
+ * @param {boolean} value - Whether state is being set or unset
  * @returns {void}
  */
 
