@@ -50,6 +50,7 @@ export class BreastDiagram extends Component {
     this.markers = []
 
     try {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       this.values = /** @type {BreastFeatureValue[]} */ (
         JSON.parse(decodeURIComponent(this.$input.value), getArrayValue) ?? []
       )
@@ -90,26 +91,19 @@ export class BreastDiagram extends Component {
 
   /**
    * Get diagram features
+   *
+   * @returns {BreastFeature[]}
    */
   get features() {
-    const { $imageMap, markers, values } = this
+    return this.values.map(({ id, name, x, y }, index) => {
+      const $path = this.$imageMap.getPathById(id)
+      const point = this.$imageMap.createPoint(x, y, id)
+      const region = this.$imageMap.createRegion($path, point)
 
-    return values
-      .map(({ id, name, x, y }, index) => {
-        const $path = $imageMap.getPathById(id)
-        const point = $imageMap.createPoint(x, y, id)
-        const region = $imageMap.createRegion($path, point)
+      this.setMarker(region, index)
 
-        if (region) {
-          markers[index] = this.setMarker(region, index)
-        }
-
-        return { name, region, marker: markers[index] }
-      })
-      .filter(
-        /** @returns {feature is BreastFeature} */
-        (feature) => !!feature.region
-      )
+      return { name, region }
+    })
   }
 
   /**
@@ -171,8 +165,7 @@ export class BreastDiagram extends Component {
   /**
    * Update form inputs
    *
-   * @param {ImageMapState} state - State to set, e.g. 'highlight'
-   * @param {ImageMapRegion} [region] - Image map region
+   * @type {ImageMapStateCallback}
    */
   onUpdate(state, region) {
     const { values } = this
@@ -313,5 +306,5 @@ function isValid(value) {
  */
 
 /**
- * @import { ImageMapRegion, ImageMapState } from './image-map.js'
+ * @import { ImageMapRegion, ImageMapStateCallback } from './image-map.js'
  */

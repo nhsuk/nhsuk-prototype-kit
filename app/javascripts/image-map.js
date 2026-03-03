@@ -115,16 +115,38 @@ export class ImageMap extends ConfigurableComponent {
   /**
    * Get image map region at SVG point
    *
-   * @param {SVGGeometryElement} [$path] - SVG path at pointer coordinates
-   * @param {DOMPoint} [point] - SVG point at pointer coordinates
+   * @overload
+   * @param {SVGGeometryElement} $path - SVG path at pointer coordinates
+   * @param {DOMPoint} point - SVG point at pointer coordinates
+   * @returns {ImageMapRegion}
+   */
+
+  /**
+   * @overload
+   * @param {SVGGeometryElement | undefined} $path - SVG path at pointer coordinates
+   * @param {DOMPoint} point - SVG point at pointer coordinates
    * @returns {ImageMapRegion | undefined}
    */
-  createRegion($path, point) {
-    const id = $path?.classList.value
-    const label = $path?.querySelector('title')?.textContent
 
-    if (!$path || !point || !id || !label) {
+  /**
+   * @param {SVGGeometryElement | undefined} $path - SVG path at pointer coordinates
+   * @param {DOMPoint} point - SVG point at pointer coordinates
+   */
+  createRegion($path, point) {
+    if (!$path) {
       return
+    }
+
+    const id = $path.classList.value
+    const label = $path.querySelector('title')?.textContent
+
+    if (!id || !label) {
+      throw new ElementError({
+        component: ImageMap,
+        identifier: id
+          ? 'Image path or polygon (`<title>`)'
+          : 'Image path or polygon attribute (`class`)'
+      })
     }
 
     return {
@@ -153,10 +175,18 @@ export class ImageMap extends ConfigurableComponent {
    * Get SVG path by ID
    *
    * @param {string} id - SVG path ID specified in path class attribute
-   * @returns {SVGGeometryElement | undefined}
    */
   getPathById(id) {
-    return this.$paths.find(($path) => $path.classList.value === id)
+    const $path = this.$paths.find(($path) => $path.classList.value === id)
+
+    if (!$path) {
+      throw new ElementError({
+        component: ImageMap,
+        identifier: `Image path or polygon (\`class="${id}"\`)`
+      })
+    }
+
+    return $path
   }
 
   /**
