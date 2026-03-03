@@ -1,0 +1,44 @@
+@use "../vendor/nhsuk-frontend" as *;
+
+.app-image-marker {
+  display: flex;
+
+  position: absolute;
+  z-index: 50;
+  top: 0;
+  left: 0;
+
+  align-items: center;
+  justify-content: center;
+
+  width: nhsuk-px-to-rem(40px);
+  height: nhsuk-px-to-rem(40px);
+  margin-top: nhsuk-px-to-rem(-20px);
+  margin-left: nhsuk-px-to-rem(-20px);
+
+  border: 2px solid nhsuk-colour("white");
+  border-radius: 2px;
+
+  pointer-events: none;
+
+  color: nhsuk-colour("white");
+  background-color: $nhsuk-link-colour;
+
+  user-select: none;
+
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+
+  @include nhsuk-font(19, $weight: bold);
+}
+
+.app-image-marker[href] {
+  pointer-events: auto;
+  text-decoration: none;
+  cursor: pointer;
+  @include nhsuk-link-style-white;
+
+  &:link {
+    text-decoration: none;
+  }
+}
