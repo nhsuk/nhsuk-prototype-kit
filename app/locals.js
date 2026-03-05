@@ -5,7 +5,7 @@ module.exports = function(req, res, next) {
   //
   // For example:
   //
-  // req.locals.organisationName = 'NHS'
+  // res.locals.organisationName = 'NHS'
 
   next()
 }
