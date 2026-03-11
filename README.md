@@ -16,4 +16,4 @@ When you open this project in VS Code, you may see a message: *"Folder contains 
 
 **You can ignore this message.** You do not need Docker or to reopen in a container to run the prototype locally. Just use the steps above.
 
-The Dev Container is optional as it is used for [GitHub Codespaces](https://github.com/features/codespaces) (cloud development). If you want to develop in a container on your own machine, you would need Docker installed, but that is not required for normal use.
+The Dev Container is optional as it is used for [GitHub Codespaces](https://github.com/features/codespaces) (cloud development). If you want to develop in a container on your own machine you would need Docker installed, but that is not required for normal use.
