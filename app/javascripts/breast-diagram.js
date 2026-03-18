@@ -90,36 +90,28 @@ export class BreastDiagram extends Component {
   }
 
   /**
-   * Get diagram features
-   *
-   * @returns {BreastFeature[]}
+   * Render diagram features
    */
-  get features() {
-    return this.values.map(({ id, name, x, y }, index) => {
-      const $path = this.$imageMap.getPathById(id)
-      const point = this.$imageMap.createPoint(x, y, id)
-      const region = this.$imageMap.createRegion($path, point)
+  render() {
+    const { $imageMap, markers, values } = this
 
+    values.forEach(({ id, name, x, y }, index) => {
+      const $path = $imageMap.getPathById(id)
+      const point = $imageMap.createPoint(x, y, id)
+      const region = $imageMap.createRegion($path, point)
+
+      // Set active region
+      $imageMap.setState(region, 'active')
+
+      // Set marker position
       this.setMarker(region, index)
 
       return { name, region }
     })
-  }
-
-  /**
-   * Render diagram features
-   */
-  render() {
-    const { $imageMap, features, markers } = this
 
     // Remove excess markers
-    for (const marker of markers.splice(features.length)) {
+    for (const marker of markers.splice(values.length)) {
       marker.$root.remove()
-    }
-
-    // Set active regions
-    for (const feature of features) {
-      $imageMap.setState(feature.region, 'active')
     }
   }
 
