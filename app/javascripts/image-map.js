@@ -43,8 +43,6 @@ export class ImageMap extends ConfigurableComponent {
     this.$image = $image
 
     if (!readOnly) {
-      this.$image.addEventListener('mousemove', this.onMouseMove.bind(this))
-      this.$image.addEventListener('mouseleave', this.onMouseLeave.bind(this))
       this.$image.addEventListener('click', this.onClick.bind(this))
     }
   }
@@ -77,20 +75,15 @@ export class ImageMap extends ConfigurableComponent {
   /**
    * Set image map state
    *
-   * - If state is 'active', multiple paths can be active
-   * - If state is 'highlight', only one path can be active
-   *
-   * @param {ImageMapState} state - State updated, e.g. 'highlight', 'active'
+   * @param {ImageMapState} state - State updated, e.g. 'active'
    * @param {SVGGeometryElement} [$activePath] - SVG path to set state for
    * @param {boolean} [value] - Set state value
    */
   setState(state, $activePath, value = true) {
-    for (const $path of this.$paths) {
-      if ($path === $activePath && value) {
-        $path.setAttribute(`data-${state}`, 'true')
-      } else if (($path === $activePath && !value) || state === 'highlight') {
-        $path.removeAttribute(`data-${state}`)
-      }
+    if (value) {
+      $activePath?.setAttribute(`data-${state}`, 'true')
+    } else {
+      $activePath?.removeAttribute(`data-${state}`)
     }
   }
 
@@ -202,23 +195,6 @@ export class ImageMap extends ConfigurableComponent {
   /**
    * @param {MouseEvent} event
    */
-  onMouseMove(event) {
-    const { clientX, clientY } = event
-
-    const point = this.getPoint(clientX, clientY)
-    const $path = this.getPath(point)
-
-    this.setState('highlight', $path)
-    this.dispatchEvent('hover', { $path, point })
-  }
-
-  onMouseLeave() {
-    this.setState('highlight', undefined, false)
-  }
-
-  /**
-   * @param {MouseEvent} event
-   */
   onClick(event) {
     event.preventDefault()
 
@@ -280,7 +256,7 @@ export class ImageMap extends ConfigurableComponent {
  */
 
 /**
- * @typedef {'highlight' | 'active'} ImageMapState - Image map state
+ * @typedef {'active'} ImageMapState - Image map state
  * @typedef {'hover' | 'click'} ImageMapEvent - Image map event
  */
 

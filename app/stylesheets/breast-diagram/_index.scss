@@ -40,14 +40,16 @@ input[readonly] ~ .app-breast-diagram__image-map .app-breast-diagram__svg {
   transition: fill 0.3s ease-in;
 }
 
-.app-breast-diagram__regions [data-highlight],
+.app-breast-diagram__regions path:hover,
+.app-breast-diagram__regions polygon:hover,
 .app-breast-diagram__regions [data-active] {
   // Fast fade in (on hover)
   transition-duration: 0.05s;
   transition-timing-function: ease-out;
 }
 
-.app-breast-diagram__regions [data-highlight] {
+.app-breast-diagram__regions path:hover,
+.app-breast-diagram__regions polygon:hover {
   fill: $state-highlight;
 }
 
@@ -55,6 +57,10 @@ input[readonly] ~ .app-breast-diagram__image-map .app-breast-diagram__svg {
   fill: $state-active;
 }
 
-.app-breast-diagram__regions [data-active][data-highlight] {
+.app-breast-diagram__regions [data-active]:hover {
   fill: color.adjust(color.mix($state-active, $state-highlight, 75%), $lightness: 10%, $saturation: 25%);
+}
+
+.app-breast-diagram__diagram {
+  pointer-events: none;
 }
