@@ -10,11 +10,6 @@ import {
  */
 export class ImageMap extends ConfigurableComponent {
   /**
-   * @type {typeof this.onUpdate | null}
-   */
-  onUpdateHandler = null
-
-  /**
    * @param {Element | null} $root - HTML element to use for component
    * @param {Partial<Pick<ImageMapConfig, 'imageClass' | 'readOnly' | 'selectors'>>} [config] - Image map config
    */
@@ -79,81 +74,23 @@ export class ImageMap extends ConfigurableComponent {
     return this.$image.viewBox.baseVal.height
   }
 
-  get onUpdate() {
-    return this.onUpdateHandler ?? (() => undefined)
-  }
-
   /**
-   * @param {ImageMapStateCallback} callback
-   */
-  set onUpdate(callback) {
-    this.onUpdateHandler = callback
-  }
-
-  /**
-   * Set image map region state
+   * Set image map state
    *
    * - If state is 'active', multiple paths can be active
    * - If state is 'highlight', only one path can be active
    *
-   * @param {ImageMapRegion | undefined} region - Image map region
    * @param {ImageMapState} state - State updated, e.g. 'highlight', 'active'
+   * @param {SVGGeometryElement} [$activePath] - SVG path to set state for
    * @param {boolean} [value] - Set state value
    */
-  setState(region, state, value = true) {
+  setState(state, $activePath, value = true) {
     for (const $path of this.$paths) {
-      if ($path === region?.$path && value) {
-        $path.setAttribute(`data-${state}`, `${value}`)
-      } else if (($path === region?.$path && !value) || state === 'highlight') {
+      if ($path === $activePath && value) {
+        $path.setAttribute(`data-${state}`, 'true')
+      } else if (($path === $activePath && !value) || state === 'highlight') {
         $path.removeAttribute(`data-${state}`)
       }
-    }
-
-    this.onUpdate(region, state, value)
-  }
-
-  /**
-   * Get image map region at SVG point
-   *
-   * @overload
-   * @param {SVGGeometryElement} $path - SVG path at pointer coordinates
-   * @param {DOMPoint} point - SVG point at pointer coordinates
-   * @returns {ImageMapRegion}
-   */
-
-  /**
-   * @overload
-   * @param {SVGGeometryElement | undefined} $path - SVG path at pointer coordinates
-   * @param {DOMPoint} point - SVG point at pointer coordinates
-   * @returns {ImageMapRegion | undefined}
-   */
-
-  /**
-   * @param {SVGGeometryElement | undefined} $path - SVG path at pointer coordinates
-   * @param {DOMPoint} point - SVG point at pointer coordinates
-   */
-  createRegion($path, point) {
-    if (!$path) {
-      return
-    }
-
-    const id = $path.classList.value
-    const label = $path.querySelector('title')?.textContent
-
-    if (!id || !label) {
-      throw new ElementError({
-        component: ImageMap,
-        identifier: id
-          ? 'Image path or polygon (`<title>`)'
-          : 'Image path or polygon attribute (`class`)'
-      })
-    }
-
-    return {
-      id,
-      label,
-      point,
-      $path
     }
   }
 
@@ -238,6 +175,31 @@ export class ImageMap extends ConfigurableComponent {
   }
 
   /**
+   * Add event listener for image map
+   *
+   * @param {ImageMapEvent} name - Event name, e.g. 'hover', 'click'
+   * @param {ImageMapListener} listener - Image map listener
+   */
+  addEventListener(name, listener) {
+    this.$root.addEventListener(
+      `${ImageMap.moduleName}:${name}`,
+      /** @type {EventListener} */ (listener)
+    )
+  }
+
+  /**
+   * Dispatch event for image map
+   *
+   * @param {ImageMapEvent} name - Event name, e.g. 'hover', 'click'
+   * @param {ImageMapPayload} detail - Image map payload
+   */
+  dispatchEvent(name, detail) {
+    this.$root.dispatchEvent(
+      new CustomEvent(`${ImageMap.moduleName}:${name}`, { detail })
+    )
+  }
+
+  /**
    * @param {MouseEvent} event
    */
   onMouseMove(event) {
@@ -245,13 +207,13 @@ export class ImageMap extends ConfigurableComponent {
 
     const point = this.getPoint(clientX, clientY)
     const $path = this.getPath(point)
-    const region = this.createRegion($path, point)
 
-    this.setState(region, 'highlight')
+    this.setState('highlight', $path)
+    this.dispatchEvent('hover', { $path, point })
   }
 
   onMouseLeave() {
-    this.setState(undefined, 'highlight', false)
+    this.setState('highlight', undefined, false)
   }
 
   /**
@@ -264,9 +226,8 @@ export class ImageMap extends ConfigurableComponent {
 
     const point = this.getPoint(clientX, clientY)
     const $path = this.getPath(point)
-    const region = this.createRegion($path, point)
 
-    this.setState(region, 'active')
+    this.dispatchEvent('click', { $path, point })
   }
 
   /**
@@ -319,28 +280,24 @@ export class ImageMap extends ConfigurableComponent {
  */
 
 /**
- * Image map region
- *
- * @typedef {object} ImageMapRegion
- * @property {string} id - Image map region ID
- * @property {string} label - Region map region label
- * @property {DOMPoint} point - SVG point at pointer coordinates
- * @property {SVGGeometryElement} $path - SVG path at pointer coordinates
+ * @typedef {'highlight' | 'active'} ImageMapState - Image map state
+ * @typedef {'hover' | 'click'} ImageMapEvent - Image map event
  */
 
 /**
- * Image map state
+ * Image map state payload
  *
- * @typedef {'highlight' | 'active'} ImageMapState
+ * @typedef ImageMapPayload
+ * @property {SVGGeometryElement | undefined} $path - SVG path at pointer coordinates
+ * @property {DOMPoint} [point] - SVG point at pointer coordinates (optional)
+ * @returns {void}
  */
 
 /**
- * Image map state callback
+ * Image map listener
  *
- * @callback ImageMapStateCallback
- * @param {ImageMapRegion | undefined} region - Image map region
- * @param {ImageMapState} state - State updated, e.g. 'highlight', 'active'
- * @param {boolean} value - Whether state is being set or unset
+ * @callback ImageMapListener
+ * @param {CustomEvent<ImageMapPayload>} event - Image map event
  * @returns {void}
  */
 
