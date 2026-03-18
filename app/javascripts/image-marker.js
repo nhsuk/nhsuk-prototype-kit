@@ -34,11 +34,20 @@ export class ImageMarker extends ConfigurableComponent {
    * @param {DOMPoint} point - SVG point at pointer coordinates
    */
   set point(point) {
-    const offsetX = Math.min(Math.max(point.x, 20), this.config.width - 20)
-    const offsetY = Math.min(Math.max(point.y, 20), this.config.height - 20)
+    const { $root, config } = this
 
-    this.$root.style.left = `${(offsetX / this.config.width) * 100}%`
-    this.$root.style.top = `${(offsetY / this.config.height) * 100}%`
+    const gutter = 20 // 20px
+
+    // Maximum safe area
+    const safeX = config.width - gutter
+    const safeY = config.height - gutter
+
+    // Offset to minimum and maximum safe area
+    this.x = Math.min(Math.max(point.x, gutter), safeX)
+    this.y = Math.min(Math.max(point.y, gutter), safeY)
+
+    $root.style.left = `${(this.x / config.width) * 100}%`
+    $root.style.top = `${(this.y / config.height) * 100}%`
   }
 
   /**
