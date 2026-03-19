@@ -6,7 +6,19 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <form class="app-breast-diagram" method="post" data-module="app-breast-diagram" novalidate>
+      <form {{- nhsukAttributes({
+        class: "app-breast-diagram",
+        method: "post",
+        "data-module": "app-breast-diagram",
+        "data-debug": {
+          value: "true" if data.debug else false,
+          optional: true
+        },
+        novalidate: {
+          value: true,
+          optional: true
+        }
+      }) -}}>
         <input {{- nhsukAttributes({
           name: "features",
           value: {
@@ -17,7 +29,7 @@
           },
           type: "hidden",
           readonly: {
-            value: data.readOnly,
+            value: "true" if data.readOnly else false,
             optional: true
           }
         }) }}>
@@ -32,7 +44,14 @@
           <span>Left</span>
         </div>
 
-        <figure class="app-breast-diagram__image-map nhsuk-u-width-full" data-module="app-image-map">
+        <figure {{- nhsukAttributes({
+          class: "app-breast-diagram__image-map nhsuk-u-width-full",
+          "data-module": "app-image-map",
+          "data-read-only": {
+            value: "true" if data.readOnly else false,
+            optional: true
+          }
+        }) -}}>
           <!-- Source: breast-features-diagram-1.0.svg -->
           <!-- Processed by process-exported-svg.js - do not edit manually -->
 
@@ -179,47 +198,47 @@
           </svg>
         </figure>
 
-        {{ summaryList({
-          rows: [
-            {
-              key: {
-                text: "Image X"
-              },
-              value: {
-                text: "N/A",
-                classes: "app-js-image-x"
-              }
+          {{ summaryList({
+            rows: [
+              {
+                key: {
+                  text: "Image X"
+                },
+                value: {
+                  text: "N/A",
+                  classes: "app-js-image-x"
+                }
             },
-            {
-              key: {
-                text: "Image Y"
-              },
-              value: {
-                text: "N/A",
-                classes: "app-js-image-y"
-              }
+              {
+                key: {
+                  text: "Image Y"
+                },
+                value: {
+                  text: "N/A",
+                  classes: "app-js-image-y"
+                }
             },
-            {
-              key: {
-                text: "Image region"
-              },
-              value: {
-                text: "N/A",
-                classes: "app-js-image-region"
-              }
+              {
+                key: {
+                  text: "Image region"
+                },
+                value: {
+                  text: "N/A",
+                  classes: "app-js-image-region"
+                }
             },
-            {
-              key: {
-                text: "Input values"
-              },
-              value: {
-                text: "N/A",
-                classes: "app-js-image-input"
-              },
-              classes: "nhsuk-summary-list__row--no-border"
-            }
-          ]
-        }) }}
+              {
+                key: {
+                  text: "Input values"
+                },
+                value: {
+                  text: "N/A",
+                  classes: "app-js-image-input"
+                },
+                classes: "nhsuk-summary-list__row--no-border"
+              }
+            ]
+          }) }}
 
         <div class="nhsuk-button-group">
           {{ button({
