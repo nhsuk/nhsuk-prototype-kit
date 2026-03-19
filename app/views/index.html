@@ -14,6 +14,10 @@
           value: "true" if data.debug else false,
           optional: true
         },
+        "data-read-only": {
+          value: "true" if data.readOnly else false,
+          optional: true
+        },
         novalidate: {
           value: true,
           optional: true
@@ -46,11 +50,7 @@
 
         <figure {{- nhsukAttributes({
           class: "app-breast-diagram__image-map nhsuk-u-width-full",
-          "data-module": "app-image-map",
-          "data-read-only": {
-            value: "true" if data.readOnly else false,
-            optional: true
-          }
+          "data-module": "app-image-map"
         }) -}}>
           <!-- Source: breast-features-diagram-1.0.svg -->
           <!-- Processed by process-exported-svg.js - do not edit manually -->

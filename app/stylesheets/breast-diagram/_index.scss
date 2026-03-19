@@ -25,52 +25,44 @@ $state-active: nhsuk-tint(nhsuk-colour("blue"), 50%);
 
 .app-breast-diagram__svg {
   display: block;
-}
 
-.app-breast-diagram__regions [data-active] {
-  [data-debug] & {
-    fill: $state-active;
-  }
-}
-
-.app-breast-diagram__image-map:not([data-read-only]) {
-  .app-breast-diagram__svg {
+  .app-breast-diagram:not([data-read-only]) & {
     pointer-events: all;
     cursor: crosshair;
-  }
-
-  .app-breast-diagram__regions path,
-  .app-breast-diagram__regions polygon {
-    [data-debug] & {
-      // Slow fade out (default)
-      transition: fill 0.3s ease-in;
-    }
-  }
-
-  .app-breast-diagram__regions path:hover,
-  .app-breast-diagram__regions polygon:hover,
-  .app-breast-diagram__regions [data-active] {
-    [data-debug] & {
-      // Fast fade in (on hover)
-      transition-duration: 0.05s;
-      transition-timing-function: ease-out;
-    }
-  }
-
-  .app-breast-diagram__regions path:hover,
-  .app-breast-diagram__regions polygon:hover {
-    [data-debug] & {
-      fill: $state-highlight;
-    }
-  }
-
-  .app-breast-diagram__regions [data-active]:hover {
-    [data-debug] & {
-      fill: color.adjust(color.mix($state-active, $state-highlight, 75%), $lightness: 10%, $saturation: 25%);
-    }
   }
 }
 
 .app-breast-diagram__diagram {
   pointer-events: none;
+}
+
+.app-breast-diagram[data-debug] {
+  .app-breast-diagram__regions [data-active] {
+    fill: $state-active;
+  }
+}
+
+.app-breast-diagram[data-debug]:not([data-read-only]) {
+  .app-breast-diagram__regions path,
+  .app-breast-diagram__regions polygon {
+    // Slow fade out (default)
+    transition: fill 0.3s ease-in;
+  }
+
+  .app-breast-diagram__regions path:hover,
+  .app-breast-diagram__regions polygon:hover,
+  .app-breast-diagram__regions [data-active] {
+    // Fast fade in (on hover)
+    transition-duration: 0.05s;
+    transition-timing-function: ease-out;
+  }
+
+  .app-breast-diagram__regions path:hover,
+  .app-breast-diagram__regions polygon:hover {
+    fill: $state-highlight;
+  }
+
+  .app-breast-diagram__regions [data-active]:hover {
+    fill: color.adjust(color.mix($state-active, $state-highlight, 75%), $lightness: 10%, $saturation: 25%);
+  }
 }

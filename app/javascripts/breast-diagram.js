@@ -37,6 +37,8 @@ export class BreastDiagram extends ConfigurableComponent {
   constructor($root, config = {}) {
     super($root, config)
 
+    const { readOnly } = this.config
+
     const $input = this.$root.querySelector('input[name="features"]')
     if (!($input instanceof HTMLInputElement)) {
       throw new ElementError({
@@ -55,7 +57,6 @@ export class BreastDiagram extends ConfigurableComponent {
       ImageMap,
       {
         imageClass: 'app-breast-diagram__svg',
-        readOnly: $input.readOnly,
         selectors: [
           '.app-breast-diagram__regions path',
           '.app-breast-diagram__regions polygon'
@@ -73,7 +74,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
     this.$imageMap = $imageMaps[0]
 
-    if (!this.$imageMap.config.readOnly) {
+    if (!readOnly) {
       this.$imageMap.addEventListener('click', (event) => this.onClick(event))
       this.$imageMap.addEventListener('hover', (event) => this.log(event))
     }
@@ -288,7 +289,8 @@ export class BreastDiagram extends ConfigurableComponent {
    * @type {BreastDiagramConfig}
    */
   static defaults = Object.freeze({
-    debug: false
+    debug: false,
+    readOnly: false
   })
 
   /**
@@ -299,7 +301,8 @@ export class BreastDiagram extends ConfigurableComponent {
    */
   static schema = Object.freeze({
     properties: {
-      debug: { type: 'boolean' }
+      debug: { type: 'boolean' },
+      readOnly: { type: 'boolean' }
     }
   })
 }
@@ -360,6 +363,7 @@ function isValid(value) {
  * @see {@link BreastDiagram.defaults}
  * @typedef {object} BreastDiagramConfig
  * @property {boolean} debug - Whether to show debug information
+ * @property {boolean} readOnly - Whether image map is read only
  */
 
 /**
