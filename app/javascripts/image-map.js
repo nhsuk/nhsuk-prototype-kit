@@ -43,6 +43,7 @@ export class ImageMap extends ConfigurableComponent {
     this.$image = $image
 
     if (!readOnly) {
+      this.$image.addEventListener('mousemove', this.onMouseMove.bind(this))
       this.$image.addEventListener('click', this.onClick.bind(this))
     }
   }
@@ -190,6 +191,18 @@ export class ImageMap extends ConfigurableComponent {
     this.$root.dispatchEvent(
       new CustomEvent(`${ImageMap.moduleName}:${name}`, { detail })
     )
+  }
+
+  /**
+   * @param {MouseEvent} event
+   */
+  onMouseMove(event) {
+    const { clientX, clientY } = event
+
+    const point = this.getPoint(clientX, clientY)
+    const $path = this.getPath(point)
+
+    this.dispatchEvent('hover', { $path, point })
   }
 
   /**
