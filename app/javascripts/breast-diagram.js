@@ -72,13 +72,16 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     this.$imageMap = $imageMaps[0]
-    this.$imageMap.addEventListener('click', (event) => this.onClick(event))
-    this.$imageMap.addEventListener('hover', (event) => this.debug(event))
+
+    if (!this.$imageMap.config.readOnly) {
+      this.$imageMap.addEventListener('click', (event) => this.onClick(event))
+      this.$imageMap.addEventListener('hover', (event) => this.log(event))
+    }
 
     // Render diagram features
     this.read()
     this.render()
-    this.debug()
+    this.log()
   }
 
   /**
@@ -133,8 +136,13 @@ export class BreastDiagram extends ConfigurableComponent {
    *
    * @param {CustomEvent<ImageMapPayload>} [event] - Image map event
    */
-  debug(event) {
+  log(event) {
+    const { debug } = this.config
     const { point, $path } = event?.detail ?? {}
+
+    if (!debug) {
+      return
+    }
 
     /** @type {Element | null} */
     this.$debugX = this.$debugX ?? this.$root.querySelector('.app-js-image-x')
@@ -151,7 +159,14 @@ export class BreastDiagram extends ConfigurableComponent {
       this.$debugInput ?? this.$root.querySelector('.app-js-image-input')
 
     const { $debugX, $debugY, $debugRegion, $debugInput } = this
-    if (!$debugX || !$debugY || !$debugRegion || !$debugInput) {
+    if (!$debugInput) {
+      return
+    }
+
+    $debugInput.textContent =
+      this.values.map(({ id }) => id).join(', ') || 'N/A'
+
+    if (!$debugX || !$debugY || !$debugRegion) {
       return
     }
 
@@ -160,9 +175,6 @@ export class BreastDiagram extends ConfigurableComponent {
 
     $debugRegion.textContent =
       $path?.querySelector('title')?.textContent ?? 'N/A'
-
-    $debugInput.textContent =
-      this.values.map(({ id }) => id).join(', ') || 'N/A'
   }
 
   /**
@@ -183,7 +195,7 @@ export class BreastDiagram extends ConfigurableComponent {
       y: point.y
     })
 
-    this.debug(event)
+    this.log(event)
   }
 
   /**
@@ -221,7 +233,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
     this.render()
     this.write()
-    this.debug()
+    this.log()
   }
 
   /**

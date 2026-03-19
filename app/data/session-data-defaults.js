@@ -1,6 +1,8 @@
 /* eslint-disable no-loss-of-precision */
 
 export const sessionDataDefaults = {
+  debug: true,
+  readOnly: false,
   features: [
     {
       id: 'right_upper_outer',
@@ -32,6 +34,5 @@ export const sessionDataDefaults = {
       x: 741.8329467773438,
       y: 300.3309020996094
     }
-  ],
-  readOnly: false
+  ]
 }
