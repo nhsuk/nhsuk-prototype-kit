@@ -37,7 +37,8 @@
           href: "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
           text: "Reset data"
         }
-      ]
+      ],
+      html: '<p class="nhsuk-body-s">Built on <a href="https://prototype-kit.service-manual.nhs.uk/updates/">NHS prototype kit ' + prototypeKitVersion + '</a> and <a href="">NHS.UK frontend ' + nhsukFrontendVersion + '</a></p>'
     }
   }) }}
 {% endblock %}
