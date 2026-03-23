@@ -10,10 +10,13 @@ import {
 /**
  * Breast diagram component
  *
- * @augments {ConfigurableComponent<BreastDiagramConfig, HTMLFormElement>}
+ * @augments {ConfigurableComponent<BreastDiagramConfig>}
  */
 export class BreastDiagram extends ConfigurableComponent {
-  static elementType = HTMLFormElement
+  /**
+   * @type {HTMLFormElement}
+   */
+  $form
 
   /**
    * @type {HTMLInputElement}
@@ -39,7 +42,17 @@ export class BreastDiagram extends ConfigurableComponent {
 
     const { readOnly } = this.config
 
-    const $input = this.$root.querySelector('input[name="features"]')
+    const $form = this.$root.closest('form')
+    if (!($form instanceof HTMLFormElement)) {
+      throw new ElementError({
+        component: BreastDiagram,
+        element: $form,
+        expectedType: 'HTMLFormElement',
+        identifier: 'Breast diagram form (`<form>`)'
+      })
+    }
+
+    const $input = $form.querySelector('input[name="features"]')
     if (!($input instanceof HTMLInputElement)) {
       throw new ElementError({
         component: BreastDiagram,
@@ -49,6 +62,7 @@ export class BreastDiagram extends ConfigurableComponent {
       })
     }
 
+    this.$form = $form
     this.$input = $input
     this.markers = []
     this.values = []

@@ -7,6 +7,8 @@
 <!-- Extends the prototype kit template which in turn extends the NHS.UK frontend template -->
 {% extends "prototype-kit-template.njk" %}
 
+{% from "components/breast-diagram/macro.njk" import appBreastDiagram %}
+
 {% block head %}
   <!-- Add your custom CSS or Sass in /app/stylesheets/main.scss -->
   <link href="/stylesheets/application.css" rel="stylesheet">

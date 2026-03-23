@@ -5,249 +5,39 @@
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-u-reading-width">
 
-      <form {{- nhsukAttributes({
-        class: "app-breast-diagram",
-        method: "post",
-        "data-module": "app-breast-diagram",
-        "data-debug": {
-          value: "true" if data.debug else false,
-          optional: true
-        },
-        "data-read-only": {
-          value: "true" if data.readOnly else false,
-          optional: true
-        },
-        novalidate: {
-          value: true,
-          optional: true
-        }
-      }) -}}>
-        <input {{- nhsukAttributes({
-          name: "features",
-          value: {
-            value: data.features
-              if data.features | length and data.features is iterable
-              else [],
-            type: "array"
-          },
-          type: "hidden",
-          readonly: {
-            value: "true" if data.readOnly else false,
+        <form {{- nhsukAttributes({
+          method: "post",
+          novalidate: {
+            value: true,
             optional: true
           }
-        }) }}>
+        }) -}}>
+          <input {{- nhsukAttributes({
+            name: "features",
+            value: {
+              value: data.features
+                if data.features | length and data.features is iterable
+                else [],
+              type: "array"
+            },
+            type: "hidden",
+            readonly: {
+              value: "true" if data.readOnly else false,
+              optional: true
+            }
+          }) }}>
 
-        <div class="nhsuk-u-reading-width">
           <h1 class="nhsuk-heading-l">
             <span class="nhsuk-caption-l">Janet Williams</span>
             Record breast features
           </h1>
 
-          <p class="nhsuk-body">
-            Click the diagram to add notable features such as scars, moles, or warts that image readers may need to be aware of. These could be observed by you or reported by the participant.
-          </p>
-
-          <h2 class="nhsuk-heading-m">Where is the feature?</h2>
-
-          <div class="app-breast-diagram__side-labels">
-            <span>Right</span>
-            <span>Left</span>
-          </div>
-
-          <figure {{- nhsukAttributes({
-            class: "app-breast-diagram__image-map nhsuk-u-width-full",
-            "data-module": "app-image-map"
-          }) -}}>
-            <!-- Source: breast-features-diagram-1.0.svg -->
-            <!-- Processed by process-exported-svg.js - do not edit manually -->
-
-            <svg class="app-breast-diagram__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
-              <defs>
-                <clipPath id="clippath">
-                  <rect width="800" height="400" fill="none"/>
-                </clipPath>
-              </defs>
-              <g class="app-breast-diagram__regions">
-                <g class="app-breast-diagram__regions-left">
-                  <path class="left_medial_upper_abdominal_wall" d="M452.25,344.67c-19.02-15.94-34.28-38.03-47.06-66.66h-5.19v121.99h160.32v-23.33c-2.01.06-4.06.09-6.13.09-43.13,0-76.02-10.35-101.94-32.09Z" fill="none">
-                    <title>left medial upper abdominal wall</title>
-                  </path>
-                  <path class="left_medial_inframammary_fold" d="M420.59,234.02h-20.59v43.99h5.19c12.78,28.63,28.04,50.72,47.06,66.66l21.62-28.95c-28.17-21.35-44.51-52.66-53.28-81.7Z" fill="none">
-                    <title>left medial inframammary fold</title>
-                  </path>
-                  <path class="left_pre-sternal" d="M417.32,165.56V0h-17.32v234.02h20.59c-6.42-21.22-8.79-41.23-8.79-55.26l5.52-5.52v-7.68Z" fill="none">
-                    <title>pre-sternal</title>
-                  </path>
-                  <path class="left_medial_to_nipple" d="M417.32,173.24l-5.52,5.52c0,14.03,2.37,34.04,8.79,55.26l121.19-15.48h.01l2.41-2.42c-3.27-3.26-5.59-7.55-6.38-12.47-1.22-7.51,1.38-14.76,6.38-19.77l-2.42-2.42-124.46-15.9v7.68Z" fill="none">
-                    <title>left medial to nipple</title>
-                  </path>
-                  <polygon class="left_upper_inner" points="541.78 181.46 541.79 181.46 528.08 74.19 417.32 89.67 417.32 165.56 541.78 181.46" fill="none">
-                    <title>left upper inner</title>
-                  </polygon>
-                  <polygon class="left_medial_infraclavicular" points="528.08 74.19 551.38 70.93 545.46 0 417.32 0 417.32 89.67 528.08 74.19" fill="none">
-                    <title>left medial infraclavicular</title>
-                  </polygon>
-                  <path class="left_lower_inner" d="M473.87,315.72c10.09,7.64,21.7,14.01,35.03,18.54,5.95,2.03,11.79,3.63,17.48,4.87l15.41-120.59h-.01l-121.19,15.48c8.77,29.04,25.11,60.35,53.28,81.7Z" fill="none">
-                    <title>left lower inner</title>
-                  </path>
-                  <path class="left_central_inframammary_fold" d="M526.38,339.13c-5.69-1.24-11.53-2.84-17.48-4.87-13.33-4.53-24.94-10.9-35.03-18.54l-21.62,28.95c25.92,21.74,58.81,32.09,101.94,32.09,2.07,0,4.12-.03,6.13-.09,24.76-.69,45.46-5.58,62.76-13.58l-12.15-31.57s-.09.04-.13.06c-5.22,2.17-10.81,4.14-16.76,5.79-19.2,5.33-42.08,7.3-67.66,1.76Z" fill="none">
-                    <title>left central inframammary fold</title>
-                  </path>
-                  <path class="left_lower_central" d="M541.79,218.54l-15.41,120.59c25.58,5.54,48.46,3.57,67.66-1.76l-15.18-118.83-2.41-2.42c-3.27,3.27-7.56,5.59-12.48,6.39-7.51,1.22-14.77-1.39-19.77-6.39l-2.41,2.42Z" fill="none">
-                    <title>left lower central</title>
-                  </path>
-                  <path class="left_upper_central" d="M528.08,74.19l13.71,107.27h-.01l2.42,2.42c3.27-3.28,7.56-5.59,12.48-6.39,7.51-1.22,14.77,1.39,19.77,6.39l2.41-2.42,14.88-116.46-42.36,5.93-23.3,3.26Z" fill="none">
-                    <title>left upper central</title>
-                  </path>
-                  <path class="left_central" d="M544.2,183.88c-5,5.01-7.6,12.26-6.38,19.77.79,4.92,3.11,9.21,6.38,12.47,5,5,12.26,7.61,19.77,6.39,4.92-.8,9.21-3.12,12.48-6.39,4.99-5.01,7.59-12.26,6.38-19.77-.79-4.92-3.11-9.21-6.38-12.47-5-5-12.26-7.61-19.77-6.39-4.92.8-9.21,3.11-12.48,6.39Z" fill="none">
-                    <title>left central</title>
-                  </path>
-                  <path class="left_lateral_infraclavicular" d="M593.74,65l101.75-14.22c-7.55-18.41-17.68-35.48-29.94-50.78h-120.09l5.92,70.93,42.36-5.93Z" fill="none">
-                    <title>left lateral infraclavicular</title>
-                  </path>
-                  <path class="left_lateral_upper_abdominal_wall" d="M623.08,363.09c-17.3,8-38,12.89-62.76,13.58v23.33h239.68v-118.49l-95.73-43.87c-8.39,50.2-29.71,101.61-81.19,125.45Z" fill="none">
-                    <title>left lateral upper abdominal wall</title>
-                  </path>
-                  <path class="left_lateral_to_nipple" d="M578.86,181.46l-2.41,2.42c3.27,3.26,5.59,7.55,6.38,12.47,1.21,7.51-1.39,14.76-6.38,19.77l2.41,2.42h0l116.06,14.83c5.54-16.16,9.37-34.56,9.37-54.51,0-4.74.11-9.23.32-13.46l-125.75,16.06h0Z" fill="none">
-                    <title>left lateral to nipple</title>
-                  </path>
-                  <path class="left_upper_outer" d="M578.87,181.46l125.75-16.06c.77-15,2.88-26.92,6.3-36.5-.05-27.65-5.53-54.03-15.43-78.12l-101.75,14.22-14.88,116.46h0Z" fill="none">
-                    <title>left upper outer</title>
-                  </path>
-                  <path class="left_lower_outer" d="M578.87,218.54h0l15.18,118.83c5.95-1.65,11.54-3.62,16.76-5.79.04-.02.09-.04.13-.06,23-9.59,38.57-23.02,44.27-29.66.42-.5,24.86-26.41,39.1-66.67.21-.6.43-1.21.63-1.82l-116.06-14.83Z" fill="none">
-                    <title>left lower outer</title>
-                  </path>
-                  <path class="left_lateral_inframammary_fold" d="M610.93,331.52l12.15,31.57c51.48-23.84,72.8-75.25,81.19-125.45l-9.34-4.27c-.2.61-.42,1.22-.63,1.82-14.24,40.26-38.68,66.17-39.1,66.67-5.7,6.64-21.27,20.07-44.27,29.66Z" fill="none">
-                    <title>left lateral inframammary fold</title>
-                  </path>
-                  <path class="left_axilla" d="M695.49,50.78c9.9,24.09,15.38,50.47,15.43,78.12,10.06-28.15,31.46-35.99,63.28-41.84l25.8,38.39V0h-134.45c12.26,15.3,22.39,32.37,29.94,50.78Z" fill="none">
-                    <title>left axilla</title>
-                  </path>
-                  <path class="left_lateral_to_breast" d="M694.93,233.37l9.34,4.27,95.73,43.87V125.45l-25.8-38.39c-31.82,5.85-53.22,13.69-63.28,41.84-3.42,9.58-5.53,21.5-6.3,36.5-.21,4.23-.32,8.72-.32,13.46,0,19.95-3.83,38.35-9.37,54.51Z" fill="none">
-                    <title>left lateral to breast</title>
-                  </path>
-                </g>
-                <g class="app-breast-diagram__regions-right">
-                  <path class="right_medial_upper_abdominal_wall" d="M347.75,344.67c19.02-15.94,34.28-38.03,47.06-66.66h5.19v121.99h-160.32v-23.33c2.01.06,4.06.09,6.13.09,43.13,0,76.02-10.35,101.94-32.09Z" fill="none">
-                    <title>right medial upper abdominal wall</title>
-                  </path>
-                  <path class="right_medial_inframammary_fold" d="M379.41,234.02h20.59v43.99h-5.19c-12.78,28.63-28.04,50.72-47.06,66.66l-21.62-28.95c28.17-21.35,44.51-52.66,53.28-81.7Z" fill="none">
-                    <title>right medial inframammary fold</title>
-                  </path>
-                  <path class="right_pre-sternal" d="M382.68,165.56V0h17.32v234.02h-20.59c6.42-21.22,8.79-41.23,8.79-55.26l-5.52-5.52v-7.68Z" fill="none">
-                    <title>pre-sternal</title>
-                  </path>
-                  <path class="right_medial_to_nipple" d="M382.68,173.24l5.52,5.52c0,14.03-2.37,34.04-8.79,55.26l-121.19-15.48h-.01l-2.41-2.42c3.27-3.26,5.59-7.55,6.38-12.47,1.22-7.51-1.38-14.76-6.38-19.77l2.42-2.42,124.46-15.9v7.68Z" fill="none">
-                    <title>right medial to nipple</title>
-                  </path>
-                  <polygon class="right_upper_inner" points="258.22 181.46 258.21 181.46 271.92 74.19 382.68 89.67 382.68 165.56 258.22 181.46" fill="none">
-                    <title>right upper inner</title>
-                  </polygon>
-                  <polygon class="right_medial_infraclavicular" points="271.92 74.19 248.62 70.93 254.54 0 382.68 0 382.68 89.67 271.92 74.19" fill="none">
-                    <title>right medial infraclavicular</title>
-                  </polygon>
-                  <path class="right_lower_inner" d="M326.13,315.72c-10.09,7.64-21.7,14.01-35.03,18.54-5.95,2.03-11.79,3.63-17.48,4.87l-15.41-120.59h.01l121.19,15.48c-8.77,29.04-25.11,60.35-53.28,81.7Z" fill="none">
-                    <title>right lower inner</title>
-                  </path>
-                  <path class="right_central_inframammary_fold" d="M273.62,339.13c5.69-1.24,11.53-2.84,17.48-4.87,13.33-4.53,24.94-10.9,35.03-18.54l21.62,28.95c-25.92,21.74-58.81,32.09-101.94,32.09-2.07,0-4.12-.03-6.13-.09-24.76-.69-45.46-5.58-62.76-13.58l12.15-31.57s.09.04.13.06c5.22,2.17,10.81,4.14,16.76,5.79,19.2,5.33,42.08,7.3,67.66,1.76Z" fill="none">
-                    <title>right central inframammary fold</title>
-                  </path>
-                  <path class="right_lower_central" d="M258.21,218.54l15.41,120.59c-25.58,5.54-48.46,3.57-67.66-1.76l15.18-118.83,2.41-2.42c3.27,3.27,7.56,5.59,12.48,6.39,7.51,1.22,14.77-1.39,19.77-6.39l2.41,2.42Z" fill="none">
-                    <title>right lower central</title>
-                  </path>
-                  <path class="right_upper_central" d="M271.92,74.19l-13.71,107.27h.01l-2.42,2.42c-3.27-3.28-7.56-5.59-12.48-6.39-7.51-1.22-14.77,1.39-19.77,6.39l-2.41-2.42-14.88-116.46,42.36,5.93,23.3,3.26Z" fill="none">
-                    <title>right upper central</title>
-                  </path>
-                  <path class="right_central" d="M255.8,183.88c5,5.01,7.6,12.26,6.38,19.77-.79,4.92-3.11,9.21-6.38,12.47-5,5-12.26,7.61-19.77,6.39-4.92-.8-9.21-3.12-12.48-6.39-4.99-5.01-7.59-12.26-6.38-19.77.79-4.92,3.11-9.21,6.38-12.47,5-5,12.26-7.61,19.77-6.39,4.92.8,9.21,3.11,12.48,6.39Z" fill="none">
-                    <title>right central</title>
-                  </path>
-                  <path class="right_lateral_infraclavicular" d="M206.26,65l-101.75-14.22c7.55-18.41,17.68-35.48,29.94-50.78h120.09l-5.92,70.93-42.36-5.93Z" fill="none">
-                    <title>right lateral infraclavicular</title>
-                  </path>
-                  <path class="right_lateral_upper_abdominal_wall" d="M176.92,363.09c17.3,8,38,12.89,62.76,13.58v23.33H0v-118.49l95.73-43.87c8.39,50.2,29.71,101.61,81.19,125.45Z" fill="none">
-                    <title>right lateral upper abdominal wall</title>
-                  </path>
-                  <path class="right_lateral_to_nipple" d="M221.14,181.46l2.41,2.42c-3.27,3.26-5.59,7.55-6.38,12.47-1.21,7.51,1.39,14.76,6.38,19.77l-2.41,2.42h-.01l-116.06,14.83c-5.54-16.16-9.37-34.56-9.37-54.51,0-4.74-.11-9.23-.32-13.46l125.75,16.06h.01Z" fill="none">
-                    <title>right lateral to nipple</title>
-                  </path>
-                  <path class="right_upper_outer" d="M221.13,181.46l-125.75-16.06c-.77-15-2.88-26.92-6.3-36.5.05-27.65,5.53-54.03,15.43-78.12l101.75,14.22,14.88,116.46h-.01Z" fill="none">
-                    <title>right upper outer</title>
-                  </path>
-                  <path class="right_lower_outer" d="M221.13,218.54h.01l-15.18,118.83c-5.95-1.65-11.54-3.62-16.76-5.79-.04-.02-.09-.04-.13-.06-23-9.59-38.57-23.02-44.27-29.66-.42-.5-24.86-26.41-39.1-66.67-.21-.6-.43-1.21-.63-1.82l116.06-14.83Z" fill="none">
-                    <title>right lower outer</title>
-                  </path>
-                  <path class="right_lateral_inframammary_fold" d="M189.07,331.52l-12.15,31.57c-51.48-23.84-72.8-75.25-81.19-125.45l9.34-4.27c.2.61.42,1.22.63,1.82,14.24,40.26,38.68,66.17,39.1,66.67,5.7,6.64,21.27,20.07,44.27,29.66Z" fill="none">
-                    <title>right lateral inframammary fold</title>
-                  </path>
-                  <path class="right_axilla" d="M104.51,50.78c-9.9,24.09-15.38,50.47-15.43,78.12-10.06-28.15-31.46-35.99-63.28-41.84L0,125.45V0h134.45c-12.26,15.3-22.39,32.37-29.94,50.78Z" fill="none">
-                    <title>right axilla</title>
-                  </path>
-                  <path class="right_lateral_to_breast" d="M105.07,233.37l-9.34,4.27L0,281.51V125.45l25.8-38.39c31.82,5.85,53.22,13.69,63.28,41.84,3.42,9.58,5.53,21.5,6.3,36.5.21,4.23.32,8.72.32,13.46,0,19.95,3.83,38.35,9.37,54.51Z" fill="none">
-                    <title>right lateral to breast</title>
-                  </path>
-                </g>
-              </g>
-              <g class="app-breast-diagram__diagram" clip-path="url(#clippath)">
-                <path data-side="left" vector-effect="non-scaling-stroke" d="M808.48,138.1l-34.3-51.04c-45.7,8.4-69.9,20.9-69.9,91.8s-48.5,122.3-49.1,123c-12.1,14.1-68.7,58.8-146.3,32.4-77.7-26.4-97.1-115.4-97.1-155.5" fill="none" stroke="#212b32" stroke-linecap="round" stroke-width="3">
-                  <title>left breast outline</title>
-                </path>
-                <circle data-side="left" vector-effect="non-scaling-stroke" cx="560.31" cy="200" r="22.8" fill="none" stroke="#212b32" stroke-width="3">
-                  <title>left nipple outline</title>
-                </circle>
-                <path data-side="right" vector-effect="non-scaling-stroke" d="M-8.5,138.1l34.3-51.04c45.7,8.4,69.9,20.9,69.9,91.8s48.5,122.3,49.1,123c12.1,14.1,68.7,58.8,146.3,32.4,77.7-26.4,97.1-115.4,97.1-155.5" fill="none" stroke="#212b32" stroke-linecap="round" stroke-width="3">
-                  <title>right breast outline</title>
-                </path>
-                <circle data-side="right" vector-effect="non-scaling-stroke" cx="239.68" cy="200" r="22.8" fill="none" stroke="#212b32" stroke-width="3">
-                  <title>right nipple outline</title>
-                </circle>
-              </g>
-            </svg>
-          </figure>
-
-          {% if data.debug %}
-            {{ summaryList({
-              rows: [
-                {
-                  key: {
-                    text: "Image X"
-                  },
-                  value: {
-                    text: "N/A",
-                    classes: "app-js-image-x"
-                  }
-                } if not data.readOnly,
-                {
-                  key: {
-                    text: "Image Y"
-                  },
-                  value: {
-                    text: "N/A",
-                    classes: "app-js-image-y"
-                  }
-                } if not data.readOnly,
-                {
-                  key: {
-                    text: "Image region"
-                  },
-                  value: {
-                    text: "N/A",
-                    classes: "app-js-image-region"
-                  }
-                } if not data.readOnly,
-                {
-                  key: {
-                    text: "Input values"
-                  },
-                  value: {
-                    text: "N/A",
-                    classes: "app-js-image-input"
-                  },
-                  classes: "nhsuk-summary-list__row--no-border"
-                }
-              ]
-            }) }}
-          {% endif %}
+          {{ appBreastDiagram({
+            debug: data.debug,
+            readOnly: data.readOnly
+          }) }}
 
           <div class="nhsuk-button-group">
             {{ button({
@@ -260,9 +50,9 @@
               Save and stop appointment because it cannot proceed
             </a>
           </p>
-        </div>
-      </form>
+        </form>
 
+      </div>
     </div>
   </div>
 {% endblock %}
