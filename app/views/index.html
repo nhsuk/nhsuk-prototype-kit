@@ -34,11 +34,22 @@
             Record breast features
           </h1>
 
-          {{ appBreastDiagram({
+          {% call appBreastDiagram({
             debug: data.debug,
+            imageMap: {
+              attributes: {
+                "aria-describedby": "breast-diagram-description"
+              }
+            },
             readOnly: data.readOnly,
             version: 1
-          }) }}
+          }) %}
+            <p class="nhsuk-body" id="breast-diagram-description">
+              Click the diagram to add notable features such as scars, moles, or warts that image readers may need to be aware of. These could be observed by you or reported by the participant.
+            </p>
+
+            <h2 class="nhsuk-heading-m">Where is the feature?</h2>
+          {% endcall %}
 
           <div class="nhsuk-button-group">
             {{ button({

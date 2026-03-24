@@ -13,22 +13,26 @@
     optional: true
   }
 }) -}}>
-  <p class="nhsuk-body" id="breast-diagram-description">
-    Click the diagram to add notable features such as scars, moles, or warts that image readers may need to be aware of. These could be observed by you or reported by the participant.
-  </p>
-
-  <h2 class="nhsuk-heading-m">Where is the feature?</h2>
+  {% if caller or params.html %}
+    {{ caller() if caller else params.html | safe | trim | indent(4) }}
+  {% elif params.text %}
+    <p class="nhsuk-body">
+      {{ params.text | trim | indent(6) }}
+    </p>
+  {% endif %}
 
   <div class="app-breast-diagram__side-labels">
     <span>Right</span>
     <span>Left</span>
   </div>
 
-  <figure {{- nhsukAttributes({
-    class: "app-breast-diagram__image-map nhsuk-u-width-full",
-    "aria-describedby": "breast-diagram-description",
-    "data-module": "app-image-map"
-  }) -}}>
+  <figure
+    {{- nhsukAttributes({
+      class: "app-breast-diagram__image-map nhsuk-u-width-full",
+      "data-module": "app-image-map"
+    }) -}}
+
+    {{- nhsukAttributes(params.imageMap.attributes) -}}>
   {% if params.version == 1 %}
     {% include "components/breast-diagram/v1.svg" %}
   {% endif %}
