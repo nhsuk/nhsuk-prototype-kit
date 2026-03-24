@@ -258,12 +258,12 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {number} index - Image marker index
    */
   setMarker(point, index) {
-    const { $imageMap, $input, markers } = this
+    const { $imageMap, config, markers } = this
     const { width, height } = $imageMap
 
     if (!markers[index]) {
       markers[index] = new ImageMarker(null, {
-        href: $input.readOnly ? undefined : `#marker-${index + 1}`,
+        href: config.readOnly ? undefined : `#marker-${index + 1}`,
         width: width,
         height: height
       })
