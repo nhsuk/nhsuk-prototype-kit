@@ -12,6 +12,10 @@ $state-active: nhsuk-tint(nhsuk-colour("blue"), 50%);
   background: nhsuk-colour("white");
 
   @include nhsuk-responsive-margin(4, "bottom");
+
+  .app-breast-diagram:last-child & {
+    margin-bottom: 0;
+  }
 }
 
 .app-breast-diagram__side-labels {
