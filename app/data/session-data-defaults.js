@@ -2,7 +2,6 @@
 
 export const sessionDataDefaults = {
   debug: true,
-  readOnly: false,
   features: [
     {
       id: 'right_upper_outer',
