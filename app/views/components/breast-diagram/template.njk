@@ -38,47 +38,47 @@
   {% endif %}
   </figure>
 
-  {% if params.debug %}
-    {{ summaryList({
-      rows: [
-        {
-          key: {
-            text: "Image X"
-          },
-          value: {
-            text: "N/A",
-            classes: "app-js-image-x"
-          }
-        } if not params.readOnly,
-        {
-          key: {
-            text: "Image Y"
-          },
-          value: {
-            text: "N/A",
-            classes: "app-js-image-y"
-          }
-        } if not params.readOnly,
-        {
-          key: {
-            text: "Image region"
-          },
-          value: {
-            text: "N/A",
-            classes: "app-js-image-region"
-          }
-        } if not params.readOnly,
-        {
-          key: {
-            text: "Input values"
-          },
-          value: {
-            text: "N/A",
-            classes: "app-js-image-input"
-          },
-          classes: "nhsuk-summary-list__row--no-border"
+{% if params.debug %}
+  {{ summaryList({
+    rows: [
+      {
+        key: {
+          text: "Image X"
+        },
+        value: {
+          text: "N/A",
+          classes: "app-js-image-x"
         }
-      ]
-    }) }}
-  {% endif %}
+      } if not params.readOnly,
+      {
+        key: {
+          text: "Image Y"
+        },
+        value: {
+          text: "N/A",
+          classes: "app-js-image-y"
+        }
+      } if not params.readOnly,
+      {
+        key: {
+          text: "Image region"
+        },
+        value: {
+          text: "N/A",
+          classes: "app-js-image-region"
+        }
+      } if not params.readOnly,
+      {
+        key: {
+          text: "Input values"
+        },
+        value: {
+          text: "N/A",
+          classes: "app-js-image-input"
+        },
+        classes: "nhsuk-summary-list__row--no-border"
+      }
+    ]
+  }) | trim | indent(2) }}
+{% endif %}
 </div>
