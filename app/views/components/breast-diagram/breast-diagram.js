@@ -91,6 +91,7 @@ export class BreastDiagram extends ConfigurableComponent {
     if (!readOnly) {
       this.$imageMap.addEventListener('click', (event) => this.onClick(event))
       this.$imageMap.addEventListener('hover', (event) => this.log(event))
+      window.addEventListener('hashchange', () => this.onHashChange(), true)
     }
 
     // Render diagram features
@@ -190,6 +191,19 @@ export class BreastDiagram extends ConfigurableComponent {
 
     $debugRegion.textContent =
       $path?.querySelector('title')?.textContent ?? 'N/A'
+  }
+
+  /**
+   * Handle image map hash change
+   */
+  onHashChange() {
+    const { markers } = this
+    const { hash } = window.location
+
+    // Click associated marker
+    markers
+      .find(({ $root }) => $root.getAttribute('href') === hash)
+      ?.$root.click()
   }
 
   /**
