@@ -1,7 +1,9 @@
 {% extends "layout.html" %}
 
 {% set pageName = "SVG test" %}
-{% set count = data.features | length if data.features is iterable else 0 %}
+
+{% set features = data.features if data.features | length and data.features is iterable else [] %}
+{% set count = features | length %}
 
 {% block content %}
   <div class="nhsuk-grid-row">
@@ -18,9 +20,7 @@
           <input {{- nhsukAttributes({
             name: "features",
             value: {
-              value: data.features
-                if data.features | length and data.features is iterable
-                else [],
+              value: features,
               type: "array"
             },
             type: "hidden",
@@ -37,6 +37,7 @@
 
           {% call appBreastDiagram({
             debug: data.debug,
+            features: features,
             imageMap: {
               attributes: {
                 "aria-describedby": "breast-diagram-description"
@@ -73,6 +74,7 @@
             {% if count %}
               {{ appBreastDiagram({
                 debug: data.debug,
+                features: features,
                 text: count ~ " breast " ~ ("feature" if count == 1 else "features") ~ " recorded",
                 readOnly: true,
                 version: 1

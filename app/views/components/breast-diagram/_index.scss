@@ -4,6 +4,14 @@
 $breast-diagram-highlight-colour: nhsuk-tint(nhsuk-colour("yellow"), 50%);
 $breast-diagram-active-colour: nhsuk-tint(nhsuk-colour("blue"), 50%);
 
+.app-breast-diagram {
+  @include nhsuk-responsive-margin(4, "bottom");
+}
+
+.app-breast-diagram[data-read-only] {
+  margin-bottom: 0;
+}
+
 .app-breast-diagram__image-map {
   position: relative;
   margin: 0;
@@ -12,10 +20,6 @@ $breast-diagram-active-colour: nhsuk-tint(nhsuk-colour("blue"), 50%);
   background: nhsuk-colour("white");
 
   @include nhsuk-responsive-margin(4, "bottom");
-
-  .app-breast-diagram:last-child & {
-    margin-bottom: 0;
-  }
 }
 
 .app-breast-diagram__side-labels {

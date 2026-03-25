@@ -1,5 +1,6 @@
-{% from "nhsuk/components/summary-list/macro.njk" import summaryList -%}
-{% from "nhsuk/macros/attributes.njk" import nhsukAttributes -%}
+{% from "nhsuk/components/summary-list/macro.njk" import summaryList %}
+{% from "nhsuk/macros/attributes.njk" import nhsukAttributes %}
+{% from "components/breast-features/macro.njk" import appBreastFeatures %}
 
 <div {{- nhsukAttributes({
   class: "app-breast-diagram",
@@ -37,6 +38,13 @@
     {% include "components/breast-diagram/v1.svg" %}
   {% endif %}
   </figure>
+
+{% if params.features | length %}
+  {{ appBreastFeatures({
+    items: params.features,
+    readOnly: params.readOnly
+  }) | trim | indent(2) }}
+{% endif %}
 
 {% if params.debug %}
   {{ summaryList({
