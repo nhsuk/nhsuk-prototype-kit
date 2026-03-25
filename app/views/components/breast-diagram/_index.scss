@@ -1,8 +1,8 @@
 @use "sass:color";
 @use "../../../stylesheets/vendor/nhsuk-frontend" as *;
 
-$state-highlight: nhsuk-tint(nhsuk-colour("yellow"), 50%);
-$state-active: nhsuk-tint(nhsuk-colour("blue"), 50%);
+$breast-diagram-highlight-colour: nhsuk-tint(nhsuk-colour("yellow"), 50%);
+$breast-diagram-active-colour: nhsuk-tint(nhsuk-colour("blue"), 50%);
 
 .app-breast-diagram__image-map {
   position: relative;
@@ -42,7 +42,7 @@ $state-active: nhsuk-tint(nhsuk-colour("blue"), 50%);
 
 .app-breast-diagram[data-debug] {
   .app-breast-diagram__regions [data-active] {
-    fill: $state-active;
+    fill: $breast-diagram-active-colour;
   }
 }
 
@@ -63,10 +63,14 @@ $state-active: nhsuk-tint(nhsuk-colour("blue"), 50%);
 
   .app-breast-diagram__regions path:hover,
   .app-breast-diagram__regions polygon:hover {
-    fill: $state-highlight;
+    fill: $breast-diagram-highlight-colour;
   }
 
   .app-breast-diagram__regions [data-active]:hover {
-    fill: color.adjust(color.mix($state-active, $state-highlight, 75%), $lightness: 10%, $saturation: 25%);
+    fill: color.adjust(
+      color.mix($breast-diagram-active-colour, $breast-diagram-highlight-colour, 75%),
+      $lightness: 10%,
+      $saturation: 25%
+    );
   }
 }
