@@ -1,0 +1,32 @@
+{% from "nhsuk/macros/attributes.njk" import nhsukAttributes -%}
+
+{%- set element = "a" if params.href else "div" -%}
+
+<{{ element }}
+  {{- nhsukAttributes({
+    class: "app-image-marker",
+    id: {
+      value: params.id,
+      optional: true
+    },
+    href: {
+      value: params.href if params.href else false,
+      optional: true
+    },
+    "data-module": "app-image-marker"
+  }) -}}
+
+  {{- nhsukAttributes(params.attributes) -}}>
+{%- if not params.label %}
+  {{- params.text -}}
+{% else %}
+
+  <span class="app-image-marker__number">
+    {{- params.text -}}
+  </span>
+  <span class="nhsuk-u-visually-hidden">:</span>
+  <span class="app-image-marker__label">
+    {{- params.label -}}
+  </span>
+{% endif %}
+</{{ element }}>

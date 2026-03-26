@@ -18,7 +18,7 @@ export class ImageMarker extends ConfigurableComponent {
     this.$root.setAttribute('data-module', ImageMarker.moduleName)
     this.$root.classList.add(ImageMarker.moduleName)
 
-    if (config.href) {
+    if (config.href && this.$root instanceof HTMLAnchorElement) {
       this.$root.setAttribute('href', config.href)
     }
   }
