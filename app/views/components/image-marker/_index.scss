@@ -1,4 +1,4 @@
-@use "../../../stylesheets/vendor/nhsuk-frontend" as *;
+@use "../../../stylesheets/vendor/nhsuk-frontend/base" as *;
 
 .app-image-marker {
   @include nhsuk-font(19, $weight: bold);

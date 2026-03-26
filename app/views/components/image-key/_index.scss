@@ -1,5 +1,5 @@
 @use "sass:color";
-@use "../../../stylesheets/vendor/nhsuk-frontend" as *;
+@use "../../../stylesheets/vendor/nhsuk-frontend/base" as *;
 
 // Use NHS.UK frontend task list hover colour
 $image-key-hover-colour: color.adjust(nhsuk-colour("grey-5"), $lightness: -6%);
