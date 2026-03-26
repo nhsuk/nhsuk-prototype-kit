@@ -26,6 +26,7 @@ export class ImageKey extends Component {
     }
 
     this.$button = $button
+    this.$button.addEventListener('click', (event) => this.onReset(event))
 
     const $list = this.$root.querySelector('.app-image-key__items')
     if (!($list instanceof HTMLUListElement)) {
@@ -104,10 +105,52 @@ export class ImageKey extends Component {
   }
 
   /**
+   * Add event listener for image key
+   *
+   * @param {ImageKeyEvent} name - Event name, e.g. 'reset'
+   * @param {ImageKeyListener} listener - Image key listener
+   */
+  addEventListener(name, listener) {
+    this.$root.addEventListener(
+      `${ImageKey.moduleName}:${name}`,
+      /** @type {EventListener} */ (listener)
+    )
+  }
+
+  /**
+   * Dispatch event for image key
+   *
+   * @param {ImageKeyEvent} name - Event name, e.g. 'reset'
+   */
+  dispatchEvent(name) {
+    this.$root.dispatchEvent(new CustomEvent(`${ImageKey.moduleName}:${name}`))
+  }
+
+  /**
+   * @param {MouseEvent} event
+   */
+  onReset(event) {
+    event.preventDefault()
+    this.dispatchEvent('reset')
+  }
+
+  /**
    * Name for the component used when initialising using data-module attributes
    */
   static moduleName = 'app-image-key'
 }
+
+/**
+ * @typedef {'reset'} ImageKeyEvent - Image key event
+ */
+
+/**
+ * Image key listener
+ *
+ * @callback ImageKeyListener
+ * @param {CustomEvent} event - Image key event
+ * @returns {void}
+ */
 
 /**
  * @import { BreastFeature } from '../breast-diagram/breast-diagram.js'

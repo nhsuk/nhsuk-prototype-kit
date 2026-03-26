@@ -120,12 +120,9 @@ export class BreastDiagram extends ConfigurableComponent {
 
       this.imageKey = imageKeys[0]
 
-      this.imageKey.$button.addEventListener('click', (event) =>
-        this.reset(event)
-      )
-
       this.imageMap.addEventListener('click', (event) => this.onClick(event))
       this.imageMap.addEventListener('hover', (event) => this.log(event))
+      this.imageKey.addEventListener('reset', (event) => this.reset(event))
 
       window.addEventListener('hashchange', () => this.onHashChange(), true)
     }
@@ -199,7 +196,7 @@ export class BreastDiagram extends ConfigurableComponent {
   /**
    * Reset diagram values
    *
-   * @param {MouseEvent} event - Click event
+   * @param {CustomEvent} event - Image key event
    */
   reset(event) {
     event.preventDefault()
