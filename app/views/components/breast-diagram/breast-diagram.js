@@ -1,3 +1,4 @@
+import { ImageKey } from '../image-key/image-key.js'
 import { ImageMap } from '../image-map/image-map.js'
 import { ImageMarker } from '../image-marker/image-marker.js'
 import {
@@ -106,8 +107,26 @@ export class BreastDiagram extends ConfigurableComponent {
     this.imageMap = imageMaps[0]
 
     if (!readOnly) {
+      const imageKeys = createAll(ImageKey, undefined, {
+        scope: this.$root
+      })
+
+      if (!imageKeys.length || !(imageKeys[0].$root instanceof HTMLElement)) {
+        throw new ElementError({
+          component: BreastDiagram,
+          identifier: `Image key (\`[data-module="${ImageKey.moduleName}"]\`)`
+        })
+      }
+
+      this.imageKey = imageKeys[0]
+
+      this.imageKey.$button.addEventListener('click', (event) =>
+        this.reset(event)
+      )
+
       this.imageMap.addEventListener('click', (event) => this.onClick(event))
       this.imageMap.addEventListener('hover', (event) => this.log(event))
+
       window.addEventListener('hashchange', () => this.onHashChange(), true)
     }
 
@@ -138,6 +157,9 @@ export class BreastDiagram extends ConfigurableComponent {
       this.setMarker(point, index)
     })
 
+    // Update key (optional if read only)
+    this.imageKey?.render()
+
     // Remove excess markers
     for (const marker of markers.splice(values.length)) {
       marker.$root.remove()
@@ -153,6 +175,11 @@ export class BreastDiagram extends ConfigurableComponent {
       this.values = /** @type {BreastFeature[]} */ (
         JSON.parse(decodeURIComponent(this.$input.value), getArrayValue) ?? []
       )
+
+      // Set key values (optional if read only)
+      if (this.imageKey) {
+        this.imageKey.values = this.values
+      }
     } catch {
       throw new ElementError({
         component: BreastDiagram,
@@ -166,6 +193,19 @@ export class BreastDiagram extends ConfigurableComponent {
    */
   write() {
     this.$input.value = JSON.stringify(this.values)
+    this.log()
+  }
+
+  /**
+   * Reset diagram values
+   *
+   * @param {MouseEvent} event - Click event
+   */
+  reset(event) {
+    event.preventDefault()
+    this.values.length = 0
+    this.render()
+    this.write()
   }
 
   /**
@@ -283,7 +323,6 @@ export class BreastDiagram extends ConfigurableComponent {
 
     this.render()
     this.write()
-    this.log()
   }
 
   /**

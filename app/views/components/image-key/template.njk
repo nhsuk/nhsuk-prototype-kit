@@ -17,11 +17,37 @@
   "data-read-only": {
     value: "true" if params.readOnly else false,
     optional: true
+  },
+  hidden: {
+    value: true if not params.items | length else false,
+    optional: true
   }
 }) -}}>
   <div class="app-image-key__header">
     <h3 class="app-image-key__title">Key</h3>
+  {% if not params.readOnly %}
+    {{ button({
+      text: "Clear all features",
+      classes: "nhsuk-button--warning nhsuk-button--small app-image-key__button nhsuk-u-margin-bottom-0",
+      attributes: {
+        hidden: {
+          value: true,
+          optional: true
+        }
+      }
+    }) | trim | indent(4) }}
+  {% endif %}
   </div>
+
+  <template class="app-js-template-image-key-item">
+    {{ appImageKeyItem({
+      index: "?",
+      feature: "Pending",
+      region: "Unknown",
+      href: "#" if not params.readOnly
+    }) | trim | indent(4) }}
+  </template>
+
   <ul class="app-image-key__items">
   {% for item in params.items %}
     {{ appImageKeyItem({

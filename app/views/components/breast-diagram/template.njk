@@ -44,12 +44,10 @@
     {% endif %}
   {% endcall %}
 
-{% if params.features | length %}
   {{ appImageKey({
     items: params.features,
     readOnly: params.readOnly
   }) | trim | indent(2) }}
-{% endif %}
 
 {% if params.debug %}
   {% if not params.readOnly %}

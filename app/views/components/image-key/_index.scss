@@ -12,6 +12,10 @@ $image-key-hover-colour: color.adjust(nhsuk-colour("grey-5"), $lightness: -6%);
   }
 }
 
+.app-image-key[hidden] {
+  display: none;
+}
+
 .app-image-key__header {
   display: flex;
   align-items: center;
