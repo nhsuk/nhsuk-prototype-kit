@@ -2,6 +2,7 @@
 {% from "nhsuk/components/summary-list/macro.njk" import summaryList %}
 {% from "nhsuk/macros/attributes.njk" import nhsukAttributes %}
 {% from "components/image-key/macro.njk" import appImageKey %}
+{% from "components/image-map/macro.njk" import appImageMap %}
 
 <div {{- nhsukAttributes({
   class: "app-breast-diagram",
@@ -28,17 +29,11 @@
     <span>Left</span>
   </div>
 
-  <figure
-    {{- nhsukAttributes({
-      class: "app-breast-diagram__image-map nhsuk-u-width-full",
-      "data-module": "app-image-map"
-    }) -}}
-
-    {{- nhsukAttributes(params.imageMap.attributes) -}}>
-  {% if params.version == 1 %}
-    {% include "components/breast-diagram/v1.svg" %}
-  {% endif %}
-  </figure>
+  {% call appImageMap(params.imageMap) %}
+    {% if params.version == 1 %}
+      {% include "components/breast-diagram/v1.svg" %}
+    {% endif %}
+  {% endcall %}
 
 {% if params.features | length %}
   {{ appImageKey({

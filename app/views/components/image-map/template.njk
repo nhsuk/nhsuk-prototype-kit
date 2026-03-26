@@ -1,0 +1,20 @@
+{% from "nhsuk/macros/attributes.njk" import nhsukAttributes %}
+
+{#- Set classes for this component #}
+{%- set classNames = "app-image-map" -%}
+
+{%- if params.classes %}
+  {% set classNames = classNames ~ " " ~ params.classes %}
+{% endif -%}
+
+<figure
+  {{- nhsukAttributes({
+    class: classNames,
+    "data-module": "app-image-map"
+  }) -}}
+
+  {{- nhsukAttributes(params.attributes) -}}>
+{% if caller or params.html %}
+  {{ caller() if caller else params.html | safe | trim | indent(2) }}
+{% endif %}
+</figure>
