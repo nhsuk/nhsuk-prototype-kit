@@ -84,7 +84,7 @@ export class BreastDiagram extends ConfigurableComponent {
     this.markers = []
     this.values = []
 
-    const $imageMaps = createAll(
+    const imageMaps = createAll(
       ImageMap,
       {
         imageClass: 'app-breast-diagram__svg',
@@ -96,18 +96,18 @@ export class BreastDiagram extends ConfigurableComponent {
       { scope: this.$root }
     )
 
-    if (!$imageMaps.length || !($imageMaps[0].$root instanceof HTMLElement)) {
+    if (!imageMaps.length || !(imageMaps[0].$root instanceof HTMLElement)) {
       throw new ElementError({
         component: BreastDiagram,
         identifier: `Image map (\`[data-module="${ImageMap.moduleName}"]\`)`
       })
     }
 
-    this.$imageMap = $imageMaps[0]
+    this.imageMap = imageMaps[0]
 
     if (!readOnly) {
-      this.$imageMap.addEventListener('click', (event) => this.onClick(event))
-      this.$imageMap.addEventListener('hover', (event) => this.log(event))
+      this.imageMap.addEventListener('click', (event) => this.onClick(event))
+      this.imageMap.addEventListener('hover', (event) => this.log(event))
       window.addEventListener('hashchange', () => this.onHashChange(), true)
     }
 
@@ -121,14 +121,14 @@ export class BreastDiagram extends ConfigurableComponent {
    * Render diagram features
    */
   render() {
-    const { $imageMap, markers, values } = this
+    const { imageMap, markers, values } = this
 
     values.forEach(({ region_id, x, y }, index) => {
-      const $path = $imageMap.getPathById(region_id)
-      const point = $imageMap.createPoint(x, y, region_id)
+      const $path = imageMap.getPathById(region_id)
+      const point = imageMap.createPoint(x, y, region_id)
 
       // Render active region
-      $imageMap.setState('active', $path)
+      imageMap.setState('active', $path)
 
       // Set marker position
       this.setMarker(point, index)
@@ -261,7 +261,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {Pick<BreastFeature, 'x' | 'y'>} feature
    */
   remove(feature) {
-    const { $imageMap, values } = this
+    const { imageMap, values } = this
 
     const entry = values.find(({ x, y }) => {
       return x === feature.x && y === feature.y
@@ -272,9 +272,9 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     const index = values.indexOf(entry)
-    const $path = $imageMap.getPathById(entry.region_id)
+    const $path = imageMap.getPathById(entry.region_id)
 
-    $imageMap.setState('active', $path, false)
+    imageMap.setState('active', $path, false)
     values.splice(index, 1)
 
     this.render()
@@ -289,8 +289,8 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {number} index - Image marker index
    */
   setMarker(point, index) {
-    const { $imageMap, $imageMarker, config, markers } = this
-    const { width, height } = $imageMap
+    const { $imageMarker, imageMap, config, markers } = this
+    const { width, height } = imageMap
 
     if (!markers[index]) {
       const { firstElementChild: $root } = document.importNode(
@@ -320,7 +320,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
     // Append new markers only
     if (!marker.$root.parentElement) {
-      $imageMap.$root.appendChild(marker.$root)
+      imageMap.$root.appendChild(marker.$root)
     }
 
     return marker
