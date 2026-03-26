@@ -2,6 +2,7 @@
 {% from "nhsuk/components/tag/macro.njk" import tag %}
 {% from "nhsuk/macros/attributes.njk" import nhsukAttributes %}
 {% from "components/image-marker/macro.njk" import appImageMarker %}
+{% from "components/image-key-item/macro.njk" import appImageKeyItem %}
 
 {#- Set classes for this component #}
 {%- set classNames = "app-image-key" -%}
@@ -23,18 +24,12 @@
   </div>
   <ul class="app-image-key__items">
   {% for item in params.items %}
-    <li class="app-image-key__item">
-      {{ appImageMarker({
-        text: loop.index,
-        label: item.id | replace("_", " ") | capitalize,
-        href: undefined if params.readOnly else "#marker-" ~ loop.index
-      }) | trim | indent(6) }}
-
-      {{ tag({
-        text: item.region_id | replace("_", " ") | capitalize,
-        colour: "white"
-      }) | trim | indent(6) }}
-    </li>
+    {{ appImageKeyItem({
+      index: loop.index,
+      feature: item.id | replace("_", " ") | capitalize,
+      region: item.region_id | replace("_", " ") | capitalize,
+      href: undefined if params.readOnly else "#marker-" ~ loop.index
+    }) | trim | indent(4) }}
   {% endfor %}
   </ul>
 </div>

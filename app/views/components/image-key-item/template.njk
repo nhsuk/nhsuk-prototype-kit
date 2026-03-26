@@ -1,0 +1,16 @@
+{% from "nhsuk/components/tag/macro.njk" import tag %}
+{% from "components/image-marker/macro.njk" import appImageMarker %}
+
+<li class="app-image-key__item">
+  {{ appImageMarker({
+    text: params.index,
+    label: params.feature,
+    href: params.href
+  }) | trim | indent(2) }}
+
+  {{ tag({
+    text: params.region,
+    classes: "app-image-key__region",
+    colour: "white"
+  }) | trim | indent(2) }}
+</li>
