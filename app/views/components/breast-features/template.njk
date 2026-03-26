@@ -1,0 +1,40 @@
+{% from "nhsuk/components/button/macro.njk" import button %}
+{% from "nhsuk/components/tag/macro.njk" import tag %}
+{% from "nhsuk/macros/attributes.njk" import nhsukAttributes %}
+{% from "components/image-marker/macro.njk" import appImageMarker %}
+
+{#- Set classes for this component #}
+{%- set classNames = "app-breast-features" -%}
+
+{%- if params.classes %}
+  {% set classNames = classNames ~ " " ~ params.classes %}
+{% endif %}
+
+<div {{- nhsukAttributes({
+  class: classNames,
+  "data-module": "app-breast-features",
+  "data-read-only": {
+    value: "true" if params.readOnly else false,
+    optional: true
+  }
+}) -}}>
+  <div class="app-breast-features__header">
+    <h3 class="app-breast-features__title">Key</h3>
+  </div>
+  <ul class="app-breast-features__items">
+  {% for item in params.items %}
+    <li class="app-breast-features__item">
+      {{ appImageMarker({
+        text: loop.index,
+        label: item.name,
+        href: undefined if params.readOnly else "#marker-" ~ loop.index
+      }) | trim | indent(6) }}
+
+      {{ tag({
+        text: item.id,
+        colour: "white"
+      }) | trim | indent(6) }}
+    </li>
+  {% endfor %}
+  </ul>
+</div>
