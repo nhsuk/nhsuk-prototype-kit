@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // Import NHS.UK frontend library
 @use "vendor/nhsuk-frontend" as *;
 @forward "vendor/nhsuk-frontend";
@@ -7,3 +9,36 @@
 @forward "../views/components/image-key";
 @forward "../views/components/image-map";
 @forward "../views/components/image-marker";
+
+.app-button--link {
+  display: inline;
+
+  align-items: normal;
+
+  padding: 0;
+
+  border: none;
+
+  background-color: transparent;
+
+  font-size: inherit;
+  text-align: left;
+  text-decoration: underline;
+
+  cursor: pointer;
+
+  appearance: none;
+
+  @include nhsuk-link-style-default;
+}
+
+.app-link--error,
+.app-link--warning {
+  color: $nhsuk-error-colour;
+  @include nhsuk-link-style(
+    $link-colour: $nhsuk-error-colour,
+    $link-visited-colour: $nhsuk-error-colour,
+    $link-hover-colour: color.scale($nhsuk-error-colour, $lightness: -30%),
+    $link-active-colour: $nhsuk-error-colour
+  );
+}
