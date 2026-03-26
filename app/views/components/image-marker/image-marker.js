@@ -88,5 +88,5 @@ export class ImageMarker extends ConfigurableComponent {
  */
 
 /**
- * @import { Schema } from 'nhsuk-frontend/dist/nhsuk/common/configuration/index.mjs'
+ * @import { Schema } from 'nhsuk-frontend'
  */
