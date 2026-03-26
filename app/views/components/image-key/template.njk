@@ -26,12 +26,12 @@
     <li class="app-image-key__item">
       {{ appImageMarker({
         text: loop.index,
-        label: item.name,
+        label: item.id,
         href: undefined if params.readOnly else "#marker-" ~ loop.index
       }) | trim | indent(6) }}
 
       {{ tag({
-        text: item.id,
+        text: item.region_id,
         colour: "white"
       }) | trim | indent(6) }}
     </li>
