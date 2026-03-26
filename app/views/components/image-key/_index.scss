@@ -2,9 +2,9 @@
 @use "../../../stylesheets/vendor/nhsuk-frontend" as *;
 
 // Use NHS.UK frontend task list hover colour
-$breast-features-hover-colour: color.adjust(nhsuk-colour("grey-5"), $lightness: -6%);
+$image-key-hover-colour: color.adjust(nhsuk-colour("grey-5"), $lightness: -6%);
 
-.app-breast-features {
+.app-image-key {
   @include nhsuk-responsive-margin(4, "bottom");
 
   &:last-child {
@@ -12,29 +12,29 @@ $breast-features-hover-colour: color.adjust(nhsuk-colour("grey-5"), $lightness: 
   }
 }
 
-.app-breast-features__header {
+.app-image-key__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: nhsuk-spacing(3);
 }
 
-.app-breast-features__title {
+.app-image-key__title {
   margin-bottom: 0;
   @include nhsuk-font-size(19);
 }
 
-.app-breast-features__button[hidden] {
+.app-image-key__button[hidden] {
   display: none;
 }
 
-.app-breast-features__items {
+.app-image-key__items {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.app-breast-features__item {
+.app-image-key__item {
   display: flex;
 
   position: relative;
@@ -54,10 +54,10 @@ $breast-features-hover-colour: color.adjust(nhsuk-colour("grey-5"), $lightness: 
 
   &:hover,
   &:has(a:hover) {
-    background-color: $breast-features-hover-colour;
+    background-color: $image-key-hover-colour;
   }
 
-  .app-breast-features[data-read-only] &:hover {
+  .app-image-key[data-read-only] &:hover {
     background-color: transparent;
   }
 
@@ -74,7 +74,7 @@ $breast-features-hover-colour: color.adjust(nhsuk-colour("grey-5"), $lightness: 
   }
 }
 
-.app-breast-features__item .nhsuk-tag {
+.app-image-key__item .nhsuk-tag {
   max-width: 50%;
   text-align: right;
 }

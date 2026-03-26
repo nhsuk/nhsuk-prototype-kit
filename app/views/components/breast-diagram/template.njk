@@ -1,6 +1,6 @@
 {% from "nhsuk/components/summary-list/macro.njk" import summaryList %}
 {% from "nhsuk/macros/attributes.njk" import nhsukAttributes %}
-{% from "components/breast-features/macro.njk" import appBreastFeatures %}
+{% from "components/image-key/macro.njk" import appImageKey %}
 
 <div {{- nhsukAttributes({
   class: "app-breast-diagram",
@@ -40,7 +40,7 @@
   </figure>
 
 {% if params.features | length %}
-  {{ appBreastFeatures({
+  {{ appImageKey({
     items: params.features,
     readOnly: params.readOnly
   }) | trim | indent(2) }}

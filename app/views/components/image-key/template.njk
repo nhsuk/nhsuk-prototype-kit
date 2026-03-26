@@ -4,7 +4,7 @@
 {% from "components/image-marker/macro.njk" import appImageMarker %}
 
 {#- Set classes for this component #}
-{%- set classNames = "app-breast-features" -%}
+{%- set classNames = "app-image-key" -%}
 
 {%- if params.classes %}
   {% set classNames = classNames ~ " " ~ params.classes %}
@@ -12,18 +12,18 @@
 
 <div {{- nhsukAttributes({
   class: classNames,
-  "data-module": "app-breast-features",
+  "data-module": "app-image-key",
   "data-read-only": {
     value: "true" if params.readOnly else false,
     optional: true
   }
 }) -}}>
-  <div class="app-breast-features__header">
-    <h3 class="app-breast-features__title">Key</h3>
+  <div class="app-image-key__header">
+    <h3 class="app-image-key__title">Key</h3>
   </div>
-  <ul class="app-breast-features__items">
+  <ul class="app-image-key__items">
   {% for item in params.items %}
-    <li class="app-breast-features__item">
+    <li class="app-image-key__item">
       {{ appImageMarker({
         text: loop.index,
         label: item.name,
