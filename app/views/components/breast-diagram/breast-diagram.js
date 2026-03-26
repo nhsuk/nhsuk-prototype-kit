@@ -24,6 +24,11 @@ export class BreastDiagram extends ConfigurableComponent {
   $input
 
   /**
+   * @type {HTMLTemplateElement}
+   */
+  $imageMarker
+
+  /**
    * @type {ImageMarker[]}
    */
   markers
@@ -62,8 +67,20 @@ export class BreastDiagram extends ConfigurableComponent {
       })
     }
 
+    const $imageMarker = this.$root.querySelector(
+      'template.app-js-template-image-marker'
+    )
+
+    if (!($imageMarker instanceof HTMLTemplateElement)) {
+      throw new ElementError({
+        component: BreastDiagram,
+        identifier: 'Breast diagram template (`<template>`)'
+      })
+    }
+
     this.$form = $form
     this.$input = $input
+    this.$imageMarker = $imageMarker
     this.markers = []
     this.values = []
 
@@ -272,11 +289,16 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {number} index - Image marker index
    */
   setMarker(point, index) {
-    const { $imageMap, config, markers } = this
+    const { $imageMap, $imageMarker, config, markers } = this
     const { width, height } = $imageMap
 
     if (!markers[index]) {
-      markers[index] = new ImageMarker(null, {
+      const { firstElementChild: $root } = document.importNode(
+        $imageMarker.content,
+        true
+      )
+
+      markers[index] = new ImageMarker($root, {
         href: config.readOnly ? undefined : `#marker-${index + 1}`,
         width: width,
         height: height

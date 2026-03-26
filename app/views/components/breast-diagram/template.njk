@@ -3,6 +3,7 @@
 {% from "nhsuk/macros/attributes.njk" import nhsukAttributes %}
 {% from "components/image-key/macro.njk" import appImageKey %}
 {% from "components/image-map/macro.njk" import appImageMap %}
+{% from "components/image-marker/macro.njk" import appImageMarker %}
 
 <div {{- nhsukAttributes({
   class: "app-breast-diagram",
@@ -28,6 +29,13 @@
     <span>Right</span>
     <span>Left</span>
   </div>
+
+  <template class="app-js-template-image-marker">
+    {{ appImageMarker({
+      text: "?",
+      href: "#" if not params.readOnly
+    }) | trim | indent(4) }}
+  </template>
 
   {% call appImageMap(params.imageMap) %}
     {% if params.version == 1 %}

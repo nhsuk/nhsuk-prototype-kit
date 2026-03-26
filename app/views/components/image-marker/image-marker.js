@@ -7,16 +7,11 @@ import { ConfigurableComponent } from '/nhsuk-frontend/nhsuk-frontend.min.js'
  */
 export class ImageMarker extends ConfigurableComponent {
   /**
-   * @param {Element | null} [$root] - HTML element to use for component
+   * @param {Element | null} $root - HTML element to use for component
    * @param {Partial<ImageMarkerConfig>} [config] - Image marker config
    */
   constructor($root, config = {}) {
-    $root = $root ?? document.createElement(config.href ? 'a' : 'div')
-
     super($root, config)
-
-    this.$root.setAttribute('data-module', ImageMarker.moduleName)
-    this.$root.classList.add(ImageMarker.moduleName)
 
     if (config.href && this.$root instanceof HTMLAnchorElement) {
       this.$root.setAttribute('href', config.href)
