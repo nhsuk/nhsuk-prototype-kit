@@ -63,8 +63,29 @@
               Save and stop appointment because it cannot proceed
             </a>
           </p>
+        </form>
 
           <hr class="nhsuk-section-break nhsuk-section-break--xl nhsuk-section-break--visible">
+
+        <form {{- nhsukAttributes({
+          method: "post",
+          novalidate: {
+            value: true,
+            optional: true
+          }
+        }) -}}>
+          <input {{- nhsukAttributes({
+            name: "features",
+            value: {
+              value: features,
+              type: "array"
+            },
+            type: "hidden",
+            readonly: {
+              value: "true" if data.readOnly else false,
+              optional: true
+            }
+          }) }}>
 
           {% call card({
             heading: "Breast features"
