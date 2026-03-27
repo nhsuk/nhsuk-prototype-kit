@@ -21,15 +21,11 @@ $image-key-hover-colour: color.adjust(nhsuk-colour("grey-5"), $lightness: -6%);
   align-items: center;
   justify-content: space-between;
   margin-bottom: nhsuk-spacing(3);
+  @include nhsuk-font-size(19);
 }
 
 .app-image-key__title {
   margin-bottom: 0;
-  @include nhsuk-font-size(19);
-}
-
-.app-image-key__button[hidden] {
-  display: none;
 }
 
 .app-image-key__items {
