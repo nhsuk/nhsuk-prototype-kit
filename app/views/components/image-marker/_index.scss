@@ -20,7 +20,7 @@
   border-radius: 2px;
 
   color: nhsuk-colour("white");
-  background-color: $nhsuk-link-colour;
+  background-color: $nhsuk-login-button-colour;
 
   user-select: none;
 
@@ -38,6 +38,14 @@
   margin-left: nhsuk-px-to-rem(-20px);
 
   pointer-events: none;
+
+  &:hover {
+    background-color: $nhsuk-login-button-hover-colour;
+  }
+
+  &:active {
+    background-color: $nhsuk-login-button-active-colour;
+  }
 }
 
 .app-image-marker[href],
@@ -76,6 +84,14 @@
 .app-image-marker__number {
   margin: -2px; // Adjust for border width
   margin-right: nhsuk-spacing(2) + 4px - 2px;
+
+  .app-image-marker:hover & {
+    background-color: $nhsuk-login-button-hover-colour;
+  }
+
+  .app-image-marker:active & {
+    background-color: $nhsuk-login-button-active-colour;
+  }
 }
 
 .app-image-marker__label {
