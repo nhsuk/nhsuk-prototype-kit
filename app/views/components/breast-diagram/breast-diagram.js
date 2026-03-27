@@ -354,13 +354,6 @@ export class BreastDiagram extends ConfigurableComponent {
     marker.textContent = `${index + 1}`
     marker.point = point
 
-    // Temporarily remove marker on click
-    marker.$root.onclick = () =>
-      this.remove({
-        x: point.x,
-        y: point.y
-      })
-
     // Append new markers only
     if (!marker.$root.parentElement) {
       imageMap.$root.appendChild(marker.$root)
