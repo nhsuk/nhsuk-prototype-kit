@@ -1,22 +1,51 @@
-{% from "nhsuk/macros/attributes.njk" import nhsukAttributes -%}
+{% from "nhsuk/macros/attributes.njk" import nhsukAttributes %}
 
-{%- set element = "a" if params.href else "div" -%}
+{#- Determine type of element to use, if not explicitly set #}
+{%- if params.element %}
+  {% set element = params.element | lower %}
+{% elif params.href %}
+    {% set element = "a" %}
+{% else %}
+  {% set element = "div" %}
+{% endif %}
 
-<{{ element }}
+{%- set attributesHtml %}
   {{- nhsukAttributes({
     class: "app-image-marker",
     id: {
       value: params.id,
       optional: true
     },
-    href: {
-      value: params.href if params.href else false,
+    name: {
+      value: params.name if element == "button" else false,
       optional: true
     },
     "data-module": "app-image-marker"
   }) -}}
 
-  {{- nhsukAttributes(params.attributes) -}}>
+  {% if element == "button" %}
+    {{- nhsukAttributes({
+      type: params.type if params.type else "submit",
+      value: {
+        value: params.value,
+        optional: true
+      }
+    }) -}}
+  {% elif element == "a" %}
+    {{- nhsukAttributes({
+      href: {
+        value: params.href if params.href else "#",
+        optional: true
+      },
+      role: "button",
+      draggable: "false"
+    }) -}}
+  {% endif %}
+
+  {{- nhsukAttributes(params.attributes) -}}
+{% endset -%}
+
+<{{ element }} {{- attributesHtml | safe -}}>
 {%- if not params.label %}
   {{- params.text -}}
 {% else %}

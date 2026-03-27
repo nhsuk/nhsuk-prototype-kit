@@ -34,7 +34,7 @@
   <template class="app-js-template-image-marker">
     {{ appImageMarker({
       text: "?",
-      href: "#" if not params.readOnly
+      element: "button" if not params.readOnly
     }) | trim | indent(4) }}
   </template>
 

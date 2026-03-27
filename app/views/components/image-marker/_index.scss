@@ -40,13 +40,14 @@
   pointer-events: none;
 }
 
-.app-image-marker[href] {
+.app-image-marker[href],
+.app-image-marker[type] {
   pointer-events: auto;
   text-decoration: none;
   cursor: pointer;
   @include nhsuk-link-style-white;
 
-  &:link,
+  &,
   &:focus .app-image-marker__label {
     text-decoration: none;
   }

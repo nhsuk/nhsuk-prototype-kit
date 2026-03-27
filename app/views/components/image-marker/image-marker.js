@@ -13,8 +13,16 @@ export class ImageMarker extends ConfigurableComponent {
   constructor($root, config = {}) {
     super($root, config)
 
-    if (config.href && this.$root instanceof HTMLAnchorElement) {
-      this.$root.setAttribute('href', config.href)
+    if (!(this.$root instanceof HTMLButtonElement)) {
+      return this
+    }
+
+    if (config.id) {
+      this.$root.setAttribute('id', config.id)
+    }
+
+    if (config.value) {
+      this.$root.setAttribute('value', config.value)
     }
   }
 
@@ -70,7 +78,8 @@ export class ImageMarker extends ConfigurableComponent {
    */
   static schema = Object.freeze({
     properties: {
-      href: { type: 'string' },
+      id: { type: 'string' },
+      value: { type: 'string' },
       width: { type: 'number' },
       height: { type: 'number' }
     }
@@ -82,7 +91,8 @@ export class ImageMarker extends ConfigurableComponent {
  *
  * @see {@link ImageMarker.defaults}
  * @typedef {object} ImageMarkerConfig
- * @property {string} [href] - Marker `href` attribute
+ * @property {string} [id] - Marker `id` attribute
+ * @property {string} [value] - Marker `value` attribute
  * @property {number} width - Image width
  * @property {number} height - Image height
  */
