@@ -1,5 +1,9 @@
+{% from "nhsuk/components/button/macro.njk" import button %}
+{% from "nhsuk/components/card/macro.njk" import card %}
 {% from "nhsuk/components/code/macro.njk" import code %}
+{% from "nhsuk/components/radios/macro.njk" import radios %}
 {% from "nhsuk/components/summary-list/macro.njk" import summaryList %}
+{% from "nhsuk/components/tag/macro.njk" import tag %}
 {% from "nhsuk/macros/attributes.njk" import nhsukAttributes %}
 {% from "components/image-key/macro.njk" import appImageKey %}
 {% from "components/image-key-item/macro.njk" import appImageKeyItem %}
@@ -43,6 +47,88 @@
       {% include "components/breast-diagram/v1.svg" %}
     {% endif %}
   {% endcall %}
+
+{% if not params.readOnly %}
+  {% set headingHtml %}
+    <span class="nhsuk-caption-m">Add a new feature</span>
+    <h2 class="nhsuk-fieldset__heading nhsuk-heading-m">
+      What is the feature?
+    </h2>
+  {% endset %}
+
+  {% set descriptionHtml %}
+    <p class="nhsuk-body">
+      This will be added to<br>
+      {{ tag({
+        text: "Left lower inner",
+        classes: "app-breast-diagram__region",
+        colour: "white"
+      }) | trim | indent(6) }}
+    </p>
+  {% endset %}
+
+  {% call card({
+    classes: "app-breast-diagram__card",
+    variant: "secondary",
+    attributes: {
+      hidden: {
+        value: true,
+        optional: true
+      }
+    }
+  }) %}
+    {{ radios({
+      fieldset: {
+        legend: {
+          html: headingHtml,
+          size: "m"
+        }
+      },
+      formGroup: {
+        beforeInputs: {
+          html: descriptionHtml
+        }
+      },
+      name: "feature",
+      items: [
+        {
+          text: "Mole",
+          value: "mole"
+        },
+        {
+          text: "Wart",
+          value: "wart"
+        },
+        {
+          text: "Scar",
+          value: "scar"
+        },
+        {
+          text: "Bruising or trauma",
+          value: "bruising_or_trauma"
+        },
+        {
+          text: "Other feature",
+          value: "other_feature"
+        }
+      ]
+    }) | trim | indent(4) }}
+
+    <div class="nhsuk-button-group">
+      {{ button({
+        text: "Add",
+        classes: "app-js-feature-add"
+      }) | trim | indent(6) }}
+
+      {{ button({
+        text: "Cancel",
+        type: "reset",
+        variant: "secondary",
+        classes: "app-js-feature-cancel"
+      }) | trim | indent(6) }}
+    </div>
+  {% endcall %}
+{% endif %}
 
   {{ appImageKey({
     items: params.features,

@@ -26,7 +26,7 @@ export class ImageKey extends Component {
     }
 
     this.$button = $button
-    this.$button.addEventListener('click', (event) => this.onReset(event))
+    this.$button.addEventListener('click', (event) => this.onClear(event))
 
     const $list = this.$root.querySelector('.app-image-key__items')
     if (!($list instanceof HTMLUListElement)) {
@@ -83,8 +83,8 @@ export class ImageKey extends Component {
 
       $marker.setAttribute('href', `#marker-${index + 1}`)
       $number.textContent = `${index + 1}`
-      $label.textContent = this.format(id)
-      $region.textContent = this.format(region_id)
+      $label.textContent = ImageKey.format(id)
+      $region.textContent = ImageKey.format(region_id)
 
       $list.appendChild($item)
     })
@@ -95,19 +95,9 @@ export class ImageKey extends Component {
   }
 
   /**
-   * Format human readable text from ID
-   *
-   * @param {string} input - ID to format
-   */
-  format(input) {
-    const output = input.toLowerCase().replace(/_/g, ' ')
-    return output.charAt(0).toUpperCase() + output.slice(1)
-  }
-
-  /**
    * Add event listener for image key
    *
-   * @param {ImageKeyEvent} name - Event name, e.g. 'reset'
+   * @param {ImageKeyEvent} name - Event name, e.g. 'clear'
    * @param {ImageKeyListener} listener - Image key listener
    */
   addEventListener(name, listener) {
@@ -120,7 +110,7 @@ export class ImageKey extends Component {
   /**
    * Dispatch event for image key
    *
-   * @param {ImageKeyEvent} name - Event name, e.g. 'reset'
+   * @param {ImageKeyEvent} name - Event name, e.g. 'clear'
    */
   dispatchEvent(name) {
     this.$root.dispatchEvent(new CustomEvent(`${ImageKey.moduleName}:${name}`))
@@ -129,9 +119,19 @@ export class ImageKey extends Component {
   /**
    * @param {MouseEvent} event
    */
-  onReset(event) {
+  onClear(event) {
     event.preventDefault()
-    this.dispatchEvent('reset')
+    this.dispatchEvent('clear')
+  }
+
+  /**
+   * Format human readable text from ID
+   *
+   * @param {string} input - ID to format
+   */
+  static format(input) {
+    const output = input.toLowerCase().replace(/_/g, ' ')
+    return output.charAt(0).toUpperCase() + output.slice(1)
   }
 
   /**
@@ -141,7 +141,7 @@ export class ImageKey extends Component {
 }
 
 /**
- * @typedef {'reset'} ImageKeyEvent - Image key event
+ * @typedef {'clear'} ImageKeyEvent - Image key event
  */
 
 /**

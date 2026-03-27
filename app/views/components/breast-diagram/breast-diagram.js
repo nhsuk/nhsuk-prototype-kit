@@ -107,6 +107,19 @@ export class BreastDiagram extends ConfigurableComponent {
     this.imageMap = imageMaps[0]
 
     if (!readOnly) {
+      const $card = this.$root.querySelector('.app-breast-diagram__card')
+      const $region = $card?.querySelector('.app-breast-diagram__region')
+
+      if (!$card || !$region) {
+        throw new ElementError({
+          component: BreastDiagram,
+          identifier: 'Breast diagram feature card elements'
+        })
+      }
+
+      this.$card = $card
+      this.$region = $region
+
       const imageKeys = createAll(ImageKey, undefined, {
         scope: this.$root
       })
@@ -120,10 +133,15 @@ export class BreastDiagram extends ConfigurableComponent {
 
       this.imageKey = imageKeys[0]
 
+      this.imageMap.addEventListener('create', (event) => this.onCreate(event))
       this.imageMap.addEventListener('click', (event) => this.onClick(event))
       this.imageMap.addEventListener('hover', (event) => this.log(event))
-      this.imageKey.addEventListener('reset', (event) => this.reset(event))
+      this.imageKey.addEventListener('clear', () => this.onClear())
 
+      this.$form.addEventListener('submit', (event) => this.onSubmit(event))
+      this.$form.addEventListener('reset', () => this.onReset())
+
+      document.addEventListener('keydown', (event) => this.onKeyDown(event))
       window.addEventListener('hashchange', () => this.onHashChange(), true)
     }
 
@@ -194,18 +212,6 @@ export class BreastDiagram extends ConfigurableComponent {
   }
 
   /**
-   * Reset diagram values
-   *
-   * @param {CustomEvent} event - Image key event
-   */
-  reset(event) {
-    event.preventDefault()
-    this.values.length = 0
-    this.render()
-    this.write()
-  }
-
-  /**
    * Update status messages
    *
    * @param {CustomEvent<ImageMapPayload>} [event] - Image map event
@@ -263,11 +269,11 @@ export class BreastDiagram extends ConfigurableComponent {
   }
 
   /**
-   * Handle image map click
+   * Handle image map add marker
    *
    * @type {ImageMapListener}
    */
-  onClick(event) {
+  onCreate(event) {
     const { $path, point } = event.detail
     if (!$path || !point) {
       return
@@ -280,7 +286,65 @@ export class BreastDiagram extends ConfigurableComponent {
       y: point.y
     })
 
+    this.onClick(event)
     this.log(event)
+  }
+
+  /**
+   * Handle image map click marker
+   *
+   * @type {ImageMapListener}
+   */
+  onClick(event) {
+    const { $card, $region } = this
+    const { $path } = event.detail
+
+    if (!$card || !$region || !$path) {
+      return
+    }
+
+    $region.textContent = ImageKey.format($path.classList.value)
+    $card.removeAttribute('hidden')
+  }
+
+  /**
+   * Handle image map form reset via escape key
+   *
+   * @param {KeyboardEvent} event - Keydown event
+   */
+  onKeyDown(event) {
+    if (event.key === 'Escape') {
+      this.onReset()
+    }
+  }
+
+  /**
+   * Handle image map clear markers
+   */
+  onClear() {
+    this.values.length = 0
+    this.render()
+    this.write()
+  }
+
+  /**
+   * Handle image map form submit
+   *
+   * @param {SubmitEvent} event
+   */
+  onSubmit(event) {
+    if (this.$card?.hasAttribute('hidden')) {
+      return
+    }
+
+    event.preventDefault()
+  }
+
+  /**
+   * Handle image map form reset
+   */
+  onReset() {
+    this.$card?.setAttribute('hidden', '')
   }
 
   /**

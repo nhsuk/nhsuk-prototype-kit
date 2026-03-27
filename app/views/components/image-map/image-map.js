@@ -41,8 +41,8 @@ export class ImageMap extends ConfigurableComponent {
     this.$paths = Array.from($paths).reverse()
     this.$image = $image
 
-    this.$image.addEventListener('mousemove', this.onMouseMove.bind(this))
-    this.$image.addEventListener('click', this.onClick.bind(this))
+    this.$root.addEventListener('mousemove', this.onMouseMove.bind(this))
+    this.$root.addEventListener('click', this.onClick.bind(this))
   }
 
   /**
@@ -208,12 +208,13 @@ export class ImageMap extends ConfigurableComponent {
    * @param {MouseEvent} event
    */
   onMouseMove(event) {
+    const { $root: target } = this
     const { clientX, clientY } = event
 
     const point = this.getPoint(clientX, clientY)
     const $path = this.getPath(point)
 
-    this.dispatchEvent('hover', { $path, point })
+    this.dispatchEvent('hover', { $path, point, target })
   }
 
   /**
@@ -222,12 +223,18 @@ export class ImageMap extends ConfigurableComponent {
   onClick(event) {
     event.preventDefault()
 
+    const { $root: target } = this
     const { clientX, clientY } = event
 
     const point = this.getPoint(clientX, clientY)
     const $path = this.getPath(point)
 
-    this.dispatchEvent('click', { $path, point })
+    if (event.target instanceof HTMLButtonElement) {
+      this.dispatchEvent('click', { $path, point, target: event.target })
+      return
+    }
+
+    this.dispatchEvent('create', { $path, point, target })
   }
 
   /**
@@ -278,7 +285,7 @@ export class ImageMap extends ConfigurableComponent {
 
 /**
  * @typedef {'active'} ImageMapState - Image map state
- * @typedef {'hover' | 'click'} ImageMapEvent - Image map event
+ * @typedef {'hover' | 'create' | 'click'} ImageMapEvent - Image map event
  */
 
 /**
@@ -287,6 +294,7 @@ export class ImageMap extends ConfigurableComponent {
  * @typedef ImageMapPayload
  * @property {SVGGeometryElement | undefined} $path - SVG path at pointer coordinates
  * @property {DOMPoint} [point] - SVG point at pointer coordinates (optional)
+ * @property {HTMLElement} target - Event target
  * @returns {void}
  */
 
