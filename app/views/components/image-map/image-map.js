@@ -182,7 +182,7 @@ export class ImageMap extends ConfigurableComponent {
   /**
    * Add event listener for image map
    *
-   * @param {ImageMapEvent} name - Event name, e.g. 'hover', 'click'
+   * @param {ImageMapEvent} name - Event name, e.g. 'hover', 'edit'
    * @param {ImageMapListener} listener - Image map listener
    */
   addEventListener(name, listener) {
@@ -195,12 +195,16 @@ export class ImageMap extends ConfigurableComponent {
   /**
    * Dispatch event for image map
    *
-   * @param {ImageMapEvent} name - Event name, e.g. 'hover', 'click'
+   * @param {ImageMapEvent} name - Event name, e.g. 'hover', 'edit'
    * @param {ImageMapPayload} detail - Image map payload
+   * @param {EventTarget} [target] - Event target
    */
-  dispatchEvent(name, detail) {
-    this.$root.dispatchEvent(
-      new CustomEvent(`${ImageMap.moduleName}:${name}`, { detail })
+  dispatchEvent(name, detail, target = this.$root) {
+    target.dispatchEvent(
+      new CustomEvent(`${ImageMap.moduleName}:${name}`, {
+        bubbles: true,
+        detail
+      })
     )
   }
 
@@ -208,13 +212,12 @@ export class ImageMap extends ConfigurableComponent {
    * @param {MouseEvent} event
    */
   onMouseMove(event) {
-    const { $root: target } = this
     const { clientX, clientY } = event
 
     const point = this.getPoint(clientX, clientY)
     const $path = this.getPath(point)
 
-    this.dispatchEvent('hover', { $path, point, target })
+    this.dispatchEvent('hover', { $path, point })
   }
 
   /**
@@ -223,18 +226,17 @@ export class ImageMap extends ConfigurableComponent {
   onClick(event) {
     event.preventDefault()
 
-    const { $root: target } = this
     const { clientX, clientY } = event
 
     const point = this.getPoint(clientX, clientY)
     const $path = this.getPath(point)
 
     if (event.target instanceof HTMLButtonElement) {
-      this.dispatchEvent('click', { $path, point, target: event.target })
+      this.dispatchEvent('edit', { $path, point }, event.target)
       return
     }
 
-    this.dispatchEvent('create', { $path, point, target })
+    this.dispatchEvent('create', { $path, point })
   }
 
   /**
@@ -285,7 +287,7 @@ export class ImageMap extends ConfigurableComponent {
 
 /**
  * @typedef {'active'} ImageMapState - Image map state
- * @typedef {'hover' | 'create' | 'click'} ImageMapEvent - Image map event
+ * @typedef {'hover' | 'create' | 'edit'} ImageMapEvent - Image map event
  */
 
 /**
@@ -294,7 +296,6 @@ export class ImageMap extends ConfigurableComponent {
  * @typedef ImageMapPayload
  * @property {SVGGeometryElement | undefined} $path - SVG path at pointer coordinates
  * @property {DOMPoint} [point] - SVG point at pointer coordinates (optional)
- * @property {HTMLElement} target - Event target
  * @returns {void}
  */
 

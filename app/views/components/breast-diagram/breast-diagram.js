@@ -25,9 +25,44 @@ export class BreastDiagram extends ConfigurableComponent {
   $input
 
   /**
+   * @type {HTMLInputElement[]}
+   */
+  $radios = []
+
+  /**
+   * @type {HTMLElement | null}
+   */
+  $card = null
+
+  /**
+   * @type {HTMLElement | null}
+   */
+  $region = null
+
+  /**
+   * @type {Element[]}
+   */
+  $captions = []
+
+  /**
+   * @type {Element[]}
+   */
+  $buttons = []
+
+  /**
    * @type {HTMLTemplateElement}
    */
   $imageMarker
+
+  /**
+   * @type {ImageMap}
+   */
+  imageMap
+
+  /**
+   * @type {ImageKey | null}
+   */
+  imageKey = null
 
   /**
    * @type {ImageMarker[]}
@@ -109,16 +144,28 @@ export class BreastDiagram extends ConfigurableComponent {
     if (!readOnly) {
       const $card = this.$root.querySelector('.app-breast-diagram__card')
       const $region = $card?.querySelector('.app-breast-diagram__region')
+      const $captions = $card?.querySelectorAll('.app-breast-diagram__caption')
+      const $buttons = $card?.querySelectorAll('.app-breast-diagram__button')
+      const $radios = $form.querySelectorAll('input[name="feature"]')
 
-      if (!$card || !$region) {
+      if (
+        !($card instanceof HTMLElement) ||
+        !($region instanceof HTMLElement) ||
+        !$captions?.length ||
+        !$buttons?.length ||
+        !$radios.length
+      ) {
         throw new ElementError({
           component: BreastDiagram,
-          identifier: 'Breast diagram feature card elements'
+          identifier: 'Add or edit breast feature card elements'
         })
       }
 
       this.$card = $card
       this.$region = $region
+      this.$captions = Array.from($captions)
+      this.$buttons = Array.from($buttons)
+      this.$radios = Array.from($radios)
 
       const imageKeys = createAll(ImageKey, undefined, {
         scope: this.$root
@@ -134,15 +181,14 @@ export class BreastDiagram extends ConfigurableComponent {
       this.imageKey = imageKeys[0]
 
       this.imageMap.addEventListener('create', (event) => this.onCreate(event))
-      this.imageMap.addEventListener('click', (event) => this.onClick(event))
+      this.imageMap.addEventListener('edit', (event) => this.onEdit(event))
       this.imageMap.addEventListener('hover', (event) => this.log(event))
-      this.imageKey.addEventListener('clear', () => this.onClear())
 
+      this.$form.addEventListener('click', (event) => this.onClick(event))
       this.$form.addEventListener('submit', (event) => this.onSubmit(event))
-      this.$form.addEventListener('reset', () => this.onReset())
+      this.$form.addEventListener('reset', (event) => this.onReset(event))
 
       document.addEventListener('keydown', (event) => this.onKeyDown(event))
-      window.addEventListener('hashchange', () => this.onHashChange(), true)
     }
 
     // Render diagram features
@@ -161,15 +207,14 @@ export class BreastDiagram extends ConfigurableComponent {
       imageMap.unsetState('active')
     }
 
-    values.forEach(({ region_id, x, y }, index) => {
-      const $path = imageMap.getPathById(region_id)
-      const point = imageMap.createPoint(x, y, region_id)
+    values.forEach((feature, index) => {
+      const $path = imageMap.getPathById(feature.region_id)
 
       // Render active region
       imageMap.setState('active', $path)
 
       // Set marker position
-      this.setMarker(point, index)
+      this.setMarker(feature, index)
     })
 
     // Update key (optional if read only)
@@ -258,53 +303,161 @@ export class BreastDiagram extends ConfigurableComponent {
   }
 
   /**
-   * Handle image map hash change
-   */
-  onHashChange() {
-    const { markers } = this
-    const { hash } = window.location
-
-    // Click associated marker
-    markers.find(({ $root }) => $root.matches(hash))?.$root.click()
-  }
-
-  /**
    * Handle image map add marker
    *
    * @type {ImageMapListener}
    */
   onCreate(event) {
+    const { $radios, markers, values } = this
+
     const { $path, point } = event.detail
     if (!$path || !point) {
       return
     }
 
-    this.add({
+    const value = /** @type {BreastFeature} */ ({
       id: 'pending',
       region_id: $path.classList.value,
       x: point.x,
       y: point.y
     })
 
-    this.onClick(event)
+    // Save checked (but unsaved) feature when a marker is moved
+    const $checked = values.some(({ id }) => id === 'pending')
+      ? $radios.find(($radio) => $radio.checked)
+      : undefined
+
+    this.onReset()
+    this.edit(value, markers.length + 1, 'add')
+    this.add(value)
+
+    if ($checked) {
+      $checked.checked = true
+    }
+
     this.log(event)
   }
 
   /**
-   * Handle image map click marker
+   * Handle image map edit marker
    *
    * @type {ImageMapListener}
    */
-  onClick(event) {
-    const { $card, $region } = this
-    const { $path } = event.detail
+  onEdit(event) {
+    const { $card } = this
+    const { target } = event
 
-    if (!$card || !$region || !$path) {
+    if (!$card || !(target instanceof HTMLButtonElement)) {
       return
     }
 
-    $region.textContent = ImageKey.format($path.classList.value)
+    const marker = this.getMarker(target.value)
+    const value = this.getValue(marker)
+
+    // Skip unnecessary reset when the same marker is clicked again
+    if (!value || $card.dataset.number === target.value) {
+      return
+    }
+
+    this.onReset()
+    this.edit(value, target.value)
+  }
+
+  /**
+   * Edit feature in add or edit mode
+   *
+   * @param {BreastFeature} feature
+   * @param {number | string} number
+   * @param {'add' | 'edit'} mode
+   */
+  edit(feature, number, mode = 'edit') {
+    const { $card, $captions, $buttons, $radios, $region } = this
+    if (!$card || !$region) {
+      return
+    }
+
+    // Show add or edit feature caption
+    for (const $caption of $captions) {
+      $caption.setAttribute('hidden', '')
+
+      if ($caption.matches(`.app-js-feature-caption-${mode}`)) {
+        $caption.removeAttribute('hidden')
+      }
+    }
+
+    // Show add, edit or cancel buttons
+    for (const $button of $buttons) {
+      $button.setAttribute('hidden', '')
+
+      if (
+        $button.matches(`.app-js-feature-${mode}`) ||
+        $button.matches(`.app-js-feature-cancel`)
+      ) {
+        $button.removeAttribute('hidden')
+      }
+    }
+
+    for (const $radio of $radios) {
+      $radio.checked = $radio.value === feature.id
+    }
+
+    $card.dataset.id = feature.id
+    $card.dataset.regionId = feature.region_id
+    $card.dataset.number = `${number}`
+    $region.textContent = ImageKey.format($card.dataset.regionId)
     $card.removeAttribute('hidden')
+  }
+
+  /**
+   * Handle image map form clicks
+   *
+   * @param {MouseEvent} event - Click event
+   */
+  onClick(event) {
+    const { $card, imageMap, markers } = this
+    const { target } = event
+
+    if (
+      !(target instanceof HTMLButtonElement) &&
+      !(target instanceof HTMLAnchorElement)
+    ) {
+      return
+    }
+
+    // Handle clear all features button
+    if (target.matches('.app-js-feature-clear-all')) {
+      this.clear()
+    }
+
+    // Handle marker links in image key
+    if (target.matches('.app-image-marker[href]')) {
+      event.preventDefault()
+
+      const href = target.getAttribute('href')
+      const marker = markers.find(({ $root }) => !!href && $root.matches(href))
+
+      imageMap.$root.scrollIntoView({ behavior: 'smooth' })
+      marker?.$root.click()
+    }
+
+    if (!$card) {
+      return
+    }
+
+    // Handle form remove button
+    if (target.matches('.app-js-feature-remove')) {
+      const marker = this.getMarker($card.dataset.number)
+      this.remove(marker?.point)
+    }
+
+    // Handle form save button
+    if (
+      target.matches('.app-js-feature-save') &&
+      !$card.hasAttribute('hidden')
+    ) {
+      event.preventDefault()
+      imageMap.$root.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
   /**
@@ -319,32 +472,71 @@ export class BreastDiagram extends ConfigurableComponent {
   }
 
   /**
-   * Handle image map clear markers
-   */
-  onClear() {
-    this.values.length = 0
-    this.render()
-    this.write()
-  }
-
-  /**
    * Handle image map form submit
    *
    * @param {SubmitEvent} event
    */
   onSubmit(event) {
-    if (this.$card?.hasAttribute('hidden')) {
+    const { $card, $radios } = this
+
+    // Allow submission when card is hidden or not populated
+    if (
+      $card?.hasAttribute('hidden') ||
+      !$card?.dataset.number ||
+      !$card.dataset.regionId
+    ) {
       return
     }
 
+    // Prevent submission when card is visible
     event.preventDefault()
+
+    // Check for selected feature
+    const $checked = $radios.find(($radio) => $radio.checked)
+
+    // Focus first radio button
+    if (!$checked) {
+      $radios[0]?.focus()
+      return
+    }
+
+    const marker = this.getMarker($card.dataset.number)
+    const value = this.getValue(marker?.point)
+    if (!value) {
+      return
+    }
+
+    value.id = $checked.value
+    this.onReset()
+    this.render()
+    this.write()
   }
 
   /**
    * Handle image map form reset
+   *
+   * @param {Event} [event] - Reset event
    */
-  onReset() {
-    this.$card?.setAttribute('hidden', '')
+  onReset(event) {
+    event?.preventDefault()
+
+    const { $card, values } = this
+    if (!$card) {
+      return
+    }
+
+    $card.setAttribute('hidden', '')
+
+    // Remove pending (unsaved) features
+    for (const value of values) {
+      if (value.id === 'pending') {
+        this.remove(value)
+      }
+    }
+
+    delete $card.dataset.id
+    delete $card.dataset.regionId
+    delete $card.dataset.number
   }
 
   /**
@@ -361,21 +553,18 @@ export class BreastDiagram extends ConfigurableComponent {
   /**
    * Remove breast feature
    *
-   * @param {Pick<BreastFeature, 'x' | 'y'>} feature
+   * @param {Pick<BreastFeature, 'x' | 'y'> | DOMPoint} [point]
    */
-  remove(feature) {
+  remove(point) {
     const { imageMap, values } = this
 
-    const entry = values.find(({ x, y }) => {
-      return x === feature.x && y === feature.y
-    })
-
-    if (!entry) {
+    const value = this.getValue(point)
+    if (!value) {
       return
     }
 
-    const index = values.indexOf(entry)
-    const $path = imageMap.getPathById(entry.region_id)
+    const index = values.indexOf(value)
+    const $path = imageMap.getPathById(value.region_id)
 
     imageMap.unsetState('active', $path)
     values.splice(index, 1)
@@ -385,13 +574,41 @@ export class BreastDiagram extends ConfigurableComponent {
   }
 
   /**
+   * Clear all features
+   */
+  clear() {
+    this.values.length = 0
+    this.render()
+    this.write()
+  }
+
+  /**
+   * Get marker for image map
+   *
+   * @param {number | string} [number] - Image marker number
+   */
+  getMarker(number) {
+    const { markers } = this
+
+    // No number or zero value
+    if (!number) {
+      return
+    }
+
+    return markers.find(
+      ({ $root }) => $root.getAttribute('value') === `${number}`
+    )
+  }
+
+  /**
    * Set marker for image map
    *
-   * @param {DOMPoint} point - SVG point at pointer coordinates
+   * @param {BreastFeature} feature - Breast feature
    * @param {number} index - Image marker index
    */
-  setMarker(point, index) {
+  setMarker(feature, index) {
     const { $imageMarker, imageMap, config, markers } = this
+    const { x, y, region_id } = feature
     const { width, height } = imageMap
 
     if (!markers[index]) {
@@ -409,10 +626,11 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     const marker = markers[index]
+    const point = imageMap.createPoint(x, y, region_id)
+    const number = feature.id === 'pending' ? '?' : index + 1
 
-    // Set marker properties
-    marker.textContent = `${index + 1}`
-    marker.point = point
+    // Set marker position
+    marker.setPosition(point, number)
 
     // Append new markers only
     if (!marker.$root.parentElement) {
@@ -420,6 +638,23 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     return marker
+  }
+
+  /**
+   * Get value by pointer coordinates
+   *
+   * @param {Pick<BreastFeature, 'x' | 'y'> | DOMPoint} [point]
+   */
+  getValue(point) {
+    const { values } = this
+
+    if (!point) {
+      return
+    }
+
+    return values.find(({ x, y }) => {
+      return x === point.x && y === point.y
+    })
   }
 
   /**

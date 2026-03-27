@@ -12,6 +12,11 @@ $breast-diagram-active-colour: nhsuk-tint(nhsuk-colour("blue"), 50%);
   margin-bottom: 0;
 }
 
+.app-breast-diagram__button[hidden],
+.app-breast-diagram__caption[hidden] {
+  display: none;
+}
+
 .app-breast-diagram__side-labels {
   display: flex;
   justify-content: space-between;

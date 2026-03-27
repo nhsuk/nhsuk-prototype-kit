@@ -15,19 +15,6 @@ export class ImageKey extends Component {
   constructor($root) {
     super($root)
 
-    const $button = this.$root.querySelector('.app-image-key__button')
-    if (!($button instanceof HTMLButtonElement)) {
-      throw new ElementError({
-        component: ImageKey,
-        expectedType: 'HTMLButtonElement',
-        identifier:
-          'Image key clear all (`<button class="app-image-key__button">`)'
-      })
-    }
-
-    this.$button = $button
-    this.$button.addEventListener('click', (event) => this.onClear(event))
-
     const $list = this.$root.querySelector('.app-image-key__items')
     if (!($list instanceof HTMLUListElement)) {
       throw new ElementError({
@@ -37,7 +24,14 @@ export class ImageKey extends Component {
       })
     }
 
-    this.$list = $list
+    const $button = this.$root.querySelector('button[type="reset"]')
+    if (!($button instanceof HTMLButtonElement)) {
+      throw new ElementError({
+        component: ImageKey,
+        expectedType: 'HTMLButtonElement',
+        identifier: 'Clear all features (`<button type="reset">`)'
+      })
+    }
 
     const $imageKeyItem = this.$root.querySelector(
       'template.app-js-template-image-key-item'
@@ -50,6 +44,8 @@ export class ImageKey extends Component {
       })
     }
 
+    this.$list = $list
+    this.$button = $button
     this.$imageKeyItem = $imageKeyItem
   }
 
@@ -65,8 +61,13 @@ export class ImageKey extends Component {
       return
     }
 
+    const filtered = values.filter(({ id }) => id !== 'pending')
+    if (!filtered.length) {
+      return
+    }
+
     // Render key items
-    values.forEach(({ id, region_id }, index) => {
+    filtered.forEach(({ id, region_id }, index) => {
       const $item = document.importNode(this.$imageKeyItem.content, true)
 
       const $marker = $item.querySelector('.app-image-marker')
@@ -113,7 +114,11 @@ export class ImageKey extends Component {
    * @param {ImageKeyEvent} name - Event name, e.g. 'clear'
    */
   dispatchEvent(name) {
-    this.$root.dispatchEvent(new CustomEvent(`${ImageKey.moduleName}:${name}`))
+    this.$root.dispatchEvent(
+      new CustomEvent(`${ImageKey.moduleName}:${name}`, {
+        bubbles: true
+      })
+    )
   }
 
   /**

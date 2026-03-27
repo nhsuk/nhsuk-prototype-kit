@@ -85,11 +85,11 @@
   margin: -2px; // Adjust for border width
   margin-right: nhsuk-spacing(2) + 4px - 2px;
 
-  .app-image-marker:hover & {
+  .app-image-marker[href]:hover & {
     background-color: $nhsuk-login-button-hover-colour;
   }
 
-  .app-image-marker:active & {
+  .app-image-marker[href]:active & {
     background-color: $nhsuk-login-button-active-colour;
   }
 }

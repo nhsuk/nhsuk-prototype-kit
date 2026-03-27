@@ -38,7 +38,8 @@
   <template class="app-js-template-image-marker">
     {{ appImageMarker({
       text: "?",
-      element: "button" if not params.readOnly
+      element: "button" if not params.readOnly,
+      type: "button" if not params.readOnly
     }) | trim | indent(4) }}
   </template>
 
@@ -50,7 +51,12 @@
 
 {% if not params.readOnly %}
   {% set headingHtml %}
-    <span class="nhsuk-caption-m">Add a new feature</span>
+    <span class="app-breast-diagram__caption nhsuk-caption-m app-js-feature-caption-add">
+      Add new feature
+    </span>
+    <span class="app-breast-diagram__caption nhsuk-caption-m app-js-feature-caption-edit" hidden>
+      Editing feature
+    </span>
     <h2 class="nhsuk-fieldset__heading nhsuk-heading-m">
       What is the feature?
     </h2>
@@ -90,6 +96,7 @@
         }
       },
       name: "feature",
+      small: true,
       items: [
         {
           text: "Mole",
@@ -114,18 +121,38 @@
       ]
     }) | trim | indent(4) }}
 
-    <div class="nhsuk-button-group">
+    <div class="nhsuk-button-group nhsuk-button-group--small">
       {{ button({
         text: "Add",
-        classes: "app-js-feature-add"
+        variant: "secondary",
+        small: true,
+        classes: "app-breast-diagram__button app-js-feature-add"
+      }) | trim | indent(6) }}
+
+      {{ button({
+        text: "Save changes",
+        variant: "secondary",
+        small: true,
+        classes: "app-breast-diagram__button app-js-feature-edit",
+        attributes: {
+          hidden: {
+            value: true,
+            optional: true
+          }
+        }
       }) | trim | indent(6) }}
 
       {{ button({
         text: "Cancel",
         type: "reset",
         variant: "secondary",
-        classes: "app-js-feature-cancel"
+        small: true,
+        classes: "app-breast-diagram__button app-js-feature-cancel"
       }) | trim | indent(6) }}
+
+      <button class="nhsuk-link app-link app-link--warning app-js-feature-remove" type="reset">
+        Remove
+      </button>
     </div>
   {% endcall %}
 {% endif %}

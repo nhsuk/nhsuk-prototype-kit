@@ -6,6 +6,14 @@ import { ConfigurableComponent } from '/nhsuk-frontend/nhsuk-frontend.min.js'
  * @augments {ConfigurableComponent<ImageMarkerConfig>}
  */
 export class ImageMarker extends ConfigurableComponent {
+  x = 0
+  y = 0
+
+  /**
+   * @type {DOMPoint | undefined}
+   */
+  point
+
   /**
    * @param {Element | null} $root - HTML element to use for component
    * @param {Partial<ImageMarkerConfig>} [config] - Image marker config
@@ -27,16 +35,10 @@ export class ImageMarker extends ConfigurableComponent {
   }
 
   /**
-   * @param {string} value - Image marker text
-   */
-  set textContent(value) {
-    this.$root.textContent = value
-  }
-
-  /**
    * @param {DOMPoint} point - SVG point at pointer coordinates
+   * @param {number | string} number - Image marker number to display
    */
-  set point(point) {
+  setPosition(point, number) {
     const { $root, config } = this
 
     const gutter = 20 // 20px
@@ -45,10 +47,14 @@ export class ImageMarker extends ConfigurableComponent {
     const safeX = config.width - gutter
     const safeY = config.height - gutter
 
+    // Save original point for reference
+    this.point = point
+
     // Offset to minimum and maximum safe area
     this.x = Math.min(Math.max(point.x, gutter), safeX)
     this.y = Math.min(Math.max(point.y, gutter), safeY)
 
+    $root.textContent = `${number}`
     $root.style.left = `${(this.x / config.width) * 100}%`
     $root.style.top = `${(this.y / config.height) * 100}%`
   }
