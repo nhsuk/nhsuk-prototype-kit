@@ -257,6 +257,49 @@ export class BreastDiagram extends ConfigurableComponent {
   }
 
   /**
+   * Add breast feature
+   *
+   * @param {BreastFeature} feature
+   */
+  add(feature) {
+    this.values.push(feature)
+    this.render()
+    this.write()
+  }
+
+  /**
+   * Remove breast feature
+   *
+   * @param {Pick<BreastFeature, 'x' | 'y'> | DOMPoint} [point]
+   */
+  remove(point) {
+    const { imageMap, values } = this
+
+    const value = this.getValue(point)
+    if (!value) {
+      return
+    }
+
+    const index = values.indexOf(value)
+    const $path = imageMap.getPathById(value.region_id)
+
+    imageMap.unsetState('active', $path)
+    values.splice(index, 1)
+
+    this.render()
+    this.write()
+  }
+
+  /**
+   * Clear all features
+   */
+  clear() {
+    this.values.length = 0
+    this.render()
+    this.write()
+  }
+
+  /**
    * Update status messages
    *
    * @param {CustomEvent<ImageMapPayload>} [event] - Image map event
@@ -300,6 +343,51 @@ export class BreastDiagram extends ConfigurableComponent {
     $debugRegion.innerHTML = $path
       ? `<samp>${$path.classList.value}</samp>`
       : 'N/A'
+  }
+
+  /**
+   * Show add or edit feature card
+   *
+   * @param {BreastFeature} feature
+   * @param {number | string} number
+   * @param {'add' | 'edit'} mode
+   */
+  showCard(feature, number, mode = 'edit') {
+    const { $card, $captions, $buttons, $radios, $region } = this
+    if (!$card || !$region) {
+      return
+    }
+
+    // Show add or edit feature caption
+    for (const $caption of $captions) {
+      $caption.setAttribute('hidden', '')
+
+      if ($caption.matches(`.app-js-feature-caption-${mode}`)) {
+        $caption.removeAttribute('hidden')
+      }
+    }
+
+    // Show add, edit or cancel buttons
+    for (const $button of $buttons) {
+      $button.setAttribute('hidden', '')
+
+      if (
+        $button.matches(`.app-js-feature-${mode}`) ||
+        $button.matches(`.app-js-feature-cancel`)
+      ) {
+        $button.removeAttribute('hidden')
+      }
+    }
+
+    for (const $radio of $radios) {
+      $radio.checked = $radio.value === feature.id
+    }
+
+    $card.dataset.id = feature.id
+    $card.dataset.regionId = feature.region_id
+    $card.dataset.number = `${number}`
+    $region.textContent = ImageKey.format($card.dataset.regionId)
+    $card.removeAttribute('hidden')
   }
 
   /**
@@ -361,51 +449,6 @@ export class BreastDiagram extends ConfigurableComponent {
 
     this.onReset()
     this.showCard(value, target.value)
-  }
-
-  /**
-   * Show add or edit feature card
-   *
-   * @param {BreastFeature} feature
-   * @param {number | string} number
-   * @param {'add' | 'edit'} mode
-   */
-  showCard(feature, number, mode = 'edit') {
-    const { $card, $captions, $buttons, $radios, $region } = this
-    if (!$card || !$region) {
-      return
-    }
-
-    // Show add or edit feature caption
-    for (const $caption of $captions) {
-      $caption.setAttribute('hidden', '')
-
-      if ($caption.matches(`.app-js-feature-caption-${mode}`)) {
-        $caption.removeAttribute('hidden')
-      }
-    }
-
-    // Show add, edit or cancel buttons
-    for (const $button of $buttons) {
-      $button.setAttribute('hidden', '')
-
-      if (
-        $button.matches(`.app-js-feature-${mode}`) ||
-        $button.matches(`.app-js-feature-cancel`)
-      ) {
-        $button.removeAttribute('hidden')
-      }
-    }
-
-    for (const $radio of $radios) {
-      $radio.checked = $radio.value === feature.id
-    }
-
-    $card.dataset.id = feature.id
-    $card.dataset.regionId = feature.region_id
-    $card.dataset.number = `${number}`
-    $region.textContent = ImageKey.format($card.dataset.regionId)
-    $card.removeAttribute('hidden')
   }
 
   /**
@@ -537,49 +580,6 @@ export class BreastDiagram extends ConfigurableComponent {
     delete $card.dataset.id
     delete $card.dataset.regionId
     delete $card.dataset.number
-  }
-
-  /**
-   * Add breast feature
-   *
-   * @param {BreastFeature} feature
-   */
-  add(feature) {
-    this.values.push(feature)
-    this.render()
-    this.write()
-  }
-
-  /**
-   * Remove breast feature
-   *
-   * @param {Pick<BreastFeature, 'x' | 'y'> | DOMPoint} [point]
-   */
-  remove(point) {
-    const { imageMap, values } = this
-
-    const value = this.getValue(point)
-    if (!value) {
-      return
-    }
-
-    const index = values.indexOf(value)
-    const $path = imageMap.getPathById(value.region_id)
-
-    imageMap.unsetState('active', $path)
-    values.splice(index, 1)
-
-    this.render()
-    this.write()
-  }
-
-  /**
-   * Clear all features
-   */
-  clear() {
-    this.values.length = 0
-    this.render()
-    this.write()
   }
 
   /**
