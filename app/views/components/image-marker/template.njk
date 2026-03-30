@@ -1,6 +1,12 @@
 {% from "nhsuk/macros/attributes.njk" import nhsukAttributes %}
 
-{#- Determine type of element to use, if not explicitly set #}
+{#-
+  Determine type of element to use, if not explicitly set
+
+  * Marker `"a"` links are used in the key with `href="#marker-1"` etc
+  * Marker `"button"` elements are used by editable diagrams, with a click to edit the feature
+  * Marker `"div"` elements are used by readonly diagrams and cannot be clicked
+#}
 {%- if params.element %}
   {% set element = params.element | lower %}
 {% elif params.href %}
