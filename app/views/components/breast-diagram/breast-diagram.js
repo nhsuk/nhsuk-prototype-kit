@@ -494,10 +494,7 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     // Handle form save button
-    if (
-      target.matches('.app-js-feature-save') &&
-      !$card.hasAttribute('hidden')
-    ) {
+    if (target.matches('.app-js-feature-save') && !this.canSubmit()) {
       event.preventDefault()
       imageMap.$root.scrollIntoView({ behavior: 'smooth' })
     }
@@ -515,19 +512,27 @@ export class BreastDiagram extends ConfigurableComponent {
   }
 
   /**
+   * Whether form can be submitted (card is hidden or not populated)
+   */
+  canSubmit() {
+    const { $card } = this
+
+    return (
+      !!$card?.hasAttribute('hidden') ||
+      !$card?.dataset.id ||
+      !$card.dataset.number ||
+      !$card.dataset.regionId
+    )
+  }
+
+  /**
    * Handle image map form submit
    *
    * @param {SubmitEvent} event
    */
   onSubmit(event) {
     const { $card, $radios } = this
-
-    // Allow submission when card is hidden or not populated
-    if (
-      $card?.hasAttribute('hidden') ||
-      !$card?.dataset.number ||
-      !$card.dataset.regionId
-    ) {
+    if (this.canSubmit()) {
       return
     }
 
@@ -543,7 +548,7 @@ export class BreastDiagram extends ConfigurableComponent {
       return
     }
 
-    const marker = this.getMarker($card.dataset.number)
+    const marker = this.getMarker($card?.dataset.number)
     const value = this.getValue(marker?.point)
     if (!value) {
       return
