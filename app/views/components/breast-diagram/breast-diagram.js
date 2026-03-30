@@ -328,8 +328,8 @@ export class BreastDiagram extends ConfigurableComponent {
       : undefined
 
     this.onReset()
-    this.edit(value, markers.length + 1, 'add')
     this.add(value)
+    this.showCard(value, markers.length, 'add')
 
     if ($checked) {
       $checked.checked = true
@@ -360,17 +360,17 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     this.onReset()
-    this.edit(value, target.value)
+    this.showCard(value, target.value)
   }
 
   /**
-   * Edit feature in add or edit mode
+   * Show add or edit feature card
    *
    * @param {BreastFeature} feature
    * @param {number | string} number
    * @param {'add' | 'edit'} mode
    */
-  edit(feature, number, mode = 'edit') {
+  showCard(feature, number, mode = 'edit') {
     const { $card, $captions, $buttons, $radios, $region } = this
     if (!$card || !$region) {
       return
