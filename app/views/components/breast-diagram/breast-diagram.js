@@ -8,6 +8,8 @@ import {
   isObject
 } from '/nhsuk-frontend/nhsuk-frontend.min.js'
 
+const FEATURE_ID_PENDING = 'pending'
+
 /**
  * Breast diagram component
  *
@@ -404,14 +406,14 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     const value = /** @type {BreastFeature} */ ({
-      id: 'pending',
+      id: FEATURE_ID_PENDING,
       region_id: $path.classList.value,
       x: point.x,
       y: point.y
     })
 
     // Save checked (but unsaved) feature when a marker is moved
-    const $checked = values.some(({ id }) => id === 'pending')
+    const $checked = values.some(({ id }) => id === FEATURE_ID_PENDING)
       ? $radios.find(($radio) => $radio.checked)
       : undefined
 
@@ -577,7 +579,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
     // Remove pending (unsaved) features
     for (const value of values) {
-      if (value.id === 'pending') {
+      if (value.id === FEATURE_ID_PENDING) {
         this.remove(value)
       }
     }
@@ -632,7 +634,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
     const marker = markers[index]
     const point = imageMap.createPoint(x, y, region_id)
-    const number = feature.id === 'pending' ? '?' : index + 1
+    const number = feature.id === FEATURE_ID_PENDING ? '?' : index + 1
 
     // Set marker position
     marker.setPosition(point, number)
