@@ -371,12 +371,13 @@ export class BreastDiagram extends ConfigurableComponent {
       }
     }
 
-    // Show add, edit or cancel buttons
+    // Show add, edit, remove or cancel buttons
     for (const $button of $buttons) {
       $button.setAttribute('hidden', '')
 
       if (
         $button.matches(`.app-js-feature-${mode}`) ||
+        $button.matches(`.app-js-feature-remove`) ||
         $button.matches(`.app-js-feature-cancel`)
       ) {
         $button.removeAttribute('hidden')
