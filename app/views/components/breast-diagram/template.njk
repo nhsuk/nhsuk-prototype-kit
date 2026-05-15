@@ -64,9 +64,8 @@
 
   {% set descriptionHtml %}
     <p class="nhsuk-body">
-      This will be added to<br>
-      {{ tag({
-        text: "Left lower inner",
+      Location {{ tag({
+        text: "Region name",
         classes: "app-breast-diagram__region",
         colour: "white"
       }) | trim | indent(6) }}
