@@ -5,8 +5,6 @@ export const sessionDataDefaults = {
 
   /**
    * Pre-populated breast features
-   *
-   * @type {BreastFeature[]}
    */
   features: [
     {
@@ -41,7 +39,3 @@ export const sessionDataDefaults = {
     }
   ]
 }
-
-/**
- * @import { BreastFeature } from '../views/components/breast-diagram/breast-diagram.js'
- */
