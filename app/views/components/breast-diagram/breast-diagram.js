@@ -353,7 +353,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * Show add or edit feature card
    *
    * @param {BreastFeature} feature
-   * @param {number | string} number
+   * @param {string} number
    * @param {'add' | 'edit'} mode
    */
   showCard(feature, number, mode = 'edit') {
@@ -366,7 +366,12 @@ export class BreastDiagram extends ConfigurableComponent {
     for (const $caption of $captions) {
       $caption.setAttribute('hidden', '')
 
+      // Show caption with optional feature number
       if ($caption.matches(`.app-js-feature-caption-${mode}`)) {
+        if (mode === 'edit') {
+          $caption.textContent += ` ${number}`
+        }
+
         $caption.removeAttribute('hidden')
       }
     }
@@ -391,7 +396,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
     $card.dataset.id = feature.id
     $card.dataset.regionId = feature.region_id
-    $card.dataset.number = `${number}`
+    $card.dataset.number = number
     $region.textContent = ImageKey.format($card.dataset.regionId)
     $card.removeAttribute('hidden')
   }
@@ -423,7 +428,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
     this.onReset()
     this.add(value)
-    this.showCard(value, markers.length, 'add')
+    this.showCard(value, `${markers.length}`, 'add')
 
     if ($checked) {
       $checked.checked = true
@@ -574,7 +579,7 @@ export class BreastDiagram extends ConfigurableComponent {
   onReset(event) {
     event?.preventDefault()
 
-    const { $card, values } = this
+    const { $card, $captions, values } = this
     if (!$card) {
       return
     }
@@ -585,6 +590,17 @@ export class BreastDiagram extends ConfigurableComponent {
     for (const value of values) {
       if (value.id === FEATURE_ID_PENDING) {
         this.remove(value)
+      }
+    }
+
+    // Remove edit caption feature number
+    if ($card.dataset.id !== FEATURE_ID_PENDING) {
+      const $caption = $captions.find(($caption) =>
+        $caption.matches('.app-js-feature-caption-edit')
+      )
+
+      if ($caption) {
+        $caption.textContent = $caption.textContent.replace(/\s\d+$/, '')
       }
     }
 

@@ -52,13 +52,13 @@
 {% if not params.readOnly %}
   {% set headingHtml %}
     <span class="app-breast-diagram__caption nhsuk-caption-m app-js-feature-caption-add">
-      Add new feature
+      {{- "Add new feature" -}}
     </span>
     <span class="app-breast-diagram__caption nhsuk-caption-m app-js-feature-caption-edit" hidden>
-      Editing feature
+      {{- "Editing feature" -}}
     </span>
     <h2 class="nhsuk-fieldset__heading nhsuk-heading-m">
-      What is the feature?
+      {{- "What is the feature?" -}}
     </h2>
   {% endset %}
 
