@@ -377,8 +377,9 @@ export class BreastDiagram extends ConfigurableComponent {
 
       if (
         $button.matches(`.app-js-feature-${mode}`) ||
-        $button.matches(`.app-js-feature-remove`) ||
-        $button.matches(`.app-js-feature-cancel`)
+        $button.matches(`.app-js-feature-cancel`) ||
+        ($button.matches(`.app-js-feature-remove`) &&
+          feature.id !== FEATURE_ID_PENDING)
       ) {
         $button.removeAttribute('hidden')
       }
