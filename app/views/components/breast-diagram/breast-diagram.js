@@ -9,6 +9,7 @@ import {
 } from '/nhsuk-frontend/nhsuk-frontend.min.js'
 
 const FEATURE_ID_PENDING = 'pending'
+const FEATURE_ID_OTHER = 'other_feature'
 
 /**
  * Breast diagram component
@@ -24,7 +25,7 @@ export class BreastDiagram extends ConfigurableComponent {
   /**
    * @type {HTMLInputElement}
    */
-  $input
+  $features
 
   /**
    * @type {HTMLInputElement[]}
@@ -40,6 +41,11 @@ export class BreastDiagram extends ConfigurableComponent {
    * @type {HTMLElement | null}
    */
   $region = null
+
+  /**
+   * @type {HTMLInputElement | null}
+   */
+  $label = null
 
   /**
    * @type {Element[]}
@@ -95,11 +101,11 @@ export class BreastDiagram extends ConfigurableComponent {
       })
     }
 
-    const $input = $form.querySelector('input[name="features"]')
-    if (!($input instanceof HTMLInputElement)) {
+    const $features = $form.querySelector('input[name="features"]')
+    if (!($features instanceof HTMLInputElement)) {
       throw new ElementError({
         component: BreastDiagram,
-        element: $input,
+        element: $features,
         expectedType: 'HTMLInputElement',
         identifier: 'Breast diagram feature values (`input[name="features"]`)'
       })
@@ -117,7 +123,7 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     this.$form = $form
-    this.$input = $input
+    this.$features = $features
     this.$imageMarker = $imageMarker
     this.markers = []
     this.values = []
@@ -146,6 +152,7 @@ export class BreastDiagram extends ConfigurableComponent {
     if (!readOnly) {
       const $card = this.$root.querySelector('.app-breast-diagram__card')
       const $region = $card?.querySelector('.app-breast-diagram__region')
+      const $label = $form.querySelector('input[name="feature_label"]')
       const $captions = $card?.querySelectorAll('.app-breast-diagram__caption')
       const $buttons = $card?.querySelectorAll('.app-breast-diagram__button')
       const $radios = $form.querySelectorAll('input[name="feature"]')
@@ -153,6 +160,7 @@ export class BreastDiagram extends ConfigurableComponent {
       if (
         !($card instanceof HTMLElement) ||
         !($region instanceof HTMLElement) ||
+        !($label instanceof HTMLInputElement) ||
         !$captions?.length ||
         !$buttons?.length ||
         !$radios.length
@@ -165,6 +173,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
       this.$card = $card
       this.$region = $region
+      this.$label = $label
       this.$captions = Array.from($captions)
       this.$buttons = Array.from($buttons)
       this.$radios = Array.from($radios)
@@ -237,7 +246,8 @@ export class BreastDiagram extends ConfigurableComponent {
     try {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       this.values = /** @type {BreastFeature[]} */ (
-        JSON.parse(decodeURIComponent(this.$input.value), getArrayValue) ?? []
+        JSON.parse(decodeURIComponent(this.$features.value), getArrayValue) ??
+          []
       )
 
       // Set key values (optional if read only)
@@ -256,7 +266,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * Write diagram values to hidden input
    */
   write() {
-    this.$input.value = JSON.stringify(this.values)
+    this.$features.value = JSON.stringify(this.values)
     this.log()
   }
 
@@ -357,8 +367,8 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {'add' | 'edit'} mode
    */
   showCard(feature, number, mode = 'edit') {
-    const { $card, $captions, $buttons, $radios, $region } = this
-    if (!$card || !$region) {
+    const { $card, $captions, $label, $buttons, $radios, $region } = this
+    if (!$card || !$label || !$region) {
       return
     }
 
@@ -390,13 +400,23 @@ export class BreastDiagram extends ConfigurableComponent {
       }
     }
 
-    for (const $radio of $radios) {
-      $radio.checked = $radio.value === feature.id
+    // Click radio for feature being edited
+    if (mode === 'edit') {
+      $radios
+        .filter(($radio) => $radio.value === feature.id)
+        .forEach(($radio) => $radio.click())
+
+      // Update custom label text input
+      if (feature.id === FEATURE_ID_OTHER && feature.label) {
+        $label.value = feature.label
+      }
     }
 
     $card.dataset.id = feature.id
+    $card.dataset.label = feature.label
     $card.dataset.regionId = feature.region_id
     $card.dataset.number = number
+
     $region.textContent = ImageKey.format($card.dataset.regionId)
     $card.removeAttribute('hidden')
   }
@@ -542,7 +562,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {SubmitEvent} event
    */
   onSubmit(event) {
-    const { $card, $radios } = this
+    const { $card, $label, $radios } = this
     if (this.canSubmit()) {
       return
     }
@@ -550,12 +570,19 @@ export class BreastDiagram extends ConfigurableComponent {
     // Prevent submission when card is visible
     event.preventDefault()
 
-    // Check for selected feature
+    // Check for selected feature and custom label
     const $checked = $radios.find(($radio) => $radio.checked)
+    const label = $label?.value.trim()
 
-    // Focus first radio button
+    // Invalid: Focus first radio button
     if (!$checked) {
       $radios[0]?.focus()
+      return
+    }
+
+    // Invalid: Focus custom label text input
+    if ($checked.value === FEATURE_ID_OTHER && !label) {
+      $label?.focus()
       return
     }
 
@@ -565,7 +592,14 @@ export class BreastDiagram extends ConfigurableComponent {
       return
     }
 
+    // Set feature ID
     value.id = $checked.value
+
+    // Set custom label (optional)
+    if ($checked.value === FEATURE_ID_OTHER) {
+      value.label = label
+    }
+
     this.onReset()
     this.render()
     this.write()
@@ -579,8 +613,8 @@ export class BreastDiagram extends ConfigurableComponent {
   onReset(event) {
     event?.preventDefault()
 
-    const { $card, $captions, values } = this
-    if (!$card) {
+    const { $card, $captions, $label, $radios, values } = this
+    if (!$card || !$label) {
       return
     }
 
@@ -604,7 +638,15 @@ export class BreastDiagram extends ConfigurableComponent {
       }
     }
 
+    // Click radio to hide custom label text input before reset
+    $radios[0].click()
+    $radios[0].checked = false
+
+    // Clear custom label text input
+    $label.value = ''
+
     delete $card.dataset.id
+    delete $card.dataset.label
     delete $card.dataset.regionId
     delete $card.dataset.number
   }
@@ -743,11 +785,12 @@ function isValidObject(value) {
     return false
   }
 
-  const keys = new Set(['id', 'region_id', 'x', 'y'])
+  const keys = new Set(['id', 'label', 'region_id', 'x', 'y'])
 
   return (
     Object.keys(value).every((key) => keys.has(key)) &&
     typeof value.id === 'string' &&
+    (typeof value.label === 'string' || !('label' in value)) &&
     typeof value.region_id === 'string' &&
     typeof value.x === 'number' &&
     typeof value.y === 'number'
@@ -781,6 +824,7 @@ function isValid(value) {
  *
  * @typedef {object} BreastFeature
  * @property {string} id - Breast feature ID
+ * @property {string} [label] - Custom label (optional)
  * @property {string} region_id - Image map region ID
  * @property {number} x - X coordinate of breast feature
  * @property {number} y - Y coordinate of breast feature

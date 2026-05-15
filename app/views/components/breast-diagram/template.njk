@@ -1,6 +1,7 @@
 {% from "nhsuk/components/button/macro.njk" import button %}
 {% from "nhsuk/components/card/macro.njk" import card %}
 {% from "nhsuk/components/code/macro.njk" import code %}
+{% from "nhsuk/components/input/macro.njk" import input %}
 {% from "nhsuk/components/radios/macro.njk" import radios %}
 {% from "nhsuk/components/summary-list/macro.njk" import summaryList %}
 {% from "nhsuk/components/tag/macro.njk" import tag %}
@@ -72,6 +73,19 @@
     </p>
   {% endset %}
 
+  {% set otherFeatureHtml %}
+    {{ input({
+      label: {
+        html: 'Provide details <span class="nhsuk-u-visually-hidden">for the other feature</span>'
+      },
+      name: "feature_label",
+      classes: "nhsuk-u-width-full",
+      formGroup: {
+        classes: "nhsuk-u-width-one-half"
+      }
+    }) | trim | indent(4) }}
+  {% endset %}
+
   {% call card({
     classes: "app-breast-diagram__card",
     variant: "secondary",
@@ -115,7 +129,10 @@
         },
         {
           text: "Other feature",
-          value: "other_feature"
+          value: "other_feature",
+          conditional: {
+            html: otherFeatureHtml | indent(2)
+          }
         }
       ]
     }) | trim | indent(4) }}

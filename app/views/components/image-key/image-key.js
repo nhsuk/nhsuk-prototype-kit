@@ -73,7 +73,7 @@ export class ImageKey extends ConfigurableComponent {
     }
 
     // Render key items
-    filtered.forEach(({ id, region_id }, index) => {
+    filtered.forEach(({ id, label, region_id }, index) => {
       const $item = document.importNode(this.$imageKeyItem.content, true)
 
       const $marker = $item.querySelector('.app-image-marker')
@@ -92,6 +92,11 @@ export class ImageKey extends ConfigurableComponent {
       $number.textContent = `${index + 1}`
       $label.textContent = ImageKey.format(id)
       $region.textContent = ImageKey.format(region_id)
+
+      // Append custom label
+      if (label) {
+        $label.textContent += `: ${label}`
+      }
 
       $list.appendChild($item)
     })
