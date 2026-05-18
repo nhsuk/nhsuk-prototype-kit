@@ -532,6 +532,11 @@ export class BreastDiagram extends ConfigurableComponent {
       return
     }
 
+    // Handle form cancel button
+    if (target.matches('.app-js-feature-cancel')) {
+      imageMap.$root.scrollIntoView({ behavior: 'smooth' })
+    }
+
     // Handle form remove button
     if (target.matches('.app-js-feature-remove')) {
       const marker = this.getMarker($card.dataset.number)
