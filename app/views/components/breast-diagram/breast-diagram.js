@@ -428,7 +428,6 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     $card.dataset.id = feature.id
-    $card.dataset.details = feature.details
     $card.dataset.regionId = feature.region_id
     $card.dataset.number = number
 
@@ -611,7 +610,7 @@ export class BreastDiagram extends ConfigurableComponent {
     value.id = $checked.value
 
     // Set custom details (optional)
-    if ($checked.value === FEATURE_ID_OTHER) {
+    if ($checked.value === FEATURE_ID_OTHER && details) {
       value.details = details
     }
 
@@ -661,7 +660,6 @@ export class BreastDiagram extends ConfigurableComponent {
     $details.value = ''
 
     delete $card.dataset.id
-    delete $card.dataset.details
     delete $card.dataset.regionId
     delete $card.dataset.number
   }
