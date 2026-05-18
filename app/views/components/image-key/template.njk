@@ -45,7 +45,7 @@
   {% for item in params.items %}
     {{ appImageKeyItem({
       index: loop.index,
-      feature: (item.id | replace("_", " ") | capitalize) ~ ((": " ~ item.label) if item.label),
+      feature: (item.id | replace("_", " ") | capitalize) ~ ((": " ~ item.details) if item.details),
       region: item.region_id | replace("_", " ") | capitalize,
       href: undefined if params.readOnly else "#marker-" ~ loop.index
     }) | trim | indent(4) }}

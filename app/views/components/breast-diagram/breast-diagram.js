@@ -45,7 +45,7 @@ export class BreastDiagram extends ConfigurableComponent {
   /**
    * @type {HTMLInputElement | null}
    */
-  $label = null
+  $details = null
 
   /**
    * @type {Element[]}
@@ -152,7 +152,7 @@ export class BreastDiagram extends ConfigurableComponent {
     if (!readOnly) {
       const $card = this.$root.querySelector('.app-breast-diagram__card')
       const $region = $card?.querySelector('.app-breast-diagram__region')
-      const $label = $form.querySelector('input[name="feature_label"]')
+      const $details = $form.querySelector('input[name="feature_details"]')
       const $captions = $card?.querySelectorAll('.app-breast-diagram__caption')
       const $buttons = $card?.querySelectorAll('.app-breast-diagram__button')
       const $radios = $form.querySelectorAll('input[name="feature"]')
@@ -160,7 +160,7 @@ export class BreastDiagram extends ConfigurableComponent {
       if (
         !($card instanceof HTMLElement) ||
         !($region instanceof HTMLElement) ||
-        !($label instanceof HTMLInputElement) ||
+        !($details instanceof HTMLInputElement) ||
         !$captions?.length ||
         !$buttons?.length ||
         !$radios.length
@@ -173,7 +173,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
       this.$card = $card
       this.$region = $region
-      this.$label = $label
+      this.$details = $details
       this.$captions = Array.from($captions)
       this.$buttons = Array.from($buttons)
       this.$radios = Array.from($radios)
@@ -366,8 +366,8 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {'add' | 'edit'} mode
    */
   showCard(feature, number, mode = 'edit') {
-    const { $card, $captions, $label, $buttons, $radios, $region } = this
-    if (!$card || !$label || !$region) {
+    const { $card, $captions, $details, $buttons, $radios, $region } = this
+    if (!$card || !$details || !$region) {
       return
     }
 
@@ -405,14 +405,14 @@ export class BreastDiagram extends ConfigurableComponent {
         .filter(($radio) => $radio.value === feature.id)
         .forEach(($radio) => $radio.click())
 
-      // Update custom label text input
-      if (feature.id === FEATURE_ID_OTHER && feature.label) {
-        $label.value = feature.label
+      // Update custom details text input
+      if (feature.id === FEATURE_ID_OTHER && feature.details) {
+        $details.value = feature.details
       }
     }
 
     $card.dataset.id = feature.id
-    $card.dataset.label = feature.label
+    $card.dataset.details = feature.details
     $card.dataset.regionId = feature.region_id
     $card.dataset.number = number
 
@@ -561,7 +561,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {SubmitEvent} event
    */
   onSubmit(event) {
-    const { $card, $label, $radios } = this
+    const { $card, $details, $radios } = this
     if (this.canSubmit()) {
       return
     }
@@ -569,9 +569,9 @@ export class BreastDiagram extends ConfigurableComponent {
     // Prevent submission when card is visible
     event.preventDefault()
 
-    // Check for selected feature and custom label
+    // Check for selected feature and custom details
     const $checked = $radios.find(($radio) => $radio.checked)
-    const label = $label?.value.trim()
+    const details = $details?.value.trim()
 
     // Invalid: Focus first radio button
     if (!$checked) {
@@ -579,9 +579,9 @@ export class BreastDiagram extends ConfigurableComponent {
       return
     }
 
-    // Invalid: Focus custom label text input
-    if ($checked.value === FEATURE_ID_OTHER && !label) {
-      $label?.focus()
+    // Invalid: Focus custom details text input
+    if ($checked.value === FEATURE_ID_OTHER && !details) {
+      $details?.focus()
       return
     }
 
@@ -594,9 +594,9 @@ export class BreastDiagram extends ConfigurableComponent {
     // Set feature ID
     value.id = $checked.value
 
-    // Set custom label (optional)
+    // Set custom details (optional)
     if ($checked.value === FEATURE_ID_OTHER) {
-      value.label = label
+      value.details = details
     }
 
     this.onReset()
@@ -612,8 +612,8 @@ export class BreastDiagram extends ConfigurableComponent {
   onReset(event) {
     event?.preventDefault()
 
-    const { $card, $captions, $label, $radios, values } = this
-    if (!$card || !$label) {
+    const { $card, $captions, $details, $radios, values } = this
+    if (!$card || !$details) {
       return
     }
 
@@ -637,15 +637,15 @@ export class BreastDiagram extends ConfigurableComponent {
       }
     }
 
-    // Click radio to hide custom label text input before reset
+    // Click radio to hide custom details text input before reset
     $radios[0].click()
     $radios[0].checked = false
 
-    // Clear custom label text input
-    $label.value = ''
+    // Clear custom details text input
+    $details.value = ''
 
     delete $card.dataset.id
-    delete $card.dataset.label
+    delete $card.dataset.details
     delete $card.dataset.regionId
     delete $card.dataset.number
   }
@@ -784,12 +784,12 @@ function isValidObject(value) {
     return false
   }
 
-  const keys = new Set(['id', 'label', 'region_id', 'x', 'y'])
+  const keys = new Set(['id', 'details', 'region_id', 'x', 'y'])
 
   return (
     Object.keys(value).every((key) => keys.has(key)) &&
     typeof value.id === 'string' &&
-    (typeof value.label === 'string' || !('label' in value)) &&
+    (typeof value.details === 'string' || !('details' in value)) &&
     typeof value.region_id === 'string' &&
     typeof value.x === 'number' &&
     typeof value.y === 'number'
@@ -823,7 +823,7 @@ function isValid(value) {
  *
  * @typedef {object} BreastFeature
  * @property {string} id - Breast feature ID
- * @property {string} [label] - Custom label (optional)
+ * @property {string} [details] - Custom details (optional)
  * @property {string} region_id - Image map region ID
  * @property {number} x - X coordinate of breast feature
  * @property {number} y - Y coordinate of breast feature
