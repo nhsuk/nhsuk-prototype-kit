@@ -28,6 +28,26 @@ export class BreastDiagram extends ConfigurableComponent {
   $input
 
   /**
+   * @type {HTMLElement | null}
+   */
+  $radiosFieldset = null
+
+  /**
+   * @type {HTMLElement | null}
+   */
+  $radiosLegend = null
+
+  /**
+   * @type {HTMLElement | null}
+   */
+  $radiosFormGroup = null
+
+  /**
+   * @type {HTMLElement | null}
+   */
+  $radiosErrorMessage = null
+
+  /**
    * @type {HTMLInputElement[]}
    */
   $radios = []
@@ -41,6 +61,16 @@ export class BreastDiagram extends ConfigurableComponent {
    * @type {HTMLElement | null}
    */
   $region = null
+
+  /**
+   * @type {HTMLElement | null}
+   */
+  $detailsFormGroup = null
+
+  /**
+   * @type {HTMLElement | null}
+   */
+  $detailsErrorMessage = null
 
   /**
    * @type {HTMLInputElement | null}
@@ -161,6 +191,10 @@ export class BreastDiagram extends ConfigurableComponent {
 
       const $region = $card.querySelector('.app-breast-diagram__region')
       const $details = $form.querySelector('input[name="feature_details"]')
+      const $detailsFormGroup = $details?.closest('.nhsuk-form-group')
+      const $detailsErrorMessage = $detailsFormGroup?.querySelector(
+        '.nhsuk-error-message'
+      )
 
       const $captions = Array.from(
         $card.querySelectorAll('.app-breast-diagram__caption')
@@ -174,9 +208,25 @@ export class BreastDiagram extends ConfigurableComponent {
         $form.querySelectorAll('input[name="feature"]')
       )
 
+      const $radiosFieldset = $radios[0]?.closest('.nhsuk-fieldset')
+      const $radiosLegend = $radiosFieldset?.querySelector(
+        '.nhsuk-fieldset__legend'
+      )
+
+      const $radiosFormGroup = $radios[0]?.closest('.nhsuk-form-group')
+      const $radiosErrorMessage = $radiosFieldset?.querySelector(
+        '.nhsuk-error-message'
+      )
+
       if (
         !($region instanceof HTMLElement) ||
         !($details instanceof HTMLInputElement) ||
+        !($detailsFormGroup instanceof HTMLElement) ||
+        !($detailsErrorMessage instanceof HTMLElement) ||
+        !($radiosFieldset instanceof HTMLElement) ||
+        !($radiosLegend instanceof HTMLElement) ||
+        !($radiosFormGroup instanceof HTMLElement) ||
+        !($radiosErrorMessage instanceof HTMLElement) ||
         !$captions.length ||
         !$buttons.length ||
         !$radios.length
@@ -190,9 +240,15 @@ export class BreastDiagram extends ConfigurableComponent {
       this.$card = $card
       this.$region = $region
       this.$details = $details
+      this.$detailsFormGroup = $detailsFormGroup
+      this.$detailsErrorMessage = $detailsErrorMessage
       this.$captions = $captions
       this.$buttons = $buttons
       this.$radios = $radios
+      this.$radiosFieldset = $radiosFieldset
+      this.$radiosLegend = $radiosLegend
+      this.$radiosFormGroup = $radiosFormGroup
+      this.$radiosErrorMessage = $radiosErrorMessage
 
       const imageKeys = createAll(
         ImageKey,
@@ -581,7 +637,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {SubmitEvent} event
    */
   onSubmit(event) {
-    const { $card, $details, $radios } = this
+    const { $card, $details, $radiosFieldset, $radiosLegend, $radios } = this
     if (this.canSubmit()) {
       return
     }
@@ -589,20 +645,41 @@ export class BreastDiagram extends ConfigurableComponent {
     // Prevent submission when card is visible
     event.preventDefault()
 
+    // Reset validation errors
+    this.onResetValidation()
+
     // Check for selected feature and custom details
     const $checked = $radios.find(($radio) => $radio.checked)
     const details = $details?.value.trim()
 
-    // Invalid: Focus first radio button
-    if (!$checked) {
-      $radios[0]?.focus()
-      return
-    }
+    // Show form validation
+    if (!$checked || ($checked.value === FEATURE_ID_OTHER && !details)) {
+      this.onResetValidation()
 
-    // Invalid: Focus custom details text input
-    if ($checked.value === FEATURE_ID_OTHER && !details) {
-      $details?.focus()
-      return
+      // Scroll radios legend into view
+      $radiosLegend?.scrollIntoView({ behavior: 'smooth' })
+
+      // Invalid: Focus first radio button
+      if (!$checked) {
+        showError($radiosFieldset, {
+          $errorMessage: this.$radiosErrorMessage,
+          $formGroup: this.$radiosFormGroup
+        })
+
+        $radios[0]?.focus({ preventScroll: true })
+        return
+      }
+
+      // Invalid: Focus custom details text input
+      if ($checked.value === FEATURE_ID_OTHER && !details) {
+        showError($details, {
+          $errorMessage: this.$detailsErrorMessage,
+          $formGroup: this.$detailsFormGroup
+        })
+
+        $details?.focus({ preventScroll: true })
+        return
+      }
     }
 
     const marker = this.getMarker($card?.dataset.number)
@@ -625,6 +702,26 @@ export class BreastDiagram extends ConfigurableComponent {
   }
 
   /**
+   * Handle image map form validation reset
+   */
+  onResetValidation() {
+    const { $details, $radiosFieldset } = this
+    if (!$details || !$radiosFieldset) {
+      return
+    }
+
+    hideError($radiosFieldset, {
+      $errorMessage: this.$radiosErrorMessage,
+      $formGroup: this.$radiosFormGroup
+    })
+
+    hideError($details, {
+      $errorMessage: this.$detailsErrorMessage,
+      $formGroup: this.$detailsFormGroup
+    })
+  }
+
+  /**
    * Handle image map form reset
    *
    * @param {Event} [event] - Reset event
@@ -638,6 +735,9 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     $card.setAttribute('hidden', '')
+
+    // Reset validation errors
+    this.onResetValidation()
 
     // Remove pending (unsaved) features
     for (const value of values) {
@@ -826,6 +926,83 @@ function isValid(value) {
     typeof value === 'number' ||
     typeof value === 'boolean'
   )
+}
+
+/**
+ * Show error on input or fieldset
+ *
+ * @param {HTMLElement | null} $element - Input or fieldset
+ * @param {{ $formGroup: HTMLElement | null, $errorMessage: HTMLElement | null }} options
+ */
+function showError($element, { $errorMessage, $formGroup }) {
+  let describedBy = $element?.getAttribute('aria-describedby')
+
+  if (
+    !$element ||
+    !$errorMessage ||
+    !$formGroup ||
+    describedBy?.includes($errorMessage.id)
+  ) {
+    return
+  }
+
+  // Update description to add error
+  describedBy ??= ''
+  describedBy = `${describedBy} ${$errorMessage.id}`
+
+  // Set new description
+  $element.setAttribute('aria-describedby', describedBy)
+
+  // Add error border to form group
+  $formGroup.classList.add('nhsuk-form-group--error')
+
+  // Add error border to input (optional)
+  if ($element instanceof HTMLInputElement) {
+    $element.classList.add('nhsuk-input--error')
+  }
+
+  // Show error message until next validation
+  $errorMessage.removeAttribute('hidden')
+}
+
+/**
+ * Hide error on input or fieldset
+ *
+ * @param {HTMLElement | null} $element - Input or fieldset
+ * @param {{ $formGroup: HTMLElement | null, $errorMessage: HTMLElement | null }} options
+ */
+function hideError($element, { $errorMessage, $formGroup }) {
+  let describedBy = $element?.getAttribute('aria-describedby')
+
+  if (
+    !$element ||
+    !$errorMessage ||
+    !$formGroup ||
+    !describedBy?.includes($errorMessage.id)
+  ) {
+    return
+  }
+
+  // Update description to remove error
+  describedBy = describedBy.replace($errorMessage.id, '').trim()
+
+  // Set new description or remove if empty
+  if (describedBy) {
+    $element.setAttribute('aria-describedby', describedBy)
+  } else {
+    $element.removeAttribute('aria-describedby')
+  }
+
+  // Remove error border from form group
+  $formGroup.classList.remove('nhsuk-form-group--error')
+
+  // Remove error border from input (optional)
+  if ($element instanceof HTMLInputElement) {
+    $element.classList.remove('nhsuk-input--error')
+  }
+
+  // Hide error message until next validation
+  $errorMessage.setAttribute('hidden', '')
 }
 
 /**
