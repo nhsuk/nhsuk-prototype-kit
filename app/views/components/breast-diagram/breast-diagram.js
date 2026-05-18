@@ -25,7 +25,7 @@ export class BreastDiagram extends ConfigurableComponent {
   /**
    * @type {HTMLInputElement}
    */
-  $features
+  $input
 
   /**
    * @type {HTMLInputElement[]}
@@ -101,11 +101,11 @@ export class BreastDiagram extends ConfigurableComponent {
       })
     }
 
-    const $features = $form.querySelector('input[name="features"]')
-    if (!($features instanceof HTMLInputElement)) {
+    const $input = $form.querySelector('input[name="features"]')
+    if (!($input instanceof HTMLInputElement)) {
       throw new ElementError({
         component: BreastDiagram,
-        element: $features,
+        element: $input,
         expectedType: 'HTMLInputElement',
         identifier: 'Breast diagram feature values (`input[name="features"]`)'
       })
@@ -123,7 +123,7 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     this.$form = $form
-    this.$features = $features
+    this.$input = $input
     this.$imageMarker = $imageMarker
     this.markers = []
     this.values = []
@@ -246,8 +246,7 @@ export class BreastDiagram extends ConfigurableComponent {
     try {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       this.values = /** @type {BreastFeature[]} */ (
-        JSON.parse(decodeURIComponent(this.$features.value), getArrayValue) ??
-          []
+        JSON.parse(decodeURIComponent(this.$input.value), getArrayValue) ?? []
       )
 
       // Set key values (optional if read only)
@@ -266,7 +265,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * Write diagram values to hidden input
    */
   write() {
-    this.$features.value = JSON.stringify(this.values)
+    this.$input.value = JSON.stringify(this.values)
     this.log()
   }
 
