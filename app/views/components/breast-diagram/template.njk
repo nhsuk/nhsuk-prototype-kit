@@ -64,7 +64,7 @@
   {% endset %}
 
   {% set descriptionHtml %}
-    <p class="nhsuk-body">
+    <p class="nhsuk-body" id="feature-location">
       Location {{ tag({
         text: "Region name",
         classes: "app-breast-diagram__region",
@@ -98,6 +98,7 @@
   }) %}
     {{ radios({
       fieldset: {
+        describedBy: "feature-location",
         legend: {
           html: headingHtml,
           size: "m"
