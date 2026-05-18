@@ -151,18 +151,34 @@ export class BreastDiagram extends ConfigurableComponent {
 
     if (!readOnly) {
       const $card = this.$root.querySelector('.app-breast-diagram__card')
-      const $region = $card?.querySelector('.app-breast-diagram__region')
+
+      if (!($card instanceof HTMLElement)) {
+        throw new ElementError({
+          component: BreastDiagram,
+          identifier: 'Add or edit breast feature card'
+        })
+      }
+
+      const $region = $card.querySelector('.app-breast-diagram__region')
       const $details = $form.querySelector('input[name="feature_details"]')
-      const $captions = $card?.querySelectorAll('.app-breast-diagram__caption')
-      const $buttons = $card?.querySelectorAll('.app-breast-diagram__button')
-      const $radios = $form.querySelectorAll('input[name="feature"]')
+
+      const $captions = Array.from(
+        $card.querySelectorAll('.app-breast-diagram__caption')
+      )
+
+      const $buttons = Array.from(
+        $card.querySelectorAll('.app-breast-diagram__button')
+      )
+
+      const $radios = Array.from(
+        $form.querySelectorAll('input[name="feature"]')
+      )
 
       if (
-        !($card instanceof HTMLElement) ||
         !($region instanceof HTMLElement) ||
         !($details instanceof HTMLInputElement) ||
-        !$captions?.length ||
-        !$buttons?.length ||
+        !$captions.length ||
+        !$buttons.length ||
         !$radios.length
       ) {
         throw new ElementError({
@@ -174,9 +190,9 @@ export class BreastDiagram extends ConfigurableComponent {
       this.$card = $card
       this.$region = $region
       this.$details = $details
-      this.$captions = Array.from($captions)
-      this.$buttons = Array.from($buttons)
-      this.$radios = Array.from($radios)
+      this.$captions = $captions
+      this.$buttons = $buttons
+      this.$radios = $radios
 
       const imageKeys = createAll(
         ImageKey,
