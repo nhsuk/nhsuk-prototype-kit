@@ -33,6 +33,7 @@ export const sessionDataDefaults = {
     },
     {
       id: 'other_feature',
+      details: 'Birthmark',
       region_id: 'left_lateral_upper_abdominal_wall',
       x: 741.8329467773438,
       y: 300.3309020996094
