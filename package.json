@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "nhsuk-frontend": "^10.4.2",
-    "nhsuk-prototype-kit": "^8.2.3"
+    "nhsuk-prototype-kit": "^8.3.0"
   },
   "devDependencies": {
   },
