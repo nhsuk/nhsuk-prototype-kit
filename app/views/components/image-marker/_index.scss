@@ -53,7 +53,7 @@
   pointer-events: auto;
   text-decoration: none;
   cursor: pointer;
-  @include nhsuk-link-style-white;
+  @include nhsuk-link-style-reverse;
 
   &,
   &:focus .app-image-marker__label {
