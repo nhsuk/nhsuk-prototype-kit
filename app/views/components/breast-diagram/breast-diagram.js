@@ -558,7 +558,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {MouseEvent} event - Click event
    */
   onClick(event) {
-    const { $popover, imageMap, markers } = this
+    const { $root, $popover, markers } = this
     const { target } = event
 
     if (
@@ -580,7 +580,7 @@ export class BreastDiagram extends ConfigurableComponent {
       const href = target.getAttribute('href')
       const marker = markers.find(({ $root }) => !!href && $root.matches(href))
 
-      imageMap.$root.scrollIntoView({ behavior: 'smooth' })
+      $root.scrollIntoView({ behavior: 'smooth' })
       marker?.$root.click()
     }
 
@@ -590,7 +590,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
     // Handle form cancel button
     if (target.matches('.app-js-feature-cancel')) {
-      imageMap.$root.scrollIntoView({ behavior: 'smooth' })
+      $root.scrollIntoView({ behavior: 'smooth' })
     }
 
     // Handle form remove button
@@ -602,7 +602,7 @@ export class BreastDiagram extends ConfigurableComponent {
     // Handle form save button
     if (target.matches('.app-js-feature-save') && !this.canSubmit()) {
       event.preventDefault()
-      imageMap.$root.scrollIntoView({ behavior: 'smooth' })
+      $root.scrollIntoView({ behavior: 'smooth' })
     }
   }
 

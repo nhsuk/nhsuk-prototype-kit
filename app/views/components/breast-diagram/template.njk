@@ -12,6 +12,14 @@
 {% from "components/image-map/macro.njk" import appImageMap %}
 {% from "components/image-marker/macro.njk" import appImageMarker %}
 
+{% if caller or params.html %}
+  {{ caller() if caller else params.html | safe | trim | indent(4) }}
+{% elif params.text %}
+  <p class="nhsuk-body">
+    {{ params.text | trim | indent(6) }}
+  </p>
+{% endif %}
+
 <div {{- nhsukAttributes({
   class: "app-breast-diagram",
   "data-module": "app-breast-diagram",
@@ -24,14 +32,6 @@
     optional: true
   }
 }) -}}>
-  {% if caller or params.html %}
-    {{ caller() if caller else params.html | safe | trim | indent(4) }}
-  {% elif params.text %}
-    <p class="nhsuk-body">
-      {{ params.text | trim | indent(6) }}
-    </p>
-  {% endif %}
-
   <div class="app-breast-diagram__side-labels">
     <span>Right</span>
     <span>Left</span>
