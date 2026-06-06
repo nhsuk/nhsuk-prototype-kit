@@ -478,8 +478,8 @@ export class BreastDiagram extends ConfigurableComponent {
         .forEach(($radio) => $radio.click())
 
       // Update custom details text input
-      if (feature.id === FEATURE_ID_OTHER && feature.details) {
-        $details.value = feature.details
+      if (feature.id === FEATURE_ID_OTHER) {
+        $details.value = feature.details ?? ''
       }
     }
 
@@ -692,9 +692,7 @@ export class BreastDiagram extends ConfigurableComponent {
     value.id = $checked.value
 
     // Set custom details (optional)
-    if ($checked.value === FEATURE_ID_OTHER && details) {
-      value.details = details
-    }
+    value.details = $checked.value === FEATURE_ID_OTHER ? details : undefined
 
     this.onReset()
     this.render()
