@@ -4,13 +4,13 @@
 <li class="app-image-key__item">
   {{ appImageMarker({
     text: params.index,
-    label: params.feature,
+    description: params.description,
     href: params.href
   }) | trim | indent(2) }}
 
   {{ tag({
-    text: params.region,
-    classes: "app-image-key__region",
+    text: params.tag,
+    classes: "app-image-key__tag",
     colour: "white"
   }) | trim | indent(2) }}
 </li>

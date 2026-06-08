@@ -78,10 +78,10 @@ export class ImageKey extends ConfigurableComponent {
 
       const $marker = $item.querySelector('.app-image-marker')
       const $number = $item.querySelector('.app-image-marker__number')
-      const $label = $item.querySelector('.app-image-marker__label')
-      const $region = $item.querySelector('.app-image-key__region')
+      const $description = $item.querySelector('.app-image-marker__description')
+      const $tag = $item.querySelector('.app-image-key__tag')
 
-      if (!$marker || !$number || !$label || !$region) {
+      if (!$marker || !$number || !$description || !$tag) {
         throw new ElementError({
           component: ImageKey,
           identifier: 'Image key item elements'
@@ -90,12 +90,12 @@ export class ImageKey extends ConfigurableComponent {
 
       $marker.setAttribute('href', `#marker-${index + 1}`)
       $number.textContent = `${index + 1}`
-      $label.textContent = ImageKey.format(id)
-      $region.textContent = ImageKey.format(region_id)
+      $description.textContent = ImageKey.format(id)
+      $tag.textContent = ImageKey.format(region_id)
 
       // Append custom details
       if (details) {
-        $label.textContent += `: ${details}`
+        $description.textContent += `: ${details}`
       }
 
       $list.appendChild($item)

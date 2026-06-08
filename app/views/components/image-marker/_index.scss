@@ -56,7 +56,7 @@
   @include nhsuk-link-style-reverse;
 
   &,
-  &:focus .app-image-marker__label {
+  &:focus .app-image-marker__description {
     text-decoration: none;
   }
 
@@ -70,13 +70,13 @@
     background-color: transparent;
   }
 
-  &:not(:focus):hover .app-image-marker__label {
+  &:not(:focus):hover .app-image-marker__description {
     color: $nhsuk-link-hover-colour;
     background-color: transparent;
     text-decoration: underline;
   }
 
-  &:not(:focus):active .app-image-marker__label {
+  &:not(:focus):active .app-image-marker__description {
     color: $nhsuk-link-active-colour;
   }
 }
@@ -94,7 +94,7 @@
   }
 }
 
-.app-image-marker__label {
+.app-image-marker__description {
   padding-right: nhsuk-spacing(2) + 4px;
   color: $nhsuk-text-colour;
 

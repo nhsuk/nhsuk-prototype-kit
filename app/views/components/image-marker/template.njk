@@ -48,7 +48,7 @@
 {% endset -%}
 
 <{{ element }} {{- attributesHtml | safe -}}>
-{%- if not params.label %}
+{%- if not params.description %}
   {{- params.text -}}
 {% else %}
 
@@ -56,8 +56,8 @@
     {{- params.text -}}
   </span>
   <span class="nhsuk-u-visually-hidden">:</span>
-  <span class="app-image-marker__label">
-    {{- params.label -}}
+  <span class="app-image-marker__description">
+    {{- params.description -}}
   </span>
 {% endif %}
 </{{ element }}>
