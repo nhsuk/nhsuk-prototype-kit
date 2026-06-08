@@ -598,12 +598,6 @@ export class BreastDiagram extends ConfigurableComponent {
       const marker = this.getMarker($popover.dataset.number)
       this.remove(marker?.point)
     }
-
-    // Handle form save button
-    if (target.matches('.app-js-feature-save') && !this.canSubmit()) {
-      event.preventDefault()
-      $root.scrollIntoView({ behavior: 'smooth' })
-    }
   }
 
   /**
@@ -623,11 +617,14 @@ export class BreastDiagram extends ConfigurableComponent {
   canSubmit() {
     const { $popover } = this
 
-    return (
-      !!$popover?.hasAttribute('hidden') ||
-      !$popover?.dataset.id ||
-      !$popover.dataset.number ||
-      !$popover.dataset.regionId
+    if (!$popover?.hasAttribute('hidden')) {
+      return false
+    }
+
+    return !(
+      $popover.dataset.id &&
+      $popover.dataset.number &&
+      $popover.dataset.regionId
     )
   }
 
@@ -697,6 +694,11 @@ export class BreastDiagram extends ConfigurableComponent {
     this.onReset()
     this.render()
     this.write()
+
+    // Automatically submit form once saved
+    if (event.submitter?.matches('.app-js-feature-save')) {
+      this.$form.submit()
+    }
   }
 
   /**
