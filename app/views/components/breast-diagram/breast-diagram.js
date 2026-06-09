@@ -262,15 +262,15 @@ export class BreastDiagram extends ConfigurableComponent {
       this.$radiosFormGroup = $radiosFormGroup
       this.$radiosErrorMessage = $radiosErrorMessage
 
-      this.imageMap.addEventListener('create', (event) => this.onCreate(event))
-      this.imageMap.addEventListener('edit', (event) => this.onEdit(event))
-      this.imageMap.addEventListener('hover', (event) => this.log(event))
+      this.imageMap.addEventListener('create', this.onCreate.bind(this))
+      this.imageMap.addEventListener('edit', this.onEdit.bind(this))
+      this.imageMap.addEventListener('hover', this.log.bind(this))
 
-      this.$form.addEventListener('click', (event) => this.onClick(event))
-      this.$form.addEventListener('submit', (event) => this.onSubmit(event))
-      this.$form.addEventListener('reset', (event) => this.onReset(event))
+      this.$form.addEventListener('click', this.onClick.bind(this))
+      this.$form.addEventListener('submit', this.onSubmit.bind(this))
+      this.$form.addEventListener('reset', this.onReset.bind(this))
 
-      document.addEventListener('keydown', (event) => this.onKeyDown(event))
+      document.addEventListener('keydown', this.onKeyDown.bind(this))
     }
 
     // Render diagram features
