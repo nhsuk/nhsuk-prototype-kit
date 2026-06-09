@@ -30,6 +30,11 @@ export class BreastDiagram extends ConfigurableComponent {
   /**
    * @type {HTMLElement | null}
    */
+  $popover = null
+
+  /**
+   * @type {HTMLElement | null}
+   */
   $radiosFieldset = null
 
   /**
@@ -51,11 +56,6 @@ export class BreastDiagram extends ConfigurableComponent {
    * @type {HTMLInputElement[]}
    */
   $radios = []
-
-  /**
-   * @type {HTMLElement | null}
-   */
-  $card = null
 
   /**
    * @type {HTMLElement | null}
@@ -180,16 +180,16 @@ export class BreastDiagram extends ConfigurableComponent {
     this.imageMap = imageMaps[0]
 
     if (!readOnly) {
-      const $card = this.$root.querySelector('.app-breast-diagram__card')
+      const $popover = this.$root.querySelector('.app-breast-diagram__popover')
 
-      if (!($card instanceof HTMLElement)) {
+      if (!($popover instanceof HTMLElement)) {
         throw new ElementError({
           component: BreastDiagram,
-          identifier: 'Add or edit breast feature card'
+          identifier: 'Add or edit breast feature popover'
         })
       }
 
-      const $region = $card.querySelector('.app-breast-diagram__region')
+      const $region = $popover.querySelector('.app-breast-diagram__region')
       const $details = $form.querySelector('input[name="feature_details"]')
       const $detailsFormGroup = $details?.closest('.nhsuk-form-group')
       const $detailsErrorMessage = $detailsFormGroup?.querySelector(
@@ -197,11 +197,11 @@ export class BreastDiagram extends ConfigurableComponent {
       )
 
       const $captions = Array.from(
-        $card.querySelectorAll('.app-breast-diagram__caption')
+        $popover.querySelectorAll('.app-breast-diagram__caption')
       )
 
       const $buttons = Array.from(
-        $card.querySelectorAll('.app-breast-diagram__button')
+        $popover.querySelectorAll('.app-breast-diagram__button')
       )
 
       const $radios = Array.from(
@@ -233,11 +233,11 @@ export class BreastDiagram extends ConfigurableComponent {
       ) {
         throw new ElementError({
           component: BreastDiagram,
-          identifier: 'Add or edit breast feature card elements'
+          identifier: 'Add or edit breast feature popover elements'
         })
       }
 
-      this.$card = $card
+      this.$popover = $popover
       this.$region = $region
       this.$details = $details
       this.$detailsFormGroup = $detailsFormGroup
@@ -431,15 +431,15 @@ export class BreastDiagram extends ConfigurableComponent {
   }
 
   /**
-   * Show add or edit feature card
+   * Show add or edit feature popover
    *
    * @param {BreastFeature} feature
    * @param {string} number
    * @param {'add' | 'edit'} mode
    */
-  showCard(feature, number, mode = 'edit') {
-    const { $card, $captions, $details, $buttons, $radios, $region } = this
-    if (!$card || !$details || !$region) {
+  showPopover(feature, number, mode = 'edit') {
+    const { $popover, $captions, $details, $buttons, $radios, $region } = this
+    if (!$popover || !$details || !$region) {
       return
     }
 
@@ -483,12 +483,12 @@ export class BreastDiagram extends ConfigurableComponent {
       }
     }
 
-    $card.dataset.id = feature.id
-    $card.dataset.regionId = feature.region_id
-    $card.dataset.number = number
+    $popover.dataset.id = feature.id
+    $popover.dataset.regionId = feature.region_id
+    $popover.dataset.number = number
 
-    $region.textContent = ImageKey.format($card.dataset.regionId)
-    $card.removeAttribute('hidden')
+    $region.textContent = ImageKey.format($popover.dataset.regionId)
+    $popover.removeAttribute('hidden')
   }
 
   /**
@@ -518,7 +518,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
     this.onReset()
     this.add(value)
-    this.showCard(value, `${markers.length}`, 'add')
+    this.showPopover(value, `${markers.length}`, 'add')
 
     if ($checked) {
       $checked.checked = true
@@ -533,10 +533,10 @@ export class BreastDiagram extends ConfigurableComponent {
    * @type {ImageMapListener}
    */
   onEdit(event) {
-    const { $card } = this
+    const { $popover } = this
     const { target } = event
 
-    if (!$card || !(target instanceof HTMLButtonElement)) {
+    if (!$popover || !(target instanceof HTMLButtonElement)) {
       return
     }
 
@@ -544,12 +544,12 @@ export class BreastDiagram extends ConfigurableComponent {
     const value = this.getValue(marker)
 
     // Skip unnecessary reset when the same marker is clicked again
-    if (!value || $card.dataset.number === target.value) {
+    if (!value || $popover.dataset.number === target.value) {
       return
     }
 
     this.onReset()
-    this.showCard(value, target.value)
+    this.showPopover(value, target.value)
   }
 
   /**
@@ -558,7 +558,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {MouseEvent} event - Click event
    */
   onClick(event) {
-    const { $card, imageMap, markers } = this
+    const { $popover, imageMap, markers } = this
     const { target } = event
 
     if (
@@ -584,7 +584,7 @@ export class BreastDiagram extends ConfigurableComponent {
       marker?.$root.click()
     }
 
-    if (!$card) {
+    if (!$popover) {
       return
     }
 
@@ -595,7 +595,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
     // Handle form remove button
     if (target.matches('.app-js-feature-remove')) {
-      const marker = this.getMarker($card.dataset.number)
+      const marker = this.getMarker($popover.dataset.number)
       this.remove(marker?.point)
     }
 
@@ -618,16 +618,16 @@ export class BreastDiagram extends ConfigurableComponent {
   }
 
   /**
-   * Whether form can be submitted (card is hidden or not populated)
+   * Whether form can be submitted (popover is hidden or not populated)
    */
   canSubmit() {
-    const { $card } = this
+    const { $popover } = this
 
     return (
-      !!$card?.hasAttribute('hidden') ||
-      !$card?.dataset.id ||
-      !$card.dataset.number ||
-      !$card.dataset.regionId
+      !!$popover?.hasAttribute('hidden') ||
+      !$popover?.dataset.id ||
+      !$popover.dataset.number ||
+      !$popover.dataset.regionId
     )
   }
 
@@ -637,12 +637,12 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {SubmitEvent} event
    */
   onSubmit(event) {
-    const { $card, $details, $radiosFieldset, $radiosLegend, $radios } = this
+    const { $popover, $details, $radiosFieldset, $radiosLegend, $radios } = this
     if (this.canSubmit()) {
       return
     }
 
-    // Prevent submission when card is visible
+    // Prevent submission when popover is visible
     event.preventDefault()
 
     // Reset validation errors
@@ -682,7 +682,7 @@ export class BreastDiagram extends ConfigurableComponent {
       }
     }
 
-    const marker = this.getMarker($card?.dataset.number)
+    const marker = this.getMarker($popover?.dataset.number)
     const value = this.getValue(marker?.point)
     if (!value) {
       return
@@ -729,12 +729,12 @@ export class BreastDiagram extends ConfigurableComponent {
   onReset(event) {
     event?.preventDefault()
 
-    const { $card, $captions, $details, $radios, values } = this
-    if (!$card || !$details) {
+    const { $popover, $captions, $details, $radios, values } = this
+    if (!$popover || !$details) {
       return
     }
 
-    $card.setAttribute('hidden', '')
+    $popover.setAttribute('hidden', '')
 
     // Reset validation errors
     this.onResetValidation()
@@ -747,7 +747,7 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     // Remove edit caption feature number
-    if ($card.dataset.id !== FEATURE_ID_PENDING) {
+    if ($popover.dataset.id !== FEATURE_ID_PENDING) {
       const $caption = $captions.find(($caption) =>
         $caption.matches('.app-js-feature-caption-edit')
       )
@@ -764,9 +764,9 @@ export class BreastDiagram extends ConfigurableComponent {
     // Clear custom details text input
     $details.value = ''
 
-    delete $card.dataset.id
-    delete $card.dataset.regionId
-    delete $card.dataset.number
+    delete $popover.dataset.id
+    delete $popover.dataset.regionId
+    delete $popover.dataset.number
   }
 
   /**
