@@ -262,6 +262,8 @@ export class BreastDiagram extends ConfigurableComponent {
       this.$radiosFormGroup = $radiosFormGroup
       this.$radiosErrorMessage = $radiosErrorMessage
 
+      this.imageKey.addEventListener('clear', this.onClear.bind(this))
+
       this.imageMap.addEventListener('create', this.onCreate.bind(this))
       this.imageMap.addEventListener('edit', this.onEdit.bind(this))
       this.imageMap.addEventListener('hover', this.log.bind(this))
@@ -650,6 +652,13 @@ export class BreastDiagram extends ConfigurableComponent {
   }
 
   /**
+   * Handle image key clear all features
+   */
+  onClear() {
+    this.clearFeatures()
+  }
+
+  /**
    * Handle image map form clicks
    *
    * @param {MouseEvent} event - Click event
@@ -663,11 +672,6 @@ export class BreastDiagram extends ConfigurableComponent {
       !(target instanceof HTMLAnchorElement)
     ) {
       return
-    }
-
-    // Handle clear all features button
-    if (target.matches('.app-js-feature-clear-all')) {
-      this.clearFeatures()
     }
 
     // Handle marker links in image key

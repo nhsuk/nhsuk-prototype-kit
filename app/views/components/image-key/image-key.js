@@ -55,6 +55,8 @@ export class ImageKey extends ConfigurableComponent {
 
       this.$button = $button
       this.$imageKeyItem = $imageKeyItem
+
+      this.$button.addEventListener('click', this.onClear.bind(this))
     }
   }
 
