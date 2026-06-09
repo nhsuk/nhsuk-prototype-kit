@@ -651,8 +651,6 @@ export class BreastDiagram extends ConfigurableComponent {
 
     // Show form validation
     if (!$checked || ($checked.value === FEATURE_ID_OTHER && !details)) {
-      this.onResetValidation()
-
       // Scroll radios legend into view
       $radiosLegend?.scrollIntoView({ behavior: 'smooth' })
 
