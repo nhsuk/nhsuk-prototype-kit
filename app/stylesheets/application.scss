@@ -10,34 +10,8 @@
 @forward "../views/components/image-map";
 @forward "../views/components/image-marker";
 
-.app-link {
-  @include nhsuk-link-style-default;
-}
-
 .app-link[hidden] {
   display: none;
-}
-
-// Button with text link styles
-// stylelint-disable-next-line selector-no-qualifying-type
-button.app-link {
-  display: inline;
-
-  align-items: normal;
-
-  padding: 0;
-
-  border: none;
-
-  background-color: transparent;
-
-  font-size: inherit;
-  text-align: left;
-  text-decoration: underline;
-
-  cursor: pointer;
-
-  appearance: none;
 }
 
 .app-link--error,
