@@ -6,6 +6,10 @@ $breast-diagram-active-colour: nhsuk-tint(nhsuk-colour("blue"), 50%);
 
 .app-breast-diagram {
   @include nhsuk-responsive-margin(4, "bottom");
+
+  [hidden] {
+    display: none;
+  }
 }
 
 .app-breast-diagram[data-read-only] {
@@ -66,9 +70,5 @@ $breast-diagram-active-colour: nhsuk-tint(nhsuk-colour("blue"), 50%);
       $lightness: 10%,
       $saturation: 25%
     );
-  }
-
-  [hidden] {
-    display: none;
   }
 }
