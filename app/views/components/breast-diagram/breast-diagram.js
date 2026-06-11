@@ -162,6 +162,7 @@ export class BreastDiagram extends ConfigurableComponent {
       ImageMap,
       {
         imageClass: 'app-breast-diagram__svg',
+        readOnly,
         selectors: [
           '.app-breast-diagram__regions path',
           '.app-breast-diagram__regions polygon'

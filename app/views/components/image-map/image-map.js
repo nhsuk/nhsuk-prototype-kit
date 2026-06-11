@@ -11,7 +11,7 @@ import {
 export class ImageMap extends ConfigurableComponent {
   /**
    * @param {Element | null} $root - HTML element to use for component
-   * @param {Partial<Pick<ImageMapConfig, 'imageClass' | 'selectors'>>} [config] - Image map config
+   * @param {Partial<Pick<ImageMapConfig, 'imageClass' | 'selectors' | 'readOnly'>>} [config] - Image map config
    */
   constructor($root, config = {}) {
     super($root, config)
@@ -41,8 +41,10 @@ export class ImageMap extends ConfigurableComponent {
     this.$paths = Array.from($paths).reverse()
     this.$image = $image
 
-    this.$root.addEventListener('mousemove', this.onMouseMove.bind(this))
-    this.$root.addEventListener('click', this.onClick.bind(this))
+    if (!this.config.readOnly) {
+      this.$root.addEventListener('mousemove', this.onMouseMove.bind(this))
+      this.$root.addEventListener('click', this.onClick.bind(this))
+    }
   }
 
   /**
@@ -253,6 +255,7 @@ export class ImageMap extends ConfigurableComponent {
    */
   static defaults = Object.freeze({
     imageClass: 'nhsuk-image__img',
+    readOnly: false,
     selectors: ['path', 'polygon'],
     selectorsQuery: '',
     selectorsFormatted: ''
@@ -267,6 +270,7 @@ export class ImageMap extends ConfigurableComponent {
   static schema = Object.freeze({
     properties: {
       imageClass: { type: 'string' },
+      readOnly: { type: 'boolean' },
       selectors: { type: 'array' },
       selectorsQuery: { type: 'string' },
       selectorsFormatted: { type: 'string' }
@@ -280,6 +284,7 @@ export class ImageMap extends ConfigurableComponent {
  * @see {@link ImageMap.defaults}
  * @typedef {object} ImageMapConfig
  * @property {string} imageClass - Image class
+ * @property {boolean} readOnly - Whether image map is read only
  * @property {string[]} selectors - Image map region selectors
  * @property {string} selectorsQuery - Image map region selectors (for DOM query selector)
  * @property {string} selectorsFormatted - Image map region selectors (formatted for error messages)
