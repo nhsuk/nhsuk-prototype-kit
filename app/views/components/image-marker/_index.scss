@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "../../../stylesheets/vendor/nhsuk-frontend/base" as *;
 @use "../breast-diagram" as *;
 
@@ -48,14 +49,8 @@
 
   &:active {
     z-index: 60;
-
     transform: scale(1.05);
-
     opacity: 0.8;
-
-    background-color: $nhsuk-login-button-active-colour;
-    box-shadow: 0 nhsuk-spacing(1) nhsuk-spacing(3) rgba($breast-diagram-shadow-colour, 30%);
-
     cursor: grabbing;
   }
 }
@@ -91,6 +86,34 @@
 
   &:not(:focus):active .app-image-marker__description {
     color: $nhsuk-link-active-colour;
+  }
+}
+
+.app-image-marker[aria-expanded="true"],
+.app-image-marker[style]:active {
+  border-color: $nhsuk-login-button-active-colour;
+  outline: $nhsuk-border-width-form-element dashed rgb($nhsuk-login-button-active-colour, 0.5);
+  outline-offset: $nhsuk-border-width + $nhsuk-border-width-form-element;
+  background-color: $nhsuk-login-button-active-colour;
+  box-shadow: 0 0 0 $nhsuk-border-width-form-element nhsuk-colour("white");
+
+  [data-debug] & {
+    outline-color: rgb($nhsuk-login-button-active-colour, 0.75);
+  }
+
+  &:not(:focus):hover {
+    background-color: nhsuk-shade($nhsuk-login-button-hover-colour, 75%);
+  }
+
+  &:not(:focus):active {
+    background-color: $nhsuk-login-button-active-colour;
+    box-shadow:
+      0 nhsuk-spacing(1) nhsuk-spacing(3) rgba($breast-diagram-shadow-colour, 30%),
+      0 0 0 $nhsuk-border-width-form-element nhsuk-colour("white");
+  }
+
+  &:focus {
+    outline: none;
   }
 }
 

@@ -22,6 +22,10 @@
 
 <div {{- nhsukAttributes({
   class: "app-breast-diagram",
+  id: {
+    value: params.id,
+    optional: true
+  },
   "data-module": "app-breast-diagram",
   "data-debug": {
     value: "true" if params.debug else false,

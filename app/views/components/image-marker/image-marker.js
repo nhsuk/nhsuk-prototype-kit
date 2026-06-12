@@ -41,6 +41,14 @@ export class ImageMarker extends ConfigurableComponent {
 
     $root.setAttribute('aria-label', config.ariaLabel)
 
+    if (config.ariaControls) {
+      $root.setAttribute('aria-controls', config.ariaControls)
+      $root.setAttribute('aria-expanded', config.ariaExpanded ?? 'false')
+    } else {
+      $root.removeAttribute('aria-controls')
+      $root.removeAttribute('aria-expanded')
+    }
+
     if (config.value) {
       $root.setAttribute('id', `marker-${config.value}`)
       $root.setAttribute('value', config.value)
@@ -139,6 +147,8 @@ export class ImageMarker extends ConfigurableComponent {
       text: { type: 'string' },
       description: { type: 'string' },
       ariaLabel: { type: 'string' },
+      ariaControls: { type: 'string' },
+      ariaExpanded: { type: 'string' },
       tag: { type: 'string' },
       value: { type: 'string' },
       width: { type: 'number' },
@@ -156,6 +166,8 @@ export class ImageMarker extends ConfigurableComponent {
  * @property {string} [value] - Image marker `value` attribute
  * @property {string} description - Image marker label, e.g. "Bruising or trauma"
  * @property {string} ariaLabel - Image marker ARIA label, e.g. "Marker 1"
+ * @property {string} [ariaControls] - Image marker ARIA controls
+ * @property {string} [ariaExpanded] - Image marker ARIA expanded
  * @property {string} tag - Image marker tag, e.g. "Left lower central "
  * @property {number} width - Image width
  * @property {number} height - Image height

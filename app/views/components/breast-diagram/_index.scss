@@ -39,6 +39,11 @@ $breast-diagram-shadow-colour: nhsuk-colour-compatible(
   border: solid $nhsuk-border-colour;
   border-width: 0 0 $nhsuk-border-width;
 
+  &:focus {
+    border-color: $nhsuk-focus-text-colour;
+    outline: $nhsuk-focus-width solid $nhsuk-focus-colour;
+  }
+
   @include nhsuk-media-query($until: desktop) {
     background: none;
 

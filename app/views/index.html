@@ -43,6 +43,7 @@
                 "aria-describedby": "breast-diagram-description"
               }
             },
+            id: "breast-features",
             version: 1
           }) %}
             <p class="nhsuk-body" id="breast-diagram-description">
@@ -98,6 +99,7 @@
                 debug: data.debug,
                 features: features,
                 text: count ~ " breast " ~ ("feature" if count == 1 else "features") ~ " recorded",
+                id: "breast-features-2",
                 readOnly: true,
                 version: 1
               }) }}

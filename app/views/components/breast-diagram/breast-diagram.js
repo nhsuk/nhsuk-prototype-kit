@@ -251,6 +251,9 @@ export class BreastDiagram extends ConfigurableComponent {
       this.$radiosFormGroup = $radiosFormGroup
       this.$radiosErrorMessage = $radiosErrorMessage
 
+      this.$popover.setAttribute('tabindex', '-1')
+      this.$popover.setAttribute('id', `${this.$root.id || 'marker'}-popover`)
+
       this.imageKey.addEventListener('clear', this.onClear.bind(this))
       this.imageKey.addEventListener('focusin', this.onFocusIn.bind(this))
 
@@ -1029,7 +1032,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {BreastFeature} feature - Breast feature
    */
   setMarker(number, feature) {
-    const { $root, imageMap, config } = this
+    const { $root, $popover, imageMap, config } = this
 
     // Create new marker (optional)
     const marker =
@@ -1050,6 +1053,12 @@ export class BreastDiagram extends ConfigurableComponent {
       marker.config.ariaLabel = `Marker ${number}, ${description}`
       marker.config.tag = ImageKey.format(feature.region_id)
     }
+
+    // Add or remove selected state
+    const isSelected = $popover?.dataset.number === `${number}`
+
+    marker.config.ariaControls = $popover?.id
+    marker.config.ariaExpanded = $popover ? `${isSelected}` : undefined
 
     imageMap.setMarker(number, marker, feature.x, feature.y)
   }
