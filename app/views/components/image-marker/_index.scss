@@ -17,8 +17,8 @@
   min-width: nhsuk-px-to-rem(40px);
   min-height: nhsuk-px-to-rem(40px);
 
-  border: 2px solid nhsuk-colour("white");
-  border-radius: 2px;
+  border: $nhsuk-border-width-form-element solid nhsuk-colour("white");
+  border-radius: $nhsuk-border-radius;
 
   color: nhsuk-colour("white");
   background-color: $nhsuk-login-button-colour;
@@ -75,6 +75,7 @@
   &:focus,
   &:focus .app-image-marker__number {
     border-color: transparent;
+    box-shadow: 0 $nhsuk-focus-width 0 0 $nhsuk-focus-text-colour;
   }
 
   &:focus .app-image-marker__number {
