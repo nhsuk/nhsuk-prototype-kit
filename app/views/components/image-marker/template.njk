@@ -1,5 +1,8 @@
 {% from "nhsuk/macros/attributes.njk" import nhsukAttributes %}
 
+{%- set text = params.text | default("?") -%}
+{%- set ariaLabel = params.ariaLabel | default("New marker") -%}
+
 {#-
   Determine type of element to use, if not explicitly set
 
@@ -40,7 +43,12 @@
         optional: true
       },
       role: "button",
-      draggable: "false"
+      draggable: "false",
+      "aria-label": ariaLabel,
+      "aria-describedby": {
+        value: params.describedBy if params.describedBy else false,
+        optional: true
+      }
     }) -}}
   {% endif %}
 
@@ -49,11 +57,11 @@
 
 <{{ element }} {{- attributesHtml | safe -}}>
 {%- if not params.description %}
-  {{- params.text -}}
+  {{- text -}}
 {% else %}
 
   <span class="app-image-marker__number">
-    {{- params.text -}}
+    {{- text -}}
   </span>
   <span class="nhsuk-u-visually-hidden">, </span>
   <span class="app-image-marker__description">

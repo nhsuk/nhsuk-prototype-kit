@@ -10,9 +10,9 @@ import {
  */
 export class ImageKey extends ConfigurableComponent {
   /**
-   * @type {BreastFeature[]}
+   * @type {ImageMarker[]}
    */
-  values = []
+  markers = []
 
   /**
    * @param {Element | null} $root - HTML element to use for component
@@ -59,7 +59,7 @@ export class ImageKey extends ConfigurableComponent {
   }
 
   render() {
-    const { $root, $list, $button, $imageKeyItem, values } = this
+    const { $root, $list, $button, $imageKeyItem, markers } = this
     if (!$button || !$imageKeyItem) {
       return
     }
@@ -68,13 +68,18 @@ export class ImageKey extends ConfigurableComponent {
     $list.innerHTML = ''
 
     // Hide features list
-    if (!values.length) {
+    if (!markers.length) {
       $root.setAttribute('hidden', '')
       return
     }
 
+    const filtered = markers.filter(({ config }) => !!config.text)
+    if (!filtered.length) {
+      return
+    }
+
     // Render key items
-    values.forEach(({ id, details, region_id }, index) => {
+    filtered.forEach((marker, index) => {
       const $item = document.importNode($imageKeyItem.content, true)
 
       const $marker = $item.querySelector('.app-image-marker')
@@ -89,15 +94,18 @@ export class ImageKey extends ConfigurableComponent {
         })
       }
 
-      $marker.setAttribute('href', `#marker-${index + 1}`)
-      $number.textContent = `${index + 1}`
-      $description.textContent = ImageKey.format(id)
-      $tag.textContent = ImageKey.format(region_id)
+      const number = index + 1
+      const markerId = `marker-${number}`
 
-      // Append custom details
-      if (details) {
-        $description.textContent += `: ${details}`
-      }
+      $number.textContent = marker.config.text ?? '?'
+      $description.textContent = marker.config.description
+
+      $tag.textContent = marker.config.tag
+      $tag.id = `${markerId}-tag`
+
+      $marker.setAttribute('href', `#${markerId}`)
+      $marker.setAttribute('aria-label', marker.config.ariaLabel)
+      $marker.setAttribute('aria-describedby', $tag.id)
 
       $list.appendChild($item)
     })
@@ -202,5 +210,5 @@ export class ImageKey extends ConfigurableComponent {
 
 /**
  * @import { Schema } from 'nhsuk-frontend'
- * @import { BreastFeature } from '../breast-diagram/breast-diagram.js'
+ * @import { ImageMarker } from '../image-marker/image-marker.js'
  */

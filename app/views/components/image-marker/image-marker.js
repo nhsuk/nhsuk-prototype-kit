@@ -20,25 +20,30 @@ export class ImageMarker extends ConfigurableComponent {
    */
   constructor($root, config = {}) {
     super($root, config)
+    this.render()
+  }
 
-    if (!(this.$root instanceof HTMLButtonElement)) {
-      return this
+  render() {
+    const { $root, config } = this
+
+    $root.textContent = config.text ?? '?'
+
+    if (!($root instanceof HTMLButtonElement)) {
+      return
     }
 
-    if (config.id) {
-      this.$root.setAttribute('id', config.id)
-    }
+    $root.setAttribute('aria-label', config.ariaLabel)
 
     if (config.value) {
-      this.$root.setAttribute('value', config.value)
+      $root.setAttribute('id', `marker-${config.value}`)
+      $root.setAttribute('value', config.value)
     }
   }
 
   /**
    * @param {DOMPoint} point - SVG point at pointer coordinates
-   * @param {number | string} number - Image marker number to display
    */
-  setPosition(point, number) {
+  setPosition(point) {
     const { $root, config } = this
 
     const gutter = 20 // 20px
@@ -54,7 +59,6 @@ export class ImageMarker extends ConfigurableComponent {
     this.x = Math.min(Math.max(point.x, gutter), safeX)
     this.y = Math.min(Math.max(point.y, gutter), safeY)
 
-    $root.textContent = `${number}`
     $root.style.left = `${(this.x / config.width) * 100}%`
     $root.style.top = `${(this.y / config.height) * 100}%`
   }
@@ -72,6 +76,9 @@ export class ImageMarker extends ConfigurableComponent {
    * @type {ImageMarkerConfig}
    */
   static defaults = Object.freeze({
+    description: 'Pending',
+    ariaLabel: 'New marker',
+    tag: 'Unknown',
     width: 0,
     height: 0
   })
@@ -84,7 +91,10 @@ export class ImageMarker extends ConfigurableComponent {
    */
   static schema = Object.freeze({
     properties: {
-      id: { type: 'string' },
+      text: { type: 'string' },
+      description: { type: 'string' },
+      ariaLabel: { type: 'string' },
+      tag: { type: 'string' },
       value: { type: 'string' },
       width: { type: 'number' },
       height: { type: 'number' }
@@ -97,8 +107,11 @@ export class ImageMarker extends ConfigurableComponent {
  *
  * @see {@link ImageMarker.defaults}
  * @typedef {object} ImageMarkerConfig
- * @property {string} [id] - Marker `id` attribute
- * @property {string} [value] - Marker `value` attribute
+ * @property {string} [text] - Image marker text to display
+ * @property {string} [value] - Image marker `value` attribute
+ * @property {string} description - Image marker label, e.g. "Bruising or trauma"
+ * @property {string} ariaLabel - Image marker ARIA label, e.g. "Marker 1"
+ * @property {string} tag - Image marker tag, e.g. "Left lower central "
  * @property {number} width - Image width
  * @property {number} height - Image height
  */

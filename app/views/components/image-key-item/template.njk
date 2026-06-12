@@ -1,15 +1,21 @@
 {% from "nhsuk/components/tag/macro.njk" import tag %}
 {% from "components/image-marker/macro.njk" import appImageMarker %}
 
+{%- set value = params.value | default("1") -%}
+
 <li class="app-image-key__item">
   {{ appImageMarker({
-    text: params.index,
+    text: params.text,
     description: params.description,
+    ariaLabel: params.ariaLabel,
+    describedBy: "marker-" ~ value ~ "-tag",
+    value: value,
     href: params.href
   }) | trim | indent(2) }}
 
   {{ tag({
     text: params.tag,
+    id: "marker-" ~ value ~ "-tag",
     classes: "app-image-key__tag",
     colour: "white"
   }) | trim | indent(2) }}

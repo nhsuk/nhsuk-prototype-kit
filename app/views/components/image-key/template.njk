@@ -34,7 +34,6 @@
 
   <template class="app-js-template-image-key-item">
     {{ appImageKeyItem({
-      index: "?",
       description: "Pending",
       tag: "Unknown",
       href: "#" if not params.readOnly
@@ -43,10 +42,14 @@
 
   <ul class="app-image-key__items">
   {% for item in params.items %}
+    {% set description = (item.id | replace("_", " ") | capitalize) ~ ((": " ~ item.details) if item.details) -%}
+
     {{ appImageKeyItem({
-      index: loop.index,
-      description: (item.id | replace("_", " ") | capitalize) ~ ((": " ~ item.details) if item.details),
+      text: loop.index | string,
+      description: description,
+      ariaLabel: "Marker " ~ loop.index ~ ", " ~ description,
       tag: item.region_id | replace("_", " ") | capitalize,
+      value: loop.index | string,
       href: undefined if params.readOnly else "#marker-" ~ loop.index
     }) | trim | indent(4) }}
   {% endfor %}

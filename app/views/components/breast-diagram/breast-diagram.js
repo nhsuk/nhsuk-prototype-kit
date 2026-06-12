@@ -189,6 +189,7 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     this.imageKey = imageKeys[0]
+    this.imageKey.markers = this.markers
 
     if (!readOnly) {
       const $popover = this.$root.querySelector('.app-breast-diagram__popover')
@@ -282,7 +283,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * Render diagram features
    */
   render() {
-    const { imageMap, markers, values } = this
+    const { imageMap, imageKey, markers, values } = this
 
     if (!values.length) {
       imageMap.unsetState('active')
@@ -298,13 +299,13 @@ export class BreastDiagram extends ConfigurableComponent {
       this.setMarker(feature, index)
     })
 
-    // Update key
-    this.imageKey.render()
-
     // Remove excess markers
     for (const marker of markers.splice(values.length)) {
       marker.$root.remove()
     }
+
+    // Update key
+    imageKey.render()
   }
 
   /**
@@ -316,9 +317,6 @@ export class BreastDiagram extends ConfigurableComponent {
       this.values = /** @type {BreastFeature[]} */ (
         JSON.parse(decodeURIComponent(this.$input.value), getArrayValue) ?? []
       )
-
-      // Set key values
-      this.imageKey.values = this.values
     } catch {
       throw new ElementError({
         component: BreastDiagram,
@@ -874,9 +872,8 @@ export class BreastDiagram extends ConfigurableComponent {
    */
   setMarker(feature, index) {
     const { $imageMarker, imageMap, config, markers } = this
-    const { x, y, region_id } = feature
-    const { width, height } = imageMap
 
+    // Create new marker (optional)
     if (!markers[index]) {
       const { firstElementChild: $root } = document.importNode(
         $imageMarker.content,
@@ -884,19 +881,29 @@ export class BreastDiagram extends ConfigurableComponent {
       )
 
       markers[index] = new ImageMarker($root, {
-        id: `marker-${index + 1}`,
         value: config.readOnly ? undefined : `${index + 1}`,
-        width: width,
-        height: height
+        width: imageMap.width,
+        height: imageMap.height
       })
     }
 
     const marker = markers[index]
-    const point = imageMap.createPoint(x, y, region_id)
-    const number = feature.id === FEATURE_ID_PENDING ? '?' : index + 1
+    const point = imageMap.createPoint(feature.x, feature.y, feature.region_id)
+
+    // Update existing marker
+    if (feature.id !== FEATURE_ID_PENDING) {
+      const id = ImageKey.format(feature.id)
+      const description = feature.details ? `${id}: ${feature.details}` : id
+
+      marker.config.text = `${index + 1}`
+      marker.config.description = description
+      marker.config.ariaLabel = `Marker ${index + 1}, ${description}`
+      marker.config.tag = ImageKey.format(feature.region_id)
+    }
 
     // Set marker position
-    marker.setPosition(point, number)
+    marker.setPosition(point)
+    marker.render()
 
     // Append new markers only
     if (!marker.$root.parentElement) {
