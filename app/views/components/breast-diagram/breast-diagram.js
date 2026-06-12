@@ -542,7 +542,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * Reset add or edit feature popover
    */
   resetPopover() {
-    const { $popover, $captions, $details, $radios, features } = this
+    const { $popover, $captions, $details, $radios } = this
     if (!$popover || !$details) {
       return
     }
@@ -551,11 +551,7 @@ export class BreastDiagram extends ConfigurableComponent {
     this.resetErrors()
 
     // Remove pending (unsaved) features
-    features.forEach((feature, index) => {
-      if (feature.id === FEATURE_ID_PENDING) {
-        this.removeFeature(index + 1)
-      }
-    })
+    this.resetPending()
 
     // Remove edit caption feature number
     if ($popover.dataset.id !== FEATURE_ID_PENDING) {
@@ -911,6 +907,19 @@ export class BreastDiagram extends ConfigurableComponent {
       $errorMessage: this.$detailsErrorMessage,
       $formGroup: this.$detailsFormGroup
     })
+  }
+
+  resetPending() {
+    const { features } = this
+
+    // Find pending (unsaved) features
+    const index = features.findIndex(({ id }) => id === FEATURE_ID_PENDING)
+    if (index === -1) {
+      return
+    }
+
+    // Remove pending (unsaved) features
+    this.removeFeature(index + 1)
   }
 
   /**
