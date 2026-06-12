@@ -27,6 +27,23 @@ $breast-diagram-active-colour: nhsuk-tint(nhsuk-colour("blue"), 50%);
   @include nhsuk-responsive-margin(2, "bottom");
 }
 
+.app-breast-diagram__popover {
+  margin: nhsuk-spacing(-3) 0 nhsuk-spacing(5) + $nhsuk-border-width;
+  padding-top: nhsuk-spacing(3);
+  border: solid $nhsuk-border-colour;
+  border-width: 0 0 $nhsuk-border-width;
+
+  @include nhsuk-media-query($until: desktop) {
+    background: none;
+
+    .nhsuk-card__content {
+      padding-top: 0;
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+}
+
 .app-breast-diagram__svg {
   display: block;
 

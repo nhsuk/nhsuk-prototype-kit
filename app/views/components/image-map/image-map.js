@@ -42,6 +42,7 @@ export class ImageMap extends ConfigurableComponent {
     this.$image = $image
 
     if (!this.config.readOnly) {
+      this.$root.setAttribute('tabindex', '-1')
       this.$root.addEventListener('mousemove', this.onMouseMove.bind(this))
       this.$root.addEventListener('click', this.onClick.bind(this))
     }

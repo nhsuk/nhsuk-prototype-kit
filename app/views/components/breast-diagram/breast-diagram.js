@@ -98,9 +98,9 @@ export class BreastDiagram extends ConfigurableComponent {
   imageMap
 
   /**
-   * @type {ImageKey | null}
+   * @type {ImageKey}
    */
-  imageKey = null
+  imageKey
 
   /**
    * @type {ImageMarker[]}
@@ -180,6 +180,16 @@ export class BreastDiagram extends ConfigurableComponent {
 
     this.imageMap = imageMaps[0]
 
+    const imageKeys = createAll(ImageKey, { readOnly }, { scope: this.$root })
+    if (!imageKeys.length || !(imageKeys[0].$root instanceof HTMLElement)) {
+      throw new ElementError({
+        component: BreastDiagram,
+        identifier: `Image key (\`[data-module="${ImageKey.moduleName}"]\`)`
+      })
+    }
+
+    this.imageKey = imageKeys[0]
+
     if (!readOnly) {
       const $popover = this.$root.querySelector('.app-breast-diagram__popover')
 
@@ -251,21 +261,6 @@ export class BreastDiagram extends ConfigurableComponent {
       this.$radiosFormGroup = $radiosFormGroup
       this.$radiosErrorMessage = $radiosErrorMessage
 
-      const imageKeys = createAll(
-        ImageKey,
-        { allowlist: this.$radios.map(($radio) => $radio.value) },
-        { scope: this.$root }
-      )
-
-      if (!imageKeys.length || !(imageKeys[0].$root instanceof HTMLElement)) {
-        throw new ElementError({
-          component: BreastDiagram,
-          identifier: `Image key (\`[data-module="${ImageKey.moduleName}"]\`)`
-        })
-      }
-
-      this.imageKey = imageKeys[0]
-
       this.imageMap.addEventListener('create', (event) => this.onCreate(event))
       this.imageMap.addEventListener('edit', (event) => this.onEdit(event))
       this.imageMap.addEventListener('hover', (event) => this.log(event))
@@ -303,8 +298,8 @@ export class BreastDiagram extends ConfigurableComponent {
       this.setMarker(feature, index)
     })
 
-    // Update key (optional if read only)
-    this.imageKey?.render()
+    // Update key
+    this.imageKey.render()
 
     // Remove excess markers
     for (const marker of markers.splice(values.length)) {
@@ -322,10 +317,8 @@ export class BreastDiagram extends ConfigurableComponent {
         JSON.parse(decodeURIComponent(this.$input.value), getArrayValue) ?? []
       )
 
-      // Set key values (optional if read only)
-      if (this.imageKey) {
-        this.imageKey.values = this.values
-      }
+      // Set key values
+      this.imageKey.values = this.values
     } catch {
       throw new ElementError({
         component: BreastDiagram,
@@ -446,6 +439,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
     this.setPopover(feature, number, mode)
     $popover.removeAttribute('hidden')
+    this.focusPopover()
   }
 
   /**
@@ -578,6 +572,24 @@ export class BreastDiagram extends ConfigurableComponent {
   }
 
   /**
+   * Focus add or edit feature popover after scrolling into view
+   */
+  focusPopover() {
+    const { $popover, $radios } = this
+    if (!$popover) {
+      return
+    }
+
+    $popover.removeAttribute('hidden')
+
+    // Prefer checked radio button otherwise focus first
+    const $radio = $radios.find(($radio) => $radio.checked) ?? $radios[0]
+
+    $popover.scrollIntoView({ behavior: 'smooth' })
+    $radio.focus({ preventScroll: true })
+  }
+
+  /**
    * Handle image map add marker
    *
    * @type {ImageMapListener}
@@ -631,6 +643,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
     // Skip unnecessary reset when the same marker is clicked again
     if (!value || $popover.dataset.number === target.value) {
+      this.focusPopover()
       return
     }
 
@@ -644,7 +657,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {MouseEvent} event - Click event
    */
   onClick(event) {
-    const { $root, $popover, markers } = this
+    const { $root, $popover, imageMap, markers } = this
     const { target } = event
 
     if (
@@ -670,19 +683,34 @@ export class BreastDiagram extends ConfigurableComponent {
       marker?.$root.click()
     }
 
-    if (!$popover) {
+    if (!$popover || $popover.hasAttribute('hidden')) {
       return
     }
 
-    // Handle form cancel button
-    if (target.matches('.app-js-feature-cancel')) {
-      $root.scrollIntoView({ behavior: 'smooth' })
+    const marker = this.getMarker($popover.dataset.number)
+    if (!marker) {
+      return
     }
 
-    // Handle form remove button
+    // Handle popover cancel button
+    if (target.matches('.app-js-feature-cancel')) {
+      $root.scrollIntoView({ behavior: 'smooth' })
+
+      // Optionally restore focus to marker unless pending
+      if ($popover.dataset.id !== FEATURE_ID_PENDING) {
+        marker.$root.focus({ preventScroll: true })
+        return
+      }
+
+      imageMap.$root.focus({ preventScroll: true })
+    }
+
+    // Handle popover remove button
     if (target.matches('.app-js-feature-remove')) {
-      const marker = this.getMarker($popover.dataset.number)
-      this.remove(marker?.point)
+      this.remove(marker.point)
+
+      $root.scrollIntoView({ behavior: 'smooth' })
+      imageMap.$root.focus({ preventScroll: true })
     }
   }
 
@@ -721,7 +749,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {SubmitEvent} event
    */
   onSubmit(event) {
-    const { $popover, $details, $radiosFieldset, $radiosLegend, $radios } = this
+    const { $root, $popover, $details, $radiosFieldset, $radios } = this
     if (this.canSubmit()) {
       return
     }
@@ -738,8 +766,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
     // Show form validation
     if (!$checked || ($checked.value === FEATURE_ID_OTHER && !details)) {
-      // Scroll radios legend into view
-      $radiosLegend?.scrollIntoView({ behavior: 'smooth' })
+      this.focusPopover()
 
       // Invalid: Focus first radio button
       if (!$checked) {
@@ -766,7 +793,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
     const marker = this.getMarker($popover?.dataset.number)
     const value = this.getValue(marker?.point)
-    if (!value) {
+    if (!marker || !value) {
       return
     }
 
@@ -783,7 +810,12 @@ export class BreastDiagram extends ConfigurableComponent {
     // Automatically submit form once saved
     if (event.submitter?.matches('.app-js-feature-save')) {
       this.$form.submit()
+      return
     }
+
+    // Restore focus to marker
+    $root.scrollIntoView({ behavior: 'smooth' })
+    marker.$root.focus({ preventScroll: true })
   }
 
   /**
@@ -1004,7 +1036,7 @@ function showError($element, { $errorMessage, $formGroup }) {
   $formGroup.classList.add('nhsuk-form-group--error')
 
   // Add error border to input (optional)
-  if ($element instanceof HTMLInputElement) {
+  if ($element.matches('.nhsuk-input')) {
     $element.classList.add('nhsuk-input--error')
   }
 
@@ -1044,7 +1076,7 @@ function hideError($element, { $errorMessage, $formGroup }) {
   $formGroup.classList.remove('nhsuk-form-group--error')
 
   // Remove error border from input (optional)
-  if ($element instanceof HTMLInputElement) {
+  if ($element.matches('.nhsuk-input')) {
     $element.classList.remove('nhsuk-input--error')
   }
 

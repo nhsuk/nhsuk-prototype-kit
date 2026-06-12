@@ -8,4 +8,9 @@
   background: nhsuk-colour("white");
 
   @include nhsuk-responsive-margin(4, "bottom");
+
+  &:focus {
+    outline: $nhsuk-focus-width solid $nhsuk-focus-colour;
+    box-shadow: 0 0 0 $nhsuk-focus-width $nhsuk-focus-text-colour;
+  }
 }

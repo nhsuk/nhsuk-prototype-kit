@@ -30,33 +30,39 @@ export class ImageKey extends ConfigurableComponent {
       })
     }
 
-    const $button = this.$root.querySelector('button[type="reset"]')
-    if (!($button instanceof HTMLButtonElement)) {
-      throw new ElementError({
-        component: ImageKey,
-        expectedType: 'HTMLButtonElement',
-        identifier: 'Clear all features (`<button type="reset">`)'
-      })
-    }
-
-    const $imageKeyItem = this.$root.querySelector(
-      'template.app-js-template-image-key-item'
-    )
-
-    if (!($imageKeyItem instanceof HTMLTemplateElement)) {
-      throw new ElementError({
-        component: ImageKey,
-        identifier: 'Image key template (`<template>`)'
-      })
-    }
-
     this.$list = $list
-    this.$button = $button
-    this.$imageKeyItem = $imageKeyItem
+
+    if (!this.config.readOnly) {
+      const $button = this.$root.querySelector('button[type="reset"]')
+      if (!($button instanceof HTMLButtonElement)) {
+        throw new ElementError({
+          component: ImageKey,
+          expectedType: 'HTMLButtonElement',
+          identifier: 'Clear all features (`<button type="reset">`)'
+        })
+      }
+
+      const $imageKeyItem = this.$root.querySelector(
+        'template.app-js-template-image-key-item'
+      )
+
+      if (!($imageKeyItem instanceof HTMLTemplateElement)) {
+        throw new ElementError({
+          component: ImageKey,
+          identifier: 'Image key template (`<template>`)'
+        })
+      }
+
+      this.$button = $button
+      this.$imageKeyItem = $imageKeyItem
+    }
   }
 
   render() {
-    const { $button, $list, $root, config, values } = this
+    const { $root, $list, $button, $imageKeyItem, values } = this
+    if (!$button || !$imageKeyItem) {
+      return
+    }
 
     // Clear key items
     $list.innerHTML = ''
@@ -67,14 +73,9 @@ export class ImageKey extends ConfigurableComponent {
       return
     }
 
-    const filtered = values.filter(({ id }) => config.allowlist.includes(id))
-    if (!filtered.length) {
-      return
-    }
-
     // Render key items
-    filtered.forEach(({ id, details, region_id }, index) => {
-      const $item = document.importNode(this.$imageKeyItem.content, true)
+    values.forEach(({ id, details, region_id }, index) => {
+      const $item = document.importNode($imageKeyItem.content, true)
 
       const $marker = $item.querySelector('.app-image-marker')
       const $number = $item.querySelector('.app-image-marker__number')
@@ -163,7 +164,7 @@ export class ImageKey extends ConfigurableComponent {
    * @type {ImageKeyConfig}
    */
   static defaults = Object.freeze({
-    allowlist: []
+    readOnly: false
   })
 
   /**
@@ -174,7 +175,7 @@ export class ImageKey extends ConfigurableComponent {
    */
   static schema = Object.freeze({
     properties: {
-      allowlist: { type: 'array' }
+      readOnly: { type: 'boolean' }
     }
   })
 }
@@ -184,7 +185,7 @@ export class ImageKey extends ConfigurableComponent {
  *
  * @see {@link ImageKey.defaults}
  * @typedef {object} ImageKeyConfig
- * @property {string[]} allowlist - Allowed breast feature IDs
+ * @property {boolean} readOnly - Whether image key is read only
  */
 
 /**
