@@ -433,11 +433,41 @@ export class BreastDiagram extends ConfigurableComponent {
   /**
    * Show add or edit feature popover
    *
-   * @param {BreastFeature} feature
-   * @param {string} number
-   * @param {'add' | 'edit'} mode
+   * @param {BreastFeature} feature - Breast feature
+   * @param {number | string} number - Image marker number
+   * @param {'add' | 'edit'} mode - Popover mode
    */
   showPopover(feature, number, mode = 'edit') {
+    const { $popover } = this
+    if (!$popover) {
+      return
+    }
+
+    this.setPopover(feature, number, mode)
+    $popover.removeAttribute('hidden')
+  }
+
+  /**
+   * Hide add or edit feature popover
+   */
+  hidePopover() {
+    const { $popover } = this
+    if (!$popover) {
+      return
+    }
+
+    $popover.setAttribute('hidden', '')
+    this.resetPopover()
+  }
+
+  /**
+   * Set add or edit feature popover values
+   *
+   * @param {BreastFeature} feature - Breast feature
+   * @param {number | string} number - Image marker number
+   * @param {'add' | 'edit'} mode - Popover mode
+   */
+  setPopover(feature, number, mode = 'edit') {
     const { $popover, $captions, $details, $buttons, $radios, $region } = this
     if (!$popover || !$details || !$region) {
       return
@@ -485,10 +515,51 @@ export class BreastDiagram extends ConfigurableComponent {
 
     $popover.dataset.id = feature.id
     $popover.dataset.regionId = feature.region_id
-    $popover.dataset.number = number
+    $popover.dataset.number = `${number}`
 
     $region.textContent = ImageKey.format($popover.dataset.regionId)
-    $popover.removeAttribute('hidden')
+  }
+
+  /**
+   * Reset add or edit feature popover
+   */
+  resetPopover() {
+    const { $popover, $captions, $details, $radios, values } = this
+    if (!$popover || !$details) {
+      return
+    }
+
+    // Reset validation errors
+    this.resetErrors()
+
+    // Remove pending (unsaved) features
+    for (const value of values) {
+      if (value.id === FEATURE_ID_PENDING) {
+        this.remove(value)
+      }
+    }
+
+    // Remove edit caption feature number
+    if ($popover.dataset.id !== FEATURE_ID_PENDING) {
+      const $caption = $captions.find(($caption) =>
+        $caption.matches('.app-js-feature-caption-edit')
+      )
+
+      if ($caption) {
+        $caption.textContent = $caption.textContent.replace(/\s\d+$/, '')
+      }
+    }
+
+    // Click radio to hide custom details text input before reset
+    $radios[0].click()
+    $radios[0].checked = false
+
+    // Clear custom details text input
+    $details.value = ''
+
+    delete $popover.dataset.id
+    delete $popover.dataset.regionId
+    delete $popover.dataset.number
   }
 
   /**
@@ -516,9 +587,9 @@ export class BreastDiagram extends ConfigurableComponent {
       ? $radios.find(($radio) => $radio.checked)
       : undefined
 
-    this.onReset()
+    this.hidePopover()
     this.add(value)
-    this.showPopover(value, `${markers.length}`, 'add')
+    this.showPopover(value, markers.length, 'add')
 
     if ($checked) {
       $checked.checked = true
@@ -548,7 +619,7 @@ export class BreastDiagram extends ConfigurableComponent {
       return
     }
 
-    this.onReset()
+    this.hidePopover()
     this.showPopover(value, target.value)
   }
 
@@ -607,7 +678,7 @@ export class BreastDiagram extends ConfigurableComponent {
    */
   onKeyDown(event) {
     if (event.key === 'Escape') {
-      this.onReset()
+      this.hidePopover()
     }
   }
 
@@ -643,7 +714,7 @@ export class BreastDiagram extends ConfigurableComponent {
     event.preventDefault()
 
     // Reset validation errors
-    this.onResetValidation()
+    this.resetErrors()
 
     // Check for selected feature and custom details
     const $checked = $radios.find(($radio) => $radio.checked)
@@ -689,7 +760,7 @@ export class BreastDiagram extends ConfigurableComponent {
     // Set custom details (optional)
     value.details = $checked.value === FEATURE_ID_OTHER ? details : undefined
 
-    this.onReset()
+    this.hidePopover()
     this.render()
     this.write()
 
@@ -700,9 +771,19 @@ export class BreastDiagram extends ConfigurableComponent {
   }
 
   /**
-   * Handle image map form validation reset
+   * Handle image map form reset
+   *
+   * @param {Event} event - Reset event
    */
-  onResetValidation() {
+  onReset(event) {
+    event.preventDefault()
+    this.hidePopover()
+  }
+
+  /**
+   * Reset image map form validation errors
+   */
+  resetErrors() {
     const { $details, $radiosFieldset } = this
     if (!$details || !$radiosFieldset) {
       return
@@ -717,54 +798,6 @@ export class BreastDiagram extends ConfigurableComponent {
       $errorMessage: this.$detailsErrorMessage,
       $formGroup: this.$detailsFormGroup
     })
-  }
-
-  /**
-   * Handle image map form reset
-   *
-   * @param {Event} [event] - Reset event
-   */
-  onReset(event) {
-    event?.preventDefault()
-
-    const { $popover, $captions, $details, $radios, values } = this
-    if (!$popover || !$details) {
-      return
-    }
-
-    $popover.setAttribute('hidden', '')
-
-    // Reset validation errors
-    this.onResetValidation()
-
-    // Remove pending (unsaved) features
-    for (const value of values) {
-      if (value.id === FEATURE_ID_PENDING) {
-        this.remove(value)
-      }
-    }
-
-    // Remove edit caption feature number
-    if ($popover.dataset.id !== FEATURE_ID_PENDING) {
-      const $caption = $captions.find(($caption) =>
-        $caption.matches('.app-js-feature-caption-edit')
-      )
-
-      if ($caption) {
-        $caption.textContent = $caption.textContent.replace(/\s\d+$/, '')
-      }
-    }
-
-    // Click radio to hide custom details text input before reset
-    $radios[0].click()
-    $radios[0].checked = false
-
-    // Clear custom details text input
-    $details.value = ''
-
-    delete $popover.dataset.id
-    delete $popover.dataset.regionId
-    delete $popover.dataset.number
   }
 
   /**
