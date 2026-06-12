@@ -463,15 +463,19 @@ export class BreastDiagram extends ConfigurableComponent {
   /**
    * Set add or edit feature popover values
    *
-   * @param {BreastFeature} feature - Breast feature
+   * @param {Partial<BreastFeature>} feature - Breast feature
    * @param {number | string} number - Image marker number
-   * @param {'add' | 'edit'} mode - Popover mode
+   * @param {'add' | 'edit'} [mode] - Popover mode
    */
-  setPopover(feature, number, mode = 'edit') {
+  setPopover(feature, number, mode) {
     const { $popover, $captions, $details, $buttons, $radios, $region } = this
     if (!$popover || !$details || !$region) {
       return
     }
+
+    // Use existing popover mode if not provided
+    // e.g. When updating popover values when already open
+    mode ??= /** @type {'add' | 'edit'} */ ($popover.dataset.mode)
 
     // Show add or edit feature caption
     for (const $caption of $captions) {
@@ -480,7 +484,10 @@ export class BreastDiagram extends ConfigurableComponent {
       // Show caption with optional feature number
       if ($caption.matches(`.app-js-feature-caption-${mode}`)) {
         if (mode === 'edit') {
-          $caption.textContent += ` ${number}`
+          $caption.textContent = $caption.textContent.replace(
+            /(\s\d+)?$/,
+            ` ${number}`
+          )
         }
 
         $caption.removeAttribute('hidden')
@@ -495,7 +502,8 @@ export class BreastDiagram extends ConfigurableComponent {
         $button.matches(`.app-js-feature-${mode}`) ||
         $button.matches(`.app-js-feature-cancel`) ||
         ($button.matches(`.app-js-feature-remove`) &&
-          feature.id !== FEATURE_ID_PENDING)
+          feature.id !== FEATURE_ID_PENDING &&
+          mode === 'edit')
       ) {
         $button.removeAttribute('hidden')
       }
@@ -503,12 +511,14 @@ export class BreastDiagram extends ConfigurableComponent {
 
     // Click radio for feature being edited
     if (mode === 'edit') {
-      $radios
-        .filter(($radio) => $radio.value === feature.id)
-        .forEach(($radio) => $radio.click())
+      if (!$radios.find(($radio) => $radio.checked)) {
+        $radios
+          .filter(($radio) => $radio.value === feature.id)
+          .forEach(($radio) => $radio.click())
+      }
 
       // Update custom details text input
-      if (feature.id === FEATURE_ID_OTHER) {
+      if (feature.id === FEATURE_ID_OTHER && !$details.value.trim()) {
         $details.value = feature.details ?? ''
       }
     }
@@ -516,8 +526,11 @@ export class BreastDiagram extends ConfigurableComponent {
     $popover.dataset.id = feature.id
     $popover.dataset.regionId = feature.region_id
     $popover.dataset.number = `${number}`
+    $popover.dataset.mode = mode
 
-    $region.textContent = ImageKey.format($popover.dataset.regionId)
+    $region.textContent = ImageKey.format(
+      feature.region_id ?? ImageMarker.defaults.tag
+    )
   }
 
   /**
@@ -560,6 +573,7 @@ export class BreastDiagram extends ConfigurableComponent {
     delete $popover.dataset.id
     delete $popover.dataset.regionId
     delete $popover.dataset.number
+    delete $popover.dataset.mode
   }
 
   /**
@@ -695,7 +709,8 @@ export class BreastDiagram extends ConfigurableComponent {
     return !(
       $popover.dataset.id &&
       $popover.dataset.number &&
-      $popover.dataset.regionId
+      $popover.dataset.regionId &&
+      $popover.dataset.mode
     )
   }
 
