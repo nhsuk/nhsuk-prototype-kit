@@ -958,7 +958,7 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     const marker = markers[index]
-    const point = imageMap.createPoint(feature.x, feature.y, feature.region_id)
+    const point = imageMap.createPoint(feature.x, feature.y)
 
     // Update existing marker
     if (feature.id !== FEATURE_ID_PENDING) {

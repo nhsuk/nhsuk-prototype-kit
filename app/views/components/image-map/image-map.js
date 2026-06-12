@@ -166,23 +166,13 @@ export class ImageMap extends ConfigurableComponent {
    *
    * @param {number} pointX - SVG point X coordinate
    * @param {number} pointY - SVG point Y coordinate
-   * @param {string} id - SVG path ID specified in path class attribute
    * @returns {DOMPoint}
    */
-  createPoint(pointX, pointY, id) {
+  createPoint(pointX, pointY) {
     const point = this.$image.createSVGPoint()
 
     point.x = pointX
     point.y = pointY
-
-    const $path = this.getPath(point)
-
-    if (!$path || $path !== this.getPathById(id)) {
-      throw new ElementError({
-        component: ImageMap,
-        identifier: `Image path or polygon (\`class="${id}"\`) with SVG point (${pointX}, ${pointY})`
-      })
-    }
 
     return point
   }
