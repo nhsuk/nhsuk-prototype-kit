@@ -273,17 +273,8 @@ export class BreastDiagram extends ConfigurableComponent {
   render() {
     const { imageMap, imageKey, markers, features } = this
 
-    if (!features.length) {
-      imageMap.unsetState('active')
-    }
-
+    // Set markers for diagram features
     features.forEach((feature, index) => {
-      const $path = imageMap.getPathById(feature.region_id)
-
-      // Render active region
-      imageMap.setState('active', $path)
-
-      // Set marker position
       this.setMarker(feature, index + 1)
     })
 
@@ -292,8 +283,28 @@ export class BreastDiagram extends ConfigurableComponent {
       marker.$root.remove()
     }
 
+    // Highlight active regions
+    this.highlight()
+
+    // Apply marker changes
     imageMap.render()
+
+    // Apply key changes
     imageKey.render()
+  }
+
+  /**
+   * Highlight diagram active regions
+   */
+  highlight() {
+    const { imageMap, features } = this
+
+    imageMap.unsetState('active')
+
+    // Set active region paths
+    for (const { region_id } of features) {
+      imageMap.setState('active', imageMap.getPathById(region_id))
+    }
   }
 
   /**
@@ -338,7 +349,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {number | string} [number] - Image marker number
    */
   removeFeature(number) {
-    const { imageMap, features } = this
+    const { features } = this
 
     const feature = this.getFeature(number)
     if (!feature) {
@@ -350,9 +361,6 @@ export class BreastDiagram extends ConfigurableComponent {
       return
     }
 
-    const $path = imageMap.getPathById(feature.region_id)
-
-    imageMap.unsetState('active', $path)
     features.splice(index, 1)
 
     this.render()
