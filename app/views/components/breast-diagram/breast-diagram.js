@@ -108,6 +108,11 @@ export class BreastDiagram extends ConfigurableComponent {
   features
 
   /**
+   * @type {number | null}
+   */
+  renderRequest = null
+
+  /**
    * @param {Element | null} $root - HTML element to use for component
    * @param {Partial<BreastDiagramConfig>} [config] - Breast diagram config
    */
@@ -253,6 +258,8 @@ export class BreastDiagram extends ConfigurableComponent {
       this.imageMap.addEventListener('edit', this.onEdit.bind(this))
       this.imageMap.addEventListener('hover', this.log.bind(this))
       this.imageMap.addEventListener('focusin', this.onFocusIn.bind(this))
+      this.imageMap.addEventListener('drag', this.onDrag.bind(this))
+      this.imageMap.addEventListener('dragend', this.onDragEnd.bind(this))
 
       this.$form.addEventListener('click', this.onClick.bind(this))
       this.$form.addEventListener('submit', this.onSubmit.bind(this))
@@ -572,7 +579,9 @@ export class BreastDiagram extends ConfigurableComponent {
    */
   alignPopover(number) {
     const { $popover, imageMap } = this
-    if (!$popover) {
+
+    // Skip alignment with multi-touch drag and drop
+    if (!$popover || imageMap.targets.size > 1) {
       return
     }
 
@@ -674,6 +683,86 @@ export class BreastDiagram extends ConfigurableComponent {
 
     this.render()
     this.log(event)
+  }
+
+  /**
+   * Handle image map drag move
+   *
+   * @param {CustomEvent<ImageMapPayload>} event - Image map event
+   */
+  onDrag(event) {
+    const { $popover, imageMap } = this
+    const { detail, target } = event
+    const { point } = detail
+
+    if (!point || !(target instanceof HTMLButtonElement)) {
+      return
+    }
+
+    const number = target.value
+    const marker = imageMap.getMarker(number)
+    const feature = this.getFeature(number)
+
+    if (!marker || !feature) {
+      return
+    }
+
+    // Cancel request to render at next frame
+    if (this.renderRequest) {
+      window.cancelAnimationFrame(this.renderRequest)
+    }
+
+    // Get region for previous position
+    const $previousPath = imageMap.getPath(marker.point)
+
+    // Update marker position
+    marker.setPosition(point)
+
+    // Align popover to avoid marker
+    this.alignPopover(number)
+
+    // Get region for current position
+    const $currentPath = imageMap.getPath(marker.point)
+    if (!$currentPath) {
+      return
+    }
+
+    feature.x = marker.point.x
+    feature.y = marker.point.y
+    feature.region_id = $currentPath.classList.value
+
+    // Update marker for updated position
+    if ($previousPath !== $currentPath) {
+      this.setMarker(number, feature)
+
+      // Update popover for updated position (optional)
+      if (number === $popover?.dataset.number) {
+        this.setPopover(number, { region_id: feature.region_id })
+      }
+    }
+
+    // Request to render at next frame
+    this.renderRequest = window.requestAnimationFrame(() => {
+      this.render()
+      this.log(event)
+    })
+  }
+
+  /**
+   * Handle image map drag drop
+   *
+   * @param {CustomEvent<ImageMapPayload>} event - Image map event
+   */
+  onDragEnd(event) {
+    const { $popover } = this
+    const { target } = event
+
+    if (!$popover || !(target instanceof HTMLButtonElement)) {
+      return
+    }
+
+    // Align popover to avoid feature being edited
+    this.alignPopover($popover.dataset.number)
   }
 
   /**

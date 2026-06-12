@@ -15,12 +15,20 @@ export class ImageMap extends ConfigurableComponent {
   markers = []
 
   /**
+   * Track drag and drop pointer event targets
+   *
+   * @type {Map<number, ImageMapTarget>}
+   */
+  targets = new Map()
+
+  /**
    * @param {Element | null} $root - HTML element to use for component
    * @param {Partial<Pick<ImageMapConfig, 'imageClass' | 'selectors' | 'readOnly'>>} [config] - Image map config
    */
   constructor($root, config = {}) {
     super($root, config)
 
+    const { events } = ImageMap
     const { imageClass, selectorsQuery, selectorsFormatted } = this.config
 
     const $image = this.$root.querySelector(`.${imageClass}`)
@@ -46,11 +54,16 @@ export class ImageMap extends ConfigurableComponent {
     this.$paths = Array.from($paths).reverse()
     this.$image = $image
 
+    this.handleDrag = this.onDrag.bind(this)
+    this.handleDragEnd = this.onDragEnd.bind(this)
+
     if (!this.config.readOnly) {
       this.$root.setAttribute('tabindex', '-1')
-      this.$root.addEventListener('mousemove', this.onMouseMove.bind(this))
       this.$root.addEventListener('focusin', this.onFocusIn.bind(this))
       this.$root.addEventListener('click', this.onClick.bind(this))
+
+      this.$root.addEventListener(events.down, this.onPointerDown.bind(this))
+      this.$root.addEventListener(events.move, this.onPointerMove.bind(this))
     }
   }
 
@@ -166,6 +179,15 @@ export class ImageMap extends ConfigurableComponent {
   }
 
   /**
+   * Get pointer event target ID
+   *
+   * @param {MouseEvent | PointerEvent} event
+   */
+  getTargetId(event) {
+    return event instanceof PointerEvent ? event.pointerId : 0
+  }
+
+  /**
    * Get SVG path at pointer coordinates
    *
    * @param {DOMPoint} [point] - SVG point at pointer coordinates
@@ -267,15 +289,113 @@ export class ImageMap extends ConfigurableComponent {
   }
 
   /**
-   * @param {MouseEvent} event
+   * @param {MouseEvent | PointerEvent} event
    */
-  onMouseMove(event) {
+  onPointerDown(event) {
+    const { targets } = this
+    const { events } = ImageMap
+    const { clientX, clientY, target } = event
+
+    if (!(target instanceof HTMLButtonElement) || event.button > 0) {
+      return
+    }
+
+    // Skip markers already being dragged
+    for (const { $element } of targets.values()) {
+      if ($element === target) return
+    }
+
+    // Add drag and drop listeners on first pointer down
+    if (!targets.size) {
+      document.addEventListener(events.move, this.handleDrag)
+      document.addEventListener(events.up, this.handleDragEnd)
+    }
+
+    const targetId = this.getTargetId(event)
+
+    targets.set(targetId, {
+      pointerDownX: clientX,
+      pointerDownY: clientY,
+      $element: target,
+      isDragging: false
+    })
+  }
+
+  /**
+   * @param {MouseEvent | PointerEvent} event
+   */
+  onPointerMove(event) {
     const { clientX, clientY } = event
 
     const point = this.getPoint(clientX, clientY)
     const $path = this.getPath(point)
 
     this.dispatchEvent('hover', { $path, point })
+  }
+
+  /**
+   * @param {MouseEvent | PointerEvent} event
+   */
+  onDrag(event) {
+    const { clientX, clientY } = event
+
+    const targetId = this.getTargetId(event)
+    const target = this.targets.get(targetId)
+
+    if (!target) {
+      return
+    }
+
+    if (!target.isDragging) {
+      const dx = clientX - target.pointerDownX
+      const dy = clientY - target.pointerDownY
+
+      // Minimum 5px movement before dragging
+      if (Math.sqrt(dx * dx + dy * dy) < 5) {
+        return
+      }
+
+      target.isDragging = true
+    }
+
+    const point = this.getPoint(clientX, clientY)
+    const $path = this.getPath(point)
+
+    this.dispatchEvent('drag', { $path, point }, target.$element)
+  }
+
+  /**
+   * @param {MouseEvent | PointerEvent} event
+   */
+  onDragEnd(event) {
+    const { targets } = this
+    const { events } = ImageMap
+    const { clientX, clientY } = event
+
+    const targetId = this.getTargetId(event)
+    const target = this.targets.get(targetId)
+    if (!target) {
+      return
+    }
+
+    // Delay end of drag and drop until after click event fires
+    window.requestAnimationFrame(() => {
+      targets.delete(targetId)
+
+      // Remove drag and drop listeners after last pointer up
+      if (!targets.size) {
+        document.removeEventListener(events.move, this.handleDrag)
+        document.removeEventListener(events.up, this.handleDragEnd)
+      }
+
+      if (target.isDragging) {
+        const point = this.getPoint(clientX, clientY)
+        const $path = this.getPath(point)
+
+        target.isDragging = false
+        this.dispatchEvent('dragend', { $path, point }, target.$element)
+      }
+    })
   }
 
   /**
@@ -293,6 +413,7 @@ export class ImageMap extends ConfigurableComponent {
    * @param {MouseEvent} event
    */
   onClick(event) {
+    const { targets } = this
     const { clientX, clientY, target } = event
 
     event.preventDefault()
@@ -300,18 +421,28 @@ export class ImageMap extends ConfigurableComponent {
     const point = this.getPoint(clientX, clientY)
     const $path = this.getPath(point)
 
-    if (target instanceof HTMLButtonElement) {
-      this.dispatchEvent('edit', { $path, point }, target)
-      return
+    if (!(target instanceof HTMLButtonElement)) {
+      this.dispatchEvent('create', { $path, point })
     }
 
-    this.dispatchEvent('create', { $path, point })
+    // Suppress click event at end of drag and drop
+    for (const { $element, isDragging } of targets.values()) {
+      if ($element === target && isDragging) return
+    }
+
+    this.dispatchEvent('edit', { $path, point }, target)
   }
 
   /**
    * Name for the component used when initialising using data-module attributes
    */
   static moduleName = 'app-image-map'
+
+  static events = Object.freeze({
+    move: 'PointerEvent' in window ? 'pointermove' : 'mousemove',
+    up: 'PointerEvent' in window ? 'pointerup' : 'mouseup',
+    down: 'PointerEvent' in window ? 'pointerdown' : 'mousedown'
+  })
 
   /**
    * Image map default config
@@ -359,7 +490,7 @@ export class ImageMap extends ConfigurableComponent {
 
 /**
  * @typedef {'active'} ImageMapState - Image map state
- * @typedef {'hover' | 'create' | 'edit' | 'focusin'} ImageMapEvent - Image map event
+ * @typedef {'hover' | 'create' | 'edit' | 'focusin' | 'drag' | 'dragend'} ImageMapEvent - Image map event
  */
 
 /**
@@ -369,6 +500,16 @@ export class ImageMap extends ConfigurableComponent {
  * @property {SVGGeometryElement | undefined} $path - SVG path at pointer coordinates
  * @property {DOMPoint} [point] - SVG point at pointer coordinates (optional)
  * @returns {void}
+ */
+
+/**
+ * Image map pointer target
+ *
+ * @typedef ImageMapTarget
+ * @property {number} pointerDownX - Pointer down X coordinate in screen pixels
+ * @property {number} pointerDownY - Pointer down Y coordinate in screen pixels
+ * @property {HTMLButtonElement} $element - Pointer target element
+ * @property {boolean} isDragging - Whether pointer target is being dragged
  */
 
 /**

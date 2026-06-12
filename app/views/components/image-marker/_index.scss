@@ -1,4 +1,5 @@
 @use "../../../stylesheets/vendor/nhsuk-frontend/base" as *;
+@use "../breast-diagram" as *;
 
 .app-image-marker {
   @include nhsuk-font(19, $weight: bold);
@@ -39,12 +40,23 @@
 
   pointer-events: none;
 
+  touch-action: none;
+
   &:hover {
     background-color: $nhsuk-login-button-hover-colour;
   }
 
   &:active {
+    z-index: 60;
+
+    transform: scale(1.05);
+
+    opacity: 0.8;
+
     background-color: $nhsuk-login-button-active-colour;
+    box-shadow: 0 nhsuk-spacing(1) nhsuk-spacing(3) rgba($breast-diagram-shadow-colour, 30%);
+
+    cursor: grabbing;
   }
 }
 
