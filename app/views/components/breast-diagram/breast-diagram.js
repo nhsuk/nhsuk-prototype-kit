@@ -88,11 +88,6 @@ export class BreastDiagram extends ConfigurableComponent {
   $buttons = []
 
   /**
-   * @type {HTMLTemplateElement}
-   */
-  $imageMarker
-
-  /**
    * @type {ImageMap}
    */
   imageMap
@@ -141,20 +136,8 @@ export class BreastDiagram extends ConfigurableComponent {
       })
     }
 
-    const $imageMarker = this.$root.querySelector(
-      'template.app-js-template-image-marker'
-    )
-
-    if (!($imageMarker instanceof HTMLTemplateElement)) {
-      throw new ElementError({
-        component: BreastDiagram,
-        identifier: 'Breast diagram template (`<template>`)'
-      })
-    }
-
     this.$form = $form
     this.$input = $input
-    this.$imageMarker = $imageMarker
     this.markers = []
     this.features = []
 
@@ -924,23 +907,16 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {number | string} number - Image marker number
    */
   setMarker(feature, number) {
-    const { $imageMarker, imageMap, config } = this
-
-    let marker = imageMap.getMarker(number)
+    const { $root, imageMap, config } = this
 
     // Create new marker (optional)
-    if (!marker) {
-      const { firstElementChild } = document.importNode(
-        $imageMarker.content,
-        true
-      )
-
-      marker = new ImageMarker(firstElementChild, {
+    const marker =
+      imageMap.getMarker(number) ??
+      new ImageMarker(ImageMarker.createElement($root), {
         value: config.readOnly ? undefined : `${number}`,
         width: imageMap.width,
         height: imageMap.height
       })
-    }
 
     // Update existing marker
     if (feature.id !== FEATURE_ID_PENDING) {

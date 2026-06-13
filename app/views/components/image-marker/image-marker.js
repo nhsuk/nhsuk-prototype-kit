@@ -1,4 +1,7 @@
-import { ConfigurableComponent } from '/nhsuk-frontend/nhsuk-frontend.min.js'
+import {
+  ConfigurableComponent,
+  ElementError
+} from '/nhsuk-frontend/nhsuk-frontend.min.js'
 
 /**
  * Image marker component
@@ -72,6 +75,38 @@ export class ImageMarker extends ConfigurableComponent {
 
     // Locate left or right side
     this.side = point.x < config.width / 2 ? 'left' : 'right'
+  }
+
+  /**
+   * Create new image marker element
+   *
+   * @param {HTMLElement} $scope
+   */
+  static createElement($scope) {
+    const $template = $scope.querySelector(
+      'template.app-js-template-image-marker'
+    )
+
+    if (!($template instanceof HTMLTemplateElement)) {
+      throw new ElementError({
+        component: ImageMarker,
+        identifier: 'Image marker template (`<template>`)'
+      })
+    }
+
+    const { firstElementChild: $root } = document.importNode(
+      $template.content,
+      true
+    )
+
+    if (!($root instanceof HTMLElement)) {
+      throw new ElementError({
+        component: ImageMarker,
+        identifier: 'Image marker template contents (`<template>`)'
+      })
+    }
+
+    return $root
   }
 
   /**

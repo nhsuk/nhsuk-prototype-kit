@@ -47,28 +47,15 @@ export class ImageKey extends ConfigurableComponent {
         })
       }
 
-      const $imageKeyItem = this.$root.querySelector(
-        'template.app-js-template-image-key-item'
-      )
-
-      if (!($imageKeyItem instanceof HTMLTemplateElement)) {
-        throw new ElementError({
-          component: ImageKey,
-          identifier: 'Image key template (`<template>`)'
-        })
-      }
-
       this.$button = $button
-      this.$imageKeyItem = $imageKeyItem
-
       this.$button.addEventListener('click', this.onClear.bind(this))
       this.$root.addEventListener('focusin', this.onFocusIn.bind(this))
     }
   }
 
   render() {
-    const { $root, $list, $links, $button, $imageKeyItem, markers } = this
-    if (!$button || !$imageKeyItem) {
+    const { $root, $list, $links, $button, markers } = this
+    if (!$button) {
       return
     }
 
@@ -89,17 +76,7 @@ export class ImageKey extends ConfigurableComponent {
 
     // Render key items
     filtered.forEach((marker, index) => {
-      const { firstElementChild: $item } = document.importNode(
-        $imageKeyItem.content,
-        true
-      )
-
-      if (!($item instanceof HTMLElement)) {
-        throw new ElementError({
-          component: ImageKey,
-          identifier: 'Image key template contents (`<template>`)'
-        })
-      }
+      const $item = ImageKey.createElement($root)
 
       const $link = $item.querySelector('.app-image-marker')
       if (!($link instanceof HTMLAnchorElement)) {
@@ -247,6 +224,38 @@ export class ImageKey extends ConfigurableComponent {
   static format(input) {
     const output = input.toLowerCase().replace(/_/g, ' ')
     return output.charAt(0).toUpperCase() + output.slice(1)
+  }
+
+  /**
+   * Create new image key element
+   *
+   * @param {HTMLElement} $scope
+   */
+  static createElement($scope) {
+    const $template = $scope.querySelector(
+      'template.app-js-template-image-key-item'
+    )
+
+    if (!($template instanceof HTMLTemplateElement)) {
+      throw new ElementError({
+        component: ImageKey,
+        identifier: 'Image key template (`<template>`)'
+      })
+    }
+
+    const { firstElementChild: $root } = document.importNode(
+      $template.content,
+      true
+    )
+
+    if (!($root instanceof HTMLElement)) {
+      throw new ElementError({
+        component: ImageKey,
+        identifier: 'Image key template contents (`<template>`)'
+      })
+    }
+
+    return $root
   }
 
   /**
