@@ -110,7 +110,7 @@ export class BreastDiagram extends ConfigurableComponent {
   /**
    * @type {BreastFeature[]}
    */
-  values
+  features
 
   /**
    * @param {Element | null} $root - HTML element to use for component
@@ -156,7 +156,7 @@ export class BreastDiagram extends ConfigurableComponent {
     this.$input = $input
     this.$imageMarker = $imageMarker
     this.markers = []
-    this.values = []
+    this.features = []
 
     const imageMaps = createAll(
       ImageMap,
@@ -283,13 +283,13 @@ export class BreastDiagram extends ConfigurableComponent {
    * Render diagram features
    */
   render() {
-    const { imageMap, imageKey, markers, values } = this
+    const { imageMap, imageKey, markers, features } = this
 
-    if (!values.length) {
+    if (!features.length) {
       imageMap.unsetState('active')
     }
 
-    values.forEach((feature, index) => {
+    features.forEach((feature, index) => {
       const $path = imageMap.getPathById(feature.region_id)
 
       // Render active region
@@ -300,7 +300,7 @@ export class BreastDiagram extends ConfigurableComponent {
     })
 
     // Remove excess markers
-    for (const marker of markers.splice(values.length)) {
+    for (const marker of markers.splice(features.length)) {
       marker.$root.remove()
     }
 
@@ -314,7 +314,7 @@ export class BreastDiagram extends ConfigurableComponent {
   read() {
     try {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      this.values = /** @type {BreastFeature[]} */ (
+      this.features = /** @type {BreastFeature[]} */ (
         JSON.parse(decodeURIComponent(this.$input.value), getArrayValue) ?? []
       )
     } catch {
@@ -329,7 +329,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * Write diagram values to hidden input
    */
   write() {
-    this.$input.value = JSON.stringify(this.values)
+    this.$input.value = JSON.stringify(this.features)
     this.log()
   }
 
@@ -338,8 +338,8 @@ export class BreastDiagram extends ConfigurableComponent {
    *
    * @param {BreastFeature} feature
    */
-  add(feature) {
-    this.values.push(feature)
+  addFeature(feature) {
+    this.features.push(feature)
     this.render()
     this.write()
   }
@@ -349,19 +349,19 @@ export class BreastDiagram extends ConfigurableComponent {
    *
    * @param {Pick<BreastFeature, 'x' | 'y'> | DOMPoint} [point]
    */
-  remove(point) {
-    const { imageMap, values } = this
+  removeFeature(point) {
+    const { imageMap, features } = this
 
-    const value = this.getValue(point)
-    if (!value) {
+    const feature = this.getFeature(point)
+    if (!feature) {
       return
     }
 
-    const index = values.indexOf(value)
-    const $path = imageMap.getPathById(value.region_id)
+    const index = features.indexOf(feature)
+    const $path = imageMap.getPathById(feature.region_id)
 
     imageMap.unsetState('active', $path)
-    values.splice(index, 1)
+    features.splice(index, 1)
 
     this.render()
     this.write()
@@ -370,8 +370,8 @@ export class BreastDiagram extends ConfigurableComponent {
   /**
    * Clear all features
    */
-  clear() {
-    this.values.length = 0
+  clearFeatures() {
+    this.features.length = 0
     this.render()
     this.write()
   }
@@ -408,7 +408,7 @@ export class BreastDiagram extends ConfigurableComponent {
       return
     }
 
-    $debugInput.innerHTML = JSON.stringify(this.values, undefined, 2)
+    $debugInput.innerHTML = JSON.stringify(this.features, undefined, 2)
 
     if (!$debugX || !$debugY || !$debugRegion) {
       return
@@ -530,7 +530,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * Reset add or edit feature popover
    */
   resetPopover() {
-    const { $popover, $captions, $details, $radios, values } = this
+    const { $popover, $captions, $details, $radios, features } = this
     if (!$popover || !$details) {
       return
     }
@@ -539,9 +539,9 @@ export class BreastDiagram extends ConfigurableComponent {
     this.resetErrors()
 
     // Remove pending (unsaved) features
-    for (const value of values) {
-      if (value.id === FEATURE_ID_PENDING) {
-        this.remove(value)
+    for (const feature of features) {
+      if (feature.id === FEATURE_ID_PENDING) {
+        this.removeFeature(feature)
       }
     }
 
@@ -593,14 +593,14 @@ export class BreastDiagram extends ConfigurableComponent {
    * @type {ImageMapListener}
    */
   onCreate(event) {
-    const { $radios, markers, values } = this
+    const { $radios, markers, features } = this
 
     const { $path, point } = event.detail
     if (!$path || !point) {
       return
     }
 
-    const value = /** @type {BreastFeature} */ ({
+    const feature = /** @type {BreastFeature} */ ({
       id: FEATURE_ID_PENDING,
       region_id: $path.classList.value,
       x: point.x,
@@ -608,13 +608,13 @@ export class BreastDiagram extends ConfigurableComponent {
     })
 
     // Save checked (but unsaved) feature when a marker is moved
-    const $checked = values.some(({ id }) => id === FEATURE_ID_PENDING)
+    const $checked = features.some(({ id }) => id === FEATURE_ID_PENDING)
       ? $radios.find(($radio) => $radio.checked)
       : undefined
 
     this.hidePopover()
-    this.add(value)
-    this.showPopover(value, markers.length, 'add')
+    this.addFeature(feature)
+    this.showPopover(feature, markers.length, 'add')
 
     if ($checked) {
       $checked.checked = true
@@ -637,16 +637,16 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     const marker = this.getMarker(target.value)
-    const value = this.getValue(marker)
+    const feature = this.getFeature(marker)
 
     // Skip unnecessary reset when the same marker is clicked again
-    if (!value || $popover.dataset.number === target.value) {
+    if (!feature || $popover.dataset.number === target.value) {
       this.focusPopover()
       return
     }
 
     this.hidePopover()
-    this.showPopover(value, target.value)
+    this.showPopover(feature, target.value)
   }
 
   /**
@@ -667,7 +667,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
     // Handle clear all features button
     if (target.matches('.app-js-feature-clear-all')) {
-      this.clear()
+      this.clearFeatures()
     }
 
     // Handle marker links in image key
@@ -705,7 +705,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
     // Handle popover remove button
     if (target.matches('.app-js-feature-remove')) {
-      this.remove(marker.point)
+      this.removeFeature(marker.point)
 
       $root.scrollIntoView({ behavior: 'smooth' })
       imageMap.$root.focus({ preventScroll: true })
@@ -790,16 +790,16 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     const marker = this.getMarker($popover?.dataset.number)
-    const value = this.getValue(marker?.point)
-    if (!marker || !value) {
+    const feature = this.getFeature(marker?.point)
+    if (!marker || !feature) {
       return
     }
 
     // Set feature ID
-    value.id = $checked.value
+    feature.id = $checked.value
 
     // Set custom details (optional)
-    value.details = $checked.value === FEATURE_ID_OTHER ? details : undefined
+    feature.details = $checked.value === FEATURE_ID_OTHER ? details : undefined
 
     this.hidePopover()
     this.render()
@@ -914,18 +914,18 @@ export class BreastDiagram extends ConfigurableComponent {
   }
 
   /**
-   * Get value by pointer coordinates
+   * Get feature by pointer coordinates
    *
    * @param {Pick<BreastFeature, 'x' | 'y'> | DOMPoint} [point]
    */
-  getValue(point) {
-    const { values } = this
+  getFeature(point) {
+    const { features } = this
 
     if (!point) {
       return
     }
 
-    return values.find(({ x, y }) => {
+    return features.find(({ x, y }) => {
       return x === point.x && y === point.y
     })
   }
