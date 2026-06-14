@@ -32,6 +32,8 @@ export class ImageMarker extends ConfigurableComponent {
     const { $root, config } = this
 
     $root.textContent = config.text ?? '?'
+    $root.style.left = `${(this.x / config.width) * 100}%`
+    $root.style.top = `${(this.y / config.height) * 100}%`
 
     if (!($root instanceof HTMLButtonElement)) {
       return
@@ -53,7 +55,7 @@ export class ImageMarker extends ConfigurableComponent {
    * @param {DOMPoint} point - SVG point at pointer coordinates
    */
   setPosition(point) {
-    const { $root, config } = this
+    const { config } = this
 
     const gutter = 20 // 20px
 
@@ -70,9 +72,6 @@ export class ImageMarker extends ConfigurableComponent {
 
     // Locate left or right side
     this.side = point.x < config.width / 2 ? 'left' : 'right'
-
-    $root.style.left = `${(this.x / config.width) * 100}%`
-    $root.style.top = `${(this.y / config.height) * 100}%`
   }
 
   /**

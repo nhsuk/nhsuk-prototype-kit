@@ -10,6 +10,11 @@ import {
  */
 export class ImageMap extends ConfigurableComponent {
   /**
+   * @type {ImageMarker[]}
+   */
+  markers = []
+
+  /**
    * @param {Element | null} $root - HTML element to use for component
    * @param {Partial<Pick<ImageMapConfig, 'imageClass' | 'selectors' | 'readOnly'>>} [config] - Image map config
    */
@@ -74,6 +79,20 @@ export class ImageMap extends ConfigurableComponent {
     return this.$image.viewBox.baseVal.height
   }
 
+  render() {
+    const { markers } = this
+
+    // Render all markers
+    for (const marker of markers) {
+      marker.render()
+
+      // Append new marker (optional)
+      if (!marker.$root.parentElement) {
+        this.$root.appendChild(marker.$root)
+      }
+    }
+  }
+
   focus() {
     this.$root.focus({ preventScroll: true })
   }
@@ -105,6 +124,45 @@ export class ImageMap extends ConfigurableComponent {
 
     // Reset state for active path only
     $activePath.removeAttribute(`data-${state}`)
+  }
+
+  /**
+   * Get marker for image map
+   *
+   * @param {number | string} [number] - Image marker number
+   */
+  getMarker(number) {
+    if (number === undefined) {
+      return
+    }
+
+    const index = Number(number) - 1
+    return this.markers[index]
+  }
+
+  /**
+   * Set marker for image map
+   *
+   * @param {number | string} number - Image marker number
+   * @param {ImageMarker} marker - Image marker
+   * @param {number} pointX - SVG point X coordinate
+   * @param {number} pointY - SVG point Y coordinate
+   */
+  setMarker(number, marker, pointX, pointY) {
+    const index = Number(number) - 1
+
+    // Create new marker (optional)
+    if (!this.markers[index]) {
+      this.markers[index] = marker
+    }
+
+    // Create SVG point
+    const point = this.createPoint(pointX, pointY)
+
+    // Set marker position
+    marker.setPosition(point)
+
+    return marker
   }
 
   /**
@@ -323,4 +381,5 @@ export class ImageMap extends ConfigurableComponent {
 
 /**
  * @import { Schema } from 'nhsuk-frontend'
+ * @import { ImageMarker } from '../image-marker/image-marker.js'
  */

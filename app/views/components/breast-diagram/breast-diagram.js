@@ -179,6 +179,7 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     this.imageMap = imageMaps[0]
+    this.imageMap.markers = this.markers
 
     const imageKeys = createAll(ImageKey, { readOnly }, { scope: this.$root })
     if (!imageKeys.length || !(imageKeys[0].$root instanceof HTMLElement)) {
@@ -300,7 +301,7 @@ export class BreastDiagram extends ConfigurableComponent {
       imageMap.setState('active', $path)
 
       // Set marker position
-      this.setMarker(feature, index)
+      this.setMarker(feature, index + 1)
     })
 
     // Remove excess markers
@@ -308,7 +309,7 @@ export class BreastDiagram extends ConfigurableComponent {
       marker.$root.remove()
     }
 
-    // Update key
+    imageMap.render()
     imageKey.render()
   }
 
@@ -435,12 +436,12 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {'map' | 'key'} source - Caller source
    */
   showPopover(feature, number, mode = 'edit', source = 'map') {
-    const { $popover } = this
+    const { $popover, imageMap } = this
     if (!$popover) {
       return
     }
 
-    const marker = this.getMarker(number)
+    const marker = imageMap.getMarker(number)
     if (!marker) {
       return
     }
@@ -668,14 +669,14 @@ export class BreastDiagram extends ConfigurableComponent {
    * @type {ImageMapListener}
    */
   onEdit(event) {
-    const { $popover } = this
+    const { $popover, imageMap } = this
     const { target } = event
 
     if (!$popover || !(target instanceof HTMLButtonElement)) {
       return
     }
 
-    const marker = this.getMarker(target.value)
+    const marker = imageMap.getMarker(target.value)
     const feature = this.getFeature(marker)
 
     // Skip unnecessary reset when the same marker is clicked again
@@ -727,7 +728,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {MouseEvent} event - Click event
    */
   onClick(event) {
-    const { $popover, markers } = this
+    const { $popover, imageMap, markers } = this
     const { target } = event
 
     if (
@@ -757,7 +758,7 @@ export class BreastDiagram extends ConfigurableComponent {
       return
     }
 
-    const marker = this.getMarker($popover.dataset.number)
+    const marker = imageMap.getMarker($popover.dataset.number)
     if (!marker) {
       return
     }
@@ -819,7 +820,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {SubmitEvent} event
    */
   onSubmit(event) {
-    const { $popover, $details, $radiosFieldset, $radios } = this
+    const { $popover, $details, $radiosFieldset, $radios, imageMap } = this
     if (this.canSubmit()) {
       return
     }
@@ -860,7 +861,7 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     const number = $popover?.dataset.number
-    const marker = this.getMarker(number)
+    const marker = imageMap.getMarker(number)
     const feature = this.getFeature(marker?.point)
 
     if (!feature) {
@@ -917,70 +918,42 @@ export class BreastDiagram extends ConfigurableComponent {
   }
 
   /**
-   * Get marker for image map
-   *
-   * @param {number | string} [number] - Image marker number
-   */
-  getMarker(number) {
-    const { markers } = this
-
-    // No number or zero value
-    if (!number || number === -1) {
-      return
-    }
-
-    return markers.find(
-      ({ $root }) => $root.getAttribute('value') === `${number}`
-    )
-  }
-
-  /**
    * Set marker for image map
    *
    * @param {BreastFeature} feature - Breast feature
-   * @param {number} index - Image marker index
+   * @param {number | string} number - Image marker number
    */
-  setMarker(feature, index) {
-    const { $imageMarker, imageMap, config, markers } = this
+  setMarker(feature, number) {
+    const { $imageMarker, imageMap, config } = this
+
+    let marker = imageMap.getMarker(number)
 
     // Create new marker (optional)
-    if (!markers[index]) {
-      const { firstElementChild: $root } = document.importNode(
+    if (!marker) {
+      const { firstElementChild } = document.importNode(
         $imageMarker.content,
         true
       )
 
-      markers[index] = new ImageMarker($root, {
-        value: config.readOnly ? undefined : `${index + 1}`,
+      marker = new ImageMarker(firstElementChild, {
+        value: config.readOnly ? undefined : `${number}`,
         width: imageMap.width,
         height: imageMap.height
       })
     }
-
-    const marker = markers[index]
-    const point = imageMap.createPoint(feature.x, feature.y)
 
     // Update existing marker
     if (feature.id !== FEATURE_ID_PENDING) {
       const id = ImageKey.format(feature.id)
       const description = feature.details ? `${id}: ${feature.details}` : id
 
-      marker.config.text = `${index + 1}`
+      marker.config.text = `${number}`
       marker.config.description = description
-      marker.config.ariaLabel = `Marker ${index + 1}, ${description}`
+      marker.config.ariaLabel = `Marker ${number}, ${description}`
       marker.config.tag = ImageKey.format(feature.region_id)
     }
 
-    // Set marker position
-    marker.setPosition(point)
-    marker.render()
-
-    // Append new markers only
-    if (!marker.$root.parentElement) {
-      imageMap.$root.appendChild(marker.$root)
-    }
-
-    return marker
+    imageMap.setMarker(number, marker, feature.x, feature.y)
   }
 
   /**
@@ -994,14 +967,13 @@ export class BreastDiagram extends ConfigurableComponent {
       return
     }
 
-    const id = $popover.dataset.id
     const source = $popover.dataset.source
-    const marker = this.getMarker(number)
+    const marker = imageMap.getMarker(number)
 
     $root.scrollIntoView({ behavior: 'smooth' })
 
-    // Restore focus to image map if marker is pending
-    if (!marker || id === FEATURE_ID_PENDING) {
+    // Restore focus to image map if not found
+    if (!marker) {
       imageMap.focus()
       return
     }
