@@ -275,7 +275,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
     // Set markers for diagram features
     features.forEach((feature, index) => {
-      this.setMarker(feature, index + 1)
+      this.setMarker(index + 1, feature)
     })
 
     // Remove excess markers
@@ -422,27 +422,22 @@ export class BreastDiagram extends ConfigurableComponent {
   /**
    * Show add or edit feature popover
    *
-   * @param {BreastFeature} feature - Breast feature
    * @param {number | string} number - Image marker number
+   * @param {BreastFeature} feature - Breast feature
    * @param {'add' | 'edit'} mode - Popover mode
    * @param {'map' | 'key'} source - Caller source
    */
-  showPopover(feature, number, mode = 'edit', source = 'map') {
-    const { $popover, imageMap } = this
+  showPopover(number, feature, mode = 'edit', source = 'map') {
+    const { $popover } = this
     if (!$popover) {
       return
     }
 
-    const marker = imageMap.getMarker(number)
-    if (!marker) {
-      return
-    }
-
-    this.setPopover(feature, number, mode, source)
+    this.setPopover(number, feature, mode, source)
 
     $popover.removeAttribute('hidden')
 
-    this.alignPopover(marker)
+    this.alignPopover(number)
     this.focusPopover()
   }
 
@@ -462,12 +457,12 @@ export class BreastDiagram extends ConfigurableComponent {
   /**
    * Set add or edit feature popover values
    *
-   * @param {Partial<BreastFeature>} feature - Breast feature
    * @param {number | string} number - Image marker number
+   * @param {Partial<BreastFeature>} feature - Breast feature
    * @param {'add' | 'edit'} [mode] - Popover mode
    * @param {'map' | 'key'} [source] - Caller source
    */
-  setPopover(feature, number, mode, source) {
+  setPopover(number, feature, mode, source) {
     const { $popover, $captions, $details, $buttons, $radios, $region } = this
     if (!$popover || !$details || !$region) {
       return
@@ -573,13 +568,15 @@ export class BreastDiagram extends ConfigurableComponent {
   /**
    * Align popover to avoid marker
    *
-   * @param {ImageMarker} [marker]
+   * @param {number | string} [number] - Image marker number
    */
-  alignPopover(marker) {
-    const { $popover } = this
+  alignPopover(number) {
+    const { $popover, imageMap } = this
     if (!$popover) {
       return
     }
+
+    const marker = imageMap.getMarker(number)
 
     $popover.classList.toggle(
       'app-breast-diagram__popover--align-right',
@@ -615,7 +612,7 @@ export class BreastDiagram extends ConfigurableComponent {
   /**
    * Handle image map add marker
    *
-   * @type {ImageMapListener}
+   * @param {CustomEvent<ImageMapPayload>} event - Image map event
    */
   onCreate(event) {
     const { $popover, features } = this
@@ -637,12 +634,12 @@ export class BreastDiagram extends ConfigurableComponent {
 
     // Update existing popover (optional)
     if ($popover.dataset.number && $popover.dataset.mode === 'add') {
-      this.setPopover(feature, features.length, 'add', 'map')
+      this.setPopover(features.length, feature, 'add', 'map')
       this.focusPopover()
     } else {
       this.hidePopover()
-      this.setMarker(feature, features.length)
-      this.showPopover(feature, features.length, 'add', 'map')
+      this.setMarker(features.length, feature)
+      this.showPopover(features.length, feature, 'add', 'map')
     }
 
     this.render()
@@ -652,7 +649,7 @@ export class BreastDiagram extends ConfigurableComponent {
   /**
    * Handle image map edit marker
    *
-   * @type {ImageMapListener}
+   * @param {CustomEvent<ImageMapPayload>} event - Image map event
    */
   onEdit(event) {
     const { $popover } = this
@@ -662,17 +659,18 @@ export class BreastDiagram extends ConfigurableComponent {
       return
     }
 
-    const feature = this.getFeature(target.value)
+    const number = target.value
+    const feature = this.getFeature(number)
 
     // Skip unnecessary reset when the same marker is clicked again
-    if (!feature || $popover.dataset.number === target.value) {
+    if (!feature || $popover.dataset.number === number) {
       this.focusPopover()
       return
     }
 
     this.resetPending()
     this.hidePopover()
-    this.showPopover(feature, target.value, 'edit', 'map')
+    this.showPopover(target.value, feature, 'edit', 'map')
 
     this.render()
     this.log(event)
@@ -745,7 +743,7 @@ export class BreastDiagram extends ConfigurableComponent {
       }
 
       this.hidePopover()
-      this.showPopover(feature, index + 1, 'edit', 'key')
+      this.showPopover(index + 1, feature, 'edit', 'key')
     }
 
     if (!$popover || $popover.hasAttribute('hidden')) {
@@ -938,10 +936,10 @@ export class BreastDiagram extends ConfigurableComponent {
   /**
    * Set marker for image map
    *
-   * @param {BreastFeature} feature - Breast feature
    * @param {number | string} number - Image marker number
+   * @param {BreastFeature} feature - Breast feature
    */
-  setMarker(feature, number) {
+  setMarker(number, feature) {
     const { $root, imageMap, config } = this
 
     // Create new marker (optional)
@@ -1195,5 +1193,5 @@ function hideError($element, { $errorMessage, $formGroup }) {
 
 /**
  * @import { Schema } from 'nhsuk-frontend'
- * @import { ImageMapPayload, ImageMapListener } from '../image-map/image-map.js'
+ * @import { ImageMapPayload } from '../image-map/image-map.js'
  */
