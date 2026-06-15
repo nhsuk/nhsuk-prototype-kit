@@ -335,17 +335,21 @@ export class BreastDiagram extends ConfigurableComponent {
   /**
    * Remove breast feature
    *
-   * @param {Pick<BreastFeature, 'x' | 'y'> | DOMPoint} [point]
+   * @param {number | string} [number] - Image marker number
    */
-  removeFeature(point) {
+  removeFeature(number) {
     const { imageMap, features } = this
 
-    const feature = this.getFeature(point)
+    const feature = this.getFeature(number)
     if (!feature) {
       return
     }
 
     const index = features.indexOf(feature)
+    if (index === -1) {
+      return
+    }
+
     const $path = imageMap.getPathById(feature.region_id)
 
     imageMap.unsetState('active', $path)
@@ -539,11 +543,11 @@ export class BreastDiagram extends ConfigurableComponent {
     this.resetErrors()
 
     // Remove pending (unsaved) features
-    for (const feature of features) {
+    features.forEach((feature, index) => {
       if (feature.id === FEATURE_ID_PENDING) {
-        this.removeFeature(feature)
+        this.removeFeature(index + 1)
       }
-    }
+    })
 
     // Remove edit caption feature number
     if ($popover.dataset.id !== FEATURE_ID_PENDING) {
@@ -652,15 +656,14 @@ export class BreastDiagram extends ConfigurableComponent {
    * @type {ImageMapListener}
    */
   onEdit(event) {
-    const { $popover, imageMap } = this
+    const { $popover } = this
     const { target } = event
 
     if (!$popover || !(target instanceof HTMLButtonElement)) {
       return
     }
 
-    const marker = imageMap.getMarker(target.value)
-    const feature = this.getFeature(marker)
+    const feature = this.getFeature(target.value)
 
     // Skip unnecessary reset when the same marker is clicked again
     if (!feature || $popover.dataset.number === target.value) {
@@ -726,22 +729,26 @@ export class BreastDiagram extends ConfigurableComponent {
       event.preventDefault()
 
       const href = target.getAttribute('href')
-      const marker = markers.find(({ $root }) => !!href && $root.matches(href))
-      const feature = this.getFeature(marker?.point)
+      const index = markers.findIndex(({ $root }) => {
+        return !!href && $root.matches(href)
+      })
 
-      if (!feature || !marker) {
+      const feature = this.getFeature(index + 1)
+      if (!feature) {
         return
       }
 
       this.hidePopover()
-      this.showPopover(feature, markers.indexOf(marker) + 1, 'edit', 'key')
+      this.showPopover(feature, index + 1, 'edit', 'key')
     }
 
     if (!$popover || $popover.hasAttribute('hidden')) {
       return
     }
 
-    const marker = imageMap.getMarker($popover.dataset.number)
+    const number = $popover.dataset.number
+    const marker = imageMap.getMarker(number)
+
     if (!marker) {
       return
     }
@@ -751,13 +758,12 @@ export class BreastDiagram extends ConfigurableComponent {
 
     // Handle popover cancel button
     if (target.matches('.app-js-feature-cancel')) {
-      const number = $popover.dataset.number
       window.requestAnimationFrame(() => this.focusMarker(number))
     }
 
     // Handle popover remove button
     if (target.matches('.app-js-feature-remove')) {
-      this.removeFeature(marker.point)
+      this.removeFeature(number)
       window.requestAnimationFrame(() => this.focusMarker())
     }
   }
@@ -803,7 +809,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {SubmitEvent} event
    */
   onSubmit(event) {
-    const { $popover, $details, $radiosFieldset, $radios, imageMap } = this
+    const { $popover, $details, $radiosFieldset, $radios } = this
     if (this.canSubmit()) {
       return
     }
@@ -844,8 +850,7 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     const number = $popover?.dataset.number
-    const marker = imageMap.getMarker(number)
-    const feature = this.getFeature(marker?.point)
+    const feature = this.getFeature(number)
 
     if (!feature) {
       return
@@ -964,20 +969,17 @@ export class BreastDiagram extends ConfigurableComponent {
   }
 
   /**
-   * Get feature by pointer coordinates
+   * Get feature by marker
    *
-   * @param {Pick<BreastFeature, 'x' | 'y'> | DOMPoint} [point]
+   * @param {number | string} [number] - Image marker number
    */
-  getFeature(point) {
-    const { features } = this
-
-    if (!point) {
+  getFeature(number) {
+    if (number === undefined) {
       return
     }
 
-    return features.find(({ x, y }) => {
-      return x === point.x && y === point.y
-    })
+    const index = Number(number) - 1
+    return this.features[index]
   }
 
   /**

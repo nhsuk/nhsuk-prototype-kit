@@ -9,13 +9,10 @@ import {
  * @augments {ConfigurableComponent<ImageMarkerConfig>}
  */
 export class ImageMarker extends ConfigurableComponent {
-  x = 0
-  y = 0
-
   /**
-   * @type {DOMPoint | undefined}
+   * @type {DOMPoint}
    */
-  point
+  point = new DOMPoint(0, 0)
 
   /**
    * @type {'left' | 'right' | undefined}
@@ -32,11 +29,11 @@ export class ImageMarker extends ConfigurableComponent {
   }
 
   render() {
-    const { $root, config } = this
+    const { $root, config, point } = this
 
     $root.textContent = config.text ?? '?'
-    $root.style.left = `${(this.x / config.width) * 100}%`
-    $root.style.top = `${(this.y / config.height) * 100}%`
+    $root.style.left = `${(point.x / config.width) * 100}%`
+    $root.style.top = `${(point.y / config.height) * 100}%`
 
     if (!($root instanceof HTMLButtonElement)) {
       return
@@ -66,15 +63,17 @@ export class ImageMarker extends ConfigurableComponent {
     const safeX = config.width - gutter
     const safeY = config.height - gutter
 
-    // Save original point for reference
-    this.point = point
+    this.point = DOMPoint.fromPoint(point)
 
     // Offset to minimum and maximum safe area
-    this.x = Math.min(Math.max(point.x, gutter), safeX)
-    this.y = Math.min(Math.max(point.y, gutter), safeY)
+    const x = Math.min(Math.max(this.point.x, gutter), safeX)
+    const y = Math.min(Math.max(this.point.y, gutter), safeY)
+
+    this.point.x = x
+    this.point.y = y
 
     // Locate left or right side
-    this.side = point.x < config.width / 2 ? 'left' : 'right'
+    this.side = this.point.x < config.width / 2 ? 'left' : 'right'
   }
 
   /**
