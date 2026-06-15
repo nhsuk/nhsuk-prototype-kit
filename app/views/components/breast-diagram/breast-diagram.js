@@ -473,7 +473,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {'map' | 'key'} [source] - Caller source
    */
   setPopover(number, feature, mode, source) {
-    const { $popover, $captions, $details, $buttons, $radios, $region } = this
+    const { $popover, $details, $radios, $region } = this
     if (!$popover || !$details || !$region) {
       return
     }
@@ -483,37 +483,8 @@ export class BreastDiagram extends ConfigurableComponent {
     mode ??= /** @type {'add' | 'edit'} */ ($popover.dataset.mode)
     source ??= /** @type {'map' | 'key'} */ ($popover.dataset.source)
 
-    // Show add or edit feature caption
-    for (const $caption of $captions) {
-      $caption.setAttribute('hidden', '')
-
-      // Show caption with optional feature number
-      if ($caption.matches(`.app-js-feature-caption-${mode}`)) {
-        if (mode === 'edit') {
-          $caption.textContent = $caption.textContent.replace(
-            /(\s\d+)?$/,
-            ` ${number}`
-          )
-        }
-
-        $caption.removeAttribute('hidden')
-      }
-    }
-
-    // Show add, edit, remove or cancel buttons
-    for (const $button of $buttons) {
-      $button.setAttribute('hidden', '')
-
-      if (
-        $button.matches(`.app-js-feature-${mode}`) ||
-        $button.matches(`.app-js-feature-cancel`) ||
-        ($button.matches(`.app-js-feature-remove`) &&
-          feature.id !== FEATURE_ID_PENDING &&
-          mode === 'edit')
-      ) {
-        $button.removeAttribute('hidden')
-      }
-    }
+    this.setPopoverCaptions(number, feature, mode)
+    this.setPopoverButtons(number, feature, mode)
 
     // Click radio for feature being edited
     if (mode === 'edit') {
@@ -538,6 +509,62 @@ export class BreastDiagram extends ConfigurableComponent {
     $region.textContent = ImageKey.format(
       feature.region_id ?? ImageMarker.defaults.tag
     )
+  }
+
+  /**
+   * Set add or edit feature popover captions
+   *
+   * Toggles visibility of the "Editing feature X" or "Add new feature" captions
+   *
+   * @param {number | string} number - Image marker number
+   * @param {Partial<BreastFeature>} feature - Breast feature
+   * @param {'add' | 'edit'} [mode] - Popover mode
+   */
+  setPopoverCaptions(number, feature, mode) {
+    const { $captions } = this
+
+    for (const $caption of $captions) {
+      $caption.setAttribute('hidden', '')
+
+      // Show caption with optional feature number
+      if ($caption.matches(`.app-js-feature-caption-${mode}`)) {
+        if (mode === 'edit') {
+          $caption.textContent = $caption.textContent.replace(
+            /(\s\d+)?$/,
+            ` ${number}`
+          )
+        }
+
+        $caption.removeAttribute('hidden')
+      }
+    }
+  }
+
+  /**
+   * Set add or edit feature popover buttons
+   *
+   * Toggles visibility of the add, edit, remove or cancel buttons
+   *
+   * @param {number | string} number - Image marker number
+   * @param {Partial<BreastFeature>} feature - Breast feature
+   * @param {'add' | 'edit'} [mode] - Popover mode
+   */
+  setPopoverButtons(number, feature, mode) {
+    const { $buttons } = this
+
+    for (const $button of $buttons) {
+      $button.setAttribute('hidden', '')
+
+      if (
+        $button.matches(`.app-js-feature-${mode}`) ||
+        $button.matches(`.app-js-feature-cancel`) ||
+        ($button.matches(`.app-js-feature-remove`) &&
+          feature.id !== FEATURE_ID_PENDING &&
+          mode === 'edit')
+      ) {
+        $button.removeAttribute('hidden')
+      }
+    }
   }
 
   /**

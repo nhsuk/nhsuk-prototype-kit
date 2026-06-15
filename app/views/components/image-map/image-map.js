@@ -351,7 +351,7 @@ export class ImageMap extends ConfigurableComponent {
       const dy = clientY - target.pointerDownY
 
       // Minimum 5px movement before dragging
-      if (Math.sqrt(dx * dx + dy * dy) < 5) {
+      if (Math.hypot(dx, dy) < 5) {
         return
       }
 
