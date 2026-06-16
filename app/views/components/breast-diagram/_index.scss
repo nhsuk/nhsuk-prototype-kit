@@ -2,7 +2,7 @@
 @use "sass:math";
 @use "../../../stylesheets/vendor/nhsuk-frontend/base" as *;
 
-$breast-diagram-width: 700px;
+$breast-diagram-width: 704px; // .nhsuk-reading-width
 $breast-diagram-highlight-colour: nhsuk-tint(nhsuk-colour("yellow"), 50%);
 $breast-diagram-active-colour: nhsuk-tint(nhsuk-colour("blue"), 50%);
 $breast-diagram-shadow-colour: nhsuk-colour-compatible(
@@ -75,8 +75,7 @@ $breast-diagram-shadow-colour: nhsuk-colour-compatible(
 
     // Align popover to right
     &--align-right {
-      right: nhsuk-spacing(-3);
-      left: auto;
+      left: 50%;
     }
 
     .nhsuk-card__content {
@@ -95,8 +94,7 @@ $breast-diagram-shadow-colour: nhsuk-colour-compatible(
 
     // Align popover to right
     &--align-right {
-      right: nhsuk-spacing(-5);
-      left: auto;
+      left: 50%;
     }
   }
 }

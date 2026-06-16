@@ -143,7 +143,7 @@ export class BreastDiagram extends ConfigurableComponent {
     const imageMaps = createAll(
       ImageMap,
       {
-        imageClass: 'app-breast-diagram__svg',
+        imageClass: this.config.imageClass,
         readOnly,
         selectors: [
           '.app-breast-diagram__regions path',
@@ -174,7 +174,7 @@ export class BreastDiagram extends ConfigurableComponent {
     this.imageKey.markers = this.imageMap.markers
 
     if (!readOnly) {
-      const $popover = this.$root.querySelector('.app-breast-diagram__popover')
+      const $popover = this.$root.querySelector(`.${this.config.popoverClass}`)
 
       if (!($popover instanceof HTMLElement)) {
         throw new ElementError({
@@ -183,7 +183,7 @@ export class BreastDiagram extends ConfigurableComponent {
         })
       }
 
-      const $region = $popover.querySelector('.app-breast-diagram__region')
+      const $region = $popover.querySelector(`.${this.config.regionClass}`)
       const $details = $form.querySelector('input[name="feature_details"]')
       const $detailsFormGroup = $details?.closest('.nhsuk-form-group')
       const $detailsErrorMessage = $detailsFormGroup?.querySelector(
@@ -191,11 +191,11 @@ export class BreastDiagram extends ConfigurableComponent {
       )
 
       const $captions = Array.from(
-        $popover.querySelectorAll('.app-breast-diagram__caption')
+        $popover.querySelectorAll(`.${this.config.captionClass}`)
       )
 
       const $buttons = Array.from(
-        $popover.querySelectorAll('.app-breast-diagram__button')
+        $popover.querySelectorAll(`.${this.config.buttonClass}`)
       )
 
       const $radios = Array.from(
@@ -493,8 +493,14 @@ export class BreastDiagram extends ConfigurableComponent {
       }
     }
 
-    $popover.dataset.id = feature.id
-    $popover.dataset.regionId = feature.region_id
+    if (feature.id) {
+      $popover.dataset.id = feature.id
+    }
+
+    if (feature.region_id) {
+      $popover.dataset.regionId = feature.region_id
+    }
+
     $popover.dataset.number = `${number}`
     $popover.dataset.mode = mode
     $popover.dataset.source = source
@@ -564,13 +570,16 @@ export class BreastDiagram extends ConfigurableComponent {
    * Reset add or edit feature popover
    */
   resetPopover() {
-    const { $popover, $captions, $details, $radios } = this
+    const { $popover, $captions, $details, $radios, config } = this
     if (!$popover || !$details) {
       return
     }
 
     // Reset validation errors
     this.resetErrors()
+
+    // Reset alignment
+    $popover.classList.remove(`${config.popoverClass}--align-right`)
 
     // Remove edit caption feature number
     if ($popover.dataset.id !== FEATURE_ID_PENDING) {
@@ -599,20 +608,19 @@ export class BreastDiagram extends ConfigurableComponent {
    * Align popover to avoid marker
    *
    * @param {number | string} [number] - Image marker number
+   * @param {'left' | 'right'} [placement] - Popover placement
    */
-  alignPopover(number) {
-    const { $popover, imageMap } = this
+  alignPopover(number, placement) {
+    const { $popover, config, imageMap } = this
 
     // Skip alignment with multi-touch drag and drop
     if (!$popover || imageMap.targets.size > 1) {
       return
     }
 
-    const marker = imageMap.getMarker(number)
-
     $popover.classList.toggle(
-      'app-breast-diagram__popover--align-right',
-      marker?.side !== 'right'
+      `${config.popoverClass}--align-right`,
+      placement === 'right' || imageMap.getMarker(number)?.side === 'left'
     )
   }
 
@@ -742,7 +750,7 @@ export class BreastDiagram extends ConfigurableComponent {
     marker.setPosition(point)
 
     // Align popover to avoid marker
-    this.alignPopover(number)
+    this.alignPopover(undefined, marker.side === 'left' ? 'right' : 'left')
 
     // Get region for current position
     const $currentPath = imageMap.getPath(marker.point)
@@ -809,19 +817,34 @@ export class BreastDiagram extends ConfigurableComponent {
     const { $popover } = this
     const { target } = event
 
-    if (!$popover || $popover.hasAttribute('hidden')) {
+    if (!$popover || $popover.hasAttribute('hidden') || !target) {
       return
     }
 
     if (
-      target instanceof HTMLElement &&
-      ($popover.contains(target) || target.matches(':active'))
+      !(target instanceof HTMLElement) ||
+      $popover.contains(target) ||
+      target.matches(':active')
     ) {
       return
     }
 
-    this.hidePopover()
-    this.render()
+    // Left align popover to avoid clear all button in image key
+    if (target.matches('.app-js-feature-clear-all')) {
+      this.alignPopover(undefined, 'left')
+      return
+    }
+
+    // Right align popover to avoid marker links in image key
+    if (target instanceof HTMLAnchorElement) {
+      this.alignPopover(undefined, 'right')
+      return
+    }
+
+    // Auto align popover to avoid marker buttons in image map
+    if (target instanceof HTMLButtonElement) {
+      this.alignPopover(target.value)
+    }
   }
 
   /**
@@ -841,12 +864,11 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     // Handle marker links in image key
-    if (target.matches('.app-image-marker[href]')) {
+    if (target instanceof HTMLAnchorElement) {
       event.preventDefault()
 
-      const href = target.getAttribute('href')
-      const index = imageMap.markers.findIndex(
-        ({ $root }) => !!href && $root.matches(href)
+      const index = imageMap.markers.findIndex((marker) =>
+        marker.$root.matches(target.hash)
       )
 
       const feature = this.getFeature(index + 1)
@@ -872,24 +894,28 @@ export class BreastDiagram extends ConfigurableComponent {
     // We delay focus until after the reset event fires, otherwise the scroll
     // position will be calculated with the stacked popover still visible
 
-    // Handle popover cancel button
-    if (target.matches('.app-js-feature-cancel')) {
-      this.resetPending()
+    const isClickCancel = target.matches('.app-js-feature-cancel')
+    const isClickRemove = target.matches('.app-js-feature-remove')
 
+    if (isClickCancel || isClickRemove) {
       window.requestAnimationFrame(() => {
+        if ($popover.dataset.number && $popover.dataset.number !== number) {
+          return // Skip if popover has changed
+        }
+
         this.render()
         this.focusMarker(number)
       })
-    }
 
-    // Handle popover remove button
-    if (target.matches('.app-js-feature-remove')) {
-      this.removeFeature(number)
+      // Handle popover cancel button
+      if (isClickCancel) {
+        this.resetPending()
+      }
 
-      window.requestAnimationFrame(() => {
-        this.render()
-        this.focusMarker(number)
-      })
+      // Handle popover remove button
+      if (isClickRemove) {
+        this.removeFeature(number)
+      }
     }
   }
 
@@ -1142,7 +1168,12 @@ export class BreastDiagram extends ConfigurableComponent {
    */
   static defaults = Object.freeze({
     debug: false,
-    readOnly: false
+    readOnly: false,
+    buttonClass: 'app-breast-diagram__button',
+    captionClass: 'app-breast-diagram__caption',
+    imageClass: 'app-breast-diagram__svg',
+    popoverClass: 'app-breast-diagram__popover',
+    regionClass: 'app-breast-diagram__region'
   })
 
   /**
@@ -1154,7 +1185,12 @@ export class BreastDiagram extends ConfigurableComponent {
   static schema = Object.freeze({
     properties: {
       debug: { type: 'boolean' },
-      readOnly: { type: 'boolean' }
+      readOnly: { type: 'boolean' },
+      buttonClass: { type: 'string' },
+      captionClass: { type: 'string' },
+      imageClass: { type: 'string' },
+      popoverClass: { type: 'string' },
+      regionClass: { type: 'string' }
     }
   })
 }
@@ -1296,6 +1332,11 @@ function hideError($element, { $errorMessage, $formGroup }) {
  * @typedef {object} BreastDiagramConfig
  * @property {boolean} debug - Whether to show debug information
  * @property {boolean} readOnly - Whether image map is read only
+ * @property {string} buttonClass - Button class
+ * @property {string} captionClass - Caption class
+ * @property {string} imageClass - Image class
+ * @property {string} popoverClass - Popover class
+ * @property {string} regionClass - Region class
  */
 
 /**
