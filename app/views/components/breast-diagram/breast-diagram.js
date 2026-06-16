@@ -339,7 +339,6 @@ export class BreastDiagram extends ConfigurableComponent {
    */
   addFeature(feature) {
     this.features.push(feature)
-    this.render()
     this.write()
   }
 
@@ -363,7 +362,6 @@ export class BreastDiagram extends ConfigurableComponent {
 
     features.splice(index, 1)
 
-    this.render()
     this.write()
   }
 
@@ -372,7 +370,6 @@ export class BreastDiagram extends ConfigurableComponent {
    */
   clearFeatures() {
     this.features.length = 0
-    this.render()
     this.write()
   }
 
@@ -550,9 +547,6 @@ export class BreastDiagram extends ConfigurableComponent {
     // Reset validation errors
     this.resetErrors()
 
-    // Remove pending (unsaved) features
-    this.resetPending()
-
     // Remove edit caption feature number
     if ($popover.dataset.id !== FEATURE_ID_PENDING) {
       const $caption = $captions.find(($caption) =>
@@ -624,10 +618,10 @@ export class BreastDiagram extends ConfigurableComponent {
    * @type {ImageMapListener}
    */
   onCreate(event) {
-    const { $radios, markers, features } = this
+    const { $popover, features } = this
 
     const { $path, point } = event.detail
-    if (!$path || !point) {
+    if (!$popover || !$path || !point) {
       return
     }
 
@@ -638,19 +632,20 @@ export class BreastDiagram extends ConfigurableComponent {
       y: point.y
     })
 
-    // Save checked (but unsaved) feature when a marker is moved
-    const $checked = features.some(({ id }) => id === FEATURE_ID_PENDING)
-      ? $radios.find(($radio) => $radio.checked)
-      : undefined
-
-    this.hidePopover()
+    this.resetPending()
     this.addFeature(feature)
-    this.showPopover(feature, markers.length, 'add', 'map')
 
-    if ($checked) {
-      $checked.checked = true
+    // Update existing popover (optional)
+    if ($popover.dataset.number && $popover.dataset.mode === 'add') {
+      this.setPopover(feature, features.length, 'add', 'map')
+      this.focusPopover()
+    } else {
+      this.hidePopover()
+      this.setMarker(feature, features.length)
+      this.showPopover(feature, features.length, 'add', 'map')
     }
 
+    this.render()
     this.log(event)
   }
 
@@ -675,8 +670,12 @@ export class BreastDiagram extends ConfigurableComponent {
       return
     }
 
+    this.resetPending()
     this.hidePopover()
     this.showPopover(feature, target.value, 'edit', 'map')
+
+    this.render()
+    this.log(event)
   }
 
   /**
@@ -684,6 +683,8 @@ export class BreastDiagram extends ConfigurableComponent {
    */
   onClear() {
     this.clearFeatures()
+    this.hidePopover()
+    this.render()
   }
 
   /**
@@ -710,6 +711,7 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     this.hidePopover()
+    this.render()
   }
 
   /**
@@ -762,13 +764,22 @@ export class BreastDiagram extends ConfigurableComponent {
 
     // Handle popover cancel button
     if (target.matches('.app-js-feature-cancel')) {
-      window.requestAnimationFrame(() => this.focusMarker(number))
+      this.resetPending()
+
+      window.requestAnimationFrame(() => {
+        this.render()
+        this.focusMarker(number)
+      })
     }
 
     // Handle popover remove button
     if (target.matches('.app-js-feature-remove')) {
       this.removeFeature(number)
-      window.requestAnimationFrame(() => this.focusMarker())
+
+      window.requestAnimationFrame(() => {
+        this.render()
+        this.focusMarker(number)
+      })
     }
   }
 
@@ -786,7 +797,9 @@ export class BreastDiagram extends ConfigurableComponent {
 
     const number = $popover?.dataset.number
 
+    this.resetPending()
     this.hidePopover()
+    this.render()
     this.focusMarker(number)
   }
 
@@ -867,8 +880,8 @@ export class BreastDiagram extends ConfigurableComponent {
     feature.details = $checked.value === FEATURE_ID_OTHER ? details : undefined
 
     this.hidePopover()
-    this.render()
     this.write()
+    this.render()
 
     // Automatically submit form once saved
     if (event.submitter?.matches('.app-js-feature-save')) {
