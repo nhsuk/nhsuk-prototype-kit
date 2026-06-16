@@ -76,6 +76,7 @@
   &:focus .app-image-marker__number {
     color: $nhsuk-text-colour;
     background-color: transparent;
+    box-shadow: none;
   }
 
   &:not(:focus):hover .app-image-marker__description {
