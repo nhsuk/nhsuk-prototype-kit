@@ -98,11 +98,6 @@ export class BreastDiagram extends ConfigurableComponent {
   imageKey
 
   /**
-   * @type {ImageMarker[]}
-   */
-  markers
-
-  /**
    * @type {BreastFeature[]}
    */
   features
@@ -143,7 +138,6 @@ export class BreastDiagram extends ConfigurableComponent {
 
     this.$form = $form
     this.$input = $input
-    this.markers = []
     this.features = []
 
     const imageMaps = createAll(
@@ -167,7 +161,6 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     this.imageMap = imageMaps[0]
-    this.imageMap.markers = this.markers
 
     const imageKeys = createAll(ImageKey, { readOnly }, { scope: this.$root })
     if (!imageKeys.length || !(imageKeys[0].$root instanceof HTMLElement)) {
@@ -178,7 +171,7 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     this.imageKey = imageKeys[0]
-    this.imageKey.markers = this.markers
+    this.imageKey.markers = this.imageMap.markers
 
     if (!readOnly) {
       const $popover = this.$root.querySelector('.app-breast-diagram__popover')
@@ -281,7 +274,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * Render diagram features
    */
   render() {
-    const { imageMap, imageKey, markers, features } = this
+    const { imageMap, imageKey, features } = this
 
     // Set markers for diagram features
     features.forEach((feature, index) => {
@@ -289,7 +282,7 @@ export class BreastDiagram extends ConfigurableComponent {
     })
 
     // Remove excess markers
-    for (const marker of markers.splice(features.length)) {
+    for (const marker of imageMap.markers.splice(features.length)) {
       marker.$root.remove()
     }
 
@@ -837,7 +830,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {MouseEvent} event - Click event
    */
   onClick(event) {
-    const { $popover, imageMap, markers } = this
+    const { $popover, imageMap } = this
     const { target } = event
 
     if (
@@ -852,9 +845,9 @@ export class BreastDiagram extends ConfigurableComponent {
       event.preventDefault()
 
       const href = target.getAttribute('href')
-      const index = markers.findIndex(({ $root }) => {
-        return !!href && $root.matches(href)
-      })
+      const index = imageMap.markers.findIndex(
+        ({ $root }) => !!href && $root.matches(href)
+      )
 
       const feature = this.getFeature(index + 1)
       if (!feature) {
