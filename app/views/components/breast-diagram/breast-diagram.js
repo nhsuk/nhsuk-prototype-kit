@@ -803,6 +803,9 @@ export class BreastDiagram extends ConfigurableComponent {
     this.clearFeatures()
     this.hidePopover()
     this.render()
+
+    // Focus the image map with no marker provided
+    this.focusMarker()
   }
 
   /**
@@ -857,8 +860,9 @@ export class BreastDiagram extends ConfigurableComponent {
     const { target } = event
 
     if (
-      !(target instanceof HTMLButtonElement) &&
-      !(target instanceof HTMLAnchorElement)
+      !$popover ||
+      (!(target instanceof HTMLButtonElement) &&
+        !(target instanceof HTMLAnchorElement))
     ) {
       return
     }
@@ -871,16 +875,27 @@ export class BreastDiagram extends ConfigurableComponent {
         marker.$root.matches(target.hash)
       )
 
-      const feature = this.getFeature(index + 1)
+      const number = index + 1
+      const feature = this.getFeature(number)
+
       if (!feature) {
         return
       }
 
+      // Skip unnecessary reset when the same marker is clicked again
+      if ($popover.dataset.number === `${number}`) {
+        this.focusPopover()
+        return
+      }
+
+      this.resetPending()
       this.hidePopover()
-      this.showPopover(index + 1, feature, 'edit', 'key')
+      this.showPopover(number, feature, 'edit', 'key')
+
+      this.render()
     }
 
-    if (!$popover || $popover.hasAttribute('hidden')) {
+    if ($popover.hasAttribute('hidden')) {
       return
     }
 
@@ -936,6 +951,7 @@ export class BreastDiagram extends ConfigurableComponent {
     this.resetPending()
     this.hidePopover()
     this.render()
+
     this.focusMarker(number)
   }
 
