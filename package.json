@@ -9,7 +9,7 @@
   "author": "https://github.com/nhsuk/",
   "license": "MIT",
   "dependencies": {
-    "nhsuk-frontend": "^10.6.0",
+    "nhsuk-frontend": "^10.6.1",
     "nhsuk-prototype-kit": "^8.5.0"
   },
   "devDependencies": {
