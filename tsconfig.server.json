@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "checkJs": false,
+    "types": ["node"]
+  },
+  "include": [
+    "app.js",
+    "app/**/*.js",
+    "node_modules/nhsuk-prototype-kit/**/*.js",
+    "typings/**/*.d.ts"
+  ],
+  "exclude": [
+    "app/assets/javascript",
+    "app/views/components",
+    "node_modules/nhsuk-prototype-kit/lib/javascripts/**/*.js",
+    "**/*.test.js"
+  ]
+}
