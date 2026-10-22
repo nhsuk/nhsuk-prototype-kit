@@ -15,6 +15,11 @@ export class ImageMarker extends ConfigurableComponent {
   point
 
   /**
+   * @type {'left' | 'right' | undefined}
+   */
+  side
+
+  /**
    * @param {Element | null} $root - HTML element to use for component
    * @param {Partial<ImageMarkerConfig>} [config] - Image marker config
    */
@@ -40,6 +45,10 @@ export class ImageMarker extends ConfigurableComponent {
     }
   }
 
+  focus() {
+    this.$root.focus({ preventScroll: true })
+  }
+
   /**
    * @param {DOMPoint} point - SVG point at pointer coordinates
    */
@@ -58,6 +67,9 @@ export class ImageMarker extends ConfigurableComponent {
     // Offset to minimum and maximum safe area
     this.x = Math.min(Math.max(point.x, gutter), safeX)
     this.y = Math.min(Math.max(point.y, gutter), safeY)
+
+    // Locate left or right side
+    this.side = point.x < config.width / 2 ? 'left' : 'right'
 
     $root.style.left = `${(this.x / config.width) * 100}%`
     $root.style.top = `${(this.y / config.height) * 100}%`

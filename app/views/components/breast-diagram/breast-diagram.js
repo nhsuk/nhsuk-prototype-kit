@@ -263,10 +263,12 @@ export class BreastDiagram extends ConfigurableComponent {
       this.$radiosErrorMessage = $radiosErrorMessage
 
       this.imageKey.addEventListener('clear', this.onClear.bind(this))
+      this.imageKey.addEventListener('focusin', this.onFocusIn.bind(this))
 
       this.imageMap.addEventListener('create', this.onCreate.bind(this))
       this.imageMap.addEventListener('edit', this.onEdit.bind(this))
       this.imageMap.addEventListener('hover', this.log.bind(this))
+      this.imageMap.addEventListener('focusin', this.onFocusIn.bind(this))
 
       this.$form.addEventListener('click', this.onClick.bind(this))
       this.$form.addEventListener('submit', this.onSubmit.bind(this))
@@ -430,15 +432,24 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {BreastFeature} feature - Breast feature
    * @param {number | string} number - Image marker number
    * @param {'add' | 'edit'} mode - Popover mode
+   * @param {'map' | 'key'} source - Caller source
    */
-  showPopover(feature, number, mode = 'edit') {
+  showPopover(feature, number, mode = 'edit', source = 'map') {
     const { $popover } = this
     if (!$popover) {
       return
     }
 
-    this.setPopover(feature, number, mode)
+    const marker = this.getMarker(number)
+    if (!marker) {
+      return
+    }
+
+    this.setPopover(feature, number, mode, source)
+
     $popover.removeAttribute('hidden')
+
+    this.alignPopover(marker)
     this.focusPopover()
   }
 
@@ -461,16 +472,18 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {Partial<BreastFeature>} feature - Breast feature
    * @param {number | string} number - Image marker number
    * @param {'add' | 'edit'} [mode] - Popover mode
+   * @param {'map' | 'key'} [source] - Caller source
    */
-  setPopover(feature, number, mode) {
+  setPopover(feature, number, mode, source) {
     const { $popover, $captions, $details, $buttons, $radios, $region } = this
     if (!$popover || !$details || !$region) {
       return
     }
 
-    // Use existing popover mode if not provided
+    // Use existing popover mode and source if not provided
     // e.g. When updating popover values when already open
     mode ??= /** @type {'add' | 'edit'} */ ($popover.dataset.mode)
+    source ??= /** @type {'map' | 'key'} */ ($popover.dataset.source)
 
     // Show add or edit feature caption
     for (const $caption of $captions) {
@@ -522,6 +535,7 @@ export class BreastDiagram extends ConfigurableComponent {
     $popover.dataset.regionId = feature.region_id
     $popover.dataset.number = `${number}`
     $popover.dataset.mode = mode
+    $popover.dataset.source = source
 
     $region.textContent = ImageKey.format(
       feature.region_id ?? ImageMarker.defaults.tag
@@ -568,25 +582,48 @@ export class BreastDiagram extends ConfigurableComponent {
     delete $popover.dataset.id
     delete $popover.dataset.regionId
     delete $popover.dataset.number
-    delete $popover.dataset.mode
+  }
+
+  /**
+   * Align popover to avoid marker
+   *
+   * @param {ImageMarker} [marker]
+   */
+  alignPopover(marker) {
+    const { $popover } = this
+    if (!$popover) {
+      return
+    }
+
+    $popover.classList.toggle(
+      'app-breast-diagram__popover--align-right',
+      marker?.side !== 'right'
+    )
   }
 
   /**
    * Focus add or edit feature popover after scrolling into view
    */
   focusPopover() {
-    const { $popover, $radios } = this
+    const { $root, $popover, $radios } = this
     if (!$popover) {
       return
     }
 
     $popover.removeAttribute('hidden')
 
+    const $scrollTo =
+      getComputedStyle($popover).position === 'absolute'
+        ? $root // Scroll to top of diagram when popover is open
+        : $popover
+
     // Prefer checked radio button otherwise focus first
     const $radio = $radios.find(($radio) => $radio.checked) ?? $radios[0]
 
-    $popover.scrollIntoView({ behavior: 'smooth' })
-    $radio.focus({ preventScroll: true })
+    window.requestAnimationFrame(() => {
+      $scrollTo.scrollIntoView({ behavior: 'smooth' })
+      $radio.focus({ preventScroll: true })
+    })
   }
 
   /**
@@ -616,7 +653,7 @@ export class BreastDiagram extends ConfigurableComponent {
 
     this.hidePopover()
     this.addFeature(feature)
-    this.showPopover(feature, markers.length, 'add')
+    this.showPopover(feature, markers.length, 'add', 'map')
 
     if ($checked) {
       $checked.checked = true
@@ -648,7 +685,7 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     this.hidePopover()
-    this.showPopover(feature, target.value)
+    this.showPopover(feature, target.value, 'edit', 'map')
   }
 
   /**
@@ -659,12 +696,38 @@ export class BreastDiagram extends ConfigurableComponent {
   }
 
   /**
+   * Handle image map focus events
+   *
+   * Hides the popover when focus is moved elsewhere, but ignores focus on
+   * internal or active elements with their own handlers
+   *
+   * @param {FocusEvent | CustomEvent} event - Focus event
+   */
+  onFocusIn(event) {
+    const { $popover } = this
+    const { target } = event
+
+    if (!$popover || $popover.hasAttribute('hidden')) {
+      return
+    }
+
+    if (
+      target instanceof HTMLElement &&
+      ($popover.contains(target) || target.matches(':active'))
+    ) {
+      return
+    }
+
+    this.hidePopover()
+  }
+
+  /**
    * Handle image map form clicks
    *
    * @param {MouseEvent} event - Click event
    */
   onClick(event) {
-    const { $root, $popover, imageMap, markers } = this
+    const { $popover, markers } = this
     const { target } = event
 
     if (
@@ -680,9 +743,14 @@ export class BreastDiagram extends ConfigurableComponent {
 
       const href = target.getAttribute('href')
       const marker = markers.find(({ $root }) => !!href && $root.matches(href))
+      const feature = this.getFeature(marker?.point)
 
-      $root.scrollIntoView({ behavior: 'smooth' })
-      marker?.$root.click()
+      if (!feature || !marker) {
+        return
+      }
+
+      this.hidePopover()
+      this.showPopover(feature, markers.indexOf(marker) + 1, 'edit', 'key')
     }
 
     if (!$popover || $popover.hasAttribute('hidden')) {
@@ -694,25 +762,19 @@ export class BreastDiagram extends ConfigurableComponent {
       return
     }
 
+    // We delay focus until after the reset event fires, otherwise the scroll
+    // position will be calculated with the stacked popover still visible
+
     // Handle popover cancel button
     if (target.matches('.app-js-feature-cancel')) {
-      $root.scrollIntoView({ behavior: 'smooth' })
-
-      // Optionally restore focus to marker unless pending
-      if ($popover.dataset.id !== FEATURE_ID_PENDING) {
-        marker.$root.focus({ preventScroll: true })
-        return
-      }
-
-      imageMap.$root.focus({ preventScroll: true })
+      const number = $popover.dataset.number
+      window.requestAnimationFrame(() => this.focusMarker(number))
     }
 
     // Handle popover remove button
     if (target.matches('.app-js-feature-remove')) {
       this.removeFeature(marker.point)
-
-      $root.scrollIntoView({ behavior: 'smooth' })
-      imageMap.$root.focus({ preventScroll: true })
+      window.requestAnimationFrame(() => this.focusMarker())
     }
   }
 
@@ -722,9 +784,16 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {KeyboardEvent} event - Keydown event
    */
   onKeyDown(event) {
-    if (event.key === 'Escape') {
-      this.hidePopover()
+    const { $popover } = this
+
+    if (event.key !== 'Escape') {
+      return
     }
+
+    const number = $popover?.dataset.number
+
+    this.hidePopover()
+    this.focusMarker(number)
   }
 
   /**
@@ -740,8 +809,7 @@ export class BreastDiagram extends ConfigurableComponent {
     return !(
       $popover.dataset.id &&
       $popover.dataset.number &&
-      $popover.dataset.regionId &&
-      $popover.dataset.mode
+      $popover.dataset.regionId
     )
   }
 
@@ -751,7 +819,7 @@ export class BreastDiagram extends ConfigurableComponent {
    * @param {SubmitEvent} event
    */
   onSubmit(event) {
-    const { $root, $popover, $details, $radiosFieldset, $radios } = this
+    const { $popover, $details, $radiosFieldset, $radios } = this
     if (this.canSubmit()) {
       return
     }
@@ -768,8 +836,6 @@ export class BreastDiagram extends ConfigurableComponent {
 
     // Show form validation
     if (!$checked || ($checked.value === FEATURE_ID_OTHER && !details)) {
-      this.focusPopover()
-
       // Invalid: Focus first radio button
       if (!$checked) {
         showError($radiosFieldset, {
@@ -793,9 +859,11 @@ export class BreastDiagram extends ConfigurableComponent {
       }
     }
 
-    const marker = this.getMarker($popover?.dataset.number)
+    const number = $popover?.dataset.number
+    const marker = this.getMarker(number)
     const feature = this.getFeature(marker?.point)
-    if (!marker || !feature) {
+
+    if (!feature) {
       return
     }
 
@@ -815,9 +883,7 @@ export class BreastDiagram extends ConfigurableComponent {
       return
     }
 
-    // Restore focus to marker
-    $root.scrollIntoView({ behavior: 'smooth' })
-    marker.$root.focus({ preventScroll: true })
+    this.focusMarker(number)
   }
 
   /**
@@ -859,7 +925,7 @@ export class BreastDiagram extends ConfigurableComponent {
     const { markers } = this
 
     // No number or zero value
-    if (!number) {
+    if (!number || number === -1) {
       return
     }
 
@@ -915,6 +981,38 @@ export class BreastDiagram extends ConfigurableComponent {
     }
 
     return marker
+  }
+
+  /**
+   * Focus image map or marker by number
+   *
+   * @param {number | string} [number] - Image marker number
+   */
+  focusMarker(number) {
+    const { $root, $popover, imageMap, imageKey } = this
+    if (!$popover) {
+      return
+    }
+
+    const id = $popover.dataset.id
+    const source = $popover.dataset.source
+    const marker = this.getMarker(number)
+
+    $root.scrollIntoView({ behavior: 'smooth' })
+
+    // Restore focus to image map if marker is pending
+    if (!marker || id === FEATURE_ID_PENDING) {
+      imageMap.focus()
+      return
+    }
+
+    // Restore focus to image key link
+    if (source === 'key') {
+      imageKey.focus(number)
+      return
+    }
+
+    marker.focus()
   }
 
   /**

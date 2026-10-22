@@ -1,10 +1,16 @@
 @use "sass:color";
+@use "sass:math";
 @use "../../../stylesheets/vendor/nhsuk-frontend/base" as *;
 
+$breast-diagram-width: 700px;
 $breast-diagram-highlight-colour: nhsuk-tint(nhsuk-colour("yellow"), 50%);
 $breast-diagram-active-colour: nhsuk-tint(nhsuk-colour("blue"), 50%);
+$breast-diagram-shadow-colour: nhsuk-colour-compatible(
+  color.adjust(nhsuk-shade(nhsuk-colour("blue"), 50%), $saturation: -80%)
+);
 
 .app-breast-diagram {
+  position: relative;
   margin-top: nhsuk-spacing(-4);
   padding-top: nhsuk-spacing(4);
   @include nhsuk-responsive-margin(4, "bottom");
@@ -40,6 +46,52 @@ $breast-diagram-active-colour: nhsuk-tint(nhsuk-colour("blue"), 50%);
       padding-top: 0;
       padding-right: 0;
       padding-left: 0;
+    }
+  }
+
+  @include nhsuk-media-query($from: desktop) {
+    position: absolute;
+    z-index: 100;
+
+    top: nhsuk-spacing(4);
+    left: nhsuk-spacing(-3);
+
+    // Cover half the diagram, allowing for the left offset
+    width: calc(nhsuk-px-to-rem(math.div($breast-diagram-width, 2)) - nhsuk-spacing(-3));
+    max-width: calc(50% - nhsuk-spacing(-3));
+    margin: 0;
+    padding: 0;
+
+    border: $nhsuk-border-width solid nhsuk-colour("blue");
+    border-radius: $nhsuk-border-radius;
+
+    background: nhsuk-colour("white");
+    box-shadow: 0 nhsuk-spacing(1) nhsuk-spacing(3) rgba($breast-diagram-shadow-colour, 15%);
+
+    // Align popover to right
+    &--align-right {
+      right: nhsuk-spacing(-3);
+      left: auto;
+    }
+
+    .nhsuk-card__content {
+      padding-bottom: nhsuk-spacing(4);
+    }
+  }
+
+  @include nhsuk-media-query(
+    $and: "(min-width: #{(nhsuk-em($nhsuk-page-width + ($nhsuk-gutter * 2) - nhsuk-spacing(-5)))})"
+  ) {
+    left: nhsuk-spacing(-5);
+
+    // Cover half the diagram, allowing for the left offset
+    width: calc(nhsuk-px-to-rem(math.div($breast-diagram-width, 2)) - nhsuk-spacing(-5));
+    max-width: calc(50% - nhsuk-spacing(-5));
+
+    // Align popover to right
+    &--align-right {
+      right: nhsuk-spacing(-5);
+      left: auto;
     }
   }
 }

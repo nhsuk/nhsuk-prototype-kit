@@ -5,10 +5,16 @@
 $image-key-hover-colour: color.adjust(nhsuk-colour("grey-5"), $lightness: -6%);
 
 .app-image-key {
+  margin-top: nhsuk-spacing(-3);
   @include nhsuk-responsive-margin(4, "bottom");
+  @include nhsuk-responsive-padding(4, "top");
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  @include nhsuk-media-query($from: desktop) {
+    margin-top: nhsuk-spacing(-4);
   }
 }
 

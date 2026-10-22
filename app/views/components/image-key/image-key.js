@@ -15,6 +15,11 @@ export class ImageKey extends ConfigurableComponent {
   markers = []
 
   /**
+   * @type {HTMLAnchorElement[]}
+   */
+  $links = []
+
+  /**
    * @param {Element | null} $root - HTML element to use for component
    * @param {Partial<ImageKeyConfig>} [config] - Image key config
    */
@@ -57,17 +62,19 @@ export class ImageKey extends ConfigurableComponent {
       this.$imageKeyItem = $imageKeyItem
 
       this.$button.addEventListener('click', this.onClear.bind(this))
+      this.$root.addEventListener('focusin', this.onFocusIn.bind(this))
     }
   }
 
   render() {
-    const { $root, $list, $button, $imageKeyItem, markers } = this
+    const { $root, $list, $links, $button, $imageKeyItem, markers } = this
     if (!$button || !$imageKeyItem) {
       return
     }
 
     // Clear key items
     $list.innerHTML = ''
+    $links.length = 0
 
     // Hide features list
     if (!markers.length) {
@@ -82,14 +89,33 @@ export class ImageKey extends ConfigurableComponent {
 
     // Render key items
     filtered.forEach((marker, index) => {
-      const $item = document.importNode($imageKeyItem.content, true)
+      const { firstElementChild: $item } = document.importNode(
+        $imageKeyItem.content,
+        true
+      )
 
-      const $marker = $item.querySelector('.app-image-marker')
+      if (!($item instanceof HTMLElement)) {
+        throw new ElementError({
+          component: ImageKey,
+          identifier: 'Image key template contents (`<template>`)'
+        })
+      }
+
+      const $link = $item.querySelector('.app-image-marker')
+      if (!($link instanceof HTMLAnchorElement)) {
+        throw new ElementError({
+          component: ImageKey,
+          element: $item,
+          expectedType: 'HTMLAnchorElement',
+          identifier: 'Image key template link (`<a class="app-image-marker">`)'
+        })
+      }
+
       const $number = $item.querySelector('.app-image-marker__number')
       const $description = $item.querySelector('.app-image-marker__description')
       const $tag = $item.querySelector('.app-image-key__tag')
 
-      if (!$marker || !$number || !$description || !$tag) {
+      if (!$number || !$description || !$tag) {
         throw new ElementError({
           component: ImageKey,
           identifier: 'Image key item elements'
@@ -105,16 +131,61 @@ export class ImageKey extends ConfigurableComponent {
       $tag.textContent = marker.config.tag
       $tag.id = `${markerId}-tag`
 
-      $marker.setAttribute('href', `#${markerId}`)
-      $marker.setAttribute('aria-label', marker.config.ariaLabel)
-      $marker.setAttribute('aria-describedby', $tag.id)
+      $link.setAttribute('href', `#${markerId}`)
+      $link.setAttribute('aria-label', marker.config.ariaLabel)
+      $link.setAttribute('aria-describedby', $tag.id)
 
+      $links.push($link)
       $list.appendChild($item)
     })
 
     // Show features list
     $root.removeAttribute('hidden')
     $button.removeAttribute('hidden')
+  }
+
+  /**
+   * Focus image key link by number
+   *
+   * @param {number | string} [number] - Image key number
+   */
+  focus(number) {
+    const { $root } = this
+
+    const $link = this.getLink(number)
+    if (!$link) {
+      return
+    }
+
+    const { top: rootTop } = $root.getBoundingClientRect()
+    const { bottom: linkBottom } = $link.getBoundingClientRect()
+
+    // If the link is in the bottom half of the screen we optionally scroll to
+    // either the image key or image link (see NHS.UK frontend error summary)
+    const isLinkNear = linkBottom < window.innerHeight / 2
+    const isImageMapNear = linkBottom - rootTop < window.innerHeight / 2
+
+    if (!isLinkNear && isImageMapNear) {
+      $root.scrollIntoView({ behavior: 'smooth' })
+    } else if (!isLinkNear) {
+      $link.parentElement?.scrollIntoView({ behavior: 'smooth' })
+    }
+
+    $link.focus({ preventScroll: true })
+  }
+
+  /**
+   * Get link for image key
+   *
+   * @param {number | string} [number] - Image link number
+   */
+  getLink(number) {
+    if (number === undefined) {
+      return
+    }
+
+    const index = Number(number) - 1
+    return this.$links[index]
   }
 
   /**
@@ -134,9 +205,12 @@ export class ImageKey extends ConfigurableComponent {
    * Dispatch event for image key
    *
    * @param {ImageKeyEvent} name - Event name, e.g. 'clear'
+   * @param {EventTarget | null} [target] - Event target
    */
-  dispatchEvent(name) {
-    this.$root.dispatchEvent(
+  dispatchEvent(name, target) {
+    target ??= this.$root
+
+    target.dispatchEvent(
       new CustomEvent(`${ImageKey.moduleName}:${name}`, {
         bubbles: true
       })
@@ -149,6 +223,20 @@ export class ImageKey extends ConfigurableComponent {
   onClear(event) {
     event.preventDefault()
     this.dispatchEvent('clear')
+  }
+
+  /**
+   * @param {FocusEvent} event
+   */
+  onFocusIn(event) {
+    if (!(
+      event.target instanceof HTMLAnchorElement ||
+      event.target instanceof HTMLButtonElement
+    )) {
+      return
+    }
+
+    this.dispatchEvent('focusin', event.target)
   }
 
   /**
@@ -199,7 +287,7 @@ export class ImageKey extends ConfigurableComponent {
  */
 
 /**
- * @typedef {'clear'} ImageKeyEvent - Image key event
+ * @typedef {'clear' | 'focusin'} ImageKeyEvent - Image key event
  */
 
 /**

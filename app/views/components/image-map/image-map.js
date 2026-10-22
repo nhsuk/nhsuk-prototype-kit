@@ -44,6 +44,7 @@ export class ImageMap extends ConfigurableComponent {
     if (!this.config.readOnly) {
       this.$root.setAttribute('tabindex', '-1')
       this.$root.addEventListener('mousemove', this.onMouseMove.bind(this))
+      this.$root.addEventListener('focusin', this.onFocusIn.bind(this))
       this.$root.addEventListener('click', this.onClick.bind(this))
     }
   }
@@ -71,6 +72,10 @@ export class ImageMap extends ConfigurableComponent {
 
   get height() {
     return this.$image.viewBox.baseVal.height
+  }
+
+  focus() {
+    this.$root.focus({ preventScroll: true })
   }
 
   /**
@@ -200,9 +205,11 @@ export class ImageMap extends ConfigurableComponent {
    *
    * @param {ImageMapEvent} name - Event name, e.g. 'hover', 'edit'
    * @param {ImageMapPayload} detail - Image map payload
-   * @param {EventTarget} [target] - Event target
+   * @param {EventTarget | null} [target] - Event target
    */
-  dispatchEvent(name, detail, target = this.$root) {
+  dispatchEvent(name, detail, target) {
+    target ??= this.$root
+
     target.dispatchEvent(
       new CustomEvent(`${ImageMap.moduleName}:${name}`, {
         bubbles: true,
@@ -224,18 +231,29 @@ export class ImageMap extends ConfigurableComponent {
   }
 
   /**
+   * @param {FocusEvent} event
+   */
+  onFocusIn(event) {
+    if (!(event.target instanceof HTMLElement)) {
+      return
+    }
+
+    this.dispatchEvent('focusin', { $path: undefined }, event.target)
+  }
+
+  /**
    * @param {MouseEvent} event
    */
   onClick(event) {
-    event.preventDefault()
+    const { clientX, clientY, target } = event
 
-    const { clientX, clientY } = event
+    event.preventDefault()
 
     const point = this.getPoint(clientX, clientY)
     const $path = this.getPath(point)
 
-    if (event.target instanceof HTMLButtonElement) {
-      this.dispatchEvent('edit', { $path, point }, event.target)
+    if (target instanceof HTMLButtonElement) {
+      this.dispatchEvent('edit', { $path, point }, target)
       return
     }
 
@@ -293,7 +311,7 @@ export class ImageMap extends ConfigurableComponent {
 
 /**
  * @typedef {'active'} ImageMapState - Image map state
- * @typedef {'hover' | 'create' | 'edit'} ImageMapEvent - Image map event
+ * @typedef {'hover' | 'create' | 'edit' | 'focusin'} ImageMapEvent - Image map event
  */
 
 /**
