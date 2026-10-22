@@ -3,5 +3,5 @@
 @forward "vendor/nhsuk-frontend";
 
 // Add your custom CSS/Sass styles below.
-@forward "breast-diagram";
-@forward "image-marker";
+@forward "../views/components/breast-diagram";
+@forward "../views/components/image-marker";

@@ -9,7 +9,7 @@
 
 {% block head %}
   <!-- Add your custom CSS or Sass in /app/stylesheets/main.scss -->
-  <link href="/stylesheets/main.css" rel="stylesheet">
+  <link href="/stylesheets/application.css" rel="stylesheet">
 {% endblock %}
 
 <!-- Edit the header -->
@@ -49,6 +49,6 @@
 
 {% block bodyEnd %}
   {{ super() }}
-  <script type="module" src="/javascripts/main.js"></script>
+  <script type="module" src="/javascripts/application.js"></script>
   {% block pageScripts %}{% endblock %}
 {% endblock %}

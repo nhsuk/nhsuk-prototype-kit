@@ -12,6 +12,7 @@
   ],
   "exclude": [
     "app/javascripts",
+    "app/views/components",
     "node_modules/nhsuk-prototype-kit/lib/javascripts/**/*.js",
     "**/*.test.js"
   ]
