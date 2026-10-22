@@ -1,9 +1,14 @@
-import { Component, ElementError } from '/nhsuk-frontend/nhsuk-frontend.min.js'
+import {
+  ConfigurableComponent,
+  ElementError
+} from '/nhsuk-frontend/nhsuk-frontend.min.js'
 
 /**
  * Image key component
+ *
+ * @augments {ConfigurableComponent<ImageKeyConfig>}
  */
-export class ImageKey extends Component {
+export class ImageKey extends ConfigurableComponent {
   /**
    * @type {BreastFeature[]}
    */
@@ -11,9 +16,10 @@ export class ImageKey extends Component {
 
   /**
    * @param {Element | null} $root - HTML element to use for component
+   * @param {Partial<ImageKeyConfig>} [config] - Image key config
    */
-  constructor($root) {
-    super($root)
+  constructor($root, config = {}) {
+    super($root, config)
 
     const $list = this.$root.querySelector('.app-image-key__items')
     if (!($list instanceof HTMLUListElement)) {
@@ -50,7 +56,7 @@ export class ImageKey extends Component {
   }
 
   render() {
-    const { $button, $list, $root, values } = this
+    const { $button, $list, $root, config, values } = this
 
     // Clear key items
     $list.innerHTML = ''
@@ -61,7 +67,7 @@ export class ImageKey extends Component {
       return
     }
 
-    const filtered = values.filter(({ id }) => id !== 'pending')
+    const filtered = values.filter(({ id }) => config.allowlist.includes(id))
     if (!filtered.length) {
       return
     }
@@ -143,7 +149,38 @@ export class ImageKey extends Component {
    * Name for the component used when initialising using data-module attributes
    */
   static moduleName = 'app-image-key'
+
+  /**
+   * Image key default config
+   *
+   * @see {@link ImageKeyConfig}
+   * @constant
+   * @type {ImageKeyConfig}
+   */
+  static defaults = Object.freeze({
+    allowlist: []
+  })
+
+  /**
+   * Image key config schema
+   *
+   * @constant
+   * @satisfies {Schema<ImageKeyConfig>}
+   */
+  static schema = Object.freeze({
+    properties: {
+      allowlist: { type: 'array' }
+    }
+  })
 }
+
+/**
+ * Image key config
+ *
+ * @see {@link ImageKey.defaults}
+ * @typedef {object} ImageKeyConfig
+ * @property {string[]} allowlist - Allowed breast feature IDs
+ */
 
 /**
  * @typedef {'clear'} ImageKeyEvent - Image key event
@@ -158,5 +195,6 @@ export class ImageKey extends Component {
  */
 
 /**
+ * @import { Schema } from 'nhsuk-frontend'
  * @import { BreastFeature } from '../breast-diagram/breast-diagram.js'
  */

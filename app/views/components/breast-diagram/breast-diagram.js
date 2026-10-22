@@ -169,9 +169,11 @@ export class BreastDiagram extends ConfigurableComponent {
       this.$buttons = Array.from($buttons)
       this.$radios = Array.from($radios)
 
-      const imageKeys = createAll(ImageKey, undefined, {
-        scope: this.$root
-      })
+      const imageKeys = createAll(
+        ImageKey,
+        { allowlist: this.$radios.map(($radio) => $radio.value) },
+        { scope: this.$root }
+      )
 
       if (!imageKeys.length || !(imageKeys[0].$root instanceof HTMLElement)) {
         throw new ElementError({
