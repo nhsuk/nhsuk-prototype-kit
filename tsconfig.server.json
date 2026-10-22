@@ -11,8 +11,7 @@
     "typings/**/*.d.ts"
   ],
   "exclude": [
-    "app/assets/javascript",
-    "app/views/components",
+    "app/javascripts",
     "node_modules/nhsuk-prototype-kit/lib/javascripts/**/*.js",
     "**/*.test.js"
   ]
