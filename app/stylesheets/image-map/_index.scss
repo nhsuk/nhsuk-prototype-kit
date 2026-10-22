@@ -1,0 +1,31 @@
+@use "nhsuk-frontend/dist/nhsuk/core/settings" as *;
+@use "nhsuk-frontend/dist/nhsuk/core/tools" as *;
+@use "nhsuk-frontend/dist/nhsuk/core/helpers" as *;
+
+.app-image-map {
+  .nhsuk-image {
+    padding: nhsuk-spacing(3) nhsuk-spacing(3) 0;
+
+    @include nhsuk-media-query($from: tablet) {
+      padding: nhsuk-spacing(5) nhsuk-spacing(5) 0;
+    }
+  }
+
+  .nhsuk-image__img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: nhsuk-spacing(3);
+
+    @include nhsuk-media-query($from: tablet) {
+      margin-bottom: nhsuk-spacing(5);
+    }
+  }
+
+  .nhsuk-image__caption {
+    margin: 0 nhsuk-spacing(-3);
+
+    @include nhsuk-media-query($from: tablet) {
+      margin: 0 nhsuk-spacing(-5);
+    }
+  }
+}
