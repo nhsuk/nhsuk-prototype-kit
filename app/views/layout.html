@@ -8,8 +8,8 @@
 {% extends "prototype-kit-template.njk" %}
 
 {% block head %}
-  <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
-  <link href="/assets/sass/main.css" rel="stylesheet">
+  <!-- Add your custom CSS or Sass in /app/stylesheets/main.scss -->
+  <link href="/stylesheets/main.css" rel="stylesheet">
 {% endblock %}
 
 <!-- Edit the header -->
@@ -49,6 +49,6 @@
 
 {% block bodyEnd %}
   {{ super() }}
-  <script type="module" src="/assets/javascript/main.js"></script>
+  <script type="module" src="/javascripts/main.js"></script>
   {% block pageScripts %}{% endblock %}
 {% endblock %}
