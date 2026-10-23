@@ -2,6 +2,7 @@
   "name": "your-service-name-goes-here",
   "description": "Rapidly create HTML prototypes of NHS websites and services.",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "start": "node .",
     "watch": "echo 'run this instead: npm start'"
