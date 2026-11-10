@@ -1,6 +1,6 @@
-$nhsuk-assets-path: "/nhsuk-frontend/assets/";
-
 // Import NHS.UK frontend library
-@import "nhsuk-frontend/dist/nhsuk";
+@use "nhsuk-frontend/dist/nhsuk" as * with (
+  $nhsuk-assets-path: "/nhsuk-frontend/assets/"
+);
 
 // Add your custom CSS/Sass styles below.
