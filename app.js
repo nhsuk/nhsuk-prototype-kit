@@ -12,8 +12,8 @@ const viewsPath = [
 ]
 
 const entryPoints = [
-  'app/assets/sass/main.scss',
-  'app/assets/javascript/*.js'
+  'app/stylesheets/main.scss',
+  'app/javascripts/*.js'
 ]
 
 const prototype = await NHSPrototypeKit.init({
