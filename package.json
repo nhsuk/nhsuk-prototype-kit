@@ -9,12 +9,12 @@
   "author": "https://github.com/nhsuk/",
   "license": "MIT",
   "dependencies": {
-    "nhsuk-frontend": "^10.6.1",
-    "nhsuk-prototype-kit": "^8.5.2"
+    "nhsuk-frontend": "^10.7.2",
+    "nhsuk-prototype-kit": "^8.6.0"
   },
   "devDependencies": {
   },
   "engines": {
-    "node": "^22.11.0 || ^24.11.0"
+    "node": "^22.16.0 || ^24.11.0 || >= 26.13.0"
   }
 }
